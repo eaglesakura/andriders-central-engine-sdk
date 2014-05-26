@@ -1,0 +1,34 @@
+package eaglesakura_ace;
+
+import "AceConstants.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// センサー情報のペイロード
+message SensorPayload {
+// センサーの種類
+	required SensorType type = 2;
+
+	// データ本体
+	// 実際のデータは各種Rawデータに従う
+	required bytes buffer = 10;
+}
+
+// セントラルの情報を載せる
+// Serviceを起動している限り、常に付与して送付される
+message CentralStatus {
+
+// ハートレートモニターに接続されていたらtrue
+	required bool connectedHeartrate = 1;
+
+	// ケイデンスセンサーに接続されていたらtrue
+	required bool connectedCadence = 2;
+}
+
+// データ経路を限定することがないように、すべてのペイロードを一本化する
+message MasterPayload {
+// セントラルアプリのステータス
+	required CentralStatus centralStatus = 1;
+
+	// センサーの値
+	repeated SensorPayload sensorPayloads = 2;
+}

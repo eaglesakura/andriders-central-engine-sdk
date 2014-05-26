@@ -1,0 +1,45 @@
+final def CPP_OUTPUT_DIR = new File("../protocol-cpp").getAbsoluteFile();
+final def JAVA_OUTPUT_DIR = new File("../protocol-java").getAbsoluteFile();
+
+task clean << {
+    [
+        "rm",
+        "-rf",
+        CPP_OUTPUT_DIR.absolutePath
+    ].execute();
+    [
+        "rm",
+        "-rf",
+        JAVA_OUTPUT_DIR.absolutePath
+    ].execute();
+    return;
+}
+
+task build << {
+    // IDL出力先生成
+    CPP_OUTPUT_DIR.mkdirs();
+    JAVA_OUTPUT_DIR.mkdirs();
+
+    File srcDir = new File("./idl/").getAbsoluteFile();
+
+    for(File proto : srcDir.listFiles()) {
+        if(proto.getName().endsWith(".proto")) {
+            // IDL File
+            // build
+            println("compile :: " + proto.getName());
+            final def BUILD_PATH = proto.parentFile.absolutePath;
+            final def PROTO_PATH = proto.absolutePath;
+            final def CPP_OUT_PATH = CPP_OUTPUT_DIR.absolutePath;
+            final def JAVA_OUT_PATH = JAVA_OUTPUT_DIR.absolutePath;
+            [
+                "protoc",
+                "--proto_path=${BUILD_PATH}",
+                "--cpp_out",
+                CPP_OUT_PATH,
+                "--java_out",
+                JAVA_OUT_PATH,
+                PROTO_PATH
+            ].execute();
+        }
+    }
+}

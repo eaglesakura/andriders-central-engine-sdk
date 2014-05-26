@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/SystemLayer.Card.Height"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:id="@+id/SystemLayer.Heartrate.Root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/SystemLayer.Margin.Normal"
+            android:layout_weight="1"
+            android:background="@drawable/systemlayer_card_background" >
+
+            <TextView
+                android:id="@+id/SystemLayer.Card.Text"
+                style="@style/Font.SystemCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingBottom="@dimen/SystemLayer.Card.InnerPadding"
+                android:paddingLeft="@dimen/SystemLayer.Card.InnerPadding"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                style="@style/Font.SystemCard.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="@dimen/SystemLayer.Margin.Normal"
+                android:text="@string/SystemLayer.Information.Heartrate" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/SystemLayer.Margin.Normal" >
+
+                <View
+                    android:id="@+id/SystemLayer.Zonebar"
+                    android:layout_width="@dimen/SystemLayer.Zonebar.Width"
+                    android:layout_height="match_parent"
+                    android:background="@color/SystemLayer.Zonebar.None" />
+
+                <TextView
+                    android:id="@+id/SystemLayer.Zonebar.Info"
+                    style="@style/Font.SystemCard.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/SystemLayer.Cadence.Root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/SystemLayer.Margin.Normal"
+            android:layout_weight="1"
+            android:background="@drawable/systemlayer_card_background" >
+
+            <TextView
+                android:id="@+id/SystemLayer.Card.Text"
+                style="@style/Font.SystemCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingBottom="@dimen/SystemLayer.Card.InnerPadding"
+                android:paddingRight="@dimen/SystemLayer.Card.InnerPadding"
+                android:text="0" />
+
+            <TextView
+                style="@style/Font.SystemCard.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="@dimen/SystemLayer.Margin.Normal"
+                android:text="@string/SystemLayer.Information.Cadence" />
+
+            <View
+                android:id="@+id/SystemLayer.Zonebar"
+                android:layout_width="@dimen/SystemLayer.Zonebar.Width"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/SystemLayer.Margin.Normal"
+                android:background="@color/SystemLayer.Zonebar.None" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

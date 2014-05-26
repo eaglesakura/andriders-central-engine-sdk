@@ -1,0 +1,52 @@
+package eaglesakura_ace;
+
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// 基本データ
+message Extensions {
+// 運動強度や回転数レベル等 0.0〜1.0がベース
+	optional float level = 1;
+}
+
+// ケイデンス連携データ
+message RawCadence {
+// 回転数
+	required int32 rpm = 100;
+	enum CadenceZone {
+	// イージー
+		Easy = 0;
+		// 初心者 90-100
+		Beginner = 1;
+		// 理想値
+		// 100 over
+		Ideal = 2;
+	};
+
+	// ケイデンスゾーン
+	required CadenceZone cadenceZone = 101;
+}
+
+// 心拍連携データ
+message RawHeartrate {
+// 心拍数
+	required int32 bpm = 100;
+	enum HeartrateZone {
+	// 安静
+		Repose = 0;
+		// イージー
+		Easy = 1;
+		// 脂肪燃焼
+		FatCombustion = 2;
+		// 有酸素運動
+		PossessionOxygenMotion = 3;
+		// 無酸素運動
+		NonOxygenatedMotion = 4;
+
+		// オーバーワーク
+		Overwork = 5;
+	}
+	// 心拍ゾーン
+	// 運動レベルのチェックをするが、個人差が大きいため設定値が必要
+	// UIでユーザー設定値を入力する必要がある
+	optional HeartrateZone heartrateZone = 101;
+}
