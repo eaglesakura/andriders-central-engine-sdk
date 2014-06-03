@@ -35,6 +35,7 @@ void protobuf_AssignDesc_Payload_2eproto();
 void protobuf_ShutdownFile_Payload_2eproto();
 
 class SensorPayload;
+class VersionInfo;
 class CentralStatus;
 class MasterPayload;
 
@@ -134,6 +135,103 @@ class SensorPayload : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static SensorPayload* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class VersionInfo : public ::google::protobuf::Message {
+ public:
+  VersionInfo();
+  virtual ~VersionInfo();
+
+  VersionInfo(const VersionInfo& from);
+
+  inline VersionInfo& operator=(const VersionInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const VersionInfo& default_instance();
+
+  void Swap(VersionInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  VersionInfo* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const VersionInfo& from);
+  void MergeFrom(const VersionInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int64 protocolVersion = 1;
+  inline bool has_protocolversion() const;
+  inline void clear_protocolversion();
+  static const int kProtocolVersionFieldNumber = 1;
+  inline ::google::protobuf::int64 protocolversion() const;
+  inline void set_protocolversion(::google::protobuf::int64 value);
+
+  // required string appVersionName = 2;
+  inline bool has_appversionname() const;
+  inline void clear_appversionname();
+  static const int kAppVersionNameFieldNumber = 2;
+  inline const ::std::string& appversionname() const;
+  inline void set_appversionname(const ::std::string& value);
+  inline void set_appversionname(const char* value);
+  inline void set_appversionname(const char* value, size_t size);
+  inline ::std::string* mutable_appversionname();
+  inline ::std::string* release_appversionname();
+  inline void set_allocated_appversionname(::std::string* appversionname);
+
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.VersionInfo)
+ private:
+  inline void set_has_protocolversion();
+  inline void clear_has_protocolversion();
+  inline void set_has_appversionname();
+  inline void clear_has_appversionname();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int64 protocolversion_;
+  ::std::string* appversionname_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_Payload_2eproto();
+  friend void protobuf_AssignDesc_Payload_2eproto();
+  friend void protobuf_ShutdownFile_Payload_2eproto();
+
+  void InitAsDefaultInstance();
+  static VersionInfo* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -283,6 +381,18 @@ class MasterPayload : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // required string createdDate = 3;
+  inline bool has_createddate() const;
+  inline void clear_createddate();
+  static const int kCreatedDateFieldNumber = 3;
+  inline const ::std::string& createddate() const;
+  inline void set_createddate(const ::std::string& value);
+  inline void set_createddate(const char* value);
+  inline void set_createddate(const char* value, size_t size);
+  inline ::std::string* mutable_createddate();
+  inline ::std::string* release_createddate();
+  inline void set_allocated_createddate(::std::string* createddate);
+
   // required .eaglesakura_ace.CentralStatus centralStatus = 1;
   inline bool has_centralstatus() const;
   inline void clear_centralstatus();
@@ -306,16 +416,19 @@ class MasterPayload : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.MasterPayload)
  private:
+  inline void set_has_createddate();
+  inline void clear_has_createddate();
   inline void set_has_centralstatus();
   inline void clear_has_centralstatus();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* createddate_;
   ::eaglesakura_ace::CentralStatus* centralstatus_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload > sensorpayloads_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_Payload_2eproto();
   friend void protobuf_AssignDesc_Payload_2eproto();
@@ -426,6 +539,102 @@ inline void SensorPayload::set_allocated_buffer(::std::string* buffer) {
 
 // -------------------------------------------------------------------
 
+// VersionInfo
+
+// required int64 protocolVersion = 1;
+inline bool VersionInfo::has_protocolversion() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void VersionInfo::set_has_protocolversion() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void VersionInfo::clear_has_protocolversion() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void VersionInfo::clear_protocolversion() {
+  protocolversion_ = GOOGLE_LONGLONG(0);
+  clear_has_protocolversion();
+}
+inline ::google::protobuf::int64 VersionInfo::protocolversion() const {
+  return protocolversion_;
+}
+inline void VersionInfo::set_protocolversion(::google::protobuf::int64 value) {
+  set_has_protocolversion();
+  protocolversion_ = value;
+}
+
+// required string appVersionName = 2;
+inline bool VersionInfo::has_appversionname() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void VersionInfo::set_has_appversionname() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void VersionInfo::clear_has_appversionname() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void VersionInfo::clear_appversionname() {
+  if (appversionname_ != &::google::protobuf::internal::kEmptyString) {
+    appversionname_->clear();
+  }
+  clear_has_appversionname();
+}
+inline const ::std::string& VersionInfo::appversionname() const {
+  return *appversionname_;
+}
+inline void VersionInfo::set_appversionname(const ::std::string& value) {
+  set_has_appversionname();
+  if (appversionname_ == &::google::protobuf::internal::kEmptyString) {
+    appversionname_ = new ::std::string;
+  }
+  appversionname_->assign(value);
+}
+inline void VersionInfo::set_appversionname(const char* value) {
+  set_has_appversionname();
+  if (appversionname_ == &::google::protobuf::internal::kEmptyString) {
+    appversionname_ = new ::std::string;
+  }
+  appversionname_->assign(value);
+}
+inline void VersionInfo::set_appversionname(const char* value, size_t size) {
+  set_has_appversionname();
+  if (appversionname_ == &::google::protobuf::internal::kEmptyString) {
+    appversionname_ = new ::std::string;
+  }
+  appversionname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* VersionInfo::mutable_appversionname() {
+  set_has_appversionname();
+  if (appversionname_ == &::google::protobuf::internal::kEmptyString) {
+    appversionname_ = new ::std::string;
+  }
+  return appversionname_;
+}
+inline ::std::string* VersionInfo::release_appversionname() {
+  clear_has_appversionname();
+  if (appversionname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = appversionname_;
+    appversionname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void VersionInfo::set_allocated_appversionname(::std::string* appversionname) {
+  if (appversionname_ != &::google::protobuf::internal::kEmptyString) {
+    delete appversionname_;
+  }
+  if (appversionname) {
+    set_has_appversionname();
+    appversionname_ = appversionname;
+  } else {
+    clear_has_appversionname();
+    appversionname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
 // CentralStatus
 
 // required bool connectedHeartrate = 1;
@@ -476,15 +685,85 @@ inline void CentralStatus::set_connectedcadence(bool value) {
 
 // MasterPayload
 
-// required .eaglesakura_ace.CentralStatus centralStatus = 1;
-inline bool MasterPayload::has_centralstatus() const {
+// required string createdDate = 3;
+inline bool MasterPayload::has_createddate() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MasterPayload::set_has_centralstatus() {
+inline void MasterPayload::set_has_createddate() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MasterPayload::clear_has_centralstatus() {
+inline void MasterPayload::clear_has_createddate() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void MasterPayload::clear_createddate() {
+  if (createddate_ != &::google::protobuf::internal::kEmptyString) {
+    createddate_->clear();
+  }
+  clear_has_createddate();
+}
+inline const ::std::string& MasterPayload::createddate() const {
+  return *createddate_;
+}
+inline void MasterPayload::set_createddate(const ::std::string& value) {
+  set_has_createddate();
+  if (createddate_ == &::google::protobuf::internal::kEmptyString) {
+    createddate_ = new ::std::string;
+  }
+  createddate_->assign(value);
+}
+inline void MasterPayload::set_createddate(const char* value) {
+  set_has_createddate();
+  if (createddate_ == &::google::protobuf::internal::kEmptyString) {
+    createddate_ = new ::std::string;
+  }
+  createddate_->assign(value);
+}
+inline void MasterPayload::set_createddate(const char* value, size_t size) {
+  set_has_createddate();
+  if (createddate_ == &::google::protobuf::internal::kEmptyString) {
+    createddate_ = new ::std::string;
+  }
+  createddate_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MasterPayload::mutable_createddate() {
+  set_has_createddate();
+  if (createddate_ == &::google::protobuf::internal::kEmptyString) {
+    createddate_ = new ::std::string;
+  }
+  return createddate_;
+}
+inline ::std::string* MasterPayload::release_createddate() {
+  clear_has_createddate();
+  if (createddate_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = createddate_;
+    createddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void MasterPayload::set_allocated_createddate(::std::string* createddate) {
+  if (createddate_ != &::google::protobuf::internal::kEmptyString) {
+    delete createddate_;
+  }
+  if (createddate) {
+    set_has_createddate();
+    createddate_ = createddate;
+  } else {
+    clear_has_createddate();
+    createddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required .eaglesakura_ace.CentralStatus centralStatus = 1;
+inline bool MasterPayload::has_centralstatus() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MasterPayload::set_has_centralstatus() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MasterPayload::clear_has_centralstatus() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MasterPayload::clear_centralstatus() {
   if (centralstatus_ != NULL) centralstatus_->::eaglesakura_ace::CentralStatus::Clear();

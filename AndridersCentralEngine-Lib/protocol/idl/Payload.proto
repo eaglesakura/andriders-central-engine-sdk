@@ -13,6 +13,16 @@ message SensorPayload {
 	required bytes buffer = 10;
 }
 
+// セントラルサービスのバージョン
+message VersionInfo {
+// データフォーマットバージョン
+// 互換性の無いバージョンになったらCentralを更新する必要がある
+	required int64 protocolVersion = 1;
+
+	// 実行しているCentralのアプリバージョン名
+	required string appVersionName = 2;
+}
+
 // セントラルの情報を載せる
 // Serviceを起動している限り、常に付与して送付される
 message CentralStatus {
@@ -26,7 +36,11 @@ message CentralStatus {
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する
 message MasterPayload {
-// セントラルアプリのステータス
+// ペイロード作成日時
+// "yyyyMMDD-hh:mm:ss.SS"で記述される
+	required string createdDate = 3;
+
+	// セントラルアプリのステータス
 	required CentralStatus centralStatus = 1;
 
 	// センサーの値

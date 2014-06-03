@@ -23,6 +23,9 @@ namespace {
 const ::google::protobuf::Descriptor* SensorPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SensorPayload_reflection_ = NULL;
+const ::google::protobuf::Descriptor* VersionInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  VersionInfo_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CentralStatus_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CentralStatus_reflection_ = NULL;
@@ -55,7 +58,23 @@ void protobuf_AssignDesc_Payload_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SensorPayload));
-  CentralStatus_descriptor_ = file->message_type(1);
+  VersionInfo_descriptor_ = file->message_type(1);
+  static const int VersionInfo_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VersionInfo, protocolversion_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VersionInfo, appversionname_),
+  };
+  VersionInfo_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      VersionInfo_descriptor_,
+      VersionInfo::default_instance_,
+      VersionInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VersionInfo, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VersionInfo, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(VersionInfo));
+  CentralStatus_descriptor_ = file->message_type(2);
   static const int CentralStatus_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CentralStatus, connectedheartrate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CentralStatus, connectedcadence_),
@@ -71,8 +90,9 @@ void protobuf_AssignDesc_Payload_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CentralStatus));
-  MasterPayload_descriptor_ = file->message_type(2);
-  static const int MasterPayload_offsets_[2] = {
+  MasterPayload_descriptor_ = file->message_type(3);
+  static const int MasterPayload_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, createddate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, centralstatus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, sensorpayloads_),
   };
@@ -102,6 +122,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SensorPayload_descriptor_, &SensorPayload::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    VersionInfo_descriptor_, &VersionInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CentralStatus_descriptor_, &CentralStatus::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MasterPayload_descriptor_, &MasterPayload::default_instance());
@@ -112,6 +134,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_Payload_2eproto() {
   delete SensorPayload::default_instance_;
   delete SensorPayload_reflection_;
+  delete VersionInfo::default_instance_;
+  delete VersionInfo_reflection_;
   delete CentralStatus::default_instance_;
   delete CentralStatus_reflection_;
   delete MasterPayload::default_instance_;
@@ -129,19 +153,23 @@ void protobuf_AddDesc_Payload_2eproto() {
     "\n\rPayload.proto\022\017eaglesakura_ace\032\022AceCon"
     "stants.proto\"J\n\rSensorPayload\022)\n\004type\030\002 "
     "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff"
-    "er\030\n \002(\014\"E\n\rCentralStatus\022\032\n\022connectedHe"
-    "artrate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(\010\""
-    "~\n\rMasterPayload\0225\n\rcentralStatus\030\001 \002(\0132"
-    "\036.eaglesakura_ace.CentralStatus\0226\n\016senso"
-    "rPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sensor"
-    "PayloadB$\n\"com.eaglesakura.andriders.pro"
-    "tocol", 365);
+    "er\030\n \002(\014\">\n\013VersionInfo\022\027\n\017protocolVersi"
+    "on\030\001 \002(\003\022\026\n\016appVersionName\030\002 \002(\t\"E\n\rCent"
+    "ralStatus\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n"
+    "\020connectedCadence\030\002 \002(\010\"\223\001\n\rMasterPayloa"
+    "d\022\023\n\013createdDate\030\003 \002(\t\0225\n\rcentralStatus\030"
+    "\001 \002(\0132\036.eaglesakura_ace.CentralStatus\0226\n"
+    "\016sensorPayloads\030\002 \003(\0132\036.eaglesakura_ace."
+    "SensorPayloadB$\n\"com.eaglesakura.andride"
+    "rs.protocol", 451);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Payload.proto", &protobuf_RegisterTypes);
   SensorPayload::default_instance_ = new SensorPayload();
+  VersionInfo::default_instance_ = new VersionInfo();
   CentralStatus::default_instance_ = new CentralStatus();
   MasterPayload::default_instance_ = new MasterPayload();
   SensorPayload::default_instance_->InitAsDefaultInstance();
+  VersionInfo::default_instance_->InitAsDefaultInstance();
   CentralStatus::default_instance_->InitAsDefaultInstance();
   MasterPayload::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_Payload_2eproto);
@@ -420,6 +448,272 @@ void SensorPayload::Swap(SensorPayload* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int VersionInfo::kProtocolVersionFieldNumber;
+const int VersionInfo::kAppVersionNameFieldNumber;
+#endif  // !_MSC_VER
+
+VersionInfo::VersionInfo()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void VersionInfo::InitAsDefaultInstance() {
+}
+
+VersionInfo::VersionInfo(const VersionInfo& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void VersionInfo::SharedCtor() {
+  _cached_size_ = 0;
+  protocolversion_ = GOOGLE_LONGLONG(0);
+  appversionname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+VersionInfo::~VersionInfo() {
+  SharedDtor();
+}
+
+void VersionInfo::SharedDtor() {
+  if (appversionname_ != &::google::protobuf::internal::kEmptyString) {
+    delete appversionname_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void VersionInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* VersionInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return VersionInfo_descriptor_;
+}
+
+const VersionInfo& VersionInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_Payload_2eproto();
+  return *default_instance_;
+}
+
+VersionInfo* VersionInfo::default_instance_ = NULL;
+
+VersionInfo* VersionInfo::New() const {
+  return new VersionInfo;
+}
+
+void VersionInfo::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    protocolversion_ = GOOGLE_LONGLONG(0);
+    if (has_appversionname()) {
+      if (appversionname_ != &::google::protobuf::internal::kEmptyString) {
+        appversionname_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool VersionInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int64 protocolVersion = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &protocolversion_)));
+          set_has_protocolversion();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_appVersionName;
+        break;
+      }
+
+      // required string appVersionName = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_appVersionName:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_appversionname()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->appversionname().data(), this->appversionname().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void VersionInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required int64 protocolVersion = 1;
+  if (has_protocolversion()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->protocolversion(), output);
+  }
+
+  // required string appVersionName = 2;
+  if (has_appversionname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->appversionname().data(), this->appversionname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->appversionname(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* VersionInfo::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required int64 protocolVersion = 1;
+  if (has_protocolversion()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->protocolversion(), target);
+  }
+
+  // required string appVersionName = 2;
+  if (has_appversionname()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->appversionname().data(), this->appversionname().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->appversionname(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int VersionInfo::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required int64 protocolVersion = 1;
+    if (has_protocolversion()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
+          this->protocolversion());
+    }
+
+    // required string appVersionName = 2;
+    if (has_appversionname()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->appversionname());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void VersionInfo::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const VersionInfo* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const VersionInfo*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void VersionInfo::MergeFrom(const VersionInfo& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_protocolversion()) {
+      set_protocolversion(from.protocolversion());
+    }
+    if (from.has_appversionname()) {
+      set_appversionname(from.appversionname());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void VersionInfo::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void VersionInfo::CopyFrom(const VersionInfo& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool VersionInfo::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void VersionInfo::Swap(VersionInfo* other) {
+  if (other != this) {
+    std::swap(protocolversion_, other->protocolversion_);
+    std::swap(appversionname_, other->appversionname_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata VersionInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = VersionInfo_descriptor_;
+  metadata.reflection = VersionInfo_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
 const int CentralStatus::kConnectedHeartrateFieldNumber;
 const int CentralStatus::kConnectedCadenceFieldNumber;
 #endif  // !_MSC_VER
@@ -665,6 +959,7 @@ void CentralStatus::Swap(CentralStatus* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int MasterPayload::kCreatedDateFieldNumber;
 const int MasterPayload::kCentralStatusFieldNumber;
 const int MasterPayload::kSensorPayloadsFieldNumber;
 #endif  // !_MSC_VER
@@ -686,6 +981,7 @@ MasterPayload::MasterPayload(const MasterPayload& from)
 
 void MasterPayload::SharedCtor() {
   _cached_size_ = 0;
+  createddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   centralstatus_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -695,6 +991,9 @@ MasterPayload::~MasterPayload() {
 }
 
 void MasterPayload::SharedDtor() {
+  if (createddate_ != &::google::protobuf::internal::kEmptyString) {
+    delete createddate_;
+  }
   if (this != default_instance_) {
     delete centralstatus_;
   }
@@ -723,6 +1022,11 @@ MasterPayload* MasterPayload::New() const {
 
 void MasterPayload::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_createddate()) {
+      if (createddate_ != &::google::protobuf::internal::kEmptyString) {
+        createddate_->clear();
+      }
+    }
     if (has_centralstatus()) {
       if (centralstatus_ != NULL) centralstatus_->::eaglesakura_ace::CentralStatus::Clear();
     }
@@ -762,6 +1066,23 @@ bool MasterPayload::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(18)) goto parse_sensorPayloads;
+        if (input->ExpectTag(26)) goto parse_createdDate;
+        break;
+      }
+
+      // required string createdDate = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_createdDate:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_createddate()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->createddate().data(), this->createddate().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -796,6 +1117,15 @@ void MasterPayload::SerializeWithCachedSizes(
       2, this->sensorpayloads(i), output);
   }
 
+  // required string createdDate = 3;
+  if (has_createddate()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->createddate().data(), this->createddate().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->createddate(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -818,6 +1148,16 @@ void MasterPayload::SerializeWithCachedSizes(
         2, this->sensorpayloads(i), target);
   }
 
+  // required string createdDate = 3;
+  if (has_createddate()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->createddate().data(), this->createddate().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->createddate(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -829,6 +1169,13 @@ int MasterPayload::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required string createdDate = 3;
+    if (has_createddate()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->createddate());
+    }
+
     // required .eaglesakura_ace.CentralStatus centralStatus = 1;
     if (has_centralstatus()) {
       total_size += 1 +
@@ -872,6 +1219,9 @@ void MasterPayload::MergeFrom(const MasterPayload& from) {
   GOOGLE_CHECK_NE(&from, this);
   sensorpayloads_.MergeFrom(from.sensorpayloads_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_createddate()) {
+      set_createddate(from.createddate());
+    }
     if (from.has_centralstatus()) {
       mutable_centralstatus()->::eaglesakura_ace::CentralStatus::MergeFrom(from.centralstatus());
     }
@@ -892,7 +1242,7 @@ void MasterPayload::CopyFrom(const MasterPayload& from) {
 }
 
 bool MasterPayload::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   if (has_centralstatus()) {
     if (!this->centralstatus().IsInitialized()) return false;
@@ -905,6 +1255,7 @@ bool MasterPayload::IsInitialized() const {
 
 void MasterPayload::Swap(MasterPayload* other) {
   if (other != this) {
+    std::swap(createddate_, other->createddate_);
     std::swap(centralstatus_, other->centralstatus_);
     sensorpayloads_.Swap(&other->sensorpayloads_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);

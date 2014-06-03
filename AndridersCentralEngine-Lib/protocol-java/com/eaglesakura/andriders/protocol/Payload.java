@@ -593,6 +593,670 @@ public final class Payload {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.SensorPayload)
   }
 
+  public interface VersionInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required int64 protocolVersion = 1;
+    /**
+     * <code>required int64 protocolVersion = 1;</code>
+     *
+     * <pre>
+     * データフォーマットバージョン
+     * 互換性の無いバージョンになったらCentralを更新する必要がある
+     * </pre>
+     */
+    boolean hasProtocolVersion();
+    /**
+     * <code>required int64 protocolVersion = 1;</code>
+     *
+     * <pre>
+     * データフォーマットバージョン
+     * 互換性の無いバージョンになったらCentralを更新する必要がある
+     * </pre>
+     */
+    long getProtocolVersion();
+
+    // required string appVersionName = 2;
+    /**
+     * <code>required string appVersionName = 2;</code>
+     *
+     * <pre>
+     * 実行しているCentralのアプリバージョン名
+     * </pre>
+     */
+    boolean hasAppVersionName();
+    /**
+     * <code>required string appVersionName = 2;</code>
+     *
+     * <pre>
+     * 実行しているCentralのアプリバージョン名
+     * </pre>
+     */
+    java.lang.String getAppVersionName();
+    /**
+     * <code>required string appVersionName = 2;</code>
+     *
+     * <pre>
+     * 実行しているCentralのアプリバージョン名
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getAppVersionNameBytes();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.VersionInfo}
+   *
+   * <pre>
+   * セントラルサービスのバージョン
+   * </pre>
+   */
+  public static final class VersionInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements VersionInfoOrBuilder {
+    // Use VersionInfo.newBuilder() to construct.
+    private VersionInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private VersionInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final VersionInfo defaultInstance;
+    public static VersionInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public VersionInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private VersionInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              protocolVersion_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              appVersionName_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.Payload.internal_static_eaglesakura_ace_VersionInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.Payload.internal_static_eaglesakura_ace_VersionInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.Payload.VersionInfo.class, com.eaglesakura.andriders.protocol.Payload.VersionInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<VersionInfo> PARSER =
+        new com.google.protobuf.AbstractParser<VersionInfo>() {
+      public VersionInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VersionInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VersionInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required int64 protocolVersion = 1;
+    public static final int PROTOCOLVERSION_FIELD_NUMBER = 1;
+    private long protocolVersion_;
+    /**
+     * <code>required int64 protocolVersion = 1;</code>
+     *
+     * <pre>
+     * データフォーマットバージョン
+     * 互換性の無いバージョンになったらCentralを更新する必要がある
+     * </pre>
+     */
+    public boolean hasProtocolVersion() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 protocolVersion = 1;</code>
+     *
+     * <pre>
+     * データフォーマットバージョン
+     * 互換性の無いバージョンになったらCentralを更新する必要がある
+     * </pre>
+     */
+    public long getProtocolVersion() {
+      return protocolVersion_;
+    }
+
+    // required string appVersionName = 2;
+    public static final int APPVERSIONNAME_FIELD_NUMBER = 2;
+    private java.lang.Object appVersionName_;
+    /**
+     * <code>required string appVersionName = 2;</code>
+     *
+     * <pre>
+     * 実行しているCentralのアプリバージョン名
+     * </pre>
+     */
+    public boolean hasAppVersionName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string appVersionName = 2;</code>
+     *
+     * <pre>
+     * 実行しているCentralのアプリバージョン名
+     * </pre>
+     */
+    public java.lang.String getAppVersionName() {
+      java.lang.Object ref = appVersionName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          appVersionName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string appVersionName = 2;</code>
+     *
+     * <pre>
+     * 実行しているCentralのアプリバージョン名
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getAppVersionNameBytes() {
+      java.lang.Object ref = appVersionName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        appVersionName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      protocolVersion_ = 0L;
+      appVersionName_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasProtocolVersion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAppVersionName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, protocolVersion_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getAppVersionNameBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, protocolVersion_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getAppVersionNameBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.Payload.VersionInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.Payload.VersionInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.VersionInfo}
+     *
+     * <pre>
+     * セントラルサービスのバージョン
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.Payload.VersionInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.Payload.internal_static_eaglesakura_ace_VersionInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.Payload.internal_static_eaglesakura_ace_VersionInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.Payload.VersionInfo.class, com.eaglesakura.andriders.protocol.Payload.VersionInfo.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.Payload.VersionInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        protocolVersion_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        appVersionName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.Payload.internal_static_eaglesakura_ace_VersionInfo_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.Payload.VersionInfo getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.Payload.VersionInfo.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.Payload.VersionInfo build() {
+        com.eaglesakura.andriders.protocol.Payload.VersionInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.Payload.VersionInfo buildPartial() {
+        com.eaglesakura.andriders.protocol.Payload.VersionInfo result = new com.eaglesakura.andriders.protocol.Payload.VersionInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.protocolVersion_ = protocolVersion_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.appVersionName_ = appVersionName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.Payload.VersionInfo) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.Payload.VersionInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.Payload.VersionInfo other) {
+        if (other == com.eaglesakura.andriders.protocol.Payload.VersionInfo.getDefaultInstance()) return this;
+        if (other.hasProtocolVersion()) {
+          setProtocolVersion(other.getProtocolVersion());
+        }
+        if (other.hasAppVersionName()) {
+          bitField0_ |= 0x00000002;
+          appVersionName_ = other.appVersionName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasProtocolVersion()) {
+          
+          return false;
+        }
+        if (!hasAppVersionName()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.Payload.VersionInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.Payload.VersionInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required int64 protocolVersion = 1;
+      private long protocolVersion_ ;
+      /**
+       * <code>required int64 protocolVersion = 1;</code>
+       *
+       * <pre>
+       * データフォーマットバージョン
+       * 互換性の無いバージョンになったらCentralを更新する必要がある
+       * </pre>
+       */
+      public boolean hasProtocolVersion() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 protocolVersion = 1;</code>
+       *
+       * <pre>
+       * データフォーマットバージョン
+       * 互換性の無いバージョンになったらCentralを更新する必要がある
+       * </pre>
+       */
+      public long getProtocolVersion() {
+        return protocolVersion_;
+      }
+      /**
+       * <code>required int64 protocolVersion = 1;</code>
+       *
+       * <pre>
+       * データフォーマットバージョン
+       * 互換性の無いバージョンになったらCentralを更新する必要がある
+       * </pre>
+       */
+      public Builder setProtocolVersion(long value) {
+        bitField0_ |= 0x00000001;
+        protocolVersion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 protocolVersion = 1;</code>
+       *
+       * <pre>
+       * データフォーマットバージョン
+       * 互換性の無いバージョンになったらCentralを更新する必要がある
+       * </pre>
+       */
+      public Builder clearProtocolVersion() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        protocolVersion_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required string appVersionName = 2;
+      private java.lang.Object appVersionName_ = "";
+      /**
+       * <code>required string appVersionName = 2;</code>
+       *
+       * <pre>
+       * 実行しているCentralのアプリバージョン名
+       * </pre>
+       */
+      public boolean hasAppVersionName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string appVersionName = 2;</code>
+       *
+       * <pre>
+       * 実行しているCentralのアプリバージョン名
+       * </pre>
+       */
+      public java.lang.String getAppVersionName() {
+        java.lang.Object ref = appVersionName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          appVersionName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string appVersionName = 2;</code>
+       *
+       * <pre>
+       * 実行しているCentralのアプリバージョン名
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getAppVersionNameBytes() {
+        java.lang.Object ref = appVersionName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appVersionName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string appVersionName = 2;</code>
+       *
+       * <pre>
+       * 実行しているCentralのアプリバージョン名
+       * </pre>
+       */
+      public Builder setAppVersionName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        appVersionName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string appVersionName = 2;</code>
+       *
+       * <pre>
+       * 実行しているCentralのアプリバージョン名
+       * </pre>
+       */
+      public Builder clearAppVersionName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        appVersionName_ = getDefaultInstance().getAppVersionName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string appVersionName = 2;</code>
+       *
+       * <pre>
+       * 実行しているCentralのアプリバージョン名
+       * </pre>
+       */
+      public Builder setAppVersionNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        appVersionName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.VersionInfo)
+    }
+
+    static {
+      defaultInstance = new VersionInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.VersionInfo)
+  }
+
   public interface CentralStatusOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -1163,6 +1827,36 @@ public final class Payload {
   public interface MasterPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
+    // required string createdDate = 3;
+    /**
+     * <code>required string createdDate = 3;</code>
+     *
+     * <pre>
+     * ペイロード作成日時
+     * "yyyyMMDD-hh:mm:ss.SS"で記述される
+     * </pre>
+     */
+    boolean hasCreatedDate();
+    /**
+     * <code>required string createdDate = 3;</code>
+     *
+     * <pre>
+     * ペイロード作成日時
+     * "yyyyMMDD-hh:mm:ss.SS"で記述される
+     * </pre>
+     */
+    java.lang.String getCreatedDate();
+    /**
+     * <code>required string createdDate = 3;</code>
+     *
+     * <pre>
+     * ペイロード作成日時
+     * "yyyyMMDD-hh:mm:ss.SS"で記述される
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getCreatedDateBytes();
+
     // required .eaglesakura_ace.CentralStatus centralStatus = 1;
     /**
      * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -1291,7 +1985,7 @@ public final class Payload {
             }
             case 10: {
               com.eaglesakura.andriders.protocol.Payload.CentralStatus.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = centralStatus_.toBuilder();
               }
               centralStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.Payload.CentralStatus.PARSER, extensionRegistry);
@@ -1299,15 +1993,20 @@ public final class Payload {
                 subBuilder.mergeFrom(centralStatus_);
                 centralStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.Payload.SensorPayload>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000004;
               }
               sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.Payload.SensorPayload.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000001;
+              createdDate_ = input.readBytes();
               break;
             }
           }
@@ -1318,7 +2017,7 @@ public final class Payload {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
         }
         this.unknownFields = unknownFields.build();
@@ -1353,6 +2052,64 @@ public final class Payload {
     }
 
     private int bitField0_;
+    // required string createdDate = 3;
+    public static final int CREATEDDATE_FIELD_NUMBER = 3;
+    private java.lang.Object createdDate_;
+    /**
+     * <code>required string createdDate = 3;</code>
+     *
+     * <pre>
+     * ペイロード作成日時
+     * "yyyyMMDD-hh:mm:ss.SS"で記述される
+     * </pre>
+     */
+    public boolean hasCreatedDate() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string createdDate = 3;</code>
+     *
+     * <pre>
+     * ペイロード作成日時
+     * "yyyyMMDD-hh:mm:ss.SS"で記述される
+     * </pre>
+     */
+    public java.lang.String getCreatedDate() {
+      java.lang.Object ref = createdDate_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          createdDate_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string createdDate = 3;</code>
+     *
+     * <pre>
+     * ペイロード作成日時
+     * "yyyyMMDD-hh:mm:ss.SS"で記述される
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getCreatedDateBytes() {
+      java.lang.Object ref = createdDate_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        createdDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // required .eaglesakura_ace.CentralStatus centralStatus = 1;
     public static final int CENTRALSTATUS_FIELD_NUMBER = 1;
     private com.eaglesakura.andriders.protocol.Payload.CentralStatus centralStatus_;
@@ -1364,7 +2121,7 @@ public final class Payload {
      * </pre>
      */
     public boolean hasCentralStatus() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -1444,6 +2201,7 @@ public final class Payload {
     }
 
     private void initFields() {
+      createdDate_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.Payload.CentralStatus.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
     }
@@ -1452,6 +2210,10 @@ public final class Payload {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasCreatedDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasCentralStatus()) {
         memoizedIsInitialized = 0;
         return false;
@@ -1473,11 +2235,14 @@ public final class Payload {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(1, centralStatus_);
       }
       for (int i = 0; i < sensorPayloads_.size(); i++) {
         output.writeMessage(2, sensorPayloads_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(3, getCreatedDateBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1488,13 +2253,17 @@ public final class Payload {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, centralStatus_);
       }
       for (int i = 0; i < sensorPayloads_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, sensorPayloads_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getCreatedDateBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1618,15 +2387,17 @@ public final class Payload {
 
       public Builder clear() {
         super.clear();
+        createdDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (centralStatusBuilder_ == null) {
           centralStatus_ = com.eaglesakura.andriders.protocol.Payload.CentralStatus.getDefaultInstance();
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           sensorPayloadsBuilder_.clear();
         }
@@ -1661,15 +2432,19 @@ public final class Payload {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
+        result.createdDate_ = createdDate_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         if (centralStatusBuilder_ == null) {
           result.centralStatus_ = centralStatus_;
         } else {
           result.centralStatus_ = centralStatusBuilder_.build();
         }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
@@ -1691,6 +2466,11 @@ public final class Payload {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.Payload.MasterPayload other) {
         if (other == com.eaglesakura.andriders.protocol.Payload.MasterPayload.getDefaultInstance()) return this;
+        if (other.hasCreatedDate()) {
+          bitField0_ |= 0x00000001;
+          createdDate_ = other.createdDate_;
+          onChanged();
+        }
         if (other.hasCentralStatus()) {
           mergeCentralStatus(other.getCentralStatus());
         }
@@ -1698,7 +2478,7 @@ public final class Payload {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -1711,7 +2491,7 @@ public final class Payload {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000004);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -1725,6 +2505,10 @@ public final class Payload {
       }
 
       public final boolean isInitialized() {
+        if (!hasCreatedDate()) {
+          
+          return false;
+        }
         if (!hasCentralStatus()) {
           
           return false;
@@ -1761,6 +2545,110 @@ public final class Payload {
       }
       private int bitField0_;
 
+      // required string createdDate = 3;
+      private java.lang.Object createdDate_ = "";
+      /**
+       * <code>required string createdDate = 3;</code>
+       *
+       * <pre>
+       * ペイロード作成日時
+       * "yyyyMMDD-hh:mm:ss.SS"で記述される
+       * </pre>
+       */
+      public boolean hasCreatedDate() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string createdDate = 3;</code>
+       *
+       * <pre>
+       * ペイロード作成日時
+       * "yyyyMMDD-hh:mm:ss.SS"で記述される
+       * </pre>
+       */
+      public java.lang.String getCreatedDate() {
+        java.lang.Object ref = createdDate_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          createdDate_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string createdDate = 3;</code>
+       *
+       * <pre>
+       * ペイロード作成日時
+       * "yyyyMMDD-hh:mm:ss.SS"で記述される
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getCreatedDateBytes() {
+        java.lang.Object ref = createdDate_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          createdDate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string createdDate = 3;</code>
+       *
+       * <pre>
+       * ペイロード作成日時
+       * "yyyyMMDD-hh:mm:ss.SS"で記述される
+       * </pre>
+       */
+      public Builder setCreatedDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        createdDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string createdDate = 3;</code>
+       *
+       * <pre>
+       * ペイロード作成日時
+       * "yyyyMMDD-hh:mm:ss.SS"で記述される
+       * </pre>
+       */
+      public Builder clearCreatedDate() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        createdDate_ = getDefaultInstance().getCreatedDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string createdDate = 3;</code>
+       *
+       * <pre>
+       * ペイロード作成日時
+       * "yyyyMMDD-hh:mm:ss.SS"で記述される
+       * </pre>
+       */
+      public Builder setCreatedDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        createdDate_ = value;
+        onChanged();
+        return this;
+      }
+
       // required .eaglesakura_ace.CentralStatus centralStatus = 1;
       private com.eaglesakura.andriders.protocol.Payload.CentralStatus centralStatus_ = com.eaglesakura.andriders.protocol.Payload.CentralStatus.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
@@ -1773,7 +2661,7 @@ public final class Payload {
        * </pre>
        */
       public boolean hasCentralStatus() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -1806,7 +2694,7 @@ public final class Payload {
         } else {
           centralStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -1824,7 +2712,7 @@ public final class Payload {
         } else {
           centralStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -1836,7 +2724,7 @@ public final class Payload {
        */
       public Builder mergeCentralStatus(com.eaglesakura.andriders.protocol.Payload.CentralStatus value) {
         if (centralStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
               centralStatus_ != com.eaglesakura.andriders.protocol.Payload.CentralStatus.getDefaultInstance()) {
             centralStatus_ =
               com.eaglesakura.andriders.protocol.Payload.CentralStatus.newBuilder(centralStatus_).mergeFrom(value).buildPartial();
@@ -1847,7 +2735,7 @@ public final class Payload {
         } else {
           centralStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -1864,7 +2752,7 @@ public final class Payload {
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
@@ -1875,7 +2763,7 @@ public final class Payload {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.Payload.CentralStatus.Builder getCentralStatusBuilder() {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         onChanged();
         return getCentralStatusFieldBuilder().getBuilder();
       }
@@ -1918,9 +2806,9 @@ public final class Payload {
       private java.util.List<com.eaglesakura.andriders.protocol.Payload.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.Payload.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -2113,7 +3001,7 @@ public final class Payload {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -2218,7 +3106,7 @@ public final class Payload {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.Payload.SensorPayload, com.eaglesakura.andriders.protocol.Payload.SensorPayload.Builder, com.eaglesakura.andriders.protocol.Payload.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
@@ -2243,6 +3131,11 @@ public final class Payload {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_VersionInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_VersionInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_CentralStatus_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2264,13 +3157,15 @@ public final class Payload {
       "\n\rPayload.proto\022\017eaglesakura_ace\032\022AceCon" +
       "stants.proto\"J\n\rSensorPayload\022)\n\004type\030\002 " +
       "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff" +
-      "er\030\n \002(\014\"E\n\rCentralStatus\022\032\n\022connectedHe" +
-      "artrate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(\010\"" +
-      "~\n\rMasterPayload\0225\n\rcentralStatus\030\001 \002(\0132" +
-      "\036.eaglesakura_ace.CentralStatus\0226\n\016senso" +
-      "rPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sensor" +
-      "PayloadB$\n\"com.eaglesakura.andriders.pro" +
-      "tocol"
+      "er\030\n \002(\014\">\n\013VersionInfo\022\027\n\017protocolVersi" +
+      "on\030\001 \002(\003\022\026\n\016appVersionName\030\002 \002(\t\"E\n\rCent" +
+      "ralStatus\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n" +
+      "\020connectedCadence\030\002 \002(\010\"\223\001\n\rMasterPayloa" +
+      "d\022\023\n\013createdDate\030\003 \002(\t\0225\n\rcentralStatus\030" +
+      "\001 \002(\0132\036.eaglesakura_ace.CentralStatus\0226\n" +
+      "\016sensorPayloads\030\002 \003(\0132\036.eaglesakura_ace.",
+      "SensorPayloadB$\n\"com.eaglesakura.andride" +
+      "rs.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2283,18 +3178,24 @@ public final class Payload {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_SensorPayload_descriptor,
               new java.lang.String[] { "Type", "Buffer", });
-          internal_static_eaglesakura_ace_CentralStatus_descriptor =
+          internal_static_eaglesakura_ace_VersionInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_eaglesakura_ace_VersionInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_VersionInfo_descriptor,
+              new java.lang.String[] { "ProtocolVersion", "AppVersionName", });
+          internal_static_eaglesakura_ace_CentralStatus_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
               new java.lang.String[] { "ConnectedHeartrate", "ConnectedCadence", });
           internal_static_eaglesakura_ace_MasterPayload_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "CentralStatus", "SensorPayloads", });
+              new java.lang.String[] { "CreatedDate", "CentralStatus", "SensorPayloads", });
           return null;
         }
       };
