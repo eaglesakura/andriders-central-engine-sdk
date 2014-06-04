@@ -1,5 +1,9 @@
 <resources>
 
-    <string name="app_name">AndridersCentralEngine-Lib</string>
+    <!-- SNSへの送信を許可する -->
+    <string name="com.eaglesakura.andriders.permission.POST_SNS">com.eaglesakura.andriders.permission.POST_SNS</string>
+
+    <!-- 音声コマンドの受信を許可する -->
+    <string name="com.eaglesakura.andriders.permission.VOICE_CONTROLL">com.eaglesakura.andriders.permission.VOICE_CONTROLL</string>
 
 </resources>
