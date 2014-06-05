@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ゾーン用色見本 -->
+    <color name="AceUI.Zonebar.None">#00000000</color>
+    <color name="AceUI.Zonebar.Lv0">#87cefa</color>
+    <color name="AceUI.Zonebar.Lv1">#7cfc00</color>
+    <color name="AceUI.Zonebar.Lv2">#228b22</color>
+    <color name="AceUI.Zonebar.Lv3">#ffff00</color>
+    <color name="AceUI.Zonebar.Lv4">#ffa500</color>
+    <color name="AceUI.Zonebar.Lv5">#ff4500</color>
+    <color name="AceUI.Zonebar.Lv6">#000000</color>
+    
+    <!-- 表示用文字列 -->
+    <string name="AceUI.Information.Cadence">ケイデンス (RPM)</string>
+    <string name="AceUI.Information.Heartrate">心拍数 (BPM)</string>
+    
+</resources>

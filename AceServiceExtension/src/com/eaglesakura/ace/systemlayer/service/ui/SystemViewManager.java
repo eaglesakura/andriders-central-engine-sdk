@@ -136,33 +136,33 @@ public class SystemViewManager {
 
             q.text(String.format("%d", heartrate.getBpm()));
 
-            int colorId = R.color.SystemLayer_Zonebar_None;
+            int colorId = R.color.AceUI_Zonebar_None;
             String zoneText = "";
             if (heartrate.hasHeartrateZone()) {
                 HeartrateZone zone = heartrate.getHeartrateZone();
                 switch (zone) {
                     case Repose:
-                        colorId = R.color.SystemLayer_Zonebar_Lv0;
+                        colorId = R.color.AceUI_Zonebar_Lv0;
                         zoneText = "安静";
                         break;
                     case Easy:
-                        colorId = R.color.SystemLayer_Zonebar_Lv1;
+                        colorId = R.color.AceUI_Zonebar_Lv1;
                         zoneText = "軽度";
                         break;
                     case FatCombustion:
-                        colorId = R.color.SystemLayer_Zonebar_Lv2;
+                        colorId = R.color.AceUI_Zonebar_Lv2;
                         zoneText = "脂肪燃焼";
                         break;
                     case PossessionOxygenMotion:
-                        colorId = R.color.SystemLayer_Zonebar_Lv3;
+                        colorId = R.color.AceUI_Zonebar_Lv3;
                         zoneText = "有酸素";
                         break;
                     case NonOxygenatedMotion:
-                        colorId = R.color.SystemLayer_Zonebar_Lv4;
+                        colorId = R.color.AceUI_Zonebar_Lv4;
                         zoneText = "無酸素";
                         break;
                     case Overwork:
-                        colorId = R.color.SystemLayer_Zonebar_Lv5;
+                        colorId = R.color.AceUI_Zonebar_Lv5;
                         zoneText = "危険域";
                         break;
                 }
@@ -185,17 +185,17 @@ public class SystemViewManager {
             q.text(String.format("%d", cadence.getRpm()));
 
             // ゾーンレベル
-            int colorId = R.color.SystemLayer_Zonebar_None;
+            int colorId = R.color.AceUI_Zonebar_None;
             if (cadence.getRpm() > 0) {
                 switch (cadence.getCadenceZone()) {
                     case Easy:
-                        colorId = R.color.SystemLayer_Zonebar_Lv0;
+                        colorId = R.color.AceUI_Zonebar_Lv0;
                         break;
                     case Beginner:
-                        colorId = R.color.SystemLayer_Zonebar_Lv2;
+                        colorId = R.color.AceUI_Zonebar_Lv2;
                         break;
                     case Ideal:
-                        colorId = R.color.SystemLayer_Zonebar_Lv4;
+                        colorId = R.color.AceUI_Zonebar_Lv4;
                         break;
                 }
             }

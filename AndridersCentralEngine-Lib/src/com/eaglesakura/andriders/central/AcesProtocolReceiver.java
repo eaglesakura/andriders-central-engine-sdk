@@ -128,7 +128,7 @@ public class AcesProtocolReceiver {
      * 最上位ペイロードを受け取った
      * @param master
      */
-    void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
+    public void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
 
         // 正常なマスターデータを受け取った
