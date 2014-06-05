@@ -9,9 +9,9 @@ import android.view.WindowManager;
 import com.androidquery.AQuery;
 import com.eaglesakura.ace.systemlayer.R;
 import com.eaglesakura.ace.systemlayer.service.UiService;
-import com.eaglesakura.andriders.central.ServiceDataReceiver;
-import com.eaglesakura.andriders.protocol.ACEsProtocol;
-import com.eaglesakura.andriders.protocol.ACEsProtocol.CentralStatus;
+import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.protocol.AcesProtocol;
+import com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone;
@@ -26,7 +26,7 @@ public class SystemViewManager {
 
     final WindowManager windowManager;
 
-    ServiceDataReceiver receiver;
+    AcesProtocolReceiver receiver;
 
     public SystemViewManager(UiService service) {
         this.service = service;
@@ -66,7 +66,7 @@ public class SystemViewManager {
 
         // セントラルに接続する
         {
-            receiver = new ServiceDataReceiver(service);
+            receiver = new AcesProtocolReceiver(service);
             receiver.addCentralDataListener(centralDataListenerImpl);
             receiver.addCadenceListener(cadenceListenerImpl);
             receiver.addHeartrateListener(heartrateListenerImpl);
@@ -95,9 +95,9 @@ public class SystemViewManager {
         }
     }
 
-    ServiceDataReceiver.CentralDataListener centralDataListenerImpl = new ServiceDataReceiver.CentralDataListener() {
+    AcesProtocolReceiver.CentralDataListener centralDataListenerImpl = new AcesProtocolReceiver.CentralDataListener() {
         @Override
-        public void onMasterPayloadReceived(ServiceDataReceiver receiver, byte[] buffer, ACEsProtocol.MasterPayload master) {
+        public void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, AcesProtocol.MasterPayload master) {
             CentralStatus status = master.getCentralStatus();
 
             //            BleLog.d("received master");
@@ -127,9 +127,9 @@ public class SystemViewManager {
     /**
      * ハートレート受信
      */
-    ServiceDataReceiver.HeartrateListener heartrateListenerImpl = new ServiceDataReceiver.HeartrateListener() {
+    AcesProtocolReceiver.HeartrateListener heartrateListenerImpl = new AcesProtocolReceiver.HeartrateListener() {
         @Override
-        public void onHeartrateReceived(ServiceDataReceiver receiver, RawHeartrate heartrate) {
+        public void onHeartrateReceived(AcesProtocolReceiver receiver, RawHeartrate heartrate) {
             // heartrate
             AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Heartrate_Root));
             q.id(R.id.SystemLayer_Card_Text);
@@ -176,9 +176,9 @@ public class SystemViewManager {
     /**
      * ケイデンス受信
      */
-    ServiceDataReceiver.CadenceListener cadenceListenerImpl = new ServiceDataReceiver.CadenceListener() {
+    AcesProtocolReceiver.CadenceListener cadenceListenerImpl = new AcesProtocolReceiver.CadenceListener() {
         @Override
-        public void onCadenceReceived(ServiceDataReceiver receiver, RawCadence cadence) {
+        public void onCadenceReceived(AcesProtocolReceiver receiver, RawCadence cadence) {
             // cadence
             AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Cadence_Root));
             q.id(R.id.SystemLayer_Card_Text);

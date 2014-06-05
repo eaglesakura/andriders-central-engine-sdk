@@ -9,14 +9,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.eaglesakura.andriders.ble.AceLog;
-import com.eaglesakura.andriders.protocol.ACEsProtocol;
-import com.eaglesakura.andriders.protocol.ACEsProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.AceConstants.SensorType;
+import com.eaglesakura.andriders.protocol.AcesProtocol;
+import com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.google.protobuf.ByteString;
 
-public class ServiceDataReceiver {
+public class AcesProtocolReceiver {
     /**
      * Intent経由で送られる場合のデータマスター
      */
@@ -51,7 +51,7 @@ public class ServiceDataReceiver {
      * データ取得クラスを構築する
      * @param context
      */
-    public ServiceDataReceiver(Context context) {
+    public AcesProtocolReceiver(Context context) {
         this.context = context.getApplicationContext();
     }
 
@@ -88,17 +88,17 @@ public class ServiceDataReceiver {
     /**
      * セントラルから情報を受けとった
      */
-    private final List<CentralDataListener> centralListeners = new ArrayList<ServiceDataReceiver.CentralDataListener>();
+    private final List<CentralDataListener> centralListeners = new ArrayList<AcesProtocolReceiver.CentralDataListener>();
 
     /**
      * 心拍
      */
-    private final List<HeartrateListener> heartrateListeners = new ArrayList<ServiceDataReceiver.HeartrateListener>();
+    private final List<HeartrateListener> heartrateListeners = new ArrayList<AcesProtocolReceiver.HeartrateListener>();
 
     /**
      * ケイデンス受信
      */
-    private final List<CadenceListener> cadenceListeners = new ArrayList<ServiceDataReceiver.CadenceListener>();
+    private final List<CadenceListener> cadenceListeners = new ArrayList<AcesProtocolReceiver.CadenceListener>();
 
     /**
      * 心拍を受け取った
@@ -129,7 +129,7 @@ public class ServiceDataReceiver {
      * @param master
      */
     void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
-        ACEsProtocol.MasterPayload master = ACEsProtocol.MasterPayload.parseFrom(masterbuffer);
+        AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
 
         // 正常なマスターデータを受け取った
         for (CentralDataListener listener : centralListeners) {
@@ -231,14 +231,14 @@ public class ServiceDataReceiver {
      * ケイデンスデータを受け取った
      */
     public interface CadenceListener {
-        void onCadenceReceived(ServiceDataReceiver receiver, RawCadence cadence);
+        void onCadenceReceived(AcesProtocolReceiver receiver, RawCadence cadence);
     }
 
     /**
      * 心拍データを受け取った
      */
     public interface HeartrateListener {
-        void onHeartrateReceived(ServiceDataReceiver receiver, RawHeartrate heartrate);
+        void onHeartrateReceived(AcesProtocolReceiver receiver, RawHeartrate heartrate);
     }
 
     /**
@@ -250,6 +250,6 @@ public class ServiceDataReceiver {
          * @param buffer 受け取ったデータ
          * @param master すべてのデータを含んだペイロード
          */
-        void onMasterPayloadReceived(ServiceDataReceiver receiver, byte[] buffer, ACEsProtocol.MasterPayload master);
+        void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, AcesProtocol.MasterPayload master);
     }
 }
