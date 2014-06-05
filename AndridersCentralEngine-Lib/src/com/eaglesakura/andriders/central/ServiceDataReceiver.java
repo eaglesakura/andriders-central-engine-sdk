@@ -9,10 +9,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.eaglesakura.andriders.ble.AceLog;
+import com.eaglesakura.andriders.protocol.ACEsProtocol;
+import com.eaglesakura.andriders.protocol.ACEsProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.AceConstants.SensorType;
-import com.eaglesakura.andriders.protocol.Payload;
-import com.eaglesakura.andriders.protocol.Payload.MasterPayload;
-import com.eaglesakura.andriders.protocol.Payload.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.google.protobuf.ByteString;
@@ -130,7 +129,7 @@ public class ServiceDataReceiver {
      * @param master
      */
     void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
-        Payload.MasterPayload master = Payload.MasterPayload.parseFrom(masterbuffer);
+        ACEsProtocol.MasterPayload master = ACEsProtocol.MasterPayload.parseFrom(masterbuffer);
 
         // 正常なマスターデータを受け取った
         for (CentralDataListener listener : centralListeners) {
@@ -251,6 +250,6 @@ public class ServiceDataReceiver {
          * @param buffer 受け取ったデータ
          * @param master すべてのデータを含んだペイロード
          */
-        void onMasterPayloadReceived(ServiceDataReceiver receiver, byte[] buffer, MasterPayload master);
+        void onMasterPayloadReceived(ServiceDataReceiver receiver, byte[] buffer, ACEsProtocol.MasterPayload master);
     }
 }

@@ -10,8 +10,8 @@ import com.androidquery.AQuery;
 import com.eaglesakura.ace.systemlayer.R;
 import com.eaglesakura.ace.systemlayer.service.UiService;
 import com.eaglesakura.andriders.central.ServiceDataReceiver;
-import com.eaglesakura.andriders.protocol.Payload.CentralStatus;
-import com.eaglesakura.andriders.protocol.Payload.MasterPayload;
+import com.eaglesakura.andriders.protocol.ACEsProtocol;
+import com.eaglesakura.andriders.protocol.ACEsProtocol.CentralStatus;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone;
@@ -97,7 +97,7 @@ public class SystemViewManager {
 
     ServiceDataReceiver.CentralDataListener centralDataListenerImpl = new ServiceDataReceiver.CentralDataListener() {
         @Override
-        public void onMasterPayloadReceived(ServiceDataReceiver receiver, byte[] buffer, MasterPayload master) {
+        public void onMasterPayloadReceived(ServiceDataReceiver receiver, byte[] buffer, ACEsProtocol.MasterPayload master) {
             CentralStatus status = master.getCentralStatus();
 
             //            BleLog.d("received master");
