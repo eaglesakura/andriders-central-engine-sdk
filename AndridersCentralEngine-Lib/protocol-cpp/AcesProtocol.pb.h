@@ -25,6 +25,8 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "AceConstants.pb.h"
+#include "SensorProtocol.pb.h"
+#include "CommandProtocol.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace eaglesakura_ace {
@@ -34,109 +36,11 @@ void  protobuf_AddDesc_AcesProtocol_2eproto();
 void protobuf_AssignDesc_AcesProtocol_2eproto();
 void protobuf_ShutdownFile_AcesProtocol_2eproto();
 
-class SensorPayload;
 class VersionInfo;
 class CentralStatus;
 class MasterPayload;
 
 // ===================================================================
-
-class SensorPayload : public ::google::protobuf::Message {
- public:
-  SensorPayload();
-  virtual ~SensorPayload();
-
-  SensorPayload(const SensorPayload& from);
-
-  inline SensorPayload& operator=(const SensorPayload& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SensorPayload& default_instance();
-
-  void Swap(SensorPayload* other);
-
-  // implements Message ----------------------------------------------
-
-  SensorPayload* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const SensorPayload& from);
-  void MergeFrom(const SensorPayload& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required .eaglesakura_ace.SensorType type = 2;
-  inline bool has_type() const;
-  inline void clear_type();
-  static const int kTypeFieldNumber = 2;
-  inline ::eaglesakura_ace::SensorType type() const;
-  inline void set_type(::eaglesakura_ace::SensorType value);
-
-  // required bytes buffer = 10;
-  inline bool has_buffer() const;
-  inline void clear_buffer();
-  static const int kBufferFieldNumber = 10;
-  inline const ::std::string& buffer() const;
-  inline void set_buffer(const ::std::string& value);
-  inline void set_buffer(const char* value);
-  inline void set_buffer(const void* value, size_t size);
-  inline ::std::string* mutable_buffer();
-  inline ::std::string* release_buffer();
-  inline void set_allocated_buffer(::std::string* buffer);
-
-  // @@protoc_insertion_point(class_scope:eaglesakura_ace.SensorPayload)
- private:
-  inline void set_has_type();
-  inline void clear_has_type();
-  inline void set_has_buffer();
-  inline void clear_has_buffer();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::std::string* buffer_;
-  int type_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_AcesProtocol_2eproto();
-  friend void protobuf_AssignDesc_AcesProtocol_2eproto();
-  friend void protobuf_ShutdownFile_AcesProtocol_2eproto();
-
-  void InitAsDefaultInstance();
-  static SensorPayload* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class VersionInfo : public ::google::protobuf::Message {
  public:
@@ -303,20 +207,30 @@ class CentralStatus : public ::google::protobuf::Message {
   inline bool connectedcadence() const;
   inline void set_connectedcadence(bool value);
 
+  // required bool connectedTwitter = 3;
+  inline bool has_connectedtwitter() const;
+  inline void clear_connectedtwitter();
+  static const int kConnectedTwitterFieldNumber = 3;
+  inline bool connectedtwitter() const;
+  inline void set_connectedtwitter(bool value);
+
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.CentralStatus)
  private:
   inline void set_has_connectedheartrate();
   inline void clear_has_connectedheartrate();
   inline void set_has_connectedcadence();
   inline void clear_has_connectedcadence();
+  inline void set_has_connectedtwitter();
+  inline void clear_has_connectedtwitter();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   bool connectedheartrate_;
   bool connectedcadence_;
+  bool connectedtwitter_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesProtocol_2eproto();
   friend void protobuf_AssignDesc_AcesProtocol_2eproto();
@@ -381,6 +295,18 @@ class MasterPayload : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // required string uniqueId = 4;
+  inline bool has_uniqueid() const;
+  inline void clear_uniqueid();
+  static const int kUniqueIdFieldNumber = 4;
+  inline const ::std::string& uniqueid() const;
+  inline void set_uniqueid(const ::std::string& value);
+  inline void set_uniqueid(const char* value);
+  inline void set_uniqueid(const char* value, size_t size);
+  inline ::std::string* mutable_uniqueid();
+  inline ::std::string* release_uniqueid();
+  inline void set_allocated_uniqueid(::std::string* uniqueid);
+
   // required string createdDate = 3;
   inline bool has_createddate() const;
   inline void clear_createddate();
@@ -414,8 +340,22 @@ class MasterPayload : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload >*
       mutable_sensorpayloads();
 
+  // repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;
+  inline int commandpayloads_size() const;
+  inline void clear_commandpayloads();
+  static const int kCommandPayloadsFieldNumber = 5;
+  inline const ::eaglesakura_ace::CommandPayload& commandpayloads(int index) const;
+  inline ::eaglesakura_ace::CommandPayload* mutable_commandpayloads(int index);
+  inline ::eaglesakura_ace::CommandPayload* add_commandpayloads();
+  inline const ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload >&
+      commandpayloads() const;
+  inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload >*
+      mutable_commandpayloads();
+
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.MasterPayload)
  private:
+  inline void set_has_uniqueid();
+  inline void clear_has_uniqueid();
   inline void set_has_createddate();
   inline void clear_has_createddate();
   inline void set_has_centralstatus();
@@ -423,12 +363,14 @@ class MasterPayload : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* uniqueid_;
   ::std::string* createddate_;
   ::eaglesakura_ace::CentralStatus* centralstatus_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload > sensorpayloads_;
+  ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload > commandpayloads_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesProtocol_2eproto();
   friend void protobuf_AssignDesc_AcesProtocol_2eproto();
@@ -441,103 +383,6 @@ class MasterPayload : public ::google::protobuf::Message {
 
 
 // ===================================================================
-
-// SensorPayload
-
-// required .eaglesakura_ace.SensorType type = 2;
-inline bool SensorPayload::has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void SensorPayload::set_has_type() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void SensorPayload::clear_has_type() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void SensorPayload::clear_type() {
-  type_ = 0;
-  clear_has_type();
-}
-inline ::eaglesakura_ace::SensorType SensorPayload::type() const {
-  return static_cast< ::eaglesakura_ace::SensorType >(type_);
-}
-inline void SensorPayload::set_type(::eaglesakura_ace::SensorType value) {
-  assert(::eaglesakura_ace::SensorType_IsValid(value));
-  set_has_type();
-  type_ = value;
-}
-
-// required bytes buffer = 10;
-inline bool SensorPayload::has_buffer() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void SensorPayload::set_has_buffer() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void SensorPayload::clear_has_buffer() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void SensorPayload::clear_buffer() {
-  if (buffer_ != &::google::protobuf::internal::kEmptyString) {
-    buffer_->clear();
-  }
-  clear_has_buffer();
-}
-inline const ::std::string& SensorPayload::buffer() const {
-  return *buffer_;
-}
-inline void SensorPayload::set_buffer(const ::std::string& value) {
-  set_has_buffer();
-  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
-    buffer_ = new ::std::string;
-  }
-  buffer_->assign(value);
-}
-inline void SensorPayload::set_buffer(const char* value) {
-  set_has_buffer();
-  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
-    buffer_ = new ::std::string;
-  }
-  buffer_->assign(value);
-}
-inline void SensorPayload::set_buffer(const void* value, size_t size) {
-  set_has_buffer();
-  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
-    buffer_ = new ::std::string;
-  }
-  buffer_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* SensorPayload::mutable_buffer() {
-  set_has_buffer();
-  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
-    buffer_ = new ::std::string;
-  }
-  return buffer_;
-}
-inline ::std::string* SensorPayload::release_buffer() {
-  clear_has_buffer();
-  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = buffer_;
-    buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void SensorPayload::set_allocated_buffer(::std::string* buffer) {
-  if (buffer_ != &::google::protobuf::internal::kEmptyString) {
-    delete buffer_;
-  }
-  if (buffer) {
-    set_has_buffer();
-    buffer_ = buffer;
-  } else {
-    clear_has_buffer();
-    buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// -------------------------------------------------------------------
 
 // VersionInfo
 
@@ -681,19 +526,111 @@ inline void CentralStatus::set_connectedcadence(bool value) {
   connectedcadence_ = value;
 }
 
+// required bool connectedTwitter = 3;
+inline bool CentralStatus::has_connectedtwitter() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void CentralStatus::set_has_connectedtwitter() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void CentralStatus::clear_has_connectedtwitter() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void CentralStatus::clear_connectedtwitter() {
+  connectedtwitter_ = false;
+  clear_has_connectedtwitter();
+}
+inline bool CentralStatus::connectedtwitter() const {
+  return connectedtwitter_;
+}
+inline void CentralStatus::set_connectedtwitter(bool value) {
+  set_has_connectedtwitter();
+  connectedtwitter_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // MasterPayload
 
-// required string createdDate = 3;
-inline bool MasterPayload::has_createddate() const {
+// required string uniqueId = 4;
+inline bool MasterPayload::has_uniqueid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MasterPayload::set_has_createddate() {
+inline void MasterPayload::set_has_uniqueid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MasterPayload::clear_has_createddate() {
+inline void MasterPayload::clear_has_uniqueid() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void MasterPayload::clear_uniqueid() {
+  if (uniqueid_ != &::google::protobuf::internal::kEmptyString) {
+    uniqueid_->clear();
+  }
+  clear_has_uniqueid();
+}
+inline const ::std::string& MasterPayload::uniqueid() const {
+  return *uniqueid_;
+}
+inline void MasterPayload::set_uniqueid(const ::std::string& value) {
+  set_has_uniqueid();
+  if (uniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    uniqueid_ = new ::std::string;
+  }
+  uniqueid_->assign(value);
+}
+inline void MasterPayload::set_uniqueid(const char* value) {
+  set_has_uniqueid();
+  if (uniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    uniqueid_ = new ::std::string;
+  }
+  uniqueid_->assign(value);
+}
+inline void MasterPayload::set_uniqueid(const char* value, size_t size) {
+  set_has_uniqueid();
+  if (uniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    uniqueid_ = new ::std::string;
+  }
+  uniqueid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MasterPayload::mutable_uniqueid() {
+  set_has_uniqueid();
+  if (uniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    uniqueid_ = new ::std::string;
+  }
+  return uniqueid_;
+}
+inline ::std::string* MasterPayload::release_uniqueid() {
+  clear_has_uniqueid();
+  if (uniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = uniqueid_;
+    uniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void MasterPayload::set_allocated_uniqueid(::std::string* uniqueid) {
+  if (uniqueid_ != &::google::protobuf::internal::kEmptyString) {
+    delete uniqueid_;
+  }
+  if (uniqueid) {
+    set_has_uniqueid();
+    uniqueid_ = uniqueid;
+  } else {
+    clear_has_uniqueid();
+    uniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required string createdDate = 3;
+inline bool MasterPayload::has_createddate() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MasterPayload::set_has_createddate() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MasterPayload::clear_has_createddate() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MasterPayload::clear_createddate() {
   if (createddate_ != &::google::protobuf::internal::kEmptyString) {
@@ -757,13 +694,13 @@ inline void MasterPayload::set_allocated_createddate(::std::string* createddate)
 
 // required .eaglesakura_ace.CentralStatus centralStatus = 1;
 inline bool MasterPayload::has_centralstatus() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MasterPayload::set_has_centralstatus() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MasterPayload::clear_has_centralstatus() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MasterPayload::clear_centralstatus() {
   if (centralstatus_ != NULL) centralstatus_->::eaglesakura_ace::CentralStatus::Clear();
@@ -816,6 +753,31 @@ MasterPayload::sensorpayloads() const {
 inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload >*
 MasterPayload::mutable_sensorpayloads() {
   return &sensorpayloads_;
+}
+
+// repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;
+inline int MasterPayload::commandpayloads_size() const {
+  return commandpayloads_.size();
+}
+inline void MasterPayload::clear_commandpayloads() {
+  commandpayloads_.Clear();
+}
+inline const ::eaglesakura_ace::CommandPayload& MasterPayload::commandpayloads(int index) const {
+  return commandpayloads_.Get(index);
+}
+inline ::eaglesakura_ace::CommandPayload* MasterPayload::mutable_commandpayloads(int index) {
+  return commandpayloads_.Mutable(index);
+}
+inline ::eaglesakura_ace::CommandPayload* MasterPayload::add_commandpayloads() {
+  return commandpayloads_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload >&
+MasterPayload::commandpayloads() const {
+  return commandpayloads_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload >*
+MasterPayload::mutable_commandpayloads() {
+  return &commandpayloads_;
 }
 
 

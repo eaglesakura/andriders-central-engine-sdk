@@ -25,6 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "AceConstants.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace eaglesakura_ace {
@@ -34,9 +35,9 @@ void  protobuf_AddDesc_SensorProtocol_2eproto();
 void protobuf_AssignDesc_SensorProtocol_2eproto();
 void protobuf_ShutdownFile_SensorProtocol_2eproto();
 
-class Extensions;
 class RawCadence;
 class RawHeartrate;
+class SensorPayload;
 
 enum RawCadence_CadenceZone {
   RawCadence_CadenceZone_Easy = 0,
@@ -81,89 +82,26 @@ inline bool RawHeartrate_HeartrateZone_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<RawHeartrate_HeartrateZone>(
     RawHeartrate_HeartrateZone_descriptor(), name, value);
 }
-// ===================================================================
-
-class Extensions : public ::google::protobuf::Message {
- public:
-  Extensions();
-  virtual ~Extensions();
-
-  Extensions(const Extensions& from);
-
-  inline Extensions& operator=(const Extensions& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Extensions& default_instance();
-
-  void Swap(Extensions* other);
-
-  // implements Message ----------------------------------------------
-
-  Extensions* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Extensions& from);
-  void MergeFrom(const Extensions& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional float level = 1;
-  inline bool has_level() const;
-  inline void clear_level();
-  static const int kLevelFieldNumber = 1;
-  inline float level() const;
-  inline void set_level(float value);
-
-  // @@protoc_insertion_point(class_scope:eaglesakura_ace.Extensions)
- private:
-  inline void set_has_level();
-  inline void clear_has_level();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  float level_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
-  friend void  protobuf_AddDesc_SensorProtocol_2eproto();
-  friend void protobuf_AssignDesc_SensorProtocol_2eproto();
-  friend void protobuf_ShutdownFile_SensorProtocol_2eproto();
-
-  void InitAsDefaultInstance();
-  static Extensions* default_instance_;
+enum SensorType {
+  HeartrateMonitor = 0,
+  CadenceSensor = 1
 };
-// -------------------------------------------------------------------
+bool SensorType_IsValid(int value);
+const SensorType SensorType_MIN = HeartrateMonitor;
+const SensorType SensorType_MAX = CadenceSensor;
+const int SensorType_ARRAYSIZE = SensorType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* SensorType_descriptor();
+inline const ::std::string& SensorType_Name(SensorType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    SensorType_descriptor(), value);
+}
+inline bool SensorType_Parse(
+    const ::std::string& name, SensorType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<SensorType>(
+    SensorType_descriptor(), name, value);
+}
+// ===================================================================
 
 class RawCadence : public ::google::protobuf::Message {
  public:
@@ -400,36 +338,107 @@ class RawHeartrate : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static RawHeartrate* default_instance_;
 };
-// ===================================================================
-
-
-// ===================================================================
-
-// Extensions
-
-// optional float level = 1;
-inline bool Extensions::has_level() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void Extensions::set_has_level() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void Extensions::clear_has_level() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void Extensions::clear_level() {
-  level_ = 0;
-  clear_has_level();
-}
-inline float Extensions::level() const {
-  return level_;
-}
-inline void Extensions::set_level(float value) {
-  set_has_level();
-  level_ = value;
-}
-
 // -------------------------------------------------------------------
+
+class SensorPayload : public ::google::protobuf::Message {
+ public:
+  SensorPayload();
+  virtual ~SensorPayload();
+
+  SensorPayload(const SensorPayload& from);
+
+  inline SensorPayload& operator=(const SensorPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SensorPayload& default_instance();
+
+  void Swap(SensorPayload* other);
+
+  // implements Message ----------------------------------------------
+
+  SensorPayload* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SensorPayload& from);
+  void MergeFrom(const SensorPayload& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .eaglesakura_ace.SensorType type = 2;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 2;
+  inline ::eaglesakura_ace::SensorType type() const;
+  inline void set_type(::eaglesakura_ace::SensorType value);
+
+  // required bytes buffer = 10;
+  inline bool has_buffer() const;
+  inline void clear_buffer();
+  static const int kBufferFieldNumber = 10;
+  inline const ::std::string& buffer() const;
+  inline void set_buffer(const ::std::string& value);
+  inline void set_buffer(const char* value);
+  inline void set_buffer(const void* value, size_t size);
+  inline ::std::string* mutable_buffer();
+  inline ::std::string* release_buffer();
+  inline void set_allocated_buffer(::std::string* buffer);
+
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.SensorPayload)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_buffer();
+  inline void clear_has_buffer();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* buffer_;
+  int type_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SensorProtocol_2eproto();
+  friend void protobuf_AssignDesc_SensorProtocol_2eproto();
+  friend void protobuf_ShutdownFile_SensorProtocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static SensorPayload* default_instance_;
+};
+// ===================================================================
+
+
+// ===================================================================
 
 // RawCadence
 
@@ -527,6 +536,103 @@ inline void RawHeartrate::set_heartratezone(::eaglesakura_ace::RawHeartrate_Hear
   heartratezone_ = value;
 }
 
+// -------------------------------------------------------------------
+
+// SensorPayload
+
+// required .eaglesakura_ace.SensorType type = 2;
+inline bool SensorPayload::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SensorPayload::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SensorPayload::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SensorPayload::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::eaglesakura_ace::SensorType SensorPayload::type() const {
+  return static_cast< ::eaglesakura_ace::SensorType >(type_);
+}
+inline void SensorPayload::set_type(::eaglesakura_ace::SensorType value) {
+  assert(::eaglesakura_ace::SensorType_IsValid(value));
+  set_has_type();
+  type_ = value;
+}
+
+// required bytes buffer = 10;
+inline bool SensorPayload::has_buffer() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SensorPayload::set_has_buffer() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SensorPayload::clear_has_buffer() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SensorPayload::clear_buffer() {
+  if (buffer_ != &::google::protobuf::internal::kEmptyString) {
+    buffer_->clear();
+  }
+  clear_has_buffer();
+}
+inline const ::std::string& SensorPayload::buffer() const {
+  return *buffer_;
+}
+inline void SensorPayload::set_buffer(const ::std::string& value) {
+  set_has_buffer();
+  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
+    buffer_ = new ::std::string;
+  }
+  buffer_->assign(value);
+}
+inline void SensorPayload::set_buffer(const char* value) {
+  set_has_buffer();
+  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
+    buffer_ = new ::std::string;
+  }
+  buffer_->assign(value);
+}
+inline void SensorPayload::set_buffer(const void* value, size_t size) {
+  set_has_buffer();
+  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
+    buffer_ = new ::std::string;
+  }
+  buffer_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SensorPayload::mutable_buffer() {
+  set_has_buffer();
+  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
+    buffer_ = new ::std::string;
+  }
+  return buffer_;
+}
+inline ::std::string* SensorPayload::release_buffer() {
+  clear_has_buffer();
+  if (buffer_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = buffer_;
+    buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SensorPayload::set_allocated_buffer(::std::string* buffer) {
+  if (buffer_ != &::google::protobuf::internal::kEmptyString) {
+    delete buffer_;
+  }
+  if (buffer) {
+    set_has_buffer();
+    buffer_ = buffer;
+  } else {
+    clear_has_buffer();
+    buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -543,6 +649,10 @@ inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::RawCadence_Ca
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::RawHeartrate_HeartrateZone>() {
   return ::eaglesakura_ace::RawHeartrate_HeartrateZone_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::SensorType>() {
+  return ::eaglesakura_ace::SensorType_descriptor();
 }
 
 }  // namespace google

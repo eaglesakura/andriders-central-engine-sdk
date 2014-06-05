@@ -8,591 +8,6 @@ public final class AcesProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface SensorPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required .eaglesakura_ace.SensorType type = 2;
-    /**
-     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-     *
-     * <pre>
-     * センサーの種類
-     * </pre>
-     */
-    boolean hasType();
-    /**
-     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-     *
-     * <pre>
-     * センサーの種類
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.AceConstants.SensorType getType();
-
-    // required bytes buffer = 10;
-    /**
-     * <code>required bytes buffer = 10;</code>
-     *
-     * <pre>
-     * データ本体
-     * 実際のデータは各種Rawデータに従う
-     * </pre>
-     */
-    boolean hasBuffer();
-    /**
-     * <code>required bytes buffer = 10;</code>
-     *
-     * <pre>
-     * データ本体
-     * 実際のデータは各種Rawデータに従う
-     * </pre>
-     */
-    com.google.protobuf.ByteString getBuffer();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.SensorPayload}
-   *
-   * <pre>
-   * センサー情報のペイロード
-   * </pre>
-   */
-  public static final class SensorPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements SensorPayloadOrBuilder {
-    // Use SensorPayload.newBuilder() to construct.
-    private SensorPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private SensorPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final SensorPayload defaultInstance;
-    public static SensorPayload getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public SensorPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SensorPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              com.eaglesakura.andriders.protocol.AceConstants.SensorType value = com.eaglesakura.andriders.protocol.AceConstants.SensorType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000001;
-                type_ = value;
-              }
-              break;
-            }
-            case 82: {
-              bitField0_ |= 0x00000002;
-              buffer_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_SensorPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.class, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<SensorPayload> PARSER =
-        new com.google.protobuf.AbstractParser<SensorPayload>() {
-      public SensorPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SensorPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SensorPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required .eaglesakura_ace.SensorType type = 2;
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private com.eaglesakura.andriders.protocol.AceConstants.SensorType type_;
-    /**
-     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-     *
-     * <pre>
-     * センサーの種類
-     * </pre>
-     */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-     *
-     * <pre>
-     * センサーの種類
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.AceConstants.SensorType getType() {
-      return type_;
-    }
-
-    // required bytes buffer = 10;
-    public static final int BUFFER_FIELD_NUMBER = 10;
-    private com.google.protobuf.ByteString buffer_;
-    /**
-     * <code>required bytes buffer = 10;</code>
-     *
-     * <pre>
-     * データ本体
-     * 実際のデータは各種Rawデータに従う
-     * </pre>
-     */
-    public boolean hasBuffer() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required bytes buffer = 10;</code>
-     *
-     * <pre>
-     * データ本体
-     * 実際のデータは各種Rawデータに従う
-     * </pre>
-     */
-    public com.google.protobuf.ByteString getBuffer() {
-      return buffer_;
-    }
-
-    private void initFields() {
-      type_ = com.eaglesakura.andriders.protocol.AceConstants.SensorType.HeartrateMonitor;
-      buffer_ = com.google.protobuf.ByteString.EMPTY;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasBuffer()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(2, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(10, buffer_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, buffer_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code eaglesakura_ace.SensorPayload}
-     *
-     * <pre>
-     * センサー情報のペイロード
-     * </pre>
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_SensorPayload_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.class, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder.class);
-      }
-
-      // Construct using com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        type_ = com.eaglesakura.andriders.protocol.AceConstants.SensorType.HeartrateMonitor;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        buffer_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_SensorPayload_descriptor;
-      }
-
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.getDefaultInstance();
-      }
-
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload build() {
-        com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload result = new com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.buffer_ = buffer_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.getDefaultInstance()) return this;
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasBuffer()) {
-          setBuffer(other.getBuffer());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasType()) {
-          
-          return false;
-        }
-        if (!hasBuffer()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required .eaglesakura_ace.SensorType type = 2;
-      private com.eaglesakura.andriders.protocol.AceConstants.SensorType type_ = com.eaglesakura.andriders.protocol.AceConstants.SensorType.HeartrateMonitor;
-      /**
-       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-       *
-       * <pre>
-       * センサーの種類
-       * </pre>
-       */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-       *
-       * <pre>
-       * センサーの種類
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.AceConstants.SensorType getType() {
-        return type_;
-      }
-      /**
-       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-       *
-       * <pre>
-       * センサーの種類
-       * </pre>
-       */
-      public Builder setType(com.eaglesakura.andriders.protocol.AceConstants.SensorType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        type_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
-       *
-       * <pre>
-       * センサーの種類
-       * </pre>
-       */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.eaglesakura.andriders.protocol.AceConstants.SensorType.HeartrateMonitor;
-        onChanged();
-        return this;
-      }
-
-      // required bytes buffer = 10;
-      private com.google.protobuf.ByteString buffer_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>required bytes buffer = 10;</code>
-       *
-       * <pre>
-       * データ本体
-       * 実際のデータは各種Rawデータに従う
-       * </pre>
-       */
-      public boolean hasBuffer() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required bytes buffer = 10;</code>
-       *
-       * <pre>
-       * データ本体
-       * 実際のデータは各種Rawデータに従う
-       * </pre>
-       */
-      public com.google.protobuf.ByteString getBuffer() {
-        return buffer_;
-      }
-      /**
-       * <code>required bytes buffer = 10;</code>
-       *
-       * <pre>
-       * データ本体
-       * 実際のデータは各種Rawデータに従う
-       * </pre>
-       */
-      public Builder setBuffer(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        buffer_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required bytes buffer = 10;</code>
-       *
-       * <pre>
-       * データ本体
-       * 実際のデータは各種Rawデータに従う
-       * </pre>
-       */
-      public Builder clearBuffer() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        buffer_ = getDefaultInstance().getBuffer();
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.SensorPayload)
-    }
-
-    static {
-      defaultInstance = new SensorPayload(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.SensorPayload)
-  }
-
   public interface VersionInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -1295,6 +710,24 @@ public final class AcesProtocol {
      * </pre>
      */
     boolean getConnectedCadence();
+
+    // required bool connectedTwitter = 3;
+    /**
+     * <code>required bool connectedTwitter = 3;</code>
+     *
+     * <pre>
+     * ツイッター接続済みの場合true
+     * </pre>
+     */
+    boolean hasConnectedTwitter();
+    /**
+     * <code>required bool connectedTwitter = 3;</code>
+     *
+     * <pre>
+     * ツイッター接続済みの場合true
+     * </pre>
+     */
+    boolean getConnectedTwitter();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.CentralStatus}
@@ -1360,6 +793,11 @@ public final class AcesProtocol {
             case 16: {
               bitField0_ |= 0x00000002;
               connectedCadence_ = input.readBool();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              connectedTwitter_ = input.readBool();
               break;
             }
           }
@@ -1450,9 +888,34 @@ public final class AcesProtocol {
       return connectedCadence_;
     }
 
+    // required bool connectedTwitter = 3;
+    public static final int CONNECTEDTWITTER_FIELD_NUMBER = 3;
+    private boolean connectedTwitter_;
+    /**
+     * <code>required bool connectedTwitter = 3;</code>
+     *
+     * <pre>
+     * ツイッター接続済みの場合true
+     * </pre>
+     */
+    public boolean hasConnectedTwitter() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required bool connectedTwitter = 3;</code>
+     *
+     * <pre>
+     * ツイッター接続済みの場合true
+     * </pre>
+     */
+    public boolean getConnectedTwitter() {
+      return connectedTwitter_;
+    }
+
     private void initFields() {
       connectedHeartrate_ = false;
       connectedCadence_ = false;
+      connectedTwitter_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1464,6 +927,10 @@ public final class AcesProtocol {
         return false;
       }
       if (!hasConnectedCadence()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasConnectedTwitter()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1479,6 +946,9 @@ public final class AcesProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBool(2, connectedCadence_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(3, connectedTwitter_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1496,6 +966,10 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, connectedCadence_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, connectedTwitter_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1622,6 +1096,8 @@ public final class AcesProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         connectedCadence_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
+        connectedTwitter_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -1658,6 +1134,10 @@ public final class AcesProtocol {
           to_bitField0_ |= 0x00000002;
         }
         result.connectedCadence_ = connectedCadence_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.connectedTwitter_ = connectedTwitter_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1680,6 +1160,9 @@ public final class AcesProtocol {
         if (other.hasConnectedCadence()) {
           setConnectedCadence(other.getConnectedCadence());
         }
+        if (other.hasConnectedTwitter()) {
+          setConnectedTwitter(other.getConnectedTwitter());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1690,6 +1173,10 @@ public final class AcesProtocol {
           return false;
         }
         if (!hasConnectedCadence()) {
+          
+          return false;
+        }
+        if (!hasConnectedTwitter()) {
           
           return false;
         }
@@ -1813,6 +1300,55 @@ public final class AcesProtocol {
         return this;
       }
 
+      // required bool connectedTwitter = 3;
+      private boolean connectedTwitter_ ;
+      /**
+       * <code>required bool connectedTwitter = 3;</code>
+       *
+       * <pre>
+       * ツイッター接続済みの場合true
+       * </pre>
+       */
+      public boolean hasConnectedTwitter() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required bool connectedTwitter = 3;</code>
+       *
+       * <pre>
+       * ツイッター接続済みの場合true
+       * </pre>
+       */
+      public boolean getConnectedTwitter() {
+        return connectedTwitter_;
+      }
+      /**
+       * <code>required bool connectedTwitter = 3;</code>
+       *
+       * <pre>
+       * ツイッター接続済みの場合true
+       * </pre>
+       */
+      public Builder setConnectedTwitter(boolean value) {
+        bitField0_ |= 0x00000004;
+        connectedTwitter_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool connectedTwitter = 3;</code>
+       *
+       * <pre>
+       * ツイッター接続済みの場合true
+       * </pre>
+       */
+      public Builder clearConnectedTwitter() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        connectedTwitter_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.CentralStatus)
     }
 
@@ -1826,6 +1362,36 @@ public final class AcesProtocol {
 
   public interface MasterPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required string uniqueId = 4;
+    /**
+     * <code>required string uniqueId = 4;</code>
+     *
+     * <pre>
+     * ペイロードごとに一意に確定するID
+     * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+     * </pre>
+     */
+    boolean hasUniqueId();
+    /**
+     * <code>required string uniqueId = 4;</code>
+     *
+     * <pre>
+     * ペイロードごとに一意に確定するID
+     * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+     * </pre>
+     */
+    java.lang.String getUniqueId();
+    /**
+     * <code>required string uniqueId = 4;</code>
+     *
+     * <pre>
+     * ペイロードごとに一意に確定するID
+     * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getUniqueIdBytes();
 
     // required string createdDate = 3;
     /**
@@ -1891,7 +1457,7 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload> 
+    java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> 
         getSensorPayloadsList();
     /**
      * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -1900,7 +1466,7 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload getSensorPayloads(int index);
+    com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload getSensorPayloads(int index);
     /**
      * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
      *
@@ -1916,7 +1482,7 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    java.util.List<? extends com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder> 
+    java.util.List<? extends com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder> 
         getSensorPayloadsOrBuilderList();
     /**
      * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -1925,7 +1491,52 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder getSensorPayloadsOrBuilder(
+    com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder getSensorPayloadsOrBuilder(
+        int index);
+
+    // repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> 
+        getCommandPayloadsList();
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload getCommandPayloads(int index);
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    int getCommandPayloadsCount();
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder> 
+        getCommandPayloadsOrBuilderList();
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder getCommandPayloadsOrBuilder(
         int index);
   }
   /**
@@ -1985,7 +1596,7 @@ public final class AcesProtocol {
             }
             case 10: {
               com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = centralStatus_.toBuilder();
               }
               centralStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.PARSER, extensionRegistry);
@@ -1993,20 +1604,33 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(centralStatus_);
                 centralStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload>();
-                mutable_bitField0_ |= 0x00000004;
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>();
+                mutable_bitField0_ |= 0x00000008;
               }
-              sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.PARSER, extensionRegistry));
+              sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.PARSER, extensionRegistry));
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               createdDate_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000001;
+              uniqueId_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              commandPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.PARSER, extensionRegistry));
               break;
             }
           }
@@ -2017,8 +1641,11 @@ public final class AcesProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2052,6 +1679,64 @@ public final class AcesProtocol {
     }
 
     private int bitField0_;
+    // required string uniqueId = 4;
+    public static final int UNIQUEID_FIELD_NUMBER = 4;
+    private java.lang.Object uniqueId_;
+    /**
+     * <code>required string uniqueId = 4;</code>
+     *
+     * <pre>
+     * ペイロードごとに一意に確定するID
+     * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+     * </pre>
+     */
+    public boolean hasUniqueId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string uniqueId = 4;</code>
+     *
+     * <pre>
+     * ペイロードごとに一意に確定するID
+     * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+     * </pre>
+     */
+    public java.lang.String getUniqueId() {
+      java.lang.Object ref = uniqueId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          uniqueId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string uniqueId = 4;</code>
+     *
+     * <pre>
+     * ペイロードごとに一意に確定するID
+     * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getUniqueIdBytes() {
+      java.lang.Object ref = uniqueId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uniqueId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // required string createdDate = 3;
     public static final int CREATEDDATE_FIELD_NUMBER = 3;
     private java.lang.Object createdDate_;
@@ -2064,7 +1749,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasCreatedDate() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required string createdDate = 3;</code>
@@ -2121,7 +1806,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasCentralStatus() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -2146,7 +1831,7 @@ public final class AcesProtocol {
 
     // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
     public static final int SENSORPAYLOADS_FIELD_NUMBER = 2;
-    private java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload> sensorPayloads_;
+    private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_;
     /**
      * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
      *
@@ -2154,7 +1839,7 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    public java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload> getSensorPayloadsList() {
+    public java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> getSensorPayloadsList() {
       return sensorPayloads_;
     }
     /**
@@ -2164,7 +1849,7 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    public java.util.List<? extends com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder> 
+    public java.util.List<? extends com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder> 
         getSensorPayloadsOrBuilderList() {
       return sensorPayloads_;
     }
@@ -2185,7 +1870,7 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload getSensorPayloads(int index) {
+    public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload getSensorPayloads(int index) {
       return sensorPayloads_.get(index);
     }
     /**
@@ -2195,21 +1880,83 @@ public final class AcesProtocol {
      * センサーの値
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder getSensorPayloadsOrBuilder(
+    public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder getSensorPayloadsOrBuilder(
         int index) {
       return sensorPayloads_.get(index);
     }
 
+    // repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;
+    public static final int COMMANDPAYLOADS_FIELD_NUMBER = 5;
+    private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_;
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> getCommandPayloadsList() {
+      return commandPayloads_;
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    public java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder> 
+        getCommandPayloadsOrBuilderList() {
+      return commandPayloads_;
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    public int getCommandPayloadsCount() {
+      return commandPayloads_.size();
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload getCommandPayloads(int index) {
+      return commandPayloads_.get(index);
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+     *
+     * <pre>
+     * 制御コマンド
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder getCommandPayloadsOrBuilder(
+        int index) {
+      return commandPayloads_.get(index);
+    }
+
     private void initFields() {
+      uniqueId_ = "";
       createdDate_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
+      commandPayloads_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasUniqueId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasCreatedDate()) {
         memoizedIsInitialized = 0;
         return false;
@@ -2228,6 +1975,12 @@ public final class AcesProtocol {
           return false;
         }
       }
+      for (int i = 0; i < getCommandPayloadsCount(); i++) {
+        if (!getCommandPayloads(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2235,14 +1988,20 @@ public final class AcesProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(1, centralStatus_);
       }
       for (int i = 0; i < sensorPayloads_.size(); i++) {
         output.writeMessage(2, sensorPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(3, getCreatedDateBytes());
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(4, getUniqueIdBytes());
+      }
+      for (int i = 0; i < commandPayloads_.size(); i++) {
+        output.writeMessage(5, commandPayloads_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -2253,7 +2012,7 @@ public final class AcesProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, centralStatus_);
       }
@@ -2261,9 +2020,17 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, sensorPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getCreatedDateBytes());
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getUniqueIdBytes());
+      }
+      for (int i = 0; i < commandPayloads_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, commandPayloads_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2379,6 +2146,7 @@ public final class AcesProtocol {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getCentralStatusFieldBuilder();
           getSensorPayloadsFieldBuilder();
+          getCommandPayloadsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2387,19 +2155,27 @@ public final class AcesProtocol {
 
       public Builder clear() {
         super.clear();
-        createdDate_ = "";
+        uniqueId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        createdDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (centralStatusBuilder_ == null) {
           centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           sensorPayloadsBuilder_.clear();
+        }
+        if (commandPayloadsBuilder_ == null) {
+          commandPayloads_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          commandPayloadsBuilder_.clear();
         }
         return this;
       }
@@ -2432,9 +2208,13 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.createdDate_ = createdDate_;
+        result.uniqueId_ = uniqueId_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
+        }
+        result.createdDate_ = createdDate_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         if (centralStatusBuilder_ == null) {
           result.centralStatus_ = centralStatus_;
@@ -2442,13 +2222,22 @@ public final class AcesProtocol {
           result.centralStatus_ = centralStatusBuilder_.build();
         }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
           result.sensorPayloads_ = sensorPayloadsBuilder_.build();
+        }
+        if (commandPayloadsBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.commandPayloads_ = commandPayloads_;
+        } else {
+          result.commandPayloads_ = commandPayloadsBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2466,8 +2255,13 @@ public final class AcesProtocol {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload other) {
         if (other == com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.getDefaultInstance()) return this;
-        if (other.hasCreatedDate()) {
+        if (other.hasUniqueId()) {
           bitField0_ |= 0x00000001;
+          uniqueId_ = other.uniqueId_;
+          onChanged();
+        }
+        if (other.hasCreatedDate()) {
+          bitField0_ |= 0x00000002;
           createdDate_ = other.createdDate_;
           onChanged();
         }
@@ -2478,7 +2272,7 @@ public final class AcesProtocol {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -2491,7 +2285,7 @@ public final class AcesProtocol {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -2500,11 +2294,41 @@ public final class AcesProtocol {
             }
           }
         }
+        if (commandPayloadsBuilder_ == null) {
+          if (!other.commandPayloads_.isEmpty()) {
+            if (commandPayloads_.isEmpty()) {
+              commandPayloads_ = other.commandPayloads_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureCommandPayloadsIsMutable();
+              commandPayloads_.addAll(other.commandPayloads_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.commandPayloads_.isEmpty()) {
+            if (commandPayloadsBuilder_.isEmpty()) {
+              commandPayloadsBuilder_.dispose();
+              commandPayloadsBuilder_ = null;
+              commandPayloads_ = other.commandPayloads_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              commandPayloadsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getCommandPayloadsFieldBuilder() : null;
+            } else {
+              commandPayloadsBuilder_.addAllMessages(other.commandPayloads_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasUniqueId()) {
+          
+          return false;
+        }
         if (!hasCreatedDate()) {
           
           return false;
@@ -2519,6 +2343,12 @@ public final class AcesProtocol {
         }
         for (int i = 0; i < getSensorPayloadsCount(); i++) {
           if (!getSensorPayloads(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getCommandPayloadsCount(); i++) {
+          if (!getCommandPayloads(i).isInitialized()) {
             
             return false;
           }
@@ -2545,6 +2375,110 @@ public final class AcesProtocol {
       }
       private int bitField0_;
 
+      // required string uniqueId = 4;
+      private java.lang.Object uniqueId_ = "";
+      /**
+       * <code>required string uniqueId = 4;</code>
+       *
+       * <pre>
+       * ペイロードごとに一意に確定するID
+       * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+       * </pre>
+       */
+      public boolean hasUniqueId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string uniqueId = 4;</code>
+       *
+       * <pre>
+       * ペイロードごとに一意に確定するID
+       * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+       * </pre>
+       */
+      public java.lang.String getUniqueId() {
+        java.lang.Object ref = uniqueId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          uniqueId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string uniqueId = 4;</code>
+       *
+       * <pre>
+       * ペイロードごとに一意に確定するID
+       * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getUniqueIdBytes() {
+        java.lang.Object ref = uniqueId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uniqueId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string uniqueId = 4;</code>
+       *
+       * <pre>
+       * ペイロードごとに一意に確定するID
+       * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+       * </pre>
+       */
+      public Builder setUniqueId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        uniqueId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string uniqueId = 4;</code>
+       *
+       * <pre>
+       * ペイロードごとに一意に確定するID
+       * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+       * </pre>
+       */
+      public Builder clearUniqueId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uniqueId_ = getDefaultInstance().getUniqueId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string uniqueId = 4;</code>
+       *
+       * <pre>
+       * ペイロードごとに一意に確定するID
+       * UUIDを使用して、お互いのIDを一意に識別出来るようにする
+       * </pre>
+       */
+      public Builder setUniqueIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        uniqueId_ = value;
+        onChanged();
+        return this;
+      }
+
       // required string createdDate = 3;
       private java.lang.Object createdDate_ = "";
       /**
@@ -2556,7 +2490,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasCreatedDate() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required string createdDate = 3;</code>
@@ -2611,7 +2545,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         createdDate_ = value;
         onChanged();
         return this;
@@ -2625,7 +2559,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearCreatedDate() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         createdDate_ = getDefaultInstance().getCreatedDate();
         onChanged();
         return this;
@@ -2643,7 +2577,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         createdDate_ = value;
         onChanged();
         return this;
@@ -2661,7 +2595,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasCentralStatus() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -2694,7 +2628,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -2712,7 +2646,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -2724,7 +2658,7 @@ public final class AcesProtocol {
        */
       public Builder mergeCentralStatus(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus value) {
         if (centralStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
               centralStatus_ != com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance()) {
             centralStatus_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.newBuilder(centralStatus_).mergeFrom(value).buildPartial();
@@ -2735,7 +2669,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -2752,7 +2686,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
@@ -2763,7 +2697,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder getCentralStatusBuilder() {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return getCentralStatusFieldBuilder().getBuilder();
       }
@@ -2803,17 +2737,17 @@ public final class AcesProtocol {
       }
 
       // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
-      private java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload> sensorPayloads_ =
+      private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000004;
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>(sensorPayloads_);
+          bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder> sensorPayloadsBuilder_;
+          com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder> sensorPayloadsBuilder_;
 
       /**
        * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -2822,7 +2756,7 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload> getSensorPayloadsList() {
+      public java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> getSensorPayloadsList() {
         if (sensorPayloadsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(sensorPayloads_);
         } else {
@@ -2850,7 +2784,7 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload getSensorPayloads(int index) {
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload getSensorPayloads(int index) {
         if (sensorPayloadsBuilder_ == null) {
           return sensorPayloads_.get(index);
         } else {
@@ -2865,7 +2799,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder setSensorPayloads(
-          int index, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload value) {
+          int index, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload value) {
         if (sensorPayloadsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2886,7 +2820,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder setSensorPayloads(
-          int index, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder builderForValue) {
+          int index, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder builderForValue) {
         if (sensorPayloadsBuilder_ == null) {
           ensureSensorPayloadsIsMutable();
           sensorPayloads_.set(index, builderForValue.build());
@@ -2903,7 +2837,7 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public Builder addSensorPayloads(com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload value) {
+      public Builder addSensorPayloads(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload value) {
         if (sensorPayloadsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2924,7 +2858,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder addSensorPayloads(
-          int index, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload value) {
+          int index, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload value) {
         if (sensorPayloadsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2945,7 +2879,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder addSensorPayloads(
-          com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder builderForValue) {
+          com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder builderForValue) {
         if (sensorPayloadsBuilder_ == null) {
           ensureSensorPayloadsIsMutable();
           sensorPayloads_.add(builderForValue.build());
@@ -2963,7 +2897,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder addSensorPayloads(
-          int index, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder builderForValue) {
+          int index, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder builderForValue) {
         if (sensorPayloadsBuilder_ == null) {
           ensureSensorPayloadsIsMutable();
           sensorPayloads_.add(index, builderForValue.build());
@@ -2981,7 +2915,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder addAllSensorPayloads(
-          java.lang.Iterable<? extends com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload> values) {
+          java.lang.Iterable<? extends com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> values) {
         if (sensorPayloadsBuilder_ == null) {
           ensureSensorPayloadsIsMutable();
           super.addAll(values, sensorPayloads_);
@@ -3001,7 +2935,7 @@ public final class AcesProtocol {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -3032,7 +2966,7 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder getSensorPayloadsBuilder(
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder getSensorPayloadsBuilder(
           int index) {
         return getSensorPayloadsFieldBuilder().getBuilder(index);
       }
@@ -3043,7 +2977,7 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder getSensorPayloadsOrBuilder(
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder getSensorPayloadsOrBuilder(
           int index) {
         if (sensorPayloadsBuilder_ == null) {
           return sensorPayloads_.get(index);  } else {
@@ -3057,7 +2991,7 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public java.util.List<? extends com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder> 
+      public java.util.List<? extends com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder> 
            getSensorPayloadsOrBuilderList() {
         if (sensorPayloadsBuilder_ != null) {
           return sensorPayloadsBuilder_.getMessageOrBuilderList();
@@ -3072,9 +3006,9 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder addSensorPayloadsBuilder() {
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder addSensorPayloadsBuilder() {
         return getSensorPayloadsFieldBuilder().addBuilder(
-            com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.getDefaultInstance());
+            com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.getDefaultInstance());
       }
       /**
        * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -3083,10 +3017,10 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder addSensorPayloadsBuilder(
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder addSensorPayloadsBuilder(
           int index) {
         return getSensorPayloadsFieldBuilder().addBuilder(
-            index, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.getDefaultInstance());
+            index, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.getDefaultInstance());
       }
       /**
        * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -3095,23 +3029,335 @@ public final class AcesProtocol {
        * センサーの値
        * </pre>
        */
-      public java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder> 
+      public java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder> 
            getSensorPayloadsBuilderList() {
         return getSensorPayloadsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder> 
+          com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder> 
           getSensorPayloadsFieldBuilder() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayloadOrBuilder>(
+              com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
         }
         return sensorPayloadsBuilder_;
+      }
+
+      // repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;
+      private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_ =
+        java.util.Collections.emptyList();
+      private void ensureCommandPayloadsIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>(commandPayloads_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder> commandPayloadsBuilder_;
+
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> getCommandPayloadsList() {
+        if (commandPayloadsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(commandPayloads_);
+        } else {
+          return commandPayloadsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public int getCommandPayloadsCount() {
+        if (commandPayloadsBuilder_ == null) {
+          return commandPayloads_.size();
+        } else {
+          return commandPayloadsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload getCommandPayloads(int index) {
+        if (commandPayloadsBuilder_ == null) {
+          return commandPayloads_.get(index);
+        } else {
+          return commandPayloadsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder setCommandPayloads(
+          int index, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload value) {
+        if (commandPayloadsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.set(index, value);
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder setCommandPayloads(
+          int index, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder builderForValue) {
+        if (commandPayloadsBuilder_ == null) {
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder addCommandPayloads(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload value) {
+        if (commandPayloadsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.add(value);
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder addCommandPayloads(
+          int index, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload value) {
+        if (commandPayloadsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.add(index, value);
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder addCommandPayloads(
+          com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder builderForValue) {
+        if (commandPayloadsBuilder_ == null) {
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.add(builderForValue.build());
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder addCommandPayloads(
+          int index, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder builderForValue) {
+        if (commandPayloadsBuilder_ == null) {
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder addAllCommandPayloads(
+          java.lang.Iterable<? extends com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> values) {
+        if (commandPayloadsBuilder_ == null) {
+          ensureCommandPayloadsIsMutable();
+          super.addAll(values, commandPayloads_);
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder clearCommandPayloads() {
+        if (commandPayloadsBuilder_ == null) {
+          commandPayloads_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public Builder removeCommandPayloads(int index) {
+        if (commandPayloadsBuilder_ == null) {
+          ensureCommandPayloadsIsMutable();
+          commandPayloads_.remove(index);
+          onChanged();
+        } else {
+          commandPayloadsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder getCommandPayloadsBuilder(
+          int index) {
+        return getCommandPayloadsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder getCommandPayloadsOrBuilder(
+          int index) {
+        if (commandPayloadsBuilder_ == null) {
+          return commandPayloads_.get(index);  } else {
+          return commandPayloadsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder> 
+           getCommandPayloadsOrBuilderList() {
+        if (commandPayloadsBuilder_ != null) {
+          return commandPayloadsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(commandPayloads_);
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder addCommandPayloadsBuilder() {
+        return getCommandPayloadsFieldBuilder().addBuilder(
+            com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder addCommandPayloadsBuilder(
+          int index) {
+        return getCommandPayloadsFieldBuilder().addBuilder(
+            index, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.CommandPayload commandPayloads = 5;</code>
+       *
+       * <pre>
+       * 制御コマンド
+       * </pre>
+       */
+      public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder> 
+           getCommandPayloadsBuilderList() {
+        return getCommandPayloadsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder> 
+          getCommandPayloadsFieldBuilder() {
+        if (commandPayloadsBuilder_ == null) {
+          commandPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder>(
+                  commandPayloads_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          commandPayloads_ = null;
+        }
+        return commandPayloadsBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.MasterPayload)
@@ -3125,11 +3371,6 @@ public final class AcesProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.MasterPayload)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_SensorPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_VersionInfo_descriptor;
   private static
@@ -3155,47 +3396,43 @@ public final class AcesProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\022AcesProtocol.proto\022\017eaglesakura_ace\032\022A" +
-      "ceConstants.proto\"J\n\rSensorPayload\022)\n\004ty" +
-      "pe\030\002 \002(\0162\033.eaglesakura_ace.SensorType\022\016\n" +
-      "\006buffer\030\n \002(\014\">\n\013VersionInfo\022\027\n\017protocol" +
-      "Version\030\001 \002(\003\022\026\n\016appVersionName\030\002 \002(\t\"E\n" +
-      "\rCentralStatus\022\032\n\022connectedHeartrate\030\001 \002" +
-      "(\010\022\030\n\020connectedCadence\030\002 \002(\010\"\223\001\n\rMasterP" +
-      "ayload\022\023\n\013createdDate\030\003 \002(\t\0225\n\rcentralSt" +
-      "atus\030\001 \002(\0132\036.eaglesakura_ace.CentralStat" +
-      "us\0226\n\016sensorPayloads\030\002 \003(\0132\036.eaglesakura",
-      "_ace.SensorPayloadB$\n\"com.eaglesakura.an" +
-      "driders.protocol"
+      "ceConstants.proto\032\024SensorProtocol.proto\032" +
+      "\025CommandProtocol.proto\">\n\013VersionInfo\022\027\n" +
+      "\017protocolVersion\030\001 \002(\003\022\026\n\016appVersionName" +
+      "\030\002 \002(\t\"_\n\rCentralStatus\022\032\n\022connectedHear" +
+      "trate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(\010\022\030\n" +
+      "\020connectedTwitter\030\003 \002(\010\"\337\001\n\rMasterPayloa" +
+      "d\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t" +
+      "\0225\n\rcentralStatus\030\001 \002(\0132\036.eaglesakura_ac" +
+      "e.CentralStatus\0226\n\016sensorPayloads\030\002 \003(\0132",
+      "\036.eaglesakura_ace.SensorPayload\0228\n\017comma" +
+      "ndPayloads\030\005 \003(\0132\037.eaglesakura_ace.Comma" +
+      "ndPayloadB$\n\"com.eaglesakura.andriders.p" +
+      "rotocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_eaglesakura_ace_SensorPayload_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_SensorPayload_descriptor,
-              new java.lang.String[] { "Type", "Buffer", });
           internal_static_eaglesakura_ace_VersionInfo_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(0);
           internal_static_eaglesakura_ace_VersionInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_VersionInfo_descriptor,
               new java.lang.String[] { "ProtocolVersion", "AppVersionName", });
           internal_static_eaglesakura_ace_CentralStatus_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
-              new java.lang.String[] { "ConnectedHeartrate", "ConnectedCadence", });
+              new java.lang.String[] { "ConnectedHeartrate", "ConnectedCadence", "ConnectedTwitter", });
           internal_static_eaglesakura_ace_MasterPayload_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "CreatedDate", "CentralStatus", "SensorPayloads", });
+              new java.lang.String[] { "UniqueId", "CreatedDate", "CentralStatus", "SensorPayloads", "CommandPayloads", });
           return null;
         }
       };
@@ -3203,6 +3440,8 @@ public final class AcesProtocol {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.eaglesakura.andriders.protocol.AceConstants.getDescriptor(),
+          com.eaglesakura.andriders.protocol.SensorProtocol.getDescriptor(),
+          com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor(),
         }, assigner);
   }
 

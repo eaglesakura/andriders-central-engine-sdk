@@ -8,108 +8,6 @@ public final class AceConstants {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  /**
-   * Protobuf enum {@code eaglesakura_ace.SensorType}
-   *
-   * <pre>
-   * センサーの種類
-   * </pre>
-   */
-  public enum SensorType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>HeartrateMonitor = 0;</code>
-     *
-     * <pre>
-     * ハートレートモニター
-     * </pre>
-     */
-    HeartrateMonitor(0, 0),
-    /**
-     * <code>CadenceSensor = 1;</code>
-     *
-     * <pre>
-     * ケイデンスセンサー
-     * </pre>
-     */
-    CadenceSensor(1, 1),
-    ;
-
-    /**
-     * <code>HeartrateMonitor = 0;</code>
-     *
-     * <pre>
-     * ハートレートモニター
-     * </pre>
-     */
-    public static final int HeartrateMonitor_VALUE = 0;
-    /**
-     * <code>CadenceSensor = 1;</code>
-     *
-     * <pre>
-     * ケイデンスセンサー
-     * </pre>
-     */
-    public static final int CadenceSensor_VALUE = 1;
-
-
-    public final int getNumber() { return value; }
-
-    public static SensorType valueOf(int value) {
-      switch (value) {
-        case 0: return HeartrateMonitor;
-        case 1: return CadenceSensor;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<SensorType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<SensorType>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<SensorType>() {
-            public SensorType findValueByNumber(int number) {
-              return SensorType.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.AceConstants.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final SensorType[] VALUES = values();
-
-    public static SensorType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private SensorType(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.SensorType)
-  }
-
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -119,10 +17,8 @@ public final class AceConstants {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022AceConstants.proto\022\017eaglesakura_ace*5\n" +
-      "\nSensorType\022\024\n\020HeartrateMonitor\020\000\022\021\n\rCad" +
-      "enceSensor\020\001B$\n\"com.eaglesakura.andrider" +
-      "s.protocol"
+      "\n\022AceConstants.proto\022\017eaglesakura_aceB$\n" +
+      "\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

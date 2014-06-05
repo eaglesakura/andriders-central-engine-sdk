@@ -1,11 +1,3 @@
 package eaglesakura_ace;
 
 option java_package = "com.eaglesakura.andriders.protocol";
-
-// センサーの種類
-enum SensorType {
-// ハートレートモニター
-	HeartrateMonitor = 0;
-	// ケイデンスセンサー
-	CadenceSensor = 1;
-}

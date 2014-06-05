@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.ble;
+package com.eaglesakura.andriders;
 
 import android.util.Log;
 

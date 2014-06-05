@@ -8,440 +8,106 @@ public final class SensorProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface ExtensionsOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional float level = 1;
-    /**
-     * <code>optional float level = 1;</code>
-     *
-     * <pre>
-     * 運動強度や回転数レベル等 0.0〜1.0がベース
-     * </pre>
-     */
-    boolean hasLevel();
-    /**
-     * <code>optional float level = 1;</code>
-     *
-     * <pre>
-     * 運動強度や回転数レベル等 0.0〜1.0がベース
-     * </pre>
-     */
-    float getLevel();
-  }
   /**
-   * Protobuf type {@code eaglesakura_ace.Extensions}
+   * Protobuf enum {@code eaglesakura_ace.SensorType}
    *
    * <pre>
-   * 基本データ
+   * センサーの種類
    * </pre>
    */
-  public static final class Extensions extends
-      com.google.protobuf.GeneratedMessage
-      implements ExtensionsOrBuilder {
-    // Use Extensions.newBuilder() to construct.
-    private Extensions(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private Extensions(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+  public enum SensorType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>HeartrateMonitor = 0;</code>
+     *
+     * <pre>
+     * ハートレートモニター
+     * </pre>
+     */
+    HeartrateMonitor(0, 0),
+    /**
+     * <code>CadenceSensor = 1;</code>
+     *
+     * <pre>
+     * ケイデンスセンサー
+     * </pre>
+     */
+    CadenceSensor(1, 1),
+    ;
 
-    private static final Extensions defaultInstance;
-    public static Extensions getDefaultInstance() {
-      return defaultInstance;
-    }
+    /**
+     * <code>HeartrateMonitor = 0;</code>
+     *
+     * <pre>
+     * ハートレートモニター
+     * </pre>
+     */
+    public static final int HeartrateMonitor_VALUE = 0;
+    /**
+     * <code>CadenceSensor = 1;</code>
+     *
+     * <pre>
+     * ケイデンスセンサー
+     * </pre>
+     */
+    public static final int CadenceSensor_VALUE = 1;
 
-    public Extensions getDefaultInstanceForType() {
-      return defaultInstance;
-    }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Extensions(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 13: {
-              bitField0_ |= 0x00000001;
-              level_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
+    public final int getNumber() { return value; }
+
+    public static SensorType valueOf(int value) {
+      switch (value) {
+        case 0: return HeartrateMonitor;
+        case 1: return CadenceSensor;
+        default: return null;
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+
+    public static com.google.protobuf.Internal.EnumLiteMap<SensorType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<SensorType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SensorType>() {
+            public SensorType findValueByNumber(int number) {
+              return SensorType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_Extensions_descriptor;
+      return com.eaglesakura.andriders.protocol.SensorProtocol.getDescriptor().getEnumTypes().get(0);
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_Extensions_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.class, com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.Builder.class);
-    }
+    private static final SensorType[] VALUES = values();
 
-    public static com.google.protobuf.Parser<Extensions> PARSER =
-        new com.google.protobuf.AbstractParser<Extensions>() {
-      public Extensions parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Extensions(input, extensionRegistry);
+    public static SensorType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Extensions> getParserForType() {
-      return PARSER;
+      return VALUES[desc.getIndex()];
     }
 
-    private int bitField0_;
-    // optional float level = 1;
-    public static final int LEVEL_FIELD_NUMBER = 1;
-    private float level_;
-    /**
-     * <code>optional float level = 1;</code>
-     *
-     * <pre>
-     * 運動強度や回転数レベル等 0.0〜1.0がベース
-     * </pre>
-     */
-    public boolean hasLevel() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional float level = 1;</code>
-     *
-     * <pre>
-     * 運動強度や回転数レベル等 0.0〜1.0がベース
-     * </pre>
-     */
-    public float getLevel() {
-      return level_;
+    private final int index;
+    private final int value;
+
+    private SensorType(int index, int value) {
+      this.index = index;
+      this.value = value;
     }
 
-    private void initFields() {
-      level_ = 0F;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeFloat(1, level_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(1, level_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.SensorProtocol.Extensions prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code eaglesakura_ace.Extensions}
-     *
-     * <pre>
-     * 基本データ
-     * </pre>
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.SensorProtocol.ExtensionsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_Extensions_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_Extensions_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.class, com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.Builder.class);
-      }
-
-      // Construct using com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        level_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_Extensions_descriptor;
-      }
-
-      public com.eaglesakura.andriders.protocol.SensorProtocol.Extensions getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.getDefaultInstance();
-      }
-
-      public com.eaglesakura.andriders.protocol.SensorProtocol.Extensions build() {
-        com.eaglesakura.andriders.protocol.SensorProtocol.Extensions result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.eaglesakura.andriders.protocol.SensorProtocol.Extensions buildPartial() {
-        com.eaglesakura.andriders.protocol.SensorProtocol.Extensions result = new com.eaglesakura.andriders.protocol.SensorProtocol.Extensions(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.level_ = level_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.SensorProtocol.Extensions) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.SensorProtocol.Extensions)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.SensorProtocol.Extensions other) {
-        if (other == com.eaglesakura.andriders.protocol.SensorProtocol.Extensions.getDefaultInstance()) return this;
-        if (other.hasLevel()) {
-          setLevel(other.getLevel());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.SensorProtocol.Extensions parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.SensorProtocol.Extensions) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional float level = 1;
-      private float level_ ;
-      /**
-       * <code>optional float level = 1;</code>
-       *
-       * <pre>
-       * 運動強度や回転数レベル等 0.0〜1.0がベース
-       * </pre>
-       */
-      public boolean hasLevel() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional float level = 1;</code>
-       *
-       * <pre>
-       * 運動強度や回転数レベル等 0.0〜1.0がベース
-       * </pre>
-       */
-      public float getLevel() {
-        return level_;
-      }
-      /**
-       * <code>optional float level = 1;</code>
-       *
-       * <pre>
-       * 運動強度や回転数レベル等 0.0〜1.0がベース
-       * </pre>
-       */
-      public Builder setLevel(float value) {
-        bitField0_ |= 0x00000001;
-        level_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float level = 1;</code>
-       *
-       * <pre>
-       * 運動強度や回転数レベル等 0.0〜1.0がベース
-       * </pre>
-       */
-      public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        level_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.Extensions)
-    }
-
-    static {
-      defaultInstance = new Extensions(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.Extensions)
+    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.SensorType)
   }
 
   public interface RawCadenceOrBuilder
@@ -1883,11 +1549,591 @@ public final class SensorProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawHeartrate)
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_Extensions_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_Extensions_fieldAccessorTable;
+  public interface SensorPayloadOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .eaglesakura_ace.SensorType type = 2;
+    /**
+     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+     *
+     * <pre>
+     * センサーの種類
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+     *
+     * <pre>
+     * センサーの種類
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.SensorProtocol.SensorType getType();
+
+    // required bytes buffer = 10;
+    /**
+     * <code>required bytes buffer = 10;</code>
+     *
+     * <pre>
+     * データ本体
+     * 実際のデータは各種Rawデータに従う
+     * </pre>
+     */
+    boolean hasBuffer();
+    /**
+     * <code>required bytes buffer = 10;</code>
+     *
+     * <pre>
+     * データ本体
+     * 実際のデータは各種Rawデータに従う
+     * </pre>
+     */
+    com.google.protobuf.ByteString getBuffer();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.SensorPayload}
+   *
+   * <pre>
+   * センサー情報のペイロード
+   * </pre>
+   */
+  public static final class SensorPayload extends
+      com.google.protobuf.GeneratedMessage
+      implements SensorPayloadOrBuilder {
+    // Use SensorPayload.newBuilder() to construct.
+    private SensorPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SensorPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SensorPayload defaultInstance;
+    public static SensorPayload getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SensorPayload getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SensorPayload(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+              com.eaglesakura.andriders.protocol.SensorProtocol.SensorType value = com.eaglesakura.andriders.protocol.SensorProtocol.SensorType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = value;
+              }
+              break;
+            }
+            case 82: {
+              bitField0_ |= 0x00000002;
+              buffer_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_SensorPayload_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.class, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SensorPayload> PARSER =
+        new com.google.protobuf.AbstractParser<SensorPayload>() {
+      public SensorPayload parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SensorPayload(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SensorPayload> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .eaglesakura_ace.SensorType type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private com.eaglesakura.andriders.protocol.SensorProtocol.SensorType type_;
+    /**
+     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+     *
+     * <pre>
+     * センサーの種類
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+     *
+     * <pre>
+     * センサーの種類
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.SensorProtocol.SensorType getType() {
+      return type_;
+    }
+
+    // required bytes buffer = 10;
+    public static final int BUFFER_FIELD_NUMBER = 10;
+    private com.google.protobuf.ByteString buffer_;
+    /**
+     * <code>required bytes buffer = 10;</code>
+     *
+     * <pre>
+     * データ本体
+     * 実際のデータは各種Rawデータに従う
+     * </pre>
+     */
+    public boolean hasBuffer() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required bytes buffer = 10;</code>
+     *
+     * <pre>
+     * データ本体
+     * 実際のデータは各種Rawデータに従う
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getBuffer() {
+      return buffer_;
+    }
+
+    private void initFields() {
+      type_ = com.eaglesakura.andriders.protocol.SensorProtocol.SensorType.HeartrateMonitor;
+      buffer_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBuffer()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(10, buffer_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, buffer_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.SensorPayload}
+     *
+     * <pre>
+     * センサー情報のペイロード
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_SensorPayload_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.class, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = com.eaglesakura.andriders.protocol.SensorProtocol.SensorType.HeartrateMonitor;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        buffer_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_SensorPayload_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload build() {
+        com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload buildPartial() {
+        com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload result = new com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.buffer_ = buffer_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload other) {
+        if (other == com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasBuffer()) {
+          setBuffer(other.getBuffer());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        if (!hasBuffer()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .eaglesakura_ace.SensorType type = 2;
+      private com.eaglesakura.andriders.protocol.SensorProtocol.SensorType type_ = com.eaglesakura.andriders.protocol.SensorProtocol.SensorType.HeartrateMonitor;
+      /**
+       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+       *
+       * <pre>
+       * センサーの種類
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+       *
+       * <pre>
+       * センサーの種類
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.SensorProtocol.SensorType getType() {
+        return type_;
+      }
+      /**
+       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+       *
+       * <pre>
+       * センサーの種類
+       * </pre>
+       */
+      public Builder setType(com.eaglesakura.andriders.protocol.SensorProtocol.SensorType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.SensorType type = 2;</code>
+       *
+       * <pre>
+       * センサーの種類
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = com.eaglesakura.andriders.protocol.SensorProtocol.SensorType.HeartrateMonitor;
+        onChanged();
+        return this;
+      }
+
+      // required bytes buffer = 10;
+      private com.google.protobuf.ByteString buffer_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>required bytes buffer = 10;</code>
+       *
+       * <pre>
+       * データ本体
+       * 実際のデータは各種Rawデータに従う
+       * </pre>
+       */
+      public boolean hasBuffer() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required bytes buffer = 10;</code>
+       *
+       * <pre>
+       * データ本体
+       * 実際のデータは各種Rawデータに従う
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getBuffer() {
+        return buffer_;
+      }
+      /**
+       * <code>required bytes buffer = 10;</code>
+       *
+       * <pre>
+       * データ本体
+       * 実際のデータは各種Rawデータに従う
+       * </pre>
+       */
+      public Builder setBuffer(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        buffer_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bytes buffer = 10;</code>
+       *
+       * <pre>
+       * データ本体
+       * 実際のデータは各種Rawデータに従う
+       * </pre>
+       */
+      public Builder clearBuffer() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        buffer_ = getDefaultInstance().getBuffer();
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.SensorPayload)
+    }
+
+    static {
+      defaultInstance = new SensorPayload(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.SensorPayload)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_RawCadence_descriptor;
   private static
@@ -1898,6 +2144,11 @@ public final class SensorProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_RawHeartrate_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_SensorPayload_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1907,48 +2158,52 @@ public final class SensorProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024SensorProtocol.proto\022\017eaglesakura_ace\"" +
-      "\033\n\nExtensions\022\r\n\005level\030\001 \001(\002\"\211\001\n\nRawCade" +
-      "nce\022\013\n\003rpm\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'." +
-      "eaglesakura_ace.RawCadence.CadenceZone\"0" +
-      "\n\013CadenceZone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n" +
-      "\005Ideal\020\002\"\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B" +
-      "\n\rheartrateZone\030e \001(\0162+.eaglesakura_ace." +
-      "RawHeartrate.HeartrateZone\"{\n\rHeartrateZ" +
-      "one\022\n\n\006Repose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombusti" +
-      "on\020\002\022\032\n\026PossessionOxygenMotion\020\003\022\027\n\023NonO",
-      "xygenatedMotion\020\004\022\014\n\010Overwork\020\005B$\n\"com.e" +
-      "aglesakura.andriders.protocol"
+      "\n\024SensorProtocol.proto\022\017eaglesakura_ace\032" +
+      "\022AceConstants.proto\"\211\001\n\nRawCadence\022\013\n\003rp" +
+      "m\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesaku" +
+      "ra_ace.RawCadence.CadenceZone\"0\n\013Cadence" +
+      "Zone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002\"" +
+      "\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartra" +
+      "teZone\030e \001(\0162+.eaglesakura_ace.RawHeartr" +
+      "ate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Re" +
+      "pose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026P" +
+      "ossessionOxygenMotion\020\003\022\027\n\023NonOxygenated",
+      "Motion\020\004\022\014\n\010Overwork\020\005\"J\n\rSensorPayload\022" +
+      ")\n\004type\030\002 \002(\0162\033.eaglesakura_ace.SensorTy" +
+      "pe\022\016\n\006buffer\030\n \002(\014*5\n\nSensorType\022\024\n\020Hear" +
+      "trateMonitor\020\000\022\021\n\rCadenceSensor\020\001B$\n\"com" +
+      ".eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_eaglesakura_ace_Extensions_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_eaglesakura_ace_Extensions_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_Extensions_descriptor,
-              new java.lang.String[] { "Level", });
           internal_static_eaglesakura_ace_RawCadence_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(0);
           internal_static_eaglesakura_ace_RawCadence_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawCadence_descriptor,
               new java.lang.String[] { "Rpm", "CadenceZone", });
           internal_static_eaglesakura_ace_RawHeartrate_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_RawHeartrate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawHeartrate_descriptor,
               new java.lang.String[] { "Bpm", "HeartrateZone", });
+          internal_static_eaglesakura_ace_SensorPayload_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_SensorPayload_descriptor,
+              new java.lang.String[] { "Type", "Buffer", });
           return null;
         }
       };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.eaglesakura.andriders.protocol.AceConstants.getDescriptor(),
         }, assigner);
   }
 

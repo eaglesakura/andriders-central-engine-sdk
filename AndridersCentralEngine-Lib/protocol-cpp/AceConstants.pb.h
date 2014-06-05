@@ -22,7 +22,6 @@
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
 // @@protoc_insertion_point(includes)
 
 namespace eaglesakura_ace {
@@ -33,25 +32,6 @@ void protobuf_AssignDesc_AceConstants_2eproto();
 void protobuf_ShutdownFile_AceConstants_2eproto();
 
 
-enum SensorType {
-  HeartrateMonitor = 0,
-  CadenceSensor = 1
-};
-bool SensorType_IsValid(int value);
-const SensorType SensorType_MIN = HeartrateMonitor;
-const SensorType SensorType_MAX = CadenceSensor;
-const int SensorType_ARRAYSIZE = SensorType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* SensorType_descriptor();
-inline const ::std::string& SensorType_Name(SensorType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    SensorType_descriptor(), value);
-}
-inline bool SensorType_Parse(
-    const ::std::string& name, SensorType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<SensorType>(
-    SensorType_descriptor(), name, value);
-}
 // ===================================================================
 
 
@@ -69,10 +49,6 @@ inline bool SensorType_Parse(
 namespace google {
 namespace protobuf {
 
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::SensorType>() {
-  return ::eaglesakura_ace::SensorType_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

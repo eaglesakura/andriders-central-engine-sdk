@@ -1,17 +1,9 @@
 package eaglesakura_ace;
 
 import "AceConstants.proto";
+import "SensorProtocol.proto";
+import "CommandProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
-
-// センサー情報のペイロード
-message SensorPayload {
-// センサーの種類
-	required SensorType type = 2;
-
-	// データ本体
-	// 実際のデータは各種Rawデータに従う
-	required bytes buffer = 10;
-}
 
 // セントラルサービスのバージョン
 message VersionInfo {
@@ -32,12 +24,19 @@ message CentralStatus {
 
 	// ケイデンスセンサーに接続されていたらtrue
 	required bool connectedCadence = 2;
+
+	// ツイッター接続済みの場合true
+	required bool connectedTwitter = 3;
 }
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する
 message MasterPayload {
-// ペイロード作成日時
-// "yyyyMMDD-hh:mm:ss.SS"で記述される
+// ペイロードごとに一意に確定するID
+// UUIDを使用して、お互いのIDを一意に識別出来るようにする
+	required string uniqueId = 4;
+
+	// ペイロード作成日時
+	// "yyyyMMDD-hh:mm:ss.SS"で記述される
 	required string createdDate = 3;
 
 	// セントラルアプリのステータス
@@ -45,4 +44,7 @@ message MasterPayload {
 
 	// センサーの値
 	repeated SensorPayload sensorPayloads = 2;
+
+	// 制御コマンド
+	repeated CommandPayload commandPayloads = 5;
 }

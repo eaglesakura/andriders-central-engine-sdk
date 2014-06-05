@@ -8,12 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.eaglesakura.andriders.ble.AceLog;
-import com.eaglesakura.andriders.protocol.AceConstants.SensorType;
+import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
-import com.eaglesakura.andriders.protocol.AcesProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
+import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
+import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
 import com.google.protobuf.ByteString;
 
 public class AcesProtocolReceiver {

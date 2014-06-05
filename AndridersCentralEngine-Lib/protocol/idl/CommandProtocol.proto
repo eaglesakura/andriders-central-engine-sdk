@@ -1,0 +1,58 @@
+package eaglesakura_ace;
+
+import "AceConstants.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// 標準コマンド
+enum Command {
+// カメラでの撮影を行わせる
+	CameraShotRequest = 2;
+
+	// カメラ撮影の撮影データ
+	// extraPayloadに撮影された画像を格納する。
+	CameraShotData = 3;
+
+	// Twitter接続コマンド
+	TweetControll = 4;
+
+	// 近接コマンド
+	ProximityControll = 5;
+}
+
+// カメラの撮影データを格納する
+message CameraShotPayload {
+// 撮影データ
+// 撮影に失敗した場合はnullが入る
+	optional bytes imageFile = 1;
+	// 画像幅
+	required int32 imageWidth = 2;
+	// 画像高さ
+	required int32 imageHeight = 3;
+	// 画像を一意に識別するためのID
+	// ${imageId}.jpgとしてストレージへ保存される
+	required string imageId = 4;
+}
+
+// ツイートしたい内容を格納する
+message TweetControllPayload {
+// ツイートする内容
+	required string tweetMessage = 1;
+	// ハッシュタグ一覧
+	repeated string hashtags = 2;
+
+	// 同時に投稿する画像ファイルリスト
+	repeated bytes rawImageFiles = 3;
+
+	// 画像ファイルへのパス
+	// Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+	repeated string storageImagePath = 4;
+}
+
+// 遠隔接続されたデバイスを制御するためのメッセージプロトコル
+message CommandPayload {
+// 何をするかのコマンド
+	required string command = 1;
+
+	// 拡張データを格納するペイロード
+	optional bytes extraPayload = 2;
+}

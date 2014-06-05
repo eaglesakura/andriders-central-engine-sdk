@@ -20,7 +20,6 @@ namespace eaglesakura_ace {
 
 namespace {
 
-const ::google::protobuf::EnumDescriptor* SensorType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -31,7 +30,6 @@ void protobuf_AssignDesc_AceConstants_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "AceConstants.proto");
   GOOGLE_CHECK(file != NULL);
-  SensorType_descriptor_ = file->enum_type(0);
 }
 
 namespace {
@@ -58,10 +56,8 @@ void protobuf_AddDesc_AceConstants_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\022AceConstants.proto\022\017eaglesakura_ace*5\n"
-    "\nSensorType\022\024\n\020HeartrateMonitor\020\000\022\021\n\rCad"
-    "enceSensor\020\001B$\n\"com.eaglesakura.andrider"
-    "s.protocol", 130);
+    "\n\022AceConstants.proto\022\017eaglesakura_aceB$\n"
+    "\"com.eaglesakura.andriders.protocol", 75);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "AceConstants.proto", &protobuf_RegisterTypes);
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_AceConstants_2eproto);
@@ -73,20 +69,6 @@ struct StaticDescriptorInitializer_AceConstants_2eproto {
     protobuf_AddDesc_AceConstants_2eproto();
   }
 } static_descriptor_initializer_AceConstants_2eproto_;
-const ::google::protobuf::EnumDescriptor* SensorType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return SensorType_descriptor_;
-}
-bool SensorType_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
 
 // @@protoc_insertion_point(namespace_scope)
 

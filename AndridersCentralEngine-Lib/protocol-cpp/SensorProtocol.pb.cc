@@ -20,9 +20,6 @@ namespace eaglesakura_ace {
 
 namespace {
 
-const ::google::protobuf::Descriptor* Extensions_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Extensions_reflection_ = NULL;
 const ::google::protobuf::Descriptor* RawCadence_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RawCadence_reflection_ = NULL;
@@ -31,6 +28,10 @@ const ::google::protobuf::Descriptor* RawHeartrate_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RawHeartrate_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* RawHeartrate_HeartrateZone_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* SensorPayload_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  SensorPayload_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* SensorType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -41,22 +42,7 @@ void protobuf_AssignDesc_SensorProtocol_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "SensorProtocol.proto");
   GOOGLE_CHECK(file != NULL);
-  Extensions_descriptor_ = file->message_type(0);
-  static const int Extensions_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Extensions, level_),
-  };
-  Extensions_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      Extensions_descriptor_,
-      Extensions::default_instance_,
-      Extensions_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Extensions, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Extensions, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Extensions));
-  RawCadence_descriptor_ = file->message_type(1);
+  RawCadence_descriptor_ = file->message_type(0);
   static const int RawCadence_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawCadence, rpm_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawCadence, cadencezone_),
@@ -73,7 +59,7 @@ void protobuf_AssignDesc_SensorProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RawCadence));
   RawCadence_CadenceZone_descriptor_ = RawCadence_descriptor_->enum_type(0);
-  RawHeartrate_descriptor_ = file->message_type(2);
+  RawHeartrate_descriptor_ = file->message_type(1);
   static const int RawHeartrate_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawHeartrate, bpm_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawHeartrate, heartratezone_),
@@ -90,6 +76,23 @@ void protobuf_AssignDesc_SensorProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RawHeartrate));
   RawHeartrate_HeartrateZone_descriptor_ = RawHeartrate_descriptor_->enum_type(0);
+  SensorPayload_descriptor_ = file->message_type(2);
+  static const int SensorPayload_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SensorPayload, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SensorPayload, buffer_),
+  };
+  SensorPayload_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      SensorPayload_descriptor_,
+      SensorPayload::default_instance_,
+      SensorPayload_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SensorPayload, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SensorPayload, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(SensorPayload));
+  SensorType_descriptor_ = file->enum_type(0);
 }
 
 namespace {
@@ -103,22 +106,22 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Extensions_descriptor_, &Extensions::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RawCadence_descriptor_, &RawCadence::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RawHeartrate_descriptor_, &RawHeartrate::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    SensorPayload_descriptor_, &SensorPayload::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_SensorProtocol_2eproto() {
-  delete Extensions::default_instance_;
-  delete Extensions_reflection_;
   delete RawCadence::default_instance_;
   delete RawCadence_reflection_;
   delete RawHeartrate::default_instance_;
   delete RawHeartrate_reflection_;
+  delete SensorPayload::default_instance_;
+  delete SensorPayload_reflection_;
 }
 
 void protobuf_AddDesc_SensorProtocol_2eproto() {
@@ -127,27 +130,31 @@ void protobuf_AddDesc_SensorProtocol_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+  ::eaglesakura_ace::protobuf_AddDesc_AceConstants_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\024SensorProtocol.proto\022\017eaglesakura_ace\""
-    "\033\n\nExtensions\022\r\n\005level\030\001 \001(\002\"\211\001\n\nRawCade"
-    "nce\022\013\n\003rpm\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'."
-    "eaglesakura_ace.RawCadence.CadenceZone\"0"
-    "\n\013CadenceZone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n"
-    "\005Ideal\020\002\"\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B"
-    "\n\rheartrateZone\030e \001(\0162+.eaglesakura_ace."
-    "RawHeartrate.HeartrateZone\"{\n\rHeartrateZ"
-    "one\022\n\n\006Repose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombusti"
-    "on\020\002\022\032\n\026PossessionOxygenMotion\020\003\022\027\n\023NonO"
-    "xygenatedMotion\020\004\022\014\n\010Overwork\020\005B$\n\"com.e"
-    "aglesakura.andriders.protocol", 469);
+    "\n\024SensorProtocol.proto\022\017eaglesakura_ace\032"
+    "\022AceConstants.proto\"\211\001\n\nRawCadence\022\013\n\003rp"
+    "m\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesaku"
+    "ra_ace.RawCadence.CadenceZone\"0\n\013Cadence"
+    "Zone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002\""
+    "\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartra"
+    "teZone\030e \001(\0162+.eaglesakura_ace.RawHeartr"
+    "ate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Re"
+    "pose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026P"
+    "ossessionOxygenMotion\020\003\022\027\n\023NonOxygenated"
+    "Motion\020\004\022\014\n\010Overwork\020\005\"J\n\rSensorPayload\022"
+    ")\n\004type\030\002 \002(\0162\033.eaglesakura_ace.SensorTy"
+    "pe\022\016\n\006buffer\030\n \002(\014*5\n\nSensorType\022\024\n\020Hear"
+    "trateMonitor\020\000\022\021\n\rCadenceSensor\020\001B$\n\"com"
+    ".eaglesakura.andriders.protocol", 591);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SensorProtocol.proto", &protobuf_RegisterTypes);
-  Extensions::default_instance_ = new Extensions();
   RawCadence::default_instance_ = new RawCadence();
   RawHeartrate::default_instance_ = new RawHeartrate();
-  Extensions::default_instance_->InitAsDefaultInstance();
+  SensorPayload::default_instance_ = new SensorPayload();
   RawCadence::default_instance_->InitAsDefaultInstance();
   RawHeartrate::default_instance_->InitAsDefaultInstance();
+  SensorPayload::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_SensorProtocol_2eproto);
 }
 
@@ -157,210 +164,18 @@ struct StaticDescriptorInitializer_SensorProtocol_2eproto {
     protobuf_AddDesc_SensorProtocol_2eproto();
   }
 } static_descriptor_initializer_SensorProtocol_2eproto_;
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int Extensions::kLevelFieldNumber;
-#endif  // !_MSC_VER
-
-Extensions::Extensions()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void Extensions::InitAsDefaultInstance() {
-}
-
-Extensions::Extensions(const Extensions& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void Extensions::SharedCtor() {
-  _cached_size_ = 0;
-  level_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Extensions::~Extensions() {
-  SharedDtor();
-}
-
-void Extensions::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Extensions::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Extensions::descriptor() {
+const ::google::protobuf::EnumDescriptor* SensorType_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Extensions_descriptor_;
+  return SensorType_descriptor_;
 }
-
-const Extensions& Extensions::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_SensorProtocol_2eproto();
-  return *default_instance_;
-}
-
-Extensions* Extensions::default_instance_ = NULL;
-
-Extensions* Extensions::New() const {
-  return new Extensions;
-}
-
-void Extensions::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    level_ = 0;
+bool SensorType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
   }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool Extensions::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional float level = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &level_)));
-          set_has_level();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void Extensions::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional float level = 1;
-  if (has_level()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->level(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* Extensions::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional float level = 1;
-  if (has_level()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->level(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int Extensions::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional float level = 1;
-    if (has_level()) {
-      total_size += 1 + 4;
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Extensions::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const Extensions* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Extensions*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void Extensions::MergeFrom(const Extensions& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_level()) {
-      set_level(from.level());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void Extensions::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Extensions::CopyFrom(const Extensions& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Extensions::IsInitialized() const {
-
-  return true;
-}
-
-void Extensions::Swap(Extensions* other) {
-  if (other != this) {
-    std::swap(level_, other->level_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata Extensions::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Extensions_descriptor_;
-  metadata.reflection = Extensions_reflection_;
-  return metadata;
 }
 
 
@@ -922,6 +737,269 @@ void RawHeartrate::Swap(RawHeartrate* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = RawHeartrate_descriptor_;
   metadata.reflection = RawHeartrate_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int SensorPayload::kTypeFieldNumber;
+const int SensorPayload::kBufferFieldNumber;
+#endif  // !_MSC_VER
+
+SensorPayload::SensorPayload()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void SensorPayload::InitAsDefaultInstance() {
+}
+
+SensorPayload::SensorPayload(const SensorPayload& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void SensorPayload::SharedCtor() {
+  _cached_size_ = 0;
+  type_ = 0;
+  buffer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+SensorPayload::~SensorPayload() {
+  SharedDtor();
+}
+
+void SensorPayload::SharedDtor() {
+  if (buffer_ != &::google::protobuf::internal::kEmptyString) {
+    delete buffer_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void SensorPayload::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* SensorPayload::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return SensorPayload_descriptor_;
+}
+
+const SensorPayload& SensorPayload::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_SensorProtocol_2eproto();
+  return *default_instance_;
+}
+
+SensorPayload* SensorPayload::default_instance_ = NULL;
+
+SensorPayload* SensorPayload::New() const {
+  return new SensorPayload;
+}
+
+void SensorPayload::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    type_ = 0;
+    if (has_buffer()) {
+      if (buffer_ != &::google::protobuf::internal::kEmptyString) {
+        buffer_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool SensorPayload::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .eaglesakura_ace.SensorType type = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::eaglesakura_ace::SensorType_IsValid(value)) {
+            set_type(static_cast< ::eaglesakura_ace::SensorType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(2, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(82)) goto parse_buffer;
+        break;
+      }
+
+      // required bytes buffer = 10;
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_buffer:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_buffer()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void SensorPayload::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required .eaglesakura_ace.SensorType type = 2;
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->type(), output);
+  }
+
+  // required bytes buffer = 10;
+  if (has_buffer()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      10, this->buffer(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* SensorPayload::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required .eaglesakura_ace.SensorType type = 2;
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->type(), target);
+  }
+
+  // required bytes buffer = 10;
+  if (has_buffer()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        10, this->buffer(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int SensorPayload::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required .eaglesakura_ace.SensorType type = 2;
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+
+    // required bytes buffer = 10;
+    if (has_buffer()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->buffer());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void SensorPayload::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const SensorPayload* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const SensorPayload*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void SensorPayload::MergeFrom(const SensorPayload& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_type()) {
+      set_type(from.type());
+    }
+    if (from.has_buffer()) {
+      set_buffer(from.buffer());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void SensorPayload::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void SensorPayload::CopyFrom(const SensorPayload& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SensorPayload::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void SensorPayload::Swap(SensorPayload* other) {
+  if (other != this) {
+    std::swap(type_, other->type_);
+    std::swap(buffer_, other->buffer_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata SensorPayload::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = SensorPayload_descriptor_;
+  metadata.reflection = SensorPayload_reflection_;
   return metadata;
 }
 
