@@ -10,9 +10,32 @@
     <color name="AceUI.Zonebar.Lv4">#ffa500</color>
     <color name="AceUI.Zonebar.Lv5">#ff4500</color>
     <color name="AceUI.Zonebar.Lv6">#000000</color>
-    
+
     <!-- 表示用文字列 -->
     <string name="AceUI.Information.Cadence">ケイデンス (RPM)</string>
     <string name="AceUI.Information.Heartrate">心拍数 (BPM)</string>
+
+    <!-- 心拍ゾーン名 -->
+    <string name="AceUI.Zone.Heartrate.Repose">安静</string>
+    <string name="AceUI.Zone.Heartrate.Easy">軽度</string>
+    <string name="AceUI.Zone.Heartrate.FatCombustion">燃焼</string>
+    <string name="AceUI.Zone.Heartrate.PossessionOxygenMotion">有酸素</string>
+    <string name="AceUI.Zone.Heartrate.NonOxygenatedMotion">無酸素</string>
+    <string name="AceUI.Zone.Heartrate.Overwork">危険域</string>
+
+    <!-- ケイデンスゾーン名 -->
+    <string name="AceUI.Zone.Cadence.Easy">低速</string>
+    <string name="AceUI.Zone.Cadence.Beginner">低回転</string>
+    <string name="AceUI.Zone.Cadence.Ideal">巡航</string>
+
+    <!-- id定義 -->
+    <!-- タイトル（ケイデンス、心拍等） -->
+    <item name="AceUI.BasicUI.Title" type="id"></item>
+    <!-- ゾーンタイトル（軽度、安静等） -->
+    <item name="AceUI.BasicUI.ZoneTitle" type="id"></item>
+    <!-- ゾーンバー（色表示） -->
+    <item name="AceUI.BasicUI.ZoneColor" type="id"></item>
+    <!-- 表示用値 -->
+    <item name="AceUI.BasicUI.Value" type="id"></item>
     
 </resources>

@@ -15,4 +15,6 @@ gdbserver
 UserInterfaceState.xcuserstate
 .gradle/
 latex/
+
+android-query-full.0.25.10.jar
 # AndridersCentralEngine/res/drawable/*.png
