@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
@@ -46,6 +47,16 @@ public class AcesProtocolReceiver {
 
     private final Context context;
 
+    /**
+     * 自分自身のpackage名
+     */
+    private final String selfPackageName;
+
+    private boolean checkTargetPackage = true;
+
+    /**
+     * broadcastに接続済みであればtrue
+     */
     private boolean connected = false;
 
     /**
@@ -54,6 +65,15 @@ public class AcesProtocolReceiver {
      */
     public AcesProtocolReceiver(Context context) {
         this.context = context.getApplicationContext();
+        this.selfPackageName = context.getPackageName();
+    }
+
+    /**
+     * 送信対象のpackageチェックを行う
+     * @param checkTargetPackage
+     */
+    public void setCheckTargetPackage(boolean checkTargetPackage) {
+        this.checkTargetPackage = checkTargetPackage;
     }
 
     /**
@@ -132,13 +152,32 @@ public class AcesProtocolReceiver {
     public void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
 
+        // senderが自分であれば反応しない
+        if (selfPackageName.equals(master.getSenderPackage())) {
+            return;
+        }
+
+        // target check
+        {
+            String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
+            if (targetPackage != null) {
+                // 自分自身が対象でないなら
+                if (!targetPackage.equals(selfPackageName) && checkTargetPackage) {
+                    // payloadの送信対象じゃないから、何もしない
+                    return;
+                }
+            }
+        }
+
         // 正常なマスターデータを受け取った
         for (CentralDataListener listener : centralListeners) {
             listener.onMasterPayloadReceived(this, masterbuffer, master);
         }
 
         // 各種データを設定する
-        {
+        if (master.hasCentralStatus()) {
+            // セントラルステータスを持っていなければcommand onlyとかんがえる
+
             List<SensorPayload> payloads = master.getSensorPayloadsList();
             for (SensorPayload payload : payloads) {
                 try {
@@ -240,6 +279,13 @@ public class AcesProtocolReceiver {
      */
     public interface HeartrateListener {
         void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate);
+    }
+
+    /**
+     * コマンドを受け取った
+     */
+    public interface CommandListener {
+        void onCommandReceived(AcesProtocolReceiver receiver, MasterPayload payload, CommandPayload command);
     }
 
     /**

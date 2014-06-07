@@ -319,7 +319,31 @@ class MasterPayload : public ::google::protobuf::Message {
   inline ::std::string* release_createddate();
   inline void set_allocated_createddate(::std::string* createddate);
 
-  // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+  // required string senderPackage = 7;
+  inline bool has_senderpackage() const;
+  inline void clear_senderpackage();
+  static const int kSenderPackageFieldNumber = 7;
+  inline const ::std::string& senderpackage() const;
+  inline void set_senderpackage(const ::std::string& value);
+  inline void set_senderpackage(const char* value);
+  inline void set_senderpackage(const char* value, size_t size);
+  inline ::std::string* mutable_senderpackage();
+  inline ::std::string* release_senderpackage();
+  inline void set_allocated_senderpackage(::std::string* senderpackage);
+
+  // optional string targetPackage = 6;
+  inline bool has_targetpackage() const;
+  inline void clear_targetpackage();
+  static const int kTargetPackageFieldNumber = 6;
+  inline const ::std::string& targetpackage() const;
+  inline void set_targetpackage(const ::std::string& value);
+  inline void set_targetpackage(const char* value);
+  inline void set_targetpackage(const char* value, size_t size);
+  inline ::std::string* mutable_targetpackage();
+  inline ::std::string* release_targetpackage();
+  inline void set_allocated_targetpackage(::std::string* targetpackage);
+
+  // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
   inline bool has_centralstatus() const;
   inline void clear_centralstatus();
   static const int kCentralStatusFieldNumber = 1;
@@ -358,6 +382,10 @@ class MasterPayload : public ::google::protobuf::Message {
   inline void clear_has_uniqueid();
   inline void set_has_createddate();
   inline void clear_has_createddate();
+  inline void set_has_senderpackage();
+  inline void clear_has_senderpackage();
+  inline void set_has_targetpackage();
+  inline void clear_has_targetpackage();
   inline void set_has_centralstatus();
   inline void clear_has_centralstatus();
 
@@ -365,12 +393,14 @@ class MasterPayload : public ::google::protobuf::Message {
 
   ::std::string* uniqueid_;
   ::std::string* createddate_;
+  ::std::string* senderpackage_;
+  ::std::string* targetpackage_;
   ::eaglesakura_ace::CentralStatus* centralstatus_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload > sensorpayloads_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload > commandpayloads_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesProtocol_2eproto();
   friend void protobuf_AssignDesc_AcesProtocol_2eproto();
@@ -692,15 +722,155 @@ inline void MasterPayload::set_allocated_createddate(::std::string* createddate)
   }
 }
 
-// required .eaglesakura_ace.CentralStatus centralStatus = 1;
-inline bool MasterPayload::has_centralstatus() const {
+// required string senderPackage = 7;
+inline bool MasterPayload::has_senderpackage() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void MasterPayload::set_has_centralstatus() {
+inline void MasterPayload::set_has_senderpackage() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void MasterPayload::clear_has_centralstatus() {
+inline void MasterPayload::clear_has_senderpackage() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void MasterPayload::clear_senderpackage() {
+  if (senderpackage_ != &::google::protobuf::internal::kEmptyString) {
+    senderpackage_->clear();
+  }
+  clear_has_senderpackage();
+}
+inline const ::std::string& MasterPayload::senderpackage() const {
+  return *senderpackage_;
+}
+inline void MasterPayload::set_senderpackage(const ::std::string& value) {
+  set_has_senderpackage();
+  if (senderpackage_ == &::google::protobuf::internal::kEmptyString) {
+    senderpackage_ = new ::std::string;
+  }
+  senderpackage_->assign(value);
+}
+inline void MasterPayload::set_senderpackage(const char* value) {
+  set_has_senderpackage();
+  if (senderpackage_ == &::google::protobuf::internal::kEmptyString) {
+    senderpackage_ = new ::std::string;
+  }
+  senderpackage_->assign(value);
+}
+inline void MasterPayload::set_senderpackage(const char* value, size_t size) {
+  set_has_senderpackage();
+  if (senderpackage_ == &::google::protobuf::internal::kEmptyString) {
+    senderpackage_ = new ::std::string;
+  }
+  senderpackage_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MasterPayload::mutable_senderpackage() {
+  set_has_senderpackage();
+  if (senderpackage_ == &::google::protobuf::internal::kEmptyString) {
+    senderpackage_ = new ::std::string;
+  }
+  return senderpackage_;
+}
+inline ::std::string* MasterPayload::release_senderpackage() {
+  clear_has_senderpackage();
+  if (senderpackage_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = senderpackage_;
+    senderpackage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void MasterPayload::set_allocated_senderpackage(::std::string* senderpackage) {
+  if (senderpackage_ != &::google::protobuf::internal::kEmptyString) {
+    delete senderpackage_;
+  }
+  if (senderpackage) {
+    set_has_senderpackage();
+    senderpackage_ = senderpackage;
+  } else {
+    clear_has_senderpackage();
+    senderpackage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional string targetPackage = 6;
+inline bool MasterPayload::has_targetpackage() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MasterPayload::set_has_targetpackage() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MasterPayload::clear_has_targetpackage() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MasterPayload::clear_targetpackage() {
+  if (targetpackage_ != &::google::protobuf::internal::kEmptyString) {
+    targetpackage_->clear();
+  }
+  clear_has_targetpackage();
+}
+inline const ::std::string& MasterPayload::targetpackage() const {
+  return *targetpackage_;
+}
+inline void MasterPayload::set_targetpackage(const ::std::string& value) {
+  set_has_targetpackage();
+  if (targetpackage_ == &::google::protobuf::internal::kEmptyString) {
+    targetpackage_ = new ::std::string;
+  }
+  targetpackage_->assign(value);
+}
+inline void MasterPayload::set_targetpackage(const char* value) {
+  set_has_targetpackage();
+  if (targetpackage_ == &::google::protobuf::internal::kEmptyString) {
+    targetpackage_ = new ::std::string;
+  }
+  targetpackage_->assign(value);
+}
+inline void MasterPayload::set_targetpackage(const char* value, size_t size) {
+  set_has_targetpackage();
+  if (targetpackage_ == &::google::protobuf::internal::kEmptyString) {
+    targetpackage_ = new ::std::string;
+  }
+  targetpackage_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MasterPayload::mutable_targetpackage() {
+  set_has_targetpackage();
+  if (targetpackage_ == &::google::protobuf::internal::kEmptyString) {
+    targetpackage_ = new ::std::string;
+  }
+  return targetpackage_;
+}
+inline ::std::string* MasterPayload::release_targetpackage() {
+  clear_has_targetpackage();
+  if (targetpackage_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = targetpackage_;
+    targetpackage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void MasterPayload::set_allocated_targetpackage(::std::string* targetpackage) {
+  if (targetpackage_ != &::google::protobuf::internal::kEmptyString) {
+    delete targetpackage_;
+  }
+  if (targetpackage) {
+    set_has_targetpackage();
+    targetpackage_ = targetpackage;
+  } else {
+    clear_has_targetpackage();
+    targetpackage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional .eaglesakura_ace.CentralStatus centralStatus = 1;
+inline bool MasterPayload::has_centralstatus() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void MasterPayload::set_has_centralstatus() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void MasterPayload::clear_has_centralstatus() {
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MasterPayload::clear_centralstatus() {
   if (centralstatus_ != NULL) centralstatus_->::eaglesakura_ace::CentralStatus::Clear();

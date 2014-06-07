@@ -1423,9 +1423,69 @@ public final class AcesProtocol {
     com.google.protobuf.ByteString
         getCreatedDateBytes();
 
-    // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+    // required string senderPackage = 7;
     /**
-     * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+     * <code>required string senderPackage = 7;</code>
+     *
+     * <pre>
+     * 送信者のpackage
+     * 必ず付与すべきだが、完全な信頼性はない
+     * </pre>
+     */
+    boolean hasSenderPackage();
+    /**
+     * <code>required string senderPackage = 7;</code>
+     *
+     * <pre>
+     * 送信者のpackage
+     * 必ず付与すべきだが、完全な信頼性はない
+     * </pre>
+     */
+    java.lang.String getSenderPackage();
+    /**
+     * <code>required string senderPackage = 7;</code>
+     *
+     * <pre>
+     * 送信者のpackage
+     * 必ず付与すべきだが、完全な信頼性はない
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSenderPackageBytes();
+
+    // optional string targetPackage = 6;
+    /**
+     * <code>optional string targetPackage = 6;</code>
+     *
+     * <pre>
+     * 送信対象のpackage
+     * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+     * </pre>
+     */
+    boolean hasTargetPackage();
+    /**
+     * <code>optional string targetPackage = 6;</code>
+     *
+     * <pre>
+     * 送信対象のpackage
+     * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+     * </pre>
+     */
+    java.lang.String getTargetPackage();
+    /**
+     * <code>optional string targetPackage = 6;</code>
+     *
+     * <pre>
+     * 送信対象のpackage
+     * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTargetPackageBytes();
+
+    // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
+    /**
+     * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
      *
      * <pre>
      * セントラルアプリのステータス
@@ -1433,7 +1493,7 @@ public final class AcesProtocol {
      */
     boolean hasCentralStatus();
     /**
-     * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+     * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
      *
      * <pre>
      * セントラルアプリのステータス
@@ -1441,7 +1501,7 @@ public final class AcesProtocol {
      */
     com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus getCentralStatus();
     /**
-     * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+     * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
      *
      * <pre>
      * セントラルアプリのステータス
@@ -1596,7 +1656,7 @@ public final class AcesProtocol {
             }
             case 10: {
               com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
                 subBuilder = centralStatus_.toBuilder();
               }
               centralStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.PARSER, extensionRegistry);
@@ -1604,13 +1664,13 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(centralStatus_);
                 centralStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000010;
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000020;
               }
               sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.PARSER, extensionRegistry));
               break;
@@ -1626,11 +1686,21 @@ public final class AcesProtocol {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000040;
               }
               commandPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.PARSER, extensionRegistry));
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000008;
+              targetPackage_ = input.readBytes();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000004;
+              senderPackage_ = input.readBytes();
               break;
             }
           }
@@ -1641,10 +1711,10 @@ public final class AcesProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
         }
         this.unknownFields = unknownFields.build();
@@ -1795,21 +1865,137 @@ public final class AcesProtocol {
       }
     }
 
-    // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+    // required string senderPackage = 7;
+    public static final int SENDERPACKAGE_FIELD_NUMBER = 7;
+    private java.lang.Object senderPackage_;
+    /**
+     * <code>required string senderPackage = 7;</code>
+     *
+     * <pre>
+     * 送信者のpackage
+     * 必ず付与すべきだが、完全な信頼性はない
+     * </pre>
+     */
+    public boolean hasSenderPackage() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string senderPackage = 7;</code>
+     *
+     * <pre>
+     * 送信者のpackage
+     * 必ず付与すべきだが、完全な信頼性はない
+     * </pre>
+     */
+    public java.lang.String getSenderPackage() {
+      java.lang.Object ref = senderPackage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          senderPackage_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string senderPackage = 7;</code>
+     *
+     * <pre>
+     * 送信者のpackage
+     * 必ず付与すべきだが、完全な信頼性はない
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSenderPackageBytes() {
+      java.lang.Object ref = senderPackage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        senderPackage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string targetPackage = 6;
+    public static final int TARGETPACKAGE_FIELD_NUMBER = 6;
+    private java.lang.Object targetPackage_;
+    /**
+     * <code>optional string targetPackage = 6;</code>
+     *
+     * <pre>
+     * 送信対象のpackage
+     * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+     * </pre>
+     */
+    public boolean hasTargetPackage() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string targetPackage = 6;</code>
+     *
+     * <pre>
+     * 送信対象のpackage
+     * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+     * </pre>
+     */
+    public java.lang.String getTargetPackage() {
+      java.lang.Object ref = targetPackage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          targetPackage_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string targetPackage = 6;</code>
+     *
+     * <pre>
+     * 送信対象のpackage
+     * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTargetPackageBytes() {
+      java.lang.Object ref = targetPackage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        targetPackage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
     public static final int CENTRALSTATUS_FIELD_NUMBER = 1;
     private com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus centralStatus_;
     /**
-     * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+     * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
      *
      * <pre>
      * セントラルアプリのステータス
      * </pre>
      */
     public boolean hasCentralStatus() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+     * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
      *
      * <pre>
      * セントラルアプリのステータス
@@ -1819,7 +2005,7 @@ public final class AcesProtocol {
       return centralStatus_;
     }
     /**
-     * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+     * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
      *
      * <pre>
      * セントラルアプリのステータス
@@ -1944,6 +2130,8 @@ public final class AcesProtocol {
     private void initFields() {
       uniqueId_ = "";
       createdDate_ = "";
+      senderPackage_ = "";
+      targetPackage_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
       commandPayloads_ = java.util.Collections.emptyList();
@@ -1961,13 +2149,15 @@ public final class AcesProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasCentralStatus()) {
+      if (!hasSenderPackage()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getCentralStatus().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasCentralStatus()) {
+        if (!getCentralStatus().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       for (int i = 0; i < getSensorPayloadsCount(); i++) {
         if (!getSensorPayloads(i).isInitialized()) {
@@ -1988,7 +2178,7 @@ public final class AcesProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(1, centralStatus_);
       }
       for (int i = 0; i < sensorPayloads_.size(); i++) {
@@ -2003,6 +2193,12 @@ public final class AcesProtocol {
       for (int i = 0; i < commandPayloads_.size(); i++) {
         output.writeMessage(5, commandPayloads_.get(i));
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(6, getTargetPackageBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(7, getSenderPackageBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2012,7 +2208,7 @@ public final class AcesProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, centralStatus_);
       }
@@ -2031,6 +2227,14 @@ public final class AcesProtocol {
       for (int i = 0; i < commandPayloads_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, commandPayloads_.get(i));
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getTargetPackageBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getSenderPackageBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2159,21 +2363,25 @@ public final class AcesProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         createdDate_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        senderPackage_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        targetPackage_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (centralStatusBuilder_ == null) {
           centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           sensorPayloadsBuilder_.clear();
         }
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
         } else {
           commandPayloadsBuilder_.clear();
         }
@@ -2216,24 +2424,32 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
+        result.senderPackage_ = senderPackage_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.targetPackage_ = targetPackage_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         if (centralStatusBuilder_ == null) {
           result.centralStatus_ = centralStatus_;
         } else {
           result.centralStatus_ = centralStatusBuilder_.build();
         }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
           result.sensorPayloads_ = sensorPayloadsBuilder_.build();
         }
         if (commandPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
             commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000040);
           }
           result.commandPayloads_ = commandPayloads_;
         } else {
@@ -2265,6 +2481,16 @@ public final class AcesProtocol {
           createdDate_ = other.createdDate_;
           onChanged();
         }
+        if (other.hasSenderPackage()) {
+          bitField0_ |= 0x00000004;
+          senderPackage_ = other.senderPackage_;
+          onChanged();
+        }
+        if (other.hasTargetPackage()) {
+          bitField0_ |= 0x00000008;
+          targetPackage_ = other.targetPackage_;
+          onChanged();
+        }
         if (other.hasCentralStatus()) {
           mergeCentralStatus(other.getCentralStatus());
         }
@@ -2272,7 +2498,7 @@ public final class AcesProtocol {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -2285,7 +2511,7 @@ public final class AcesProtocol {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000020);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -2298,7 +2524,7 @@ public final class AcesProtocol {
           if (!other.commandPayloads_.isEmpty()) {
             if (commandPayloads_.isEmpty()) {
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000040);
             } else {
               ensureCommandPayloadsIsMutable();
               commandPayloads_.addAll(other.commandPayloads_);
@@ -2311,7 +2537,7 @@ public final class AcesProtocol {
               commandPayloadsBuilder_.dispose();
               commandPayloadsBuilder_ = null;
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000040);
               commandPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCommandPayloadsFieldBuilder() : null;
@@ -2333,13 +2559,15 @@ public final class AcesProtocol {
           
           return false;
         }
-        if (!hasCentralStatus()) {
+        if (!hasSenderPackage()) {
           
           return false;
         }
-        if (!getCentralStatus().isInitialized()) {
-          
-          return false;
+        if (hasCentralStatus()) {
+          if (!getCentralStatus().isInitialized()) {
+            
+            return false;
+          }
         }
         for (int i = 0; i < getSensorPayloadsCount(); i++) {
           if (!getSensorPayloads(i).isInitialized()) {
@@ -2583,22 +2811,230 @@ public final class AcesProtocol {
         return this;
       }
 
-      // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+      // required string senderPackage = 7;
+      private java.lang.Object senderPackage_ = "";
+      /**
+       * <code>required string senderPackage = 7;</code>
+       *
+       * <pre>
+       * 送信者のpackage
+       * 必ず付与すべきだが、完全な信頼性はない
+       * </pre>
+       */
+      public boolean hasSenderPackage() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string senderPackage = 7;</code>
+       *
+       * <pre>
+       * 送信者のpackage
+       * 必ず付与すべきだが、完全な信頼性はない
+       * </pre>
+       */
+      public java.lang.String getSenderPackage() {
+        java.lang.Object ref = senderPackage_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          senderPackage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string senderPackage = 7;</code>
+       *
+       * <pre>
+       * 送信者のpackage
+       * 必ず付与すべきだが、完全な信頼性はない
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSenderPackageBytes() {
+        java.lang.Object ref = senderPackage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          senderPackage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string senderPackage = 7;</code>
+       *
+       * <pre>
+       * 送信者のpackage
+       * 必ず付与すべきだが、完全な信頼性はない
+       * </pre>
+       */
+      public Builder setSenderPackage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        senderPackage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string senderPackage = 7;</code>
+       *
+       * <pre>
+       * 送信者のpackage
+       * 必ず付与すべきだが、完全な信頼性はない
+       * </pre>
+       */
+      public Builder clearSenderPackage() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        senderPackage_ = getDefaultInstance().getSenderPackage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string senderPackage = 7;</code>
+       *
+       * <pre>
+       * 送信者のpackage
+       * 必ず付与すべきだが、完全な信頼性はない
+       * </pre>
+       */
+      public Builder setSenderPackageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        senderPackage_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string targetPackage = 6;
+      private java.lang.Object targetPackage_ = "";
+      /**
+       * <code>optional string targetPackage = 6;</code>
+       *
+       * <pre>
+       * 送信対象のpackage
+       * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+       * </pre>
+       */
+      public boolean hasTargetPackage() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string targetPackage = 6;</code>
+       *
+       * <pre>
+       * 送信対象のpackage
+       * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+       * </pre>
+       */
+      public java.lang.String getTargetPackage() {
+        java.lang.Object ref = targetPackage_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          targetPackage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string targetPackage = 6;</code>
+       *
+       * <pre>
+       * 送信対象のpackage
+       * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTargetPackageBytes() {
+        java.lang.Object ref = targetPackage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          targetPackage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string targetPackage = 6;</code>
+       *
+       * <pre>
+       * 送信対象のpackage
+       * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+       * </pre>
+       */
+      public Builder setTargetPackage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        targetPackage_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string targetPackage = 6;</code>
+       *
+       * <pre>
+       * 送信対象のpackage
+       * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+       * </pre>
+       */
+      public Builder clearTargetPackage() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        targetPackage_ = getDefaultInstance().getTargetPackage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string targetPackage = 6;</code>
+       *
+       * <pre>
+       * 送信対象のpackage
+       * 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+       * </pre>
+       */
+      public Builder setTargetPackageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        targetPackage_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
       private com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus, com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatusOrBuilder> centralStatusBuilder_;
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
        * </pre>
        */
       public boolean hasCentralStatus() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2612,7 +3048,7 @@ public final class AcesProtocol {
         }
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2628,11 +3064,11 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2646,11 +3082,11 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2658,7 +3094,7 @@ public final class AcesProtocol {
        */
       public Builder mergeCentralStatus(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus value) {
         if (centralStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
               centralStatus_ != com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance()) {
             centralStatus_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.newBuilder(centralStatus_).mergeFrom(value).buildPartial();
@@ -2669,11 +3105,11 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2686,23 +3122,23 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder getCentralStatusBuilder() {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         onChanged();
         return getCentralStatusFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2716,7 +3152,7 @@ public final class AcesProtocol {
         }
       }
       /**
-       * <code>required .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
+       * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
        *
        * <pre>
        * セントラルアプリのステータス
@@ -2740,9 +3176,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -2935,7 +3371,7 @@ public final class AcesProtocol {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -3040,7 +3476,7 @@ public final class AcesProtocol {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
@@ -3052,9 +3488,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_ =
         java.util.Collections.emptyList();
       private void ensureCommandPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>(commandPayloads_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000040;
          }
       }
 
@@ -3247,7 +3683,7 @@ public final class AcesProtocol {
       public Builder clearCommandPayloads() {
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000040);
           onChanged();
         } else {
           commandPayloadsBuilder_.clear();
@@ -3352,7 +3788,7 @@ public final class AcesProtocol {
           commandPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder>(
                   commandPayloads_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
                   isClean());
           commandPayloads_ = null;
@@ -3401,14 +3837,15 @@ public final class AcesProtocol {
       "\017protocolVersion\030\001 \002(\003\022\026\n\016appVersionName" +
       "\030\002 \002(\t\"_\n\rCentralStatus\022\032\n\022connectedHear" +
       "trate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(\010\022\030\n" +
-      "\020connectedTwitter\030\003 \002(\010\"\337\001\n\rMasterPayloa" +
+      "\020connectedTwitter\030\003 \002(\010\"\215\002\n\rMasterPayloa" +
       "d\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t" +
-      "\0225\n\rcentralStatus\030\001 \002(\0132\036.eaglesakura_ac" +
-      "e.CentralStatus\0226\n\016sensorPayloads\030\002 \003(\0132",
-      "\036.eaglesakura_ace.SensorPayload\0228\n\017comma" +
-      "ndPayloads\030\005 \003(\0132\037.eaglesakura_ace.Comma" +
-      "ndPayloadB$\n\"com.eaglesakura.andriders.p" +
-      "rotocol"
+      "\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPackage" +
+      "\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesak",
+      "ura_ace.CentralStatus\0226\n\016sensorPayloads\030" +
+      "\002 \003(\0132\036.eaglesakura_ace.SensorPayload\0228\n" +
+      "\017commandPayloads\030\005 \003(\0132\037.eaglesakura_ace" +
+      ".CommandPayloadB$\n\"com.eaglesakura.andri" +
+      "ders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3432,7 +3869,7 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "UniqueId", "CreatedDate", "CentralStatus", "SensorPayloads", "CommandPayloads", });
+              new java.lang.String[] { "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "SensorPayloads", "CommandPayloads", });
           return null;
         }
       };

@@ -39,8 +39,16 @@ message MasterPayload {
 	// "yyyyMMDD-hh:mm:ss.SS"で記述される
 	required string createdDate = 3;
 
+	// 送信者のpackage
+	// 必ず付与すべきだが、完全な信頼性はない
+	required string senderPackage = 7;
+
+	// 送信対象のpackage
+	// 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+	optional string targetPackage = 6;
+
 	// セントラルアプリのステータス
-	required CentralStatus centralStatus = 1;
+	optional CentralStatus centralStatus = 1;
 
 	// センサーの値
 	repeated SensorPayload sensorPayloads = 2;

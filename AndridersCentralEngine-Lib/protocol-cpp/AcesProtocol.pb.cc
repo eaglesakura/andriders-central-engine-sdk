@@ -73,9 +73,11 @@ void protobuf_AssignDesc_AcesProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CentralStatus));
   MasterPayload_descriptor_ = file->message_type(2);
-  static const int MasterPayload_offsets_[5] = {
+  static const int MasterPayload_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, uniqueid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, createddate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, senderpackage_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, targetpackage_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, centralstatus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, sensorpayloads_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, commandpayloads_),
@@ -138,14 +140,15 @@ void protobuf_AddDesc_AcesProtocol_2eproto() {
     "\017protocolVersion\030\001 \002(\003\022\026\n\016appVersionName"
     "\030\002 \002(\t\"_\n\rCentralStatus\022\032\n\022connectedHear"
     "trate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(\010\022\030\n"
-    "\020connectedTwitter\030\003 \002(\010\"\337\001\n\rMasterPayloa"
+    "\020connectedTwitter\030\003 \002(\010\"\215\002\n\rMasterPayloa"
     "d\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t"
-    "\0225\n\rcentralStatus\030\001 \002(\0132\036.eaglesakura_ac"
-    "e.CentralStatus\0226\n\016sensorPayloads\030\002 \003(\0132"
-    "\036.eaglesakura_ace.SensorPayload\0228\n\017comma"
-    "ndPayloads\030\005 \003(\0132\037.eaglesakura_ace.Comma"
-    "ndPayloadB$\n\"com.eaglesakura.andriders.p"
-    "rotocol", 527);
+    "\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPackage"
+    "\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesak"
+    "ura_ace.CentralStatus\0226\n\016sensorPayloads\030"
+    "\002 \003(\0132\036.eaglesakura_ace.SensorPayload\0228\n"
+    "\017commandPayloads\030\005 \003(\0132\037.eaglesakura_ace"
+    ".CommandPayloadB$\n\"com.eaglesakura.andri"
+    "ders.protocol", 573);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "AcesProtocol.proto", &protobuf_RegisterTypes);
   VersionInfo::default_instance_ = new VersionInfo();
@@ -718,6 +721,8 @@ void CentralStatus::Swap(CentralStatus* other) {
 #ifndef _MSC_VER
 const int MasterPayload::kUniqueIdFieldNumber;
 const int MasterPayload::kCreatedDateFieldNumber;
+const int MasterPayload::kSenderPackageFieldNumber;
+const int MasterPayload::kTargetPackageFieldNumber;
 const int MasterPayload::kCentralStatusFieldNumber;
 const int MasterPayload::kSensorPayloadsFieldNumber;
 const int MasterPayload::kCommandPayloadsFieldNumber;
@@ -742,6 +747,8 @@ void MasterPayload::SharedCtor() {
   _cached_size_ = 0;
   uniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   createddate_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  senderpackage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  targetpackage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   centralstatus_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -756,6 +763,12 @@ void MasterPayload::SharedDtor() {
   }
   if (createddate_ != &::google::protobuf::internal::kEmptyString) {
     delete createddate_;
+  }
+  if (senderpackage_ != &::google::protobuf::internal::kEmptyString) {
+    delete senderpackage_;
+  }
+  if (targetpackage_ != &::google::protobuf::internal::kEmptyString) {
+    delete targetpackage_;
   }
   if (this != default_instance_) {
     delete centralstatus_;
@@ -795,6 +808,16 @@ void MasterPayload::Clear() {
         createddate_->clear();
       }
     }
+    if (has_senderpackage()) {
+      if (senderpackage_ != &::google::protobuf::internal::kEmptyString) {
+        senderpackage_->clear();
+      }
+    }
+    if (has_targetpackage()) {
+      if (targetpackage_ != &::google::protobuf::internal::kEmptyString) {
+        targetpackage_->clear();
+      }
+    }
     if (has_centralstatus()) {
       if (centralstatus_ != NULL) centralstatus_->::eaglesakura_ace::CentralStatus::Clear();
     }
@@ -811,7 +834,7 @@ bool MasterPayload::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+      // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -884,6 +907,40 @@ bool MasterPayload::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(42)) goto parse_commandPayloads;
+        if (input->ExpectTag(50)) goto parse_targetPackage;
+        break;
+      }
+
+      // optional string targetPackage = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_targetPackage:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_targetpackage()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->targetpackage().data(), this->targetpackage().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(58)) goto parse_senderPackage;
+        break;
+      }
+
+      // required string senderPackage = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_senderPackage:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_senderpackage()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->senderpackage().data(), this->senderpackage().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -906,7 +963,7 @@ bool MasterPayload::MergePartialFromCodedStream(
 
 void MasterPayload::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+  // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
   if (has_centralstatus()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->centralstatus(), output);
@@ -942,6 +999,24 @@ void MasterPayload::SerializeWithCachedSizes(
       5, this->commandpayloads(i), output);
   }
 
+  // optional string targetPackage = 6;
+  if (has_targetpackage()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->targetpackage().data(), this->targetpackage().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->targetpackage(), output);
+  }
+
+  // required string senderPackage = 7;
+  if (has_senderpackage()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->senderpackage().data(), this->senderpackage().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      7, this->senderpackage(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -950,7 +1025,7 @@ void MasterPayload::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* MasterPayload::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+  // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
   if (has_centralstatus()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -991,6 +1066,26 @@ void MasterPayload::SerializeWithCachedSizes(
         5, this->commandpayloads(i), target);
   }
 
+  // optional string targetPackage = 6;
+  if (has_targetpackage()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->targetpackage().data(), this->targetpackage().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->targetpackage(), target);
+  }
+
+  // required string senderPackage = 7;
+  if (has_senderpackage()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->senderpackage().data(), this->senderpackage().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->senderpackage(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1016,7 +1111,21 @@ int MasterPayload::ByteSize() const {
           this->createddate());
     }
 
-    // required .eaglesakura_ace.CentralStatus centralStatus = 1;
+    // required string senderPackage = 7;
+    if (has_senderpackage()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->senderpackage());
+    }
+
+    // optional string targetPackage = 6;
+    if (has_targetpackage()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->targetpackage());
+    }
+
+    // optional .eaglesakura_ace.CentralStatus centralStatus = 1;
     if (has_centralstatus()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1074,6 +1183,12 @@ void MasterPayload::MergeFrom(const MasterPayload& from) {
     if (from.has_createddate()) {
       set_createddate(from.createddate());
     }
+    if (from.has_senderpackage()) {
+      set_senderpackage(from.senderpackage());
+    }
+    if (from.has_targetpackage()) {
+      set_targetpackage(from.targetpackage());
+    }
     if (from.has_centralstatus()) {
       mutable_centralstatus()->::eaglesakura_ace::CentralStatus::MergeFrom(from.centralstatus());
     }
@@ -1112,6 +1227,8 @@ void MasterPayload::Swap(MasterPayload* other) {
   if (other != this) {
     std::swap(uniqueid_, other->uniqueid_);
     std::swap(createddate_, other->createddate_);
+    std::swap(senderpackage_, other->senderpackage_);
+    std::swap(targetpackage_, other->targetpackage_);
     std::swap(centralstatus_, other->centralstatus_);
     sensorpayloads_.Swap(&other->sensorpayloads_);
     commandpayloads_.Swap(&other->commandpayloads_);

@@ -10,7 +10,6 @@ import com.androidquery.AQuery;
 import com.eaglesakura.ace.systemlayer.R;
 import com.eaglesakura.ace.systemlayer.service.UiService;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
-import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
@@ -71,7 +70,6 @@ public class SystemViewManager {
         // セントラルに接続する
         {
             receiver = new AcesProtocolReceiver(service);
-            receiver.addCentralDataListener(centralDataListenerImpl);
             receiver.addCadenceListener(cadenceListenerImpl);
             receiver.addHeartrateListener(heartrateListenerImpl);
             receiver.connect();
@@ -98,14 +96,6 @@ public class SystemViewManager {
             systemView = null;
         }
     }
-
-    AcesProtocolReceiver.CentralDataListener centralDataListenerImpl = new AcesProtocolReceiver.CentralDataListener() {
-        @Override
-        public void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, AcesProtocol.MasterPayload master) {
-            //            CentralStatus status = master.getCentralStatus();
-            //            BleLog.d("received master");
-        }
-    };
 
     /**
      * ハートレート受信
