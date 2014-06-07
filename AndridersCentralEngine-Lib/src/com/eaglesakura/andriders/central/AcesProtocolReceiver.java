@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 
 import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
+import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
@@ -105,10 +106,10 @@ public class AcesProtocolReceiver {
      * @param payload
      * @throws Exception
      */
-    private void onHeartrateReceived(ByteString payload) throws Exception {
+    private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
         RawHeartrate heartrate = RawHeartrate.parseFrom(payload);
         for (HeartrateListener listener : heartrateListeners) {
-            listener.onHeartrateReceived(this, heartrate);
+            listener.onHeartrateReceived(this, master, heartrate);
         }
     }
 
@@ -117,10 +118,10 @@ public class AcesProtocolReceiver {
      * @param payload
      * @throws Exception
      */
-    private void onCadenceReceived(ByteString payload) throws Exception {
+    private void onCadenceReceived(MasterPayload master, ByteString payload) throws Exception {
         RawCadence cadence = RawCadence.parseFrom(payload);
         for (CadenceListener listener : cadenceListeners) {
-            listener.onCadenceReceived(this, cadence);
+            listener.onCadenceReceived(this, master, cadence);
         }
     }
 
@@ -146,12 +147,12 @@ public class AcesProtocolReceiver {
                     switch (serviceType) {
                         case HeartrateMonitor:
                             // ハートレート
-                            onHeartrateReceived(payload.getBuffer());
+                            onHeartrateReceived(master, payload.getBuffer());
                             break;
 
                         case CadenceSensor:
                             // ケイデンス
-                            onCadenceReceived(payload.getBuffer());
+                            onCadenceReceived(master, payload.getBuffer());
                             break;
                         default:
                             break;
@@ -231,14 +232,14 @@ public class AcesProtocolReceiver {
      * ケイデンスデータを受け取った
      */
     public interface CadenceListener {
-        void onCadenceReceived(AcesProtocolReceiver receiver, RawCadence cadence);
+        void onCadenceReceived(AcesProtocolReceiver receiver, MasterPayload master, RawCadence cadence);
     }
 
     /**
      * 心拍データを受け取った
      */
     public interface HeartrateListener {
-        void onHeartrateReceived(AcesProtocolReceiver receiver, RawHeartrate heartrate);
+        void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate);
     }
 
     /**
@@ -250,6 +251,6 @@ public class AcesProtocolReceiver {
          * @param buffer 受け取ったデータ
          * @param master すべてのデータを含んだペイロード
          */
-        void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, AcesProtocol.MasterPayload master);
+        void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, MasterPayload master);
     }
 }

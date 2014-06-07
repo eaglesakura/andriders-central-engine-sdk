@@ -11,10 +11,10 @@ import com.eaglesakura.ace.systemlayer.R;
 import com.eaglesakura.ace.systemlayer.service.UiService;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
-import com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus;
+import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
-import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone;
+import com.eaglesakura.andriders.ui.BasicUiBuilder;
 
 /**
  * システムUI表示用View
@@ -28,9 +28,13 @@ public class SystemViewManager {
 
     AcesProtocolReceiver receiver;
 
+    BasicUiBuilder uiBuilder;
+
     public SystemViewManager(UiService service) {
         this.service = service;
         this.windowManager = (WindowManager) service.getSystemService(Context.WINDOW_SERVICE);
+
+        uiBuilder = new BasicUiBuilder(service);
     }
 
     /**
@@ -98,29 +102,8 @@ public class SystemViewManager {
     AcesProtocolReceiver.CentralDataListener centralDataListenerImpl = new AcesProtocolReceiver.CentralDataListener() {
         @Override
         public void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, AcesProtocol.MasterPayload master) {
-            CentralStatus status = master.getCentralStatus();
-
+            //            CentralStatus status = master.getCentralStatus();
             //            BleLog.d("received master");
-            {
-                // heartrate
-                AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Heartrate_Root));
-                q.id(R.id.SystemLayer_Card_Text);
-
-                if (!status.getConnectedHeartrate()) {
-                    // ハートレートモニターに接続されて無ければN/A
-                    q.text(R.string.Common_NA);
-                }
-            }
-            {
-                // cadence
-                AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Cadence_Root));
-                q.id(R.id.SystemLayer_Card_Text);
-
-                if (!status.getConnectedCadence()) {
-                    // ハートレートモニターに接続されて無ければN/A
-                    q.text(R.string.Common_NA);
-                }
-            }
         }
     };
 
@@ -129,47 +112,10 @@ public class SystemViewManager {
      */
     AcesProtocolReceiver.HeartrateListener heartrateListenerImpl = new AcesProtocolReceiver.HeartrateListener() {
         @Override
-        public void onHeartrateReceived(AcesProtocolReceiver receiver, RawHeartrate heartrate) {
+        public void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate) {
             // heartrate
             AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Heartrate_Root));
-            q.id(R.id.SystemLayer_Card_Text);
-
-            q.text(String.format("%d", heartrate.getBpm()));
-
-            int colorId = R.color.AceUI_Zonebar_None;
-            String zoneText = "";
-            if (heartrate.hasHeartrateZone()) {
-                HeartrateZone zone = heartrate.getHeartrateZone();
-                switch (zone) {
-                    case Repose:
-                        colorId = R.color.AceUI_Zonebar_Lv0;
-                        zoneText = "安静";
-                        break;
-                    case Easy:
-                        colorId = R.color.AceUI_Zonebar_Lv1;
-                        zoneText = "軽度";
-                        break;
-                    case FatCombustion:
-                        colorId = R.color.AceUI_Zonebar_Lv2;
-                        zoneText = "脂肪燃焼";
-                        break;
-                    case PossessionOxygenMotion:
-                        colorId = R.color.AceUI_Zonebar_Lv3;
-                        zoneText = "有酸素";
-                        break;
-                    case NonOxygenatedMotion:
-                        colorId = R.color.AceUI_Zonebar_Lv4;
-                        zoneText = "無酸素";
-                        break;
-                    case Overwork:
-                        colorId = R.color.AceUI_Zonebar_Lv5;
-                        zoneText = "危険域";
-                        break;
-                }
-            }
-            // 背景色指定
-            q.id(R.id.SystemLayer_Zonebar).backgroundColor(service.getResources().getColor(colorId));
-            q.id(R.id.SystemLayer_Zonebar_Info).text(zoneText);
+            uiBuilder.build(q.getView(), master, heartrate);
         }
     };
 
@@ -178,29 +124,10 @@ public class SystemViewManager {
      */
     AcesProtocolReceiver.CadenceListener cadenceListenerImpl = new AcesProtocolReceiver.CadenceListener() {
         @Override
-        public void onCadenceReceived(AcesProtocolReceiver receiver, RawCadence cadence) {
+        public void onCadenceReceived(AcesProtocolReceiver receiver, MasterPayload master, RawCadence cadence) {
             // cadence
             AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Cadence_Root));
-            q.id(R.id.SystemLayer_Card_Text);
-            q.text(String.format("%d", cadence.getRpm()));
-
-            // ゾーンレベル
-            int colorId = R.color.AceUI_Zonebar_None;
-            if (cadence.getRpm() > 0) {
-                switch (cadence.getCadenceZone()) {
-                    case Easy:
-                        colorId = R.color.AceUI_Zonebar_Lv0;
-                        break;
-                    case Beginner:
-                        colorId = R.color.AceUI_Zonebar_Lv2;
-                        break;
-                    case Ideal:
-                        colorId = R.color.AceUI_Zonebar_Lv4;
-                        break;
-                }
-            }
-
-            q.id(R.id.SystemLayer_Zonebar).backgroundColor(service.getResources().getColor(colorId));
+            uiBuilder.build(q.getView(), master, cadence);
         }
     };
 }

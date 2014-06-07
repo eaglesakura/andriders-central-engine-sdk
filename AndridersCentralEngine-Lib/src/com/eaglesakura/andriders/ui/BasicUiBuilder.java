@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.androidquery.AQuery;
 import com.eaglesakura.andriders.R;
+import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
@@ -148,10 +149,14 @@ public class BasicUiBuilder {
      * @param heartarate
      * @return
      */
-    public View build(View root, RawHeartrate heartrate) {
+    public View build(View root, MasterPayload master, RawHeartrate heartrate) {
         AQuery q = new AQuery(root);
         q.id(R.id.AceUI_BasicUI_Title).text(heartrateUiTitle);
-        q.id(R.id.AceUI_BasicUI_Value).text(String.valueOf(heartrate.getBpm()));
+        if (master.getCentralStatus().getConnectedHeartrate()) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.valueOf(heartrate.getBpm()));
+        } else {
+            q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
+        }
         q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(getZoneColor(heartrate.getHeartrateZone()));
         q.id(R.id.AceUI_BasicUI_ZoneTitle).text(getZoneInfoText(heartrate.getHeartrateZone()));
         return root;
@@ -163,10 +168,14 @@ public class BasicUiBuilder {
      * @param cadence
      * @return
      */
-    public View build(View root, RawCadence cadence) {
+    public View build(View root, MasterPayload master, RawCadence cadence) {
         AQuery q = new AQuery(root);
         q.id(R.id.AceUI_BasicUI_Title).text(cadenceUiTitle);
-        q.id(R.id.AceUI_BasicUI_Value).text(String.valueOf(cadence.getRpm()));
+        if (master.getCentralStatus().getConnectedCadence()) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.valueOf(cadence.getRpm()));
+        } else {
+            q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
+        }
         q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(getZoneColor(cadence.getCadenceZone()));
         q.id(R.id.AceUI_BasicUI_ZoneTitle).text(getZoneInfoText(cadence.getCadenceZone()));
         return root;

@@ -18,7 +18,7 @@
             android:background="@drawable/systemlayer_card_background" >
 
             <TextView
-                android:id="@+id/SystemLayer.Card.Text"
+                android:id="@id/AceUI.BasicUI.Value"
                 style="@style/Font.SystemCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,13 +42,13 @@
                 android:layout_margin="@dimen/SystemLayer.Margin.Normal" >
 
                 <View
-                    android:id="@+id/SystemLayer.Zonebar"
+                    android:id="@id/AceUI.BasicUI.ZoneColor"
                     android:layout_width="@dimen/SystemLayer.Zonebar.Width"
                     android:layout_height="match_parent"
                     android:background="@color/AceUI.Zonebar.None" />
 
                 <TextView
-                    android:id="@+id/SystemLayer.Zonebar.Info"
+                    android:id="@id/AceUI.BasicUI.ZoneTitle"
                     style="@style/Font.SystemCard.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:background="@drawable/systemlayer_card_background" >
 
             <TextView
-                android:id="@+id/SystemLayer.Card.Text"
+                android:id="@id/AceUI.BasicUI.Value"
                 style="@style/Font.SystemCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:text="@string/AceUI.Information.Cadence" />
 
             <View
-                android:id="@+id/SystemLayer.Zonebar"
+                android:id="@+id/AceUI.BasicUI.ZoneColor"
                 android:layout_width="@dimen/SystemLayer.Zonebar.Width"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
