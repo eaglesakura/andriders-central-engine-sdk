@@ -160,7 +160,7 @@ public class AcesProtocolReceiver {
 
         // senderが自分であれば反応しない
         // ただし、自分自身が対象である場合は何もしない
-        if (selfPackageName.equals(master.getSenderPackage()) && !master.getSenderPackage().equals(targetPackage)) {
+        if (selfPackageName.equals(master.getSenderPackage()) && !master.getSenderPackage().equals(targetPackage) && checkTargetPackage) {
             //            Log.i("ACES", "error sender :: " + master.getSenderPackage());
             //            Log.i("ACES", "error target :: " + targetPackage);
             return;
