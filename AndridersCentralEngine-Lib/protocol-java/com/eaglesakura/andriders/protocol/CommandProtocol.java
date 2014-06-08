@@ -2339,6 +2339,33 @@ public final class CommandProtocol {
      * </pre>
      */
     int getCommandSec();
+
+    // required string extraUniqueId = 2;
+    /**
+     * <code>required string extraUniqueId = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * </pre>
+     */
+    boolean hasExtraUniqueId();
+    /**
+     * <code>required string extraUniqueId = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * </pre>
+     */
+    java.lang.String getExtraUniqueId();
+    /**
+     * <code>required string extraUniqueId = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getExtraUniqueIdBytes();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.ProximityControllPayload}
@@ -2398,6 +2425,11 @@ public final class CommandProtocol {
             case 8: {
               bitField0_ |= 0x00000001;
               commandSec_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              extraUniqueId_ = input.readBytes();
               break;
             }
           }
@@ -2464,8 +2496,64 @@ public final class CommandProtocol {
       return commandSec_;
     }
 
+    // required string extraUniqueId = 2;
+    public static final int EXTRAUNIQUEID_FIELD_NUMBER = 2;
+    private java.lang.Object extraUniqueId_;
+    /**
+     * <code>required string extraUniqueId = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * </pre>
+     */
+    public boolean hasExtraUniqueId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string extraUniqueId = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * </pre>
+     */
+    public java.lang.String getExtraUniqueId() {
+      java.lang.Object ref = extraUniqueId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          extraUniqueId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string extraUniqueId = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getExtraUniqueIdBytes() {
+      java.lang.Object ref = extraUniqueId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        extraUniqueId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       commandSec_ = 0;
+      extraUniqueId_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2473,6 +2561,10 @@ public final class CommandProtocol {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasCommandSec()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasExtraUniqueId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2486,6 +2578,9 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, commandSec_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getExtraUniqueIdBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2498,6 +2593,10 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, commandSec_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getExtraUniqueIdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2621,6 +2720,8 @@ public final class CommandProtocol {
         super.clear();
         commandSec_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        extraUniqueId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -2653,6 +2754,10 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000001;
         }
         result.commandSec_ = commandSec_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.extraUniqueId_ = extraUniqueId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2672,12 +2777,21 @@ public final class CommandProtocol {
         if (other.hasCommandSec()) {
           setCommandSec(other.getCommandSec());
         }
+        if (other.hasExtraUniqueId()) {
+          bitField0_ |= 0x00000002;
+          extraUniqueId_ = other.extraUniqueId_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasCommandSec()) {
+          
+          return false;
+        }
+        if (!hasExtraUniqueId()) {
           
           return false;
         }
@@ -2748,6 +2862,104 @@ public final class CommandProtocol {
       public Builder clearCommandSec() {
         bitField0_ = (bitField0_ & ~0x00000001);
         commandSec_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string extraUniqueId = 2;
+      private java.lang.Object extraUniqueId_ = "";
+      /**
+       * <code>required string extraUniqueId = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * </pre>
+       */
+      public boolean hasExtraUniqueId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string extraUniqueId = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * </pre>
+       */
+      public java.lang.String getExtraUniqueId() {
+        java.lang.Object ref = extraUniqueId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          extraUniqueId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string extraUniqueId = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getExtraUniqueIdBytes() {
+        java.lang.Object ref = extraUniqueId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          extraUniqueId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string extraUniqueId = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * </pre>
+       */
+      public Builder setExtraUniqueId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        extraUniqueId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string extraUniqueId = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * </pre>
+       */
+      public Builder clearExtraUniqueId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        extraUniqueId_ = getDefaultInstance().getExtraUniqueId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string extraUniqueId = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * </pre>
+       */
+      public Builder setExtraUniqueIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        extraUniqueId_ = value;
         onChanged();
         return this;
       }
@@ -3449,13 +3661,14 @@ public final class CommandProtocol {
       "\022\023\n\013imageHeight\030\003 \002(\005\022\017\n\007imageId\030\004 \002(\t\"h" +
       "\n\024TweetControllPayload\022\024\n\014tweetMessage\030\001" +
       " \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\025\n\rrawImageFiles\030" +
-      "\003 \003(\014\022\021\n\timageUris\030\004 \003(\t\".\n\030ProximityCon" +
-      "trollPayload\022\022\n\ncommandSec\030\001 \002(\005\"7\n\016Comm" +
-      "andPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayl" +
-      "oad\030\002 \001(\014*^\n\007Command\022\025\n\021CameraShotReques",
-      "t\020\002\022\022\n\016CameraShotData\020\003\022\021\n\rTweetControll" +
-      "\020\004\022\025\n\021ProximityControll\020\005B$\n\"com.eaglesa" +
-      "kura.andriders.protocol"
+      "\003 \003(\014\022\021\n\timageUris\030\004 \003(\t\"E\n\030ProximityCon" +
+      "trollPayload\022\022\n\ncommandSec\030\001 \002(\005\022\025\n\rextr" +
+      "aUniqueId\030\002 \002(\t\"7\n\016CommandPayload\022\017\n\007com" +
+      "mand\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*^\n\007Comm",
+      "and\022\025\n\021CameraShotRequest\020\002\022\022\n\016CameraShot" +
+      "Data\020\003\022\021\n\rTweetControll\020\004\022\025\n\021ProximityCo" +
+      "ntroll\020\005B$\n\"com.eaglesakura.andriders.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3479,7 +3692,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_ProximityControllPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_ProximityControllPayload_descriptor,
-              new java.lang.String[] { "CommandSec", });
+              new java.lang.String[] { "CommandSec", "ExtraUniqueId", });
           internal_static_eaglesakura_ace_CommandPayload_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new

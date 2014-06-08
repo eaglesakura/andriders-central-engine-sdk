@@ -55,7 +55,7 @@ public class AcesCommandBuilder {
      * @param payload
      * @param commandTimeSec
      */
-    public AcesCommandBuilder addProximityCommand(ProximityControllPayload payload, int commandTimeSec) {
+    public AcesCommandBuilder addProximityCommand(ProximityControllPayload payload) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
 
         builder.setCommand(CommandProtocol.Command.ProximityControll.name());

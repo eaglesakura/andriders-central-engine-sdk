@@ -384,17 +384,32 @@ class ProximityControllPayload : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 commandsec() const;
   inline void set_commandsec(::google::protobuf::int32 value);
 
+  // required string extraUniqueId = 2;
+  inline bool has_extrauniqueid() const;
+  inline void clear_extrauniqueid();
+  static const int kExtraUniqueIdFieldNumber = 2;
+  inline const ::std::string& extrauniqueid() const;
+  inline void set_extrauniqueid(const ::std::string& value);
+  inline void set_extrauniqueid(const char* value);
+  inline void set_extrauniqueid(const char* value, size_t size);
+  inline ::std::string* mutable_extrauniqueid();
+  inline ::std::string* release_extrauniqueid();
+  inline void set_allocated_extrauniqueid(::std::string* extrauniqueid);
+
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.ProximityControllPayload)
  private:
   inline void set_has_commandsec();
   inline void clear_has_commandsec();
+  inline void set_has_extrauniqueid();
+  inline void clear_has_extrauniqueid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* extrauniqueid_;
   ::google::protobuf::int32 commandsec_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
@@ -926,6 +941,76 @@ inline ::google::protobuf::int32 ProximityControllPayload::commandsec() const {
 inline void ProximityControllPayload::set_commandsec(::google::protobuf::int32 value) {
   set_has_commandsec();
   commandsec_ = value;
+}
+
+// required string extraUniqueId = 2;
+inline bool ProximityControllPayload::has_extrauniqueid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ProximityControllPayload::set_has_extrauniqueid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ProximityControllPayload::clear_has_extrauniqueid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ProximityControllPayload::clear_extrauniqueid() {
+  if (extrauniqueid_ != &::google::protobuf::internal::kEmptyString) {
+    extrauniqueid_->clear();
+  }
+  clear_has_extrauniqueid();
+}
+inline const ::std::string& ProximityControllPayload::extrauniqueid() const {
+  return *extrauniqueid_;
+}
+inline void ProximityControllPayload::set_extrauniqueid(const ::std::string& value) {
+  set_has_extrauniqueid();
+  if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    extrauniqueid_ = new ::std::string;
+  }
+  extrauniqueid_->assign(value);
+}
+inline void ProximityControllPayload::set_extrauniqueid(const char* value) {
+  set_has_extrauniqueid();
+  if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    extrauniqueid_ = new ::std::string;
+  }
+  extrauniqueid_->assign(value);
+}
+inline void ProximityControllPayload::set_extrauniqueid(const char* value, size_t size) {
+  set_has_extrauniqueid();
+  if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    extrauniqueid_ = new ::std::string;
+  }
+  extrauniqueid_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ProximityControllPayload::mutable_extrauniqueid() {
+  set_has_extrauniqueid();
+  if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    extrauniqueid_ = new ::std::string;
+  }
+  return extrauniqueid_;
+}
+inline ::std::string* ProximityControllPayload::release_extrauniqueid() {
+  clear_has_extrauniqueid();
+  if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = extrauniqueid_;
+    extrauniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void ProximityControllPayload::set_allocated_extrauniqueid(::std::string* extrauniqueid) {
+  if (extrauniqueid_ != &::google::protobuf::internal::kEmptyString) {
+    delete extrauniqueid_;
+  }
+  if (extrauniqueid) {
+    set_has_extrauniqueid();
+    extrauniqueid_ = extrauniqueid;
+  } else {
+    clear_has_extrauniqueid();
+    extrauniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------

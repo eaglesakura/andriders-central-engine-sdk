@@ -80,8 +80,9 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TweetControllPayload));
   ProximityControllPayload_descriptor_ = file->message_type(2);
-  static const int ProximityControllPayload_offsets_[1] = {
+  static const int ProximityControllPayload_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProximityControllPayload, commandsec_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProximityControllPayload, extrauniqueid_),
   };
   ProximityControllPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -160,13 +161,14 @@ void protobuf_AddDesc_CommandProtocol_2eproto() {
     "\022\023\n\013imageHeight\030\003 \002(\005\022\017\n\007imageId\030\004 \002(\t\"h"
     "\n\024TweetControllPayload\022\024\n\014tweetMessage\030\001"
     " \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\025\n\rrawImageFiles\030"
-    "\003 \003(\014\022\021\n\timageUris\030\004 \003(\t\".\n\030ProximityCon"
-    "trollPayload\022\022\n\ncommandSec\030\001 \002(\005\"7\n\016Comm"
-    "andPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayl"
-    "oad\030\002 \001(\014*^\n\007Command\022\025\n\021CameraShotReques"
-    "t\020\002\022\022\n\016CameraShotData\020\003\022\021\n\rTweetControll"
-    "\020\004\022\025\n\021ProximityControll\020\005B$\n\"com.eaglesa"
-    "kura.andriders.protocol", 503);
+    "\003 \003(\014\022\021\n\timageUris\030\004 \003(\t\"E\n\030ProximityCon"
+    "trollPayload\022\022\n\ncommandSec\030\001 \002(\005\022\025\n\rextr"
+    "aUniqueId\030\002 \002(\t\"7\n\016CommandPayload\022\017\n\007com"
+    "mand\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*^\n\007Comm"
+    "and\022\025\n\021CameraShotRequest\020\002\022\022\n\016CameraShot"
+    "Data\020\003\022\021\n\rTweetControll\020\004\022\025\n\021ProximityCo"
+    "ntroll\020\005B$\n\"com.eaglesakura.andriders.pr"
+    "otocol", 526);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CommandProtocol.proto", &protobuf_RegisterTypes);
   CameraShotPayload::default_instance_ = new CameraShotPayload();
@@ -921,6 +923,7 @@ void TweetControllPayload::Swap(TweetControllPayload* other) {
 
 #ifndef _MSC_VER
 const int ProximityControllPayload::kCommandSecFieldNumber;
+const int ProximityControllPayload::kExtraUniqueIdFieldNumber;
 #endif  // !_MSC_VER
 
 ProximityControllPayload::ProximityControllPayload()
@@ -940,6 +943,7 @@ ProximityControllPayload::ProximityControllPayload(const ProximityControllPayloa
 void ProximityControllPayload::SharedCtor() {
   _cached_size_ = 0;
   commandsec_ = 0;
+  extrauniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -948,6 +952,9 @@ ProximityControllPayload::~ProximityControllPayload() {
 }
 
 void ProximityControllPayload::SharedDtor() {
+  if (extrauniqueid_ != &::google::protobuf::internal::kEmptyString) {
+    delete extrauniqueid_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -976,6 +983,11 @@ ProximityControllPayload* ProximityControllPayload::New() const {
 void ProximityControllPayload::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     commandsec_ = 0;
+    if (has_extrauniqueid()) {
+      if (extrauniqueid_ != &::google::protobuf::internal::kEmptyString) {
+        extrauniqueid_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -995,6 +1007,23 @@ bool ProximityControllPayload::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &commandsec_)));
           set_has_commandsec();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_extraUniqueId;
+        break;
+      }
+
+      // required string extraUniqueId = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_extraUniqueId:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_extrauniqueid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->extrauniqueid().data(), this->extrauniqueid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -1025,6 +1054,15 @@ void ProximityControllPayload::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->commandsec(), output);
   }
 
+  // required string extraUniqueId = 2;
+  if (has_extrauniqueid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->extrauniqueid().data(), this->extrauniqueid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      2, this->extrauniqueid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1036,6 +1074,16 @@ void ProximityControllPayload::SerializeWithCachedSizes(
   // required int32 commandSec = 1;
   if (has_commandsec()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->commandsec(), target);
+  }
+
+  // required string extraUniqueId = 2;
+  if (has_extrauniqueid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->extrauniqueid().data(), this->extrauniqueid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->extrauniqueid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1054,6 +1102,13 @@ int ProximityControllPayload::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->commandsec());
+    }
+
+    // required string extraUniqueId = 2;
+    if (has_extrauniqueid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->extrauniqueid());
     }
 
   }
@@ -1086,6 +1141,9 @@ void ProximityControllPayload::MergeFrom(const ProximityControllPayload& from) {
     if (from.has_commandsec()) {
       set_commandsec(from.commandsec());
     }
+    if (from.has_extrauniqueid()) {
+      set_extrauniqueid(from.extrauniqueid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1103,7 +1161,7 @@ void ProximityControllPayload::CopyFrom(const ProximityControllPayload& from) {
 }
 
 bool ProximityControllPayload::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   return true;
 }
@@ -1111,6 +1169,7 @@ bool ProximityControllPayload::IsInitialized() const {
 void ProximityControllPayload::Swap(ProximityControllPayload* other) {
   if (other != this) {
     std::swap(commandsec_, other->commandsec_);
+    std::swap(extrauniqueid_, other->extrauniqueid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

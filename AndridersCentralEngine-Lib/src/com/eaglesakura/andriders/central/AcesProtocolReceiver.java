@@ -122,6 +122,11 @@ public class AcesProtocolReceiver {
     private final List<CadenceListener> cadenceListeners = new ArrayList<AcesProtocolReceiver.CadenceListener>();
 
     /**
+     * コマンド
+     */
+    private final List<CommandListener> commandListeners = new ArrayList<AcesProtocolReceiver.CommandListener>();
+
+    /**
      * 心拍を受け取った
      * @param payload
      * @throws Exception
@@ -156,6 +161,8 @@ public class AcesProtocolReceiver {
         // senderが自分であれば反応しない
         // ただし、自分自身が対象である場合は何もしない
         if (selfPackageName.equals(master.getSenderPackage()) && !master.getSenderPackage().equals(targetPackage)) {
+            //            Log.i("ACES", "error sender :: " + master.getSenderPackage());
+            //            Log.i("ACES", "error target :: " + targetPackage);
             return;
         }
 
@@ -165,6 +172,8 @@ public class AcesProtocolReceiver {
                 // 自分自身が対象でないなら
                 if (!targetPackage.equals(selfPackageName) && checkTargetPackage) {
                     // payloadの送信対象じゃないから、何もしない
+                    //                    Log.i("ACES", "target error sender :: " + master.getSenderPackage());
+                    //                    Log.i("ACES", "target error target :: " + targetPackage);
                     return;
                 }
             }
@@ -199,6 +208,16 @@ public class AcesProtocolReceiver {
                     }
                 } catch (Exception e) {
                     AceLog.d(e);
+                }
+            }
+        }
+
+        // コマンドを解析する
+        {
+            List<CommandPayload> payloadsList = master.getCommandPayloadsList();
+            for (CommandPayload cmd : payloadsList) {
+                for (CommandListener listener : commandListeners) {
+                    listener.onCommandReceived(AcesProtocolReceiver.this, master, cmd);
                 }
             }
         }
@@ -242,6 +261,15 @@ public class AcesProtocolReceiver {
     public void addCadenceListener(CadenceListener listener) {
         cadenceListeners.remove(listener);
         cadenceListeners.add(listener);
+    }
+
+    /**
+     * コマンドリスナを追加する
+     * @param listener
+     */
+    public void addCommandListener(CommandListener listener) {
+        commandListeners.remove(listener);
+        commandListeners.add(listener);
     }
 
     /**

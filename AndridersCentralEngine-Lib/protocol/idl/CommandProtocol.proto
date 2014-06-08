@@ -52,6 +52,8 @@ message TweetControllPayload {
 message ProximityControllPayload {
 // 何秒間コマンド入力したか
 	required int32 commandSec = 1;
+	// 近接コマンド指定時に返した拡張UniqueIdが指定される
+	required string extraUniqueId = 2;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル
