@@ -151,15 +151,16 @@ public class AcesProtocolReceiver {
      */
     public void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
+        final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
 
         // senderが自分であれば反応しない
-        if (selfPackageName.equals(master.getSenderPackage())) {
+        // ただし、自分自身が対象である場合は何もしない
+        if (selfPackageName.equals(master.getSenderPackage()) && !master.getSenderPackage().equals(targetPackage)) {
             return;
         }
 
         // target check
         {
-            String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
             if (targetPackage != null) {
                 // 自分自身が対象でないなら
                 if (!targetPackage.equals(selfPackageName) && checkTargetPackage) {

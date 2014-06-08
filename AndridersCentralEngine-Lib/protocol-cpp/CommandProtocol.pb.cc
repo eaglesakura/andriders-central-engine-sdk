@@ -26,6 +26,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* TweetControllPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TweetControllPayload_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ProximityControllPayload_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  ProximityControllPayload_reflection_ = NULL;
 const ::google::protobuf::Descriptor* CommandPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CommandPayload_reflection_ = NULL;
@@ -63,7 +66,7 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, tweetmessage_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, hashtags_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, rawimagefiles_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, storageimagepath_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, imageuris_),
   };
   TweetControllPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -76,7 +79,22 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TweetControllPayload));
-  CommandPayload_descriptor_ = file->message_type(2);
+  ProximityControllPayload_descriptor_ = file->message_type(2);
+  static const int ProximityControllPayload_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProximityControllPayload, commandsec_),
+  };
+  ProximityControllPayload_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      ProximityControllPayload_descriptor_,
+      ProximityControllPayload::default_instance_,
+      ProximityControllPayload_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProximityControllPayload, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ProximityControllPayload, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(ProximityControllPayload));
+  CommandPayload_descriptor_ = file->message_type(3);
   static const int CommandPayload_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandPayload, command_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CommandPayload, extrapayload_),
@@ -110,6 +128,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     TweetControllPayload_descriptor_, &TweetControllPayload::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    ProximityControllPayload_descriptor_, &ProximityControllPayload::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CommandPayload_descriptor_, &CommandPayload::default_instance());
 }
 
@@ -120,6 +140,8 @@ void protobuf_ShutdownFile_CommandProtocol_2eproto() {
   delete CameraShotPayload_reflection_;
   delete TweetControllPayload::default_instance_;
   delete TweetControllPayload_reflection_;
+  delete ProximityControllPayload::default_instance_;
+  delete ProximityControllPayload_reflection_;
   delete CommandPayload::default_instance_;
   delete CommandPayload_reflection_;
 }
@@ -135,22 +157,25 @@ void protobuf_AddDesc_CommandProtocol_2eproto() {
     "\n\025CommandProtocol.proto\022\017eaglesakura_ace"
     "\032\022AceConstants.proto\"`\n\021CameraShotPayloa"
     "d\022\021\n\timageFile\030\001 \001(\014\022\022\n\nimageWidth\030\002 \002(\005"
-    "\022\023\n\013imageHeight\030\003 \002(\005\022\017\n\007imageId\030\004 \002(\t\"o"
+    "\022\023\n\013imageHeight\030\003 \002(\005\022\017\n\007imageId\030\004 \002(\t\"h"
     "\n\024TweetControllPayload\022\024\n\014tweetMessage\030\001"
     " \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\025\n\rrawImageFiles\030"
-    "\003 \003(\014\022\030\n\020storageImagePath\030\004 \003(\t\"7\n\016Comma"
-    "ndPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPaylo"
-    "ad\030\002 \001(\014*^\n\007Command\022\025\n\021CameraShotRequest"
-    "\020\002\022\022\n\016CameraShotData\020\003\022\021\n\rTweetControll\020"
-    "\004\022\025\n\021ProximityControll\020\005B$\n\"com.eaglesak"
-    "ura.andriders.protocol", 462);
+    "\003 \003(\014\022\021\n\timageUris\030\004 \003(\t\".\n\030ProximityCon"
+    "trollPayload\022\022\n\ncommandSec\030\001 \002(\005\"7\n\016Comm"
+    "andPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayl"
+    "oad\030\002 \001(\014*^\n\007Command\022\025\n\021CameraShotReques"
+    "t\020\002\022\022\n\016CameraShotData\020\003\022\021\n\rTweetControll"
+    "\020\004\022\025\n\021ProximityControll\020\005B$\n\"com.eaglesa"
+    "kura.andriders.protocol", 503);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CommandProtocol.proto", &protobuf_RegisterTypes);
   CameraShotPayload::default_instance_ = new CameraShotPayload();
   TweetControllPayload::default_instance_ = new TweetControllPayload();
+  ProximityControllPayload::default_instance_ = new ProximityControllPayload();
   CommandPayload::default_instance_ = new CommandPayload();
   CameraShotPayload::default_instance_->InitAsDefaultInstance();
   TweetControllPayload::default_instance_->InitAsDefaultInstance();
+  ProximityControllPayload::default_instance_->InitAsDefaultInstance();
   CommandPayload::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_CommandProtocol_2eproto);
 }
@@ -538,7 +563,7 @@ void CameraShotPayload::Swap(CameraShotPayload* other) {
 const int TweetControllPayload::kTweetMessageFieldNumber;
 const int TweetControllPayload::kHashtagsFieldNumber;
 const int TweetControllPayload::kRawImageFilesFieldNumber;
-const int TweetControllPayload::kStorageImagePathFieldNumber;
+const int TweetControllPayload::kImageUrisFieldNumber;
 #endif  // !_MSC_VER
 
 TweetControllPayload::TweetControllPayload()
@@ -604,7 +629,7 @@ void TweetControllPayload::Clear() {
   }
   hashtags_.Clear();
   rawimagefiles_.Clear();
-  storageimagepath_.Clear();
+  imageuris_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -661,25 +686,25 @@ bool TweetControllPayload::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(26)) goto parse_rawImageFiles;
-        if (input->ExpectTag(34)) goto parse_storageImagePath;
+        if (input->ExpectTag(34)) goto parse_imageUris;
         break;
       }
 
-      // repeated string storageImagePath = 4;
+      // repeated string imageUris = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_storageImagePath:
+         parse_imageUris:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_storageimagepath()));
+                input, this->add_imageuris()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->storageimagepath(this->storageimagepath_size() - 1).data(),
-            this->storageimagepath(this->storageimagepath_size() - 1).length(),
+            this->imageuris(this->imageuris_size() - 1).data(),
+            this->imageuris(this->imageuris_size() - 1).length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_storageImagePath;
+        if (input->ExpectTag(34)) goto parse_imageUris;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -726,13 +751,13 @@ void TweetControllPayload::SerializeWithCachedSizes(
       3, this->rawimagefiles(i), output);
   }
 
-  // repeated string storageImagePath = 4;
-  for (int i = 0; i < this->storageimagepath_size(); i++) {
+  // repeated string imageUris = 4;
+  for (int i = 0; i < this->imageuris_size(); i++) {
   ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-    this->storageimagepath(i).data(), this->storageimagepath(i).length(),
+    this->imageuris(i).data(), this->imageuris(i).length(),
     ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      4, this->storageimagepath(i), output);
+      4, this->imageuris(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -768,13 +793,13 @@ void TweetControllPayload::SerializeWithCachedSizes(
       WriteBytesToArray(3, this->rawimagefiles(i), target);
   }
 
-  // repeated string storageImagePath = 4;
-  for (int i = 0; i < this->storageimagepath_size(); i++) {
+  // repeated string imageUris = 4;
+  for (int i = 0; i < this->imageuris_size(); i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->storageimagepath(i).data(), this->storageimagepath(i).length(),
+      this->imageuris(i).data(), this->imageuris(i).length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(4, this->storageimagepath(i), target);
+      WriteStringToArray(4, this->imageuris(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -810,11 +835,11 @@ int TweetControllPayload::ByteSize() const {
       this->rawimagefiles(i));
   }
 
-  // repeated string storageImagePath = 4;
-  total_size += 1 * this->storageimagepath_size();
-  for (int i = 0; i < this->storageimagepath_size(); i++) {
+  // repeated string imageUris = 4;
+  total_size += 1 * this->imageuris_size();
+  for (int i = 0; i < this->imageuris_size(); i++) {
     total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->storageimagepath(i));
+      this->imageuris(i));
   }
 
   if (!unknown_fields().empty()) {
@@ -844,7 +869,7 @@ void TweetControllPayload::MergeFrom(const TweetControllPayload& from) {
   GOOGLE_CHECK_NE(&from, this);
   hashtags_.MergeFrom(from.hashtags_);
   rawimagefiles_.MergeFrom(from.rawimagefiles_);
-  storageimagepath_.MergeFrom(from.storageimagepath_);
+  imageuris_.MergeFrom(from.imageuris_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_tweetmessage()) {
       set_tweetmessage(from.tweetmessage());
@@ -876,7 +901,7 @@ void TweetControllPayload::Swap(TweetControllPayload* other) {
     std::swap(tweetmessage_, other->tweetmessage_);
     hashtags_.Swap(&other->hashtags_);
     rawimagefiles_.Swap(&other->rawimagefiles_);
-    storageimagepath_.Swap(&other->storageimagepath_);
+    imageuris_.Swap(&other->imageuris_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -888,6 +913,215 @@ void TweetControllPayload::Swap(TweetControllPayload* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = TweetControllPayload_descriptor_;
   metadata.reflection = TweetControllPayload_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int ProximityControllPayload::kCommandSecFieldNumber;
+#endif  // !_MSC_VER
+
+ProximityControllPayload::ProximityControllPayload()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void ProximityControllPayload::InitAsDefaultInstance() {
+}
+
+ProximityControllPayload::ProximityControllPayload(const ProximityControllPayload& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void ProximityControllPayload::SharedCtor() {
+  _cached_size_ = 0;
+  commandsec_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+ProximityControllPayload::~ProximityControllPayload() {
+  SharedDtor();
+}
+
+void ProximityControllPayload::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void ProximityControllPayload::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* ProximityControllPayload::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ProximityControllPayload_descriptor_;
+}
+
+const ProximityControllPayload& ProximityControllPayload::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_CommandProtocol_2eproto();
+  return *default_instance_;
+}
+
+ProximityControllPayload* ProximityControllPayload::default_instance_ = NULL;
+
+ProximityControllPayload* ProximityControllPayload::New() const {
+  return new ProximityControllPayload;
+}
+
+void ProximityControllPayload::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    commandsec_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool ProximityControllPayload::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 commandSec = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &commandsec_)));
+          set_has_commandsec();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void ProximityControllPayload::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required int32 commandSec = 1;
+  if (has_commandsec()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->commandsec(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* ProximityControllPayload::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required int32 commandSec = 1;
+  if (has_commandsec()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->commandsec(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int ProximityControllPayload::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required int32 commandSec = 1;
+    if (has_commandsec()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->commandsec());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void ProximityControllPayload::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const ProximityControllPayload* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ProximityControllPayload*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void ProximityControllPayload::MergeFrom(const ProximityControllPayload& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_commandsec()) {
+      set_commandsec(from.commandsec());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void ProximityControllPayload::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ProximityControllPayload::CopyFrom(const ProximityControllPayload& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ProximityControllPayload::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void ProximityControllPayload::Swap(ProximityControllPayload* other) {
+  if (other != this) {
+    std::swap(commandsec_, other->commandsec_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata ProximityControllPayload::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = ProximityControllPayload_descriptor_;
+  metadata.reflection = ProximityControllPayload_reflection_;
   return metadata;
 }
 

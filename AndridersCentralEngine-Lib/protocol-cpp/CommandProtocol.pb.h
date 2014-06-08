@@ -37,6 +37,7 @@ void protobuf_ShutdownFile_CommandProtocol_2eproto();
 
 class CameraShotPayload;
 class TweetControllPayload;
+class ProximityControllPayload;
 class CommandPayload;
 
 enum Command {
@@ -282,21 +283,21 @@ class TweetControllPayload : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& rawimagefiles() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_rawimagefiles();
 
-  // repeated string storageImagePath = 4;
-  inline int storageimagepath_size() const;
-  inline void clear_storageimagepath();
-  static const int kStorageImagePathFieldNumber = 4;
-  inline const ::std::string& storageimagepath(int index) const;
-  inline ::std::string* mutable_storageimagepath(int index);
-  inline void set_storageimagepath(int index, const ::std::string& value);
-  inline void set_storageimagepath(int index, const char* value);
-  inline void set_storageimagepath(int index, const char* value, size_t size);
-  inline ::std::string* add_storageimagepath();
-  inline void add_storageimagepath(const ::std::string& value);
-  inline void add_storageimagepath(const char* value);
-  inline void add_storageimagepath(const char* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& storageimagepath() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_storageimagepath();
+  // repeated string imageUris = 4;
+  inline int imageuris_size() const;
+  inline void clear_imageuris();
+  static const int kImageUrisFieldNumber = 4;
+  inline const ::std::string& imageuris(int index) const;
+  inline ::std::string* mutable_imageuris(int index);
+  inline void set_imageuris(int index, const ::std::string& value);
+  inline void set_imageuris(int index, const char* value);
+  inline void set_imageuris(int index, const char* value, size_t size);
+  inline ::std::string* add_imageuris();
+  inline void add_imageuris(const ::std::string& value);
+  inline void add_imageuris(const char* value);
+  inline void add_imageuris(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& imageuris() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_imageuris();
 
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetControllPayload)
  private:
@@ -308,7 +309,7 @@ class TweetControllPayload : public ::google::protobuf::Message {
   ::std::string* tweetmessage_;
   ::google::protobuf::RepeatedPtrField< ::std::string> hashtags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> rawimagefiles_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> storageimagepath_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> imageuris_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
@@ -319,6 +320,88 @@ class TweetControllPayload : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static TweetControllPayload* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ProximityControllPayload : public ::google::protobuf::Message {
+ public:
+  ProximityControllPayload();
+  virtual ~ProximityControllPayload();
+
+  ProximityControllPayload(const ProximityControllPayload& from);
+
+  inline ProximityControllPayload& operator=(const ProximityControllPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ProximityControllPayload& default_instance();
+
+  void Swap(ProximityControllPayload* other);
+
+  // implements Message ----------------------------------------------
+
+  ProximityControllPayload* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ProximityControllPayload& from);
+  void MergeFrom(const ProximityControllPayload& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 commandSec = 1;
+  inline bool has_commandsec() const;
+  inline void clear_commandsec();
+  static const int kCommandSecFieldNumber = 1;
+  inline ::google::protobuf::int32 commandsec() const;
+  inline void set_commandsec(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.ProximityControllPayload)
+ private:
+  inline void set_has_commandsec();
+  inline void clear_has_commandsec();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 commandsec_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_CommandProtocol_2eproto();
+  friend void protobuf_AssignDesc_CommandProtocol_2eproto();
+  friend void protobuf_ShutdownFile_CommandProtocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static ProximityControllPayload* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -775,48 +858,74 @@ TweetControllPayload::mutable_rawimagefiles() {
   return &rawimagefiles_;
 }
 
-// repeated string storageImagePath = 4;
-inline int TweetControllPayload::storageimagepath_size() const {
-  return storageimagepath_.size();
+// repeated string imageUris = 4;
+inline int TweetControllPayload::imageuris_size() const {
+  return imageuris_.size();
 }
-inline void TweetControllPayload::clear_storageimagepath() {
-  storageimagepath_.Clear();
+inline void TweetControllPayload::clear_imageuris() {
+  imageuris_.Clear();
 }
-inline const ::std::string& TweetControllPayload::storageimagepath(int index) const {
-  return storageimagepath_.Get(index);
+inline const ::std::string& TweetControllPayload::imageuris(int index) const {
+  return imageuris_.Get(index);
 }
-inline ::std::string* TweetControllPayload::mutable_storageimagepath(int index) {
-  return storageimagepath_.Mutable(index);
+inline ::std::string* TweetControllPayload::mutable_imageuris(int index) {
+  return imageuris_.Mutable(index);
 }
-inline void TweetControllPayload::set_storageimagepath(int index, const ::std::string& value) {
-  storageimagepath_.Mutable(index)->assign(value);
+inline void TweetControllPayload::set_imageuris(int index, const ::std::string& value) {
+  imageuris_.Mutable(index)->assign(value);
 }
-inline void TweetControllPayload::set_storageimagepath(int index, const char* value) {
-  storageimagepath_.Mutable(index)->assign(value);
+inline void TweetControllPayload::set_imageuris(int index, const char* value) {
+  imageuris_.Mutable(index)->assign(value);
 }
-inline void TweetControllPayload::set_storageimagepath(int index, const char* value, size_t size) {
-  storageimagepath_.Mutable(index)->assign(
+inline void TweetControllPayload::set_imageuris(int index, const char* value, size_t size) {
+  imageuris_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* TweetControllPayload::add_storageimagepath() {
-  return storageimagepath_.Add();
+inline ::std::string* TweetControllPayload::add_imageuris() {
+  return imageuris_.Add();
 }
-inline void TweetControllPayload::add_storageimagepath(const ::std::string& value) {
-  storageimagepath_.Add()->assign(value);
+inline void TweetControllPayload::add_imageuris(const ::std::string& value) {
+  imageuris_.Add()->assign(value);
 }
-inline void TweetControllPayload::add_storageimagepath(const char* value) {
-  storageimagepath_.Add()->assign(value);
+inline void TweetControllPayload::add_imageuris(const char* value) {
+  imageuris_.Add()->assign(value);
 }
-inline void TweetControllPayload::add_storageimagepath(const char* value, size_t size) {
-  storageimagepath_.Add()->assign(reinterpret_cast<const char*>(value), size);
+inline void TweetControllPayload::add_imageuris(const char* value, size_t size) {
+  imageuris_.Add()->assign(reinterpret_cast<const char*>(value), size);
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-TweetControllPayload::storageimagepath() const {
-  return storageimagepath_;
+TweetControllPayload::imageuris() const {
+  return imageuris_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-TweetControllPayload::mutable_storageimagepath() {
-  return &storageimagepath_;
+TweetControllPayload::mutable_imageuris() {
+  return &imageuris_;
+}
+
+// -------------------------------------------------------------------
+
+// ProximityControllPayload
+
+// required int32 commandSec = 1;
+inline bool ProximityControllPayload::has_commandsec() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ProximityControllPayload::set_has_commandsec() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ProximityControllPayload::clear_has_commandsec() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ProximityControllPayload::clear_commandsec() {
+  commandsec_ = 0;
+  clear_has_commandsec();
+}
+inline ::google::protobuf::int32 ProximityControllPayload::commandsec() const {
+  return commandsec_;
+}
+inline void ProximityControllPayload::set_commandsec(::google::protobuf::int32 value) {
+  set_has_commandsec();
+  commandsec_ = value;
 }
 
 // -------------------------------------------------------------------
