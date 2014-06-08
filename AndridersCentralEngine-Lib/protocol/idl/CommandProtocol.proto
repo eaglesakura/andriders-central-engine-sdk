@@ -45,7 +45,13 @@ message TweetControllPayload {
 
 	// 画像ファイルへのパス
 	// Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-	repeated string storageImagePath = 4;
+	repeated string imageUris = 4;
+}
+
+// 近接コマンド
+message ProximityControllPayload {
+// 何秒間コマンド入力したか
+	required int32 commandSec = 1;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル
