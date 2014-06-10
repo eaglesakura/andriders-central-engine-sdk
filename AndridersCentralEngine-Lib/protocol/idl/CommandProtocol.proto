@@ -1,36 +1,44 @@
 package eaglesakura_ace;
 
 import "AceConstants.proto";
+import "GeoProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // 標準コマンド
 enum Command {
-// カメラでの撮影を行わせる
-	CameraShotRequest = 2;
+// 拡張機能トリガー起動された
+// トリガーは近接/GEO/活動がある
+	ExtensionTrigger = 1;
 
-	// カメラ撮影の撮影データ
-	// extraPayloadに撮影された画像を格納する。
-	CameraShotData = 3;
+	// ACEsを制御する
+	AcesControl = 2;
+}
 
-	// Twitter接続コマンド
-	TweetControll = 4;
+// コマンド起動のトリガータイプ
+enum TriggerType {
+// 近接トリガー
+	Promiximity = 1;
+	// GEOコマンド
+	Geo = 2;
+	// 活動コマンド
+	Activity = 3;
+}
 
-	// 近接コマンド
-	ProximityControll = 5;
+// ACEsを制御するためのコマンド
+enum AcesControllCommand {
+	// ツイートを行わせる
+	TweetRequest = 2;
 }
 
 // カメラの撮影データを格納する
 message CameraShotPayload {
-// 撮影データ
+// 撮影データの保存先
 // 撮影に失敗した場合はnullが入る
-	optional bytes imageFile = 1;
+	optional string imageUri = 1;
 	// 画像幅
 	required int32 imageWidth = 2;
 	// 画像高さ
 	required int32 imageHeight = 3;
-	// 画像を一意に識別するためのID
-	// ${imageId}.jpgとしてストレージへ保存される
-	required string imageId = 4;
 }
 
 // ツイートしたい内容を格納する
@@ -40,20 +48,24 @@ message TweetControllPayload {
 	// ハッシュタグ一覧
 	repeated string hashtags = 2;
 
-	// 同時に投稿する画像ファイルリスト
-	repeated bytes rawImageFiles = 3;
-
-	// 画像ファイルへのパス
+	// 画像ファイルへのURI一覧
 	// Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
 	repeated string imageUris = 4;
 }
 
-// 近接コマンド
-message ProximityControllPayload {
-// 何秒間コマンド入力したか
-	required int32 commandSec = 1;
+// コマンド用payload
+message TriggerPayload {
+// 起動タイプ
+	required TriggerType type = 1;
 	// 近接コマンド指定時に返した拡張UniqueIdが指定される
 	required string extraUniqueId = 2;
+	// 何秒間コマンド入力したか
+	optional int32 commandSec = 3;
+	// 現在位置
+	optional Location location = 4;
+	// ロケーション移動の種類
+	// 侵入・離脱
+	optional LocationMoving moving = 5;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル

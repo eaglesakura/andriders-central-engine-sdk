@@ -26,6 +26,7 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "AceConstants.pb.h"
+#include "GeoProtocol.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace eaglesakura_ace {
@@ -37,18 +38,16 @@ void protobuf_ShutdownFile_CommandProtocol_2eproto();
 
 class CameraShotPayload;
 class TweetControllPayload;
-class ProximityControllPayload;
+class TriggerPayload;
 class CommandPayload;
 
 enum Command {
-  CameraShotRequest = 2,
-  CameraShotData = 3,
-  TweetControll = 4,
-  ProximityControll = 5
+  ExtensionTrigger = 1,
+  AcesControl = 2
 };
 bool Command_IsValid(int value);
-const Command Command_MIN = CameraShotRequest;
-const Command Command_MAX = ProximityControll;
+const Command Command_MIN = ExtensionTrigger;
+const Command Command_MAX = AcesControl;
 const int Command_ARRAYSIZE = Command_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Command_descriptor();
@@ -60,6 +59,44 @@ inline bool Command_Parse(
     const ::std::string& name, Command* value) {
   return ::google::protobuf::internal::ParseNamedEnum<Command>(
     Command_descriptor(), name, value);
+}
+enum TriggerType {
+  Promiximity = 1,
+  Geo = 2,
+  Activity = 3
+};
+bool TriggerType_IsValid(int value);
+const TriggerType TriggerType_MIN = Promiximity;
+const TriggerType TriggerType_MAX = Activity;
+const int TriggerType_ARRAYSIZE = TriggerType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* TriggerType_descriptor();
+inline const ::std::string& TriggerType_Name(TriggerType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    TriggerType_descriptor(), value);
+}
+inline bool TriggerType_Parse(
+    const ::std::string& name, TriggerType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<TriggerType>(
+    TriggerType_descriptor(), name, value);
+}
+enum AcesControllCommand {
+  TweetRequest = 2
+};
+bool AcesControllCommand_IsValid(int value);
+const AcesControllCommand AcesControllCommand_MIN = TweetRequest;
+const AcesControllCommand AcesControllCommand_MAX = TweetRequest;
+const int AcesControllCommand_ARRAYSIZE = AcesControllCommand_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AcesControllCommand_descriptor();
+inline const ::std::string& AcesControllCommand_Name(AcesControllCommand value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AcesControllCommand_descriptor(), value);
+}
+inline bool AcesControllCommand_Parse(
+    const ::std::string& name, AcesControllCommand* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AcesControllCommand>(
+    AcesControllCommand_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -117,17 +154,17 @@ class CameraShotPayload : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional bytes imageFile = 1;
-  inline bool has_imagefile() const;
-  inline void clear_imagefile();
-  static const int kImageFileFieldNumber = 1;
-  inline const ::std::string& imagefile() const;
-  inline void set_imagefile(const ::std::string& value);
-  inline void set_imagefile(const char* value);
-  inline void set_imagefile(const void* value, size_t size);
-  inline ::std::string* mutable_imagefile();
-  inline ::std::string* release_imagefile();
-  inline void set_allocated_imagefile(::std::string* imagefile);
+  // optional string imageUri = 1;
+  inline bool has_imageuri() const;
+  inline void clear_imageuri();
+  static const int kImageUriFieldNumber = 1;
+  inline const ::std::string& imageuri() const;
+  inline void set_imageuri(const ::std::string& value);
+  inline void set_imageuri(const char* value);
+  inline void set_imageuri(const char* value, size_t size);
+  inline ::std::string* mutable_imageuri();
+  inline ::std::string* release_imageuri();
+  inline void set_allocated_imageuri(::std::string* imageuri);
 
   // required int32 imageWidth = 2;
   inline bool has_imagewidth() const;
@@ -143,38 +180,23 @@ class CameraShotPayload : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 imageheight() const;
   inline void set_imageheight(::google::protobuf::int32 value);
 
-  // required string imageId = 4;
-  inline bool has_imageid() const;
-  inline void clear_imageid();
-  static const int kImageIdFieldNumber = 4;
-  inline const ::std::string& imageid() const;
-  inline void set_imageid(const ::std::string& value);
-  inline void set_imageid(const char* value);
-  inline void set_imageid(const char* value, size_t size);
-  inline ::std::string* mutable_imageid();
-  inline ::std::string* release_imageid();
-  inline void set_allocated_imageid(::std::string* imageid);
-
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.CameraShotPayload)
  private:
-  inline void set_has_imagefile();
-  inline void clear_has_imagefile();
+  inline void set_has_imageuri();
+  inline void clear_has_imageuri();
   inline void set_has_imagewidth();
   inline void clear_has_imagewidth();
   inline void set_has_imageheight();
   inline void clear_has_imageheight();
-  inline void set_has_imageid();
-  inline void clear_has_imageid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* imagefile_;
+  ::std::string* imageuri_;
   ::google::protobuf::int32 imagewidth_;
   ::google::protobuf::int32 imageheight_;
-  ::std::string* imageid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
@@ -267,22 +289,6 @@ class TweetControllPayload : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& hashtags() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_hashtags();
 
-  // repeated bytes rawImageFiles = 3;
-  inline int rawimagefiles_size() const;
-  inline void clear_rawimagefiles();
-  static const int kRawImageFilesFieldNumber = 3;
-  inline const ::std::string& rawimagefiles(int index) const;
-  inline ::std::string* mutable_rawimagefiles(int index);
-  inline void set_rawimagefiles(int index, const ::std::string& value);
-  inline void set_rawimagefiles(int index, const char* value);
-  inline void set_rawimagefiles(int index, const void* value, size_t size);
-  inline ::std::string* add_rawimagefiles();
-  inline void add_rawimagefiles(const ::std::string& value);
-  inline void add_rawimagefiles(const char* value);
-  inline void add_rawimagefiles(const void* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& rawimagefiles() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_rawimagefiles();
-
   // repeated string imageUris = 4;
   inline int imageuris_size() const;
   inline void clear_imageuris();
@@ -308,11 +314,10 @@ class TweetControllPayload : public ::google::protobuf::Message {
 
   ::std::string* tweetmessage_;
   ::google::protobuf::RepeatedPtrField< ::std::string> hashtags_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> rawimagefiles_;
   ::google::protobuf::RepeatedPtrField< ::std::string> imageuris_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
@@ -323,14 +328,14 @@ class TweetControllPayload : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class ProximityControllPayload : public ::google::protobuf::Message {
+class TriggerPayload : public ::google::protobuf::Message {
  public:
-  ProximityControllPayload();
-  virtual ~ProximityControllPayload();
+  TriggerPayload();
+  virtual ~TriggerPayload();
 
-  ProximityControllPayload(const ProximityControllPayload& from);
+  TriggerPayload(const TriggerPayload& from);
 
-  inline ProximityControllPayload& operator=(const ProximityControllPayload& from) {
+  inline TriggerPayload& operator=(const TriggerPayload& from) {
     CopyFrom(from);
     return *this;
   }
@@ -344,17 +349,17 @@ class ProximityControllPayload : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const ProximityControllPayload& default_instance();
+  static const TriggerPayload& default_instance();
 
-  void Swap(ProximityControllPayload* other);
+  void Swap(TriggerPayload* other);
 
   // implements Message ----------------------------------------------
 
-  ProximityControllPayload* New() const;
+  TriggerPayload* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const ProximityControllPayload& from);
-  void MergeFrom(const ProximityControllPayload& from);
+  void CopyFrom(const TriggerPayload& from);
+  void MergeFrom(const TriggerPayload& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -377,12 +382,12 @@ class ProximityControllPayload : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required int32 commandSec = 1;
-  inline bool has_commandsec() const;
-  inline void clear_commandsec();
-  static const int kCommandSecFieldNumber = 1;
-  inline ::google::protobuf::int32 commandsec() const;
-  inline void set_commandsec(::google::protobuf::int32 value);
+  // required .eaglesakura_ace.TriggerType type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::eaglesakura_ace::TriggerType type() const;
+  inline void set_type(::eaglesakura_ace::TriggerType value);
 
   // required string extraUniqueId = 2;
   inline bool has_extrauniqueid() const;
@@ -396,27 +401,59 @@ class ProximityControllPayload : public ::google::protobuf::Message {
   inline ::std::string* release_extrauniqueid();
   inline void set_allocated_extrauniqueid(::std::string* extrauniqueid);
 
-  // @@protoc_insertion_point(class_scope:eaglesakura_ace.ProximityControllPayload)
+  // optional int32 commandSec = 3;
+  inline bool has_commandsec() const;
+  inline void clear_commandsec();
+  static const int kCommandSecFieldNumber = 3;
+  inline ::google::protobuf::int32 commandsec() const;
+  inline void set_commandsec(::google::protobuf::int32 value);
+
+  // optional .eaglesakura_ace.Location location = 4;
+  inline bool has_location() const;
+  inline void clear_location();
+  static const int kLocationFieldNumber = 4;
+  inline const ::eaglesakura_ace::Location& location() const;
+  inline ::eaglesakura_ace::Location* mutable_location();
+  inline ::eaglesakura_ace::Location* release_location();
+  inline void set_allocated_location(::eaglesakura_ace::Location* location);
+
+  // optional .eaglesakura_ace.LocationMoving moving = 5;
+  inline bool has_moving() const;
+  inline void clear_moving();
+  static const int kMovingFieldNumber = 5;
+  inline ::eaglesakura_ace::LocationMoving moving() const;
+  inline void set_moving(::eaglesakura_ace::LocationMoving value);
+
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.TriggerPayload)
  private:
-  inline void set_has_commandsec();
-  inline void clear_has_commandsec();
+  inline void set_has_type();
+  inline void clear_has_type();
   inline void set_has_extrauniqueid();
   inline void clear_has_extrauniqueid();
+  inline void set_has_commandsec();
+  inline void clear_has_commandsec();
+  inline void set_has_location();
+  inline void clear_has_location();
+  inline void set_has_moving();
+  inline void clear_has_moving();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* extrauniqueid_;
+  int type_;
   ::google::protobuf::int32 commandsec_;
+  ::eaglesakura_ace::Location* location_;
+  int moving_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
   friend void protobuf_ShutdownFile_CommandProtocol_2eproto();
 
   void InitAsDefaultInstance();
-  static ProximityControllPayload* default_instance_;
+  static TriggerPayload* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -527,73 +564,73 @@ class CommandPayload : public ::google::protobuf::Message {
 
 // CameraShotPayload
 
-// optional bytes imageFile = 1;
-inline bool CameraShotPayload::has_imagefile() const {
+// optional string imageUri = 1;
+inline bool CameraShotPayload::has_imageuri() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void CameraShotPayload::set_has_imagefile() {
+inline void CameraShotPayload::set_has_imageuri() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void CameraShotPayload::clear_has_imagefile() {
+inline void CameraShotPayload::clear_has_imageuri() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void CameraShotPayload::clear_imagefile() {
-  if (imagefile_ != &::google::protobuf::internal::kEmptyString) {
-    imagefile_->clear();
+inline void CameraShotPayload::clear_imageuri() {
+  if (imageuri_ != &::google::protobuf::internal::kEmptyString) {
+    imageuri_->clear();
   }
-  clear_has_imagefile();
+  clear_has_imageuri();
 }
-inline const ::std::string& CameraShotPayload::imagefile() const {
-  return *imagefile_;
+inline const ::std::string& CameraShotPayload::imageuri() const {
+  return *imageuri_;
 }
-inline void CameraShotPayload::set_imagefile(const ::std::string& value) {
-  set_has_imagefile();
-  if (imagefile_ == &::google::protobuf::internal::kEmptyString) {
-    imagefile_ = new ::std::string;
+inline void CameraShotPayload::set_imageuri(const ::std::string& value) {
+  set_has_imageuri();
+  if (imageuri_ == &::google::protobuf::internal::kEmptyString) {
+    imageuri_ = new ::std::string;
   }
-  imagefile_->assign(value);
+  imageuri_->assign(value);
 }
-inline void CameraShotPayload::set_imagefile(const char* value) {
-  set_has_imagefile();
-  if (imagefile_ == &::google::protobuf::internal::kEmptyString) {
-    imagefile_ = new ::std::string;
+inline void CameraShotPayload::set_imageuri(const char* value) {
+  set_has_imageuri();
+  if (imageuri_ == &::google::protobuf::internal::kEmptyString) {
+    imageuri_ = new ::std::string;
   }
-  imagefile_->assign(value);
+  imageuri_->assign(value);
 }
-inline void CameraShotPayload::set_imagefile(const void* value, size_t size) {
-  set_has_imagefile();
-  if (imagefile_ == &::google::protobuf::internal::kEmptyString) {
-    imagefile_ = new ::std::string;
+inline void CameraShotPayload::set_imageuri(const char* value, size_t size) {
+  set_has_imageuri();
+  if (imageuri_ == &::google::protobuf::internal::kEmptyString) {
+    imageuri_ = new ::std::string;
   }
-  imagefile_->assign(reinterpret_cast<const char*>(value), size);
+  imageuri_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* CameraShotPayload::mutable_imagefile() {
-  set_has_imagefile();
-  if (imagefile_ == &::google::protobuf::internal::kEmptyString) {
-    imagefile_ = new ::std::string;
+inline ::std::string* CameraShotPayload::mutable_imageuri() {
+  set_has_imageuri();
+  if (imageuri_ == &::google::protobuf::internal::kEmptyString) {
+    imageuri_ = new ::std::string;
   }
-  return imagefile_;
+  return imageuri_;
 }
-inline ::std::string* CameraShotPayload::release_imagefile() {
-  clear_has_imagefile();
-  if (imagefile_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* CameraShotPayload::release_imageuri() {
+  clear_has_imageuri();
+  if (imageuri_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = imagefile_;
-    imagefile_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = imageuri_;
+    imageuri_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void CameraShotPayload::set_allocated_imagefile(::std::string* imagefile) {
-  if (imagefile_ != &::google::protobuf::internal::kEmptyString) {
-    delete imagefile_;
+inline void CameraShotPayload::set_allocated_imageuri(::std::string* imageuri) {
+  if (imageuri_ != &::google::protobuf::internal::kEmptyString) {
+    delete imageuri_;
   }
-  if (imagefile) {
-    set_has_imagefile();
-    imagefile_ = imagefile;
+  if (imageuri) {
+    set_has_imageuri();
+    imageuri_ = imageuri;
   } else {
-    clear_has_imagefile();
-    imagefile_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_imageuri();
+    imageuri_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 
@@ -639,76 +676,6 @@ inline ::google::protobuf::int32 CameraShotPayload::imageheight() const {
 inline void CameraShotPayload::set_imageheight(::google::protobuf::int32 value) {
   set_has_imageheight();
   imageheight_ = value;
-}
-
-// required string imageId = 4;
-inline bool CameraShotPayload::has_imageid() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void CameraShotPayload::set_has_imageid() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void CameraShotPayload::clear_has_imageid() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void CameraShotPayload::clear_imageid() {
-  if (imageid_ != &::google::protobuf::internal::kEmptyString) {
-    imageid_->clear();
-  }
-  clear_has_imageid();
-}
-inline const ::std::string& CameraShotPayload::imageid() const {
-  return *imageid_;
-}
-inline void CameraShotPayload::set_imageid(const ::std::string& value) {
-  set_has_imageid();
-  if (imageid_ == &::google::protobuf::internal::kEmptyString) {
-    imageid_ = new ::std::string;
-  }
-  imageid_->assign(value);
-}
-inline void CameraShotPayload::set_imageid(const char* value) {
-  set_has_imageid();
-  if (imageid_ == &::google::protobuf::internal::kEmptyString) {
-    imageid_ = new ::std::string;
-  }
-  imageid_->assign(value);
-}
-inline void CameraShotPayload::set_imageid(const char* value, size_t size) {
-  set_has_imageid();
-  if (imageid_ == &::google::protobuf::internal::kEmptyString) {
-    imageid_ = new ::std::string;
-  }
-  imageid_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* CameraShotPayload::mutable_imageid() {
-  set_has_imageid();
-  if (imageid_ == &::google::protobuf::internal::kEmptyString) {
-    imageid_ = new ::std::string;
-  }
-  return imageid_;
-}
-inline ::std::string* CameraShotPayload::release_imageid() {
-  clear_has_imageid();
-  if (imageid_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = imageid_;
-    imageid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void CameraShotPayload::set_allocated_imageid(::std::string* imageid) {
-  if (imageid_ != &::google::protobuf::internal::kEmptyString) {
-    delete imageid_;
-  }
-  if (imageid) {
-    set_has_imageid();
-    imageid_ = imageid;
-  } else {
-    clear_has_imageid();
-    imageid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
 }
 
 // -------------------------------------------------------------------
@@ -829,50 +796,6 @@ TweetControllPayload::mutable_hashtags() {
   return &hashtags_;
 }
 
-// repeated bytes rawImageFiles = 3;
-inline int TweetControllPayload::rawimagefiles_size() const {
-  return rawimagefiles_.size();
-}
-inline void TweetControllPayload::clear_rawimagefiles() {
-  rawimagefiles_.Clear();
-}
-inline const ::std::string& TweetControllPayload::rawimagefiles(int index) const {
-  return rawimagefiles_.Get(index);
-}
-inline ::std::string* TweetControllPayload::mutable_rawimagefiles(int index) {
-  return rawimagefiles_.Mutable(index);
-}
-inline void TweetControllPayload::set_rawimagefiles(int index, const ::std::string& value) {
-  rawimagefiles_.Mutable(index)->assign(value);
-}
-inline void TweetControllPayload::set_rawimagefiles(int index, const char* value) {
-  rawimagefiles_.Mutable(index)->assign(value);
-}
-inline void TweetControllPayload::set_rawimagefiles(int index, const void* value, size_t size) {
-  rawimagefiles_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* TweetControllPayload::add_rawimagefiles() {
-  return rawimagefiles_.Add();
-}
-inline void TweetControllPayload::add_rawimagefiles(const ::std::string& value) {
-  rawimagefiles_.Add()->assign(value);
-}
-inline void TweetControllPayload::add_rawimagefiles(const char* value) {
-  rawimagefiles_.Add()->assign(value);
-}
-inline void TweetControllPayload::add_rawimagefiles(const void* value, size_t size) {
-  rawimagefiles_.Add()->assign(reinterpret_cast<const char*>(value), size);
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-TweetControllPayload::rawimagefiles() const {
-  return rawimagefiles_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-TweetControllPayload::mutable_rawimagefiles() {
-  return &rawimagefiles_;
-}
-
 // repeated string imageUris = 4;
 inline int TweetControllPayload::imageuris_size() const {
   return imageuris_.size();
@@ -919,78 +842,79 @@ TweetControllPayload::mutable_imageuris() {
 
 // -------------------------------------------------------------------
 
-// ProximityControllPayload
+// TriggerPayload
 
-// required int32 commandSec = 1;
-inline bool ProximityControllPayload::has_commandsec() const {
+// required .eaglesakura_ace.TriggerType type = 1;
+inline bool TriggerPayload::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void ProximityControllPayload::set_has_commandsec() {
+inline void TriggerPayload::set_has_type() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void ProximityControllPayload::clear_has_commandsec() {
+inline void TriggerPayload::clear_has_type() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void ProximityControllPayload::clear_commandsec() {
-  commandsec_ = 0;
-  clear_has_commandsec();
+inline void TriggerPayload::clear_type() {
+  type_ = 1;
+  clear_has_type();
 }
-inline ::google::protobuf::int32 ProximityControllPayload::commandsec() const {
-  return commandsec_;
+inline ::eaglesakura_ace::TriggerType TriggerPayload::type() const {
+  return static_cast< ::eaglesakura_ace::TriggerType >(type_);
 }
-inline void ProximityControllPayload::set_commandsec(::google::protobuf::int32 value) {
-  set_has_commandsec();
-  commandsec_ = value;
+inline void TriggerPayload::set_type(::eaglesakura_ace::TriggerType value) {
+  assert(::eaglesakura_ace::TriggerType_IsValid(value));
+  set_has_type();
+  type_ = value;
 }
 
 // required string extraUniqueId = 2;
-inline bool ProximityControllPayload::has_extrauniqueid() const {
+inline bool TriggerPayload::has_extrauniqueid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void ProximityControllPayload::set_has_extrauniqueid() {
+inline void TriggerPayload::set_has_extrauniqueid() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void ProximityControllPayload::clear_has_extrauniqueid() {
+inline void TriggerPayload::clear_has_extrauniqueid() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void ProximityControllPayload::clear_extrauniqueid() {
+inline void TriggerPayload::clear_extrauniqueid() {
   if (extrauniqueid_ != &::google::protobuf::internal::kEmptyString) {
     extrauniqueid_->clear();
   }
   clear_has_extrauniqueid();
 }
-inline const ::std::string& ProximityControllPayload::extrauniqueid() const {
+inline const ::std::string& TriggerPayload::extrauniqueid() const {
   return *extrauniqueid_;
 }
-inline void ProximityControllPayload::set_extrauniqueid(const ::std::string& value) {
+inline void TriggerPayload::set_extrauniqueid(const ::std::string& value) {
   set_has_extrauniqueid();
   if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
     extrauniqueid_ = new ::std::string;
   }
   extrauniqueid_->assign(value);
 }
-inline void ProximityControllPayload::set_extrauniqueid(const char* value) {
+inline void TriggerPayload::set_extrauniqueid(const char* value) {
   set_has_extrauniqueid();
   if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
     extrauniqueid_ = new ::std::string;
   }
   extrauniqueid_->assign(value);
 }
-inline void ProximityControllPayload::set_extrauniqueid(const char* value, size_t size) {
+inline void TriggerPayload::set_extrauniqueid(const char* value, size_t size) {
   set_has_extrauniqueid();
   if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
     extrauniqueid_ = new ::std::string;
   }
   extrauniqueid_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* ProximityControllPayload::mutable_extrauniqueid() {
+inline ::std::string* TriggerPayload::mutable_extrauniqueid() {
   set_has_extrauniqueid();
   if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
     extrauniqueid_ = new ::std::string;
   }
   return extrauniqueid_;
 }
-inline ::std::string* ProximityControllPayload::release_extrauniqueid() {
+inline ::std::string* TriggerPayload::release_extrauniqueid() {
   clear_has_extrauniqueid();
   if (extrauniqueid_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -1000,7 +924,7 @@ inline ::std::string* ProximityControllPayload::release_extrauniqueid() {
     return temp;
   }
 }
-inline void ProximityControllPayload::set_allocated_extrauniqueid(::std::string* extrauniqueid) {
+inline void TriggerPayload::set_allocated_extrauniqueid(::std::string* extrauniqueid) {
   if (extrauniqueid_ != &::google::protobuf::internal::kEmptyString) {
     delete extrauniqueid_;
   }
@@ -1011,6 +935,89 @@ inline void ProximityControllPayload::set_allocated_extrauniqueid(::std::string*
     clear_has_extrauniqueid();
     extrauniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// optional int32 commandSec = 3;
+inline bool TriggerPayload::has_commandsec() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TriggerPayload::set_has_commandsec() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TriggerPayload::clear_has_commandsec() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TriggerPayload::clear_commandsec() {
+  commandsec_ = 0;
+  clear_has_commandsec();
+}
+inline ::google::protobuf::int32 TriggerPayload::commandsec() const {
+  return commandsec_;
+}
+inline void TriggerPayload::set_commandsec(::google::protobuf::int32 value) {
+  set_has_commandsec();
+  commandsec_ = value;
+}
+
+// optional .eaglesakura_ace.Location location = 4;
+inline bool TriggerPayload::has_location() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TriggerPayload::set_has_location() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void TriggerPayload::clear_has_location() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void TriggerPayload::clear_location() {
+  if (location_ != NULL) location_->::eaglesakura_ace::Location::Clear();
+  clear_has_location();
+}
+inline const ::eaglesakura_ace::Location& TriggerPayload::location() const {
+  return location_ != NULL ? *location_ : *default_instance_->location_;
+}
+inline ::eaglesakura_ace::Location* TriggerPayload::mutable_location() {
+  set_has_location();
+  if (location_ == NULL) location_ = new ::eaglesakura_ace::Location;
+  return location_;
+}
+inline ::eaglesakura_ace::Location* TriggerPayload::release_location() {
+  clear_has_location();
+  ::eaglesakura_ace::Location* temp = location_;
+  location_ = NULL;
+  return temp;
+}
+inline void TriggerPayload::set_allocated_location(::eaglesakura_ace::Location* location) {
+  delete location_;
+  location_ = location;
+  if (location) {
+    set_has_location();
+  } else {
+    clear_has_location();
+  }
+}
+
+// optional .eaglesakura_ace.LocationMoving moving = 5;
+inline bool TriggerPayload::has_moving() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void TriggerPayload::set_has_moving() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void TriggerPayload::clear_has_moving() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void TriggerPayload::clear_moving() {
+  moving_ = 1;
+  clear_has_moving();
+}
+inline ::eaglesakura_ace::LocationMoving TriggerPayload::moving() const {
+  return static_cast< ::eaglesakura_ace::LocationMoving >(moving_);
+}
+inline void TriggerPayload::set_moving(::eaglesakura_ace::LocationMoving value) {
+  assert(::eaglesakura_ace::LocationMoving_IsValid(value));
+  set_has_moving();
+  moving_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1169,6 +1176,14 @@ namespace protobuf {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::Command>() {
   return ::eaglesakura_ace::Command_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::TriggerType>() {
+  return ::eaglesakura_ace::TriggerType_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::AcesControllCommand>() {
+  return ::eaglesakura_ace::AcesControllCommand_descriptor();
 }
 
 }  // namespace google

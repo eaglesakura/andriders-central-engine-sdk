@@ -1,0 +1,30 @@
+package eaglesakura_ace;
+
+import "AceConstants.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// GPS座標
+message Location {
+// 北緯
+	required double latitude = 1;
+	// 東経
+	required double longitude = 2;
+}
+
+enum LocationMoving {
+	// 指定ロケーションに侵入した
+	In = 1;
+	// 指定ロケーションから離脱した
+	Out = 2;
+}
+
+// 現在位置の情報伝達
+message GeoStatus {
+// 現在のGPS座標
+	required Location loc = 1;
+
+	// ジオハッシュ情報
+	// GPS座標を文字列化することで、DBとの親和性を高く出来る
+	// ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+	required string geohash = 2;
+}

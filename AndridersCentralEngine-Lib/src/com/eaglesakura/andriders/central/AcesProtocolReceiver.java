@@ -11,7 +11,9 @@ import android.content.IntentFilter;
 import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol.Command;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
@@ -216,8 +218,22 @@ public class AcesProtocolReceiver {
         {
             List<CommandPayload> payloadsList = master.getCommandPayloadsList();
             for (CommandPayload cmd : payloadsList) {
+                String cmdName = cmd.getCommand();
+                TriggerPayload trigger = null;
+                // 拡張機能トリガー
+                if (Command.ExtensionTrigger.name().equals(cmdName)) {
+                    trigger = TriggerPayload.parseFrom(cmd.getExtraPayload());
+                }
+
                 for (CommandListener listener : commandListeners) {
-                    listener.onCommandReceived(AcesProtocolReceiver.this, master, cmd);
+                    // 拡張機能トリガー
+                    if (trigger != null) {
+                        // 拡張トリガーを受け取った
+                        listener.onExtensionTriggerReceived(AcesProtocolReceiver.this, master, cmd, trigger);
+                    } else if (listener instanceof CommandListener2) {
+                        // その他のコマンドを受け取った
+                        ((CommandListener2) listener).onCommandReceived(AcesProtocolReceiver.this, master, cmd);
+                    }
                 }
             }
         }
@@ -314,6 +330,27 @@ public class AcesProtocolReceiver {
      * コマンドを受け取った
      */
     public interface CommandListener {
+        /**
+         * 拡張機能トリガーイベントを受け取った
+         * @param receiver
+         * @param payload
+         * @param rawCommand
+         * @param trigger
+         */
+        void onExtensionTriggerReceived(AcesProtocolReceiver receiver, MasterPayload payload, CommandPayload rawCommand, TriggerPayload trigger);
+    }
+
+    /**
+     * 拡張コマンドも対応したListener
+     * こちらの実装義務はない
+     */
+    public interface CommandListener2 extends CommandListener {
+        /**
+         * その他のコマンドを受け取った
+         * @param receiver
+         * @param payload
+         * @param command
+         */
         void onCommandReceived(AcesProtocolReceiver receiver, MasterPayload payload, CommandPayload command);
     }
 

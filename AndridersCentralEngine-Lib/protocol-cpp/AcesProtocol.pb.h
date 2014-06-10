@@ -27,6 +27,7 @@
 #include "AceConstants.pb.h"
 #include "SensorProtocol.pb.h"
 #include "CommandProtocol.pb.h"
+#include "GeoProtocol.pb.h"
 // @@protoc_insertion_point(includes)
 
 namespace eaglesakura_ace {
@@ -352,6 +353,15 @@ class MasterPayload : public ::google::protobuf::Message {
   inline ::eaglesakura_ace::CentralStatus* release_centralstatus();
   inline void set_allocated_centralstatus(::eaglesakura_ace::CentralStatus* centralstatus);
 
+  // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+  inline bool has_geostatus() const;
+  inline void clear_geostatus();
+  static const int kGeoStatusFieldNumber = 8;
+  inline const ::eaglesakura_ace::GeoStatus& geostatus() const;
+  inline ::eaglesakura_ace::GeoStatus* mutable_geostatus();
+  inline ::eaglesakura_ace::GeoStatus* release_geostatus();
+  inline void set_allocated_geostatus(::eaglesakura_ace::GeoStatus* geostatus);
+
   // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
   inline int sensorpayloads_size() const;
   inline void clear_sensorpayloads();
@@ -388,6 +398,8 @@ class MasterPayload : public ::google::protobuf::Message {
   inline void clear_has_targetpackage();
   inline void set_has_centralstatus();
   inline void clear_has_centralstatus();
+  inline void set_has_geostatus();
+  inline void clear_has_geostatus();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -396,11 +408,12 @@ class MasterPayload : public ::google::protobuf::Message {
   ::std::string* senderpackage_;
   ::std::string* targetpackage_;
   ::eaglesakura_ace::CentralStatus* centralstatus_;
+  ::eaglesakura_ace::GeoStatus* geostatus_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload > sensorpayloads_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload > commandpayloads_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesProtocol_2eproto();
   friend void protobuf_AssignDesc_AcesProtocol_2eproto();
@@ -897,6 +910,44 @@ inline void MasterPayload::set_allocated_centralstatus(::eaglesakura_ace::Centra
     set_has_centralstatus();
   } else {
     clear_has_centralstatus();
+  }
+}
+
+// optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+inline bool MasterPayload::has_geostatus() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void MasterPayload::set_has_geostatus() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void MasterPayload::clear_has_geostatus() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void MasterPayload::clear_geostatus() {
+  if (geostatus_ != NULL) geostatus_->::eaglesakura_ace::GeoStatus::Clear();
+  clear_has_geostatus();
+}
+inline const ::eaglesakura_ace::GeoStatus& MasterPayload::geostatus() const {
+  return geostatus_ != NULL ? *geostatus_ : *default_instance_->geostatus_;
+}
+inline ::eaglesakura_ace::GeoStatus* MasterPayload::mutable_geostatus() {
+  set_has_geostatus();
+  if (geostatus_ == NULL) geostatus_ = new ::eaglesakura_ace::GeoStatus;
+  return geostatus_;
+}
+inline ::eaglesakura_ace::GeoStatus* MasterPayload::release_geostatus() {
+  clear_has_geostatus();
+  ::eaglesakura_ace::GeoStatus* temp = geostatus_;
+  geostatus_ = NULL;
+  return temp;
+}
+inline void MasterPayload::set_allocated_geostatus(::eaglesakura_ace::GeoStatus* geostatus) {
+  delete geostatus_;
+  geostatus_ = geostatus;
+  if (geostatus) {
+    set_has_geostatus();
+  } else {
+    clear_has_geostatus();
   }
 }
 

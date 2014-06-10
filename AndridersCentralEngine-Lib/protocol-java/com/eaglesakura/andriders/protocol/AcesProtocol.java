@@ -1509,6 +1509,32 @@ public final class AcesProtocol {
      */
     com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatusOrBuilder getCentralStatusOrBuilder();
 
+    // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+    /**
+     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     *
+     * <pre>
+     * ユーザーのGPS座標ステータス
+     * </pre>
+     */
+    boolean hasGeoStatus();
+    /**
+     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     *
+     * <pre>
+     * ユーザーのGPS座標ステータス
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getGeoStatus();
+    /**
+     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     *
+     * <pre>
+     * ユーザーのGPS座標ステータス
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder getGeoStatusOrBuilder();
+
     // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
     /**
      * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -1668,9 +1694,9 @@ public final class AcesProtocol {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000040;
               }
               sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.PARSER, extensionRegistry));
               break;
@@ -1686,9 +1712,9 @@ public final class AcesProtocol {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
                 commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000080;
               }
               commandPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.PARSER, extensionRegistry));
               break;
@@ -1703,6 +1729,19 @@ public final class AcesProtocol {
               senderPackage_ = input.readBytes();
               break;
             }
+            case 66: {
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = geoStatus_.toBuilder();
+              }
+              geoStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(geoStatus_);
+                geoStatus_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1711,10 +1750,10 @@ public final class AcesProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
         }
         this.unknownFields = unknownFields.build();
@@ -2015,6 +2054,40 @@ public final class AcesProtocol {
       return centralStatus_;
     }
 
+    // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+    public static final int GEOSTATUS_FIELD_NUMBER = 8;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus geoStatus_;
+    /**
+     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     *
+     * <pre>
+     * ユーザーのGPS座標ステータス
+     * </pre>
+     */
+    public boolean hasGeoStatus() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     *
+     * <pre>
+     * ユーザーのGPS座標ステータス
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getGeoStatus() {
+      return geoStatus_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     *
+     * <pre>
+     * ユーザーのGPS座標ステータス
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder getGeoStatusOrBuilder() {
+      return geoStatus_;
+    }
+
     // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
     public static final int SENSORPAYLOADS_FIELD_NUMBER = 2;
     private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_;
@@ -2133,6 +2206,7 @@ public final class AcesProtocol {
       senderPackage_ = "";
       targetPackage_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
+      geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
       commandPayloads_ = java.util.Collections.emptyList();
     }
@@ -2155,6 +2229,12 @@ public final class AcesProtocol {
       }
       if (hasCentralStatus()) {
         if (!getCentralStatus().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasGeoStatus()) {
+        if (!getGeoStatus().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -2199,6 +2279,9 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(7, getSenderPackageBytes());
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(8, geoStatus_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2235,6 +2318,10 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getSenderPackageBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, geoStatus_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2349,6 +2436,7 @@ public final class AcesProtocol {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getCentralStatusFieldBuilder();
+          getGeoStatusFieldBuilder();
           getSensorPayloadsFieldBuilder();
           getCommandPayloadsFieldBuilder();
         }
@@ -2373,15 +2461,21 @@ public final class AcesProtocol {
           centralStatusBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (geoStatusBuilder_ == null) {
+          geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+        } else {
+          geoStatusBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000040);
         } else {
           sensorPayloadsBuilder_.clear();
         }
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
           commandPayloadsBuilder_.clear();
         }
@@ -2437,19 +2531,27 @@ public final class AcesProtocol {
         } else {
           result.centralStatus_ = centralStatusBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (geoStatusBuilder_ == null) {
+          result.geoStatus_ = geoStatus_;
+        } else {
+          result.geoStatus_ = geoStatusBuilder_.build();
+        }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000040);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
           result.sensorPayloads_ = sensorPayloadsBuilder_.build();
         }
         if (commandPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
             commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
           }
           result.commandPayloads_ = commandPayloads_;
         } else {
@@ -2494,11 +2596,14 @@ public final class AcesProtocol {
         if (other.hasCentralStatus()) {
           mergeCentralStatus(other.getCentralStatus());
         }
+        if (other.hasGeoStatus()) {
+          mergeGeoStatus(other.getGeoStatus());
+        }
         if (sensorPayloadsBuilder_ == null) {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000040);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -2511,7 +2616,7 @@ public final class AcesProtocol {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000040);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -2524,7 +2629,7 @@ public final class AcesProtocol {
           if (!other.commandPayloads_.isEmpty()) {
             if (commandPayloads_.isEmpty()) {
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
             } else {
               ensureCommandPayloadsIsMutable();
               commandPayloads_.addAll(other.commandPayloads_);
@@ -2537,7 +2642,7 @@ public final class AcesProtocol {
               commandPayloadsBuilder_.dispose();
               commandPayloadsBuilder_ = null;
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
               commandPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCommandPayloadsFieldBuilder() : null;
@@ -2565,6 +2670,12 @@ public final class AcesProtocol {
         }
         if (hasCentralStatus()) {
           if (!getCentralStatus().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasGeoStatus()) {
+          if (!getGeoStatus().isInitialized()) {
             
             return false;
           }
@@ -3172,13 +3283,166 @@ public final class AcesProtocol {
         return centralStatusBuilder_;
       }
 
+      // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder> geoStatusBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public boolean hasGeoStatus() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getGeoStatus() {
+        if (geoStatusBuilder_ == null) {
+          return geoStatus_;
+        } else {
+          return geoStatusBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public Builder setGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus value) {
+        if (geoStatusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          geoStatus_ = value;
+          onChanged();
+        } else {
+          geoStatusBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public Builder setGeoStatus(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder builderForValue) {
+        if (geoStatusBuilder_ == null) {
+          geoStatus_ = builderForValue.build();
+          onChanged();
+        } else {
+          geoStatusBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public Builder mergeGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus value) {
+        if (geoStatusBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              geoStatus_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance()) {
+            geoStatus_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.newBuilder(geoStatus_).mergeFrom(value).buildPartial();
+          } else {
+            geoStatus_ = value;
+          }
+          onChanged();
+        } else {
+          geoStatusBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public Builder clearGeoStatus() {
+        if (geoStatusBuilder_ == null) {
+          geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+          onChanged();
+        } else {
+          geoStatusBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder getGeoStatusBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getGeoStatusFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder getGeoStatusOrBuilder() {
+        if (geoStatusBuilder_ != null) {
+          return geoStatusBuilder_.getMessageOrBuilder();
+        } else {
+          return geoStatus_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       *
+       * <pre>
+       * ユーザーのGPS座標ステータス
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder> 
+          getGeoStatusFieldBuilder() {
+        if (geoStatusBuilder_ == null) {
+          geoStatusBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder>(
+                  geoStatus_,
+                  getParentForChildren(),
+                  isClean());
+          geoStatus_ = null;
+        }
+        return geoStatusBuilder_;
+      }
+
       // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
       private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
          }
       }
 
@@ -3371,7 +3635,7 @@ public final class AcesProtocol {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000040);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -3476,7 +3740,7 @@ public final class AcesProtocol {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
@@ -3488,9 +3752,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_ =
         java.util.Collections.emptyList();
       private void ensureCommandPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>(commandPayloads_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000080;
          }
       }
 
@@ -3683,7 +3947,7 @@ public final class AcesProtocol {
       public Builder clearCommandPayloads() {
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
         } else {
           commandPayloadsBuilder_.clear();
@@ -3788,7 +4052,7 @@ public final class AcesProtocol {
           commandPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder>(
                   commandPayloads_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
           commandPayloads_ = null;
@@ -3833,19 +4097,20 @@ public final class AcesProtocol {
     java.lang.String[] descriptorData = {
       "\n\022AcesProtocol.proto\022\017eaglesakura_ace\032\022A" +
       "ceConstants.proto\032\024SensorProtocol.proto\032" +
-      "\025CommandProtocol.proto\">\n\013VersionInfo\022\027\n" +
-      "\017protocolVersion\030\001 \002(\003\022\026\n\016appVersionName" +
-      "\030\002 \002(\t\"_\n\rCentralStatus\022\032\n\022connectedHear" +
-      "trate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(\010\022\030\n" +
-      "\020connectedTwitter\030\003 \002(\010\"\215\002\n\rMasterPayloa" +
-      "d\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t" +
-      "\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPackage" +
-      "\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesak",
-      "ura_ace.CentralStatus\0226\n\016sensorPayloads\030" +
-      "\002 \003(\0132\036.eaglesakura_ace.SensorPayload\0228\n" +
-      "\017commandPayloads\030\005 \003(\0132\037.eaglesakura_ace" +
-      ".CommandPayloadB$\n\"com.eaglesakura.andri" +
-      "ders.protocol"
+      "\025CommandProtocol.proto\032\021GeoProtocol.prot" +
+      "o\">\n\013VersionInfo\022\027\n\017protocolVersion\030\001 \002(" +
+      "\003\022\026\n\016appVersionName\030\002 \002(\t\"_\n\rCentralStat" +
+      "us\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020connec" +
+      "tedCadence\030\002 \002(\010\022\030\n\020connectedTwitter\030\003 \002" +
+      "(\010\"\274\002\n\rMasterPayload\022\020\n\010uniqueId\030\004 \002(\t\022\023" +
+      "\n\013createdDate\030\003 \002(\t\022\025\n\rsenderPackage\030\007 \002" +
+      "(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rcentralStat",
+      "us\030\001 \001(\0132\036.eaglesakura_ace.CentralStatus" +
+      "\022-\n\tgeoStatus\030\010 \001(\0132\032.eaglesakura_ace.Ge" +
+      "oStatus\0226\n\016sensorPayloads\030\002 \003(\0132\036.eagles" +
+      "akura_ace.SensorPayload\0228\n\017commandPayloa" +
+      "ds\030\005 \003(\0132\037.eaglesakura_ace.CommandPayloa" +
+      "dB$\n\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3869,7 +4134,7 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "SensorPayloads", "CommandPayloads", });
+              new java.lang.String[] { "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "GeoStatus", "SensorPayloads", "CommandPayloads", });
           return null;
         }
       };
@@ -3879,6 +4144,7 @@ public final class AcesProtocol {
           com.eaglesakura.andriders.protocol.AceConstants.getDescriptor(),
           com.eaglesakura.andriders.protocol.SensorProtocol.getDescriptor(),
           com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor(),
+          com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
         }, assigner);
   }
 

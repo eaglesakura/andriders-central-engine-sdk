@@ -13,7 +13,8 @@ import android.content.Intent;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
-import com.eaglesakura.andriders.protocol.CommandProtocol.ProximityControllPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType;
 
 /**
  * コマンド送信用Util
@@ -55,11 +56,18 @@ public class AcesCommandBuilder {
      * @param payload
      * @param commandTimeSec
      */
-    public AcesCommandBuilder addProximityCommand(ProximityControllPayload payload) {
+    public AcesCommandBuilder addProximityCommand(int commandTimeSec, String uniqueId) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
 
-        builder.setCommand(CommandProtocol.Command.ProximityControll.name());
-        builder.setExtraPayload(payload.toByteString());
+        builder.setCommand(CommandProtocol.Command.ExtensionTrigger.name());
+        // トリガー情報を指定する
+        {
+            TriggerPayload.Builder triggerBuilder = TriggerPayload.newBuilder();
+            triggerBuilder.setType(TriggerType.Promiximity);
+            triggerBuilder.setCommandSec(commandTimeSec);
+            triggerBuilder.setExtraUniqueId(uniqueId);
+            builder.setExtraPayload(triggerBuilder.build().toByteString());
+        }
 
         commands.add(builder.build());
 

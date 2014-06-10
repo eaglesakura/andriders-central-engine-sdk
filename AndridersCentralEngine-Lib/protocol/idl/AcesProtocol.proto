@@ -3,6 +3,7 @@ package eaglesakura_ace;
 import "AceConstants.proto";
 import "SensorProtocol.proto";
 import "CommandProtocol.proto";
+import "GeoProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // セントラルサービスのバージョン
@@ -49,6 +50,9 @@ message MasterPayload {
 
 	// セントラルアプリのステータス
 	optional CentralStatus centralStatus = 1;
+
+	// ユーザーのGPS座標ステータス
+	optional GeoStatus geoStatus = 8;
 
 	// センサーの値
 	repeated SensorPayload sensorPayloads = 2;
