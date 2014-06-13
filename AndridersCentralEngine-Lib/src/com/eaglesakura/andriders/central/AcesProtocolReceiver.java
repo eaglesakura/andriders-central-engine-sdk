@@ -16,6 +16,7 @@ import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
+import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
 import com.google.protobuf.ByteString;
@@ -122,6 +123,11 @@ public class AcesProtocolReceiver {
      * ケイデンス受信
      */
     private final List<CadenceListener> cadenceListeners = new ArrayList<AcesProtocolReceiver.CadenceListener>();
+
+    /**
+     * 速度受信
+     */
+    private final List<SpeedListener> speedListeners = new ArrayList<AcesProtocolReceiver.SpeedListener>();
 
     /**
      * コマンド
@@ -280,6 +286,15 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * スピードリスナを追加する
+     * @param listener
+     */
+    public void addSpeedListener(SpeedListener listener) {
+        speedListeners.remove(listener);
+        speedListeners.add(listener);
+    }
+
+    /**
      * コマンドリスナを追加する
      * @param listener
      */
@@ -310,6 +325,21 @@ public class AcesProtocolReceiver {
      */
     public void removeCadenceListener(CadenceListener listener) {
         cadenceListeners.remove(listener);
+    }
+
+    /**
+     * スピードリスナを削除する
+     * @param listener
+     */
+    public void removeSpeedListener(SpeedListener listener) {
+        speedListeners.remove(listener);
+    }
+
+    /**
+     * 速度リスナー
+     */
+    public interface SpeedListener {
+        void onSpeedReceived(AcesProtocolReceiver receiver, MasterPayload master, RawSpeed speed);
     }
 
     /**

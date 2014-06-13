@@ -12,24 +12,24 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 
 /**
- * 近接コマンド完了設定を行う
+ * 各種コマンドコマンド完了設定を行う
  */
 public class TriggerSetupResultBuilder {
 
     /**
      * サムネイル指定
      */
-    public static final String RESULT_EXTRA_THUMBNAIL_ICON = "PROXIMITY_RESULT_EXTRA_THUMBNAIL_ICON";
+    public static final String RESULT_EXTRA_THUMBNAIL_ICON = "TRIGGER_RESULT_EXTRA_THUMBNAIL_ICON";
 
     /**
      * 識別IDを指定する
      */
-    public static final String RESULT_EXTRA_UNIQUE_ID = "PROXIMITY_RESULT_EXTRA_UNIQUE_ID";
+    public static final String RESULT_EXTRA_UNIQUE_ID = "TRIGGER_RESULT_EXTRA_UNIQUE_ID";
 
     /**
      * 識別IDを指定する
      */
-    public static final String RESULT_EXTRA_PACKAGE_NAME = "PROXIMITY_RESULT_EXTRA_PACKAGE_NAME";
+    public static final String RESULT_EXTRA_PACKAGE_NAME = "TRIGGER_RESULT_EXTRA_PACKAGE_NAME";
 
     /**
      * 格納データ

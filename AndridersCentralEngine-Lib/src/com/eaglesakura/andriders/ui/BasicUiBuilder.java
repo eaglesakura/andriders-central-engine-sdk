@@ -31,18 +31,9 @@ public class BasicUiBuilder {
     private static int zoneErrorColor;
 
     /**
-     * ケイデンスUIタイトル
-     */
-    private static String cadenceUiTitle;
-
-    /**
      * 心拍ゾーンのタイトル
      */
     private static String[] cadenceZoneTable;
-    /**
-     * 心拍UIタイトル
-     */
-    private static String heartrateUiTitle;
 
     /**
      * 心拍ゾーンのタイトル
@@ -76,7 +67,6 @@ public class BasicUiBuilder {
         }
         // ケイデンス
         {
-            cadenceUiTitle = res.getString(R.string.AceUI_Information_Cadence);
             cadenceZoneTable = new String[] {
                     res.getString(R.string.AceUI_Zone_Cadence_Easy), // 軽度
                     res.getString(R.string.AceUI_Zone_Cadence_Beginner), // ビギナー
@@ -85,7 +75,6 @@ public class BasicUiBuilder {
         }
         // 心拍
         {
-            heartrateUiTitle = res.getString(R.string.AceUI_Information_Heartrate);
             heartrateZoneTable = new String[] {
                     res.getString(R.string.AceUI_Zone_Heartrate_Repose), // 安静
                     res.getString(R.string.AceUI_Zone_Heartrate_Easy), // 軽度
@@ -151,7 +140,6 @@ public class BasicUiBuilder {
      */
     public View build(View root, MasterPayload master, RawHeartrate heartrate) {
         AQuery q = new AQuery(root);
-        q.id(R.id.AceUI_BasicUI_Title).text(heartrateUiTitle);
         if (master.getCentralStatus().getConnectedHeartrate()) {
             q.id(R.id.AceUI_BasicUI_Value).text(String.valueOf(heartrate.getBpm()));
         } else {
@@ -170,7 +158,6 @@ public class BasicUiBuilder {
      */
     public View build(View root, MasterPayload master, RawCadence cadence) {
         AQuery q = new AQuery(root);
-        q.id(R.id.AceUI_BasicUI_Title).text(cadenceUiTitle);
         if (master.getCentralStatus().getConnectedCadence()) {
             q.id(R.id.AceUI_BasicUI_Value).text(String.valueOf(cadence.getRpm()));
         } else {
