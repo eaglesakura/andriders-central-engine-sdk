@@ -13,6 +13,7 @@ import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
+import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
 import com.eaglesakura.andriders.ui.BasicUiBuilder;
 
 /**
@@ -72,6 +73,7 @@ public class SystemViewManager {
             receiver = new AcesProtocolReceiver(service);
             receiver.addCadenceListener(cadenceListenerImpl);
             receiver.addHeartrateListener(heartrateListenerImpl);
+            receiver.addSpeedListener(speedListenerImpl);
             receiver.connect();
         }
     }
@@ -118,6 +120,19 @@ public class SystemViewManager {
             // cadence
             AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Cadence_Root));
             uiBuilder.build(q.getView(), master, cadence);
+        }
+    };
+
+    /**
+     * 速度受信
+     */
+    AcesProtocolReceiver.SpeedListener speedListenerImpl = new AcesProtocolReceiver.SpeedListener() {
+        @Override
+        public void onSpeedReceived(AcesProtocolReceiver receiver, MasterPayload master, RawSpeed speed) {
+            // speed
+            View current = systemView.findViewById(R.id.SystemLayer_Speed_Root);
+            View max = systemView.findViewById(R.id.SystemLayer_MaxSpeed_Root);
+            uiBuilder.build(current, max, master, speed);
         }
     };
 }

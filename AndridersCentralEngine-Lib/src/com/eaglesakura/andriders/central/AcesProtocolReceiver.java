@@ -159,6 +159,19 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * 速度を受け取った
+     * @param master
+     * @param payload
+     * @throws Exception
+     */
+    private void onSpeedReceived(MasterPayload master, ByteString payload) throws Exception {
+        RawSpeed speed = RawSpeed.parseFrom(payload);
+        for (SpeedListener listener : speedListeners) {
+            listener.onSpeedReceived(this, master, speed);
+        }
+    }
+
+    /**
      * 最上位ペイロードを受け取った
      * @param master
      */
@@ -210,6 +223,10 @@ public class AcesProtocolReceiver {
                         case CadenceSensor:
                             // ケイデンス
                             onCadenceReceived(master, payload.getBuffer());
+                            break;
+                        case SpeedSensor:
+                            // スピード
+                            onSpeedReceived(master, payload.getBuffer());
                             break;
                         default:
                             break;

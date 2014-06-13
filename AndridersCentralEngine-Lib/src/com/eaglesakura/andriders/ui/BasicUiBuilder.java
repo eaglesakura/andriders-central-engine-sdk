@@ -11,6 +11,8 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone;
+import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
+import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone;
 
 /**
  * ACE用のシンプルな（標準的な）UIを構築するためのビルダーを提供する。
@@ -39,6 +41,11 @@ public class BasicUiBuilder {
      * 心拍ゾーンのタイトル
      */
     private static String[] heartrateZoneTable;
+
+    /**
+     * 速度ゾーンのタイトル
+     */
+    private static String[] speedZoneTable;
 
     private static boolean initialized = false;
 
@@ -84,6 +91,15 @@ public class BasicUiBuilder {
                     res.getString(R.string.AceUI_Zone_Heartrate_Overwork), // 危険域
             };
         }
+        // 速度
+        {
+            speedZoneTable = new String[] {
+                    res.getString(R.string.AceUI_Zone_Speed_Stop), // 停止
+                    res.getString(R.string.AceUI_Zone_Speed_Slow), // 低速
+                    res.getString(R.string.AceUI_Zone_Speed_Cruise), // 巡航
+                    res.getString(R.string.AceUI_Zone_Speed_Sprint), // スプリント
+            };
+        }
         initialized = true;
     }
 
@@ -106,12 +122,41 @@ public class BasicUiBuilder {
     }
 
     /**
+     * スピードゾーンから色を取得する
+     * @param zone
+     * @return
+     */
+    public int getZoneClor(SpeedZone zone) {
+        switch (zone) {
+            case Stop:
+                return zoneColorTable[0];
+            case Slow:
+                return zoneColorTable[1];
+            case Cruise:
+                return zoneColorTable[4];
+            case Sprint:
+                return zoneColorTable[6];
+        }
+
+        return zoneErrorColor;
+    }
+
+    /**
      * ケイデンスゾーンのタイトルを取得する
      * @param zone
      * @return
      */
     public String getZoneInfoText(CadenceZone zone) {
         return cadenceZoneTable[zone.getNumber()];
+    }
+
+    /**
+     * スピードゾーンのタイトルを取得する
+     * @param zone
+     * @return
+     */
+    public String getZoneInfoText(SpeedZone zone) {
+        return speedZoneTable[zone.getNumber()];
     }
 
     /**
@@ -166,5 +211,33 @@ public class BasicUiBuilder {
         q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(getZoneColor(cadence.getCadenceZone()));
         q.id(R.id.AceUI_BasicUI_ZoneTitle).text(getZoneInfoText(cadence.getCadenceZone()));
         return root;
+    }
+
+    /**
+     * 速度表示をビルドする
+     * @param currentSpeedView
+     * @param maxSpeedView
+     * @param master
+     * @param speed
+     * @return
+     */
+    public void build(View currentSpeedView, View maxSpeedView, MasterPayload master, RawSpeed speed) {
+        // 現在速度を指定
+        if (currentSpeedView != null) {
+            AQuery q = new AQuery(currentSpeedView);
+
+            if (master.getCentralStatus().getConnectedSpeed()) {
+                q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.02f", speed.getSpeedKmPerHour()));
+            } else {
+                q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
+            }
+            q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(getZoneClor(speed.getSpeedZone()));
+            q.id(R.id.AceUI_BasicUI_ZoneTitle).text(getZoneInfoText(speed.getSpeedZone()));
+        }
+        // 最高速度を指定
+        if (maxSpeedView != null) {
+            AQuery q = new AQuery(maxSpeedView);
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.02f", speed.getMaxKmPerHour()));
+        }
     }
 }
