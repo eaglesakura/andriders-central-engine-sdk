@@ -26,7 +26,7 @@ enum TriggerType {
 
 // ACEsを制御するためのコマンド
 enum AcesControllCommand {
-	// ツイートを行わせる
+// ツイートを行わせる
 	TweetRequest = 2;
 }
 
@@ -42,15 +42,23 @@ message CameraShotPayload {
 }
 
 // ツイートしたい内容を格納する
-message TweetControllPayload {
+message TweetRequestPayload {
 // ツイートする内容
 	required string tweetMessage = 1;
 	// ハッシュタグ一覧
+	// その他、強制的に #andriders が付与される。
 	repeated string hashtags = 2;
 
 	// 画像ファイルへのURI一覧
 	// Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
 	repeated string imageUris = 4;
+
+	// ツイートオプション/ケイデンス
+	optional bool withCadence = 5;
+	// ツイートオプション/心拍
+	optional bool withHeartrate = 6;
+	// ツイートオプション/スピード
+	optional bool withSpeed = 7;
 }
 
 // コマンド用payload

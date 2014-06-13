@@ -19,12 +19,12 @@ enum LocationMoving {
 }
 
 // 現在位置の情報伝達
-message GeoStatus {
+message GeoPayload {
 // 現在のGPS座標
 	required Location loc = 1;
 
 	// ジオハッシュ情報
 	// GPS座標を文字列化することで、DBとの親和性を高く出来る
-	// ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+	// ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
 	required string geohash = 2;
 }

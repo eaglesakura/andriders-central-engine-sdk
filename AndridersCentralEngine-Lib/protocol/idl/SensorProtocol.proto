@@ -9,6 +9,8 @@ enum SensorType {
 	HeartrateMonitor = 0;
 	// ケイデンスセンサー
 	CadenceSensor = 1;
+	// スピードセンサー
+	SpeedSensor = 2;
 }
 
 // ケイデンス連携データ
@@ -51,7 +53,33 @@ message RawHeartrate {
 	// 心拍ゾーン
 	// 運動レベルのチェックをするが、個人差が大きいため設定値が必要
 	// UIでユーザー設定値を入力する必要がある
-	optional HeartrateZone heartrateZone = 101;
+	required HeartrateZone heartrateZone = 101;
+}
+
+// スピード連携データ
+message RawSpeed {
+// スピード km/h
+	required float speedKmPerHour = 1;
+	// ホイールの回転数
+	required float wheelRpm = 2;
+
+	// 今までの最高速度
+	required float maxKmPerHour = 10;
+
+	// 速度ゾーン
+	enum SpeedZone {
+	// 停止領域
+		Stop = 0;
+		// 低速
+		Slow = 1;
+		// 巡航
+		Cruise = 2;
+		// スプリント
+		Sprint = 3;
+	}
+
+	// 速度ゾーン
+	required SpeedZone speedZone = 101;
 }
 
 // センサー情報のペイロード

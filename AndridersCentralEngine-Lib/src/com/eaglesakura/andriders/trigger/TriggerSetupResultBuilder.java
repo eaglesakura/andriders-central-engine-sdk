@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.proximity;
+package com.eaglesakura.andriders.trigger;
 
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
@@ -14,7 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 /**
  * 近接コマンド完了設定を行う
  */
-public class ProximityResultBuilder {
+public class TriggerSetupResultBuilder {
 
     /**
      * サムネイル指定
@@ -47,7 +47,7 @@ public class ProximityResultBuilder {
 
     private String uniqueId = UUID.randomUUID().toString();
 
-    public ProximityResultBuilder(Activity activity, boolean commitOk) {
+    public TriggerSetupResultBuilder(Activity activity, boolean commitOk) {
         this.activity = activity;
         if (commitOk) {
             resultCode = Activity.RESULT_OK;
