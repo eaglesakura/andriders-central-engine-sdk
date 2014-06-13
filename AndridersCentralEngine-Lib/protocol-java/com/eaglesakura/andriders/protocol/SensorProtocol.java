@@ -33,6 +33,14 @@ public final class SensorProtocol {
      * </pre>
      */
     CadenceSensor(1, 1),
+    /**
+     * <code>SpeedSensor = 2;</code>
+     *
+     * <pre>
+     * スピードセンサー
+     * </pre>
+     */
+    SpeedSensor(2, 2),
     ;
 
     /**
@@ -51,6 +59,14 @@ public final class SensorProtocol {
      * </pre>
      */
     public static final int CadenceSensor_VALUE = 1;
+    /**
+     * <code>SpeedSensor = 2;</code>
+     *
+     * <pre>
+     * スピードセンサー
+     * </pre>
+     */
+    public static final int SpeedSensor_VALUE = 2;
 
 
     public final int getNumber() { return value; }
@@ -59,6 +75,7 @@ public final class SensorProtocol {
       switch (value) {
         case 0: return HeartrateMonitor;
         case 1: return CadenceSensor;
+        case 2: return SpeedSensor;
         default: return null;
       }
     }
@@ -822,9 +839,9 @@ public final class SensorProtocol {
      */
     int getBpm();
 
-    // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+    // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+     * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
      *
      * <pre>
      * 心拍ゾーン
@@ -834,7 +851,7 @@ public final class SensorProtocol {
      */
     boolean hasHeartrateZone();
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+     * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
      *
      * <pre>
      * 心拍ゾーン
@@ -1145,11 +1162,11 @@ public final class SensorProtocol {
       return bpm_;
     }
 
-    // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+    // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
     public static final int HEARTRATEZONE_FIELD_NUMBER = 101;
     private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone heartrateZone_;
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+     * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
      *
      * <pre>
      * 心拍ゾーン
@@ -1161,7 +1178,7 @@ public final class SensorProtocol {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+     * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
      *
      * <pre>
      * 心拍ゾーン
@@ -1183,6 +1200,10 @@ public final class SensorProtocol {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasBpm()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHeartrateZone()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1407,6 +1428,10 @@ public final class SensorProtocol {
           
           return false;
         }
+        if (!hasHeartrateZone()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -1478,10 +1503,10 @@ public final class SensorProtocol {
         return this;
       }
 
-      // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+      // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
       private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone heartrateZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone.Repose;
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+       * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
        *
        * <pre>
        * 心拍ゾーン
@@ -1493,7 +1518,7 @@ public final class SensorProtocol {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+       * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
        *
        * <pre>
        * 心拍ゾーン
@@ -1505,7 +1530,7 @@ public final class SensorProtocol {
         return heartrateZone_;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+       * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
        *
        * <pre>
        * 心拍ゾーン
@@ -1523,7 +1548,7 @@ public final class SensorProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
+       * <code>required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;</code>
        *
        * <pre>
        * 心拍ゾーン
@@ -1547,6 +1572,958 @@ public final class SensorProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawHeartrate)
+  }
+
+  public interface RawSpeedOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required float speedKmPerHour = 1;
+    /**
+     * <code>required float speedKmPerHour = 1;</code>
+     *
+     * <pre>
+     * スピード km/h
+     * </pre>
+     */
+    boolean hasSpeedKmPerHour();
+    /**
+     * <code>required float speedKmPerHour = 1;</code>
+     *
+     * <pre>
+     * スピード km/h
+     * </pre>
+     */
+    float getSpeedKmPerHour();
+
+    // optional float wheelRpm = 2;
+    /**
+     * <code>optional float wheelRpm = 2;</code>
+     *
+     * <pre>
+     * ホイールの回転数
+     * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+     * </pre>
+     */
+    boolean hasWheelRpm();
+    /**
+     * <code>optional float wheelRpm = 2;</code>
+     *
+     * <pre>
+     * ホイールの回転数
+     * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+     * </pre>
+     */
+    float getWheelRpm();
+
+    // required float maxKmPerHour = 10;
+    /**
+     * <code>required float maxKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    boolean hasMaxKmPerHour();
+    /**
+     * <code>required float maxKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    float getMaxKmPerHour();
+
+    // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+    /**
+     * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+     *
+     * <pre>
+     * 速度ゾーン
+     * </pre>
+     */
+    boolean hasSpeedZone();
+    /**
+     * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+     *
+     * <pre>
+     * 速度ゾーン
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone getSpeedZone();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.RawSpeed}
+   *
+   * <pre>
+   * スピード連携データ
+   * </pre>
+   */
+  public static final class RawSpeed extends
+      com.google.protobuf.GeneratedMessage
+      implements RawSpeedOrBuilder {
+    // Use RawSpeed.newBuilder() to construct.
+    private RawSpeed(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RawSpeed(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RawSpeed defaultInstance;
+    public static RawSpeed getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RawSpeed getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RawSpeed(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 13: {
+              bitField0_ |= 0x00000001;
+              speedKmPerHour_ = input.readFloat();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              wheelRpm_ = input.readFloat();
+              break;
+            }
+            case 85: {
+              bitField0_ |= 0x00000004;
+              maxKmPerHour_ = input.readFloat();
+              break;
+            }
+            case 808: {
+              int rawValue = input.readEnum();
+              com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone value = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(101, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                speedZone_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_RawSpeed_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.class, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RawSpeed> PARSER =
+        new com.google.protobuf.AbstractParser<RawSpeed>() {
+      public RawSpeed parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RawSpeed(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RawSpeed> getParserForType() {
+      return PARSER;
+    }
+
+    /**
+     * Protobuf enum {@code eaglesakura_ace.RawSpeed.SpeedZone}
+     *
+     * <pre>
+     * 速度ゾーン
+     * </pre>
+     */
+    public enum SpeedZone
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>Stop = 0;</code>
+       *
+       * <pre>
+       * 停止領域
+       * </pre>
+       */
+      Stop(0, 0),
+      /**
+       * <code>Slow = 1;</code>
+       *
+       * <pre>
+       * 低速
+       * </pre>
+       */
+      Slow(1, 1),
+      /**
+       * <code>Cruise = 2;</code>
+       *
+       * <pre>
+       * 巡航
+       * </pre>
+       */
+      Cruise(2, 2),
+      /**
+       * <code>Sprint = 3;</code>
+       *
+       * <pre>
+       * スプリント
+       * </pre>
+       */
+      Sprint(3, 3),
+      ;
+
+      /**
+       * <code>Stop = 0;</code>
+       *
+       * <pre>
+       * 停止領域
+       * </pre>
+       */
+      public static final int Stop_VALUE = 0;
+      /**
+       * <code>Slow = 1;</code>
+       *
+       * <pre>
+       * 低速
+       * </pre>
+       */
+      public static final int Slow_VALUE = 1;
+      /**
+       * <code>Cruise = 2;</code>
+       *
+       * <pre>
+       * 巡航
+       * </pre>
+       */
+      public static final int Cruise_VALUE = 2;
+      /**
+       * <code>Sprint = 3;</code>
+       *
+       * <pre>
+       * スプリント
+       * </pre>
+       */
+      public static final int Sprint_VALUE = 3;
+
+
+      public final int getNumber() { return value; }
+
+      public static SpeedZone valueOf(int value) {
+        switch (value) {
+          case 0: return Stop;
+          case 1: return Slow;
+          case 2: return Cruise;
+          case 3: return Sprint;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<SpeedZone>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<SpeedZone>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<SpeedZone>() {
+              public SpeedZone findValueByNumber(int number) {
+                return SpeedZone.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final SpeedZone[] VALUES = values();
+
+      public static SpeedZone valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private SpeedZone(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:eaglesakura_ace.RawSpeed.SpeedZone)
+    }
+
+    private int bitField0_;
+    // required float speedKmPerHour = 1;
+    public static final int SPEEDKMPERHOUR_FIELD_NUMBER = 1;
+    private float speedKmPerHour_;
+    /**
+     * <code>required float speedKmPerHour = 1;</code>
+     *
+     * <pre>
+     * スピード km/h
+     * </pre>
+     */
+    public boolean hasSpeedKmPerHour() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required float speedKmPerHour = 1;</code>
+     *
+     * <pre>
+     * スピード km/h
+     * </pre>
+     */
+    public float getSpeedKmPerHour() {
+      return speedKmPerHour_;
+    }
+
+    // optional float wheelRpm = 2;
+    public static final int WHEELRPM_FIELD_NUMBER = 2;
+    private float wheelRpm_;
+    /**
+     * <code>optional float wheelRpm = 2;</code>
+     *
+     * <pre>
+     * ホイールの回転数
+     * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+     * </pre>
+     */
+    public boolean hasWheelRpm() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional float wheelRpm = 2;</code>
+     *
+     * <pre>
+     * ホイールの回転数
+     * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+     * </pre>
+     */
+    public float getWheelRpm() {
+      return wheelRpm_;
+    }
+
+    // required float maxKmPerHour = 10;
+    public static final int MAXKMPERHOUR_FIELD_NUMBER = 10;
+    private float maxKmPerHour_;
+    /**
+     * <code>required float maxKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    public boolean hasMaxKmPerHour() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required float maxKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    public float getMaxKmPerHour() {
+      return maxKmPerHour_;
+    }
+
+    // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+    public static final int SPEEDZONE_FIELD_NUMBER = 101;
+    private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone speedZone_;
+    /**
+     * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+     *
+     * <pre>
+     * 速度ゾーン
+     * </pre>
+     */
+    public boolean hasSpeedZone() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+     *
+     * <pre>
+     * 速度ゾーン
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone getSpeedZone() {
+      return speedZone_;
+    }
+
+    private void initFields() {
+      speedKmPerHour_ = 0F;
+      wheelRpm_ = 0F;
+      maxKmPerHour_ = 0F;
+      speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasSpeedKmPerHour()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxKmPerHour()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSpeedZone()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeFloat(1, speedKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, wheelRpm_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeFloat(10, maxKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(101, speedZone_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(1, speedKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, wheelRpm_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(10, maxKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(101, speedZone_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.RawSpeed}
+     *
+     * <pre>
+     * スピード連携データ
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_RawSpeed_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.class, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        speedKmPerHour_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        wheelRpm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        maxKmPerHour_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.internal_static_eaglesakura_ace_RawSpeed_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed build() {
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed buildPartial() {
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed result = new com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.speedKmPerHour_ = speedKmPerHour_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.wheelRpm_ = wheelRpm_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.maxKmPerHour_ = maxKmPerHour_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.speedZone_ = speedZone_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed other) {
+        if (other == com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance()) return this;
+        if (other.hasSpeedKmPerHour()) {
+          setSpeedKmPerHour(other.getSpeedKmPerHour());
+        }
+        if (other.hasWheelRpm()) {
+          setWheelRpm(other.getWheelRpm());
+        }
+        if (other.hasMaxKmPerHour()) {
+          setMaxKmPerHour(other.getMaxKmPerHour());
+        }
+        if (other.hasSpeedZone()) {
+          setSpeedZone(other.getSpeedZone());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSpeedKmPerHour()) {
+          
+          return false;
+        }
+        if (!hasMaxKmPerHour()) {
+          
+          return false;
+        }
+        if (!hasSpeedZone()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required float speedKmPerHour = 1;
+      private float speedKmPerHour_ ;
+      /**
+       * <code>required float speedKmPerHour = 1;</code>
+       *
+       * <pre>
+       * スピード km/h
+       * </pre>
+       */
+      public boolean hasSpeedKmPerHour() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required float speedKmPerHour = 1;</code>
+       *
+       * <pre>
+       * スピード km/h
+       * </pre>
+       */
+      public float getSpeedKmPerHour() {
+        return speedKmPerHour_;
+      }
+      /**
+       * <code>required float speedKmPerHour = 1;</code>
+       *
+       * <pre>
+       * スピード km/h
+       * </pre>
+       */
+      public Builder setSpeedKmPerHour(float value) {
+        bitField0_ |= 0x00000001;
+        speedKmPerHour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float speedKmPerHour = 1;</code>
+       *
+       * <pre>
+       * スピード km/h
+       * </pre>
+       */
+      public Builder clearSpeedKmPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        speedKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float wheelRpm = 2;
+      private float wheelRpm_ ;
+      /**
+       * <code>optional float wheelRpm = 2;</code>
+       *
+       * <pre>
+       * ホイールの回転数
+       * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+       * </pre>
+       */
+      public boolean hasWheelRpm() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional float wheelRpm = 2;</code>
+       *
+       * <pre>
+       * ホイールの回転数
+       * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+       * </pre>
+       */
+      public float getWheelRpm() {
+        return wheelRpm_;
+      }
+      /**
+       * <code>optional float wheelRpm = 2;</code>
+       *
+       * <pre>
+       * ホイールの回転数
+       * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+       * </pre>
+       */
+      public Builder setWheelRpm(float value) {
+        bitField0_ |= 0x00000002;
+        wheelRpm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float wheelRpm = 2;</code>
+       *
+       * <pre>
+       * ホイールの回転数
+       * S&amp;Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+       * </pre>
+       */
+      public Builder clearWheelRpm() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        wheelRpm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // required float maxKmPerHour = 10;
+      private float maxKmPerHour_ ;
+      /**
+       * <code>required float maxKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public boolean hasMaxKmPerHour() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required float maxKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public float getMaxKmPerHour() {
+        return maxKmPerHour_;
+      }
+      /**
+       * <code>required float maxKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public Builder setMaxKmPerHour(float value) {
+        bitField0_ |= 0x00000004;
+        maxKmPerHour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float maxKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public Builder clearMaxKmPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maxKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+      private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+      /**
+       * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+       *
+       * <pre>
+       * 速度ゾーン
+       * </pre>
+       */
+      public boolean hasSpeedZone() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+       *
+       * <pre>
+       * 速度ゾーン
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone getSpeedZone() {
+        return speedZone_;
+      }
+      /**
+       * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+       *
+       * <pre>
+       * 速度ゾーン
+       * </pre>
+       */
+      public Builder setSpeedZone(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000008;
+        speedZone_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
+       *
+       * <pre>
+       * 速度ゾーン
+       * </pre>
+       */
+      public Builder clearSpeedZone() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawSpeed)
+    }
+
+    static {
+      defaultInstance = new RawSpeed(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawSpeed)
   }
 
   public interface SensorPayloadOrBuilder
@@ -2145,6 +3122,11 @@ public final class SensorProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_RawHeartrate_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_RawSpeed_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_SensorPayload_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2164,15 +3146,20 @@ public final class SensorProtocol {
       "ra_ace.RawCadence.CadenceZone\"0\n\013Cadence" +
       "Zone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002\"" +
       "\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartra" +
-      "teZone\030e \001(\0162+.eaglesakura_ace.RawHeartr" +
+      "teZone\030e \002(\0162+.eaglesakura_ace.RawHeartr" +
       "ate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Re" +
       "pose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026P" +
       "ossessionOxygenMotion\020\003\022\027\n\023NonOxygenated",
-      "Motion\020\004\022\014\n\010Overwork\020\005\"J\n\rSensorPayload\022" +
-      ")\n\004type\030\002 \002(\0162\033.eaglesakura_ace.SensorTy" +
-      "pe\022\016\n\006buffer\030\n \002(\014*5\n\nSensorType\022\024\n\020Hear" +
-      "trateMonitor\020\000\022\021\n\rCadenceSensor\020\001B$\n\"com" +
-      ".eaglesakura.andriders.protocol"
+      "Motion\020\004\022\014\n\010Overwork\020\005\"\273\001\n\010RawSpeed\022\026\n\016s" +
+      "peedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\024\n" +
+      "\014maxKmPerHour\030\n \002(\002\0226\n\tspeedZone\030e \002(\0162#" +
+      ".eaglesakura_ace.RawSpeed.SpeedZone\"7\n\tS" +
+      "peedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002" +
+      "\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002 " +
+      "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff" +
+      "er\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMonit" +
+      "or\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020\002" +
+      "B$\n\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2191,8 +3178,14 @@ public final class SensorProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawHeartrate_descriptor,
               new java.lang.String[] { "Bpm", "HeartrateZone", });
-          internal_static_eaglesakura_ace_SensorPayload_descriptor =
+          internal_static_eaglesakura_ace_RawSpeed_descriptor =
             getDescriptor().getMessageTypes().get(2);
+          internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_RawSpeed_descriptor,
+              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "MaxKmPerHour", "SpeedZone", });
+          internal_static_eaglesakura_ace_SensorPayload_descriptor =
+            getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_SensorPayload_descriptor,

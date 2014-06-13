@@ -56,9 +56,10 @@ void protobuf_AssignDesc_AcesProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(VersionInfo));
   CentralStatus_descriptor_ = file->message_type(1);
-  static const int CentralStatus_offsets_[3] = {
+  static const int CentralStatus_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CentralStatus, connectedheartrate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CentralStatus, connectedcadence_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CentralStatus, connectedspeed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CentralStatus, connectedtwitter_),
   };
   CentralStatus_reflection_ =
@@ -140,18 +141,19 @@ void protobuf_AddDesc_AcesProtocol_2eproto() {
     "ceConstants.proto\032\024SensorProtocol.proto\032"
     "\025CommandProtocol.proto\032\021GeoProtocol.prot"
     "o\">\n\013VersionInfo\022\027\n\017protocolVersion\030\001 \002("
-    "\003\022\026\n\016appVersionName\030\002 \002(\t\"_\n\rCentralStat"
+    "\003\022\026\n\016appVersionName\030\002 \002(\t\"w\n\rCentralStat"
     "us\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020connec"
-    "tedCadence\030\002 \002(\010\022\030\n\020connectedTwitter\030\003 \002"
-    "(\010\"\274\002\n\rMasterPayload\022\020\n\010uniqueId\030\004 \002(\t\022\023"
-    "\n\013createdDate\030\003 \002(\t\022\025\n\rsenderPackage\030\007 \002"
-    "(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rcentralStat"
-    "us\030\001 \001(\0132\036.eaglesakura_ace.CentralStatus"
-    "\022-\n\tgeoStatus\030\010 \001(\0132\032.eaglesakura_ace.Ge"
-    "oStatus\0226\n\016sensorPayloads\030\002 \003(\0132\036.eagles"
-    "akura_ace.SensorPayload\0228\n\017commandPayloa"
-    "ds\030\005 \003(\0132\037.eaglesakura_ace.CommandPayloa"
-    "dB$\n\"com.eaglesakura.andriders.protocol", 639);
+    "tedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030\003 \002(\010"
+    "\022\030\n\020connectedTwitter\030\004 \002(\010\"\275\002\n\rMasterPay"
+    "load\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 "
+    "\002(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPack"
+    "age\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagle"
+    "sakura_ace.CentralStatus\022.\n\tgeoStatus\030\010 "
+    "\001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sens"
+    "orPayloads\030\002 \003(\0132\036.eaglesakura_ace.Senso"
+    "rPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eagl"
+    "esakura_ace.CommandPayloadB$\n\"com.eagles"
+    "akura.andriders.protocol", 664);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "AcesProtocol.proto", &protobuf_RegisterTypes);
   VersionInfo::default_instance_ = new VersionInfo();
@@ -441,6 +443,7 @@ void VersionInfo::Swap(VersionInfo* other) {
 #ifndef _MSC_VER
 const int CentralStatus::kConnectedHeartrateFieldNumber;
 const int CentralStatus::kConnectedCadenceFieldNumber;
+const int CentralStatus::kConnectedSpeedFieldNumber;
 const int CentralStatus::kConnectedTwitterFieldNumber;
 #endif  // !_MSC_VER
 
@@ -462,6 +465,7 @@ void CentralStatus::SharedCtor() {
   _cached_size_ = 0;
   connectedheartrate_ = false;
   connectedcadence_ = false;
+  connectedspeed_ = false;
   connectedtwitter_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -500,6 +504,7 @@ void CentralStatus::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     connectedheartrate_ = false;
     connectedcadence_ = false;
+    connectedspeed_ = false;
     connectedtwitter_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -539,12 +544,28 @@ bool CentralStatus::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_connectedTwitter;
+        if (input->ExpectTag(24)) goto parse_connectedSpeed;
         break;
       }
 
-      // required bool connectedTwitter = 3;
+      // required bool connectedSpeed = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_connectedSpeed:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &connectedspeed_)));
+          set_has_connectedspeed();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_connectedTwitter;
+        break;
+      }
+
+      // required bool connectedTwitter = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_connectedTwitter:
@@ -587,9 +608,14 @@ void CentralStatus::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->connectedcadence(), output);
   }
 
-  // required bool connectedTwitter = 3;
+  // required bool connectedSpeed = 3;
+  if (has_connectedspeed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->connectedspeed(), output);
+  }
+
+  // required bool connectedTwitter = 4;
   if (has_connectedtwitter()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->connectedtwitter(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->connectedtwitter(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -610,9 +636,14 @@ void CentralStatus::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->connectedcadence(), target);
   }
 
-  // required bool connectedTwitter = 3;
+  // required bool connectedSpeed = 3;
+  if (has_connectedspeed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->connectedspeed(), target);
+  }
+
+  // required bool connectedTwitter = 4;
   if (has_connectedtwitter()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->connectedtwitter(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->connectedtwitter(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -636,7 +667,12 @@ int CentralStatus::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // required bool connectedTwitter = 3;
+    // required bool connectedSpeed = 3;
+    if (has_connectedspeed()) {
+      total_size += 1 + 1;
+    }
+
+    // required bool connectedTwitter = 4;
     if (has_connectedtwitter()) {
       total_size += 1 + 1;
     }
@@ -674,6 +710,9 @@ void CentralStatus::MergeFrom(const CentralStatus& from) {
     if (from.has_connectedcadence()) {
       set_connectedcadence(from.connectedcadence());
     }
+    if (from.has_connectedspeed()) {
+      set_connectedspeed(from.connectedspeed());
+    }
     if (from.has_connectedtwitter()) {
       set_connectedtwitter(from.connectedtwitter());
     }
@@ -694,7 +733,7 @@ void CentralStatus::CopyFrom(const CentralStatus& from) {
 }
 
 bool CentralStatus::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
   return true;
 }
@@ -703,6 +742,7 @@ void CentralStatus::Swap(CentralStatus* other) {
   if (other != this) {
     std::swap(connectedheartrate_, other->connectedheartrate_);
     std::swap(connectedcadence_, other->connectedcadence_);
+    std::swap(connectedspeed_, other->connectedspeed_);
     std::swap(connectedtwitter_, other->connectedtwitter_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -739,7 +779,7 @@ MasterPayload::MasterPayload()
 
 void MasterPayload::InitAsDefaultInstance() {
   centralstatus_ = const_cast< ::eaglesakura_ace::CentralStatus*>(&::eaglesakura_ace::CentralStatus::default_instance());
-  geostatus_ = const_cast< ::eaglesakura_ace::GeoStatus*>(&::eaglesakura_ace::GeoStatus::default_instance());
+  geostatus_ = const_cast< ::eaglesakura_ace::GeoPayload*>(&::eaglesakura_ace::GeoPayload::default_instance());
 }
 
 MasterPayload::MasterPayload(const MasterPayload& from)
@@ -829,7 +869,7 @@ void MasterPayload::Clear() {
       if (centralstatus_ != NULL) centralstatus_->::eaglesakura_ace::CentralStatus::Clear();
     }
     if (has_geostatus()) {
-      if (geostatus_ != NULL) geostatus_->::eaglesakura_ace::GeoStatus::Clear();
+      if (geostatus_ != NULL) geostatus_->::eaglesakura_ace::GeoPayload::Clear();
     }
   }
   sensorpayloads_.Clear();
@@ -955,7 +995,7 @@ bool MasterPayload::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+      // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
       case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1041,7 +1081,7 @@ void MasterPayload::SerializeWithCachedSizes(
       7, this->senderpackage(), output);
   }
 
-  // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+  // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
   if (has_geostatus()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, this->geostatus(), output);
@@ -1116,7 +1156,7 @@ void MasterPayload::SerializeWithCachedSizes(
         7, this->senderpackage(), target);
   }
 
-  // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+  // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
   if (has_geostatus()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1169,7 +1209,7 @@ int MasterPayload::ByteSize() const {
           this->centralstatus());
     }
 
-    // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+    // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
     if (has_geostatus()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1237,7 +1277,7 @@ void MasterPayload::MergeFrom(const MasterPayload& from) {
       mutable_centralstatus()->::eaglesakura_ace::CentralStatus::MergeFrom(from.centralstatus());
     }
     if (from.has_geostatus()) {
-      mutable_geostatus()->::eaglesakura_ace::GeoStatus::MergeFrom(from.geostatus());
+      mutable_geostatus()->::eaglesakura_ace::GeoPayload::MergeFrom(from.geostatus());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());

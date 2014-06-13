@@ -208,10 +208,17 @@ class CentralStatus : public ::google::protobuf::Message {
   inline bool connectedcadence() const;
   inline void set_connectedcadence(bool value);
 
-  // required bool connectedTwitter = 3;
+  // required bool connectedSpeed = 3;
+  inline bool has_connectedspeed() const;
+  inline void clear_connectedspeed();
+  static const int kConnectedSpeedFieldNumber = 3;
+  inline bool connectedspeed() const;
+  inline void set_connectedspeed(bool value);
+
+  // required bool connectedTwitter = 4;
   inline bool has_connectedtwitter() const;
   inline void clear_connectedtwitter();
-  static const int kConnectedTwitterFieldNumber = 3;
+  static const int kConnectedTwitterFieldNumber = 4;
   inline bool connectedtwitter() const;
   inline void set_connectedtwitter(bool value);
 
@@ -221,6 +228,8 @@ class CentralStatus : public ::google::protobuf::Message {
   inline void clear_has_connectedheartrate();
   inline void set_has_connectedcadence();
   inline void clear_has_connectedcadence();
+  inline void set_has_connectedspeed();
+  inline void clear_has_connectedspeed();
   inline void set_has_connectedtwitter();
   inline void clear_has_connectedtwitter();
 
@@ -228,10 +237,11 @@ class CentralStatus : public ::google::protobuf::Message {
 
   bool connectedheartrate_;
   bool connectedcadence_;
+  bool connectedspeed_;
   bool connectedtwitter_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesProtocol_2eproto();
   friend void protobuf_AssignDesc_AcesProtocol_2eproto();
@@ -353,14 +363,14 @@ class MasterPayload : public ::google::protobuf::Message {
   inline ::eaglesakura_ace::CentralStatus* release_centralstatus();
   inline void set_allocated_centralstatus(::eaglesakura_ace::CentralStatus* centralstatus);
 
-  // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+  // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
   inline bool has_geostatus() const;
   inline void clear_geostatus();
   static const int kGeoStatusFieldNumber = 8;
-  inline const ::eaglesakura_ace::GeoStatus& geostatus() const;
-  inline ::eaglesakura_ace::GeoStatus* mutable_geostatus();
-  inline ::eaglesakura_ace::GeoStatus* release_geostatus();
-  inline void set_allocated_geostatus(::eaglesakura_ace::GeoStatus* geostatus);
+  inline const ::eaglesakura_ace::GeoPayload& geostatus() const;
+  inline ::eaglesakura_ace::GeoPayload* mutable_geostatus();
+  inline ::eaglesakura_ace::GeoPayload* release_geostatus();
+  inline void set_allocated_geostatus(::eaglesakura_ace::GeoPayload* geostatus);
 
   // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
   inline int sensorpayloads_size() const;
@@ -408,7 +418,7 @@ class MasterPayload : public ::google::protobuf::Message {
   ::std::string* senderpackage_;
   ::std::string* targetpackage_;
   ::eaglesakura_ace::CentralStatus* centralstatus_;
-  ::eaglesakura_ace::GeoStatus* geostatus_;
+  ::eaglesakura_ace::GeoPayload* geostatus_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload > sensorpayloads_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload > commandpayloads_;
 
@@ -569,15 +579,37 @@ inline void CentralStatus::set_connectedcadence(bool value) {
   connectedcadence_ = value;
 }
 
-// required bool connectedTwitter = 3;
-inline bool CentralStatus::has_connectedtwitter() const {
+// required bool connectedSpeed = 3;
+inline bool CentralStatus::has_connectedspeed() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void CentralStatus::set_has_connectedtwitter() {
+inline void CentralStatus::set_has_connectedspeed() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void CentralStatus::clear_has_connectedtwitter() {
+inline void CentralStatus::clear_has_connectedspeed() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void CentralStatus::clear_connectedspeed() {
+  connectedspeed_ = false;
+  clear_has_connectedspeed();
+}
+inline bool CentralStatus::connectedspeed() const {
+  return connectedspeed_;
+}
+inline void CentralStatus::set_connectedspeed(bool value) {
+  set_has_connectedspeed();
+  connectedspeed_ = value;
+}
+
+// required bool connectedTwitter = 4;
+inline bool CentralStatus::has_connectedtwitter() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void CentralStatus::set_has_connectedtwitter() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void CentralStatus::clear_has_connectedtwitter() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void CentralStatus::clear_connectedtwitter() {
   connectedtwitter_ = false;
@@ -913,7 +945,7 @@ inline void MasterPayload::set_allocated_centralstatus(::eaglesakura_ace::Centra
   }
 }
 
-// optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+// optional .eaglesakura_ace.GeoPayload geoStatus = 8;
 inline bool MasterPayload::has_geostatus() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -924,24 +956,24 @@ inline void MasterPayload::clear_has_geostatus() {
   _has_bits_[0] &= ~0x00000020u;
 }
 inline void MasterPayload::clear_geostatus() {
-  if (geostatus_ != NULL) geostatus_->::eaglesakura_ace::GeoStatus::Clear();
+  if (geostatus_ != NULL) geostatus_->::eaglesakura_ace::GeoPayload::Clear();
   clear_has_geostatus();
 }
-inline const ::eaglesakura_ace::GeoStatus& MasterPayload::geostatus() const {
+inline const ::eaglesakura_ace::GeoPayload& MasterPayload::geostatus() const {
   return geostatus_ != NULL ? *geostatus_ : *default_instance_->geostatus_;
 }
-inline ::eaglesakura_ace::GeoStatus* MasterPayload::mutable_geostatus() {
+inline ::eaglesakura_ace::GeoPayload* MasterPayload::mutable_geostatus() {
   set_has_geostatus();
-  if (geostatus_ == NULL) geostatus_ = new ::eaglesakura_ace::GeoStatus;
+  if (geostatus_ == NULL) geostatus_ = new ::eaglesakura_ace::GeoPayload;
   return geostatus_;
 }
-inline ::eaglesakura_ace::GeoStatus* MasterPayload::release_geostatus() {
+inline ::eaglesakura_ace::GeoPayload* MasterPayload::release_geostatus() {
   clear_has_geostatus();
-  ::eaglesakura_ace::GeoStatus* temp = geostatus_;
+  ::eaglesakura_ace::GeoPayload* temp = geostatus_;
   geostatus_ = NULL;
   return temp;
 }
-inline void MasterPayload::set_allocated_geostatus(::eaglesakura_ace::GeoStatus* geostatus) {
+inline void MasterPayload::set_allocated_geostatus(::eaglesakura_ace::GeoPayload* geostatus) {
   delete geostatus_;
   geostatus_ = geostatus;
   if (geostatus) {

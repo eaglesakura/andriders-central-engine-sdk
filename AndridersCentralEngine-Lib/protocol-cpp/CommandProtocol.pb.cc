@@ -23,9 +23,9 @@ namespace {
 const ::google::protobuf::Descriptor* CameraShotPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CameraShotPayload_reflection_ = NULL;
-const ::google::protobuf::Descriptor* TweetControllPayload_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* TweetRequestPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  TweetControllPayload_reflection_ = NULL;
+  TweetRequestPayload_reflection_ = NULL;
 const ::google::protobuf::Descriptor* TriggerPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TriggerPayload_reflection_ = NULL;
@@ -62,23 +62,26 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CameraShotPayload));
-  TweetControllPayload_descriptor_ = file->message_type(1);
-  static const int TweetControllPayload_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, tweetmessage_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, hashtags_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, imageuris_),
+  TweetRequestPayload_descriptor_ = file->message_type(1);
+  static const int TweetRequestPayload_offsets_[6] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, tweetmessage_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, hashtags_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, imageuris_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withcadence_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withheartrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withspeed_),
   };
-  TweetControllPayload_reflection_ =
+  TweetRequestPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      TweetControllPayload_descriptor_,
-      TweetControllPayload::default_instance_,
-      TweetControllPayload_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetControllPayload, _unknown_fields_),
+      TweetRequestPayload_descriptor_,
+      TweetRequestPayload::default_instance_,
+      TweetRequestPayload_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(TweetControllPayload));
+      sizeof(TweetRequestPayload));
   TriggerPayload_descriptor_ = file->message_type(2);
   static const int TriggerPayload_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriggerPayload, type_),
@@ -132,7 +135,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     CameraShotPayload_descriptor_, &CameraShotPayload::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    TweetControllPayload_descriptor_, &TweetControllPayload::default_instance());
+    TweetRequestPayload_descriptor_, &TweetRequestPayload::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     TriggerPayload_descriptor_, &TriggerPayload::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -144,8 +147,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_CommandProtocol_2eproto() {
   delete CameraShotPayload::default_instance_;
   delete CameraShotPayload_reflection_;
-  delete TweetControllPayload::default_instance_;
-  delete TweetControllPayload_reflection_;
+  delete TweetRequestPayload::default_instance_;
+  delete TweetRequestPayload_reflection_;
   delete TriggerPayload::default_instance_;
   delete TriggerPayload_reflection_;
   delete CommandPayload::default_instance_;
@@ -165,28 +168,29 @@ void protobuf_AddDesc_CommandProtocol_2eproto() {
     "\032\022AceConstants.proto\032\021GeoProtocol.proto\""
     "N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022\022"
     "\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005\""
-    "Q\n\024TweetControllPayload\022\024\n\014tweetMessage\030"
+    "\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage\030"
     "\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 \003"
-    "(\t\"\305\001\n\016TriggerPayload\022*\n\004type\030\001 \002(\0162\034.ea"
-    "glesakura_ace.TriggerType\022\025\n\rextraUnique"
-    "Id\030\002 \002(\t\022\022\n\ncommandSec\030\003 \001(\005\022+\n\010location"
-    "\030\004 \001(\0132\031.eaglesakura_ace.Location\022/\n\006mov"
-    "ing\030\005 \001(\0162\037.eaglesakura_ace.LocationMovi"
-    "ng\"7\n\016CommandPayload\022\017\n\007command\030\001 \002(\t\022\024\n"
-    "\014extraPayload\030\002 \001(\014*0\n\007Command\022\024\n\020Extens"
-    "ionTrigger\020\001\022\017\n\013AcesControl\020\002*5\n\013Trigger"
-    "Type\022\017\n\013Promiximity\020\001\022\007\n\003Geo\020\002\022\014\n\010Activi"
-    "ty\020\003*\'\n\023AcesControllCommand\022\020\n\014TweetRequ"
-    "est\020\002B$\n\"com.eaglesakura.andriders.proto"
-    "col", 683);
+    "(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrate"
+    "\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"\305\001\n\016TriggerPay"
+    "load\022*\n\004type\030\001 \002(\0162\034.eaglesakura_ace.Tri"
+    "ggerType\022\025\n\rextraUniqueId\030\002 \002(\t\022\022\n\ncomma"
+    "ndSec\030\003 \001(\005\022+\n\010location\030\004 \001(\0132\031.eaglesak"
+    "ura_ace.Location\022/\n\006moving\030\005 \001(\0162\037.eagle"
+    "sakura_ace.LocationMoving\"7\n\016CommandPayl"
+    "oad\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001"
+    "(\014*0\n\007Command\022\024\n\020ExtensionTrigger\020\001\022\017\n\013A"
+    "cesControl\020\002*5\n\013TriggerType\022\017\n\013Promiximi"
+    "ty\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity\020\003*\'\n\023AcesContr"
+    "ollCommand\022\020\n\014TweetRequest\020\002B$\n\"com.eagl"
+    "esakura.andriders.protocol", 746);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CommandProtocol.proto", &protobuf_RegisterTypes);
   CameraShotPayload::default_instance_ = new CameraShotPayload();
-  TweetControllPayload::default_instance_ = new TweetControllPayload();
+  TweetRequestPayload::default_instance_ = new TweetRequestPayload();
   TriggerPayload::default_instance_ = new TriggerPayload();
   CommandPayload::default_instance_ = new CommandPayload();
   CameraShotPayload::default_instance_->InitAsDefaultInstance();
-  TweetControllPayload::default_instance_->InitAsDefaultInstance();
+  TweetRequestPayload::default_instance_->InitAsDefaultInstance();
   TriggerPayload::default_instance_->InitAsDefaultInstance();
   CommandPayload::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_CommandProtocol_2eproto);
@@ -550,36 +554,42 @@ void CameraShotPayload::Swap(CameraShotPayload* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int TweetControllPayload::kTweetMessageFieldNumber;
-const int TweetControllPayload::kHashtagsFieldNumber;
-const int TweetControllPayload::kImageUrisFieldNumber;
+const int TweetRequestPayload::kTweetMessageFieldNumber;
+const int TweetRequestPayload::kHashtagsFieldNumber;
+const int TweetRequestPayload::kImageUrisFieldNumber;
+const int TweetRequestPayload::kWithCadenceFieldNumber;
+const int TweetRequestPayload::kWithHeartrateFieldNumber;
+const int TweetRequestPayload::kWithSpeedFieldNumber;
 #endif  // !_MSC_VER
 
-TweetControllPayload::TweetControllPayload()
+TweetRequestPayload::TweetRequestPayload()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void TweetControllPayload::InitAsDefaultInstance() {
+void TweetRequestPayload::InitAsDefaultInstance() {
 }
 
-TweetControllPayload::TweetControllPayload(const TweetControllPayload& from)
+TweetRequestPayload::TweetRequestPayload(const TweetRequestPayload& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void TweetControllPayload::SharedCtor() {
+void TweetRequestPayload::SharedCtor() {
   _cached_size_ = 0;
   tweetmessage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  withcadence_ = false;
+  withheartrate_ = false;
+  withspeed_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-TweetControllPayload::~TweetControllPayload() {
+TweetRequestPayload::~TweetRequestPayload() {
   SharedDtor();
 }
 
-void TweetControllPayload::SharedDtor() {
+void TweetRequestPayload::SharedDtor() {
   if (tweetmessage_ != &::google::protobuf::internal::kEmptyString) {
     delete tweetmessage_;
   }
@@ -587,34 +597,37 @@ void TweetControllPayload::SharedDtor() {
   }
 }
 
-void TweetControllPayload::SetCachedSize(int size) const {
+void TweetRequestPayload::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* TweetControllPayload::descriptor() {
+const ::google::protobuf::Descriptor* TweetRequestPayload::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return TweetControllPayload_descriptor_;
+  return TweetRequestPayload_descriptor_;
 }
 
-const TweetControllPayload& TweetControllPayload::default_instance() {
+const TweetRequestPayload& TweetRequestPayload::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_CommandProtocol_2eproto();
   return *default_instance_;
 }
 
-TweetControllPayload* TweetControllPayload::default_instance_ = NULL;
+TweetRequestPayload* TweetRequestPayload::default_instance_ = NULL;
 
-TweetControllPayload* TweetControllPayload::New() const {
-  return new TweetControllPayload;
+TweetRequestPayload* TweetRequestPayload::New() const {
+  return new TweetRequestPayload;
 }
 
-void TweetControllPayload::Clear() {
+void TweetRequestPayload::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_tweetmessage()) {
       if (tweetmessage_ != &::google::protobuf::internal::kEmptyString) {
         tweetmessage_->clear();
       }
     }
+    withcadence_ = false;
+    withheartrate_ = false;
+    withspeed_ = false;
   }
   hashtags_.Clear();
   imageuris_.Clear();
@@ -622,7 +635,7 @@ void TweetControllPayload::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool TweetControllPayload::MergePartialFromCodedStream(
+bool TweetRequestPayload::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -678,6 +691,54 @@ bool TweetControllPayload::MergePartialFromCodedStream(
           goto handle_uninterpreted;
         }
         if (input->ExpectTag(34)) goto parse_imageUris;
+        if (input->ExpectTag(40)) goto parse_withCadence;
+        break;
+      }
+
+      // optional bool withCadence = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_withCadence:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &withcadence_)));
+          set_has_withcadence();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_withHeartrate;
+        break;
+      }
+
+      // optional bool withHeartrate = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_withHeartrate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &withheartrate_)));
+          set_has_withheartrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(56)) goto parse_withSpeed;
+        break;
+      }
+
+      // optional bool withSpeed = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_withSpeed:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &withspeed_)));
+          set_has_withspeed();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -698,7 +759,7 @@ bool TweetControllPayload::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void TweetControllPayload::SerializeWithCachedSizes(
+void TweetRequestPayload::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required string tweetMessage = 1;
   if (has_tweetmessage()) {
@@ -727,13 +788,28 @@ void TweetControllPayload::SerializeWithCachedSizes(
       4, this->imageuris(i), output);
   }
 
+  // optional bool withCadence = 5;
+  if (has_withcadence()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(5, this->withcadence(), output);
+  }
+
+  // optional bool withHeartrate = 6;
+  if (has_withheartrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->withheartrate(), output);
+  }
+
+  // optional bool withSpeed = 7;
+  if (has_withspeed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->withspeed(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
 }
 
-::google::protobuf::uint8* TweetControllPayload::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* TweetRequestPayload::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required string tweetMessage = 1;
   if (has_tweetmessage()) {
@@ -763,6 +839,21 @@ void TweetControllPayload::SerializeWithCachedSizes(
       WriteStringToArray(4, this->imageuris(i), target);
   }
 
+  // optional bool withCadence = 5;
+  if (has_withcadence()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(5, this->withcadence(), target);
+  }
+
+  // optional bool withHeartrate = 6;
+  if (has_withheartrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->withheartrate(), target);
+  }
+
+  // optional bool withSpeed = 7;
+  if (has_withspeed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->withspeed(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -770,7 +861,7 @@ void TweetControllPayload::SerializeWithCachedSizes(
   return target;
 }
 
-int TweetControllPayload::ByteSize() const {
+int TweetRequestPayload::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -779,6 +870,21 @@ int TweetControllPayload::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->tweetmessage());
+    }
+
+    // optional bool withCadence = 5;
+    if (has_withcadence()) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool withHeartrate = 6;
+    if (has_withheartrate()) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool withSpeed = 7;
+    if (has_withspeed()) {
+      total_size += 1 + 1;
     }
 
   }
@@ -807,10 +913,10 @@ int TweetControllPayload::ByteSize() const {
   return total_size;
 }
 
-void TweetControllPayload::MergeFrom(const ::google::protobuf::Message& from) {
+void TweetRequestPayload::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const TweetControllPayload* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const TweetControllPayload*>(
+  const TweetRequestPayload* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TweetRequestPayload*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -819,7 +925,7 @@ void TweetControllPayload::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void TweetControllPayload::MergeFrom(const TweetControllPayload& from) {
+void TweetRequestPayload::MergeFrom(const TweetRequestPayload& from) {
   GOOGLE_CHECK_NE(&from, this);
   hashtags_.MergeFrom(from.hashtags_);
   imageuris_.MergeFrom(from.imageuris_);
@@ -827,44 +933,56 @@ void TweetControllPayload::MergeFrom(const TweetControllPayload& from) {
     if (from.has_tweetmessage()) {
       set_tweetmessage(from.tweetmessage());
     }
+    if (from.has_withcadence()) {
+      set_withcadence(from.withcadence());
+    }
+    if (from.has_withheartrate()) {
+      set_withheartrate(from.withheartrate());
+    }
+    if (from.has_withspeed()) {
+      set_withspeed(from.withspeed());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void TweetControllPayload::CopyFrom(const ::google::protobuf::Message& from) {
+void TweetRequestPayload::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TweetControllPayload::CopyFrom(const TweetControllPayload& from) {
+void TweetRequestPayload::CopyFrom(const TweetRequestPayload& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TweetControllPayload::IsInitialized() const {
+bool TweetRequestPayload::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
 
-void TweetControllPayload::Swap(TweetControllPayload* other) {
+void TweetRequestPayload::Swap(TweetRequestPayload* other) {
   if (other != this) {
     std::swap(tweetmessage_, other->tweetmessage_);
     hashtags_.Swap(&other->hashtags_);
     imageuris_.Swap(&other->imageuris_);
+    std::swap(withcadence_, other->withcadence_);
+    std::swap(withheartrate_, other->withheartrate_);
+    std::swap(withspeed_, other->withspeed_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata TweetControllPayload::GetMetadata() const {
+::google::protobuf::Metadata TweetRequestPayload::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = TweetControllPayload_descriptor_;
-  metadata.reflection = TweetControllPayload_reflection_;
+  metadata.descriptor = TweetRequestPayload_descriptor_;
+  metadata.reflection = TweetRequestPayload_reflection_;
   return metadata;
 }
 

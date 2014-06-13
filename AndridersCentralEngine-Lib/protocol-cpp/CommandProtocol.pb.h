@@ -37,7 +37,7 @@ void protobuf_AssignDesc_CommandProtocol_2eproto();
 void protobuf_ShutdownFile_CommandProtocol_2eproto();
 
 class CameraShotPayload;
-class TweetControllPayload;
+class TweetRequestPayload;
 class TriggerPayload;
 class CommandPayload;
 
@@ -207,14 +207,14 @@ class CameraShotPayload : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class TweetControllPayload : public ::google::protobuf::Message {
+class TweetRequestPayload : public ::google::protobuf::Message {
  public:
-  TweetControllPayload();
-  virtual ~TweetControllPayload();
+  TweetRequestPayload();
+  virtual ~TweetRequestPayload();
 
-  TweetControllPayload(const TweetControllPayload& from);
+  TweetRequestPayload(const TweetRequestPayload& from);
 
-  inline TweetControllPayload& operator=(const TweetControllPayload& from) {
+  inline TweetRequestPayload& operator=(const TweetRequestPayload& from) {
     CopyFrom(from);
     return *this;
   }
@@ -228,17 +228,17 @@ class TweetControllPayload : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const TweetControllPayload& default_instance();
+  static const TweetRequestPayload& default_instance();
 
-  void Swap(TweetControllPayload* other);
+  void Swap(TweetRequestPayload* other);
 
   // implements Message ----------------------------------------------
 
-  TweetControllPayload* New() const;
+  TweetRequestPayload* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const TweetControllPayload& from);
-  void MergeFrom(const TweetControllPayload& from);
+  void CopyFrom(const TweetRequestPayload& from);
+  void MergeFrom(const TweetRequestPayload& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -305,26 +305,56 @@ class TweetControllPayload : public ::google::protobuf::Message {
   inline const ::google::protobuf::RepeatedPtrField< ::std::string>& imageuris() const;
   inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_imageuris();
 
-  // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetControllPayload)
+  // optional bool withCadence = 5;
+  inline bool has_withcadence() const;
+  inline void clear_withcadence();
+  static const int kWithCadenceFieldNumber = 5;
+  inline bool withcadence() const;
+  inline void set_withcadence(bool value);
+
+  // optional bool withHeartrate = 6;
+  inline bool has_withheartrate() const;
+  inline void clear_withheartrate();
+  static const int kWithHeartrateFieldNumber = 6;
+  inline bool withheartrate() const;
+  inline void set_withheartrate(bool value);
+
+  // optional bool withSpeed = 7;
+  inline bool has_withspeed() const;
+  inline void clear_withspeed();
+  static const int kWithSpeedFieldNumber = 7;
+  inline bool withspeed() const;
+  inline void set_withspeed(bool value);
+
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetRequestPayload)
  private:
   inline void set_has_tweetmessage();
   inline void clear_has_tweetmessage();
+  inline void set_has_withcadence();
+  inline void clear_has_withcadence();
+  inline void set_has_withheartrate();
+  inline void clear_has_withheartrate();
+  inline void set_has_withspeed();
+  inline void clear_has_withspeed();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* tweetmessage_;
   ::google::protobuf::RepeatedPtrField< ::std::string> hashtags_;
   ::google::protobuf::RepeatedPtrField< ::std::string> imageuris_;
+  bool withcadence_;
+  bool withheartrate_;
+  bool withspeed_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
   friend void protobuf_ShutdownFile_CommandProtocol_2eproto();
 
   void InitAsDefaultInstance();
-  static TweetControllPayload* default_instance_;
+  static TweetRequestPayload* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -680,56 +710,56 @@ inline void CameraShotPayload::set_imageheight(::google::protobuf::int32 value) 
 
 // -------------------------------------------------------------------
 
-// TweetControllPayload
+// TweetRequestPayload
 
 // required string tweetMessage = 1;
-inline bool TweetControllPayload::has_tweetmessage() const {
+inline bool TweetRequestPayload::has_tweetmessage() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void TweetControllPayload::set_has_tweetmessage() {
+inline void TweetRequestPayload::set_has_tweetmessage() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void TweetControllPayload::clear_has_tweetmessage() {
+inline void TweetRequestPayload::clear_has_tweetmessage() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void TweetControllPayload::clear_tweetmessage() {
+inline void TweetRequestPayload::clear_tweetmessage() {
   if (tweetmessage_ != &::google::protobuf::internal::kEmptyString) {
     tweetmessage_->clear();
   }
   clear_has_tweetmessage();
 }
-inline const ::std::string& TweetControllPayload::tweetmessage() const {
+inline const ::std::string& TweetRequestPayload::tweetmessage() const {
   return *tweetmessage_;
 }
-inline void TweetControllPayload::set_tweetmessage(const ::std::string& value) {
+inline void TweetRequestPayload::set_tweetmessage(const ::std::string& value) {
   set_has_tweetmessage();
   if (tweetmessage_ == &::google::protobuf::internal::kEmptyString) {
     tweetmessage_ = new ::std::string;
   }
   tweetmessage_->assign(value);
 }
-inline void TweetControllPayload::set_tweetmessage(const char* value) {
+inline void TweetRequestPayload::set_tweetmessage(const char* value) {
   set_has_tweetmessage();
   if (tweetmessage_ == &::google::protobuf::internal::kEmptyString) {
     tweetmessage_ = new ::std::string;
   }
   tweetmessage_->assign(value);
 }
-inline void TweetControllPayload::set_tweetmessage(const char* value, size_t size) {
+inline void TweetRequestPayload::set_tweetmessage(const char* value, size_t size) {
   set_has_tweetmessage();
   if (tweetmessage_ == &::google::protobuf::internal::kEmptyString) {
     tweetmessage_ = new ::std::string;
   }
   tweetmessage_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* TweetControllPayload::mutable_tweetmessage() {
+inline ::std::string* TweetRequestPayload::mutable_tweetmessage() {
   set_has_tweetmessage();
   if (tweetmessage_ == &::google::protobuf::internal::kEmptyString) {
     tweetmessage_ = new ::std::string;
   }
   return tweetmessage_;
 }
-inline ::std::string* TweetControllPayload::release_tweetmessage() {
+inline ::std::string* TweetRequestPayload::release_tweetmessage() {
   clear_has_tweetmessage();
   if (tweetmessage_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -739,7 +769,7 @@ inline ::std::string* TweetControllPayload::release_tweetmessage() {
     return temp;
   }
 }
-inline void TweetControllPayload::set_allocated_tweetmessage(::std::string* tweetmessage) {
+inline void TweetRequestPayload::set_allocated_tweetmessage(::std::string* tweetmessage) {
   if (tweetmessage_ != &::google::protobuf::internal::kEmptyString) {
     delete tweetmessage_;
   }
@@ -753,91 +783,157 @@ inline void TweetControllPayload::set_allocated_tweetmessage(::std::string* twee
 }
 
 // repeated string hashtags = 2;
-inline int TweetControllPayload::hashtags_size() const {
+inline int TweetRequestPayload::hashtags_size() const {
   return hashtags_.size();
 }
-inline void TweetControllPayload::clear_hashtags() {
+inline void TweetRequestPayload::clear_hashtags() {
   hashtags_.Clear();
 }
-inline const ::std::string& TweetControllPayload::hashtags(int index) const {
+inline const ::std::string& TweetRequestPayload::hashtags(int index) const {
   return hashtags_.Get(index);
 }
-inline ::std::string* TweetControllPayload::mutable_hashtags(int index) {
+inline ::std::string* TweetRequestPayload::mutable_hashtags(int index) {
   return hashtags_.Mutable(index);
 }
-inline void TweetControllPayload::set_hashtags(int index, const ::std::string& value) {
+inline void TweetRequestPayload::set_hashtags(int index, const ::std::string& value) {
   hashtags_.Mutable(index)->assign(value);
 }
-inline void TweetControllPayload::set_hashtags(int index, const char* value) {
+inline void TweetRequestPayload::set_hashtags(int index, const char* value) {
   hashtags_.Mutable(index)->assign(value);
 }
-inline void TweetControllPayload::set_hashtags(int index, const char* value, size_t size) {
+inline void TweetRequestPayload::set_hashtags(int index, const char* value, size_t size) {
   hashtags_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* TweetControllPayload::add_hashtags() {
+inline ::std::string* TweetRequestPayload::add_hashtags() {
   return hashtags_.Add();
 }
-inline void TweetControllPayload::add_hashtags(const ::std::string& value) {
+inline void TweetRequestPayload::add_hashtags(const ::std::string& value) {
   hashtags_.Add()->assign(value);
 }
-inline void TweetControllPayload::add_hashtags(const char* value) {
+inline void TweetRequestPayload::add_hashtags(const char* value) {
   hashtags_.Add()->assign(value);
 }
-inline void TweetControllPayload::add_hashtags(const char* value, size_t size) {
+inline void TweetRequestPayload::add_hashtags(const char* value, size_t size) {
   hashtags_.Add()->assign(reinterpret_cast<const char*>(value), size);
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-TweetControllPayload::hashtags() const {
+TweetRequestPayload::hashtags() const {
   return hashtags_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-TweetControllPayload::mutable_hashtags() {
+TweetRequestPayload::mutable_hashtags() {
   return &hashtags_;
 }
 
 // repeated string imageUris = 4;
-inline int TweetControllPayload::imageuris_size() const {
+inline int TweetRequestPayload::imageuris_size() const {
   return imageuris_.size();
 }
-inline void TweetControllPayload::clear_imageuris() {
+inline void TweetRequestPayload::clear_imageuris() {
   imageuris_.Clear();
 }
-inline const ::std::string& TweetControllPayload::imageuris(int index) const {
+inline const ::std::string& TweetRequestPayload::imageuris(int index) const {
   return imageuris_.Get(index);
 }
-inline ::std::string* TweetControllPayload::mutable_imageuris(int index) {
+inline ::std::string* TweetRequestPayload::mutable_imageuris(int index) {
   return imageuris_.Mutable(index);
 }
-inline void TweetControllPayload::set_imageuris(int index, const ::std::string& value) {
+inline void TweetRequestPayload::set_imageuris(int index, const ::std::string& value) {
   imageuris_.Mutable(index)->assign(value);
 }
-inline void TweetControllPayload::set_imageuris(int index, const char* value) {
+inline void TweetRequestPayload::set_imageuris(int index, const char* value) {
   imageuris_.Mutable(index)->assign(value);
 }
-inline void TweetControllPayload::set_imageuris(int index, const char* value, size_t size) {
+inline void TweetRequestPayload::set_imageuris(int index, const char* value, size_t size) {
   imageuris_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* TweetControllPayload::add_imageuris() {
+inline ::std::string* TweetRequestPayload::add_imageuris() {
   return imageuris_.Add();
 }
-inline void TweetControllPayload::add_imageuris(const ::std::string& value) {
+inline void TweetRequestPayload::add_imageuris(const ::std::string& value) {
   imageuris_.Add()->assign(value);
 }
-inline void TweetControllPayload::add_imageuris(const char* value) {
+inline void TweetRequestPayload::add_imageuris(const char* value) {
   imageuris_.Add()->assign(value);
 }
-inline void TweetControllPayload::add_imageuris(const char* value, size_t size) {
+inline void TweetRequestPayload::add_imageuris(const char* value, size_t size) {
   imageuris_.Add()->assign(reinterpret_cast<const char*>(value), size);
 }
 inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-TweetControllPayload::imageuris() const {
+TweetRequestPayload::imageuris() const {
   return imageuris_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-TweetControllPayload::mutable_imageuris() {
+TweetRequestPayload::mutable_imageuris() {
   return &imageuris_;
+}
+
+// optional bool withCadence = 5;
+inline bool TweetRequestPayload::has_withcadence() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TweetRequestPayload::set_has_withcadence() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void TweetRequestPayload::clear_has_withcadence() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void TweetRequestPayload::clear_withcadence() {
+  withcadence_ = false;
+  clear_has_withcadence();
+}
+inline bool TweetRequestPayload::withcadence() const {
+  return withcadence_;
+}
+inline void TweetRequestPayload::set_withcadence(bool value) {
+  set_has_withcadence();
+  withcadence_ = value;
+}
+
+// optional bool withHeartrate = 6;
+inline bool TweetRequestPayload::has_withheartrate() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void TweetRequestPayload::set_has_withheartrate() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void TweetRequestPayload::clear_has_withheartrate() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void TweetRequestPayload::clear_withheartrate() {
+  withheartrate_ = false;
+  clear_has_withheartrate();
+}
+inline bool TweetRequestPayload::withheartrate() const {
+  return withheartrate_;
+}
+inline void TweetRequestPayload::set_withheartrate(bool value) {
+  set_has_withheartrate();
+  withheartrate_ = value;
+}
+
+// optional bool withSpeed = 7;
+inline bool TweetRequestPayload::has_withspeed() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void TweetRequestPayload::set_has_withspeed() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void TweetRequestPayload::clear_has_withspeed() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void TweetRequestPayload::clear_withspeed() {
+  withspeed_ = false;
+  clear_has_withspeed();
+}
+inline bool TweetRequestPayload::withspeed() const {
+  return withspeed_;
+}
+inline void TweetRequestPayload::set_withspeed(bool value) {
+  set_has_withspeed();
+  withspeed_ = value;
 }
 
 // -------------------------------------------------------------------

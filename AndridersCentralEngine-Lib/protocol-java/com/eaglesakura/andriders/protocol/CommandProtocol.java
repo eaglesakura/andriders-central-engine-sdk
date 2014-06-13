@@ -1097,7 +1097,7 @@ public final class CommandProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.CameraShotPayload)
   }
 
-  public interface TweetControllPayloadOrBuilder
+  public interface TweetRequestPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required string tweetMessage = 1;
@@ -1133,6 +1133,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     java.util.List<java.lang.String>
@@ -1142,6 +1143,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     int getHashtagsCount();
@@ -1150,6 +1152,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     java.lang.String getHashtags(int index);
@@ -1158,6 +1161,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     com.google.protobuf.ByteString
@@ -1202,30 +1206,84 @@ public final class CommandProtocol {
      */
     com.google.protobuf.ByteString
         getImageUrisBytes(int index);
+
+    // optional bool withCadence = 5;
+    /**
+     * <code>optional bool withCadence = 5;</code>
+     *
+     * <pre>
+     * ツイートオプション/ケイデンス
+     * </pre>
+     */
+    boolean hasWithCadence();
+    /**
+     * <code>optional bool withCadence = 5;</code>
+     *
+     * <pre>
+     * ツイートオプション/ケイデンス
+     * </pre>
+     */
+    boolean getWithCadence();
+
+    // optional bool withHeartrate = 6;
+    /**
+     * <code>optional bool withHeartrate = 6;</code>
+     *
+     * <pre>
+     * ツイートオプション/心拍
+     * </pre>
+     */
+    boolean hasWithHeartrate();
+    /**
+     * <code>optional bool withHeartrate = 6;</code>
+     *
+     * <pre>
+     * ツイートオプション/心拍
+     * </pre>
+     */
+    boolean getWithHeartrate();
+
+    // optional bool withSpeed = 7;
+    /**
+     * <code>optional bool withSpeed = 7;</code>
+     *
+     * <pre>
+     * ツイートオプション/スピード
+     * </pre>
+     */
+    boolean hasWithSpeed();
+    /**
+     * <code>optional bool withSpeed = 7;</code>
+     *
+     * <pre>
+     * ツイートオプション/スピード
+     * </pre>
+     */
+    boolean getWithSpeed();
   }
   /**
-   * Protobuf type {@code eaglesakura_ace.TweetControllPayload}
+   * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
    *
    * <pre>
    * ツイートしたい内容を格納する
    * </pre>
    */
-  public static final class TweetControllPayload extends
+  public static final class TweetRequestPayload extends
       com.google.protobuf.GeneratedMessage
-      implements TweetControllPayloadOrBuilder {
-    // Use TweetControllPayload.newBuilder() to construct.
-    private TweetControllPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements TweetRequestPayloadOrBuilder {
+    // Use TweetRequestPayload.newBuilder() to construct.
+    private TweetRequestPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private TweetControllPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private TweetRequestPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final TweetControllPayload defaultInstance;
-    public static TweetControllPayload getDefaultInstance() {
+    private static final TweetRequestPayload defaultInstance;
+    public static TweetRequestPayload getDefaultInstance() {
       return defaultInstance;
     }
 
-    public TweetControllPayload getDefaultInstanceForType() {
+    public TweetRequestPayload getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1235,7 +1293,7 @@ public final class CommandProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private TweetControllPayload(
+    private TweetRequestPayload(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1279,6 +1337,21 @@ public final class CommandProtocol {
               imageUris_.add(input.readBytes());
               break;
             }
+            case 40: {
+              bitField0_ |= 0x00000002;
+              withCadence_ = input.readBool();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000004;
+              withHeartrate_ = input.readBool();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000008;
+              withSpeed_ = input.readBool();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1299,28 +1372,28 @@ public final class CommandProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetControllPayload_descriptor;
+      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetControllPayload_fieldAccessorTable
+      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.Builder.class);
+              com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<TweetControllPayload> PARSER =
-        new com.google.protobuf.AbstractParser<TweetControllPayload>() {
-      public TweetControllPayload parsePartialFrom(
+    public static com.google.protobuf.Parser<TweetRequestPayload> PARSER =
+        new com.google.protobuf.AbstractParser<TweetRequestPayload>() {
+      public TweetRequestPayload parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TweetControllPayload(input, extensionRegistry);
+        return new TweetRequestPayload(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<TweetControllPayload> getParserForType() {
+    public com.google.protobuf.Parser<TweetRequestPayload> getParserForType() {
       return PARSER;
     }
 
@@ -1388,6 +1461,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     public java.util.List<java.lang.String>
@@ -1399,6 +1473,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     public int getHashtagsCount() {
@@ -1409,6 +1484,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     public java.lang.String getHashtags(int index) {
@@ -1419,6 +1495,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * ハッシュタグ一覧
+     * その他、強制的に #andriders が付与される。
      * </pre>
      */
     public com.google.protobuf.ByteString
@@ -1476,10 +1553,85 @@ public final class CommandProtocol {
       return imageUris_.getByteString(index);
     }
 
+    // optional bool withCadence = 5;
+    public static final int WITHCADENCE_FIELD_NUMBER = 5;
+    private boolean withCadence_;
+    /**
+     * <code>optional bool withCadence = 5;</code>
+     *
+     * <pre>
+     * ツイートオプション/ケイデンス
+     * </pre>
+     */
+    public boolean hasWithCadence() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bool withCadence = 5;</code>
+     *
+     * <pre>
+     * ツイートオプション/ケイデンス
+     * </pre>
+     */
+    public boolean getWithCadence() {
+      return withCadence_;
+    }
+
+    // optional bool withHeartrate = 6;
+    public static final int WITHHEARTRATE_FIELD_NUMBER = 6;
+    private boolean withHeartrate_;
+    /**
+     * <code>optional bool withHeartrate = 6;</code>
+     *
+     * <pre>
+     * ツイートオプション/心拍
+     * </pre>
+     */
+    public boolean hasWithHeartrate() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bool withHeartrate = 6;</code>
+     *
+     * <pre>
+     * ツイートオプション/心拍
+     * </pre>
+     */
+    public boolean getWithHeartrate() {
+      return withHeartrate_;
+    }
+
+    // optional bool withSpeed = 7;
+    public static final int WITHSPEED_FIELD_NUMBER = 7;
+    private boolean withSpeed_;
+    /**
+     * <code>optional bool withSpeed = 7;</code>
+     *
+     * <pre>
+     * ツイートオプション/スピード
+     * </pre>
+     */
+    public boolean hasWithSpeed() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bool withSpeed = 7;</code>
+     *
+     * <pre>
+     * ツイートオプション/スピード
+     * </pre>
+     */
+    public boolean getWithSpeed() {
+      return withSpeed_;
+    }
+
     private void initFields() {
       tweetMessage_ = "";
       hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      withCadence_ = false;
+      withHeartrate_ = false;
+      withSpeed_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1505,6 +1657,15 @@ public final class CommandProtocol {
       }
       for (int i = 0; i < imageUris_.size(); i++) {
         output.writeBytes(4, imageUris_.getByteString(i));
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(5, withCadence_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(6, withHeartrate_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(7, withSpeed_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1537,6 +1698,18 @@ public final class CommandProtocol {
         size += dataSize;
         size += 1 * getImageUrisList().size();
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, withCadence_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, withHeartrate_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, withSpeed_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -1549,53 +1722,53 @@ public final class CommandProtocol {
       return super.writeReplace();
     }
 
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(byte[] data)
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseDelimitedFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseDelimitedFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1604,7 +1777,7 @@ public final class CommandProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload prototype) {
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1616,7 +1789,7 @@ public final class CommandProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code eaglesakura_ace.TweetControllPayload}
+     * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
      *
      * <pre>
      * ツイートしたい内容を格納する
@@ -1624,20 +1797,20 @@ public final class CommandProtocol {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayloadOrBuilder {
+       implements com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayloadOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetControllPayload_descriptor;
+        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetControllPayload_fieldAccessorTable
+        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.Builder.class);
+                com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.Builder.class);
       }
 
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.newBuilder()
+      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1663,6 +1836,12 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
+        withCadence_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        withHeartrate_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        withSpeed_ = false;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -1672,23 +1851,23 @@ public final class CommandProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetControllPayload_descriptor;
+        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
       }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.getDefaultInstance();
+      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.getDefaultInstance();
       }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload result = buildPartial();
+      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload build() {
+        com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload(this);
+      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload buildPartial() {
+        com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1707,22 +1886,34 @@ public final class CommandProtocol {
           bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.imageUris_ = imageUris_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.withCadence_ = withCadence_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.withHeartrate_ = withHeartrate_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.withSpeed_ = withSpeed_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload)other);
+        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload other) {
+        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.getDefaultInstance()) return this;
         if (other.hasTweetMessage()) {
           bitField0_ |= 0x00000001;
           tweetMessage_ = other.tweetMessage_;
@@ -1748,6 +1939,15 @@ public final class CommandProtocol {
           }
           onChanged();
         }
+        if (other.hasWithCadence()) {
+          setWithCadence(other.getWithCadence());
+        }
+        if (other.hasWithHeartrate()) {
+          setWithHeartrate(other.getWithHeartrate());
+        }
+        if (other.hasWithSpeed()) {
+          setWithSpeed(other.getWithSpeed());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1764,11 +1964,11 @@ public final class CommandProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload parsedMessage = null;
+        com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.TweetControllPayload) e.getUnfinishedMessage();
+          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1890,6 +2090,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public java.util.List<java.lang.String>
@@ -1901,6 +2102,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public int getHashtagsCount() {
@@ -1911,6 +2113,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public java.lang.String getHashtags(int index) {
@@ -1921,6 +2124,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public com.google.protobuf.ByteString
@@ -1932,6 +2136,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public Builder setHashtags(
@@ -1949,6 +2154,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public Builder addHashtags(
@@ -1966,6 +2172,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public Builder addAllHashtags(
@@ -1980,6 +2187,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public Builder clearHashtags() {
@@ -1993,6 +2201,7 @@ public final class CommandProtocol {
        *
        * <pre>
        * ハッシュタグ一覧
+       * その他、強制的に #andriders が付与される。
        * </pre>
        */
       public Builder addHashtagsBytes(
@@ -2144,15 +2353,162 @@ public final class CommandProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TweetControllPayload)
+      // optional bool withCadence = 5;
+      private boolean withCadence_ ;
+      /**
+       * <code>optional bool withCadence = 5;</code>
+       *
+       * <pre>
+       * ツイートオプション/ケイデンス
+       * </pre>
+       */
+      public boolean hasWithCadence() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bool withCadence = 5;</code>
+       *
+       * <pre>
+       * ツイートオプション/ケイデンス
+       * </pre>
+       */
+      public boolean getWithCadence() {
+        return withCadence_;
+      }
+      /**
+       * <code>optional bool withCadence = 5;</code>
+       *
+       * <pre>
+       * ツイートオプション/ケイデンス
+       * </pre>
+       */
+      public Builder setWithCadence(boolean value) {
+        bitField0_ |= 0x00000008;
+        withCadence_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool withCadence = 5;</code>
+       *
+       * <pre>
+       * ツイートオプション/ケイデンス
+       * </pre>
+       */
+      public Builder clearWithCadence() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        withCadence_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool withHeartrate = 6;
+      private boolean withHeartrate_ ;
+      /**
+       * <code>optional bool withHeartrate = 6;</code>
+       *
+       * <pre>
+       * ツイートオプション/心拍
+       * </pre>
+       */
+      public boolean hasWithHeartrate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bool withHeartrate = 6;</code>
+       *
+       * <pre>
+       * ツイートオプション/心拍
+       * </pre>
+       */
+      public boolean getWithHeartrate() {
+        return withHeartrate_;
+      }
+      /**
+       * <code>optional bool withHeartrate = 6;</code>
+       *
+       * <pre>
+       * ツイートオプション/心拍
+       * </pre>
+       */
+      public Builder setWithHeartrate(boolean value) {
+        bitField0_ |= 0x00000010;
+        withHeartrate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool withHeartrate = 6;</code>
+       *
+       * <pre>
+       * ツイートオプション/心拍
+       * </pre>
+       */
+      public Builder clearWithHeartrate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        withHeartrate_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool withSpeed = 7;
+      private boolean withSpeed_ ;
+      /**
+       * <code>optional bool withSpeed = 7;</code>
+       *
+       * <pre>
+       * ツイートオプション/スピード
+       * </pre>
+       */
+      public boolean hasWithSpeed() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional bool withSpeed = 7;</code>
+       *
+       * <pre>
+       * ツイートオプション/スピード
+       * </pre>
+       */
+      public boolean getWithSpeed() {
+        return withSpeed_;
+      }
+      /**
+       * <code>optional bool withSpeed = 7;</code>
+       *
+       * <pre>
+       * ツイートオプション/スピード
+       * </pre>
+       */
+      public Builder setWithSpeed(boolean value) {
+        bitField0_ |= 0x00000020;
+        withSpeed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool withSpeed = 7;</code>
+       *
+       * <pre>
+       * ツイートオプション/スピード
+       * </pre>
+       */
+      public Builder clearWithSpeed() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        withSpeed_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TweetRequestPayload)
     }
 
     static {
-      defaultInstance = new TweetControllPayload(true);
+      defaultInstance = new TweetRequestPayload(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetControllPayload)
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetRequestPayload)
   }
 
   public interface TriggerPayloadOrBuilder
@@ -3984,10 +4340,10 @@ public final class CommandProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_CameraShotPayload_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_TweetControllPayload_descriptor;
+    internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_TweetControllPayload_fieldAccessorTable;
+      internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_TriggerPayload_descriptor;
   private static
@@ -4011,20 +4367,21 @@ public final class CommandProtocol {
       "\032\022AceConstants.proto\032\021GeoProtocol.proto\"" +
       "N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022\022" +
       "\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005\"" +
-      "Q\n\024TweetControllPayload\022\024\n\014tweetMessage\030" +
+      "\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage\030" +
       "\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 \003" +
-      "(\t\"\305\001\n\016TriggerPayload\022*\n\004type\030\001 \002(\0162\034.ea" +
-      "glesakura_ace.TriggerType\022\025\n\rextraUnique" +
-      "Id\030\002 \002(\t\022\022\n\ncommandSec\030\003 \001(\005\022+\n\010location" +
-      "\030\004 \001(\0132\031.eaglesakura_ace.Location\022/\n\006mov",
-      "ing\030\005 \001(\0162\037.eaglesakura_ace.LocationMovi" +
-      "ng\"7\n\016CommandPayload\022\017\n\007command\030\001 \002(\t\022\024\n" +
-      "\014extraPayload\030\002 \001(\014*0\n\007Command\022\024\n\020Extens" +
-      "ionTrigger\020\001\022\017\n\013AcesControl\020\002*5\n\013Trigger" +
-      "Type\022\017\n\013Promiximity\020\001\022\007\n\003Geo\020\002\022\014\n\010Activi" +
-      "ty\020\003*\'\n\023AcesControllCommand\022\020\n\014TweetRequ" +
-      "est\020\002B$\n\"com.eaglesakura.andriders.proto" +
-      "col"
+      "(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrate" +
+      "\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"\305\001\n\016TriggerPay" +
+      "load\022*\n\004type\030\001 \002(\0162\034.eaglesakura_ace.Tri" +
+      "ggerType\022\025\n\rextraUniqueId\030\002 \002(\t\022\022\n\ncomma",
+      "ndSec\030\003 \001(\005\022+\n\010location\030\004 \001(\0132\031.eaglesak" +
+      "ura_ace.Location\022/\n\006moving\030\005 \001(\0162\037.eagle" +
+      "sakura_ace.LocationMoving\"7\n\016CommandPayl" +
+      "oad\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001" +
+      "(\014*0\n\007Command\022\024\n\020ExtensionTrigger\020\001\022\017\n\013A" +
+      "cesControl\020\002*5\n\013TriggerType\022\017\n\013Promiximi" +
+      "ty\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity\020\003*\'\n\023AcesContr" +
+      "ollCommand\022\020\n\014TweetRequest\020\002B$\n\"com.eagl" +
+      "esakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4037,12 +4394,12 @@ public final class CommandProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CameraShotPayload_descriptor,
               new java.lang.String[] { "ImageUri", "ImageWidth", "ImageHeight", });
-          internal_static_eaglesakura_ace_TweetControllPayload_descriptor =
+          internal_static_eaglesakura_ace_TweetRequestPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_eaglesakura_ace_TweetControllPayload_fieldAccessorTable = new
+          internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_TweetControllPayload_descriptor,
-              new java.lang.String[] { "TweetMessage", "Hashtags", "ImageUris", });
+              internal_static_eaglesakura_ace_TweetRequestPayload_descriptor,
+              new java.lang.String[] { "TweetMessage", "Hashtags", "ImageUris", "WithCadence", "WithHeartrate", "WithSpeed", });
           internal_static_eaglesakura_ace_TriggerPayload_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new

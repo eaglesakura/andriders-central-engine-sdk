@@ -37,6 +37,7 @@ void protobuf_ShutdownFile_SensorProtocol_2eproto();
 
 class RawCadence;
 class RawHeartrate;
+class RawSpeed;
 class SensorPayload;
 
 enum RawCadence_CadenceZone {
@@ -82,13 +83,35 @@ inline bool RawHeartrate_HeartrateZone_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<RawHeartrate_HeartrateZone>(
     RawHeartrate_HeartrateZone_descriptor(), name, value);
 }
+enum RawSpeed_SpeedZone {
+  RawSpeed_SpeedZone_Stop = 0,
+  RawSpeed_SpeedZone_Slow = 1,
+  RawSpeed_SpeedZone_Cruise = 2,
+  RawSpeed_SpeedZone_Sprint = 3
+};
+bool RawSpeed_SpeedZone_IsValid(int value);
+const RawSpeed_SpeedZone RawSpeed_SpeedZone_SpeedZone_MIN = RawSpeed_SpeedZone_Stop;
+const RawSpeed_SpeedZone RawSpeed_SpeedZone_SpeedZone_MAX = RawSpeed_SpeedZone_Sprint;
+const int RawSpeed_SpeedZone_SpeedZone_ARRAYSIZE = RawSpeed_SpeedZone_SpeedZone_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* RawSpeed_SpeedZone_descriptor();
+inline const ::std::string& RawSpeed_SpeedZone_Name(RawSpeed_SpeedZone value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    RawSpeed_SpeedZone_descriptor(), value);
+}
+inline bool RawSpeed_SpeedZone_Parse(
+    const ::std::string& name, RawSpeed_SpeedZone* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<RawSpeed_SpeedZone>(
+    RawSpeed_SpeedZone_descriptor(), name, value);
+}
 enum SensorType {
   HeartrateMonitor = 0,
-  CadenceSensor = 1
+  CadenceSensor = 1,
+  SpeedSensor = 2
 };
 bool SensorType_IsValid(int value);
 const SensorType SensorType_MIN = HeartrateMonitor;
-const SensorType SensorType_MAX = CadenceSensor;
+const SensorType SensorType_MAX = SpeedSensor;
 const int SensorType_ARRAYSIZE = SensorType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* SensorType_descriptor();
@@ -309,7 +332,7 @@ class RawHeartrate : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 bpm() const;
   inline void set_bpm(::google::protobuf::int32 value);
 
-  // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+  // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
   inline bool has_heartratezone() const;
   inline void clear_heartratezone();
   static const int kHeartrateZoneFieldNumber = 101;
@@ -337,6 +360,144 @@ class RawHeartrate : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static RawHeartrate* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RawSpeed : public ::google::protobuf::Message {
+ public:
+  RawSpeed();
+  virtual ~RawSpeed();
+
+  RawSpeed(const RawSpeed& from);
+
+  inline RawSpeed& operator=(const RawSpeed& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RawSpeed& default_instance();
+
+  void Swap(RawSpeed* other);
+
+  // implements Message ----------------------------------------------
+
+  RawSpeed* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RawSpeed& from);
+  void MergeFrom(const RawSpeed& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef RawSpeed_SpeedZone SpeedZone;
+  static const SpeedZone Stop = RawSpeed_SpeedZone_Stop;
+  static const SpeedZone Slow = RawSpeed_SpeedZone_Slow;
+  static const SpeedZone Cruise = RawSpeed_SpeedZone_Cruise;
+  static const SpeedZone Sprint = RawSpeed_SpeedZone_Sprint;
+  static inline bool SpeedZone_IsValid(int value) {
+    return RawSpeed_SpeedZone_IsValid(value);
+  }
+  static const SpeedZone SpeedZone_MIN =
+    RawSpeed_SpeedZone_SpeedZone_MIN;
+  static const SpeedZone SpeedZone_MAX =
+    RawSpeed_SpeedZone_SpeedZone_MAX;
+  static const int SpeedZone_ARRAYSIZE =
+    RawSpeed_SpeedZone_SpeedZone_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  SpeedZone_descriptor() {
+    return RawSpeed_SpeedZone_descriptor();
+  }
+  static inline const ::std::string& SpeedZone_Name(SpeedZone value) {
+    return RawSpeed_SpeedZone_Name(value);
+  }
+  static inline bool SpeedZone_Parse(const ::std::string& name,
+      SpeedZone* value) {
+    return RawSpeed_SpeedZone_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // required float speedKmPerHour = 1;
+  inline bool has_speedkmperhour() const;
+  inline void clear_speedkmperhour();
+  static const int kSpeedKmPerHourFieldNumber = 1;
+  inline float speedkmperhour() const;
+  inline void set_speedkmperhour(float value);
+
+  // optional float wheelRpm = 2;
+  inline bool has_wheelrpm() const;
+  inline void clear_wheelrpm();
+  static const int kWheelRpmFieldNumber = 2;
+  inline float wheelrpm() const;
+  inline void set_wheelrpm(float value);
+
+  // required float maxKmPerHour = 10;
+  inline bool has_maxkmperhour() const;
+  inline void clear_maxkmperhour();
+  static const int kMaxKmPerHourFieldNumber = 10;
+  inline float maxkmperhour() const;
+  inline void set_maxkmperhour(float value);
+
+  // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+  inline bool has_speedzone() const;
+  inline void clear_speedzone();
+  static const int kSpeedZoneFieldNumber = 101;
+  inline ::eaglesakura_ace::RawSpeed_SpeedZone speedzone() const;
+  inline void set_speedzone(::eaglesakura_ace::RawSpeed_SpeedZone value);
+
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawSpeed)
+ private:
+  inline void set_has_speedkmperhour();
+  inline void clear_has_speedkmperhour();
+  inline void set_has_wheelrpm();
+  inline void clear_has_wheelrpm();
+  inline void set_has_maxkmperhour();
+  inline void clear_has_maxkmperhour();
+  inline void set_has_speedzone();
+  inline void clear_has_speedzone();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  float speedkmperhour_;
+  float wheelrpm_;
+  float maxkmperhour_;
+  int speedzone_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SensorProtocol_2eproto();
+  friend void protobuf_AssignDesc_SensorProtocol_2eproto();
+  friend void protobuf_ShutdownFile_SensorProtocol_2eproto();
+
+  void InitAsDefaultInstance();
+  static RawSpeed* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -513,7 +674,7 @@ inline void RawHeartrate::set_bpm(::google::protobuf::int32 value) {
   bpm_ = value;
 }
 
-// optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+// required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
 inline bool RawHeartrate::has_heartratezone() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -534,6 +695,99 @@ inline void RawHeartrate::set_heartratezone(::eaglesakura_ace::RawHeartrate_Hear
   assert(::eaglesakura_ace::RawHeartrate_HeartrateZone_IsValid(value));
   set_has_heartratezone();
   heartratezone_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// RawSpeed
+
+// required float speedKmPerHour = 1;
+inline bool RawSpeed::has_speedkmperhour() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RawSpeed::set_has_speedkmperhour() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RawSpeed::clear_has_speedkmperhour() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RawSpeed::clear_speedkmperhour() {
+  speedkmperhour_ = 0;
+  clear_has_speedkmperhour();
+}
+inline float RawSpeed::speedkmperhour() const {
+  return speedkmperhour_;
+}
+inline void RawSpeed::set_speedkmperhour(float value) {
+  set_has_speedkmperhour();
+  speedkmperhour_ = value;
+}
+
+// optional float wheelRpm = 2;
+inline bool RawSpeed::has_wheelrpm() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RawSpeed::set_has_wheelrpm() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RawSpeed::clear_has_wheelrpm() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RawSpeed::clear_wheelrpm() {
+  wheelrpm_ = 0;
+  clear_has_wheelrpm();
+}
+inline float RawSpeed::wheelrpm() const {
+  return wheelrpm_;
+}
+inline void RawSpeed::set_wheelrpm(float value) {
+  set_has_wheelrpm();
+  wheelrpm_ = value;
+}
+
+// required float maxKmPerHour = 10;
+inline bool RawSpeed::has_maxkmperhour() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RawSpeed::set_has_maxkmperhour() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RawSpeed::clear_has_maxkmperhour() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RawSpeed::clear_maxkmperhour() {
+  maxkmperhour_ = 0;
+  clear_has_maxkmperhour();
+}
+inline float RawSpeed::maxkmperhour() const {
+  return maxkmperhour_;
+}
+inline void RawSpeed::set_maxkmperhour(float value) {
+  set_has_maxkmperhour();
+  maxkmperhour_ = value;
+}
+
+// required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+inline bool RawSpeed::has_speedzone() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RawSpeed::set_has_speedzone() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RawSpeed::clear_has_speedzone() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RawSpeed::clear_speedzone() {
+  speedzone_ = 0;
+  clear_has_speedzone();
+}
+inline ::eaglesakura_ace::RawSpeed_SpeedZone RawSpeed::speedzone() const {
+  return static_cast< ::eaglesakura_ace::RawSpeed_SpeedZone >(speedzone_);
+}
+inline void RawSpeed::set_speedzone(::eaglesakura_ace::RawSpeed_SpeedZone value) {
+  assert(::eaglesakura_ace::RawSpeed_SpeedZone_IsValid(value));
+  set_has_speedzone();
+  speedzone_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -649,6 +903,10 @@ inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::RawCadence_Ca
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::RawHeartrate_HeartrateZone>() {
   return ::eaglesakura_ace::RawHeartrate_HeartrateZone_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::RawSpeed_SpeedZone>() {
+  return ::eaglesakura_ace::RawSpeed_SpeedZone_descriptor();
 }
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::SensorType>() {

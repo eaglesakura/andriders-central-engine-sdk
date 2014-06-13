@@ -28,6 +28,10 @@ const ::google::protobuf::Descriptor* RawHeartrate_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RawHeartrate_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* RawHeartrate_HeartrateZone_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* RawSpeed_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  RawSpeed_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* RawSpeed_SpeedZone_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* SensorPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   SensorPayload_reflection_ = NULL;
@@ -76,7 +80,26 @@ void protobuf_AssignDesc_SensorProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RawHeartrate));
   RawHeartrate_HeartrateZone_descriptor_ = RawHeartrate_descriptor_->enum_type(0);
-  SensorPayload_descriptor_ = file->message_type(2);
+  RawSpeed_descriptor_ = file->message_type(2);
+  static const int RawSpeed_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, speedkmperhour_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, wheelrpm_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, maxkmperhour_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, speedzone_),
+  };
+  RawSpeed_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      RawSpeed_descriptor_,
+      RawSpeed::default_instance_,
+      RawSpeed_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(RawSpeed));
+  RawSpeed_SpeedZone_descriptor_ = RawSpeed_descriptor_->enum_type(0);
+  SensorPayload_descriptor_ = file->message_type(3);
   static const int SensorPayload_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SensorPayload, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SensorPayload, buffer_),
@@ -110,6 +133,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RawHeartrate_descriptor_, &RawHeartrate::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    RawSpeed_descriptor_, &RawSpeed::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     SensorPayload_descriptor_, &SensorPayload::default_instance());
 }
 
@@ -120,6 +145,8 @@ void protobuf_ShutdownFile_SensorProtocol_2eproto() {
   delete RawCadence_reflection_;
   delete RawHeartrate::default_instance_;
   delete RawHeartrate_reflection_;
+  delete RawSpeed::default_instance_;
+  delete RawSpeed_reflection_;
   delete SensorPayload::default_instance_;
   delete SensorPayload_reflection_;
 }
@@ -138,22 +165,29 @@ void protobuf_AddDesc_SensorProtocol_2eproto() {
     "ra_ace.RawCadence.CadenceZone\"0\n\013Cadence"
     "Zone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002\""
     "\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartra"
-    "teZone\030e \001(\0162+.eaglesakura_ace.RawHeartr"
+    "teZone\030e \002(\0162+.eaglesakura_ace.RawHeartr"
     "ate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Re"
     "pose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026P"
     "ossessionOxygenMotion\020\003\022\027\n\023NonOxygenated"
-    "Motion\020\004\022\014\n\010Overwork\020\005\"J\n\rSensorPayload\022"
-    ")\n\004type\030\002 \002(\0162\033.eaglesakura_ace.SensorTy"
-    "pe\022\016\n\006buffer\030\n \002(\014*5\n\nSensorType\022\024\n\020Hear"
-    "trateMonitor\020\000\022\021\n\rCadenceSensor\020\001B$\n\"com"
-    ".eaglesakura.andriders.protocol", 591);
+    "Motion\020\004\022\014\n\010Overwork\020\005\"\273\001\n\010RawSpeed\022\026\n\016s"
+    "peedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\024\n"
+    "\014maxKmPerHour\030\n \002(\002\0226\n\tspeedZone\030e \002(\0162#"
+    ".eaglesakura_ace.RawSpeed.SpeedZone\"7\n\tS"
+    "peedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002"
+    "\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002 "
+    "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff"
+    "er\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMonit"
+    "or\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020\002"
+    "B$\n\"com.eaglesakura.andriders.protocol", 798);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SensorProtocol.proto", &protobuf_RegisterTypes);
   RawCadence::default_instance_ = new RawCadence();
   RawHeartrate::default_instance_ = new RawHeartrate();
+  RawSpeed::default_instance_ = new RawSpeed();
   SensorPayload::default_instance_ = new SensorPayload();
   RawCadence::default_instance_->InitAsDefaultInstance();
   RawHeartrate::default_instance_->InitAsDefaultInstance();
+  RawSpeed::default_instance_->InitAsDefaultInstance();
   SensorPayload::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_SensorProtocol_2eproto);
 }
@@ -172,6 +206,7 @@ bool SensorType_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;
@@ -574,7 +609,7 @@ bool RawHeartrate::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+      // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
       case 101: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -618,7 +653,7 @@ void RawHeartrate::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(100, this->bpm(), output);
   }
 
-  // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+  // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
   if (has_heartratezone()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       101, this->heartratezone(), output);
@@ -637,7 +672,7 @@ void RawHeartrate::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(100, this->bpm(), target);
   }
 
-  // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+  // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
   if (has_heartratezone()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       101, this->heartratezone(), target);
@@ -661,7 +696,7 @@ int RawHeartrate::ByteSize() const {
           this->bpm());
     }
 
-    // optional .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
+    // required .eaglesakura_ace.RawHeartrate.HeartrateZone heartrateZone = 101;
     if (has_heartratezone()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->heartratezone());
@@ -717,7 +752,7 @@ void RawHeartrate::CopyFrom(const RawHeartrate& from) {
 }
 
 bool RawHeartrate::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   return true;
 }
@@ -737,6 +772,360 @@ void RawHeartrate::Swap(RawHeartrate* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = RawHeartrate_descriptor_;
   metadata.reflection = RawHeartrate_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+const ::google::protobuf::EnumDescriptor* RawSpeed_SpeedZone_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return RawSpeed_SpeedZone_descriptor_;
+}
+bool RawSpeed_SpeedZone_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const RawSpeed_SpeedZone RawSpeed::Stop;
+const RawSpeed_SpeedZone RawSpeed::Slow;
+const RawSpeed_SpeedZone RawSpeed::Cruise;
+const RawSpeed_SpeedZone RawSpeed::Sprint;
+const RawSpeed_SpeedZone RawSpeed::SpeedZone_MIN;
+const RawSpeed_SpeedZone RawSpeed::SpeedZone_MAX;
+const int RawSpeed::SpeedZone_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int RawSpeed::kSpeedKmPerHourFieldNumber;
+const int RawSpeed::kWheelRpmFieldNumber;
+const int RawSpeed::kMaxKmPerHourFieldNumber;
+const int RawSpeed::kSpeedZoneFieldNumber;
+#endif  // !_MSC_VER
+
+RawSpeed::RawSpeed()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void RawSpeed::InitAsDefaultInstance() {
+}
+
+RawSpeed::RawSpeed(const RawSpeed& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void RawSpeed::SharedCtor() {
+  _cached_size_ = 0;
+  speedkmperhour_ = 0;
+  wheelrpm_ = 0;
+  maxkmperhour_ = 0;
+  speedzone_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+RawSpeed::~RawSpeed() {
+  SharedDtor();
+}
+
+void RawSpeed::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void RawSpeed::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* RawSpeed::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return RawSpeed_descriptor_;
+}
+
+const RawSpeed& RawSpeed::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_SensorProtocol_2eproto();
+  return *default_instance_;
+}
+
+RawSpeed* RawSpeed::default_instance_ = NULL;
+
+RawSpeed* RawSpeed::New() const {
+  return new RawSpeed;
+}
+
+void RawSpeed::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    speedkmperhour_ = 0;
+    wheelrpm_ = 0;
+    maxkmperhour_ = 0;
+    speedzone_ = 0;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool RawSpeed::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required float speedKmPerHour = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &speedkmperhour_)));
+          set_has_speedkmperhour();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(21)) goto parse_wheelRpm;
+        break;
+      }
+
+      // optional float wheelRpm = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_wheelRpm:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &wheelrpm_)));
+          set_has_wheelrpm();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(85)) goto parse_maxKmPerHour;
+        break;
+      }
+
+      // required float maxKmPerHour = 10;
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_maxKmPerHour:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &maxkmperhour_)));
+          set_has_maxkmperhour();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(808)) goto parse_speedZone;
+        break;
+      }
+
+      // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+      case 101: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_speedZone:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::eaglesakura_ace::RawSpeed_SpeedZone_IsValid(value)) {
+            set_speedzone(static_cast< ::eaglesakura_ace::RawSpeed_SpeedZone >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(101, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void RawSpeed::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // required float speedKmPerHour = 1;
+  if (has_speedkmperhour()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->speedkmperhour(), output);
+  }
+
+  // optional float wheelRpm = 2;
+  if (has_wheelrpm()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->wheelrpm(), output);
+  }
+
+  // required float maxKmPerHour = 10;
+  if (has_maxkmperhour()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->maxkmperhour(), output);
+  }
+
+  // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+  if (has_speedzone()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      101, this->speedzone(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* RawSpeed::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // required float speedKmPerHour = 1;
+  if (has_speedkmperhour()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->speedkmperhour(), target);
+  }
+
+  // optional float wheelRpm = 2;
+  if (has_wheelrpm()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->wheelrpm(), target);
+  }
+
+  // required float maxKmPerHour = 10;
+  if (has_maxkmperhour()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(10, this->maxkmperhour(), target);
+  }
+
+  // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+  if (has_speedzone()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      101, this->speedzone(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int RawSpeed::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required float speedKmPerHour = 1;
+    if (has_speedkmperhour()) {
+      total_size += 1 + 4;
+    }
+
+    // optional float wheelRpm = 2;
+    if (has_wheelrpm()) {
+      total_size += 1 + 4;
+    }
+
+    // required float maxKmPerHour = 10;
+    if (has_maxkmperhour()) {
+      total_size += 1 + 4;
+    }
+
+    // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
+    if (has_speedzone()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->speedzone());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void RawSpeed::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const RawSpeed* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const RawSpeed*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void RawSpeed::MergeFrom(const RawSpeed& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_speedkmperhour()) {
+      set_speedkmperhour(from.speedkmperhour());
+    }
+    if (from.has_wheelrpm()) {
+      set_wheelrpm(from.wheelrpm());
+    }
+    if (from.has_maxkmperhour()) {
+      set_maxkmperhour(from.maxkmperhour());
+    }
+    if (from.has_speedzone()) {
+      set_speedzone(from.speedzone());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void RawSpeed::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RawSpeed::CopyFrom(const RawSpeed& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RawSpeed::IsInitialized() const {
+  if ((_has_bits_[0] & 0x0000000d) != 0x0000000d) return false;
+
+  return true;
+}
+
+void RawSpeed::Swap(RawSpeed* other) {
+  if (other != this) {
+    std::swap(speedkmperhour_, other->speedkmperhour_);
+    std::swap(wheelrpm_, other->wheelrpm_);
+    std::swap(maxkmperhour_, other->maxkmperhour_);
+    std::swap(speedzone_, other->speedzone_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata RawSpeed::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = RawSpeed_descriptor_;
+  metadata.reflection = RawSpeed_reflection_;
   return metadata;
 }
 

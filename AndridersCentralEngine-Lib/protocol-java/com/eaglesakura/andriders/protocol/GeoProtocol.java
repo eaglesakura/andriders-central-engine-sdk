@@ -671,7 +671,7 @@ public final class GeoProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.Location)
   }
 
-  public interface GeoStatusOrBuilder
+  public interface GeoPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required .eaglesakura_ace.Location loc = 1;
@@ -707,7 +707,7 @@ public final class GeoProtocol {
      * <pre>
      * ジオハッシュ情報
      * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
      * </pre>
      */
     boolean hasGeohash();
@@ -717,7 +717,7 @@ public final class GeoProtocol {
      * <pre>
      * ジオハッシュ情報
      * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
      * </pre>
      */
     java.lang.String getGeohash();
@@ -727,35 +727,35 @@ public final class GeoProtocol {
      * <pre>
      * ジオハッシュ情報
      * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
      * </pre>
      */
     com.google.protobuf.ByteString
         getGeohashBytes();
   }
   /**
-   * Protobuf type {@code eaglesakura_ace.GeoStatus}
+   * Protobuf type {@code eaglesakura_ace.GeoPayload}
    *
    * <pre>
    * 現在位置の情報伝達
    * </pre>
    */
-  public static final class GeoStatus extends
+  public static final class GeoPayload extends
       com.google.protobuf.GeneratedMessage
-      implements GeoStatusOrBuilder {
-    // Use GeoStatus.newBuilder() to construct.
-    private GeoStatus(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GeoPayloadOrBuilder {
+    // Use GeoPayload.newBuilder() to construct.
+    private GeoPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private GeoStatus(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GeoPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final GeoStatus defaultInstance;
-    public static GeoStatus getDefaultInstance() {
+    private static final GeoPayload defaultInstance;
+    public static GeoPayload getDefaultInstance() {
       return defaultInstance;
     }
 
-    public GeoStatus getDefaultInstanceForType() {
+    public GeoPayload getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -765,7 +765,7 @@ public final class GeoProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private GeoStatus(
+    private GeoPayload(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -820,28 +820,28 @@ public final class GeoProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoStatus_descriptor;
+      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPayload_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoStatus_fieldAccessorTable
+      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder.class);
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<GeoStatus> PARSER =
-        new com.google.protobuf.AbstractParser<GeoStatus>() {
-      public GeoStatus parsePartialFrom(
+    public static com.google.protobuf.Parser<GeoPayload> PARSER =
+        new com.google.protobuf.AbstractParser<GeoPayload>() {
+      public GeoPayload parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GeoStatus(input, extensionRegistry);
+        return new GeoPayload(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GeoStatus> getParserForType() {
+    public com.google.protobuf.Parser<GeoPayload> getParserForType() {
       return PARSER;
     }
 
@@ -889,7 +889,7 @@ public final class GeoProtocol {
      * <pre>
      * ジオハッシュ情報
      * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
      * </pre>
      */
     public boolean hasGeohash() {
@@ -901,7 +901,7 @@ public final class GeoProtocol {
      * <pre>
      * ジオハッシュ情報
      * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
      * </pre>
      */
     public java.lang.String getGeohash() {
@@ -924,7 +924,7 @@ public final class GeoProtocol {
      * <pre>
      * ジオハッシュ情報
      * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
      * </pre>
      */
     public com.google.protobuf.ByteString
@@ -1004,53 +1004,53 @@ public final class GeoProtocol {
       return super.writeReplace();
     }
 
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(byte[] data)
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseDelimitedFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseDelimitedFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1059,7 +1059,7 @@ public final class GeoProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus prototype) {
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1071,7 +1071,7 @@ public final class GeoProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code eaglesakura_ace.GeoStatus}
+     * Protobuf type {@code eaglesakura_ace.GeoPayload}
      *
      * <pre>
      * 現在位置の情報伝達
@@ -1079,20 +1079,20 @@ public final class GeoProtocol {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder {
+       implements com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoStatus_descriptor;
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPayload_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoStatus_fieldAccessorTable
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder.class);
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder.class);
       }
 
-      // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.newBuilder()
+      // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1130,23 +1130,23 @@ public final class GeoProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoStatus_descriptor;
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPayload_descriptor;
       }
 
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
       }
 
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus build() {
-        com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus result = buildPartial();
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload build() {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus buildPartial() {
-        com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus result = new com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus(this);
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload buildPartial() {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload result = new com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1167,16 +1167,16 @@ public final class GeoProtocol {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus)other);
+        if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus other) {
-        if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload other) {
+        if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) return this;
         if (other.hasLoc()) {
           mergeLoc(other.getLoc());
         }
@@ -1209,11 +1209,11 @@ public final class GeoProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus parsedMessage = null;
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus) e.getUnfinishedMessage();
+          parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1385,7 +1385,7 @@ public final class GeoProtocol {
        * <pre>
        * ジオハッシュ情報
        * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
        * </pre>
        */
       public boolean hasGeohash() {
@@ -1397,7 +1397,7 @@ public final class GeoProtocol {
        * <pre>
        * ジオハッシュ情報
        * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
        * </pre>
        */
       public java.lang.String getGeohash() {
@@ -1417,7 +1417,7 @@ public final class GeoProtocol {
        * <pre>
        * ジオハッシュ情報
        * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
        * </pre>
        */
       public com.google.protobuf.ByteString
@@ -1439,7 +1439,7 @@ public final class GeoProtocol {
        * <pre>
        * ジオハッシュ情報
        * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
        * </pre>
        */
       public Builder setGeohash(
@@ -1458,7 +1458,7 @@ public final class GeoProtocol {
        * <pre>
        * ジオハッシュ情報
        * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
        * </pre>
        */
       public Builder clearGeohash() {
@@ -1473,7 +1473,7 @@ public final class GeoProtocol {
        * <pre>
        * ジオハッシュ情報
        * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（100m*130m)を基本とする
+       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
        * </pre>
        */
       public Builder setGeohashBytes(
@@ -1487,15 +1487,15 @@ public final class GeoProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeoStatus)
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeoPayload)
     }
 
     static {
-      defaultInstance = new GeoStatus(true);
+      defaultInstance = new GeoPayload(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeoStatus)
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeoPayload)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -1504,10 +1504,10 @@ public final class GeoProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_Location_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_GeoStatus_descriptor;
+    internal_static_eaglesakura_ace_GeoPayload_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_GeoStatus_fieldAccessorTable;
+      internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1519,11 +1519,11 @@ public final class GeoProtocol {
     java.lang.String[] descriptorData = {
       "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\022Ac" +
       "eConstants.proto\"/\n\010Location\022\020\n\010latitude" +
-      "\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"D\n\tGeoStatus\022&" +
-      "\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location\022\017" +
-      "\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002In\020" +
-      "\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andriders." +
-      "protocol"
+      "\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"E\n\nGeoPayload\022" +
+      "&\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location\022" +
+      "\017\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002In" +
+      "\020\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andriders" +
+      ".protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1536,11 +1536,11 @@ public final class GeoProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_Location_descriptor,
               new java.lang.String[] { "Latitude", "Longitude", });
-          internal_static_eaglesakura_ace_GeoStatus_descriptor =
+          internal_static_eaglesakura_ace_GeoPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
-          internal_static_eaglesakura_ace_GeoStatus_fieldAccessorTable = new
+          internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_GeoStatus_descriptor,
+              internal_static_eaglesakura_ace_GeoPayload_descriptor,
               new java.lang.String[] { "Loc", "Geohash", });
           return null;
         }

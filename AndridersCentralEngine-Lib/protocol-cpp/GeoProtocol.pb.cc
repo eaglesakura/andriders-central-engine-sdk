@@ -23,9 +23,9 @@ namespace {
 const ::google::protobuf::Descriptor* Location_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Location_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GeoStatus_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* GeoPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GeoStatus_reflection_ = NULL;
+  GeoPayload_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* LocationMoving_descriptor_ = NULL;
 
 }  // namespace
@@ -53,22 +53,22 @@ void protobuf_AssignDesc_GeoProtocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Location));
-  GeoStatus_descriptor_ = file->message_type(1);
-  static const int GeoStatus_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoStatus, loc_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoStatus, geohash_),
+  GeoPayload_descriptor_ = file->message_type(1);
+  static const int GeoPayload_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoPayload, loc_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoPayload, geohash_),
   };
-  GeoStatus_reflection_ =
+  GeoPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GeoStatus_descriptor_,
-      GeoStatus::default_instance_,
-      GeoStatus_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoStatus, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoStatus, _unknown_fields_),
+      GeoPayload_descriptor_,
+      GeoPayload::default_instance_,
+      GeoPayload_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoPayload, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GeoPayload, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GeoStatus));
+      sizeof(GeoPayload));
   LocationMoving_descriptor_ = file->enum_type(0);
 }
 
@@ -85,7 +85,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Location_descriptor_, &Location::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GeoStatus_descriptor_, &GeoStatus::default_instance());
+    GeoPayload_descriptor_, &GeoPayload::default_instance());
 }
 
 }  // namespace
@@ -93,8 +93,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_GeoProtocol_2eproto() {
   delete Location::default_instance_;
   delete Location_reflection_;
-  delete GeoStatus::default_instance_;
-  delete GeoStatus_reflection_;
+  delete GeoPayload::default_instance_;
+  delete GeoPayload_reflection_;
 }
 
 void protobuf_AddDesc_GeoProtocol_2eproto() {
@@ -107,17 +107,17 @@ void protobuf_AddDesc_GeoProtocol_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\022Ac"
     "eConstants.proto\"/\n\010Location\022\020\n\010latitude"
-    "\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"D\n\tGeoStatus\022&"
-    "\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location\022\017"
-    "\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002In\020"
-    "\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andriders."
-    "protocol", 248);
+    "\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"E\n\nGeoPayload\022"
+    "&\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location\022"
+    "\017\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002In"
+    "\020\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andriders"
+    ".protocol", 249);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "GeoProtocol.proto", &protobuf_RegisterTypes);
   Location::default_instance_ = new Location();
-  GeoStatus::default_instance_ = new GeoStatus();
+  GeoPayload::default_instance_ = new GeoPayload();
   Location::default_instance_->InitAsDefaultInstance();
-  GeoStatus::default_instance_->InitAsDefaultInstance();
+  GeoPayload::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_GeoProtocol_2eproto);
 }
 
@@ -390,37 +390,37 @@ void Location::Swap(Location* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int GeoStatus::kLocFieldNumber;
-const int GeoStatus::kGeohashFieldNumber;
+const int GeoPayload::kLocFieldNumber;
+const int GeoPayload::kGeohashFieldNumber;
 #endif  // !_MSC_VER
 
-GeoStatus::GeoStatus()
+GeoPayload::GeoPayload()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GeoStatus::InitAsDefaultInstance() {
+void GeoPayload::InitAsDefaultInstance() {
   loc_ = const_cast< ::eaglesakura_ace::Location*>(&::eaglesakura_ace::Location::default_instance());
 }
 
-GeoStatus::GeoStatus(const GeoStatus& from)
+GeoPayload::GeoPayload(const GeoPayload& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GeoStatus::SharedCtor() {
+void GeoPayload::SharedCtor() {
   _cached_size_ = 0;
   loc_ = NULL;
   geohash_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GeoStatus::~GeoStatus() {
+GeoPayload::~GeoPayload() {
   SharedDtor();
 }
 
-void GeoStatus::SharedDtor() {
+void GeoPayload::SharedDtor() {
   if (geohash_ != &::google::protobuf::internal::kEmptyString) {
     delete geohash_;
   }
@@ -429,28 +429,28 @@ void GeoStatus::SharedDtor() {
   }
 }
 
-void GeoStatus::SetCachedSize(int size) const {
+void GeoPayload::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GeoStatus::descriptor() {
+const ::google::protobuf::Descriptor* GeoPayload::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GeoStatus_descriptor_;
+  return GeoPayload_descriptor_;
 }
 
-const GeoStatus& GeoStatus::default_instance() {
+const GeoPayload& GeoPayload::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GeoProtocol_2eproto();
   return *default_instance_;
 }
 
-GeoStatus* GeoStatus::default_instance_ = NULL;
+GeoPayload* GeoPayload::default_instance_ = NULL;
 
-GeoStatus* GeoStatus::New() const {
-  return new GeoStatus;
+GeoPayload* GeoPayload::New() const {
+  return new GeoPayload;
 }
 
-void GeoStatus::Clear() {
+void GeoPayload::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_loc()) {
       if (loc_ != NULL) loc_->::eaglesakura_ace::Location::Clear();
@@ -465,7 +465,7 @@ void GeoStatus::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool GeoStatus::MergePartialFromCodedStream(
+bool GeoPayload::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -517,7 +517,7 @@ bool GeoStatus::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GeoStatus::SerializeWithCachedSizes(
+void GeoPayload::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required .eaglesakura_ace.Location loc = 1;
   if (has_loc()) {
@@ -540,7 +540,7 @@ void GeoStatus::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GeoStatus::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* GeoPayload::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required .eaglesakura_ace.Location loc = 1;
   if (has_loc()) {
@@ -566,7 +566,7 @@ void GeoStatus::SerializeWithCachedSizes(
   return target;
 }
 
-int GeoStatus::ByteSize() const {
+int GeoPayload::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -596,10 +596,10 @@ int GeoStatus::ByteSize() const {
   return total_size;
 }
 
-void GeoStatus::MergeFrom(const ::google::protobuf::Message& from) {
+void GeoPayload::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GeoStatus* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GeoStatus*>(
+  const GeoPayload* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const GeoPayload*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -608,7 +608,7 @@ void GeoStatus::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GeoStatus::MergeFrom(const GeoStatus& from) {
+void GeoPayload::MergeFrom(const GeoPayload& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_loc()) {
@@ -621,19 +621,19 @@ void GeoStatus::MergeFrom(const GeoStatus& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GeoStatus::CopyFrom(const ::google::protobuf::Message& from) {
+void GeoPayload::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GeoStatus::CopyFrom(const GeoStatus& from) {
+void GeoPayload::CopyFrom(const GeoPayload& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GeoStatus::IsInitialized() const {
+bool GeoPayload::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   if (has_loc()) {
@@ -642,7 +642,7 @@ bool GeoStatus::IsInitialized() const {
   return true;
 }
 
-void GeoStatus::Swap(GeoStatus* other) {
+void GeoPayload::Swap(GeoPayload* other) {
   if (other != this) {
     std::swap(loc_, other->loc_);
     std::swap(geohash_, other->geohash_);
@@ -652,11 +652,11 @@ void GeoStatus::Swap(GeoStatus* other) {
   }
 }
 
-::google::protobuf::Metadata GeoStatus::GetMetadata() const {
+::google::protobuf::Metadata GeoPayload::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GeoStatus_descriptor_;
-  metadata.reflection = GeoStatus_reflection_;
+  metadata.descriptor = GeoPayload_descriptor_;
+  metadata.reflection = GeoPayload_reflection_;
   return metadata;
 }
 

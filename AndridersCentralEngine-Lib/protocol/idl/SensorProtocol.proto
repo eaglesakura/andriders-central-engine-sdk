@@ -60,8 +60,10 @@ message RawHeartrate {
 message RawSpeed {
 // スピード km/h
 	required float speedKmPerHour = 1;
+
 	// ホイールの回転数
-	required float wheelRpm = 2;
+	// S&Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
+	optional float wheelRpm = 2;
 
 	// 今までの最高速度
 	required float maxKmPerHour = 10;

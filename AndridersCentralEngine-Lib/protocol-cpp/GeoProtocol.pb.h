@@ -36,7 +36,7 @@ void protobuf_AssignDesc_GeoProtocol_2eproto();
 void protobuf_ShutdownFile_GeoProtocol_2eproto();
 
 class Location;
-class GeoStatus;
+class GeoPayload;
 
 enum LocationMoving {
   In = 1,
@@ -151,14 +151,14 @@ class Location : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class GeoStatus : public ::google::protobuf::Message {
+class GeoPayload : public ::google::protobuf::Message {
  public:
-  GeoStatus();
-  virtual ~GeoStatus();
+  GeoPayload();
+  virtual ~GeoPayload();
 
-  GeoStatus(const GeoStatus& from);
+  GeoPayload(const GeoPayload& from);
 
-  inline GeoStatus& operator=(const GeoStatus& from) {
+  inline GeoPayload& operator=(const GeoPayload& from) {
     CopyFrom(from);
     return *this;
   }
@@ -172,17 +172,17 @@ class GeoStatus : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GeoStatus& default_instance();
+  static const GeoPayload& default_instance();
 
-  void Swap(GeoStatus* other);
+  void Swap(GeoPayload* other);
 
   // implements Message ----------------------------------------------
 
-  GeoStatus* New() const;
+  GeoPayload* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GeoStatus& from);
-  void MergeFrom(const GeoStatus& from);
+  void CopyFrom(const GeoPayload& from);
+  void MergeFrom(const GeoPayload& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -226,7 +226,7 @@ class GeoStatus : public ::google::protobuf::Message {
   inline ::std::string* release_geohash();
   inline void set_allocated_geohash(::std::string* geohash);
 
-  // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeoStatus)
+  // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeoPayload)
  private:
   inline void set_has_loc();
   inline void clear_has_loc();
@@ -246,7 +246,7 @@ class GeoStatus : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GeoProtocol_2eproto();
 
   void InitAsDefaultInstance();
-  static GeoStatus* default_instance_;
+  static GeoPayload* default_instance_;
 };
 // ===================================================================
 
@@ -301,37 +301,37 @@ inline void Location::set_longitude(double value) {
 
 // -------------------------------------------------------------------
 
-// GeoStatus
+// GeoPayload
 
 // required .eaglesakura_ace.Location loc = 1;
-inline bool GeoStatus::has_loc() const {
+inline bool GeoPayload::has_loc() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GeoStatus::set_has_loc() {
+inline void GeoPayload::set_has_loc() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GeoStatus::clear_has_loc() {
+inline void GeoPayload::clear_has_loc() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GeoStatus::clear_loc() {
+inline void GeoPayload::clear_loc() {
   if (loc_ != NULL) loc_->::eaglesakura_ace::Location::Clear();
   clear_has_loc();
 }
-inline const ::eaglesakura_ace::Location& GeoStatus::loc() const {
+inline const ::eaglesakura_ace::Location& GeoPayload::loc() const {
   return loc_ != NULL ? *loc_ : *default_instance_->loc_;
 }
-inline ::eaglesakura_ace::Location* GeoStatus::mutable_loc() {
+inline ::eaglesakura_ace::Location* GeoPayload::mutable_loc() {
   set_has_loc();
   if (loc_ == NULL) loc_ = new ::eaglesakura_ace::Location;
   return loc_;
 }
-inline ::eaglesakura_ace::Location* GeoStatus::release_loc() {
+inline ::eaglesakura_ace::Location* GeoPayload::release_loc() {
   clear_has_loc();
   ::eaglesakura_ace::Location* temp = loc_;
   loc_ = NULL;
   return temp;
 }
-inline void GeoStatus::set_allocated_loc(::eaglesakura_ace::Location* loc) {
+inline void GeoPayload::set_allocated_loc(::eaglesakura_ace::Location* loc) {
   delete loc_;
   loc_ = loc;
   if (loc) {
@@ -342,53 +342,53 @@ inline void GeoStatus::set_allocated_loc(::eaglesakura_ace::Location* loc) {
 }
 
 // required string geohash = 2;
-inline bool GeoStatus::has_geohash() const {
+inline bool GeoPayload::has_geohash() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GeoStatus::set_has_geohash() {
+inline void GeoPayload::set_has_geohash() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GeoStatus::clear_has_geohash() {
+inline void GeoPayload::clear_has_geohash() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GeoStatus::clear_geohash() {
+inline void GeoPayload::clear_geohash() {
   if (geohash_ != &::google::protobuf::internal::kEmptyString) {
     geohash_->clear();
   }
   clear_has_geohash();
 }
-inline const ::std::string& GeoStatus::geohash() const {
+inline const ::std::string& GeoPayload::geohash() const {
   return *geohash_;
 }
-inline void GeoStatus::set_geohash(const ::std::string& value) {
+inline void GeoPayload::set_geohash(const ::std::string& value) {
   set_has_geohash();
   if (geohash_ == &::google::protobuf::internal::kEmptyString) {
     geohash_ = new ::std::string;
   }
   geohash_->assign(value);
 }
-inline void GeoStatus::set_geohash(const char* value) {
+inline void GeoPayload::set_geohash(const char* value) {
   set_has_geohash();
   if (geohash_ == &::google::protobuf::internal::kEmptyString) {
     geohash_ = new ::std::string;
   }
   geohash_->assign(value);
 }
-inline void GeoStatus::set_geohash(const char* value, size_t size) {
+inline void GeoPayload::set_geohash(const char* value, size_t size) {
   set_has_geohash();
   if (geohash_ == &::google::protobuf::internal::kEmptyString) {
     geohash_ = new ::std::string;
   }
   geohash_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* GeoStatus::mutable_geohash() {
+inline ::std::string* GeoPayload::mutable_geohash() {
   set_has_geohash();
   if (geohash_ == &::google::protobuf::internal::kEmptyString) {
     geohash_ = new ::std::string;
   }
   return geohash_;
 }
-inline ::std::string* GeoStatus::release_geohash() {
+inline ::std::string* GeoPayload::release_geohash() {
   clear_has_geohash();
   if (geohash_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -398,7 +398,7 @@ inline ::std::string* GeoStatus::release_geohash() {
     return temp;
   }
 }
-inline void GeoStatus::set_allocated_geohash(::std::string* geohash) {
+inline void GeoPayload::set_allocated_geohash(::std::string* geohash) {
   if (geohash_ != &::google::protobuf::internal::kEmptyString) {
     delete geohash_;
   }

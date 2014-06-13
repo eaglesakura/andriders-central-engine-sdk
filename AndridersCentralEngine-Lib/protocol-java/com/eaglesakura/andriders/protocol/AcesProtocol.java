@@ -711,9 +711,29 @@ public final class AcesProtocol {
      */
     boolean getConnectedCadence();
 
-    // required bool connectedTwitter = 3;
+    // required bool connectedSpeed = 3;
     /**
-     * <code>required bool connectedTwitter = 3;</code>
+     * <code>required bool connectedSpeed = 3;</code>
+     *
+     * <pre>
+     * スピードセンサーに接続されていたらtrue
+     * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+     * </pre>
+     */
+    boolean hasConnectedSpeed();
+    /**
+     * <code>required bool connectedSpeed = 3;</code>
+     *
+     * <pre>
+     * スピードセンサーに接続されていたらtrue
+     * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+     * </pre>
+     */
+    boolean getConnectedSpeed();
+
+    // required bool connectedTwitter = 4;
+    /**
+     * <code>required bool connectedTwitter = 4;</code>
      *
      * <pre>
      * ツイッター接続済みの場合true
@@ -721,7 +741,7 @@ public final class AcesProtocol {
      */
     boolean hasConnectedTwitter();
     /**
-     * <code>required bool connectedTwitter = 3;</code>
+     * <code>required bool connectedTwitter = 4;</code>
      *
      * <pre>
      * ツイッター接続済みの場合true
@@ -797,6 +817,11 @@ public final class AcesProtocol {
             }
             case 24: {
               bitField0_ |= 0x00000004;
+              connectedSpeed_ = input.readBool();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
               connectedTwitter_ = input.readBool();
               break;
             }
@@ -888,21 +913,47 @@ public final class AcesProtocol {
       return connectedCadence_;
     }
 
-    // required bool connectedTwitter = 3;
-    public static final int CONNECTEDTWITTER_FIELD_NUMBER = 3;
+    // required bool connectedSpeed = 3;
+    public static final int CONNECTEDSPEED_FIELD_NUMBER = 3;
+    private boolean connectedSpeed_;
+    /**
+     * <code>required bool connectedSpeed = 3;</code>
+     *
+     * <pre>
+     * スピードセンサーに接続されていたらtrue
+     * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+     * </pre>
+     */
+    public boolean hasConnectedSpeed() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required bool connectedSpeed = 3;</code>
+     *
+     * <pre>
+     * スピードセンサーに接続されていたらtrue
+     * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+     * </pre>
+     */
+    public boolean getConnectedSpeed() {
+      return connectedSpeed_;
+    }
+
+    // required bool connectedTwitter = 4;
+    public static final int CONNECTEDTWITTER_FIELD_NUMBER = 4;
     private boolean connectedTwitter_;
     /**
-     * <code>required bool connectedTwitter = 3;</code>
+     * <code>required bool connectedTwitter = 4;</code>
      *
      * <pre>
      * ツイッター接続済みの場合true
      * </pre>
      */
     public boolean hasConnectedTwitter() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required bool connectedTwitter = 3;</code>
+     * <code>required bool connectedTwitter = 4;</code>
      *
      * <pre>
      * ツイッター接続済みの場合true
@@ -915,6 +966,7 @@ public final class AcesProtocol {
     private void initFields() {
       connectedHeartrate_ = false;
       connectedCadence_ = false;
+      connectedSpeed_ = false;
       connectedTwitter_ = false;
     }
     private byte memoizedIsInitialized = -1;
@@ -927,6 +979,10 @@ public final class AcesProtocol {
         return false;
       }
       if (!hasConnectedCadence()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasConnectedSpeed()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -948,7 +1004,10 @@ public final class AcesProtocol {
         output.writeBool(2, connectedCadence_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBool(3, connectedTwitter_);
+        output.writeBool(3, connectedSpeed_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, connectedTwitter_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -969,7 +1028,11 @@ public final class AcesProtocol {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, connectedTwitter_);
+          .computeBoolSize(3, connectedSpeed_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, connectedTwitter_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1096,8 +1159,10 @@ public final class AcesProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         connectedCadence_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
-        connectedTwitter_ = false;
+        connectedSpeed_ = false;
         bitField0_ = (bitField0_ & ~0x00000004);
+        connectedTwitter_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1137,6 +1202,10 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
+        result.connectedSpeed_ = connectedSpeed_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.connectedTwitter_ = connectedTwitter_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1160,6 +1229,9 @@ public final class AcesProtocol {
         if (other.hasConnectedCadence()) {
           setConnectedCadence(other.getConnectedCadence());
         }
+        if (other.hasConnectedSpeed()) {
+          setConnectedSpeed(other.getConnectedSpeed());
+        }
         if (other.hasConnectedTwitter()) {
           setConnectedTwitter(other.getConnectedTwitter());
         }
@@ -1173,6 +1245,10 @@ public final class AcesProtocol {
           return false;
         }
         if (!hasConnectedCadence()) {
+          
+          return false;
+        }
+        if (!hasConnectedSpeed()) {
           
           return false;
         }
@@ -1300,20 +1376,73 @@ public final class AcesProtocol {
         return this;
       }
 
-      // required bool connectedTwitter = 3;
+      // required bool connectedSpeed = 3;
+      private boolean connectedSpeed_ ;
+      /**
+       * <code>required bool connectedSpeed = 3;</code>
+       *
+       * <pre>
+       * スピードセンサーに接続されていたらtrue
+       * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+       * </pre>
+       */
+      public boolean hasConnectedSpeed() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required bool connectedSpeed = 3;</code>
+       *
+       * <pre>
+       * スピードセンサーに接続されていたらtrue
+       * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+       * </pre>
+       */
+      public boolean getConnectedSpeed() {
+        return connectedSpeed_;
+      }
+      /**
+       * <code>required bool connectedSpeed = 3;</code>
+       *
+       * <pre>
+       * スピードセンサーに接続されていたらtrue
+       * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+       * </pre>
+       */
+      public Builder setConnectedSpeed(boolean value) {
+        bitField0_ |= 0x00000004;
+        connectedSpeed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool connectedSpeed = 3;</code>
+       *
+       * <pre>
+       * スピードセンサーに接続されていたらtrue
+       * 基本的にはS&amp;Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+       * </pre>
+       */
+      public Builder clearConnectedSpeed() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        connectedSpeed_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required bool connectedTwitter = 4;
       private boolean connectedTwitter_ ;
       /**
-       * <code>required bool connectedTwitter = 3;</code>
+       * <code>required bool connectedTwitter = 4;</code>
        *
        * <pre>
        * ツイッター接続済みの場合true
        * </pre>
        */
       public boolean hasConnectedTwitter() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required bool connectedTwitter = 3;</code>
+       * <code>required bool connectedTwitter = 4;</code>
        *
        * <pre>
        * ツイッター接続済みの場合true
@@ -1323,27 +1452,27 @@ public final class AcesProtocol {
         return connectedTwitter_;
       }
       /**
-       * <code>required bool connectedTwitter = 3;</code>
+       * <code>required bool connectedTwitter = 4;</code>
        *
        * <pre>
        * ツイッター接続済みの場合true
        * </pre>
        */
       public Builder setConnectedTwitter(boolean value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         connectedTwitter_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required bool connectedTwitter = 3;</code>
+       * <code>required bool connectedTwitter = 4;</code>
        *
        * <pre>
        * ツイッター接続済みの場合true
        * </pre>
        */
       public Builder clearConnectedTwitter() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         connectedTwitter_ = false;
         onChanged();
         return this;
@@ -1509,9 +1638,9 @@ public final class AcesProtocol {
      */
     com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatusOrBuilder getCentralStatusOrBuilder();
 
-    // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+    // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
     /**
-     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
      *
      * <pre>
      * ユーザーのGPS座標ステータス
@@ -1519,21 +1648,21 @@ public final class AcesProtocol {
      */
     boolean hasGeoStatus();
     /**
-     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
      *
      * <pre>
      * ユーザーのGPS座標ステータス
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getGeoStatus();
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getGeoStatus();
     /**
-     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
      *
      * <pre>
      * ユーザーのGPS座標ステータス
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder getGeoStatusOrBuilder();
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getGeoStatusOrBuilder();
 
     // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
     /**
@@ -1730,11 +1859,11 @@ public final class AcesProtocol {
               break;
             }
             case 66: {
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder subBuilder = null;
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
               if (((bitField0_ & 0x00000020) == 0x00000020)) {
                 subBuilder = geoStatus_.toBuilder();
               }
-              geoStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.PARSER, extensionRegistry);
+              geoStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(geoStatus_);
                 geoStatus_ = subBuilder.buildPartial();
@@ -2054,11 +2183,11 @@ public final class AcesProtocol {
       return centralStatus_;
     }
 
-    // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
+    // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
     public static final int GEOSTATUS_FIELD_NUMBER = 8;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus geoStatus_;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload geoStatus_;
     /**
-     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
      *
      * <pre>
      * ユーザーのGPS座標ステータス
@@ -2068,23 +2197,23 @@ public final class AcesProtocol {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
      *
      * <pre>
      * ユーザーのGPS座標ステータス
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getGeoStatus() {
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getGeoStatus() {
       return geoStatus_;
     }
     /**
-     * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+     * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
      *
      * <pre>
      * ユーザーのGPS座標ステータス
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder getGeoStatusOrBuilder() {
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getGeoStatusOrBuilder() {
       return geoStatus_;
     }
 
@@ -2206,7 +2335,7 @@ public final class AcesProtocol {
       senderPackage_ = "";
       targetPackage_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
-      geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+      geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
       commandPayloads_ = java.util.Collections.emptyList();
     }
@@ -2462,7 +2591,7 @@ public final class AcesProtocol {
         }
         bitField0_ = (bitField0_ & ~0x00000010);
         if (geoStatusBuilder_ == null) {
-          geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+          geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
         } else {
           geoStatusBuilder_.clear();
         }
@@ -3283,12 +3412,12 @@ public final class AcesProtocol {
         return centralStatusBuilder_;
       }
 
-      // optional .eaglesakura_ace.GeoStatus geoStatus = 8;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+      // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder> geoStatusBuilder_;
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> geoStatusBuilder_;
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
@@ -3298,13 +3427,13 @@ public final class AcesProtocol {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus getGeoStatus() {
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getGeoStatus() {
         if (geoStatusBuilder_ == null) {
           return geoStatus_;
         } else {
@@ -3312,13 +3441,13 @@ public final class AcesProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
-      public Builder setGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus value) {
+      public Builder setGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
         if (geoStatusBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3332,14 +3461,14 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
       public Builder setGeoStatus(
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder builderForValue) {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder builderForValue) {
         if (geoStatusBuilder_ == null) {
           geoStatus_ = builderForValue.build();
           onChanged();
@@ -3350,18 +3479,18 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
-      public Builder mergeGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus value) {
+      public Builder mergeGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
         if (geoStatusBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020) &&
-              geoStatus_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance()) {
+              geoStatus_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
             geoStatus_ =
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.newBuilder(geoStatus_).mergeFrom(value).buildPartial();
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(geoStatus_).mergeFrom(value).buildPartial();
           } else {
             geoStatus_ = value;
           }
@@ -3373,7 +3502,7 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
@@ -3381,7 +3510,7 @@ public final class AcesProtocol {
        */
       public Builder clearGeoStatus() {
         if (geoStatusBuilder_ == null) {
-          geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.getDefaultInstance();
+          geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
           onChanged();
         } else {
           geoStatusBuilder_.clear();
@@ -3390,25 +3519,25 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder getGeoStatusBuilder() {
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getGeoStatusBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getGeoStatusFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder getGeoStatusOrBuilder() {
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getGeoStatusOrBuilder() {
         if (geoStatusBuilder_ != null) {
           return geoStatusBuilder_.getMessageOrBuilder();
         } else {
@@ -3416,18 +3545,18 @@ public final class AcesProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoStatus geoStatus = 8;</code>
+       * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
        *
        * <pre>
        * ユーザーのGPS座標ステータス
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder> 
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> 
           getGeoStatusFieldBuilder() {
         if (geoStatusBuilder_ == null) {
           geoStatusBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatus.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoStatusOrBuilder>(
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>(
                   geoStatus_,
                   getParentForChildren(),
                   isClean());
@@ -4099,18 +4228,19 @@ public final class AcesProtocol {
       "ceConstants.proto\032\024SensorProtocol.proto\032" +
       "\025CommandProtocol.proto\032\021GeoProtocol.prot" +
       "o\">\n\013VersionInfo\022\027\n\017protocolVersion\030\001 \002(" +
-      "\003\022\026\n\016appVersionName\030\002 \002(\t\"_\n\rCentralStat" +
+      "\003\022\026\n\016appVersionName\030\002 \002(\t\"w\n\rCentralStat" +
       "us\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020connec" +
-      "tedCadence\030\002 \002(\010\022\030\n\020connectedTwitter\030\003 \002" +
-      "(\010\"\274\002\n\rMasterPayload\022\020\n\010uniqueId\030\004 \002(\t\022\023" +
-      "\n\013createdDate\030\003 \002(\t\022\025\n\rsenderPackage\030\007 \002" +
-      "(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rcentralStat",
-      "us\030\001 \001(\0132\036.eaglesakura_ace.CentralStatus" +
-      "\022-\n\tgeoStatus\030\010 \001(\0132\032.eaglesakura_ace.Ge" +
-      "oStatus\0226\n\016sensorPayloads\030\002 \003(\0132\036.eagles" +
-      "akura_ace.SensorPayload\0228\n\017commandPayloa" +
-      "ds\030\005 \003(\0132\037.eaglesakura_ace.CommandPayloa" +
-      "dB$\n\"com.eaglesakura.andriders.protocol"
+      "tedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030\003 \002(\010" +
+      "\022\030\n\020connectedTwitter\030\004 \002(\010\"\275\002\n\rMasterPay" +
+      "load\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 " +
+      "\002(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPack",
+      "age\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagle" +
+      "sakura_ace.CentralStatus\022.\n\tgeoStatus\030\010 " +
+      "\001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sens" +
+      "orPayloads\030\002 \003(\0132\036.eaglesakura_ace.Senso" +
+      "rPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eagl" +
+      "esakura_ace.CommandPayloadB$\n\"com.eagles" +
+      "akura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4128,7 +4258,7 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
-              new java.lang.String[] { "ConnectedHeartrate", "ConnectedCadence", "ConnectedTwitter", });
+              new java.lang.String[] { "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", });
           internal_static_eaglesakura_ace_MasterPayload_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new

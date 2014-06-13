@@ -26,8 +26,12 @@ message CentralStatus {
 	// ケイデンスセンサーに接続されていたらtrue
 	required bool connectedCadence = 2;
 
+	// スピードセンサーに接続されていたらtrue
+	// 基本的にはS&Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+	required bool connectedSpeed = 3;
+
 	// ツイッター接続済みの場合true
-	required bool connectedTwitter = 3;
+	required bool connectedTwitter = 4;
 }
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する
