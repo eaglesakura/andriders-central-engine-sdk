@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.central;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.eaglesakura.andriders.AceLog;
+import com.eaglesakura.andriders.central.event.CentralDataHandler;
 import com.eaglesakura.andriders.central.event.CommandEventHandler;
 import com.eaglesakura.andriders.central.event.SensorEventHandler;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
@@ -132,9 +132,9 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * セントラルから情報を受けとった
+     * ACEsの情報ハンドリングを行う
      */
-    private final List<CentralDataListener> centralListeners = new ArrayList<AcesProtocolReceiver.CentralDataListener>();
+    private final Set<CentralDataHandler> centralHandlers = new HashSet<CentralDataHandler>();
 
     /**
      * センサーイベントのハンドリング
@@ -324,8 +324,8 @@ public class AcesProtocolReceiver {
         }
 
         // 正常なマスターデータを受け取った
-        for (CentralDataListener listener : centralListeners) {
-            listener.onMasterPayloadReceived(this, masterbuffer, master);
+        for (CentralDataHandler handler : centralHandlers) {
+            handler.onMasterPayloadReceived(this, masterbuffer, master);
         }
 
         // 各種データを設定する
@@ -386,20 +386,19 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * セントラル用のリスナを追加する
-     * @param listener
+     * ACEsのハンドリングを行う
+     * @param handler
      */
-    public void addCentralDataListener(CentralDataListener listener) {
-        centralListeners.remove(listener);
-        centralListeners.add(listener);
+    public void addCentralDataHandler(CentralDataHandler handler) {
+        centralHandlers.add(handler);
     }
 
     /**
-     * セントラルデータ用リスナを削除する
-     * @param listener
+     * ACEsのハンドリングを削除する
+     * @param handler
      */
-    public void removeCentralDataListener(CentralDataListener listener) {
-        centralListeners.remove(listener);
+    public void removeCentralDataHandler(CentralDataHandler handler) {
+        centralHandlers.remove(handler);
     }
 
     /**
