@@ -10,11 +10,14 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.eaglesakura.andriders.AceLog;
+import com.eaglesakura.andriders.central.event.ActivityEventHandler;
 import com.eaglesakura.andriders.central.event.CentralDataHandler;
 import com.eaglesakura.andriders.central.event.CommandEventHandler;
 import com.eaglesakura.andriders.central.event.SensorEventHandler;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload;
+import com.eaglesakura.andriders.protocol.ActivityProtocol.MaxSpeedActivity;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
@@ -147,6 +150,11 @@ public class AcesProtocolReceiver {
     private final Set<CommandEventHandler> commandHandlers = new HashSet<CommandEventHandler>();
 
     /**
+     * ユーザー活動のハンドリングを行う
+     */
+    private final Set<ActivityEventHandler> activityHandlers = new HashSet<ActivityEventHandler>();
+
+    /**
      * 心拍を受け取った
      * @param payload
      * @throws Exception
@@ -187,6 +195,19 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * 不明なセンサーを受け取った
+     * @param master
+     * @param payload
+     * @throws Exception
+     */
+    private void onUnknownSensorReceived(MasterPayload master, SensorPayload payload) throws Exception {
+        // ハンドラに通知
+        for (SensorEventHandler handler : sensorHandlers) {
+            handler.onUnknownSensorReceived(this, master, payload);
+        }
+    }
+
+    /**
      * センサー系イベントのハンドリングを行う
      * @param master
      * @throws Exception
@@ -213,6 +234,7 @@ public class AcesProtocolReceiver {
                         break;
                     default:
                         // 不明
+                        onUnknownSensorReceived(master, payload);
                         break;
                 }
             } catch (Exception e) {
@@ -238,16 +260,6 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * 活動コマンドを受け取った
-     * TODO 実装
-     * @param master
-     * @param trigger
-     */
-    private void onActivityCommandReceived(MasterPayload master, TriggerPayload trigger) {
-
-    }
-
-    /**
      * 不明なコマンドを受け取った
      * @param master
      * @param command
@@ -263,6 +275,11 @@ public class AcesProtocolReceiver {
      * @param master
      */
     protected void handleCommandEvents(MasterPayload master) throws Exception {
+        if (commandHandlers.isEmpty()) {
+            // ハンドリングする相手がいない
+            return;
+        }
+
         List<CommandPayload> payloadsList = master.getCommandPayloadsList();
         for (CommandPayload cmd : payloadsList) {
             String cmdName = cmd.getCommand();
@@ -288,6 +305,53 @@ public class AcesProtocolReceiver {
             } else {
                 // 不明なコマンド
                 onUnknownCommandRecieved(master, cmd);
+            }
+        }
+    }
+
+    /**
+     * 最大速度更新情報を受信
+     * @param payload
+     * @param buffer
+     * @throws Exception
+     */
+    private void onMaxSpeedUpdateReceived(MasterPayload master, ByteString buffer) throws Exception {
+        MaxSpeedActivity maxSpeed = MaxSpeedActivity.parseFrom(buffer);
+        for (ActivityEventHandler handler : activityHandlers) {
+            handler.onMaxSpeedActivityReceived(this, master, maxSpeed);
+        }
+    }
+
+    /**
+     * 不明な活動記録を受信した
+     * @param master
+     * @param activity
+     * @throws Exception
+     */
+    private void onUnknownActivityEventReceived(MasterPayload master, ActivityPayload activity) throws Exception {
+        for (ActivityEventHandler handler : activityHandlers) {
+            handler.onUnknownActivityEventReceived(this, master, activity);
+        }
+    }
+
+    /**
+     * 活動イベントを受け取った
+     * @param payload
+     */
+    protected void handleActivityEvents(MasterPayload master) throws Exception {
+        if (activityHandlers.isEmpty()) {
+            return;
+        }
+
+        List<ActivityPayload> activityPayloadsList = master.getActivityPayloadsList();
+        for (ActivityPayload activity : activityPayloadsList) {
+            switch (activity.getType()) {
+                case MaxSpeedUpdate:
+                    onMaxSpeedUpdateReceived(master, activity.getBuffer());
+                    break;
+                default:
+                    onUnknownActivityEventReceived(master, activity);
+                    break;
             }
         }
     }
@@ -334,10 +398,11 @@ public class AcesProtocolReceiver {
             handleSensorEvents(master);
         }
 
+        // 活動を解析する
+        handleActivityEvents(master);
+
         // コマンドを解析する
-        {
-            handleCommandEvents(master);
-        }
+        handleCommandEvents(master);
     }
 
     private final BroadcastReceiver receiver = new BroadcastReceiver() {
@@ -399,6 +464,22 @@ public class AcesProtocolReceiver {
      */
     public void removeCentralDataHandler(CentralDataHandler handler) {
         centralHandlers.remove(handler);
+    }
+
+    /**
+     * 活動イベントのハンドリングを行う
+     * @param handler
+     */
+    public void addActivityEventHandler(ActivityEventHandler handler) {
+        activityHandlers.add(handler);
+    }
+
+    /**
+     * 活動イベントのハンドリングを削除する
+     * @param handler
+     */
+    public void removeActivityEventHandler(ActivityEventHandler handler) {
+        activityHandlers.remove(handler);
     }
 
     /**

@@ -1,6 +1,7 @@
 package eaglesakura_ace;
 
 import "AcesConstants.proto";
+import "ActivityProtocol.proto";
 import "SensorProtocol.proto";
 import "CommandProtocol.proto";
 import "GeoProtocol.proto";
@@ -63,4 +64,7 @@ message MasterPayload {
 
 	// 制御コマンド
 	repeated CommandPayload commandPayloads = 5;
+
+	// ユーザーの活動イベント
+	repeated ActivityPayload activityPayloads = 9;
 }

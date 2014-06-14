@@ -74,7 +74,7 @@ void protobuf_AssignDesc_AcesProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CentralStatus));
   MasterPayload_descriptor_ = file->message_type(2);
-  static const int MasterPayload_offsets_[8] = {
+  static const int MasterPayload_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, uniqueid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, createddate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, senderpackage_),
@@ -83,6 +83,7 @@ void protobuf_AssignDesc_AcesProtocol_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, geostatus_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, sensorpayloads_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, commandpayloads_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MasterPayload, activitypayloads_),
   };
   MasterPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -133,27 +134,30 @@ void protobuf_AddDesc_AcesProtocol_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::eaglesakura_ace::protobuf_AddDesc_AcesConstants_2eproto();
+  ::eaglesakura_ace::protobuf_AddDesc_ActivityProtocol_2eproto();
   ::eaglesakura_ace::protobuf_AddDesc_SensorProtocol_2eproto();
   ::eaglesakura_ace::protobuf_AddDesc_CommandProtocol_2eproto();
   ::eaglesakura_ace::protobuf_AddDesc_GeoProtocol_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022AcesProtocol.proto\022\017eaglesakura_ace\032\023A"
-    "cesConstants.proto\032\024SensorProtocol.proto"
-    "\032\025CommandProtocol.proto\032\021GeoProtocol.pro"
-    "to\">\n\013VersionInfo\022\027\n\017protocolVersion\030\001 \002"
-    "(\003\022\026\n\016appVersionName\030\002 \002(\t\"w\n\rCentralSta"
-    "tus\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020conne"
-    "ctedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030\003 \002("
-    "\010\022\030\n\020connectedTwitter\030\004 \002(\010\"\275\002\n\rMasterPa"
-    "yload\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003"
-    " \002(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPac"
-    "kage\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagl"
-    "esakura_ace.CentralStatus\022.\n\tgeoStatus\030\010"
-    " \001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sen"
-    "sorPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sens"
-    "orPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eag"
-    "lesakura_ace.CommandPayloadB$\n\"com.eagle"
-    "sakura.andriders.protocol", 665);
+    "cesConstants.proto\032\026ActivityProtocol.pro"
+    "to\032\024SensorProtocol.proto\032\025CommandProtoco"
+    "l.proto\032\021GeoProtocol.proto\">\n\013VersionInf"
+    "o\022\027\n\017protocolVersion\030\001 \002(\003\022\026\n\016appVersion"
+    "Name\030\002 \002(\t\"w\n\rCentralStatus\022\032\n\022connected"
+    "Heartrate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002("
+    "\010\022\026\n\016connectedSpeed\030\003 \002(\010\022\030\n\020connectedTw"
+    "itter\030\004 \002(\010\"\371\002\n\rMasterPayload\022\020\n\010uniqueI"
+    "d\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t\022\025\n\rsenderPa"
+    "ckage\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rce"
+    "ntralStatus\030\001 \001(\0132\036.eaglesakura_ace.Cent"
+    "ralStatus\022.\n\tgeoStatus\030\010 \001(\0132\033.eaglesaku"
+    "ra_ace.GeoPayload\0226\n\016sensorPayloads\030\002 \003("
+    "\0132\036.eaglesakura_ace.SensorPayload\0228\n\017com"
+    "mandPayloads\030\005 \003(\0132\037.eaglesakura_ace.Com"
+    "mandPayload\022:\n\020activityPayloads\030\t \003(\0132 ."
+    "eaglesakura_ace.ActivityPayloadB$\n\"com.e"
+    "aglesakura.andriders.protocol", 749);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "AcesProtocol.proto", &protobuf_RegisterTypes);
   VersionInfo::default_instance_ = new VersionInfo();
@@ -770,6 +774,7 @@ const int MasterPayload::kCentralStatusFieldNumber;
 const int MasterPayload::kGeoStatusFieldNumber;
 const int MasterPayload::kSensorPayloadsFieldNumber;
 const int MasterPayload::kCommandPayloadsFieldNumber;
+const int MasterPayload::kActivityPayloadsFieldNumber;
 #endif  // !_MSC_VER
 
 MasterPayload::MasterPayload()
@@ -874,6 +879,7 @@ void MasterPayload::Clear() {
   }
   sensorpayloads_.Clear();
   commandpayloads_.Clear();
+  activitypayloads_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1005,6 +1011,21 @@ bool MasterPayload::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(74)) goto parse_activityPayloads;
+        break;
+      }
+
+      // repeated .eaglesakura_ace.ActivityPayload activityPayloads = 9;
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_activityPayloads:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_activitypayloads()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(74)) goto parse_activityPayloads;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1087,6 +1108,12 @@ void MasterPayload::SerializeWithCachedSizes(
       8, this->geostatus(), output);
   }
 
+  // repeated .eaglesakura_ace.ActivityPayload activityPayloads = 9;
+  for (int i = 0; i < this->activitypayloads_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->activitypayloads(i), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1163,6 +1190,13 @@ void MasterPayload::SerializeWithCachedSizes(
         8, this->geostatus(), target);
   }
 
+  // repeated .eaglesakura_ace.ActivityPayload activityPayloads = 9;
+  for (int i = 0; i < this->activitypayloads_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->activitypayloads(i), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1233,6 +1267,14 @@ int MasterPayload::ByteSize() const {
         this->commandpayloads(i));
   }
 
+  // repeated .eaglesakura_ace.ActivityPayload activityPayloads = 9;
+  total_size += 1 * this->activitypayloads_size();
+  for (int i = 0; i < this->activitypayloads_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->activitypayloads(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1260,6 +1302,7 @@ void MasterPayload::MergeFrom(const MasterPayload& from) {
   GOOGLE_CHECK_NE(&from, this);
   sensorpayloads_.MergeFrom(from.sensorpayloads_);
   commandpayloads_.MergeFrom(from.commandpayloads_);
+  activitypayloads_.MergeFrom(from.activitypayloads_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_uniqueid()) {
       set_uniqueid(from.uniqueid());
@@ -1310,6 +1353,9 @@ bool MasterPayload::IsInitialized() const {
   for (int i = 0; i < commandpayloads_size(); i++) {
     if (!this->commandpayloads(i).IsInitialized()) return false;
   }
+  for (int i = 0; i < activitypayloads_size(); i++) {
+    if (!this->activitypayloads(i).IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -1323,6 +1369,7 @@ void MasterPayload::Swap(MasterPayload* other) {
     std::swap(geostatus_, other->geostatus_);
     sensorpayloads_.Swap(&other->sensorpayloads_);
     commandpayloads_.Swap(&other->commandpayloads_);
+    activitypayloads_.Swap(&other->activitypayloads_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

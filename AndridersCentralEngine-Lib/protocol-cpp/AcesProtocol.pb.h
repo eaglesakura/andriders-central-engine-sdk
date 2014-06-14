@@ -25,6 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "AcesConstants.pb.h"
+#include "ActivityProtocol.pb.h"
 #include "SensorProtocol.pb.h"
 #include "CommandProtocol.pb.h"
 #include "GeoProtocol.pb.h"
@@ -396,6 +397,18 @@ class MasterPayload : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload >*
       mutable_commandpayloads();
 
+  // repeated .eaglesakura_ace.ActivityPayload activityPayloads = 9;
+  inline int activitypayloads_size() const;
+  inline void clear_activitypayloads();
+  static const int kActivityPayloadsFieldNumber = 9;
+  inline const ::eaglesakura_ace::ActivityPayload& activitypayloads(int index) const;
+  inline ::eaglesakura_ace::ActivityPayload* mutable_activitypayloads(int index);
+  inline ::eaglesakura_ace::ActivityPayload* add_activitypayloads();
+  inline const ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::ActivityPayload >&
+      activitypayloads() const;
+  inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::ActivityPayload >*
+      mutable_activitypayloads();
+
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.MasterPayload)
  private:
   inline void set_has_uniqueid();
@@ -421,9 +434,10 @@ class MasterPayload : public ::google::protobuf::Message {
   ::eaglesakura_ace::GeoPayload* geostatus_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::SensorPayload > sensorpayloads_;
   ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload > commandpayloads_;
+  ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::ActivityPayload > activitypayloads_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(9 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesProtocol_2eproto();
   friend void protobuf_AssignDesc_AcesProtocol_2eproto();
@@ -1031,6 +1045,31 @@ MasterPayload::commandpayloads() const {
 inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::CommandPayload >*
 MasterPayload::mutable_commandpayloads() {
   return &commandpayloads_;
+}
+
+// repeated .eaglesakura_ace.ActivityPayload activityPayloads = 9;
+inline int MasterPayload::activitypayloads_size() const {
+  return activitypayloads_.size();
+}
+inline void MasterPayload::clear_activitypayloads() {
+  activitypayloads_.Clear();
+}
+inline const ::eaglesakura_ace::ActivityPayload& MasterPayload::activitypayloads(int index) const {
+  return activitypayloads_.Get(index);
+}
+inline ::eaglesakura_ace::ActivityPayload* MasterPayload::mutable_activitypayloads(int index) {
+  return activitypayloads_.Mutable(index);
+}
+inline ::eaglesakura_ace::ActivityPayload* MasterPayload::add_activitypayloads() {
+  return activitypayloads_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::ActivityPayload >&
+MasterPayload::activitypayloads() const {
+  return activitypayloads_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::eaglesakura_ace::ActivityPayload >*
+MasterPayload::mutable_activitypayloads() {
+  return &activitypayloads_;
 }
 
 
