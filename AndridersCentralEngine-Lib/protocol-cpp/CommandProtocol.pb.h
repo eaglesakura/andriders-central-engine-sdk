@@ -326,6 +326,13 @@ class TweetRequestPayload : public ::google::protobuf::Message {
   inline bool withspeed() const;
   inline void set_withspeed(bool value);
 
+  // optional bool withSpeedRecord = 8;
+  inline bool has_withspeedrecord() const;
+  inline void clear_withspeedrecord();
+  static const int kWithSpeedRecordFieldNumber = 8;
+  inline bool withspeedrecord() const;
+  inline void set_withspeedrecord(bool value);
+
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetRequestPayload)
  private:
   inline void set_has_tweetmessage();
@@ -336,6 +343,8 @@ class TweetRequestPayload : public ::google::protobuf::Message {
   inline void clear_has_withheartrate();
   inline void set_has_withspeed();
   inline void clear_has_withspeed();
+  inline void set_has_withspeedrecord();
+  inline void clear_has_withspeedrecord();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -345,9 +354,10 @@ class TweetRequestPayload : public ::google::protobuf::Message {
   bool withcadence_;
   bool withheartrate_;
   bool withspeed_;
+  bool withspeedrecord_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
@@ -912,6 +922,28 @@ inline bool TweetRequestPayload::withspeed() const {
 inline void TweetRequestPayload::set_withspeed(bool value) {
   set_has_withspeed();
   withspeed_ = value;
+}
+
+// optional bool withSpeedRecord = 8;
+inline bool TweetRequestPayload::has_withspeedrecord() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void TweetRequestPayload::set_has_withspeedrecord() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void TweetRequestPayload::clear_has_withspeedrecord() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void TweetRequestPayload::clear_withspeedrecord() {
+  withspeedrecord_ = false;
+  clear_has_withspeedrecord();
+}
+inline bool TweetRequestPayload::withspeedrecord() const {
+  return withspeedrecord_;
+}
+inline void TweetRequestPayload::set_withspeedrecord(bool value) {
+  set_has_withspeedrecord();
+  withspeedrecord_ = value;
 }
 
 // -------------------------------------------------------------------

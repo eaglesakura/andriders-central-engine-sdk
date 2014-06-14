@@ -237,7 +237,11 @@ public class BasicUiBuilder {
         // 最高速度を指定
         if (maxSpeedView != null) {
             AQuery q = new AQuery(maxSpeedView);
-            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getMaxKmPerHour()));
+            if (speed.hasRecordKmPerHour()) {
+                q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getRecordKmPerHour()));
+            } else {
+                q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
+            }
         }
     }
 }

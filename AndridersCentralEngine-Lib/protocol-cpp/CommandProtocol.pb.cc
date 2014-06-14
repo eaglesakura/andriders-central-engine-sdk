@@ -63,13 +63,14 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CameraShotPayload));
   TweetRequestPayload_descriptor_ = file->message_type(1);
-  static const int TweetRequestPayload_offsets_[6] = {
+  static const int TweetRequestPayload_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, tweetmessage_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, hashtags_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, imageuris_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withcadence_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withheartrate_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withspeed_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TweetRequestPayload, withspeedrecord_),
   };
   TweetRequestPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -166,19 +167,20 @@ void protobuf_AddDesc_CommandProtocol_2eproto() {
     "\032\023AcesConstants.proto\032\021GeoProtocol.proto"
     "\"N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022"
     "\022\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005"
-    "\"\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage"
+    "\"\250\001\n\023TweetRequestPayload\022\024\n\014tweetMessage"
     "\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 "
     "\003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrat"
-    "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"g\n\016TriggerPay"
-    "load\022*\n\004type\030\001 \002(\0162\034.eaglesakura_ace.Tri"
-    "ggerType\022\025\n\rextraUniqueId\030\002 \002(\t\022\022\n\ncomma"
-    "ndSec\030\003 \001(\005\"7\n\016CommandPayload\022\017\n\007command"
-    "\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*4\n\013CommandT"
-    "ype\022\024\n\020ExtensionTrigger\020\001\022\017\n\013AcesControl"
-    "\020\002*5\n\013TriggerType\022\017\n\013Promiximity\020\001\022\007\n\003Ge"
-    "o\020\002\022\014\n\010Activity\020\003*\'\n\023AcesControllCommand"
-    "\022\020\n\014TweetRequest\020\002B$\n\"com.eaglesakura.an"
-    "driders.protocol", 656);
+    "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\022\027\n\017withSpeedR"
+    "ecord\030\010 \001(\010\"g\n\016TriggerPayload\022*\n\004type\030\001 "
+    "\002(\0162\034.eaglesakura_ace.TriggerType\022\025\n\rext"
+    "raUniqueId\030\002 \002(\t\022\022\n\ncommandSec\030\003 \001(\005\"7\n\016"
+    "CommandPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extra"
+    "Payload\030\002 \001(\014*4\n\013CommandType\022\024\n\020Extensio"
+    "nTrigger\020\001\022\017\n\013AcesControl\020\002*5\n\013TriggerTy"
+    "pe\022\017\n\013Promiximity\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity"
+    "\020\003*\'\n\023AcesControllCommand\022\020\n\014TweetReques"
+    "t\020\002B$\n\"com.eaglesakura.andriders.protoco"
+    "l", 681);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CommandProtocol.proto", &protobuf_RegisterTypes);
   CameraShotPayload::default_instance_ = new CameraShotPayload();
@@ -556,6 +558,7 @@ const int TweetRequestPayload::kImageUrisFieldNumber;
 const int TweetRequestPayload::kWithCadenceFieldNumber;
 const int TweetRequestPayload::kWithHeartrateFieldNumber;
 const int TweetRequestPayload::kWithSpeedFieldNumber;
+const int TweetRequestPayload::kWithSpeedRecordFieldNumber;
 #endif  // !_MSC_VER
 
 TweetRequestPayload::TweetRequestPayload()
@@ -578,6 +581,7 @@ void TweetRequestPayload::SharedCtor() {
   withcadence_ = false;
   withheartrate_ = false;
   withspeed_ = false;
+  withspeedrecord_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -624,6 +628,7 @@ void TweetRequestPayload::Clear() {
     withcadence_ = false;
     withheartrate_ = false;
     withspeed_ = false;
+    withspeedrecord_ = false;
   }
   hashtags_.Clear();
   imageuris_.Clear();
@@ -735,6 +740,22 @@ bool TweetRequestPayload::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(64)) goto parse_withSpeedRecord;
+        break;
+      }
+
+      // optional bool withSpeedRecord = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_withSpeedRecord:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &withspeedrecord_)));
+          set_has_withspeedrecord();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -799,6 +820,11 @@ void TweetRequestPayload::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->withspeed(), output);
   }
 
+  // optional bool withSpeedRecord = 8;
+  if (has_withspeedrecord()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(8, this->withspeedrecord(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -850,6 +876,11 @@ void TweetRequestPayload::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->withspeed(), target);
   }
 
+  // optional bool withSpeedRecord = 8;
+  if (has_withspeedrecord()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(8, this->withspeedrecord(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -880,6 +911,11 @@ int TweetRequestPayload::ByteSize() const {
 
     // optional bool withSpeed = 7;
     if (has_withspeed()) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool withSpeedRecord = 8;
+    if (has_withspeedrecord()) {
       total_size += 1 + 1;
     }
 
@@ -938,6 +974,9 @@ void TweetRequestPayload::MergeFrom(const TweetRequestPayload& from) {
     if (from.has_withspeed()) {
       set_withspeed(from.withspeed());
     }
+    if (from.has_withspeedrecord()) {
+      set_withspeedrecord(from.withspeedrecord());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -968,6 +1007,7 @@ void TweetRequestPayload::Swap(TweetRequestPayload* other) {
     std::swap(withcadence_, other->withcadence_);
     std::swap(withheartrate_, other->withheartrate_);
     std::swap(withspeed_, other->withspeed_);
+    std::swap(withspeedrecord_, other->withspeedrecord_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

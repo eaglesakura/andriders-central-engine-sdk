@@ -84,7 +84,7 @@ void protobuf_AssignDesc_SensorProtocol_2eproto() {
   static const int RawSpeed_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, speedkmperhour_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, wheelrpm_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, maxkmperhour_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, recordkmperhour_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RawSpeed, speedzone_),
   };
   RawSpeed_reflection_ =
@@ -169,16 +169,17 @@ void protobuf_AddDesc_SensorProtocol_2eproto() {
     "rate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006R"
     "epose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026"
     "PossessionOxygenMotion\020\003\022\027\n\023NonOxygenate"
-    "dMotion\020\004\022\014\n\010Overwork\020\005\"\273\001\n\010RawSpeed\022\026\n\016"
-    "speedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\024"
-    "\n\014maxKmPerHour\030\n \002(\002\0226\n\tspeedZone\030e \002(\0162"
-    "#.eaglesakura_ace.RawSpeed.SpeedZone\"7\n\t"
-    "SpeedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020"
-    "\002\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002"
-    " \002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buf"
-    "fer\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMoni"
-    "tor\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020"
-    "\002B$\n\"com.eaglesakura.andriders.protocol", 799);
+    "dMotion\020\004\022\014\n\010Overwork\020\005\"\276\001\n\010RawSpeed\022\026\n\016"
+    "speedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027"
+    "\n\017recordKmPerHour\030\n \001(\002\0226\n\tspeedZone\030e \002"
+    "(\0162#.eaglesakura_ace.RawSpeed.SpeedZone\""
+    "7\n\tSpeedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Crui"
+    "se\020\002\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004typ"
+    "e\030\002 \002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006"
+    "buffer\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateM"
+    "onitor\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSens"
+    "or\020\002B$\n\"com.eaglesakura.andriders.protoc"
+    "ol", 802);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SensorProtocol.proto", &protobuf_RegisterTypes);
   RawCadence::default_instance_ = new RawCadence();
@@ -806,7 +807,7 @@ const int RawSpeed::SpeedZone_ARRAYSIZE;
 #ifndef _MSC_VER
 const int RawSpeed::kSpeedKmPerHourFieldNumber;
 const int RawSpeed::kWheelRpmFieldNumber;
-const int RawSpeed::kMaxKmPerHourFieldNumber;
+const int RawSpeed::kRecordKmPerHourFieldNumber;
 const int RawSpeed::kSpeedZoneFieldNumber;
 #endif  // !_MSC_VER
 
@@ -828,7 +829,7 @@ void RawSpeed::SharedCtor() {
   _cached_size_ = 0;
   speedkmperhour_ = 0;
   wheelrpm_ = 0;
-  maxkmperhour_ = 0;
+  recordkmperhour_ = 0;
   speedzone_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -867,7 +868,7 @@ void RawSpeed::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     speedkmperhour_ = 0;
     wheelrpm_ = 0;
-    maxkmperhour_ = 0;
+    recordkmperhour_ = 0;
     speedzone_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -907,19 +908,19 @@ bool RawSpeed::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(85)) goto parse_maxKmPerHour;
+        if (input->ExpectTag(85)) goto parse_recordKmPerHour;
         break;
       }
 
-      // required float maxKmPerHour = 10;
+      // optional float recordKmPerHour = 10;
       case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_maxKmPerHour:
+         parse_recordKmPerHour:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &maxkmperhour_)));
-          set_has_maxkmperhour();
+                 input, &recordkmperhour_)));
+          set_has_recordkmperhour();
         } else {
           goto handle_uninterpreted;
         }
@@ -976,9 +977,9 @@ void RawSpeed::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->wheelrpm(), output);
   }
 
-  // required float maxKmPerHour = 10;
-  if (has_maxkmperhour()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->maxkmperhour(), output);
+  // optional float recordKmPerHour = 10;
+  if (has_recordkmperhour()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(10, this->recordkmperhour(), output);
   }
 
   // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
@@ -1005,9 +1006,9 @@ void RawSpeed::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->wheelrpm(), target);
   }
 
-  // required float maxKmPerHour = 10;
-  if (has_maxkmperhour()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(10, this->maxkmperhour(), target);
+  // optional float recordKmPerHour = 10;
+  if (has_recordkmperhour()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(10, this->recordkmperhour(), target);
   }
 
   // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
@@ -1037,8 +1038,8 @@ int RawSpeed::ByteSize() const {
       total_size += 1 + 4;
     }
 
-    // required float maxKmPerHour = 10;
-    if (has_maxkmperhour()) {
+    // optional float recordKmPerHour = 10;
+    if (has_recordkmperhour()) {
       total_size += 1 + 4;
     }
 
@@ -1081,8 +1082,8 @@ void RawSpeed::MergeFrom(const RawSpeed& from) {
     if (from.has_wheelrpm()) {
       set_wheelrpm(from.wheelrpm());
     }
-    if (from.has_maxkmperhour()) {
-      set_maxkmperhour(from.maxkmperhour());
+    if (from.has_recordkmperhour()) {
+      set_recordkmperhour(from.recordkmperhour());
     }
     if (from.has_speedzone()) {
       set_speedzone(from.speedzone());
@@ -1104,7 +1105,7 @@ void RawSpeed::CopyFrom(const RawSpeed& from) {
 }
 
 bool RawSpeed::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000d) != 0x0000000d) return false;
+  if ((_has_bits_[0] & 0x00000009) != 0x00000009) return false;
 
   return true;
 }
@@ -1113,7 +1114,7 @@ void RawSpeed::Swap(RawSpeed* other) {
   if (other != this) {
     std::swap(speedkmperhour_, other->speedkmperhour_);
     std::swap(wheelrpm_, other->wheelrpm_);
-    std::swap(maxkmperhour_, other->maxkmperhour_);
+    std::swap(recordkmperhour_, other->recordkmperhour_);
     std::swap(speedzone_, other->speedzone_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

@@ -1248,7 +1248,7 @@ public final class CommandProtocol {
      * <code>optional bool withSpeed = 7;</code>
      *
      * <pre>
-     * ツイートオプション/スピード
+     * ツイートオプション/現在速度
      * </pre>
      */
     boolean hasWithSpeed();
@@ -1256,10 +1256,28 @@ public final class CommandProtocol {
      * <code>optional bool withSpeed = 7;</code>
      *
      * <pre>
-     * ツイートオプション/スピード
+     * ツイートオプション/現在速度
      * </pre>
      */
     boolean getWithSpeed();
+
+    // optional bool withSpeedRecord = 8;
+    /**
+     * <code>optional bool withSpeedRecord = 8;</code>
+     *
+     * <pre>
+     * ツーとオプション/最高速度
+     * </pre>
+     */
+    boolean hasWithSpeedRecord();
+    /**
+     * <code>optional bool withSpeedRecord = 8;</code>
+     *
+     * <pre>
+     * ツーとオプション/最高速度
+     * </pre>
+     */
+    boolean getWithSpeedRecord();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
@@ -1350,6 +1368,11 @@ public final class CommandProtocol {
             case 56: {
               bitField0_ |= 0x00000008;
               withSpeed_ = input.readBool();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000010;
+              withSpeedRecord_ = input.readBool();
               break;
             }
           }
@@ -1608,7 +1631,7 @@ public final class CommandProtocol {
      * <code>optional bool withSpeed = 7;</code>
      *
      * <pre>
-     * ツイートオプション/スピード
+     * ツイートオプション/現在速度
      * </pre>
      */
     public boolean hasWithSpeed() {
@@ -1618,11 +1641,35 @@ public final class CommandProtocol {
      * <code>optional bool withSpeed = 7;</code>
      *
      * <pre>
-     * ツイートオプション/スピード
+     * ツイートオプション/現在速度
      * </pre>
      */
     public boolean getWithSpeed() {
       return withSpeed_;
+    }
+
+    // optional bool withSpeedRecord = 8;
+    public static final int WITHSPEEDRECORD_FIELD_NUMBER = 8;
+    private boolean withSpeedRecord_;
+    /**
+     * <code>optional bool withSpeedRecord = 8;</code>
+     *
+     * <pre>
+     * ツーとオプション/最高速度
+     * </pre>
+     */
+    public boolean hasWithSpeedRecord() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool withSpeedRecord = 8;</code>
+     *
+     * <pre>
+     * ツーとオプション/最高速度
+     * </pre>
+     */
+    public boolean getWithSpeedRecord() {
+      return withSpeedRecord_;
     }
 
     private void initFields() {
@@ -1632,6 +1679,7 @@ public final class CommandProtocol {
       withCadence_ = false;
       withHeartrate_ = false;
       withSpeed_ = false;
+      withSpeedRecord_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1666,6 +1714,9 @@ public final class CommandProtocol {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBool(7, withSpeed_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(8, withSpeedRecord_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1709,6 +1760,10 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(7, withSpeed_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, withSpeedRecord_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1842,6 +1897,8 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000010);
         withSpeed_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
+        withSpeedRecord_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -1898,6 +1955,10 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.withSpeed_ = withSpeed_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.withSpeedRecord_ = withSpeedRecord_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1947,6 +2008,9 @@ public final class CommandProtocol {
         }
         if (other.hasWithSpeed()) {
           setWithSpeed(other.getWithSpeed());
+        }
+        if (other.hasWithSpeedRecord()) {
+          setWithSpeedRecord(other.getWithSpeedRecord());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2457,7 +2521,7 @@ public final class CommandProtocol {
        * <code>optional bool withSpeed = 7;</code>
        *
        * <pre>
-       * ツイートオプション/スピード
+       * ツイートオプション/現在速度
        * </pre>
        */
       public boolean hasWithSpeed() {
@@ -2467,7 +2531,7 @@ public final class CommandProtocol {
        * <code>optional bool withSpeed = 7;</code>
        *
        * <pre>
-       * ツイートオプション/スピード
+       * ツイートオプション/現在速度
        * </pre>
        */
       public boolean getWithSpeed() {
@@ -2477,7 +2541,7 @@ public final class CommandProtocol {
        * <code>optional bool withSpeed = 7;</code>
        *
        * <pre>
-       * ツイートオプション/スピード
+       * ツイートオプション/現在速度
        * </pre>
        */
       public Builder setWithSpeed(boolean value) {
@@ -2490,12 +2554,61 @@ public final class CommandProtocol {
        * <code>optional bool withSpeed = 7;</code>
        *
        * <pre>
-       * ツイートオプション/スピード
+       * ツイートオプション/現在速度
        * </pre>
        */
       public Builder clearWithSpeed() {
         bitField0_ = (bitField0_ & ~0x00000020);
         withSpeed_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool withSpeedRecord = 8;
+      private boolean withSpeedRecord_ ;
+      /**
+       * <code>optional bool withSpeedRecord = 8;</code>
+       *
+       * <pre>
+       * ツーとオプション/最高速度
+       * </pre>
+       */
+      public boolean hasWithSpeedRecord() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional bool withSpeedRecord = 8;</code>
+       *
+       * <pre>
+       * ツーとオプション/最高速度
+       * </pre>
+       */
+      public boolean getWithSpeedRecord() {
+        return withSpeedRecord_;
+      }
+      /**
+       * <code>optional bool withSpeedRecord = 8;</code>
+       *
+       * <pre>
+       * ツーとオプション/最高速度
+       * </pre>
+       */
+      public Builder setWithSpeedRecord(boolean value) {
+        bitField0_ |= 0x00000040;
+        withSpeedRecord_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool withSpeedRecord = 8;</code>
+       *
+       * <pre>
+       * ツーとオプション/最高速度
+       * </pre>
+       */
+      public Builder clearWithSpeedRecord() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        withSpeedRecord_ = false;
         onChanged();
         return this;
       }
@@ -3973,19 +4086,20 @@ public final class CommandProtocol {
       "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
       "\"N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022" +
       "\022\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005" +
-      "\"\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage" +
+      "\"\250\001\n\023TweetRequestPayload\022\024\n\014tweetMessage" +
       "\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 " +
       "\003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrat" +
-      "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"g\n\016TriggerPay" +
-      "load\022*\n\004type\030\001 \002(\0162\034.eaglesakura_ace.Tri" +
-      "ggerType\022\025\n\rextraUniqueId\030\002 \002(\t\022\022\n\ncomma",
-      "ndSec\030\003 \001(\005\"7\n\016CommandPayload\022\017\n\007command" +
-      "\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*4\n\013CommandT" +
-      "ype\022\024\n\020ExtensionTrigger\020\001\022\017\n\013AcesControl" +
-      "\020\002*5\n\013TriggerType\022\017\n\013Promiximity\020\001\022\007\n\003Ge" +
-      "o\020\002\022\014\n\010Activity\020\003*\'\n\023AcesControllCommand" +
-      "\022\020\n\014TweetRequest\020\002B$\n\"com.eaglesakura.an" +
-      "driders.protocol"
+      "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\022\027\n\017withSpeedR" +
+      "ecord\030\010 \001(\010\"g\n\016TriggerPayload\022*\n\004type\030\001 " +
+      "\002(\0162\034.eaglesakura_ace.TriggerType\022\025\n\rext",
+      "raUniqueId\030\002 \002(\t\022\022\n\ncommandSec\030\003 \001(\005\"7\n\016" +
+      "CommandPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extra" +
+      "Payload\030\002 \001(\014*4\n\013CommandType\022\024\n\020Extensio" +
+      "nTrigger\020\001\022\017\n\013AcesControl\020\002*5\n\013TriggerTy" +
+      "pe\022\017\n\013Promiximity\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity" +
+      "\020\003*\'\n\023AcesControllCommand\022\020\n\014TweetReques" +
+      "t\020\002B$\n\"com.eaglesakura.andriders.protoco" +
+      "l"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4003,7 +4117,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TweetRequestPayload_descriptor,
-              new java.lang.String[] { "TweetMessage", "Hashtags", "ImageUris", "WithCadence", "WithHeartrate", "WithSpeed", });
+              new java.lang.String[] { "TweetMessage", "Hashtags", "ImageUris", "WithCadence", "WithHeartrate", "WithSpeed", "WithSpeedRecord", });
           internal_static_eaglesakura_ace_TriggerPayload_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new

@@ -57,8 +57,10 @@ message TweetRequestPayload {
 	optional bool withCadence = 5;
 	// ツイートオプション/心拍
 	optional bool withHeartrate = 6;
-	// ツイートオプション/スピード
+	// ツイートオプション/現在速度
 	optional bool withSpeed = 7;
+	// ツーとオプション/最高速度
+	optional bool withSpeedRecord = 8;
 }
 
 // コマンド用payload

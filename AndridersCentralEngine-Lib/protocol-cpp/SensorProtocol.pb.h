@@ -457,12 +457,12 @@ class RawSpeed : public ::google::protobuf::Message {
   inline float wheelrpm() const;
   inline void set_wheelrpm(float value);
 
-  // required float maxKmPerHour = 10;
-  inline bool has_maxkmperhour() const;
-  inline void clear_maxkmperhour();
-  static const int kMaxKmPerHourFieldNumber = 10;
-  inline float maxkmperhour() const;
-  inline void set_maxkmperhour(float value);
+  // optional float recordKmPerHour = 10;
+  inline bool has_recordkmperhour() const;
+  inline void clear_recordkmperhour();
+  static const int kRecordKmPerHourFieldNumber = 10;
+  inline float recordkmperhour() const;
+  inline void set_recordkmperhour(float value);
 
   // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
   inline bool has_speedzone() const;
@@ -477,8 +477,8 @@ class RawSpeed : public ::google::protobuf::Message {
   inline void clear_has_speedkmperhour();
   inline void set_has_wheelrpm();
   inline void clear_has_wheelrpm();
-  inline void set_has_maxkmperhour();
-  inline void clear_has_maxkmperhour();
+  inline void set_has_recordkmperhour();
+  inline void clear_has_recordkmperhour();
   inline void set_has_speedzone();
   inline void clear_has_speedzone();
 
@@ -486,7 +486,7 @@ class RawSpeed : public ::google::protobuf::Message {
 
   float speedkmperhour_;
   float wheelrpm_;
-  float maxkmperhour_;
+  float recordkmperhour_;
   int speedzone_;
 
   mutable int _cached_size_;
@@ -745,26 +745,26 @@ inline void RawSpeed::set_wheelrpm(float value) {
   wheelrpm_ = value;
 }
 
-// required float maxKmPerHour = 10;
-inline bool RawSpeed::has_maxkmperhour() const {
+// optional float recordKmPerHour = 10;
+inline bool RawSpeed::has_recordkmperhour() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void RawSpeed::set_has_maxkmperhour() {
+inline void RawSpeed::set_has_recordkmperhour() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void RawSpeed::clear_has_maxkmperhour() {
+inline void RawSpeed::clear_has_recordkmperhour() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void RawSpeed::clear_maxkmperhour() {
-  maxkmperhour_ = 0;
-  clear_has_maxkmperhour();
+inline void RawSpeed::clear_recordkmperhour() {
+  recordkmperhour_ = 0;
+  clear_has_recordkmperhour();
 }
-inline float RawSpeed::maxkmperhour() const {
-  return maxkmperhour_;
+inline float RawSpeed::recordkmperhour() const {
+  return recordkmperhour_;
 }
-inline void RawSpeed::set_maxkmperhour(float value) {
-  set_has_maxkmperhour();
-  maxkmperhour_ = value;
+inline void RawSpeed::set_recordkmperhour(float value) {
+  set_has_recordkmperhour();
+  recordkmperhour_ = value;
 }
 
 // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
