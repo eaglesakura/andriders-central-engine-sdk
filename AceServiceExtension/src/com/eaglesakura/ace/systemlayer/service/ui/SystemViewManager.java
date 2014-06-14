@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.androidquery.AQuery;
 import com.eaglesakura.ace.systemlayer.R;
 import com.eaglesakura.ace.systemlayer.service.UiService;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.event.SensorEventHandler;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
@@ -71,9 +71,7 @@ public class SystemViewManager {
         // セントラルに接続する
         {
             receiver = new AcesProtocolReceiver(service);
-            receiver.addCadenceListener(cadenceListenerImpl);
-            receiver.addHeartrateListener(heartrateListenerImpl);
-            receiver.addSpeedListener(speedListenerImpl);
+            receiver.addSensorEventHandler(sensorHandlerImpl);
             receiver.connect();
         }
     }
@@ -99,37 +97,28 @@ public class SystemViewManager {
         }
     }
 
-    /**
-     * ハートレート受信
-     */
-    AcesProtocolReceiver.HeartrateListener heartrateListenerImpl = new AcesProtocolReceiver.HeartrateListener() {
-        @Override
-        public void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate) {
-            // heartrate
-            AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Heartrate_Root));
-            uiBuilder.build(q.getView(), master, heartrate);
-        }
-    };
-
-    /**
-     * ケイデンス受信
-     */
-    AcesProtocolReceiver.CadenceListener cadenceListenerImpl = new AcesProtocolReceiver.CadenceListener() {
+    SensorEventHandler sensorHandlerImpl = new SensorEventHandler() {
+        /**
+         * ケイデンス受信
+         */
         @Override
         public void onCadenceReceived(AcesProtocolReceiver receiver, MasterPayload master, RawCadence cadence) {
-            // cadence
-            AQuery q = new AQuery(systemView.findViewById(R.id.SystemLayer_Cadence_Root));
-            uiBuilder.build(q.getView(), master, cadence);
+            uiBuilder.build(systemView.findViewById(R.id.SystemLayer_Cadence_Root), master, cadence);
         }
-    };
 
-    /**
-     * 速度受信
-     */
-    AcesProtocolReceiver.SpeedListener speedListenerImpl = new AcesProtocolReceiver.SpeedListener() {
+        /**
+         * 心拍受信
+         */
+        @Override
+        public void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate) {
+            uiBuilder.build(systemView.findViewById(R.id.SystemLayer_Heartrate_Root), master, heartrate);
+        }
+
+        /**
+         * 速度受信
+         */
         @Override
         public void onSpeedReceived(AcesProtocolReceiver receiver, MasterPayload master, RawSpeed speed) {
-            // speed
             View current = systemView.findViewById(R.id.SystemLayer_Speed_Root);
             View max = systemView.findViewById(R.id.SystemLayer_MaxSpeed_Root);
             uiBuilder.build(current, max, master, speed);

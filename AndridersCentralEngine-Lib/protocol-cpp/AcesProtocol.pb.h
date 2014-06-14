@@ -24,7 +24,7 @@
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "AceConstants.pb.h"
+#include "AcesConstants.pb.h"
 #include "SensorProtocol.pb.h"
 #include "CommandProtocol.pb.h"
 #include "GeoProtocol.pb.h"

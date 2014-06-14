@@ -59,7 +59,7 @@ public class AcesCommandBuilder {
     public AcesCommandBuilder addProximityCommand(int commandTimeSec, String uniqueId) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
 
-        builder.setCommand(CommandProtocol.Command.ExtensionTrigger.name());
+        builder.setCommand(CommandProtocol.CommandType.ExtensionTrigger.name());
         // トリガー情報を指定する
         {
             TriggerPayload.Builder triggerBuilder = TriggerPayload.newBuilder();

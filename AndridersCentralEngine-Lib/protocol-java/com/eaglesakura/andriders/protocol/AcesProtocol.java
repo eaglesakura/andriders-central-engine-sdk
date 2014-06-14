@@ -4224,23 +4224,23 @@ public final class AcesProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022AcesProtocol.proto\022\017eaglesakura_ace\032\022A" +
-      "ceConstants.proto\032\024SensorProtocol.proto\032" +
-      "\025CommandProtocol.proto\032\021GeoProtocol.prot" +
-      "o\">\n\013VersionInfo\022\027\n\017protocolVersion\030\001 \002(" +
-      "\003\022\026\n\016appVersionName\030\002 \002(\t\"w\n\rCentralStat" +
-      "us\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020connec" +
-      "tedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030\003 \002(\010" +
-      "\022\030\n\020connectedTwitter\030\004 \002(\010\"\275\002\n\rMasterPay" +
-      "load\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 " +
-      "\002(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPack",
-      "age\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagle" +
-      "sakura_ace.CentralStatus\022.\n\tgeoStatus\030\010 " +
-      "\001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sens" +
-      "orPayloads\030\002 \003(\0132\036.eaglesakura_ace.Senso" +
-      "rPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eagl" +
-      "esakura_ace.CommandPayloadB$\n\"com.eagles" +
-      "akura.andriders.protocol"
+      "\n\022AcesProtocol.proto\022\017eaglesakura_ace\032\023A" +
+      "cesConstants.proto\032\024SensorProtocol.proto" +
+      "\032\025CommandProtocol.proto\032\021GeoProtocol.pro" +
+      "to\">\n\013VersionInfo\022\027\n\017protocolVersion\030\001 \002" +
+      "(\003\022\026\n\016appVersionName\030\002 \002(\t\"w\n\rCentralSta" +
+      "tus\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020conne" +
+      "ctedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030\003 \002(" +
+      "\010\022\030\n\020connectedTwitter\030\004 \002(\010\"\275\002\n\rMasterPa" +
+      "yload\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003" +
+      " \002(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPac",
+      "kage\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagl" +
+      "esakura_ace.CentralStatus\022.\n\tgeoStatus\030\010" +
+      " \001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sen" +
+      "sorPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sens" +
+      "orPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eag" +
+      "lesakura_ace.CommandPayloadB$\n\"com.eagle" +
+      "sakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4271,7 +4271,7 @@ public final class AcesProtocol {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.eaglesakura.andriders.protocol.AceConstants.getDescriptor(),
+          com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
           com.eaglesakura.andriders.protocol.SensorProtocol.getDescriptor(),
           com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor(),
           com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),

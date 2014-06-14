@@ -157,28 +157,28 @@ void protobuf_AddDesc_SensorProtocol_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::eaglesakura_ace::protobuf_AddDesc_AceConstants_2eproto();
+  ::eaglesakura_ace::protobuf_AddDesc_AcesConstants_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\024SensorProtocol.proto\022\017eaglesakura_ace\032"
-    "\022AceConstants.proto\"\211\001\n\nRawCadence\022\013\n\003rp"
-    "m\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesaku"
-    "ra_ace.RawCadence.CadenceZone\"0\n\013Cadence"
-    "Zone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002\""
-    "\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartra"
-    "teZone\030e \002(\0162+.eaglesakura_ace.RawHeartr"
-    "ate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Re"
-    "pose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026P"
-    "ossessionOxygenMotion\020\003\022\027\n\023NonOxygenated"
-    "Motion\020\004\022\014\n\010Overwork\020\005\"\273\001\n\010RawSpeed\022\026\n\016s"
-    "peedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\024\n"
-    "\014maxKmPerHour\030\n \002(\002\0226\n\tspeedZone\030e \002(\0162#"
-    ".eaglesakura_ace.RawSpeed.SpeedZone\"7\n\tS"
-    "peedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002"
-    "\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002 "
-    "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff"
-    "er\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMonit"
-    "or\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020\002"
-    "B$\n\"com.eaglesakura.andriders.protocol", 798);
+    "\023AcesConstants.proto\"\211\001\n\nRawCadence\022\013\n\003r"
+    "pm\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesak"
+    "ura_ace.RawCadence.CadenceZone\"0\n\013Cadenc"
+    "eZone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002"
+    "\"\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartr"
+    "ateZone\030e \002(\0162+.eaglesakura_ace.RawHeart"
+    "rate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006R"
+    "epose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026"
+    "PossessionOxygenMotion\020\003\022\027\n\023NonOxygenate"
+    "dMotion\020\004\022\014\n\010Overwork\020\005\"\273\001\n\010RawSpeed\022\026\n\016"
+    "speedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\024"
+    "\n\014maxKmPerHour\030\n \002(\002\0226\n\tspeedZone\030e \002(\0162"
+    "#.eaglesakura_ace.RawSpeed.SpeedZone\"7\n\t"
+    "SpeedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020"
+    "\002\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002"
+    " \002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buf"
+    "fer\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMoni"
+    "tor\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020"
+    "\002B$\n\"com.eaglesakura.andriders.protocol", 799);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SensorProtocol.proto", &protobuf_RegisterTypes);
   RawCadence::default_instance_ = new RawCadence();

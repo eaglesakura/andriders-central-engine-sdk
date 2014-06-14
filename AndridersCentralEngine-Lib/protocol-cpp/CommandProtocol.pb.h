@@ -25,7 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
-#include "AceConstants.pb.h"
+#include "AcesConstants.pb.h"
 #include "GeoProtocol.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -41,24 +41,24 @@ class TweetRequestPayload;
 class TriggerPayload;
 class CommandPayload;
 
-enum Command {
+enum CommandType {
   ExtensionTrigger = 1,
   AcesControl = 2
 };
-bool Command_IsValid(int value);
-const Command Command_MIN = ExtensionTrigger;
-const Command Command_MAX = AcesControl;
-const int Command_ARRAYSIZE = Command_MAX + 1;
+bool CommandType_IsValid(int value);
+const CommandType CommandType_MIN = ExtensionTrigger;
+const CommandType CommandType_MAX = AcesControl;
+const int CommandType_ARRAYSIZE = CommandType_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* Command_descriptor();
-inline const ::std::string& Command_Name(Command value) {
+const ::google::protobuf::EnumDescriptor* CommandType_descriptor();
+inline const ::std::string& CommandType_Name(CommandType value) {
   return ::google::protobuf::internal::NameOfEnum(
-    Command_descriptor(), value);
+    CommandType_descriptor(), value);
 }
-inline bool Command_Parse(
-    const ::std::string& name, Command* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<Command>(
-    Command_descriptor(), name, value);
+inline bool CommandType_Parse(
+    const ::std::string& name, CommandType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<CommandType>(
+    CommandType_descriptor(), name, value);
 }
 enum TriggerType {
   Promiximity = 1,
@@ -438,22 +438,6 @@ class TriggerPayload : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 commandsec() const;
   inline void set_commandsec(::google::protobuf::int32 value);
 
-  // optional .eaglesakura_ace.Location location = 4;
-  inline bool has_location() const;
-  inline void clear_location();
-  static const int kLocationFieldNumber = 4;
-  inline const ::eaglesakura_ace::Location& location() const;
-  inline ::eaglesakura_ace::Location* mutable_location();
-  inline ::eaglesakura_ace::Location* release_location();
-  inline void set_allocated_location(::eaglesakura_ace::Location* location);
-
-  // optional .eaglesakura_ace.LocationMoving moving = 5;
-  inline bool has_moving() const;
-  inline void clear_moving();
-  static const int kMovingFieldNumber = 5;
-  inline ::eaglesakura_ace::LocationMoving moving() const;
-  inline void set_moving(::eaglesakura_ace::LocationMoving value);
-
   // @@protoc_insertion_point(class_scope:eaglesakura_ace.TriggerPayload)
  private:
   inline void set_has_type();
@@ -462,21 +446,15 @@ class TriggerPayload : public ::google::protobuf::Message {
   inline void clear_has_extrauniqueid();
   inline void set_has_commandsec();
   inline void clear_has_commandsec();
-  inline void set_has_location();
-  inline void clear_has_location();
-  inline void set_has_moving();
-  inline void clear_has_moving();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* extrauniqueid_;
   int type_;
   ::google::protobuf::int32 commandsec_;
-  ::eaglesakura_ace::Location* location_;
-  int moving_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_CommandProtocol_2eproto();
   friend void protobuf_AssignDesc_CommandProtocol_2eproto();
@@ -1055,67 +1033,6 @@ inline void TriggerPayload::set_commandsec(::google::protobuf::int32 value) {
   commandsec_ = value;
 }
 
-// optional .eaglesakura_ace.Location location = 4;
-inline bool TriggerPayload::has_location() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void TriggerPayload::set_has_location() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void TriggerPayload::clear_has_location() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void TriggerPayload::clear_location() {
-  if (location_ != NULL) location_->::eaglesakura_ace::Location::Clear();
-  clear_has_location();
-}
-inline const ::eaglesakura_ace::Location& TriggerPayload::location() const {
-  return location_ != NULL ? *location_ : *default_instance_->location_;
-}
-inline ::eaglesakura_ace::Location* TriggerPayload::mutable_location() {
-  set_has_location();
-  if (location_ == NULL) location_ = new ::eaglesakura_ace::Location;
-  return location_;
-}
-inline ::eaglesakura_ace::Location* TriggerPayload::release_location() {
-  clear_has_location();
-  ::eaglesakura_ace::Location* temp = location_;
-  location_ = NULL;
-  return temp;
-}
-inline void TriggerPayload::set_allocated_location(::eaglesakura_ace::Location* location) {
-  delete location_;
-  location_ = location;
-  if (location) {
-    set_has_location();
-  } else {
-    clear_has_location();
-  }
-}
-
-// optional .eaglesakura_ace.LocationMoving moving = 5;
-inline bool TriggerPayload::has_moving() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void TriggerPayload::set_has_moving() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void TriggerPayload::clear_has_moving() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void TriggerPayload::clear_moving() {
-  moving_ = 1;
-  clear_has_moving();
-}
-inline ::eaglesakura_ace::LocationMoving TriggerPayload::moving() const {
-  return static_cast< ::eaglesakura_ace::LocationMoving >(moving_);
-}
-inline void TriggerPayload::set_moving(::eaglesakura_ace::LocationMoving value) {
-  assert(::eaglesakura_ace::LocationMoving_IsValid(value));
-  set_has_moving();
-  moving_ = value;
-}
-
 // -------------------------------------------------------------------
 
 // CommandPayload
@@ -1270,8 +1187,8 @@ namespace google {
 namespace protobuf {
 
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::Command>() {
-  return ::eaglesakura_ace::Command_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::CommandType>() {
+  return ::eaglesakura_ace::CommandType_descriptor();
 }
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::eaglesakura_ace::TriggerType>() {

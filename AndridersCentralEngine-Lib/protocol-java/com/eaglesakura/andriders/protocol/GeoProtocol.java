@@ -1517,13 +1517,13 @@ public final class GeoProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\022Ac" +
-      "eConstants.proto\"/\n\010Location\022\020\n\010latitude" +
-      "\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"E\n\nGeoPayload\022" +
-      "&\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location\022" +
-      "\017\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002In" +
-      "\020\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andriders" +
-      ".protocol"
+      "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\023Ac" +
+      "esConstants.proto\"/\n\010Location\022\020\n\010latitud" +
+      "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"E\n\nGeoPayload" +
+      "\022&\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location" +
+      "\022\017\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002I" +
+      "n\020\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andrider" +
+      "s.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1548,7 +1548,7 @@ public final class GeoProtocol {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.eaglesakura.andriders.protocol.AceConstants.getDescriptor(),
+          com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
         }, assigner);
   }
 

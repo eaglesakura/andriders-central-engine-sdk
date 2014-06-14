@@ -1,11 +1,11 @@
 package eaglesakura_ace;
 
-import "AceConstants.proto";
+import "AcesConstants.proto";
 import "GeoProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // 標準コマンド
-enum Command {
+enum CommandType {
 // 拡張機能トリガー起動された
 // トリガーは近接/GEO/活動がある
 	ExtensionTrigger = 1;
@@ -69,11 +69,6 @@ message TriggerPayload {
 	required string extraUniqueId = 2;
 	// 何秒間コマンド入力したか
 	optional int32 commandSec = 3;
-	// 現在位置
-	optional Location location = 4;
-	// ロケーション移動の種類
-	// 侵入・離脱
-	optional LocationMoving moving = 5;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル

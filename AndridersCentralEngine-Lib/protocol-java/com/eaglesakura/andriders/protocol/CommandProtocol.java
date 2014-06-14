@@ -9,13 +9,13 @@ public final class CommandProtocol {
       com.google.protobuf.ExtensionRegistry registry) {
   }
   /**
-   * Protobuf enum {@code eaglesakura_ace.Command}
+   * Protobuf enum {@code eaglesakura_ace.CommandType}
    *
    * <pre>
    * 標準コマンド
    * </pre>
    */
-  public enum Command
+  public enum CommandType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>ExtensionTrigger = 1;</code>
@@ -57,7 +57,7 @@ public final class CommandProtocol {
 
     public final int getNumber() { return value; }
 
-    public static Command valueOf(int value) {
+    public static CommandType valueOf(int value) {
       switch (value) {
         case 1: return ExtensionTrigger;
         case 2: return AcesControl;
@@ -65,15 +65,15 @@ public final class CommandProtocol {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Command>
+    public static com.google.protobuf.Internal.EnumLiteMap<CommandType>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<Command>
+    private static com.google.protobuf.Internal.EnumLiteMap<CommandType>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Command>() {
-            public Command findValueByNumber(int number) {
-              return Command.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<CommandType>() {
+            public CommandType findValueByNumber(int number) {
+              return CommandType.valueOf(number);
             }
           };
 
@@ -90,9 +90,9 @@ public final class CommandProtocol {
       return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final Command[] VALUES = values();
+    private static final CommandType[] VALUES = values();
 
-    public static Command valueOf(
+    public static CommandType valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -104,12 +104,12 @@ public final class CommandProtocol {
     private final int index;
     private final int value;
 
-    private Command(int index, int value) {
+    private CommandType(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.Command)
+    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.CommandType)
   }
 
   /**
@@ -2576,52 +2576,6 @@ public final class CommandProtocol {
      * </pre>
      */
     int getCommandSec();
-
-    // optional .eaglesakura_ace.Location location = 4;
-    /**
-     * <code>optional .eaglesakura_ace.Location location = 4;</code>
-     *
-     * <pre>
-     * 現在位置
-     * </pre>
-     */
-    boolean hasLocation();
-    /**
-     * <code>optional .eaglesakura_ace.Location location = 4;</code>
-     *
-     * <pre>
-     * 現在位置
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.Location getLocation();
-    /**
-     * <code>optional .eaglesakura_ace.Location location = 4;</code>
-     *
-     * <pre>
-     * 現在位置
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder getLocationOrBuilder();
-
-    // optional .eaglesakura_ace.LocationMoving moving = 5;
-    /**
-     * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-     *
-     * <pre>
-     * ロケーション移動の種類
-     * 侵入・離脱
-     * </pre>
-     */
-    boolean hasMoving();
-    /**
-     * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-     *
-     * <pre>
-     * ロケーション移動の種類
-     * 侵入・離脱
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving getMoving();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.TriggerPayload}
@@ -2697,30 +2651,6 @@ public final class CommandProtocol {
             case 24: {
               bitField0_ |= 0x00000004;
               commandSec_ = input.readInt32();
-              break;
-            }
-            case 34: {
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = location_.toBuilder();
-              }
-              location_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.Location.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(location_);
-                location_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
-              break;
-            }
-            case 40: {
-              int rawValue = input.readEnum();
-              com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving value = com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(5, rawValue);
-              } else {
-                bitField0_ |= 0x00000010;
-                moving_ = value;
-              }
               break;
             }
           }
@@ -2866,72 +2796,10 @@ public final class CommandProtocol {
       return commandSec_;
     }
 
-    // optional .eaglesakura_ace.Location location = 4;
-    public static final int LOCATION_FIELD_NUMBER = 4;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.Location location_;
-    /**
-     * <code>optional .eaglesakura_ace.Location location = 4;</code>
-     *
-     * <pre>
-     * 現在位置
-     * </pre>
-     */
-    public boolean hasLocation() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.Location location = 4;</code>
-     *
-     * <pre>
-     * 現在位置
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.Location getLocation() {
-      return location_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.Location location = 4;</code>
-     *
-     * <pre>
-     * 現在位置
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder getLocationOrBuilder() {
-      return location_;
-    }
-
-    // optional .eaglesakura_ace.LocationMoving moving = 5;
-    public static final int MOVING_FIELD_NUMBER = 5;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving moving_;
-    /**
-     * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-     *
-     * <pre>
-     * ロケーション移動の種類
-     * 侵入・離脱
-     * </pre>
-     */
-    public boolean hasMoving() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-     *
-     * <pre>
-     * ロケーション移動の種類
-     * 侵入・離脱
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving getMoving() {
-      return moving_;
-    }
-
     private void initFields() {
       type_ = com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType.Promiximity;
       extraUniqueId_ = "";
       commandSec_ = 0;
-      location_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
-      moving_ = com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving.In;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2945,12 +2813,6 @@ public final class CommandProtocol {
       if (!hasExtraUniqueId()) {
         memoizedIsInitialized = 0;
         return false;
-      }
-      if (hasLocation()) {
-        if (!getLocation().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -2967,12 +2829,6 @@ public final class CommandProtocol {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, commandSec_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, location_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeEnum(5, moving_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -2994,14 +2850,6 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, commandSec_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, location_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, moving_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3115,7 +2963,6 @@ public final class CommandProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLocationFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3130,14 +2977,6 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         commandSec_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (locationBuilder_ == null) {
-          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
-        } else {
-          locationBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        moving_ = com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving.In;
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -3178,18 +3017,6 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000004;
         }
         result.commandSec_ = commandSec_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        if (locationBuilder_ == null) {
-          result.location_ = location_;
-        } else {
-          result.location_ = locationBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.moving_ = moving_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3217,12 +3044,6 @@ public final class CommandProtocol {
         if (other.hasCommandSec()) {
           setCommandSec(other.getCommandSec());
         }
-        if (other.hasLocation()) {
-          mergeLocation(other.getLocation());
-        }
-        if (other.hasMoving()) {
-          setMoving(other.getMoving());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -3235,12 +3056,6 @@ public final class CommandProtocol {
         if (!hasExtraUniqueId()) {
           
           return false;
-        }
-        if (hasLocation()) {
-          if (!getLocation().isInitialized()) {
-            
-            return false;
-          }
         }
         return true;
       }
@@ -3459,215 +3274,6 @@ public final class CommandProtocol {
       public Builder clearCommandSec() {
         bitField0_ = (bitField0_ & ~0x00000004);
         commandSec_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional .eaglesakura_ace.Location location = 4;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.Location location_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.Location, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder> locationBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public boolean hasLocation() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location getLocation() {
-        if (locationBuilder_ == null) {
-          return location_;
-        } else {
-          return locationBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public Builder setLocation(com.eaglesakura.andriders.protocol.GeoProtocol.Location value) {
-        if (locationBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          location_ = value;
-          onChanged();
-        } else {
-          locationBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public Builder setLocation(
-          com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder builderForValue) {
-        if (locationBuilder_ == null) {
-          location_ = builderForValue.build();
-          onChanged();
-        } else {
-          locationBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public Builder mergeLocation(com.eaglesakura.andriders.protocol.GeoProtocol.Location value) {
-        if (locationBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              location_ != com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance()) {
-            location_ =
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location.newBuilder(location_).mergeFrom(value).buildPartial();
-          } else {
-            location_ = value;
-          }
-          onChanged();
-        } else {
-          locationBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public Builder clearLocation() {
-        if (locationBuilder_ == null) {
-          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
-          onChanged();
-        } else {
-          locationBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder getLocationBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getLocationFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder getLocationOrBuilder() {
-        if (locationBuilder_ != null) {
-          return locationBuilder_.getMessageOrBuilder();
-        } else {
-          return location_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.Location location = 4;</code>
-       *
-       * <pre>
-       * 現在位置
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.Location, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder> 
-          getLocationFieldBuilder() {
-        if (locationBuilder_ == null) {
-          locationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder>(
-                  location_,
-                  getParentForChildren(),
-                  isClean());
-          location_ = null;
-        }
-        return locationBuilder_;
-      }
-
-      // optional .eaglesakura_ace.LocationMoving moving = 5;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving moving_ = com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving.In;
-      /**
-       * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-       *
-       * <pre>
-       * ロケーション移動の種類
-       * 侵入・離脱
-       * </pre>
-       */
-      public boolean hasMoving() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-       *
-       * <pre>
-       * ロケーション移動の種類
-       * 侵入・離脱
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving getMoving() {
-        return moving_;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-       *
-       * <pre>
-       * ロケーション移動の種類
-       * 侵入・離脱
-       * </pre>
-       */
-      public Builder setMoving(com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000010;
-        moving_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.LocationMoving moving = 5;</code>
-       *
-       * <pre>
-       * ロケーション移動の種類
-       * 侵入・離脱
-       * </pre>
-       */
-      public Builder clearMoving() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        moving_ = com.eaglesakura.andriders.protocol.GeoProtocol.LocationMoving.In;
         onChanged();
         return this;
       }
@@ -4364,24 +3970,22 @@ public final class CommandProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\025CommandProtocol.proto\022\017eaglesakura_ace" +
-      "\032\022AceConstants.proto\032\021GeoProtocol.proto\"" +
-      "N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022\022" +
-      "\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005\"" +
-      "\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage\030" +
-      "\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 \003" +
-      "(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrate" +
-      "\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"\305\001\n\016TriggerPay" +
+      "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
+      "\"N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022" +
+      "\022\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005" +
+      "\"\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage" +
+      "\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 " +
+      "\003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrat" +
+      "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"g\n\016TriggerPay" +
       "load\022*\n\004type\030\001 \002(\0162\034.eaglesakura_ace.Tri" +
       "ggerType\022\025\n\rextraUniqueId\030\002 \002(\t\022\022\n\ncomma",
-      "ndSec\030\003 \001(\005\022+\n\010location\030\004 \001(\0132\031.eaglesak" +
-      "ura_ace.Location\022/\n\006moving\030\005 \001(\0162\037.eagle" +
-      "sakura_ace.LocationMoving\"7\n\016CommandPayl" +
-      "oad\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001" +
-      "(\014*0\n\007Command\022\024\n\020ExtensionTrigger\020\001\022\017\n\013A" +
-      "cesControl\020\002*5\n\013TriggerType\022\017\n\013Promiximi" +
-      "ty\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity\020\003*\'\n\023AcesContr" +
-      "ollCommand\022\020\n\014TweetRequest\020\002B$\n\"com.eagl" +
-      "esakura.andriders.protocol"
+      "ndSec\030\003 \001(\005\"7\n\016CommandPayload\022\017\n\007command" +
+      "\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*4\n\013CommandT" +
+      "ype\022\024\n\020ExtensionTrigger\020\001\022\017\n\013AcesControl" +
+      "\020\002*5\n\013TriggerType\022\017\n\013Promiximity\020\001\022\007\n\003Ge" +
+      "o\020\002\022\014\n\010Activity\020\003*\'\n\023AcesControllCommand" +
+      "\022\020\n\014TweetRequest\020\002B$\n\"com.eaglesakura.an" +
+      "driders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4405,7 +4009,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TriggerPayload_descriptor,
-              new java.lang.String[] { "Type", "ExtraUniqueId", "CommandSec", "Location", "Moving", });
+              new java.lang.String[] { "Type", "ExtraUniqueId", "CommandSec", });
           internal_static_eaglesakura_ace_CommandPayload_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new
@@ -4418,7 +4022,7 @@ public final class CommandProtocol {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.eaglesakura.andriders.protocol.AceConstants.getDescriptor(),
+          com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
           com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
         }, assigner);
   }

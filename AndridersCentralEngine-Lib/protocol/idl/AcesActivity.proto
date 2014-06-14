@@ -1,0 +1,48 @@
+package eaglesakura_ace;
+
+import "AcesConstants.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// 活動の種類
+enum ActivityType {
+// 最高速度の更新
+	MaxSpeedUpdate = 0;
+}
+
+// 最高速度の更新チェック
+message MaxSpeedActivity {
+	enum State {
+	// 最高速の更新を開始した
+		Arrival = 1;
+		// 最高速を塗り替えた
+		// これは新記録に到達する度に送られる
+		NewRecord = 2;
+		// 最高速挑戦が終了した
+		// これは速度が旧記録を下回り、挑戦が終わったタイミングで呼び出される。
+		Finished = 3;
+	}
+
+	// 新記録
+	required float newRecord = 1;
+
+	// 旧記録
+	required float oldRecord = 2;
+
+	// 記録更新時のケイデンス
+	optional int32 recordCadenceRpm = 3;
+
+	// 記録更新時の心拍
+	optional int32 recordHeartrateBpm = 4;
+
+	// 現在のステート
+	required State state = 10;
+}
+
+// 活動データ
+message ActivityPayload {
+// 活動の種類
+	required ActivityType type = 1;
+
+	// 活動データ
+	required bytes buffer = 10;
+}

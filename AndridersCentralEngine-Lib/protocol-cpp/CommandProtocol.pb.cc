@@ -32,7 +32,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* CommandPayload_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   CommandPayload_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* Command_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* CommandType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* TriggerType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* AcesControllCommand_descriptor_ = NULL;
 
@@ -83,12 +83,10 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TweetRequestPayload));
   TriggerPayload_descriptor_ = file->message_type(2);
-  static const int TriggerPayload_offsets_[5] = {
+  static const int TriggerPayload_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriggerPayload, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriggerPayload, extrauniqueid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriggerPayload, commandsec_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriggerPayload, location_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriggerPayload, moving_),
   };
   TriggerPayload_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -117,7 +115,7 @@ void protobuf_AssignDesc_CommandProtocol_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(CommandPayload));
-  Command_descriptor_ = file->enum_type(0);
+  CommandType_descriptor_ = file->enum_type(0);
   TriggerType_descriptor_ = file->enum_type(1);
   AcesControllCommand_descriptor_ = file->enum_type(2);
 }
@@ -161,28 +159,26 @@ void protobuf_AddDesc_CommandProtocol_2eproto() {
   already_here = true;
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  ::eaglesakura_ace::protobuf_AddDesc_AceConstants_2eproto();
+  ::eaglesakura_ace::protobuf_AddDesc_AcesConstants_2eproto();
   ::eaglesakura_ace::protobuf_AddDesc_GeoProtocol_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\025CommandProtocol.proto\022\017eaglesakura_ace"
-    "\032\022AceConstants.proto\032\021GeoProtocol.proto\""
-    "N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022\022"
-    "\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005\""
-    "\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage\030"
-    "\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 \003"
-    "(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrate"
-    "\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"\305\001\n\016TriggerPay"
+    "\032\023AcesConstants.proto\032\021GeoProtocol.proto"
+    "\"N\n\021CameraShotPayload\022\020\n\010imageUri\030\001 \001(\t\022"
+    "\022\n\nimageWidth\030\002 \002(\005\022\023\n\013imageHeight\030\003 \002(\005"
+    "\"\217\001\n\023TweetRequestPayload\022\024\n\014tweetMessage"
+    "\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 "
+    "\003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrat"
+    "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\"g\n\016TriggerPay"
     "load\022*\n\004type\030\001 \002(\0162\034.eaglesakura_ace.Tri"
     "ggerType\022\025\n\rextraUniqueId\030\002 \002(\t\022\022\n\ncomma"
-    "ndSec\030\003 \001(\005\022+\n\010location\030\004 \001(\0132\031.eaglesak"
-    "ura_ace.Location\022/\n\006moving\030\005 \001(\0162\037.eagle"
-    "sakura_ace.LocationMoving\"7\n\016CommandPayl"
-    "oad\022\017\n\007command\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001"
-    "(\014*0\n\007Command\022\024\n\020ExtensionTrigger\020\001\022\017\n\013A"
-    "cesControl\020\002*5\n\013TriggerType\022\017\n\013Promiximi"
-    "ty\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity\020\003*\'\n\023AcesContr"
-    "ollCommand\022\020\n\014TweetRequest\020\002B$\n\"com.eagl"
-    "esakura.andriders.protocol", 746);
+    "ndSec\030\003 \001(\005\"7\n\016CommandPayload\022\017\n\007command"
+    "\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*4\n\013CommandT"
+    "ype\022\024\n\020ExtensionTrigger\020\001\022\017\n\013AcesControl"
+    "\020\002*5\n\013TriggerType\022\017\n\013Promiximity\020\001\022\007\n\003Ge"
+    "o\020\002\022\014\n\010Activity\020\003*\'\n\023AcesControllCommand"
+    "\022\020\n\014TweetRequest\020\002B$\n\"com.eaglesakura.an"
+    "driders.protocol", 656);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "CommandProtocol.proto", &protobuf_RegisterTypes);
   CameraShotPayload::default_instance_ = new CameraShotPayload();
@@ -202,11 +198,11 @@ struct StaticDescriptorInitializer_CommandProtocol_2eproto {
     protobuf_AddDesc_CommandProtocol_2eproto();
   }
 } static_descriptor_initializer_CommandProtocol_2eproto_;
-const ::google::protobuf::EnumDescriptor* Command_descriptor() {
+const ::google::protobuf::EnumDescriptor* CommandType_descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Command_descriptor_;
+  return CommandType_descriptor_;
 }
-bool Command_IsValid(int value) {
+bool CommandType_IsValid(int value) {
   switch(value) {
     case 1:
     case 2:
@@ -993,8 +989,6 @@ void TweetRequestPayload::Swap(TweetRequestPayload* other) {
 const int TriggerPayload::kTypeFieldNumber;
 const int TriggerPayload::kExtraUniqueIdFieldNumber;
 const int TriggerPayload::kCommandSecFieldNumber;
-const int TriggerPayload::kLocationFieldNumber;
-const int TriggerPayload::kMovingFieldNumber;
 #endif  // !_MSC_VER
 
 TriggerPayload::TriggerPayload()
@@ -1003,7 +997,6 @@ TriggerPayload::TriggerPayload()
 }
 
 void TriggerPayload::InitAsDefaultInstance() {
-  location_ = const_cast< ::eaglesakura_ace::Location*>(&::eaglesakura_ace::Location::default_instance());
 }
 
 TriggerPayload::TriggerPayload(const TriggerPayload& from)
@@ -1017,8 +1010,6 @@ void TriggerPayload::SharedCtor() {
   type_ = 1;
   extrauniqueid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   commandsec_ = 0;
-  location_ = NULL;
-  moving_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1031,7 +1022,6 @@ void TriggerPayload::SharedDtor() {
     delete extrauniqueid_;
   }
   if (this != default_instance_) {
-    delete location_;
   }
 }
 
@@ -1065,10 +1055,6 @@ void TriggerPayload::Clear() {
       }
     }
     commandsec_ = 0;
-    if (has_location()) {
-      if (location_ != NULL) location_->::eaglesakura_ace::Location::Clear();
-    }
-    moving_ = 1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1129,41 +1115,6 @@ bool TriggerPayload::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_location;
-        break;
-      }
-
-      // optional .eaglesakura_ace.Location location = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_location:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_location()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(40)) goto parse_moving;
-        break;
-      }
-
-      // optional .eaglesakura_ace.LocationMoving moving = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_moving:
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::eaglesakura_ace::LocationMoving_IsValid(value)) {
-            set_moving(static_cast< ::eaglesakura_ace::LocationMoving >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(5, value);
-          }
-        } else {
-          goto handle_uninterpreted;
-        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1206,18 +1157,6 @@ void TriggerPayload::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->commandsec(), output);
   }
 
-  // optional .eaglesakura_ace.Location location = 4;
-  if (has_location()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->location(), output);
-  }
-
-  // optional .eaglesakura_ace.LocationMoving moving = 5;
-  if (has_moving()) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      5, this->moving(), output);
-  }
-
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1245,19 +1184,6 @@ void TriggerPayload::SerializeWithCachedSizes(
   // optional int32 commandSec = 3;
   if (has_commandsec()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->commandsec(), target);
-  }
-
-  // optional .eaglesakura_ace.Location location = 4;
-  if (has_location()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        4, this->location(), target);
-  }
-
-  // optional .eaglesakura_ace.LocationMoving moving = 5;
-  if (has_moving()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      5, this->moving(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1289,19 +1215,6 @@ int TriggerPayload::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->commandsec());
-    }
-
-    // optional .eaglesakura_ace.Location location = 4;
-    if (has_location()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->location());
-    }
-
-    // optional .eaglesakura_ace.LocationMoving moving = 5;
-    if (has_moving()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->moving());
     }
 
   }
@@ -1340,12 +1253,6 @@ void TriggerPayload::MergeFrom(const TriggerPayload& from) {
     if (from.has_commandsec()) {
       set_commandsec(from.commandsec());
     }
-    if (from.has_location()) {
-      mutable_location()->::eaglesakura_ace::Location::MergeFrom(from.location());
-    }
-    if (from.has_moving()) {
-      set_moving(from.moving());
-    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1365,9 +1272,6 @@ void TriggerPayload::CopyFrom(const TriggerPayload& from) {
 bool TriggerPayload::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
-  if (has_location()) {
-    if (!this->location().IsInitialized()) return false;
-  }
   return true;
 }
 
@@ -1376,8 +1280,6 @@ void TriggerPayload::Swap(TriggerPayload* other) {
     std::swap(type_, other->type_);
     std::swap(extrauniqueid_, other->extrauniqueid_);
     std::swap(commandsec_, other->commandsec_);
-    std::swap(location_, other->location_);
-    std::swap(moving_, other->moving_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

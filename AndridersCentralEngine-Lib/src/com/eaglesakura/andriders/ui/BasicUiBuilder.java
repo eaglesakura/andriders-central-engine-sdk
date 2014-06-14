@@ -227,7 +227,7 @@ public class BasicUiBuilder {
             AQuery q = new AQuery(currentSpeedView);
 
             if (master.getCentralStatus().getConnectedSpeed()) {
-                q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.02f", speed.getSpeedKmPerHour()));
+                q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getSpeedKmPerHour()));
             } else {
                 q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
             }
@@ -237,7 +237,7 @@ public class BasicUiBuilder {
         // 最高速度を指定
         if (maxSpeedView != null) {
             AQuery q = new AQuery(maxSpeedView);
-            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.02f", speed.getMaxKmPerHour()));
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getMaxKmPerHour()));
         }
     }
 }

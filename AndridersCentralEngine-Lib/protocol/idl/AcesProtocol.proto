@@ -1,6 +1,6 @@
 package eaglesakura_ace;
 
-import "AceConstants.proto";
+import "AcesConstants.proto";
 import "SensorProtocol.proto";
 import "CommandProtocol.proto";
 import "GeoProtocol.proto";

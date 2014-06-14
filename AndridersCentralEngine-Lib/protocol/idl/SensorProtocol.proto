@@ -1,6 +1,6 @@
 package eaglesakura_ace;
 
-import "AceConstants.proto";
+import "AcesConstants.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // センサーの種類
