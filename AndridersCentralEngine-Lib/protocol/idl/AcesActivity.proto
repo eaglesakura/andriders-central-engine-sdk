@@ -25,6 +25,9 @@ message MaxSpeedActivity {
 	// 新記録
 	required float newRecord = 1;
 
+	// 記録時刻
+	required string newRecordTime = 5;
+
 	// 旧記録
 	required float oldRecord = 2;
 

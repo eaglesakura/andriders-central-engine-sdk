@@ -164,6 +164,18 @@ class MaxSpeedActivity : public ::google::protobuf::Message {
   inline float newrecord() const;
   inline void set_newrecord(float value);
 
+  // required string newRecordTime = 5;
+  inline bool has_newrecordtime() const;
+  inline void clear_newrecordtime();
+  static const int kNewRecordTimeFieldNumber = 5;
+  inline const ::std::string& newrecordtime() const;
+  inline void set_newrecordtime(const ::std::string& value);
+  inline void set_newrecordtime(const char* value);
+  inline void set_newrecordtime(const char* value, size_t size);
+  inline ::std::string* mutable_newrecordtime();
+  inline ::std::string* release_newrecordtime();
+  inline void set_allocated_newrecordtime(::std::string* newrecordtime);
+
   // required float oldRecord = 2;
   inline bool has_oldrecord() const;
   inline void clear_oldrecord();
@@ -196,6 +208,8 @@ class MaxSpeedActivity : public ::google::protobuf::Message {
  private:
   inline void set_has_newrecord();
   inline void clear_has_newrecord();
+  inline void set_has_newrecordtime();
+  inline void clear_has_newrecordtime();
   inline void set_has_oldrecord();
   inline void clear_has_oldrecord();
   inline void set_has_recordcadencerpm();
@@ -207,6 +221,7 @@ class MaxSpeedActivity : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* newrecordtime_;
   float newrecord_;
   float oldrecord_;
   ::google::protobuf::int32 recordcadencerpm_;
@@ -214,7 +229,7 @@ class MaxSpeedActivity : public ::google::protobuf::Message {
   int state_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_AcesActivity_2eproto();
   friend void protobuf_AssignDesc_AcesActivity_2eproto();
@@ -349,15 +364,85 @@ inline void MaxSpeedActivity::set_newrecord(float value) {
   newrecord_ = value;
 }
 
-// required float oldRecord = 2;
-inline bool MaxSpeedActivity::has_oldrecord() const {
+// required string newRecordTime = 5;
+inline bool MaxSpeedActivity::has_newrecordtime() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void MaxSpeedActivity::set_has_oldrecord() {
+inline void MaxSpeedActivity::set_has_newrecordtime() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void MaxSpeedActivity::clear_has_oldrecord() {
+inline void MaxSpeedActivity::clear_has_newrecordtime() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void MaxSpeedActivity::clear_newrecordtime() {
+  if (newrecordtime_ != &::google::protobuf::internal::kEmptyString) {
+    newrecordtime_->clear();
+  }
+  clear_has_newrecordtime();
+}
+inline const ::std::string& MaxSpeedActivity::newrecordtime() const {
+  return *newrecordtime_;
+}
+inline void MaxSpeedActivity::set_newrecordtime(const ::std::string& value) {
+  set_has_newrecordtime();
+  if (newrecordtime_ == &::google::protobuf::internal::kEmptyString) {
+    newrecordtime_ = new ::std::string;
+  }
+  newrecordtime_->assign(value);
+}
+inline void MaxSpeedActivity::set_newrecordtime(const char* value) {
+  set_has_newrecordtime();
+  if (newrecordtime_ == &::google::protobuf::internal::kEmptyString) {
+    newrecordtime_ = new ::std::string;
+  }
+  newrecordtime_->assign(value);
+}
+inline void MaxSpeedActivity::set_newrecordtime(const char* value, size_t size) {
+  set_has_newrecordtime();
+  if (newrecordtime_ == &::google::protobuf::internal::kEmptyString) {
+    newrecordtime_ = new ::std::string;
+  }
+  newrecordtime_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* MaxSpeedActivity::mutable_newrecordtime() {
+  set_has_newrecordtime();
+  if (newrecordtime_ == &::google::protobuf::internal::kEmptyString) {
+    newrecordtime_ = new ::std::string;
+  }
+  return newrecordtime_;
+}
+inline ::std::string* MaxSpeedActivity::release_newrecordtime() {
+  clear_has_newrecordtime();
+  if (newrecordtime_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = newrecordtime_;
+    newrecordtime_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void MaxSpeedActivity::set_allocated_newrecordtime(::std::string* newrecordtime) {
+  if (newrecordtime_ != &::google::protobuf::internal::kEmptyString) {
+    delete newrecordtime_;
+  }
+  if (newrecordtime) {
+    set_has_newrecordtime();
+    newrecordtime_ = newrecordtime;
+  } else {
+    clear_has_newrecordtime();
+    newrecordtime_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// required float oldRecord = 2;
+inline bool MaxSpeedActivity::has_oldrecord() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MaxSpeedActivity::set_has_oldrecord() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MaxSpeedActivity::clear_has_oldrecord() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MaxSpeedActivity::clear_oldrecord() {
   oldrecord_ = 0;
@@ -373,13 +458,13 @@ inline void MaxSpeedActivity::set_oldrecord(float value) {
 
 // optional int32 recordCadenceRpm = 3;
 inline bool MaxSpeedActivity::has_recordcadencerpm() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MaxSpeedActivity::set_has_recordcadencerpm() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MaxSpeedActivity::clear_has_recordcadencerpm() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MaxSpeedActivity::clear_recordcadencerpm() {
   recordcadencerpm_ = 0;
@@ -395,13 +480,13 @@ inline void MaxSpeedActivity::set_recordcadencerpm(::google::protobuf::int32 val
 
 // optional int32 recordHeartrateBpm = 4;
 inline bool MaxSpeedActivity::has_recordheartratebpm() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MaxSpeedActivity::set_has_recordheartratebpm() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MaxSpeedActivity::clear_has_recordheartratebpm() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MaxSpeedActivity::clear_recordheartratebpm() {
   recordheartratebpm_ = 0;
@@ -417,13 +502,13 @@ inline void MaxSpeedActivity::set_recordheartratebpm(::google::protobuf::int32 v
 
 // required .eaglesakura_ace.MaxSpeedActivity.State state = 10;
 inline bool MaxSpeedActivity::has_state() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MaxSpeedActivity::set_has_state() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MaxSpeedActivity::clear_has_state() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MaxSpeedActivity::clear_state() {
   state_ = 1;

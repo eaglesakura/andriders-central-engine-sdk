@@ -114,6 +114,33 @@ public final class AcesActivity {
      */
     float getNewRecord();
 
+    // required string newRecordTime = 5;
+    /**
+     * <code>required string newRecordTime = 5;</code>
+     *
+     * <pre>
+     * 記録時刻
+     * </pre>
+     */
+    boolean hasNewRecordTime();
+    /**
+     * <code>required string newRecordTime = 5;</code>
+     *
+     * <pre>
+     * 記録時刻
+     * </pre>
+     */
+    java.lang.String getNewRecordTime();
+    /**
+     * <code>required string newRecordTime = 5;</code>
+     *
+     * <pre>
+     * 記録時刻
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getNewRecordTimeBytes();
+
     // required float oldRecord = 2;
     /**
      * <code>required float oldRecord = 2;</code>
@@ -247,18 +274,23 @@ public final class AcesActivity {
               break;
             }
             case 21: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               oldRecord_ = input.readFloat();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               recordCadenceRpm_ = input.readInt32();
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               recordHeartrateBpm_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000002;
+              newRecordTime_ = input.readBytes();
               break;
             }
             case 80: {
@@ -267,7 +299,7 @@ public final class AcesActivity {
               if (value == null) {
                 unknownFields.mergeVarintField(10, rawValue);
               } else {
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000020;
                 state_ = value;
               }
               break;
@@ -455,6 +487,61 @@ public final class AcesActivity {
       return newRecord_;
     }
 
+    // required string newRecordTime = 5;
+    public static final int NEWRECORDTIME_FIELD_NUMBER = 5;
+    private java.lang.Object newRecordTime_;
+    /**
+     * <code>required string newRecordTime = 5;</code>
+     *
+     * <pre>
+     * 記録時刻
+     * </pre>
+     */
+    public boolean hasNewRecordTime() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string newRecordTime = 5;</code>
+     *
+     * <pre>
+     * 記録時刻
+     * </pre>
+     */
+    public java.lang.String getNewRecordTime() {
+      java.lang.Object ref = newRecordTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          newRecordTime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string newRecordTime = 5;</code>
+     *
+     * <pre>
+     * 記録時刻
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getNewRecordTimeBytes() {
+      java.lang.Object ref = newRecordTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        newRecordTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // required float oldRecord = 2;
     public static final int OLDRECORD_FIELD_NUMBER = 2;
     private float oldRecord_;
@@ -466,7 +553,7 @@ public final class AcesActivity {
      * </pre>
      */
     public boolean hasOldRecord() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required float oldRecord = 2;</code>
@@ -490,7 +577,7 @@ public final class AcesActivity {
      * </pre>
      */
     public boolean hasRecordCadenceRpm() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 recordCadenceRpm = 3;</code>
@@ -514,7 +601,7 @@ public final class AcesActivity {
      * </pre>
      */
     public boolean hasRecordHeartrateBpm() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 recordHeartrateBpm = 4;</code>
@@ -538,7 +625,7 @@ public final class AcesActivity {
      * </pre>
      */
     public boolean hasState() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>required .eaglesakura_ace.MaxSpeedActivity.State state = 10;</code>
@@ -553,6 +640,7 @@ public final class AcesActivity {
 
     private void initFields() {
       newRecord_ = 0F;
+      newRecordTime_ = "";
       oldRecord_ = 0F;
       recordCadenceRpm_ = 0;
       recordHeartrateBpm_ = 0;
@@ -564,6 +652,10 @@ public final class AcesActivity {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasNewRecord()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNewRecordTime()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -585,16 +677,19 @@ public final class AcesActivity {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeFloat(1, newRecord_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeFloat(2, oldRecord_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(3, recordCadenceRpm_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(4, recordHeartrateBpm_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(5, getNewRecordTimeBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeEnum(10, state_.getNumber());
       }
       getUnknownFields().writeTo(output);
@@ -610,19 +705,23 @@ public final class AcesActivity {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(1, newRecord_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(2, oldRecord_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, recordCadenceRpm_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, recordHeartrateBpm_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getNewRecordTimeBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(10, state_.getNumber());
       }
@@ -748,14 +847,16 @@ public final class AcesActivity {
         super.clear();
         newRecord_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000001);
-        oldRecord_ = 0F;
+        newRecordTime_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        recordCadenceRpm_ = 0;
+        oldRecord_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000004);
-        recordHeartrateBpm_ = 0;
+        recordCadenceRpm_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        state_ = com.eaglesakura.andriders.protocol.AcesActivity.MaxSpeedActivity.State.Arrival;
+        recordHeartrateBpm_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        state_ = com.eaglesakura.andriders.protocol.AcesActivity.MaxSpeedActivity.State.Arrival;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -791,17 +892,21 @@ public final class AcesActivity {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.oldRecord_ = oldRecord_;
+        result.newRecordTime_ = newRecordTime_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.recordCadenceRpm_ = recordCadenceRpm_;
+        result.oldRecord_ = oldRecord_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.recordHeartrateBpm_ = recordHeartrateBpm_;
+        result.recordCadenceRpm_ = recordCadenceRpm_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
+        }
+        result.recordHeartrateBpm_ = recordHeartrateBpm_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
         }
         result.state_ = state_;
         result.bitField0_ = to_bitField0_;
@@ -823,6 +928,11 @@ public final class AcesActivity {
         if (other.hasNewRecord()) {
           setNewRecord(other.getNewRecord());
         }
+        if (other.hasNewRecordTime()) {
+          bitField0_ |= 0x00000002;
+          newRecordTime_ = other.newRecordTime_;
+          onChanged();
+        }
         if (other.hasOldRecord()) {
           setOldRecord(other.getOldRecord());
         }
@@ -841,6 +951,10 @@ public final class AcesActivity {
 
       public final boolean isInitialized() {
         if (!hasNewRecord()) {
+          
+          return false;
+        }
+        if (!hasNewRecordTime()) {
           
           return false;
         }
@@ -923,6 +1037,104 @@ public final class AcesActivity {
         return this;
       }
 
+      // required string newRecordTime = 5;
+      private java.lang.Object newRecordTime_ = "";
+      /**
+       * <code>required string newRecordTime = 5;</code>
+       *
+       * <pre>
+       * 記録時刻
+       * </pre>
+       */
+      public boolean hasNewRecordTime() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string newRecordTime = 5;</code>
+       *
+       * <pre>
+       * 記録時刻
+       * </pre>
+       */
+      public java.lang.String getNewRecordTime() {
+        java.lang.Object ref = newRecordTime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          newRecordTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string newRecordTime = 5;</code>
+       *
+       * <pre>
+       * 記録時刻
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getNewRecordTimeBytes() {
+        java.lang.Object ref = newRecordTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          newRecordTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string newRecordTime = 5;</code>
+       *
+       * <pre>
+       * 記録時刻
+       * </pre>
+       */
+      public Builder setNewRecordTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        newRecordTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string newRecordTime = 5;</code>
+       *
+       * <pre>
+       * 記録時刻
+       * </pre>
+       */
+      public Builder clearNewRecordTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        newRecordTime_ = getDefaultInstance().getNewRecordTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string newRecordTime = 5;</code>
+       *
+       * <pre>
+       * 記録時刻
+       * </pre>
+       */
+      public Builder setNewRecordTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        newRecordTime_ = value;
+        onChanged();
+        return this;
+      }
+
       // required float oldRecord = 2;
       private float oldRecord_ ;
       /**
@@ -933,7 +1145,7 @@ public final class AcesActivity {
        * </pre>
        */
       public boolean hasOldRecord() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required float oldRecord = 2;</code>
@@ -953,7 +1165,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder setOldRecord(float value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         oldRecord_ = value;
         onChanged();
         return this;
@@ -966,7 +1178,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder clearOldRecord() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         oldRecord_ = 0F;
         onChanged();
         return this;
@@ -982,7 +1194,7 @@ public final class AcesActivity {
        * </pre>
        */
       public boolean hasRecordCadenceRpm() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 recordCadenceRpm = 3;</code>
@@ -1002,7 +1214,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder setRecordCadenceRpm(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         recordCadenceRpm_ = value;
         onChanged();
         return this;
@@ -1015,7 +1227,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder clearRecordCadenceRpm() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         recordCadenceRpm_ = 0;
         onChanged();
         return this;
@@ -1031,7 +1243,7 @@ public final class AcesActivity {
        * </pre>
        */
       public boolean hasRecordHeartrateBpm() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 recordHeartrateBpm = 4;</code>
@@ -1051,7 +1263,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder setRecordHeartrateBpm(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         recordHeartrateBpm_ = value;
         onChanged();
         return this;
@@ -1064,7 +1276,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder clearRecordHeartrateBpm() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         recordHeartrateBpm_ = 0;
         onChanged();
         return this;
@@ -1080,7 +1292,7 @@ public final class AcesActivity {
        * </pre>
        */
       public boolean hasState() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>required .eaglesakura_ace.MaxSpeedActivity.State state = 10;</code>
@@ -1103,7 +1315,7 @@ public final class AcesActivity {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         state_ = value;
         onChanged();
         return this;
@@ -1116,7 +1328,7 @@ public final class AcesActivity {
        * </pre>
        */
       public Builder clearState() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         state_ = com.eaglesakura.andriders.protocol.AcesActivity.MaxSpeedActivity.State.Arrival;
         onChanged();
         return this;
@@ -1730,16 +1942,17 @@ public final class AcesActivity {
   static {
     java.lang.String[] descriptorData = {
       "\n\022AcesActivity.proto\022\017eaglesakura_ace\032\023A" +
-      "cesConstants.proto\"\331\001\n\020MaxSpeedActivity\022" +
-      "\021\n\tnewRecord\030\001 \002(\002\022\021\n\toldRecord\030\002 \002(\002\022\030\n" +
-      "\020recordCadenceRpm\030\003 \001(\005\022\032\n\022recordHeartra" +
-      "teBpm\030\004 \001(\005\0226\n\005state\030\n \002(\0162\'.eaglesakura" +
-      "_ace.MaxSpeedActivity.State\"1\n\005State\022\013\n\007" +
-      "Arrival\020\001\022\r\n\tNewRecord\020\002\022\014\n\010Finished\020\003\"N" +
-      "\n\017ActivityPayload\022+\n\004type\030\001 \002(\0162\035.eagles" +
-      "akura_ace.ActivityType\022\016\n\006buffer\030\n \002(\014*\"" +
-      "\n\014ActivityType\022\022\n\016MaxSpeedUpdate\020\000B$\n\"co",
-      "m.eaglesakura.andriders.protocol"
+      "cesConstants.proto\"\360\001\n\020MaxSpeedActivity\022" +
+      "\021\n\tnewRecord\030\001 \002(\002\022\025\n\rnewRecordTime\030\005 \002(" +
+      "\t\022\021\n\toldRecord\030\002 \002(\002\022\030\n\020recordCadenceRpm" +
+      "\030\003 \001(\005\022\032\n\022recordHeartrateBpm\030\004 \001(\005\0226\n\005st" +
+      "ate\030\n \002(\0162\'.eaglesakura_ace.MaxSpeedActi" +
+      "vity.State\"1\n\005State\022\013\n\007Arrival\020\001\022\r\n\tNewR" +
+      "ecord\020\002\022\014\n\010Finished\020\003\"N\n\017ActivityPayload" +
+      "\022+\n\004type\030\001 \002(\0162\035.eaglesakura_ace.Activit" +
+      "yType\022\016\n\006buffer\030\n \002(\014*\"\n\014ActivityType\022\022\n",
+      "\016MaxSpeedUpdate\020\000B$\n\"com.eaglesakura.and" +
+      "riders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1751,7 +1964,7 @@ public final class AcesActivity {
           internal_static_eaglesakura_ace_MaxSpeedActivity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MaxSpeedActivity_descriptor,
-              new java.lang.String[] { "NewRecord", "OldRecord", "RecordCadenceRpm", "RecordHeartrateBpm", "State", });
+              new java.lang.String[] { "NewRecord", "NewRecordTime", "OldRecord", "RecordCadenceRpm", "RecordHeartrateBpm", "State", });
           internal_static_eaglesakura_ace_ActivityPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_ActivityPayload_fieldAccessorTable = new

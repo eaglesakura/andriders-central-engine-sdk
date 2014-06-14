@@ -39,8 +39,9 @@ void protobuf_AssignDesc_AcesActivity_2eproto() {
       "AcesActivity.proto");
   GOOGLE_CHECK(file != NULL);
   MaxSpeedActivity_descriptor_ = file->message_type(0);
-  static const int MaxSpeedActivity_offsets_[5] = {
+  static const int MaxSpeedActivity_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MaxSpeedActivity, newrecord_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MaxSpeedActivity, newrecordtime_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MaxSpeedActivity, oldrecord_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MaxSpeedActivity, recordcadencerpm_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MaxSpeedActivity, recordheartratebpm_),
@@ -111,16 +112,17 @@ void protobuf_AddDesc_AcesActivity_2eproto() {
   ::eaglesakura_ace::protobuf_AddDesc_AcesConstants_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\022AcesActivity.proto\022\017eaglesakura_ace\032\023A"
-    "cesConstants.proto\"\331\001\n\020MaxSpeedActivity\022"
-    "\021\n\tnewRecord\030\001 \002(\002\022\021\n\toldRecord\030\002 \002(\002\022\030\n"
-    "\020recordCadenceRpm\030\003 \001(\005\022\032\n\022recordHeartra"
-    "teBpm\030\004 \001(\005\0226\n\005state\030\n \002(\0162\'.eaglesakura"
-    "_ace.MaxSpeedActivity.State\"1\n\005State\022\013\n\007"
-    "Arrival\020\001\022\r\n\tNewRecord\020\002\022\014\n\010Finished\020\003\"N"
-    "\n\017ActivityPayload\022+\n\004type\030\001 \002(\0162\035.eagles"
-    "akura_ace.ActivityType\022\016\n\006buffer\030\n \002(\014*\""
-    "\n\014ActivityType\022\022\n\016MaxSpeedUpdate\020\000B$\n\"co"
-    "m.eaglesakura.andriders.protocol", 432);
+    "cesConstants.proto\"\360\001\n\020MaxSpeedActivity\022"
+    "\021\n\tnewRecord\030\001 \002(\002\022\025\n\rnewRecordTime\030\005 \002("
+    "\t\022\021\n\toldRecord\030\002 \002(\002\022\030\n\020recordCadenceRpm"
+    "\030\003 \001(\005\022\032\n\022recordHeartrateBpm\030\004 \001(\005\0226\n\005st"
+    "ate\030\n \002(\0162\'.eaglesakura_ace.MaxSpeedActi"
+    "vity.State\"1\n\005State\022\013\n\007Arrival\020\001\022\r\n\tNewR"
+    "ecord\020\002\022\014\n\010Finished\020\003\"N\n\017ActivityPayload"
+    "\022+\n\004type\030\001 \002(\0162\035.eaglesakura_ace.Activit"
+    "yType\022\016\n\006buffer\030\n \002(\014*\"\n\014ActivityType\022\022\n"
+    "\016MaxSpeedUpdate\020\000B$\n\"com.eaglesakura.and"
+    "riders.protocol", 455);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "AcesActivity.proto", &protobuf_RegisterTypes);
   MaxSpeedActivity::default_instance_ = new MaxSpeedActivity();
@@ -177,6 +179,7 @@ const int MaxSpeedActivity::State_ARRAYSIZE;
 #endif  // _MSC_VER
 #ifndef _MSC_VER
 const int MaxSpeedActivity::kNewRecordFieldNumber;
+const int MaxSpeedActivity::kNewRecordTimeFieldNumber;
 const int MaxSpeedActivity::kOldRecordFieldNumber;
 const int MaxSpeedActivity::kRecordCadenceRpmFieldNumber;
 const int MaxSpeedActivity::kRecordHeartrateBpmFieldNumber;
@@ -200,6 +203,7 @@ MaxSpeedActivity::MaxSpeedActivity(const MaxSpeedActivity& from)
 void MaxSpeedActivity::SharedCtor() {
   _cached_size_ = 0;
   newrecord_ = 0;
+  newrecordtime_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   oldrecord_ = 0;
   recordcadencerpm_ = 0;
   recordheartratebpm_ = 0;
@@ -212,6 +216,9 @@ MaxSpeedActivity::~MaxSpeedActivity() {
 }
 
 void MaxSpeedActivity::SharedDtor() {
+  if (newrecordtime_ != &::google::protobuf::internal::kEmptyString) {
+    delete newrecordtime_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -240,6 +247,11 @@ MaxSpeedActivity* MaxSpeedActivity::New() const {
 void MaxSpeedActivity::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     newrecord_ = 0;
+    if (has_newrecordtime()) {
+      if (newrecordtime_ != &::google::protobuf::internal::kEmptyString) {
+        newrecordtime_->clear();
+      }
+    }
     oldrecord_ = 0;
     recordcadencerpm_ = 0;
     recordheartratebpm_ = 0;
@@ -314,6 +326,23 @@ bool MaxSpeedActivity::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(42)) goto parse_newRecordTime;
+        break;
+      }
+
+      // required string newRecordTime = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_newRecordTime:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_newrecordtime()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->newrecordtime().data(), this->newrecordtime().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectTag(80)) goto parse_state;
         break;
       }
@@ -377,6 +406,15 @@ void MaxSpeedActivity::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->recordheartratebpm(), output);
   }
 
+  // required string newRecordTime = 5;
+  if (has_newrecordtime()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->newrecordtime().data(), this->newrecordtime().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->newrecordtime(), output);
+  }
+
   // required .eaglesakura_ace.MaxSpeedActivity.State state = 10;
   if (has_state()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
@@ -411,6 +449,16 @@ void MaxSpeedActivity::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->recordheartratebpm(), target);
   }
 
+  // required string newRecordTime = 5;
+  if (has_newrecordtime()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->newrecordtime().data(), this->newrecordtime().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->newrecordtime(), target);
+  }
+
   // required .eaglesakura_ace.MaxSpeedActivity.State state = 10;
   if (has_state()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
@@ -431,6 +479,13 @@ int MaxSpeedActivity::ByteSize() const {
     // required float newRecord = 1;
     if (has_newrecord()) {
       total_size += 1 + 4;
+    }
+
+    // required string newRecordTime = 5;
+    if (has_newrecordtime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->newrecordtime());
     }
 
     // required float oldRecord = 2;
@@ -488,6 +543,9 @@ void MaxSpeedActivity::MergeFrom(const MaxSpeedActivity& from) {
     if (from.has_newrecord()) {
       set_newrecord(from.newrecord());
     }
+    if (from.has_newrecordtime()) {
+      set_newrecordtime(from.newrecordtime());
+    }
     if (from.has_oldrecord()) {
       set_oldrecord(from.oldrecord());
     }
@@ -517,7 +575,7 @@ void MaxSpeedActivity::CopyFrom(const MaxSpeedActivity& from) {
 }
 
 bool MaxSpeedActivity::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000013) != 0x00000013) return false;
+  if ((_has_bits_[0] & 0x00000027) != 0x00000027) return false;
 
   return true;
 }
@@ -525,6 +583,7 @@ bool MaxSpeedActivity::IsInitialized() const {
 void MaxSpeedActivity::Swap(MaxSpeedActivity* other) {
   if (other != this) {
     std::swap(newrecord_, other->newrecord_);
+    std::swap(newrecordtime_, other->newrecordtime_);
     std::swap(oldrecord_, other->oldrecord_);
     std::swap(recordcadencerpm_, other->recordcadencerpm_);
     std::swap(recordheartratebpm_, other->recordheartratebpm_);
