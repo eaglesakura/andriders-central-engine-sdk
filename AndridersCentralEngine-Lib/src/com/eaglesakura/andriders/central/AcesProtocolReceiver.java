@@ -365,7 +365,6 @@ public class AcesProtocolReceiver {
         final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
 
         // senderが自分であれば反応しない
-        // ただし、自分自身が対象である場合は何もしない
         if (checkSelfPackage) {
             if (selfPackageName.equals(master.getSenderPackage())) {
                 //            Log.i("ACES", "error sender :: " + master.getSenderPackage());
