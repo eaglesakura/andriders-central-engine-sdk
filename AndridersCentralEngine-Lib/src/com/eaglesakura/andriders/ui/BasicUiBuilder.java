@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.view.View;
 
 import com.androidquery.AQuery;
-import com.eaglesakura.andriders.R;
+import com.eaglesakura.andriders.sdk.R;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone;
