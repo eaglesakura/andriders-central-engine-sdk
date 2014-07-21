@@ -1,5 +1,5 @@
-final def CPP_OUTPUT_DIR = new File("../protocol-cpp").getAbsoluteFile();
-final def JAVA_OUTPUT_DIR = new File("../protocol-java").getAbsoluteFile();
+final def CPP_OUTPUT_DIR = file("../protobuf-cpp").getAbsoluteFile();
+final def JAVA_OUTPUT_DIR = file("../src/main/protobuf").getAbsoluteFile();
 
 task clean << {
     [
@@ -20,7 +20,7 @@ task build << {
     CPP_OUTPUT_DIR.mkdirs();
     JAVA_OUTPUT_DIR.mkdirs();
 
-    File srcDir = new File("./idl/").getAbsoluteFile();
+    File srcDir = file("./idl/").getAbsoluteFile();
 
     for(File proto : srcDir.listFiles()) {
         if(proto.getName().endsWith(".proto")) {
