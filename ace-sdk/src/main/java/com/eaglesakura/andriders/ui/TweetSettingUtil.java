@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload;
+import com.eaglesakura.andriders.sdk.BuildConfig;
 
 public class TweetSettingUtil {
 
