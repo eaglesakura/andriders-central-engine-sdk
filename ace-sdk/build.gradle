@@ -1,3 +1,17 @@
+buildscript {
+    repositories {
+        mavenCentral()
+
+        maven {
+            url "http://eaglesakura.github.io/maven/"
+        }
+    }
+
+    dependencies {
+        classpath "com.eaglesakura:eglibrary-gradle-plugin:0.1.16"
+    }
+}
+
 apply plugin: 'com.android.library'
 
 dependencies {
@@ -19,7 +33,15 @@ android {
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
-            java.srcDirs = ['src/main/protobuf', 'src/main/java']
+            java.srcDirs = ['src/main/generated/protobuf', 'src/main/java']
         }
     }
+}
+
+/**
+ * Protocol Buffersファイルをビルドする
+ */
+task compileProtobuf(type: com.eaglesakura.gradle.tasks.ProtobufCompileTask) {
+    src = file("src/main/protobuf")
+    javaOutput = file("src/main/generated/protobuf")
 }
