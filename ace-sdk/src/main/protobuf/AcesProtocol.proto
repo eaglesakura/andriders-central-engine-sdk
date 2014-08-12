@@ -9,8 +9,8 @@ option java_package = "com.eaglesakura.andriders.protocol";
 
 // セントラルサービスのバージョン
 message VersionInfo {
-// データフォーマットバージョン
-// 互換性の無いバージョンになったらCentralを更新する必要がある
+    // データフォーマットバージョン
+    // 互換性の無いバージョンになったらCentralを更新する必要がある
 	required int64 protocolVersion = 1;
 
 	// 実行しているCentralのアプリバージョン名
@@ -20,8 +20,7 @@ message VersionInfo {
 // セントラルの情報を載せる
 // Serviceを起動している限り、常に付与して送付される
 message CentralStatus {
-
-// ハートレートモニターに接続されていたらtrue
+    // ハートレートモニターに接続されていたらtrue
 	required bool connectedHeartrate = 1;
 
 	// ケイデンスセンサーに接続されていたらtrue
@@ -37,8 +36,8 @@ message CentralStatus {
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する
 message MasterPayload {
-// ペイロードごとに一意に確定するID
-// UUIDを使用して、お互いのIDを一意に識別出来るようにする
+    // ペイロードごとに一意に確定するID
+    // UUIDを使用して、お互いのIDを一意に識別出来るようにする
 	required string uniqueId = 4;
 
 	// ペイロード作成日時

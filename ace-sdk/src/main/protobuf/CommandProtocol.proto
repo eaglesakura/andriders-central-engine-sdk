@@ -6,8 +6,8 @@ option java_package = "com.eaglesakura.andriders.protocol";
 
 // 標準コマンド
 enum CommandType {
-// 拡張機能トリガー起動された
-// トリガーは近接/GEO/活動がある
+    // 拡張機能トリガー起動された
+    // トリガーは近接/GEO/活動がある
 	ExtensionTrigger = 1;
 
 	// ACEsを制御する
@@ -16,7 +16,7 @@ enum CommandType {
 
 // コマンド起動のトリガータイプ
 enum TriggerType {
-// 近接トリガー
+    // 近接トリガー
 	Promiximity = 1;
 	// GEOコマンド
 	Geo = 2;
@@ -26,14 +26,14 @@ enum TriggerType {
 
 // ACEsを制御するためのコマンド
 enum AcesControllCommand {
-// ツイートを行わせる
+    // ツイートを行わせる
 	TweetRequest = 2;
 }
 
 // カメラの撮影データを格納する
 message CameraShotPayload {
-// 撮影データの保存先
-// 撮影に失敗した場合はnullが入る
+    // 撮影データの保存先
+    // 撮影に失敗した場合はnullが入る
 	optional string imageUri = 1;
 	// 画像幅
 	required int32 imageWidth = 2;
@@ -43,7 +43,7 @@ message CameraShotPayload {
 
 // ツイートしたい内容を格納する
 message TweetRequestPayload {
-// ツイートする内容
+    // ツイートする内容
 	required string tweetMessage = 1;
 	// ハッシュタグ一覧
 	// その他、強制的に #andriders が付与される。
@@ -65,7 +65,7 @@ message TweetRequestPayload {
 
 // コマンド用payload
 message TriggerPayload {
-// 起動タイプ
+    // 起動タイプ
 	required TriggerType type = 1;
 	// 近接コマンド指定時に返した拡張UniqueIdが指定される
 	required string extraUniqueId = 2;
@@ -75,7 +75,7 @@ message TriggerPayload {
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル
 message CommandPayload {
-// 何をするかのコマンド
+    // 何をするかのコマンド
 	required string command = 1;
 
 	// 拡張データを格納するペイロード

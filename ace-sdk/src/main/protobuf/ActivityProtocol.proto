@@ -12,7 +12,7 @@ enum ActivityType {
 // 最高速度の更新チェック
 message MaxSpeedActivity {
 	enum State {
-	// 最高速の更新を開始した
+	    // 最高速の更新を開始した
 		Arrival = 1;
 		// 最高速を塗り替えた
 		// これは新記録に到達する度に送られる
