@@ -46,7 +46,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 他のアプリへデータを投げる
-     * @param payload
+     *
      * @return
      */
     static Intent newBroadcastIntent() {
@@ -79,6 +79,7 @@ public class AcesProtocolReceiver {
 
     /**
      * データ取得クラスを構築する
+     *
      * @param context
      */
     public AcesProtocolReceiver(Context context) {
@@ -89,6 +90,7 @@ public class AcesProtocolReceiver {
     /**
      * 送信元のpackageチェックを行う
      * 自分自身が送ったブロードキャストで自分自身でハンドリングしたい場合はfalseを指定する
+     *
      * @param checkSelfPackage
      */
     public void setCheckSelfPackage(boolean checkSelfPackage) {
@@ -98,6 +100,7 @@ public class AcesProtocolReceiver {
     /**
      * 送信対象のpackageチェックを行う
      * 自分以外のpackageに送られたブロードキャストに反応したい場合はfalseを指定する。
+     *
      * @param checkTargetPackage
      */
     public void setCheckTargetPackage(boolean checkTargetPackage) {
@@ -128,6 +131,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 接続済みの場合true
+     *
      * @return
      */
     public boolean isConnected() {
@@ -156,6 +160,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 心拍を受け取った
+     *
      * @param payload
      * @throws Exception
      */
@@ -169,6 +174,7 @@ public class AcesProtocolReceiver {
 
     /**
      * ケイデンスを受け取った
+     *
      * @param payload
      * @throws Exception
      */
@@ -182,6 +188,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 速度を受け取った
+     *
      * @param master
      * @param payload
      * @throws Exception
@@ -196,6 +203,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 不明なセンサーを受け取った
+     *
      * @param master
      * @param payload
      * @throws Exception
@@ -209,6 +217,7 @@ public class AcesProtocolReceiver {
 
     /**
      * センサー系イベントのハンドリングを行う
+     *
      * @param master
      * @throws Exception
      */
@@ -245,6 +254,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 近接コマンドを受け取った
+     *
      * @param master
      * @param trigger
      */
@@ -261,6 +271,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 不明なコマンドを受け取った
+     *
      * @param master
      * @param command
      */
@@ -272,6 +283,7 @@ public class AcesProtocolReceiver {
 
     /**
      * コマンド処理のハンドリング
+     *
      * @param master
      */
     protected void handleCommandEvents(MasterPayload master) throws Exception {
@@ -311,8 +323,9 @@ public class AcesProtocolReceiver {
 
     /**
      * 最大速度更新情報を受信
-     * @param payload
-     * @param buffer
+     *
+     * @param master 受信したマスターデータ
+     * @param buffer 受信したデータ本体
      * @throws Exception
      */
     private void onMaxSpeedUpdateReceived(MasterPayload master, ByteString buffer) throws Exception {
@@ -324,8 +337,9 @@ public class AcesProtocolReceiver {
 
     /**
      * 不明な活動記録を受信した
-     * @param master
-     * @param activity
+     *
+     * @param master   受信したマスターデータ
+     * @param activity 活動データ
      * @throws Exception
      */
     private void onUnknownActivityEventReceived(MasterPayload master, ActivityPayload activity) throws Exception {
@@ -336,7 +350,8 @@ public class AcesProtocolReceiver {
 
     /**
      * 活動イベントを受け取った
-     * @param payload
+     *
+     * @param master 受信したマスターデータ
      */
     protected void handleActivityEvents(MasterPayload master) throws Exception {
         if (activityHandlers.isEmpty()) {
@@ -358,7 +373,8 @@ public class AcesProtocolReceiver {
 
     /**
      * 最上位ペイロードを受け取った
-     * @param master
+     *
+     * @param masterbuffer 受信したバッファ　
      */
     public void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
@@ -419,6 +435,7 @@ public class AcesProtocolReceiver {
 
     /**
      * センサーイベントを登録する
+     *
      * @param handler
      */
     public void addSensorEventHandler(SensorEventHandler handler) {
@@ -427,6 +444,7 @@ public class AcesProtocolReceiver {
 
     /**
      * センサーイベントを削除する
+     *
      * @param handler
      */
     public void removeSensorEventHandler(SensorEventHandler handler) {
@@ -435,6 +453,7 @@ public class AcesProtocolReceiver {
 
     /**
      * コマンドイベントを登録する
+     *
      * @param handler
      */
     public void addCommandEventHandler(CommandEventHandler handler) {
@@ -443,6 +462,7 @@ public class AcesProtocolReceiver {
 
     /**
      * コマンドイベントを削除する
+     *
      * @param handler
      */
     public void removeCommandEventHandler(CommandEventHandler handler) {
@@ -451,6 +471,7 @@ public class AcesProtocolReceiver {
 
     /**
      * ACEsのハンドリングを行う
+     *
      * @param handler
      */
     public void addCentralDataHandler(CentralDataHandler handler) {
@@ -459,6 +480,7 @@ public class AcesProtocolReceiver {
 
     /**
      * ACEsのハンドリングを削除する
+     *
      * @param handler
      */
     public void removeCentralDataHandler(CentralDataHandler handler) {
@@ -467,6 +489,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 活動イベントのハンドリングを行う
+     *
      * @param handler
      */
     public void addActivityEventHandler(ActivityEventHandler handler) {
@@ -475,6 +498,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 活動イベントのハンドリングを削除する
+     *
      * @param handler
      */
     public void removeActivityEventHandler(ActivityEventHandler handler) {
@@ -487,6 +511,7 @@ public class AcesProtocolReceiver {
     public interface CentralDataListener {
         /**
          * マスターデータを受け取った
+         *
          * @param buffer 受け取ったデータ
          * @param master すべてのデータを含んだペイロード
          */

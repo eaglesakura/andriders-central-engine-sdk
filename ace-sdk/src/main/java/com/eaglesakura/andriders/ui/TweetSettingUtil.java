@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.eaglesakura.andriders.AceLog;
+import com.eaglesakura.andriders.Environment;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload;
 
 public class TweetSettingUtil {
@@ -16,17 +17,19 @@ public class TweetSettingUtil {
 
     /**
      * ツイート設定用Activityを開く
+     *
      * @param context
      * @return
      */
     public static Intent createDefaultTweetSettingActivityIntent(Context context) {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.eaglesakura.andriders", "com.eaglesakura.andriders.ui.sns.TweetMessageInputActivity_"));
+        intent.setComponent(new ComponentName(Environment.getApplicationPackageName(), "com.eaglesakura.andriders.ui.sns.TweetMessageInputActivity_"));
         return intent;
     }
 
     /**
      * ツイート設定Activityからツイート設定メッセージを受け取る
+     *
      * @param resultIntent
      * @return
      */

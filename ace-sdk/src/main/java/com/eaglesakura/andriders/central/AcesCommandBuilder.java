@@ -24,11 +24,6 @@ public class AcesCommandBuilder {
     private final Context context;
 
     /**
-     * ACEのパッケージ名
-     */
-    private static final String ACE_PACKAGE_NAME = "com.eaglesakura.andriders";
-
-    /**
      * 送信したいコマンド一覧
      */
     List<CommandPayload> commands = new ArrayList<CommandProtocol.CommandPayload>();
@@ -53,8 +48,8 @@ public class AcesCommandBuilder {
 
     /**
      * コマンド設定
-     * @param payload
      * @param commandTimeSec
+     * @param uniqueId コマンドに事前指定した一意のID
      */
     public AcesCommandBuilder addProximityCommand(int commandTimeSec, String uniqueId) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
