@@ -22,6 +22,7 @@ public class TriggerSettingUtil {
 
     /**
      * 近接コマンド入力時間を取得する
+     *
      * @param activityIntent
      * @return
      */
@@ -31,10 +32,15 @@ public class TriggerSettingUtil {
 
     /**
      * トリガーの種類を取得する
+     *
      * @param activityIntent
      * @return
      */
     public static TriggerType getTriggerType(Intent activityIntent) {
-        return TriggerType.valueOf(activityIntent.getStringExtra(EXTRA_TRIGGER_TYPE));
+        try {
+            return TriggerType.valueOf(activityIntent.getStringExtra(EXTRA_TRIGGER_TYPE));
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
