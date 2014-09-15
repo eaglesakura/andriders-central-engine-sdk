@@ -8,11 +8,16 @@ buildscript {
     }
 
     dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.+'
         classpath "com.eaglesakura:eglibrary-gradle-plugin:0.1.16"
     }
 }
 
 apply plugin: 'com.android.library'
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
