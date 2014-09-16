@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.eaglesakura:eglibrary-gradle-plugin:0.1.20"
+        classpath 'com.android.tools.build:gradle:0.12.+'
     }
 }
 repositories {
@@ -16,6 +16,10 @@ repositories {
 }
 
 apply plugin: 'com.android.library'
+
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
