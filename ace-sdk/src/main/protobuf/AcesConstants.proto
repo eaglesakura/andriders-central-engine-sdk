@@ -1,3 +1,12 @@
 package eaglesakura_ace;
 
 option java_package = "com.eaglesakura.andriders.protocol";
+
+/**
+ * GPS座標を示す。
+ * lat/lngどちらかがsetされていない場合、このGPS座標は不定となる。
+ */
+message GeoPoint {
+    optional double latitude = 0;
+    optional double longitude = 1;
+}

@@ -1,0 +1,35 @@
+package eaglesakura_ace;
+
+import "AcesConstants.proto";
+import "SensorProtocol.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+/**
+ * 継続的に取得する、ある特定瞬間のログを保持する
+ */
+message RegularLog {
+    // ケイデンス値
+    optional RawCadence cadence = 1;
+
+    // ハートレート
+    optional RawHeartrate heartrate = 2;
+
+    // 速度
+    optional RawSpeed speed = 3;
+
+    // GPS座標
+    optional GeoPoint location = 4;
+
+    // ログの打刻時間
+    required string date = 100;
+
+    // バッテリーの残量（％）
+    required int32 batteryLevel = 101;
+
+    // 充電中の場合true
+    required bool batteryCharging = 102;
+}
+
+message LoggerProtocol {
+
+}

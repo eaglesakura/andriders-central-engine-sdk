@@ -21,6 +21,7 @@ import com.eaglesakura.andriders.protocol.ActivityProtocol.MaxSpeedActivity;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+import com.eaglesakura.andriders.protocol.SensorProtocol;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
@@ -78,6 +79,21 @@ public class AcesProtocolReceiver {
     private boolean connected = false;
 
     /**
+     * 最後に受信したハートレート
+     */
+    private RawHeartrate lastReceivedHartrate;
+
+    /**
+     * 最後に受信したケイデンス
+     */
+    private RawCadence lastReceivedCadence;
+
+    /**
+     * 最後に受信したスピード
+     */
+    private RawSpeed lastReceivedSpeed;
+
+    /**
      * データ取得クラスを構築する
      *
      * @param context
@@ -105,6 +121,33 @@ public class AcesProtocolReceiver {
      */
     public void setCheckTargetPackage(boolean checkTargetPackage) {
         this.checkTargetPackage = checkTargetPackage;
+    }
+
+    /**
+     * 最後に受信したケイデンスを取得する
+     *
+     * @return
+     */
+    public RawCadence getLastReceivedCadence() {
+        return lastReceivedCadence;
+    }
+
+    /**
+     * 最後に受信した心拍を取得する
+     *
+     * @return
+     */
+    public RawHeartrate getLastReceivedHartrate() {
+        return lastReceivedHartrate;
+    }
+
+    /**
+     * 最後に受信したスピードを取得する
+     *
+     * @return
+     */
+    public RawSpeed getLastReceivedSpeed() {
+        return lastReceivedSpeed;
     }
 
     /**
@@ -166,6 +209,8 @@ public class AcesProtocolReceiver {
      */
     private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
         RawHeartrate heartrate = RawHeartrate.parseFrom(payload);
+        this.lastReceivedHartrate = heartrate;
+
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {
             handler.onHeartrateReceived(this, master, heartrate);
@@ -180,6 +225,8 @@ public class AcesProtocolReceiver {
      */
     private void onCadenceReceived(MasterPayload master, ByteString payload) throws Exception {
         RawCadence cadence = RawCadence.parseFrom(payload);
+        this.lastReceivedCadence = cadence;
+
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {
             handler.onCadenceReceived(this, master, cadence);
@@ -195,6 +242,8 @@ public class AcesProtocolReceiver {
      */
     private void onSpeedReceived(MasterPayload master, ByteString payload) throws Exception {
         RawSpeed speed = RawSpeed.parseFrom(payload);
+        this.lastReceivedSpeed = speed;
+
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {
             handler.onSpeedReceived(this, master, speed);
@@ -374,7 +423,7 @@ public class AcesProtocolReceiver {
     /**
      * 最上位ペイロードを受け取った
      *
-     * @param masterbuffer 受信したバッファ　
+     * @param masterbuffer 受信したバッファ
      */
     public void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
