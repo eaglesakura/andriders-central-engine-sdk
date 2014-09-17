@@ -7,6 +7,6 @@ option java_package = "com.eaglesakura.andriders.protocol";
  * lat/lngどちらかがsetされていない場合、このGPS座標は不定となる。
  */
 message GeoPoint {
-    optional double latitude = 0;
-    optional double longitude = 1;
+    optional double latitude = 1;
+    optional double longitude = 2;
 }

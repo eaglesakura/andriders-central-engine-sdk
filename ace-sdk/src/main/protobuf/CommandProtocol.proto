@@ -7,27 +7,11 @@ option java_package = "com.eaglesakura.andriders.protocol";
 // 標準コマンド
 enum CommandType {
     // 拡張機能トリガー起動された
-    // トリガーは近接/GEO/活動がある
+    // トリガーは近接、Activity、時限、GEO等色々ある
 	ExtensionTrigger = 1;
 
 	// ACEsを制御する
 	AcesControl = 2;
-}
-
-// コマンド起動のトリガータイプ
-enum TriggerType {
-    // 近接トリガー
-	Promiximity = 1;
-	// GEOコマンド
-	Geo = 2;
-	// 活動コマンド
-	Activity = 3;
-}
-
-// ACEsを制御するためのコマンド
-enum AcesControllCommand {
-    // ツイートを行わせる
-	TweetRequest = 2;
 }
 
 // カメラの撮影データを格納する
@@ -65,18 +49,18 @@ message TweetRequestPayload {
 
 // コマンド用payload
 message TriggerPayload {
-    // 起動タイプ
-	required TriggerType type = 1;
-	// 近接コマンド指定時に返した拡張UniqueIdが指定される
-	required string extraUniqueId = 2;
-	// 何秒間コマンド入力したか
-	optional int32 commandSec = 3;
+	// コマンド実行キー
+	required string key = 1;
+
+	// 近接コマンド指定時に返した拡張Keyが指定される
+	required string appExtraKey = 2;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル
 message CommandPayload {
     // 何をするかのコマンド
-	required string command = 1;
+    // CommandTypeが格納されるが、互換性維持のためstringとしておく
+	required string commandType = 1;
 
 	// 拡張データを格納するペイロード
 	optional bytes extraPayload = 2;

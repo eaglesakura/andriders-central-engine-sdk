@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
@@ -19,14 +20,14 @@ public class CommandEventHandler {
     }
 
     /**
-     * 近接コマンドを受け取った
+     * コマンドを受け取った
      *
      * @param receiver
      * @param master
+     * @param key        コマンド識別キー
      * @param trigger    トリガー本体
-     * @param commandSec コマンドの受付秒数
      */
-    public void onProximityCommandReceived(AcesProtocolReceiver receiver, MasterPayload master, TriggerPayload trigger, int commandSec) {
+    public void onCommandReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger) {
 
     }
 

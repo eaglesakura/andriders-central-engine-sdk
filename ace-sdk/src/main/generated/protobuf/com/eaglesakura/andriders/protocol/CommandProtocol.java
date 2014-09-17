@@ -22,7 +22,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * 拡張機能トリガー起動された
-     * トリガーは近接/GEO/活動がある
+     * トリガーは近接、Activity、時限、GEO等色々ある
      * </pre>
      */
     ExtensionTrigger(0, 1),
@@ -41,7 +41,7 @@ public final class CommandProtocol {
      *
      * <pre>
      * 拡張機能トリガー起動された
-     * トリガーは近接/GEO/活動がある
+     * トリガーは近接、Activity、時限、GEO等色々ある
      * </pre>
      */
     public static final int ExtensionTrigger_VALUE = 1;
@@ -110,210 +110,6 @@ public final class CommandProtocol {
     }
 
     // @@protoc_insertion_point(enum_scope:eaglesakura_ace.CommandType)
-  }
-
-  /**
-   * Protobuf enum {@code eaglesakura_ace.TriggerType}
-   *
-   * <pre>
-   * コマンド起動のトリガータイプ
-   * </pre>
-   */
-  public enum TriggerType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>Promiximity = 1;</code>
-     *
-     * <pre>
-     * 近接トリガー
-     * </pre>
-     */
-    Promiximity(0, 1),
-    /**
-     * <code>Geo = 2;</code>
-     *
-     * <pre>
-     * GEOコマンド
-     * </pre>
-     */
-    Geo(1, 2),
-    /**
-     * <code>Activity = 3;</code>
-     *
-     * <pre>
-     * 活動コマンド
-     * </pre>
-     */
-    Activity(2, 3),
-    ;
-
-    /**
-     * <code>Promiximity = 1;</code>
-     *
-     * <pre>
-     * 近接トリガー
-     * </pre>
-     */
-    public static final int Promiximity_VALUE = 1;
-    /**
-     * <code>Geo = 2;</code>
-     *
-     * <pre>
-     * GEOコマンド
-     * </pre>
-     */
-    public static final int Geo_VALUE = 2;
-    /**
-     * <code>Activity = 3;</code>
-     *
-     * <pre>
-     * 活動コマンド
-     * </pre>
-     */
-    public static final int Activity_VALUE = 3;
-
-
-    public final int getNumber() { return value; }
-
-    public static TriggerType valueOf(int value) {
-      switch (value) {
-        case 1: return Promiximity;
-        case 2: return Geo;
-        case 3: return Activity;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<TriggerType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<TriggerType>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<TriggerType>() {
-            public TriggerType findValueByNumber(int number) {
-              return TriggerType.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(1);
-    }
-
-    private static final TriggerType[] VALUES = values();
-
-    public static TriggerType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private TriggerType(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.TriggerType)
-  }
-
-  /**
-   * Protobuf enum {@code eaglesakura_ace.AcesControllCommand}
-   *
-   * <pre>
-   * ACEsを制御するためのコマンド
-   * </pre>
-   */
-  public enum AcesControllCommand
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>TweetRequest = 2;</code>
-     *
-     * <pre>
-     * ツイートを行わせる
-     * </pre>
-     */
-    TweetRequest(0, 2),
-    ;
-
-    /**
-     * <code>TweetRequest = 2;</code>
-     *
-     * <pre>
-     * ツイートを行わせる
-     * </pre>
-     */
-    public static final int TweetRequest_VALUE = 2;
-
-
-    public final int getNumber() { return value; }
-
-    public static AcesControllCommand valueOf(int value) {
-      switch (value) {
-        case 2: return TweetRequest;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<AcesControllCommand>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<AcesControllCommand>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<AcesControllCommand>() {
-            public AcesControllCommand findValueByNumber(int number) {
-              return AcesControllCommand.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(2);
-    }
-
-    private static final AcesControllCommand[] VALUES = values();
-
-    public static AcesControllCommand valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private AcesControllCommand(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.AcesControllCommand)
   }
 
   public interface CameraShotPayloadOrBuilder
@@ -2627,68 +2423,59 @@ public final class CommandProtocol {
   public interface TriggerPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .eaglesakura_ace.TriggerType type = 1;
+    // required string key = 1;
     /**
-     * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
+     * <code>required string key = 1;</code>
      *
      * <pre>
-     * 起動タイプ
+     * コマンド実行キー
      * </pre>
      */
-    boolean hasType();
+    boolean hasKey();
     /**
-     * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
+     * <code>required string key = 1;</code>
      *
      * <pre>
-     * 起動タイプ
+     * コマンド実行キー
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType getType();
-
-    // required string extraUniqueId = 2;
+    java.lang.String getKey();
     /**
-     * <code>required string extraUniqueId = 2;</code>
+     * <code>required string key = 1;</code>
      *
      * <pre>
-     * 近接コマンド指定時に返した拡張UniqueIdが指定される
-     * </pre>
-     */
-    boolean hasExtraUniqueId();
-    /**
-     * <code>required string extraUniqueId = 2;</code>
-     *
-     * <pre>
-     * 近接コマンド指定時に返した拡張UniqueIdが指定される
-     * </pre>
-     */
-    java.lang.String getExtraUniqueId();
-    /**
-     * <code>required string extraUniqueId = 2;</code>
-     *
-     * <pre>
-     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * コマンド実行キー
      * </pre>
      */
     com.google.protobuf.ByteString
-        getExtraUniqueIdBytes();
+        getKeyBytes();
 
-    // optional int32 commandSec = 3;
+    // required string appExtraKey = 2;
     /**
-     * <code>optional int32 commandSec = 3;</code>
+     * <code>required string appExtraKey = 2;</code>
      *
      * <pre>
-     * 何秒間コマンド入力したか
+     * 近接コマンド指定時に返した拡張Keyが指定される
      * </pre>
      */
-    boolean hasCommandSec();
+    boolean hasAppExtraKey();
     /**
-     * <code>optional int32 commandSec = 3;</code>
+     * <code>required string appExtraKey = 2;</code>
      *
      * <pre>
-     * 何秒間コマンド入力したか
+     * 近接コマンド指定時に返した拡張Keyが指定される
      * </pre>
      */
-    int getCommandSec();
+    java.lang.String getAppExtraKey();
+    /**
+     * <code>required string appExtraKey = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張Keyが指定される
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getAppExtraKeyBytes();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.TriggerPayload}
@@ -2745,25 +2532,14 @@ public final class CommandProtocol {
               }
               break;
             }
-            case 8: {
-              int rawValue = input.readEnum();
-              com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType value = com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
-              } else {
-                bitField0_ |= 0x00000001;
-                type_ = value;
-              }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
               break;
             }
             case 18: {
               bitField0_ |= 0x00000002;
-              extraUniqueId_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              commandSec_ = input.readInt32();
+              appExtraKey_ = input.readBytes();
               break;
             }
           }
@@ -2806,52 +2582,28 @@ public final class CommandProtocol {
     }
 
     private int bitField0_;
-    // required .eaglesakura_ace.TriggerType type = 1;
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType type_;
+    // required string key = 1;
+    public static final int KEY_FIELD_NUMBER = 1;
+    private java.lang.Object key_;
     /**
-     * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
+     * <code>required string key = 1;</code>
      *
      * <pre>
-     * 起動タイプ
+     * コマンド実行キー
      * </pre>
      */
-    public boolean hasType() {
+    public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
+     * <code>required string key = 1;</code>
      *
      * <pre>
-     * 起動タイプ
+     * コマンド実行キー
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType getType() {
-      return type_;
-    }
-
-    // required string extraUniqueId = 2;
-    public static final int EXTRAUNIQUEID_FIELD_NUMBER = 2;
-    private java.lang.Object extraUniqueId_;
-    /**
-     * <code>required string extraUniqueId = 2;</code>
-     *
-     * <pre>
-     * 近接コマンド指定時に返した拡張UniqueIdが指定される
-     * </pre>
-     */
-    public boolean hasExtraUniqueId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required string extraUniqueId = 2;</code>
-     *
-     * <pre>
-     * 近接コマンド指定時に返した拡張UniqueIdが指定される
-     * </pre>
-     */
-    public java.lang.String getExtraUniqueId() {
-      java.lang.Object ref = extraUniqueId_;
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -2859,71 +2611,101 @@ public final class CommandProtocol {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          extraUniqueId_ = s;
+          key_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string extraUniqueId = 2;</code>
+     * <code>required string key = 1;</code>
      *
      * <pre>
-     * 近接コマンド指定時に返した拡張UniqueIdが指定される
+     * コマンド実行キー
      * </pre>
      */
     public com.google.protobuf.ByteString
-        getExtraUniqueIdBytes() {
-      java.lang.Object ref = extraUniqueId_;
+        getKeyBytes() {
+      java.lang.Object ref = key_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        extraUniqueId_ = b;
+        key_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    // optional int32 commandSec = 3;
-    public static final int COMMANDSEC_FIELD_NUMBER = 3;
-    private int commandSec_;
+    // required string appExtraKey = 2;
+    public static final int APPEXTRAKEY_FIELD_NUMBER = 2;
+    private java.lang.Object appExtraKey_;
     /**
-     * <code>optional int32 commandSec = 3;</code>
+     * <code>required string appExtraKey = 2;</code>
      *
      * <pre>
-     * 何秒間コマンド入力したか
+     * 近接コマンド指定時に返した拡張Keyが指定される
      * </pre>
      */
-    public boolean hasCommandSec() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public boolean hasAppExtraKey() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 commandSec = 3;</code>
+     * <code>required string appExtraKey = 2;</code>
      *
      * <pre>
-     * 何秒間コマンド入力したか
+     * 近接コマンド指定時に返した拡張Keyが指定される
      * </pre>
      */
-    public int getCommandSec() {
-      return commandSec_;
+    public java.lang.String getAppExtraKey() {
+      java.lang.Object ref = appExtraKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          appExtraKey_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string appExtraKey = 2;</code>
+     *
+     * <pre>
+     * 近接コマンド指定時に返した拡張Keyが指定される
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getAppExtraKeyBytes() {
+      java.lang.Object ref = appExtraKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        appExtraKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private void initFields() {
-      type_ = com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType.Promiximity;
-      extraUniqueId_ = "";
-      commandSec_ = 0;
+      key_ = "";
+      appExtraKey_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasType()) {
+      if (!hasKey()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasExtraUniqueId()) {
+      if (!hasAppExtraKey()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2935,13 +2717,10 @@ public final class CommandProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
+        output.writeBytes(1, getKeyBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getExtraUniqueIdBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, commandSec_);
+        output.writeBytes(2, getAppExtraKeyBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -2954,15 +2733,11 @@ public final class CommandProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
+          .computeBytesSize(1, getKeyBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getExtraUniqueIdBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, commandSec_);
+          .computeBytesSize(2, getAppExtraKeyBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3084,12 +2859,10 @@ public final class CommandProtocol {
 
       public Builder clear() {
         super.clear();
-        type_ = com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType.Promiximity;
+        key_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        extraUniqueId_ = "";
+        appExtraKey_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        commandSec_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -3121,15 +2894,11 @@ public final class CommandProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.type_ = type_;
+        result.key_ = key_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.extraUniqueId_ = extraUniqueId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.commandSec_ = commandSec_;
+        result.appExtraKey_ = appExtraKey_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3146,27 +2915,26 @@ public final class CommandProtocol {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload other) {
         if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.getDefaultInstance()) return this;
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasExtraUniqueId()) {
-          bitField0_ |= 0x00000002;
-          extraUniqueId_ = other.extraUniqueId_;
+        if (other.hasKey()) {
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
           onChanged();
         }
-        if (other.hasCommandSec()) {
-          setCommandSec(other.getCommandSec());
+        if (other.hasAppExtraKey()) {
+          bitField0_ |= 0x00000002;
+          appExtraKey_ = other.appExtraKey_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasType()) {
+        if (!hasKey()) {
           
           return false;
         }
-        if (!hasExtraUniqueId()) {
+        if (!hasAppExtraKey()) {
           
           return false;
         }
@@ -3192,201 +2960,198 @@ public final class CommandProtocol {
       }
       private int bitField0_;
 
-      // required .eaglesakura_ace.TriggerType type = 1;
-      private com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType type_ = com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType.Promiximity;
+      // required string key = 1;
+      private java.lang.Object key_ = "";
       /**
-       * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
+       * <code>required string key = 1;</code>
        *
        * <pre>
-       * 起動タイプ
+       * コマンド実行キー
        * </pre>
        */
-      public boolean hasType() {
+      public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
+       * <code>required string key = 1;</code>
        *
        * <pre>
-       * 起動タイプ
+       * コマンド実行キー
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType getType() {
-        return type_;
-      }
-      /**
-       * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
-       *
-       * <pre>
-       * 起動タイプ
-       * </pre>
-       */
-      public Builder setType(com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        type_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .eaglesakura_ace.TriggerType type = 1;</code>
-       *
-       * <pre>
-       * 起動タイプ
-       * </pre>
-       */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType.Promiximity;
-        onChanged();
-        return this;
-      }
-
-      // required string extraUniqueId = 2;
-      private java.lang.Object extraUniqueId_ = "";
-      /**
-       * <code>required string extraUniqueId = 2;</code>
-       *
-       * <pre>
-       * 近接コマンド指定時に返した拡張UniqueIdが指定される
-       * </pre>
-       */
-      public boolean hasExtraUniqueId() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string extraUniqueId = 2;</code>
-       *
-       * <pre>
-       * 近接コマンド指定時に返した拡張UniqueIdが指定される
-       * </pre>
-       */
-      public java.lang.String getExtraUniqueId() {
-        java.lang.Object ref = extraUniqueId_;
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          extraUniqueId_ = s;
+          key_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string extraUniqueId = 2;</code>
+       * <code>required string key = 1;</code>
        *
        * <pre>
-       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * コマンド実行キー
        * </pre>
        */
       public com.google.protobuf.ByteString
-          getExtraUniqueIdBytes() {
-        java.lang.Object ref = extraUniqueId_;
+          getKeyBytes() {
+        java.lang.Object ref = key_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          extraUniqueId_ = b;
+          key_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string extraUniqueId = 2;</code>
+       * <code>required string key = 1;</code>
        *
        * <pre>
-       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * コマンド実行キー
        * </pre>
        */
-      public Builder setExtraUniqueId(
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * コマンド実行キー
+       * </pre>
+       */
+      public Builder clearKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * コマンド実行キー
+       * </pre>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string appExtraKey = 2;
+      private java.lang.Object appExtraKey_ = "";
+      /**
+       * <code>required string appExtraKey = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張Keyが指定される
+       * </pre>
+       */
+      public boolean hasAppExtraKey() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string appExtraKey = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張Keyが指定される
+       * </pre>
+       */
+      public java.lang.String getAppExtraKey() {
+        java.lang.Object ref = appExtraKey_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          appExtraKey_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string appExtraKey = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張Keyが指定される
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getAppExtraKeyBytes() {
+        java.lang.Object ref = appExtraKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appExtraKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string appExtraKey = 2;</code>
+       *
+       * <pre>
+       * 近接コマンド指定時に返した拡張Keyが指定される
+       * </pre>
+       */
+      public Builder setAppExtraKey(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        extraUniqueId_ = value;
+        appExtraKey_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string extraUniqueId = 2;</code>
+       * <code>required string appExtraKey = 2;</code>
        *
        * <pre>
-       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * 近接コマンド指定時に返した拡張Keyが指定される
        * </pre>
        */
-      public Builder clearExtraUniqueId() {
+      public Builder clearAppExtraKey() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        extraUniqueId_ = getDefaultInstance().getExtraUniqueId();
+        appExtraKey_ = getDefaultInstance().getAppExtraKey();
         onChanged();
         return this;
       }
       /**
-       * <code>required string extraUniqueId = 2;</code>
+       * <code>required string appExtraKey = 2;</code>
        *
        * <pre>
-       * 近接コマンド指定時に返した拡張UniqueIdが指定される
+       * 近接コマンド指定時に返した拡張Keyが指定される
        * </pre>
        */
-      public Builder setExtraUniqueIdBytes(
+      public Builder setAppExtraKeyBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        extraUniqueId_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 commandSec = 3;
-      private int commandSec_ ;
-      /**
-       * <code>optional int32 commandSec = 3;</code>
-       *
-       * <pre>
-       * 何秒間コマンド入力したか
-       * </pre>
-       */
-      public boolean hasCommandSec() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 commandSec = 3;</code>
-       *
-       * <pre>
-       * 何秒間コマンド入力したか
-       * </pre>
-       */
-      public int getCommandSec() {
-        return commandSec_;
-      }
-      /**
-       * <code>optional int32 commandSec = 3;</code>
-       *
-       * <pre>
-       * 何秒間コマンド入力したか
-       * </pre>
-       */
-      public Builder setCommandSec(int value) {
-        bitField0_ |= 0x00000004;
-        commandSec_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 commandSec = 3;</code>
-       *
-       * <pre>
-       * 何秒間コマンド入力したか
-       * </pre>
-       */
-      public Builder clearCommandSec() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        commandSec_ = 0;
+        appExtraKey_ = value;
         onChanged();
         return this;
       }
@@ -3405,32 +3170,35 @@ public final class CommandProtocol {
   public interface CommandPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required string command = 1;
+    // required string commandType = 1;
     /**
-     * <code>required string command = 1;</code>
+     * <code>required string commandType = 1;</code>
      *
      * <pre>
      * 何をするかのコマンド
+     * CommandTypeが格納されるが、互換性維持のためstringとしておく
      * </pre>
      */
-    boolean hasCommand();
+    boolean hasCommandType();
     /**
-     * <code>required string command = 1;</code>
+     * <code>required string commandType = 1;</code>
      *
      * <pre>
      * 何をするかのコマンド
+     * CommandTypeが格納されるが、互換性維持のためstringとしておく
      * </pre>
      */
-    java.lang.String getCommand();
+    java.lang.String getCommandType();
     /**
-     * <code>required string command = 1;</code>
+     * <code>required string commandType = 1;</code>
      *
      * <pre>
      * 何をするかのコマンド
+     * CommandTypeが格納されるが、互換性維持のためstringとしておく
      * </pre>
      */
     com.google.protobuf.ByteString
-        getCommandBytes();
+        getCommandTypeBytes();
 
     // optional bytes extraPayload = 2;
     /**
@@ -3507,7 +3275,7 @@ public final class CommandProtocol {
             }
             case 10: {
               bitField0_ |= 0x00000001;
-              command_ = input.readBytes();
+              commandType_ = input.readBytes();
               break;
             }
             case 18: {
@@ -3555,28 +3323,30 @@ public final class CommandProtocol {
     }
 
     private int bitField0_;
-    // required string command = 1;
-    public static final int COMMAND_FIELD_NUMBER = 1;
-    private java.lang.Object command_;
+    // required string commandType = 1;
+    public static final int COMMANDTYPE_FIELD_NUMBER = 1;
+    private java.lang.Object commandType_;
     /**
-     * <code>required string command = 1;</code>
+     * <code>required string commandType = 1;</code>
      *
      * <pre>
      * 何をするかのコマンド
+     * CommandTypeが格納されるが、互換性維持のためstringとしておく
      * </pre>
      */
-    public boolean hasCommand() {
+    public boolean hasCommandType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string command = 1;</code>
+     * <code>required string commandType = 1;</code>
      *
      * <pre>
      * 何をするかのコマンド
+     * CommandTypeが格納されるが、互換性維持のためstringとしておく
      * </pre>
      */
-    public java.lang.String getCommand() {
-      java.lang.Object ref = command_;
+    public java.lang.String getCommandType() {
+      java.lang.Object ref = commandType_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -3584,26 +3354,27 @@ public final class CommandProtocol {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          command_ = s;
+          commandType_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string command = 1;</code>
+     * <code>required string commandType = 1;</code>
      *
      * <pre>
      * 何をするかのコマンド
+     * CommandTypeが格納されるが、互換性維持のためstringとしておく
      * </pre>
      */
     public com.google.protobuf.ByteString
-        getCommandBytes() {
-      java.lang.Object ref = command_;
+        getCommandTypeBytes() {
+      java.lang.Object ref = commandType_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        command_ = b;
+        commandType_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -3635,7 +3406,7 @@ public final class CommandProtocol {
     }
 
     private void initFields() {
-      command_ = "";
+      commandType_ = "";
       extraPayload_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
@@ -3643,7 +3414,7 @@ public final class CommandProtocol {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasCommand()) {
+      if (!hasCommandType()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3655,7 +3426,7 @@ public final class CommandProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getCommandBytes());
+        output.writeBytes(1, getCommandTypeBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, extraPayload_);
@@ -3671,7 +3442,7 @@ public final class CommandProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getCommandBytes());
+          .computeBytesSize(1, getCommandTypeBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3797,7 +3568,7 @@ public final class CommandProtocol {
 
       public Builder clear() {
         super.clear();
-        command_ = "";
+        commandType_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         extraPayload_ = com.google.protobuf.ByteString.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -3832,7 +3603,7 @@ public final class CommandProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.command_ = command_;
+        result.commandType_ = commandType_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -3853,9 +3624,9 @@ public final class CommandProtocol {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload other) {
         if (other == com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance()) return this;
-        if (other.hasCommand()) {
+        if (other.hasCommandType()) {
           bitField0_ |= 0x00000001;
-          command_ = other.command_;
+          commandType_ = other.commandType_;
           onChanged();
         }
         if (other.hasExtraPayload()) {
@@ -3866,7 +3637,7 @@ public final class CommandProtocol {
       }
 
       public final boolean isInitialized() {
-        if (!hasCommand()) {
+        if (!hasCommandType()) {
           
           return false;
         }
@@ -3892,100 +3663,106 @@ public final class CommandProtocol {
       }
       private int bitField0_;
 
-      // required string command = 1;
-      private java.lang.Object command_ = "";
+      // required string commandType = 1;
+      private java.lang.Object commandType_ = "";
       /**
-       * <code>required string command = 1;</code>
+       * <code>required string commandType = 1;</code>
        *
        * <pre>
        * 何をするかのコマンド
+       * CommandTypeが格納されるが、互換性維持のためstringとしておく
        * </pre>
        */
-      public boolean hasCommand() {
+      public boolean hasCommandType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string command = 1;</code>
+       * <code>required string commandType = 1;</code>
        *
        * <pre>
        * 何をするかのコマンド
+       * CommandTypeが格納されるが、互換性維持のためstringとしておく
        * </pre>
        */
-      public java.lang.String getCommand() {
-        java.lang.Object ref = command_;
+      public java.lang.String getCommandType() {
+        java.lang.Object ref = commandType_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          command_ = s;
+          commandType_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string command = 1;</code>
+       * <code>required string commandType = 1;</code>
        *
        * <pre>
        * 何をするかのコマンド
+       * CommandTypeが格納されるが、互換性維持のためstringとしておく
        * </pre>
        */
       public com.google.protobuf.ByteString
-          getCommandBytes() {
-        java.lang.Object ref = command_;
+          getCommandTypeBytes() {
+        java.lang.Object ref = commandType_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          command_ = b;
+          commandType_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string command = 1;</code>
+       * <code>required string commandType = 1;</code>
        *
        * <pre>
        * 何をするかのコマンド
+       * CommandTypeが格納されるが、互換性維持のためstringとしておく
        * </pre>
        */
-      public Builder setCommand(
+      public Builder setCommandType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        command_ = value;
+        commandType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string command = 1;</code>
+       * <code>required string commandType = 1;</code>
        *
        * <pre>
        * 何をするかのコマンド
+       * CommandTypeが格納されるが、互換性維持のためstringとしておく
        * </pre>
        */
-      public Builder clearCommand() {
+      public Builder clearCommandType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        command_ = getDefaultInstance().getCommand();
+        commandType_ = getDefaultInstance().getCommandType();
         onChanged();
         return this;
       }
       /**
-       * <code>required string command = 1;</code>
+       * <code>required string commandType = 1;</code>
        *
        * <pre>
        * 何をするかのコマンド
+       * CommandTypeが格納されるが、互換性維持のためstringとしておく
        * </pre>
        */
-      public Builder setCommandBytes(
+      public Builder setCommandTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000001;
-        command_ = value;
+        commandType_ = value;
         onChanged();
         return this;
       }
@@ -4090,16 +3867,12 @@ public final class CommandProtocol {
       "\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 " +
       "\003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwithHeartrat" +
       "e\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\022\027\n\017withSpeedR" +
-      "ecord\030\010 \001(\010\"g\n\016TriggerPayload\022*\n\004type\030\001 " +
-      "\002(\0162\034.eaglesakura_ace.TriggerType\022\025\n\rext",
-      "raUniqueId\030\002 \002(\t\022\022\n\ncommandSec\030\003 \001(\005\"7\n\016" +
-      "CommandPayload\022\017\n\007command\030\001 \002(\t\022\024\n\014extra" +
-      "Payload\030\002 \001(\014*4\n\013CommandType\022\024\n\020Extensio" +
-      "nTrigger\020\001\022\017\n\013AcesControl\020\002*5\n\013TriggerTy" +
-      "pe\022\017\n\013Promiximity\020\001\022\007\n\003Geo\020\002\022\014\n\010Activity" +
-      "\020\003*\'\n\023AcesControllCommand\022\020\n\014TweetReques" +
-      "t\020\002B$\n\"com.eaglesakura.andriders.protoco" +
-      "l"
+      "ecord\030\010 \001(\010\"2\n\016TriggerPayload\022\013\n\003key\030\001 \002" +
+      "(\t\022\023\n\013appExtraKey\030\002 \002(\t\";\n\016CommandPayloa",
+      "d\022\023\n\013commandType\030\001 \002(\t\022\024\n\014extraPayload\030\002" +
+      " \001(\014*4\n\013CommandType\022\024\n\020ExtensionTrigger\020" +
+      "\001\022\017\n\013AcesControl\020\002B$\n\"com.eaglesakura.an" +
+      "driders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4123,13 +3896,13 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TriggerPayload_descriptor,
-              new java.lang.String[] { "Type", "ExtraUniqueId", "CommandSec", });
+              new java.lang.String[] { "Key", "AppExtraKey", });
           internal_static_eaglesakura_ace_CommandPayload_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CommandPayload_descriptor,
-              new java.lang.String[] { "Command", "ExtraPayload", });
+              new java.lang.String[] { "CommandType", "ExtraPayload", });
           return null;
         }
       };

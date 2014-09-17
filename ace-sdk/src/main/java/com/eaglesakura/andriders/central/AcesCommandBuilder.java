@@ -1,20 +1,20 @@
 package com.eaglesakura.andriders.central;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+
+import com.eaglesakura.andriders.command.CommandKey;
+import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-
-import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
-import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
-import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
-import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerType;
 
 /**
  * コマンド送信用Util
@@ -39,7 +39,6 @@ public class AcesCommandBuilder {
     byte[] masterPayload;
 
     /**
-     * 
      * @param context
      */
     public AcesCommandBuilder(Context context) {
@@ -47,20 +46,21 @@ public class AcesCommandBuilder {
     }
 
     /**
-     * コマンド設定
-     * @param commandTimeSec
-     * @param uniqueId コマンドに事前指定した一意のID
+     * コマンドを直接生成する
+     *
+     * @param key
+     * @param appExtraKey
+     * @return
      */
-    public AcesCommandBuilder addProximityCommand(int commandTimeSec, String uniqueId) {
+    public AcesCommandBuilder addCommand(CommandKey key, String appExtraKey) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
 
-        builder.setCommand(CommandProtocol.CommandType.ExtensionTrigger.name());
+        builder.setCommandType(CommandProtocol.CommandType.ExtensionTrigger.name());
         // トリガー情報を指定する
         {
             TriggerPayload.Builder triggerBuilder = TriggerPayload.newBuilder();
-            triggerBuilder.setType(TriggerType.Promiximity);
-            triggerBuilder.setCommandSec(commandTimeSec);
-            triggerBuilder.setExtraUniqueId(uniqueId);
+            triggerBuilder.setAppExtraKey(appExtraKey);
+            triggerBuilder.setKey(key.getKey());
             builder.setExtraPayload(triggerBuilder.build().toByteString());
         }
 
@@ -70,7 +70,18 @@ public class AcesCommandBuilder {
     }
 
     /**
+     * コマンド設定
+     *
+     * @param commandTimeSec
+     * @param appExtraKey       コマンドに事前指定した一意のID
+     */
+    public AcesCommandBuilder addProximityCommand(int commandTimeSec, String appExtraKey) {
+        return addCommand(CommandKey.fromProximity(commandTimeSec), appExtraKey);
+    }
+
+    /**
      * 送信対象のPackage名を指定
+     *
      * @param targetPackage
      * @return
      */
@@ -81,6 +92,7 @@ public class AcesCommandBuilder {
 
     /**
      * 送信用のマスターデータを生成する
+     *
      * @return
      */
     public AcesCommandBuilder build() {
@@ -103,6 +115,7 @@ public class AcesCommandBuilder {
 
     /**
      * マスターデータを取得する
+     *
      * @return
      */
     public byte[] getMasterPayload() {
@@ -129,6 +142,7 @@ public class AcesCommandBuilder {
     /**
      * 指定時刻を文字列に変換する
      * 内容はyyyyMMdd-hh:mm:ss.SSとなる。
+     *
      * @param date
      * @return
      */

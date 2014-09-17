@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.media;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Environment;
 
 import java.io.File;
@@ -57,10 +58,11 @@ public class ImageWriter {
     /**
      * 画像を保存する
      *
-     * @param jpegImage　Jpeg画像配列
+     * @param jpegImage 　Jpeg画像配列
+     * @return 書き込んだ画像のURI
      * @throws IOException
      */
-    public void writeImage(byte[] jpegImage) throws IOException {
+    public Uri writeImage(byte[] jpegImage) throws IOException {
         File jpg = new File(getImageDirectory(), getImageFileName());
         jpg.getParentFile().mkdirs();
 
@@ -68,5 +70,7 @@ public class ImageWriter {
         os.write(jpegImage);
         os.flush();
         os.close();
+
+        return Uri.fromFile(jpg);
     }
 }

@@ -14,6 +14,7 @@ import com.eaglesakura.andriders.central.event.ActivityEventHandler;
 import com.eaglesakura.andriders.central.event.CentralDataHandler;
 import com.eaglesakura.andriders.central.event.CommandEventHandler;
 import com.eaglesakura.andriders.central.event.SensorEventHandler;
+import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload;
@@ -21,7 +22,6 @@ import com.eaglesakura.andriders.protocol.ActivityProtocol.MaxSpeedActivity;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
-import com.eaglesakura.andriders.protocol.SensorProtocol;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
@@ -307,14 +307,10 @@ public class AcesProtocolReceiver {
      * @param master
      * @param trigger
      */
-    private void onProximityCommandReceived(MasterPayload master, TriggerPayload trigger) {
-        if (!trigger.hasCommandSec()) {
-            // 秒数を持っていなければ何も出来ない
-            return;
-        }
-
+    private void onCommandReceived(MasterPayload master, TriggerPayload trigger) {
+        CommandKey key = CommandKey.fromString(trigger.getKey());
         for (CommandEventHandler handler : commandHandlers) {
-            handler.onProximityCommandReceived(this, master, trigger, trigger.getCommandSec());
+            handler.onCommandReceived(this, master, key, trigger);
         }
     }
 
@@ -343,25 +339,13 @@ public class AcesProtocolReceiver {
 
         List<CommandPayload> payloadsList = master.getCommandPayloadsList();
         for (CommandPayload cmd : payloadsList) {
-            String cmdName = cmd.getCommand();
-            if (CommandType.ExtensionTrigger.name().equals(cmdName)) {
+
+            String commandType = cmd.getCommandType();
+            if (CommandType.ExtensionTrigger.name().equals(commandType)) {
                 // 拡張機能トリガー
                 TriggerPayload trigger = TriggerPayload.parseFrom(cmd.getExtraPayload());
-                switch (trigger.getType()) {
-                    case Promiximity:
-                        // 近接コマンド
-                        onProximityCommandReceived(master, trigger);
-                        break;
-                    case Geo:
-                        // GEOコマンド
-                        break;
-                    case Activity:
-                        // 活動コマンド
-                        break;
-                    default:
-                        break;
-                }
-            } else if (CommandType.AcesControl.name().equals(cmdName)) {
+                onCommandReceived(master, trigger);
+            } else if (CommandType.AcesControl.name().equals(commandType)) {
                 // Aces制御コマンド
             } else {
                 // 不明なコマンド

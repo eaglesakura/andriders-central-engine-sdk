@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.trigger;
+package com.eaglesakura.andriders.command;
 
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
@@ -14,22 +14,27 @@ import android.graphics.drawable.BitmapDrawable;
 /**
  * 各種コマンドコマンド完了設定を行う
  */
-public class TriggerSetupResultBuilder {
+public class CommandSetupResultBuilder {
 
     /**
      * サムネイル指定
      */
-    public static final String RESULT_EXTRA_THUMBNAIL_ICON = "TRIGGER_RESULT_EXTRA_THUMBNAIL_ICON";
+    public static final String RESULT_EXTRA_THUMBNAIL_ICON = "COMMAND_RESULT_EXTRA_THUMBNAIL_ICON";
+
+    /**
+     * アプリごとに一意に指定できる拡張キーを指定する
+     */
+    public static final String RESULT_EXTRA_APPEXTRAKEY = "COMMAND_RESULT_EXTRA_APPEXTRAKEY";
 
     /**
      * 識別IDを指定する
      */
-    public static final String RESULT_EXTRA_UNIQUE_ID = "TRIGGER_RESULT_EXTRA_UNIQUE_ID";
+    public static final String RESULT_EXTRA_PACKAGE_NAME = "COMMAND_RESULT_EXTRA_PACKAGE_NAME";
 
     /**
-     * 識別IDを指定する
+     * コマンドキー
      */
-    public static final String RESULT_EXTRA_PACKAGE_NAME = "TRIGGER_RESULT_EXTRA_PACKAGE_NAME";
+    public static final String RESULT_EXTRA_COMMAND_KEY = "COMMAND_RESULT_EXTRA_COMMAND_KEY";
 
     /**
      * 格納データ
@@ -45,9 +50,9 @@ public class TriggerSetupResultBuilder {
 
     private final Activity activity;
 
-    private String uniqueId = UUID.randomUUID().toString();
+    private String appExtraKey = "nil";
 
-    public TriggerSetupResultBuilder(Activity activity, boolean commitOk) {
+    public CommandSetupResultBuilder(Activity activity, boolean commitOk) {
         this.activity = activity;
         if (commitOk) {
             resultCode = Activity.RESULT_OK;
@@ -58,6 +63,7 @@ public class TriggerSetupResultBuilder {
 
     /**
      * アイコン設定を行う
+     *
      * @param resourceId
      */
     public void icon(int resourceId) {
@@ -70,6 +76,7 @@ public class TriggerSetupResultBuilder {
 
     /**
      * アイコン設定を行う
+     *
      * @param image
      */
     public void icon(Bitmap image) {
@@ -79,10 +86,11 @@ public class TriggerSetupResultBuilder {
     /**
      * 識別用のID
      * option
+     *
      * @param id
      */
-    public void uniqueId(String id) {
-        this.uniqueId = id;
+    public void appExtraKey(String id) {
+        this.appExtraKey = id;
     }
 
     private static byte[] encode(Bitmap image) {
@@ -115,9 +123,11 @@ public class TriggerSetupResultBuilder {
         // アイコン指定
         data.putExtra(RESULT_EXTRA_THUMBNAIL_ICON, encode(icon));
         // 識別ID指定
-        data.putExtra(RESULT_EXTRA_UNIQUE_ID, uniqueId);
+        data.putExtra(RESULT_EXTRA_APPEXTRAKEY, appExtraKey);
         // パッケージ名
         data.putExtra(RESULT_EXTRA_PACKAGE_NAME, activity.getPackageName());
+        // コマンドキー
+        data.putExtra(RESULT_EXTRA_COMMAND_KEY, CommandSettingUtil.getKey(activity.getIntent()));
 
         // リザルト指定
         activity.setResult(resultCode, data);
