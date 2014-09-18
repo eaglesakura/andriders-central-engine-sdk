@@ -30,6 +30,11 @@ public class CommandKey implements Parcelable {
      */
     private static final String COMMAND_ID_ACTIVITY_STOP = "stop#0";
 
+    /**
+     * タイマーコマンド
+     */
+    private static final String COMMAND_HEADER_TIMER = "timercmd#";
+
     final String key;
 
     private CommandKey(String key) {
@@ -100,10 +105,23 @@ public class CommandKey implements Parcelable {
 
     /**
      * 文字列キーから生成する。基本的には復元用
+     *
      * @param key
      * @return
      */
     public static CommandKey fromString(String key) {
         return new CommandKey(key);
+    }
+
+    /**
+     * タイマーイベントのキーを生成する。
+     * <p/>
+     * タイマーは現在スロット単位で限定数指定するが、将来的にこの保持方法は変更される可能性がある。
+     *
+     * @param settingSlot 設定するスロット番号
+     * @return
+     */
+    public static CommandKey fromTimer(int settingSlot) {
+        return new CommandKey(String.format("%sslot%d", COMMAND_HEADER_TIMER, settingSlot));
     }
 }
