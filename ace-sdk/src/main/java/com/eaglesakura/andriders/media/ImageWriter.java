@@ -63,6 +63,10 @@ public class ImageWriter {
      * @throws IOException
      */
     public Uri writeImage(byte[] jpegImage) throws IOException {
+        if (jpegImage == null || jpegImage.length == 0) {
+            return null;
+        }
+
         File jpg = new File(getImageDirectory(), getImageFileName());
         jpg.getParentFile().mkdirs();
 
