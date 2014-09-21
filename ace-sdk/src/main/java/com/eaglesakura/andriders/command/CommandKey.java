@@ -116,12 +116,12 @@ public class CommandKey implements Parcelable {
     /**
      * タイマーイベントのキーを生成する。
      * <p/>
-     * タイマーは現在スロット単位で限定数指定するが、将来的にこの保持方法は変更される可能性がある。
+     * タイマーは複数指定できるため、追加された時刻をキーとする
      *
-     * @param settingSlot 設定するスロット番号
+     * @param settingCurrentTime 設定するスロット番号
      * @return
      */
-    public static CommandKey fromTimer(int settingSlot) {
-        return new CommandKey(String.format("%sslot%d", COMMAND_HEADER_TIMER, settingSlot));
+    public static CommandKey fromTimer(long settingCurrentTime) {
+        return new CommandKey(String.format("%stime%d", COMMAND_HEADER_TIMER, settingCurrentTime));
     }
 }
