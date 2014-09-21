@@ -14,15 +14,40 @@ enum CommandType {
 	AcesControl = 2;
 }
 
-// カメラの撮影データを格納する
-message CameraShotPayload {
-    // 撮影データの保存先
-    // 撮影に失敗した場合はnullが入る
-	optional string imageUri = 1;
-	// 画像幅
-	required int32 imageWidth = 2;
-	// 画像高さ
-	required int32 imageHeight = 3;
+enum NotificationLength {
+    // 短い時間だけ通知を表示する
+    Short = 1;
+
+    // 通常の時間だけ通知を表示する
+    Normal = 2;
+
+    // 長めに通知を表示する
+    Long = 3;
+}
+
+// 通知を表示させる
+// 基本的にはACEs-UIに対して表示する
+// 対応している場合はWear等へのブロードキャストを行う
+message NotificationRequestPayload {
+    // 表示されるテキストメッセージ
+    // 長すぎる場合は途中で端折られる
+    required string message = 1;
+
+    // 通知時に表示する画像
+    // ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+    // なるべく小さなサイズが望ましい
+    optional bytes  iconFile = 2;
+    optional string iconPath = 3;
+
+    // 通知を表示する時間
+    required NotificationLength length = 4;
+
+    // 通知ID
+    // 同じIDで、かつ既に表示中の場合は上書き表示される
+    required string uniqueId = 5;
+
+    // 通知の発行時刻
+    required string date = 6;
 }
 
 // ツイートしたい内容を格納する
