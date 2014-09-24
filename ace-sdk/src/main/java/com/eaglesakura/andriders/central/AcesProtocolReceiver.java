@@ -15,10 +15,12 @@ import com.eaglesakura.andriders.central.event.CentralDataHandler;
 import com.eaglesakura.andriders.central.event.CommandEventHandler;
 import com.eaglesakura.andriders.central.event.SensorEventHandler;
 import com.eaglesakura.andriders.command.CommandKey;
+import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload;
 import com.eaglesakura.andriders.protocol.ActivityProtocol.MaxSpeedActivity;
+import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
@@ -310,7 +312,20 @@ public class AcesProtocolReceiver {
     private void onCommandReceived(MasterPayload master, TriggerPayload trigger) {
         CommandKey key = CommandKey.fromString(trigger.getKey());
         for (CommandEventHandler handler : commandHandlers) {
-            handler.onCommandReceived(this, master, key, trigger);
+            handler.onTriggerReceived(this, master, key, trigger);
+        }
+    }
+
+    /**
+     * ACEsへの通知を受け取った
+     *
+     * @param master
+     * @param requestPayload
+     */
+    private void onAcesNotificationCommand(MasterPayload master, CommandProtocol.NotificationRequestPayload requestPayload) {
+        NotificationData notificationData = new NotificationData(requestPayload);
+        for (CommandEventHandler handler : commandHandlers) {
+            handler.onNotificationReceived(this, master, notificationData, requestPayload);
         }
     }
 
@@ -345,8 +360,10 @@ public class AcesProtocolReceiver {
                 // 拡張機能トリガー
                 TriggerPayload trigger = TriggerPayload.parseFrom(cmd.getExtraPayload());
                 onCommandReceived(master, trigger);
-            } else if (CommandType.AcesControl.name().equals(commandType)) {
-                // Aces制御コマンド
+            } else if (CommandType.AcesNotification.name().equals(commandType)) {
+                // 通知コマンド
+                CommandProtocol.NotificationRequestPayload notification = CommandProtocol.NotificationRequestPayload.parseFrom(cmd.getExtraPayload());
+                onAcesNotificationCommand(master, notification);
             } else {
                 // 不明なコマンド
                 onUnknownCommandRecieved(master, cmd);

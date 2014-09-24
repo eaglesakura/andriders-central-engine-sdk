@@ -27,13 +27,13 @@ public final class CommandProtocol {
      */
     ExtensionTrigger(0, 1),
     /**
-     * <code>AcesControl = 2;</code>
+     * <code>AcesNotification = 2;</code>
      *
      * <pre>
-     * ACEsを制御する
+     * ACEsに通知を行わせる
      * </pre>
      */
-    AcesControl(1, 2),
+    AcesNotification(1, 2),
     ;
 
     /**
@@ -46,13 +46,13 @@ public final class CommandProtocol {
      */
     public static final int ExtensionTrigger_VALUE = 1;
     /**
-     * <code>AcesControl = 2;</code>
+     * <code>AcesNotification = 2;</code>
      *
      * <pre>
-     * ACEsを制御する
+     * ACEsに通知を行わせる
      * </pre>
      */
-    public static final int AcesControl_VALUE = 2;
+    public static final int AcesNotification_VALUE = 2;
 
 
     public final int getNumber() { return value; }
@@ -60,7 +60,7 @@ public final class CommandProtocol {
     public static CommandType valueOf(int value) {
       switch (value) {
         case 1: return ExtensionTrigger;
-        case 2: return AcesControl;
+        case 2: return AcesNotification;
         default: return null;
       }
     }
@@ -114,6 +114,10 @@ public final class CommandProtocol {
 
   /**
    * Protobuf enum {@code eaglesakura_ace.NotificationLength}
+   *
+   * <pre>
+   * Notifiationの長さを指定する
+   * </pre>
    */
   public enum NotificationLength
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -141,6 +145,15 @@ public final class CommandProtocol {
      * </pre>
      */
     Long(2, 3),
+    /**
+     * <code>Never = 100;</code>
+     *
+     * <pre>
+     * 通知を常に表示する
+     * 通知を削除する場合、短いメッセージで上書きする
+     * </pre>
+     */
+    Never(3, 100),
     ;
 
     /**
@@ -167,6 +180,15 @@ public final class CommandProtocol {
      * </pre>
      */
     public static final int Long_VALUE = 3;
+    /**
+     * <code>Never = 100;</code>
+     *
+     * <pre>
+     * 通知を常に表示する
+     * 通知を削除する場合、短いメッセージで上書きする
+     * </pre>
+     */
+    public static final int Never_VALUE = 100;
 
 
     public final int getNumber() { return value; }
@@ -176,6 +198,7 @@ public final class CommandProtocol {
         case 1: return Short;
         case 2: return Normal;
         case 3: return Long;
+        case 100: return Never;
         default: return null;
       }
     }
@@ -371,6 +394,24 @@ public final class CommandProtocol {
      */
     com.google.protobuf.ByteString
         getDateBytes();
+
+    // optional int32 backgroundXRGB = 7;
+    /**
+     * <code>optional int32 backgroundXRGB = 7;</code>
+     *
+     * <pre>
+     * 背景色のXRGBカラー
+     * </pre>
+     */
+    boolean hasBackgroundXRGB();
+    /**
+     * <code>optional int32 backgroundXRGB = 7;</code>
+     *
+     * <pre>
+     * 背景色のXRGBカラー
+     * </pre>
+     */
+    int getBackgroundXRGB();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
@@ -463,6 +504,11 @@ public final class CommandProtocol {
             case 50: {
               bitField0_ |= 0x00000020;
               date_ = input.readBytes();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              backgroundXRGB_ = input.readInt32();
               break;
             }
           }
@@ -771,6 +817,30 @@ public final class CommandProtocol {
       }
     }
 
+    // optional int32 backgroundXRGB = 7;
+    public static final int BACKGROUNDXRGB_FIELD_NUMBER = 7;
+    private int backgroundXRGB_;
+    /**
+     * <code>optional int32 backgroundXRGB = 7;</code>
+     *
+     * <pre>
+     * 背景色のXRGBカラー
+     * </pre>
+     */
+    public boolean hasBackgroundXRGB() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 backgroundXRGB = 7;</code>
+     *
+     * <pre>
+     * 背景色のXRGBカラー
+     * </pre>
+     */
+    public int getBackgroundXRGB() {
+      return backgroundXRGB_;
+    }
+
     private void initFields() {
       message_ = "";
       iconFile_ = com.google.protobuf.ByteString.EMPTY;
@@ -778,6 +848,7 @@ public final class CommandProtocol {
       length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
       uniqueId_ = "";
       date_ = "";
+      backgroundXRGB_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -825,6 +896,9 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(6, getDateBytes());
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(7, backgroundXRGB_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -857,6 +931,10 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getDateBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, backgroundXRGB_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -992,6 +1070,8 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000010);
         date_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
+        backgroundXRGB_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -1044,6 +1124,10 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000020;
         }
         result.date_ = date_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.backgroundXRGB_ = backgroundXRGB_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1085,6 +1169,9 @@ public final class CommandProtocol {
           bitField0_ |= 0x00000020;
           date_ = other.date_;
           onChanged();
+        }
+        if (other.hasBackgroundXRGB()) {
+          setBackgroundXRGB(other.getBackgroundXRGB());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1617,6 +1704,55 @@ public final class CommandProtocol {
   }
   bitField0_ |= 0x00000020;
         date_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 backgroundXRGB = 7;
+      private int backgroundXRGB_ ;
+      /**
+       * <code>optional int32 backgroundXRGB = 7;</code>
+       *
+       * <pre>
+       * 背景色のXRGBカラー
+       * </pre>
+       */
+      public boolean hasBackgroundXRGB() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 backgroundXRGB = 7;</code>
+       *
+       * <pre>
+       * 背景色のXRGBカラー
+       * </pre>
+       */
+      public int getBackgroundXRGB() {
+        return backgroundXRGB_;
+      }
+      /**
+       * <code>optional int32 backgroundXRGB = 7;</code>
+       *
+       * <pre>
+       * 背景色のXRGBカラー
+       * </pre>
+       */
+      public Builder setBackgroundXRGB(int value) {
+        bitField0_ |= 0x00000040;
+        backgroundXRGB_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 backgroundXRGB = 7;</code>
+       *
+       * <pre>
+       * 背景色のXRGBカラー
+       * </pre>
+       */
+      public Builder clearBackgroundXRGB() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        backgroundXRGB_ = 0;
         onChanged();
         return this;
       }
@@ -4600,21 +4736,22 @@ public final class CommandProtocol {
     java.lang.String[] descriptorData = {
       "\n\025CommandProtocol.proto\022\017eaglesakura_ace" +
       "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
-      "\"\246\001\n\032NotificationRequestPayload\022\017\n\007messa" +
+      "\"\276\001\n\032NotificationRequestPayload\022\017\n\007messa" +
       "ge\030\001 \002(\t\022\020\n\010iconFile\030\002 \001(\014\022\020\n\010iconPath\030\003" +
       " \001(\t\0223\n\006length\030\004 \002(\0162#.eaglesakura_ace.N" +
       "otificationLength\022\020\n\010uniqueId\030\005 \002(\t\022\014\n\004d" +
-      "ate\030\006 \002(\t\"\250\001\n\023TweetRequestPayload\022\024\n\014twe" +
-      "etMessage\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\tima" +
-      "geUris\030\004 \003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rwit" +
-      "hHeartrate\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\022\027\n\017w",
-      "ithSpeedRecord\030\010 \001(\010\"2\n\016TriggerPayload\022\013" +
-      "\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t\";\n\016Comm" +
-      "andPayload\022\023\n\013commandType\030\001 \002(\t\022\024\n\014extra" +
-      "Payload\030\002 \001(\014*4\n\013CommandType\022\024\n\020Extensio" +
-      "nTrigger\020\001\022\017\n\013AcesControl\020\002*5\n\022Notificat" +
-      "ionLength\022\t\n\005Short\020\001\022\n\n\006Normal\020\002\022\010\n\004Long" +
-      "\020\003B$\n\"com.eaglesakura.andriders.protocol"
+      "ate\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005\"\250\001\n\023Tw" +
+      "eetRequestPayload\022\024\n\014tweetMessage\030\001 \002(\t\022" +
+      "\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 \003(\t\022\023\n\013" +
+      "withCadence\030\005 \001(\010\022\025\n\rwithHeartrate\030\006 \001(\010",
+      "\022\021\n\twithSpeed\030\007 \001(\010\022\027\n\017withSpeedRecord\030\010" +
+      " \001(\010\"2\n\016TriggerPayload\022\013\n\003key\030\001 \002(\t\022\023\n\013a" +
+      "ppExtraKey\030\002 \002(\t\";\n\016CommandPayload\022\023\n\013co" +
+      "mmandType\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*9\n" +
+      "\013CommandType\022\024\n\020ExtensionTrigger\020\001\022\024\n\020Ac" +
+      "esNotification\020\002*@\n\022NotificationLength\022\t" +
+      "\n\005Short\020\001\022\n\n\006Normal\020\002\022\010\n\004Long\020\003\022\t\n\005Never" +
+      "\020dB$\n\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4626,7 +4763,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor,
-              new java.lang.String[] { "Message", "IconFile", "IconPath", "Length", "UniqueId", "Date", });
+              new java.lang.String[] { "Message", "IconFile", "IconPath", "Length", "UniqueId", "Date", "BackgroundXRGB", });
           internal_static_eaglesakura_ace_TweetRequestPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable = new

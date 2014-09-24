@@ -10,10 +10,12 @@ enum CommandType {
     // トリガーは近接、Activity、時限、GEO等色々ある
 	ExtensionTrigger = 1;
 
-	// ACEsを制御する
-	AcesControl = 2;
+	// ACEsに通知を行わせる
+	AcesNotification = 2;
 }
 
+
+// Notifiationの長さを指定する
 enum NotificationLength {
     // 短い時間だけ通知を表示する
     Short = 1;
@@ -23,6 +25,10 @@ enum NotificationLength {
 
     // 長めに通知を表示する
     Long = 3;
+
+    // 通知を常に表示する
+    // 通知を削除する場合、短いメッセージで上書きする
+    Never = 100;
 }
 
 // 通知を表示させる
@@ -48,6 +54,9 @@ message NotificationRequestPayload {
 
     // 通知の発行時刻
     required string date = 6;
+
+    // 背景色のXRGBカラー
+    optional int32 backgroundXRGB = 7;
 }
 
 // ツイートしたい内容を格納する

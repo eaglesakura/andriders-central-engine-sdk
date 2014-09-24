@@ -4,11 +4,16 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
+import com.eaglesakura.andriders.Environment;
 import com.eaglesakura.andriders.command.CommandKey;
+import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+import com.eaglesakura.android.thread.UIHandler;
+import com.eaglesakura.android.util.AndroidUtil;
+import com.eaglesakura.util.StringUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -70,13 +75,19 @@ public class AcesCommandBuilder {
     }
 
     /**
-     * コマンド設定
+     * 通知データを追加する
      *
-     * @param commandTimeSec
-     * @param appExtraKey       コマンドに事前指定した一意のID
+     * @param notificationData
+     * @return
      */
-    public AcesCommandBuilder addProximityCommand(int commandTimeSec, String appExtraKey) {
-        return addCommand(CommandKey.fromProximity(commandTimeSec), appExtraKey);
+    public AcesCommandBuilder addNotification(NotificationData notificationData) {
+        CommandPayload.Builder builder = CommandPayload.newBuilder();
+
+        builder.setCommandType(CommandProtocol.CommandType.AcesNotification.name());
+        // 通知情報を指定する
+        builder.setExtraPayload(notificationData.buildPayload().toByteString());
+        commands.add(builder.build());
+        return this;
     }
 
     /**
@@ -98,7 +109,7 @@ public class AcesCommandBuilder {
     public AcesCommandBuilder build() {
         MasterPayload.Builder masterBuilder = MasterPayload.newBuilder();
         masterBuilder.setUniqueId(UUID.randomUUID().toString());
-        masterBuilder.setCreatedDate(dateToString(new Date()));
+        masterBuilder.setCreatedDate(StringUtil.toString(new Date()));
         masterBuilder.setSenderPackage(context.getPackageName());
         if (targetPackage != null) {
             masterBuilder.setTargetPackage(targetPackage);
@@ -107,7 +118,6 @@ public class AcesCommandBuilder {
         for (CommandPayload cmd : commands) {
             masterBuilder.addCommandPayloads(cmd);
         }
-
         masterPayload = masterBuilder.build().toByteArray();
 
         return this;
@@ -126,6 +136,16 @@ public class AcesCommandBuilder {
      * 他のアプリに投げる
      */
     public void send() {
+        if (!AndroidUtil.isUIThread()) {
+            UIHandler.postUI(new Runnable() {
+                @Override
+                public void run() {
+                    send();
+                }
+            });
+            return;
+        }
+
         Intent intent = AcesProtocolReceiver.newBroadcastIntent();
         if (masterPayload == null) {
             build();
@@ -136,18 +156,15 @@ public class AcesCommandBuilder {
         context.sendBroadcast(intent);
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-hh:mm:ss.SS");
-
     /**
-     * 指定時刻を文字列に変換する
-     * 内容はyyyyMMdd-hh:mm:ss.SSとなる。
+     * 通知用Builderを生成する
      *
-     * @param date
+     * @param context
      * @return
      */
-    public static String dateToString(Date date) {
-        return formatter.format(date);
+    public static AcesCommandBuilder newNotificationBuilder(Context context) {
+        AcesCommandBuilder builder = new AcesCommandBuilder(context);
+        builder.setTargetPackage(Environment.getApplicationPackageName());
+        return builder;
     }
-
 }

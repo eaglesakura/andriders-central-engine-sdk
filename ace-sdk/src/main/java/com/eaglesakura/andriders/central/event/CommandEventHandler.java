@@ -2,7 +2,9 @@ package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.command.CommandKey;
+import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
 
@@ -20,14 +22,26 @@ public class CommandEventHandler {
     }
 
     /**
-     * コマンドを受け取った
+     * トリガーコマンドを受け取った
      *
      * @param receiver
      * @param master
-     * @param key        コマンド識別キー
-     * @param trigger    トリガー本体
+     * @param key      コマンド識別キー
+     * @param trigger  トリガー本体
      */
-    public void onCommandReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger) {
+    public void onTriggerReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger) {
+
+    }
+
+    /**
+     * 通知リクエストを受け取った
+     *
+     * @param receiver
+     * @param master
+     * @param notificationData
+     * @param payload
+     */
+    public void onNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
 
     }
 

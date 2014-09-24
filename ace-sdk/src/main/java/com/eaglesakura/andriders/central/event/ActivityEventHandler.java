@@ -13,7 +13,7 @@ public class ActivityEventHandler {
     /**
      * 最高速度更新メッセージを受信する
      * @param receiver
-     * @param maxspeed
+     * @param maxSpeed
      */
     public void onMaxSpeedActivityReceived(AcesProtocolReceiver receiver, MasterPayload master, MaxSpeedActivity maxSpeed) {
     }
