@@ -24,11 +24,14 @@ import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+import com.eaglesakura.andriders.protocol.GeoProtocol;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
+import com.eaglesakura.android.geo.GeohashGroup;
+import com.eaglesakura.util.LogUtil;
 import com.google.protobuf.ByteString;
 
 public class AcesProtocolReceiver {
@@ -96,6 +99,21 @@ public class AcesProtocolReceiver {
     private RawSpeed lastReceivedSpeed;
 
     /**
+     * ジオハッシュ管理
+     */
+    private GeohashGroup geoGroup = new GeohashGroup();
+
+    /**
+     * 最後に受け取った位置情報
+     */
+    private GeoProtocol.GeoPayload lastReceivedGeo;
+
+    /**
+     * 古いジオハッシュで最後に受け取った位置情報
+     */
+    private GeoProtocol.GeoPayload beforeHashGeo;
+
+    /**
      * データ取得クラスを構築する
      *
      * @param context
@@ -103,6 +121,17 @@ public class AcesProtocolReceiver {
     public AcesProtocolReceiver(Context context) {
         this.context = context.getApplicationContext();
         this.selfPackageName = context.getPackageName();
+    }
+
+    /**
+     * ジオハッシュの文字数を指定する。
+     * <p/>
+     * 文字数は長いほど狭い範囲でしか扱えない。
+     *
+     * @param len
+     */
+    public void setGeohashLength(int len) {
+        geoGroup.setGeohashLength(len);
     }
 
     /**
@@ -422,11 +451,45 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * 位置情報を受け取った
+     *
+     * @param master
+     * @throws Exception
+     */
+    protected void handleGeoStatus(MasterPayload master) throws Exception {
+        GeoProtocol.GeoPayload oldGeoStatus = lastReceivedGeo;
+        GeoProtocol.GeoPayload newGeoStatus = master.getGeoStatus();
+
+        // 座標を上書き
+        lastReceivedGeo = newGeoStatus;
+
+        // まずは受け取ったことを通知
+        for (CentralDataHandler handler : centralHandlers) {
+            handler.onGeoStatusReceived(this, master, newGeoStatus);
+        }
+
+        // ジオハッシュを更新
+        GeoProtocol.GeoPoint location = newGeoStatus.getLocation();
+        String oldGeohash = geoGroup.getCenterGeohash();
+        if (geoGroup.updateLocation(location.getLatitude(), location.getLongitude())) {
+            LogUtil.log("geohash moved old(%s) -> new(%s)", oldGeohash, geoGroup.getCenterGeohash());
+
+            // ジオハッシュが更新されたら、前回の座標を保存する
+            beforeHashGeo = oldGeoStatus;
+
+            // 通知する
+            for (CentralDataHandler handler : centralHandlers) {
+                handler.onGeohashUpdated(this, master, oldGeoStatus, newGeoStatus);
+            }
+        }
+    }
+
+    /**
      * 最上位ペイロードを受け取った
      *
      * @param masterbuffer 受信したバッファ
      */
-    public void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
+    public synchronized void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
         final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
 
@@ -450,6 +513,11 @@ public class AcesProtocolReceiver {
                     return;
                 }
             }
+        }
+
+        // 位置情報を受け取った
+        if (master.hasGeoStatus()) {
+            handleGeoStatus(master);
         }
 
         // 正常なマスターデータを受け取った
