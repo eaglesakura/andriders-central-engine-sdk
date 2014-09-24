@@ -1,6 +1,7 @@
 package eaglesakura_ace;
 
 import "AcesConstants.proto";
+import "AcesConstants.proto";
 import "SensorProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 

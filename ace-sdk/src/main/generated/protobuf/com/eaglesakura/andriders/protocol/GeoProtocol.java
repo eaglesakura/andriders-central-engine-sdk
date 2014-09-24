@@ -8,105 +8,7 @@ public final class GeoProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  /**
-   * Protobuf enum {@code eaglesakura_ace.LocationMoving}
-   */
-  public enum LocationMoving
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>In = 1;</code>
-     *
-     * <pre>
-     * 指定ロケーションに侵入した
-     * </pre>
-     */
-    In(0, 1),
-    /**
-     * <code>Out = 2;</code>
-     *
-     * <pre>
-     * 指定ロケーションから離脱した
-     * </pre>
-     */
-    Out(1, 2),
-    ;
-
-    /**
-     * <code>In = 1;</code>
-     *
-     * <pre>
-     * 指定ロケーションに侵入した
-     * </pre>
-     */
-    public static final int In_VALUE = 1;
-    /**
-     * <code>Out = 2;</code>
-     *
-     * <pre>
-     * 指定ロケーションから離脱した
-     * </pre>
-     */
-    public static final int Out_VALUE = 2;
-
-
-    public final int getNumber() { return value; }
-
-    public static LocationMoving valueOf(int value) {
-      switch (value) {
-        case 1: return In;
-        case 2: return Out;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<LocationMoving>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<LocationMoving>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<LocationMoving>() {
-            public LocationMoving findValueByNumber(int number) {
-              return LocationMoving.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final LocationMoving[] VALUES = values();
-
-    public static LocationMoving valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private LocationMoving(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.LocationMoving)
-  }
-
-  public interface LocationOrBuilder
+  public interface GeoPointOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required double latitude = 1;
@@ -144,30 +46,49 @@ public final class GeoProtocol {
      * </pre>
      */
     double getLongitude();
+
+    // required double altitude = 3;
+    /**
+     * <code>required double altitude = 3;</code>
+     *
+     * <pre>
+     * 高度
+     * </pre>
+     */
+    boolean hasAltitude();
+    /**
+     * <code>required double altitude = 3;</code>
+     *
+     * <pre>
+     * 高度
+     * </pre>
+     */
+    double getAltitude();
   }
   /**
-   * Protobuf type {@code eaglesakura_ace.Location}
+   * Protobuf type {@code eaglesakura_ace.GeoPoint}
    *
    * <pre>
-   * GPS座標
+   **
+   * GPS座標を示す。
    * </pre>
    */
-  public static final class Location extends
+  public static final class GeoPoint extends
       com.google.protobuf.GeneratedMessage
-      implements LocationOrBuilder {
-    // Use Location.newBuilder() to construct.
-    private Location(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GeoPointOrBuilder {
+    // Use GeoPoint.newBuilder() to construct.
+    private GeoPoint(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private Location(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GeoPoint(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final Location defaultInstance;
-    public static Location getDefaultInstance() {
+    private static final GeoPoint defaultInstance;
+    public static GeoPoint getDefaultInstance() {
       return defaultInstance;
     }
 
-    public Location getDefaultInstanceForType() {
+    public GeoPoint getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -177,7 +98,7 @@ public final class GeoProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Location(
+    private GeoPoint(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -210,6 +131,11 @@ public final class GeoProtocol {
               longitude_ = input.readDouble();
               break;
             }
+            case 25: {
+              bitField0_ |= 0x00000004;
+              altitude_ = input.readDouble();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -224,28 +150,28 @@ public final class GeoProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_Location_descriptor;
+      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPoint_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_Location_fieldAccessorTable
+      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPoint_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location.class, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder.class);
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Location> PARSER =
-        new com.google.protobuf.AbstractParser<Location>() {
-      public Location parsePartialFrom(
+    public static com.google.protobuf.Parser<GeoPoint> PARSER =
+        new com.google.protobuf.AbstractParser<GeoPoint>() {
+      public GeoPoint parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Location(input, extensionRegistry);
+        return new GeoPoint(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Location> getParserForType() {
+    public com.google.protobuf.Parser<GeoPoint> getParserForType() {
       return PARSER;
     }
 
@@ -298,9 +224,34 @@ public final class GeoProtocol {
       return longitude_;
     }
 
+    // required double altitude = 3;
+    public static final int ALTITUDE_FIELD_NUMBER = 3;
+    private double altitude_;
+    /**
+     * <code>required double altitude = 3;</code>
+     *
+     * <pre>
+     * 高度
+     * </pre>
+     */
+    public boolean hasAltitude() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required double altitude = 3;</code>
+     *
+     * <pre>
+     * 高度
+     * </pre>
+     */
+    public double getAltitude() {
+      return altitude_;
+    }
+
     private void initFields() {
       latitude_ = 0D;
       longitude_ = 0D;
+      altitude_ = 0D;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -312,6 +263,10 @@ public final class GeoProtocol {
         return false;
       }
       if (!hasLongitude()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAltitude()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -327,6 +282,9 @@ public final class GeoProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeDouble(2, longitude_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeDouble(3, altitude_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -345,6 +303,10 @@ public final class GeoProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(2, longitude_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, altitude_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -357,53 +319,53 @@ public final class GeoProtocol {
       return super.writeReplace();
     }
 
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(byte[] data)
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseDelimitedFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseDelimitedFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.GeoProtocol.Location parseFrom(
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -412,7 +374,7 @@ public final class GeoProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.Location prototype) {
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -424,28 +386,29 @@ public final class GeoProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code eaglesakura_ace.Location}
+     * Protobuf type {@code eaglesakura_ace.GeoPoint}
      *
      * <pre>
-     * GPS座標
+     **
+     * GPS座標を示す。
      * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder {
+       implements com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_Location_descriptor;
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPoint_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_Location_fieldAccessorTable
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPoint_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.GeoProtocol.Location.class, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder.class);
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder.class);
       }
 
-      // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.Location.newBuilder()
+      // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -469,6 +432,8 @@ public final class GeoProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         longitude_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000002);
+        altitude_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -478,23 +443,23 @@ public final class GeoProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_Location_descriptor;
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeoPoint_descriptor;
       }
 
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
       }
 
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location build() {
-        com.eaglesakura.andriders.protocol.GeoProtocol.Location result = buildPartial();
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint build() {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location buildPartial() {
-        com.eaglesakura.andriders.protocol.GeoProtocol.Location result = new com.eaglesakura.andriders.protocol.GeoProtocol.Location(this);
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint buildPartial() {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint result = new com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -505,27 +470,34 @@ public final class GeoProtocol {
           to_bitField0_ |= 0x00000002;
         }
         result.longitude_ = longitude_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.altitude_ = altitude_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.Location) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.Location)other);
+        if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.Location other) {
-        if (other == com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint other) {
+        if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance()) return this;
         if (other.hasLatitude()) {
           setLatitude(other.getLatitude());
         }
         if (other.hasLongitude()) {
           setLongitude(other.getLongitude());
+        }
+        if (other.hasAltitude()) {
+          setAltitude(other.getAltitude());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -540,6 +512,10 @@ public final class GeoProtocol {
           
           return false;
         }
+        if (!hasAltitude()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -547,11 +523,11 @@ public final class GeoProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.GeoProtocol.Location parsedMessage = null;
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.Location) e.getUnfinishedMessage();
+          parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -660,78 +636,94 @@ public final class GeoProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.Location)
+      // required double altitude = 3;
+      private double altitude_ ;
+      /**
+       * <code>required double altitude = 3;</code>
+       *
+       * <pre>
+       * 高度
+       * </pre>
+       */
+      public boolean hasAltitude() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required double altitude = 3;</code>
+       *
+       * <pre>
+       * 高度
+       * </pre>
+       */
+      public double getAltitude() {
+        return altitude_;
+      }
+      /**
+       * <code>required double altitude = 3;</code>
+       *
+       * <pre>
+       * 高度
+       * </pre>
+       */
+      public Builder setAltitude(double value) {
+        bitField0_ |= 0x00000004;
+        altitude_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double altitude = 3;</code>
+       *
+       * <pre>
+       * 高度
+       * </pre>
+       */
+      public Builder clearAltitude() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        altitude_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeoPoint)
     }
 
     static {
-      defaultInstance = new Location(true);
+      defaultInstance = new GeoPoint(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.Location)
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeoPoint)
   }
 
   public interface GeoPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .eaglesakura_ace.Location loc = 1;
+    // required .eaglesakura_ace.GeoPoint location = 1;
     /**
-     * <code>required .eaglesakura_ace.Location loc = 1;</code>
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
      *
      * <pre>
      * 現在のGPS座標
      * </pre>
      */
-    boolean hasLoc();
+    boolean hasLocation();
     /**
-     * <code>required .eaglesakura_ace.Location loc = 1;</code>
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
      *
      * <pre>
      * 現在のGPS座標
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.GeoProtocol.Location getLoc();
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation();
     /**
-     * <code>required .eaglesakura_ace.Location loc = 1;</code>
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
      *
      * <pre>
      * 現在のGPS座標
      * </pre>
      */
-    com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder getLocOrBuilder();
-
-    // required string geohash = 2;
-    /**
-     * <code>required string geohash = 2;</code>
-     *
-     * <pre>
-     * ジオハッシュ情報
-     * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-     * </pre>
-     */
-    boolean hasGeohash();
-    /**
-     * <code>required string geohash = 2;</code>
-     *
-     * <pre>
-     * ジオハッシュ情報
-     * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-     * </pre>
-     */
-    java.lang.String getGeohash();
-    /**
-     * <code>required string geohash = 2;</code>
-     *
-     * <pre>
-     * ジオハッシュ情報
-     * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getGeohashBytes();
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.GeoPayload}
@@ -789,21 +781,16 @@ public final class GeoProtocol {
               break;
             }
             case 10: {
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder subBuilder = null;
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = loc_.toBuilder();
+                subBuilder = location_.toBuilder();
               }
-              loc_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.Location.PARSER, extensionRegistry);
+              location_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(loc_);
-                loc_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(location_);
+                location_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              geohash_ = input.readBytes();
               break;
             }
           }
@@ -846,119 +833,53 @@ public final class GeoProtocol {
     }
 
     private int bitField0_;
-    // required .eaglesakura_ace.Location loc = 1;
-    public static final int LOC_FIELD_NUMBER = 1;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.Location loc_;
+    // required .eaglesakura_ace.GeoPoint location = 1;
+    public static final int LOCATION_FIELD_NUMBER = 1;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_;
     /**
-     * <code>required .eaglesakura_ace.Location loc = 1;</code>
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
      *
      * <pre>
      * 現在のGPS座標
      * </pre>
      */
-    public boolean hasLoc() {
+    public boolean hasLocation() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .eaglesakura_ace.Location loc = 1;</code>
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
      *
      * <pre>
      * 現在のGPS座標
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.Location getLoc() {
-      return loc_;
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+      return location_;
     }
     /**
-     * <code>required .eaglesakura_ace.Location loc = 1;</code>
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
      *
      * <pre>
      * 現在のGPS座標
      * </pre>
      */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder getLocOrBuilder() {
-      return loc_;
-    }
-
-    // required string geohash = 2;
-    public static final int GEOHASH_FIELD_NUMBER = 2;
-    private java.lang.Object geohash_;
-    /**
-     * <code>required string geohash = 2;</code>
-     *
-     * <pre>
-     * ジオハッシュ情報
-     * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-     * </pre>
-     */
-    public boolean hasGeohash() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required string geohash = 2;</code>
-     *
-     * <pre>
-     * ジオハッシュ情報
-     * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-     * </pre>
-     */
-    public java.lang.String getGeohash() {
-      java.lang.Object ref = geohash_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          geohash_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string geohash = 2;</code>
-     *
-     * <pre>
-     * ジオハッシュ情報
-     * GPS座標を文字列化することで、DBとの親和性を高く出来る
-     * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getGeohashBytes() {
-      java.lang.Object ref = geohash_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        geohash_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+      return location_;
     }
 
     private void initFields() {
-      loc_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
-      geohash_ = "";
+      location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasLoc()) {
+      if (!hasLocation()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasGeohash()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getLoc().isInitialized()) {
+      if (!getLocation().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -970,10 +891,7 @@ public final class GeoProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, loc_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getGeohashBytes());
+        output.writeMessage(1, location_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -986,11 +904,7 @@ public final class GeoProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, loc_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getGeohashBytes());
+          .computeMessageSize(1, location_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1104,7 +1018,7 @@ public final class GeoProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLocFieldBuilder();
+          getLocationFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1113,14 +1027,12 @@ public final class GeoProtocol {
 
       public Builder clear() {
         super.clear();
-        if (locBuilder_ == null) {
-          loc_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
+        if (locationBuilder_ == null) {
+          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
         } else {
-          locBuilder_.clear();
+          locationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        geohash_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1152,15 +1064,11 @@ public final class GeoProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (locBuilder_ == null) {
-          result.loc_ = loc_;
+        if (locationBuilder_ == null) {
+          result.location_ = location_;
         } else {
-          result.loc_ = locBuilder_.build();
+          result.location_ = locationBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.geohash_ = geohash_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1177,28 +1085,19 @@ public final class GeoProtocol {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload other) {
         if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) return this;
-        if (other.hasLoc()) {
-          mergeLoc(other.getLoc());
-        }
-        if (other.hasGeohash()) {
-          bitField0_ |= 0x00000002;
-          geohash_ = other.geohash_;
-          onChanged();
+        if (other.hasLocation()) {
+          mergeLocation(other.getLocation());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasLoc()) {
+        if (!hasLocation()) {
           
           return false;
         }
-        if (!hasGeohash()) {
-          
-          return false;
-        }
-        if (!getLoc().isInitialized()) {
+        if (!getLocation().isInitialized()) {
           
           return false;
         }
@@ -1224,267 +1123,157 @@ public final class GeoProtocol {
       }
       private int bitField0_;
 
-      // required .eaglesakura_ace.Location loc = 1;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.Location loc_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
+      // required .eaglesakura_ace.GeoPoint location = 1;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.Location, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder> locBuilder_;
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> locationBuilder_;
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public boolean hasLoc() {
+      public boolean hasLocation() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location getLoc() {
-        if (locBuilder_ == null) {
-          return loc_;
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+        if (locationBuilder_ == null) {
+          return location_;
         } else {
-          return locBuilder_.getMessage();
+          return locationBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public Builder setLoc(com.eaglesakura.andriders.protocol.GeoProtocol.Location value) {
-        if (locBuilder_ == null) {
+      public Builder setLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+        if (locationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          loc_ = value;
+          location_ = value;
           onChanged();
         } else {
-          locBuilder_.setMessage(value);
+          locationBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public Builder setLoc(
-          com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder builderForValue) {
-        if (locBuilder_ == null) {
-          loc_ = builderForValue.build();
+      public Builder setLocation(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder builderForValue) {
+        if (locationBuilder_ == null) {
+          location_ = builderForValue.build();
           onChanged();
         } else {
-          locBuilder_.setMessage(builderForValue.build());
+          locationBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public Builder mergeLoc(com.eaglesakura.andriders.protocol.GeoProtocol.Location value) {
-        if (locBuilder_ == null) {
+      public Builder mergeLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+        if (locationBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              loc_ != com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance()) {
-            loc_ =
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location.newBuilder(loc_).mergeFrom(value).buildPartial();
+              location_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance()) {
+            location_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.newBuilder(location_).mergeFrom(value).buildPartial();
           } else {
-            loc_ = value;
+            location_ = value;
           }
           onChanged();
         } else {
-          locBuilder_.mergeFrom(value);
+          locationBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public Builder clearLoc() {
-        if (locBuilder_ == null) {
-          loc_ = com.eaglesakura.andriders.protocol.GeoProtocol.Location.getDefaultInstance();
+      public Builder clearLocation() {
+        if (locationBuilder_ == null) {
+          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
           onChanged();
         } else {
-          locBuilder_.clear();
+          locationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder getLocBuilder() {
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder getLocationBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
-        return getLocFieldBuilder().getBuilder();
+        return getLocationFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder getLocOrBuilder() {
-        if (locBuilder_ != null) {
-          return locBuilder_.getMessageOrBuilder();
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+        if (locationBuilder_ != null) {
+          return locationBuilder_.getMessageOrBuilder();
         } else {
-          return loc_;
+          return location_;
         }
       }
       /**
-       * <code>required .eaglesakura_ace.Location loc = 1;</code>
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
        *
        * <pre>
        * 現在のGPS座標
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.Location, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder> 
-          getLocFieldBuilder() {
-        if (locBuilder_ == null) {
-          locBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.GeoProtocol.Location, com.eaglesakura.andriders.protocol.GeoProtocol.Location.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.LocationOrBuilder>(
-                  loc_,
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> 
+          getLocationFieldBuilder() {
+        if (locationBuilder_ == null) {
+          locationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder>(
+                  location_,
                   getParentForChildren(),
                   isClean());
-          loc_ = null;
+          location_ = null;
         }
-        return locBuilder_;
-      }
-
-      // required string geohash = 2;
-      private java.lang.Object geohash_ = "";
-      /**
-       * <code>required string geohash = 2;</code>
-       *
-       * <pre>
-       * ジオハッシュ情報
-       * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-       * </pre>
-       */
-      public boolean hasGeohash() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string geohash = 2;</code>
-       *
-       * <pre>
-       * ジオハッシュ情報
-       * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-       * </pre>
-       */
-      public java.lang.String getGeohash() {
-        java.lang.Object ref = geohash_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          geohash_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string geohash = 2;</code>
-       *
-       * <pre>
-       * ジオハッシュ情報
-       * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getGeohashBytes() {
-        java.lang.Object ref = geohash_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          geohash_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string geohash = 2;</code>
-       *
-       * <pre>
-       * ジオハッシュ情報
-       * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-       * </pre>
-       */
-      public Builder setGeohash(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        geohash_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string geohash = 2;</code>
-       *
-       * <pre>
-       * ジオハッシュ情報
-       * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-       * </pre>
-       */
-      public Builder clearGeohash() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        geohash_ = getDefaultInstance().getGeohash();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string geohash = 2;</code>
-       *
-       * <pre>
-       * ジオハッシュ情報
-       * GPS座標を文字列化することで、DBとの親和性を高く出来る
-       * ACEのジオハッシュは7文字を基本（約100m*約130m)を基本とする
-       * </pre>
-       */
-      public Builder setGeohashBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        geohash_ = value;
-        onChanged();
-        return this;
+        return locationBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeoPayload)
@@ -1499,10 +1288,10 @@ public final class GeoProtocol {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_Location_descriptor;
+    internal_static_eaglesakura_ace_GeoPoint_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_Location_fieldAccessorTable;
+      internal_static_eaglesakura_ace_GeoPoint_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_GeoPayload_descriptor;
   private static
@@ -1518,30 +1307,29 @@ public final class GeoProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\023Ac" +
-      "esConstants.proto\"/\n\010Location\022\020\n\010latitud" +
-      "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\"E\n\nGeoPayload" +
-      "\022&\n\003loc\030\001 \002(\0132\031.eaglesakura_ace.Location" +
-      "\022\017\n\007geohash\030\002 \002(\t*!\n\016LocationMoving\022\006\n\002I" +
-      "n\020\001\022\007\n\003Out\020\002B$\n\"com.eaglesakura.andrider" +
-      "s.protocol"
+      "esConstants.proto\"A\n\010GeoPoint\022\020\n\010latitud" +
+      "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\022\020\n\010altitude\030\003" +
+      " \002(\001\"9\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031.e" +
+      "aglesakura_ace.GeoPointB$\n\"com.eaglesaku" +
+      "ra.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_eaglesakura_ace_Location_descriptor =
+          internal_static_eaglesakura_ace_GeoPoint_descriptor =
             getDescriptor().getMessageTypes().get(0);
-          internal_static_eaglesakura_ace_Location_fieldAccessorTable = new
+          internal_static_eaglesakura_ace_GeoPoint_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_Location_descriptor,
-              new java.lang.String[] { "Latitude", "Longitude", });
+              internal_static_eaglesakura_ace_GeoPoint_descriptor,
+              new java.lang.String[] { "Latitude", "Longitude", "Altitude", });
           internal_static_eaglesakura_ace_GeoPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_GeoPayload_descriptor,
-              new java.lang.String[] { "Loc", "Geohash", });
+              new java.lang.String[] { "Location", });
           return null;
         }
       };
