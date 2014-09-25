@@ -13,6 +13,9 @@ buildscript {
 }
 repositories {
     mavenCentral()
+    maven {
+        url "http://eaglesakura.github.io/maven/"
+    }
 }
 
 apply plugin: 'com.android.library'
