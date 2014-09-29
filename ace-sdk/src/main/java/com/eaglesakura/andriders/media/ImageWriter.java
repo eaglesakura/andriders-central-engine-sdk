@@ -19,6 +19,11 @@ public class ImageWriter {
 
     Date imageDate = new Date();
 
+    /**
+     * 書き込みを行った場合はファイルパスを保持しておく
+     */
+    File imageFilePath;
+
     public ImageWriter(Context context) {
         this.context = context.getApplicationContext();
     }
@@ -33,7 +38,7 @@ public class ImageWriter {
      * @return
      */
     public String getImageFileName() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-hhmmssSS");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
         return String.format("%s.jpg", formatter.format(imageDate));
     }
 
@@ -62,19 +67,28 @@ public class ImageWriter {
      * @return 書き込んだ画像のURI
      * @throws IOException
      */
-    public Uri writeImage(byte[] jpegImage) throws IOException {
+    public File writeImage(byte[] jpegImage) throws IOException {
         if (jpegImage == null || jpegImage.length == 0) {
             return null;
         }
 
-        File jpg = new File(getImageDirectory(), getImageFileName());
-        jpg.getParentFile().mkdirs();
+        imageFilePath = new File(getImageDirectory(), getImageFileName());
+        imageFilePath.getParentFile().mkdirs();
 
-        FileOutputStream os = new FileOutputStream(jpg);
+        FileOutputStream os = new FileOutputStream(imageFilePath);
         os.write(jpegImage);
         os.flush();
         os.close();
 
-        return Uri.fromFile(jpg);
+        return imageFilePath;
+    }
+
+    /**
+     * 画像ファイル本体を取得する
+     *
+     * @return
+     */
+    public File getImageFilePath() {
+        return imageFilePath;
     }
 }
