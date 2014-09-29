@@ -1,8 +1,12 @@
 package com.eaglesakura.andriders.media;
 
 import android.content.Context;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Environment;
+
+import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.protocol.GeoProtocol;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,6 +19,22 @@ import java.util.logging.SimpleFormatter;
  * 画像書き込みを行う
  */
 public class ImageWriter {
+
+    /**
+     * 撮影時の心拍 bpm
+     */
+    public static final String EXIF_ACES_HEARTRATE = "AcesHeartrate";
+
+    /**
+     * 撮影時のケイデンス rpm
+     */
+    public static final String EXIF_ACES_CADENCE = "AcesCadence";
+
+    /**
+     * 撮影時の速度 km/h
+     */
+    public static final String EXIF_ACES_SPEED_KMH = "AcesSpeedKmh";
+
     final Context context;
 
     Date imageDate = new Date();
@@ -23,6 +43,11 @@ public class ImageWriter {
      * 書き込みを行った場合はファイルパスを保持しておく
      */
     File imageFilePath;
+
+    /**
+     * 現在の位置
+     */
+    GeoProtocol.GeoPayload loc;
 
     public ImageWriter(Context context) {
         this.context = context.getApplicationContext();
@@ -58,6 +83,36 @@ public class ImageWriter {
      */
     public File getImageThumbnailDirectory() {
         return new File(Environment.getExternalStorageDirectory(), "DCIM/ACE/Thumbnails");
+    }
+
+    /**
+     * EXIF情報を上書きする
+     *
+     * @param receiver
+     */
+    public void writeExif(AcesProtocolReceiver receiver) throws IOException {
+        ExifInterface exif = new ExifInterface(getImageFilePath().getAbsolutePath());
+
+        // ケイデンス
+        if (receiver.getLastReceivedHartrate() != null) {
+            int cadenceRpm = receiver.getLastReceivedCadence().getRpm();
+            exif.setAttribute(EXIF_ACES_CADENCE, String.valueOf(cadenceRpm));
+        }
+
+        // 心拍
+        if (receiver.getLastReceivedHartrate() != null) {
+            int heartrateBpm = receiver.getLastReceivedHartrate().getBpm();
+            exif.setAttribute(EXIF_ACES_HEARTRATE, String.valueOf(heartrateBpm));
+        }
+
+        // 速度
+        if (receiver.getLastReceivedSpeed() != null) {
+            float speedKmh = receiver.getLastReceivedSpeed().getSpeedKmPerHour();
+            exif.setAttribute(EXIF_ACES_SPEED_KMH, String.format("%.2f", speedKmh));
+        }
+
+        // 保存を行う
+        exif.saveAttributes();
     }
 
     /**
