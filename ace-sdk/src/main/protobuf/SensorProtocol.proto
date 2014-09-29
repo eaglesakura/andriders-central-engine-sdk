@@ -18,13 +18,13 @@ message RawCadence {
 // 回転数
 	required int32 rpm = 100;
 	enum CadenceZone {
-	// イージー
-		Easy = 0;
-		// 初心者 90-100
-		Beginner = 1;
+	// 低ケイデンス
+		Slow = 0;
 		// 理想値
-		// 100 over
-		Ideal = 2;
+		// 80〜110
+		Ideal = 1;
+		// 高ケイデンス
+		High = 2;
 	};
 
 	// ケイデンスゾーン
