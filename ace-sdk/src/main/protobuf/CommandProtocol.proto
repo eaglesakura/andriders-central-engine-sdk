@@ -14,6 +14,18 @@ enum CommandType {
 	AcesNotification = 2;
 }
 
+// 音声による通知を行う
+message SoundNotificationPayload {
+    // サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+    required bool queue = 1;
+
+    // サウンドファイルのURI
+    optional string sourceUri = 2;
+
+    // デフォルトで指定可能なサウンドキー
+    optional string defaultSoundKey = 3;
+}
+
 
 // Notifiationの長さを指定する
 enum NotificationLength {
@@ -55,8 +67,11 @@ message NotificationRequestPayload {
     // 通知の発行時刻
     required string date = 6;
 
-    // 背景色のXRGBカラー
+    // 背景色のXRGBカラー、文字色は反転色となる
     optional int32 backgroundXRGB = 7;
+
+    // サウンドの通知指定
+    optional SoundNotificationPayload sound = 8;
 }
 
 // ツイートしたい内容を格納する

@@ -53,6 +53,11 @@ public class NotificationData {
      */
     CommandProtocol.NotificationLength notificationLength = CommandProtocol.NotificationLength.Normal;
 
+    /**
+     * 通知サウンド
+     */
+    SoundData sound;
+
     public NotificationData(CommandProtocol.NotificationRequestPayload requestPayload) {
         if (requestPayload.hasIconPath()) {
             icon = ImageUtil.decode(requestPayload.getIconPath());
@@ -66,6 +71,10 @@ public class NotificationData {
         message = requestPayload.getMessage();
         uniqueId = requestPayload.getUniqueId();
         date = StringUtil.toDate(requestPayload.getDate());
+
+        if (requestPayload.hasSound()) {
+            sound = new SoundData(requestPayload.getSound());
+        }
     }
 
     public NotificationData() {
@@ -101,6 +110,14 @@ public class NotificationData {
 
     public CommandProtocol.NotificationLength getNotificationLength() {
         return notificationLength;
+    }
+
+    public SoundData getSound() {
+        return sound;
+    }
+
+    public void setSound(SoundData sound) {
+        this.sound = sound;
     }
 
     /**
@@ -156,6 +173,9 @@ public class NotificationData {
         builder.setDate(StringUtil.toString(date));
         builder.setLength(notificationLength);
         builder.setBackgroundXRGB(backgroundColor);
+        if (sound != null) {
+            builder.setSound(sound.buildPayload());
+        }
 
         return builder.build();
     }
