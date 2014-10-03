@@ -182,6 +182,14 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * 最後に受信したGPS座標を取得する
+     * @return
+     */
+    public GeoProtocol.GeoPayload getLastReceivedGeo() {
+        return lastReceivedGeo;
+    }
+
+    /**
      * サービスへ接続する
      */
     public void connect() {
