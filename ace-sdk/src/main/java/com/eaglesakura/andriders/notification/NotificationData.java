@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
+import com.eaglesakura.andriders.media.SoundKey;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.util.StringUtil;
@@ -118,6 +119,12 @@ public class NotificationData {
 
     public void setSound(SoundData sound) {
         this.sound = sound;
+    }
+
+    public void setSound(SoundKey key) {
+        this.sound = new SoundData();
+        sound.setSoundKey(key.getKey());
+        sound.setQueue(true);
     }
 
     /**
