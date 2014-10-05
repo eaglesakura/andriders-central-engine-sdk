@@ -2,7 +2,6 @@ package com.eaglesakura.andriders.media;
 
 import android.content.Context;
 import android.media.ExifInterface;
-import android.net.Uri;
 import android.os.Environment;
 
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
@@ -13,7 +12,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.SimpleFormatter;
 
 /**
  * 画像書き込みを行う
@@ -86,14 +84,14 @@ public class ImageWriter {
         ExifInterface exif = new ExifInterface(getImageFilePath().getAbsolutePath());
 
         // ケイデンス
-        if (receiver.getLastReceivedHartrate() != null) {
+        if (receiver.getLastReceivedHeartrate() != null) {
             int cadenceRpm = receiver.getLastReceivedCadence().getRpm();
             exif.setAttribute(EXIF_ACES_CADENCE, String.valueOf(cadenceRpm));
         }
 
         // 心拍
-        if (receiver.getLastReceivedHartrate() != null) {
-            int heartrateBpm = receiver.getLastReceivedHartrate().getBpm();
+        if (receiver.getLastReceivedHeartrate() != null) {
+            int heartrateBpm = receiver.getLastReceivedHeartrate().getBpm();
             exif.setAttribute(EXIF_ACES_HEARTRATE, String.valueOf(heartrateBpm));
         }
 

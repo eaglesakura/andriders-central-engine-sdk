@@ -87,7 +87,7 @@ public class AcesProtocolReceiver {
     /**
      * 最後に受信したハートレート
      */
-    private RawHeartrate lastReceivedHartrate;
+    private RawHeartrate lastReceivedHeartrate;
 
     /**
      * 最後に受信したケイデンス
@@ -169,8 +169,8 @@ public class AcesProtocolReceiver {
      *
      * @return
      */
-    public RawHeartrate getLastReceivedHartrate() {
-        return lastReceivedHartrate;
+    public RawHeartrate getLastReceivedHeartrate() {
+        return lastReceivedHeartrate;
     }
 
     /**
@@ -250,7 +250,7 @@ public class AcesProtocolReceiver {
      */
     private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
         RawHeartrate heartrate = RawHeartrate.parseFrom(payload);
-        this.lastReceivedHartrate = heartrate;
+        this.lastReceivedHeartrate = heartrate;
 
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {

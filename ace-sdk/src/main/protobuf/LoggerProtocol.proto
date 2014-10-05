@@ -1,14 +1,14 @@
 package eaglesakura_ace;
 
 import "AcesConstants.proto";
-import "AcesConstants.proto";
+import "GeoProtocol.proto";
 import "SensorProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 
 /**
  * 継続的に取得する、ある特定瞬間のログを保持する
  */
-message RegularLog {
+message RawSessionPointPayload {
     // ケイデンス値
     optional RawCadence cadence = 1;
 
@@ -29,8 +29,4 @@ message RegularLog {
 
     // 充電中の場合true
     required bool batteryCharging = 102;
-}
-
-message LoggerProtocol {
-
 }
