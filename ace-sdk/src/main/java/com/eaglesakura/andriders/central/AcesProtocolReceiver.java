@@ -16,6 +16,7 @@ import com.eaglesakura.andriders.central.event.CommandEventHandler;
 import com.eaglesakura.andriders.central.event.SensorEventHandler;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
+import com.eaglesakura.andriders.notification.SoundData;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload;
@@ -183,6 +184,7 @@ public class AcesProtocolReceiver {
 
     /**
      * 最後に受信したGPS座標を取得する
+     *
      * @return
      */
     public GeoProtocol.GeoPayload getLastReceivedGeo() {
@@ -367,6 +369,19 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * ACEsへのサウンドリクエストを受け取った
+     *
+     * @param master
+     * @param soundNotificationPayload
+     */
+    private void onAcesSoundNotificationCommand(MasterPayload master, CommandProtocol.SoundNotificationPayload soundNotificationPayload) {
+        SoundData soundData = new SoundData(soundNotificationPayload);
+        for (CommandEventHandler handler : commandHandlers) {
+            handler.onSoundNotificationReceived(this, master, soundData, soundNotificationPayload);
+        }
+    }
+
+    /**
      * 不明なコマンドを受け取った
      *
      * @param master
@@ -401,6 +416,10 @@ public class AcesProtocolReceiver {
                 // 通知コマンド
                 CommandProtocol.NotificationRequestPayload notification = CommandProtocol.NotificationRequestPayload.parseFrom(cmd.getExtraPayload());
                 onAcesNotificationCommand(master, notification);
+            } else if (CommandType.SoundNotification.name().equals(commandType)) {
+                // サウンド通知
+                CommandProtocol.SoundNotificationPayload soundNotificationPayload = CommandProtocol.SoundNotificationPayload.parseFrom(cmd.getExtraPayload());
+
             } else {
                 // 不明なコマンド
                 onUnknownCommandRecieved(master, cmd);

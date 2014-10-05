@@ -110,11 +110,11 @@ public class BasicUiBuilder {
      */
     public int getZoneColor(CadenceZone zone) {
         switch (zone) {
-            case Easy:
+            case Slow:
                 return zoneColorTable[0];
-            case Beginner:
-                return zoneColorTable[2];
             case Ideal:
+                return zoneColorTable[2];
+            case High:
                 return zoneColorTable[4];
         }
 

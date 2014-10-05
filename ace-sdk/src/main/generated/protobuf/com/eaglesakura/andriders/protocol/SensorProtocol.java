@@ -282,66 +282,66 @@ public final class SensorProtocol {
     public enum CadenceZone
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>Easy = 0;</code>
+       * <code>Slow = 0;</code>
        *
        * <pre>
-       * イージー
+       * 低ケイデンス
        * </pre>
        */
-      Easy(0, 0),
+      Slow(0, 0),
       /**
-       * <code>Beginner = 1;</code>
-       *
-       * <pre>
-       * 初心者 90-100
-       * </pre>
-       */
-      Beginner(1, 1),
-      /**
-       * <code>Ideal = 2;</code>
+       * <code>Ideal = 1;</code>
        *
        * <pre>
        * 理想値
-       * 100 over
+       * 80〜110
        * </pre>
        */
-      Ideal(2, 2),
+      Ideal(1, 1),
+      /**
+       * <code>High = 2;</code>
+       *
+       * <pre>
+       * 高ケイデンス
+       * </pre>
+       */
+      High(2, 2),
       ;
 
       /**
-       * <code>Easy = 0;</code>
+       * <code>Slow = 0;</code>
        *
        * <pre>
-       * イージー
+       * 低ケイデンス
        * </pre>
        */
-      public static final int Easy_VALUE = 0;
+      public static final int Slow_VALUE = 0;
       /**
-       * <code>Beginner = 1;</code>
-       *
-       * <pre>
-       * 初心者 90-100
-       * </pre>
-       */
-      public static final int Beginner_VALUE = 1;
-      /**
-       * <code>Ideal = 2;</code>
+       * <code>Ideal = 1;</code>
        *
        * <pre>
        * 理想値
-       * 100 over
+       * 80〜110
        * </pre>
        */
-      public static final int Ideal_VALUE = 2;
+      public static final int Ideal_VALUE = 1;
+      /**
+       * <code>High = 2;</code>
+       *
+       * <pre>
+       * 高ケイデンス
+       * </pre>
+       */
+      public static final int High_VALUE = 2;
 
 
       public final int getNumber() { return value; }
 
       public static CadenceZone valueOf(int value) {
         switch (value) {
-          case 0: return Easy;
-          case 1: return Beginner;
-          case 2: return Ideal;
+          case 0: return Slow;
+          case 1: return Ideal;
+          case 2: return High;
           default: return null;
         }
       }
@@ -444,7 +444,7 @@ public final class SensorProtocol {
 
     private void initFields() {
       rpm_ = 0;
-      cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Easy;
+      cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -611,7 +611,7 @@ public final class SensorProtocol {
         super.clear();
         rpm_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Easy;
+        cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -756,7 +756,7 @@ public final class SensorProtocol {
       }
 
       // required .eaglesakura_ace.RawCadence.CadenceZone cadenceZone = 101;
-      private com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Easy;
+      private com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
       /**
        * <code>required .eaglesakura_ace.RawCadence.CadenceZone cadenceZone = 101;</code>
        *
@@ -802,7 +802,7 @@ public final class SensorProtocol {
        */
       public Builder clearCadenceZone() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Easy;
+        cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
         onChanged();
         return this;
       }
@@ -3133,26 +3133,25 @@ public final class SensorProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\024SensorProtocol.proto\022\017eaglesakura_ace\032" +
-      "\023AcesConstants.proto\"\211\001\n\nRawCadence\022\013\n\003r" +
+      "\023AcesConstants.proto\"\205\001\n\nRawCadence\022\013\n\003r" +
       "pm\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesak" +
-      "ura_ace.RawCadence.CadenceZone\"0\n\013Cadenc" +
-      "eZone\022\010\n\004Easy\020\000\022\014\n\010Beginner\020\001\022\t\n\005Ideal\020\002" +
-      "\"\334\001\n\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartr" +
-      "ateZone\030e \002(\0162+.eaglesakura_ace.RawHeart" +
-      "rate.HeartrateZone\"{\n\rHeartrateZone\022\n\n\006R" +
-      "epose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026" +
-      "PossessionOxygenMotion\020\003\022\027\n\023NonOxygenate",
-      "dMotion\020\004\022\014\n\010Overwork\020\005\"\276\001\n\010RawSpeed\022\026\n\016" +
-      "speedKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027" +
-      "\n\017recordKmPerHour\030\n \001(\002\0226\n\tspeedZone\030e \002" +
-      "(\0162#.eaglesakura_ace.RawSpeed.SpeedZone\"" +
-      "7\n\tSpeedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Crui" +
-      "se\020\002\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004typ" +
-      "e\030\002 \002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006" +
-      "buffer\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateM" +
-      "onitor\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSens" +
-      "or\020\002B$\n\"com.eaglesakura.andriders.protoc",
-      "ol"
+      "ura_ace.RawCadence.CadenceZone\",\n\013Cadenc" +
+      "eZone\022\010\n\004Slow\020\000\022\t\n\005Ideal\020\001\022\010\n\004High\020\002\"\334\001\n" +
+      "\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartrateZ" +
+      "one\030e \002(\0162+.eaglesakura_ace.RawHeartrate" +
+      ".HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Repos" +
+      "e\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026Poss" +
+      "essionOxygenMotion\020\003\022\027\n\023NonOxygenatedMot",
+      "ion\020\004\022\014\n\010Overwork\020\005\"\276\001\n\010RawSpeed\022\026\n\016spee" +
+      "dKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027\n\017re" +
+      "cordKmPerHour\030\n \001(\002\0226\n\tspeedZone\030e \002(\0162#" +
+      ".eaglesakura_ace.RawSpeed.SpeedZone\"7\n\tS" +
+      "peedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002" +
+      "\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002 " +
+      "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff" +
+      "er\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMonit" +
+      "or\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020\002" +
+      "B$\n\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

@@ -34,6 +34,14 @@ public final class CommandProtocol {
      * </pre>
      */
     AcesNotification(1, 2),
+    /**
+     * <code>SoundNotification = 3;</code>
+     *
+     * <pre>
+     * サウンドを鳴らす
+     * </pre>
+     */
+    SoundNotification(2, 3),
     ;
 
     /**
@@ -53,6 +61,14 @@ public final class CommandProtocol {
      * </pre>
      */
     public static final int AcesNotification_VALUE = 2;
+    /**
+     * <code>SoundNotification = 3;</code>
+     *
+     * <pre>
+     * サウンドを鳴らす
+     * </pre>
+     */
+    public static final int SoundNotification_VALUE = 3;
 
 
     public final int getNumber() { return value; }
@@ -61,6 +77,7 @@ public final class CommandProtocol {
       switch (value) {
         case 1: return ExtensionTrigger;
         case 2: return AcesNotification;
+        case 3: return SoundNotification;
         default: return null;
       }
     }
@@ -250,6 +267,858 @@ public final class CommandProtocol {
     // @@protoc_insertion_point(enum_scope:eaglesakura_ace.NotificationLength)
   }
 
+  public interface SoundNotificationPayloadOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required bool queue = 1;
+    /**
+     * <code>required bool queue = 1;</code>
+     *
+     * <pre>
+     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+     * </pre>
+     */
+    boolean hasQueue();
+    /**
+     * <code>required bool queue = 1;</code>
+     *
+     * <pre>
+     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+     * </pre>
+     */
+    boolean getQueue();
+
+    // optional string sourceUri = 2;
+    /**
+     * <code>optional string sourceUri = 2;</code>
+     *
+     * <pre>
+     * サウンドファイルのURI
+     * </pre>
+     */
+    boolean hasSourceUri();
+    /**
+     * <code>optional string sourceUri = 2;</code>
+     *
+     * <pre>
+     * サウンドファイルのURI
+     * </pre>
+     */
+    java.lang.String getSourceUri();
+    /**
+     * <code>optional string sourceUri = 2;</code>
+     *
+     * <pre>
+     * サウンドファイルのURI
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSourceUriBytes();
+
+    // optional string soundKey = 3;
+    /**
+     * <code>optional string soundKey = 3;</code>
+     *
+     * <pre>
+     * 事前指定してある種類のサウンドを鳴らす
+     * </pre>
+     */
+    boolean hasSoundKey();
+    /**
+     * <code>optional string soundKey = 3;</code>
+     *
+     * <pre>
+     * 事前指定してある種類のサウンドを鳴らす
+     * </pre>
+     */
+    java.lang.String getSoundKey();
+    /**
+     * <code>optional string soundKey = 3;</code>
+     *
+     * <pre>
+     * 事前指定してある種類のサウンドを鳴らす
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSoundKeyBytes();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
+   *
+   * <pre>
+   * 音声による通知を行う
+   * </pre>
+   */
+  public static final class SoundNotificationPayload extends
+      com.google.protobuf.GeneratedMessage
+      implements SoundNotificationPayloadOrBuilder {
+    // Use SoundNotificationPayload.newBuilder() to construct.
+    private SoundNotificationPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SoundNotificationPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SoundNotificationPayload defaultInstance;
+    public static SoundNotificationPayload getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SoundNotificationPayload getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SoundNotificationPayload(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              queue_ = input.readBool();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              sourceUri_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              soundKey_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SoundNotificationPayload> PARSER =
+        new com.google.protobuf.AbstractParser<SoundNotificationPayload>() {
+      public SoundNotificationPayload parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SoundNotificationPayload(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SoundNotificationPayload> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required bool queue = 1;
+    public static final int QUEUE_FIELD_NUMBER = 1;
+    private boolean queue_;
+    /**
+     * <code>required bool queue = 1;</code>
+     *
+     * <pre>
+     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+     * </pre>
+     */
+    public boolean hasQueue() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required bool queue = 1;</code>
+     *
+     * <pre>
+     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+     * </pre>
+     */
+    public boolean getQueue() {
+      return queue_;
+    }
+
+    // optional string sourceUri = 2;
+    public static final int SOURCEURI_FIELD_NUMBER = 2;
+    private java.lang.Object sourceUri_;
+    /**
+     * <code>optional string sourceUri = 2;</code>
+     *
+     * <pre>
+     * サウンドファイルのURI
+     * </pre>
+     */
+    public boolean hasSourceUri() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string sourceUri = 2;</code>
+     *
+     * <pre>
+     * サウンドファイルのURI
+     * </pre>
+     */
+    public java.lang.String getSourceUri() {
+      java.lang.Object ref = sourceUri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sourceUri_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string sourceUri = 2;</code>
+     *
+     * <pre>
+     * サウンドファイルのURI
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSourceUriBytes() {
+      java.lang.Object ref = sourceUri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sourceUri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string soundKey = 3;
+    public static final int SOUNDKEY_FIELD_NUMBER = 3;
+    private java.lang.Object soundKey_;
+    /**
+     * <code>optional string soundKey = 3;</code>
+     *
+     * <pre>
+     * 事前指定してある種類のサウンドを鳴らす
+     * </pre>
+     */
+    public boolean hasSoundKey() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string soundKey = 3;</code>
+     *
+     * <pre>
+     * 事前指定してある種類のサウンドを鳴らす
+     * </pre>
+     */
+    public java.lang.String getSoundKey() {
+      java.lang.Object ref = soundKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          soundKey_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string soundKey = 3;</code>
+     *
+     * <pre>
+     * 事前指定してある種類のサウンドを鳴らす
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSoundKeyBytes() {
+      java.lang.Object ref = soundKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        soundKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      queue_ = false;
+      sourceUri_ = "";
+      soundKey_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasQueue()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, queue_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getSourceUriBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getSoundKeyBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, queue_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getSourceUriBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getSoundKeyBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
+     *
+     * <pre>
+     * 音声による通知を行う
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        queue_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sourceUri_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        soundKey_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload build() {
+        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload buildPartial() {
+        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.queue_ = queue_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.sourceUri_ = sourceUri_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.soundKey_ = soundKey_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload other) {
+        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance()) return this;
+        if (other.hasQueue()) {
+          setQueue(other.getQueue());
+        }
+        if (other.hasSourceUri()) {
+          bitField0_ |= 0x00000002;
+          sourceUri_ = other.sourceUri_;
+          onChanged();
+        }
+        if (other.hasSoundKey()) {
+          bitField0_ |= 0x00000004;
+          soundKey_ = other.soundKey_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasQueue()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required bool queue = 1;
+      private boolean queue_ ;
+      /**
+       * <code>required bool queue = 1;</code>
+       *
+       * <pre>
+       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+       * </pre>
+       */
+      public boolean hasQueue() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required bool queue = 1;</code>
+       *
+       * <pre>
+       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+       * </pre>
+       */
+      public boolean getQueue() {
+        return queue_;
+      }
+      /**
+       * <code>required bool queue = 1;</code>
+       *
+       * <pre>
+       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+       * </pre>
+       */
+      public Builder setQueue(boolean value) {
+        bitField0_ |= 0x00000001;
+        queue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool queue = 1;</code>
+       *
+       * <pre>
+       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+       * </pre>
+       */
+      public Builder clearQueue() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        queue_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional string sourceUri = 2;
+      private java.lang.Object sourceUri_ = "";
+      /**
+       * <code>optional string sourceUri = 2;</code>
+       *
+       * <pre>
+       * サウンドファイルのURI
+       * </pre>
+       */
+      public boolean hasSourceUri() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string sourceUri = 2;</code>
+       *
+       * <pre>
+       * サウンドファイルのURI
+       * </pre>
+       */
+      public java.lang.String getSourceUri() {
+        java.lang.Object ref = sourceUri_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          sourceUri_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string sourceUri = 2;</code>
+       *
+       * <pre>
+       * サウンドファイルのURI
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSourceUriBytes() {
+        java.lang.Object ref = sourceUri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sourceUri_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string sourceUri = 2;</code>
+       *
+       * <pre>
+       * サウンドファイルのURI
+       * </pre>
+       */
+      public Builder setSourceUri(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        sourceUri_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sourceUri = 2;</code>
+       *
+       * <pre>
+       * サウンドファイルのURI
+       * </pre>
+       */
+      public Builder clearSourceUri() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sourceUri_ = getDefaultInstance().getSourceUri();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sourceUri = 2;</code>
+       *
+       * <pre>
+       * サウンドファイルのURI
+       * </pre>
+       */
+      public Builder setSourceUriBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        sourceUri_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string soundKey = 3;
+      private java.lang.Object soundKey_ = "";
+      /**
+       * <code>optional string soundKey = 3;</code>
+       *
+       * <pre>
+       * 事前指定してある種類のサウンドを鳴らす
+       * </pre>
+       */
+      public boolean hasSoundKey() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string soundKey = 3;</code>
+       *
+       * <pre>
+       * 事前指定してある種類のサウンドを鳴らす
+       * </pre>
+       */
+      public java.lang.String getSoundKey() {
+        java.lang.Object ref = soundKey_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          soundKey_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string soundKey = 3;</code>
+       *
+       * <pre>
+       * 事前指定してある種類のサウンドを鳴らす
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSoundKeyBytes() {
+        java.lang.Object ref = soundKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          soundKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string soundKey = 3;</code>
+       *
+       * <pre>
+       * 事前指定してある種類のサウンドを鳴らす
+       * </pre>
+       */
+      public Builder setSoundKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        soundKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string soundKey = 3;</code>
+       *
+       * <pre>
+       * 事前指定してある種類のサウンドを鳴らす
+       * </pre>
+       */
+      public Builder clearSoundKey() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        soundKey_ = getDefaultInstance().getSoundKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string soundKey = 3;</code>
+       *
+       * <pre>
+       * 事前指定してある種類のサウンドを鳴らす
+       * </pre>
+       */
+      public Builder setSoundKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        soundKey_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.SoundNotificationPayload)
+    }
+
+    static {
+      defaultInstance = new SoundNotificationPayload(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.SoundNotificationPayload)
+  }
+
   public interface NotificationRequestPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -400,7 +1269,7 @@ public final class CommandProtocol {
      * <code>optional int32 backgroundXRGB = 7;</code>
      *
      * <pre>
-     * 背景色のXRGBカラー
+     * 背景色のXRGBカラー、文字色は反転色となる
      * </pre>
      */
     boolean hasBackgroundXRGB();
@@ -408,10 +1277,36 @@ public final class CommandProtocol {
      * <code>optional int32 backgroundXRGB = 7;</code>
      *
      * <pre>
-     * 背景色のXRGBカラー
+     * 背景色のXRGBカラー、文字色は反転色となる
      * </pre>
      */
     int getBackgroundXRGB();
+
+    // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
+    /**
+     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+     *
+     * <pre>
+     * サウンドの通知指定
+     * </pre>
+     */
+    boolean hasSound();
+    /**
+     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+     *
+     * <pre>
+     * サウンドの通知指定
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound();
+    /**
+     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+     *
+     * <pre>
+     * サウンドの通知指定
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
@@ -509,6 +1404,19 @@ public final class CommandProtocol {
             case 56: {
               bitField0_ |= 0x00000040;
               backgroundXRGB_ = input.readInt32();
+              break;
+            }
+            case 66: {
+              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = sound_.toBuilder();
+              }
+              sound_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(sound_);
+                sound_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
               break;
             }
           }
@@ -824,7 +1732,7 @@ public final class CommandProtocol {
      * <code>optional int32 backgroundXRGB = 7;</code>
      *
      * <pre>
-     * 背景色のXRGBカラー
+     * 背景色のXRGBカラー、文字色は反転色となる
      * </pre>
      */
     public boolean hasBackgroundXRGB() {
@@ -834,11 +1742,45 @@ public final class CommandProtocol {
      * <code>optional int32 backgroundXRGB = 7;</code>
      *
      * <pre>
-     * 背景色のXRGBカラー
+     * 背景色のXRGBカラー、文字色は反転色となる
      * </pre>
      */
     public int getBackgroundXRGB() {
       return backgroundXRGB_;
+    }
+
+    // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
+    public static final int SOUND_FIELD_NUMBER = 8;
+    private com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload sound_;
+    /**
+     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+     *
+     * <pre>
+     * サウンドの通知指定
+     * </pre>
+     */
+    public boolean hasSound() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+     *
+     * <pre>
+     * サウンドの通知指定
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound() {
+      return sound_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+     *
+     * <pre>
+     * サウンドの通知指定
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder() {
+      return sound_;
     }
 
     private void initFields() {
@@ -849,6 +1791,7 @@ public final class CommandProtocol {
       uniqueId_ = "";
       date_ = "";
       backgroundXRGB_ = 0;
+      sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -870,6 +1813,12 @@ public final class CommandProtocol {
       if (!hasDate()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasSound()) {
+        if (!getSound().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -898,6 +1847,9 @@ public final class CommandProtocol {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(7, backgroundXRGB_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(8, sound_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -935,6 +1887,10 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, backgroundXRGB_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, sound_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1050,6 +2006,7 @@ public final class CommandProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSoundFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1072,6 +2029,12 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000020);
         backgroundXRGB_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        if (soundBuilder_ == null) {
+          sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+        } else {
+          soundBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -1128,6 +2091,14 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000040;
         }
         result.backgroundXRGB_ = backgroundXRGB_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        if (soundBuilder_ == null) {
+          result.sound_ = sound_;
+        } else {
+          result.sound_ = soundBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1173,6 +2144,9 @@ public final class CommandProtocol {
         if (other.hasBackgroundXRGB()) {
           setBackgroundXRGB(other.getBackgroundXRGB());
         }
+        if (other.hasSound()) {
+          mergeSound(other.getSound());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1193,6 +2167,12 @@ public final class CommandProtocol {
         if (!hasDate()) {
           
           return false;
+        }
+        if (hasSound()) {
+          if (!getSound().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -1714,7 +2694,7 @@ public final class CommandProtocol {
        * <code>optional int32 backgroundXRGB = 7;</code>
        *
        * <pre>
-       * 背景色のXRGBカラー
+       * 背景色のXRGBカラー、文字色は反転色となる
        * </pre>
        */
       public boolean hasBackgroundXRGB() {
@@ -1724,7 +2704,7 @@ public final class CommandProtocol {
        * <code>optional int32 backgroundXRGB = 7;</code>
        *
        * <pre>
-       * 背景色のXRGBカラー
+       * 背景色のXRGBカラー、文字色は反転色となる
        * </pre>
        */
       public int getBackgroundXRGB() {
@@ -1734,7 +2714,7 @@ public final class CommandProtocol {
        * <code>optional int32 backgroundXRGB = 7;</code>
        *
        * <pre>
-       * 背景色のXRGBカラー
+       * 背景色のXRGBカラー、文字色は反転色となる
        * </pre>
        */
       public Builder setBackgroundXRGB(int value) {
@@ -1747,7 +2727,7 @@ public final class CommandProtocol {
        * <code>optional int32 backgroundXRGB = 7;</code>
        *
        * <pre>
-       * 背景色のXRGBカラー
+       * 背景色のXRGBカラー、文字色は反転色となる
        * </pre>
        */
       public Builder clearBackgroundXRGB() {
@@ -1755,6 +2735,159 @@ public final class CommandProtocol {
         backgroundXRGB_ = 0;
         onChanged();
         return this;
+      }
+
+      // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
+      private com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder> soundBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public boolean hasSound() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound() {
+        if (soundBuilder_ == null) {
+          return sound_;
+        } else {
+          return soundBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public Builder setSound(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload value) {
+        if (soundBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          sound_ = value;
+          onChanged();
+        } else {
+          soundBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public Builder setSound(
+          com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder builderForValue) {
+        if (soundBuilder_ == null) {
+          sound_ = builderForValue.build();
+          onChanged();
+        } else {
+          soundBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public Builder mergeSound(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload value) {
+        if (soundBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              sound_ != com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance()) {
+            sound_ =
+              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.newBuilder(sound_).mergeFrom(value).buildPartial();
+          } else {
+            sound_ = value;
+          }
+          onChanged();
+        } else {
+          soundBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public Builder clearSound() {
+        if (soundBuilder_ == null) {
+          sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+          onChanged();
+        } else {
+          soundBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder getSoundBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getSoundFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder() {
+        if (soundBuilder_ != null) {
+          return soundBuilder_.getMessageOrBuilder();
+        } else {
+          return sound_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+       *
+       * <pre>
+       * サウンドの通知指定
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder> 
+          getSoundFieldBuilder() {
+        if (soundBuilder_ == null) {
+          soundBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder>(
+                  sound_,
+                  getParentForChildren(),
+                  isClean());
+          sound_ = null;
+        }
+        return soundBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.NotificationRequestPayload)
@@ -4706,6 +5839,11 @@ public final class CommandProtocol {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -4736,48 +5874,59 @@ public final class CommandProtocol {
     java.lang.String[] descriptorData = {
       "\n\025CommandProtocol.proto\022\017eaglesakura_ace" +
       "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
-      "\"\276\001\n\032NotificationRequestPayload\022\017\n\007messa" +
+      "\"N\n\030SoundNotificationPayload\022\r\n\005queue\030\001 " +
+      "\002(\010\022\021\n\tsourceUri\030\002 \001(\t\022\020\n\010soundKey\030\003 \001(\t" +
+      "\"\370\001\n\032NotificationRequestPayload\022\017\n\007messa" +
       "ge\030\001 \002(\t\022\020\n\010iconFile\030\002 \001(\014\022\020\n\010iconPath\030\003" +
       " \001(\t\0223\n\006length\030\004 \002(\0162#.eaglesakura_ace.N" +
       "otificationLength\022\020\n\010uniqueId\030\005 \002(\t\022\014\n\004d" +
-      "ate\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005\"\250\001\n\023Tw" +
-      "eetRequestPayload\022\024\n\014tweetMessage\030\001 \002(\t\022" +
-      "\020\n\010hashtags\030\002 \003(\t\022\021\n\timageUris\030\004 \003(\t\022\023\n\013" +
-      "withCadence\030\005 \001(\010\022\025\n\rwithHeartrate\030\006 \001(\010",
-      "\022\021\n\twithSpeed\030\007 \001(\010\022\027\n\017withSpeedRecord\030\010" +
-      " \001(\010\"2\n\016TriggerPayload\022\013\n\003key\030\001 \002(\t\022\023\n\013a" +
-      "ppExtraKey\030\002 \002(\t\";\n\016CommandPayload\022\023\n\013co" +
-      "mmandType\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*9\n" +
-      "\013CommandType\022\024\n\020ExtensionTrigger\020\001\022\024\n\020Ac" +
-      "esNotification\020\002*@\n\022NotificationLength\022\t" +
-      "\n\005Short\020\001\022\n\n\006Normal\020\002\022\010\n\004Long\020\003\022\t\n\005Never" +
-      "\020dB$\n\"com.eaglesakura.andriders.protocol"
+      "ate\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005\0228\n\005sou" +
+      "nd\030\010 \001(\0132).eaglesakura_ace.SoundNotifica",
+      "tionPayload\"\250\001\n\023TweetRequestPayload\022\024\n\014t" +
+      "weetMessage\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\ti" +
+      "mageUris\030\004 \003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rw" +
+      "ithHeartrate\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\022\027\n" +
+      "\017withSpeedRecord\030\010 \001(\010\"2\n\016TriggerPayload" +
+      "\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t\";\n\016Co" +
+      "mmandPayload\022\023\n\013commandType\030\001 \002(\t\022\024\n\014ext" +
+      "raPayload\030\002 \001(\014*P\n\013CommandType\022\024\n\020Extens" +
+      "ionTrigger\020\001\022\024\n\020AcesNotification\020\002\022\025\n\021So" +
+      "undNotification\020\003*@\n\022NotificationLength\022",
+      "\t\n\005Short\020\001\022\n\n\006Normal\020\002\022\010\n\004Long\020\003\022\t\n\005Neve" +
+      "r\020dB$\n\"com.eaglesakura.andriders.protoco" +
+      "l"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor =
+          internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor,
+              new java.lang.String[] { "Queue", "SourceUri", "SoundKey", });
+          internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor,
-              new java.lang.String[] { "Message", "IconFile", "IconPath", "Length", "UniqueId", "Date", "BackgroundXRGB", });
+              new java.lang.String[] { "Message", "IconFile", "IconPath", "Length", "UniqueId", "Date", "BackgroundXRGB", "Sound", });
           internal_static_eaglesakura_ace_TweetRequestPayload_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TweetRequestPayload_descriptor,
               new java.lang.String[] { "TweetMessage", "Hashtags", "ImageUris", "WithCadence", "WithHeartrate", "WithSpeed", "WithSpeedRecord", });
           internal_static_eaglesakura_ace_TriggerPayload_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TriggerPayload_descriptor,
               new java.lang.String[] { "Key", "AppExtraKey", });
           internal_static_eaglesakura_ace_CommandPayload_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CommandPayload_descriptor,

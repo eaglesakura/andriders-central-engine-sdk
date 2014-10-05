@@ -38,6 +38,5 @@ public class CentralDataHandler {
      * @param newStatus
      */
     public void onGeohashUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload oldStatus, GeoProtocol.GeoPayload newStatus) {
-
     }
 }

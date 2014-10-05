@@ -3,6 +3,7 @@ package com.eaglesakura.andriders.central.event;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
+import com.eaglesakura.andriders.notification.SoundData;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
@@ -42,6 +43,18 @@ public class CommandEventHandler {
      * @param payload
      */
     public void onNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
+
+    }
+
+    /**
+     * サウンドリクエストを受け取った
+     *
+     * @param receiver
+     * @param master
+     * @param soundData
+     * @param payload
+     */
+    public void onSoundNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, SoundData soundData, CommandProtocol.SoundNotificationPayload payload) {
 
     }
 
