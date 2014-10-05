@@ -63,7 +63,7 @@ public class ImageWriter {
      * @return
      */
     public String getImageFileName() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("HH-mm-ss");
         return String.format("%s.jpg", formatter.format(imageDate));
     }
 
@@ -73,16 +73,8 @@ public class ImageWriter {
      * @return
      */
     public File getImageDirectory() {
-        return new File(Environment.getExternalStorageDirectory(), "DCIM/ACE/Pictures");
-    }
-
-    /**
-     * サムネイルディレクトリを取得する
-     *
-     * @return
-     */
-    public File getImageThumbnailDirectory() {
-        return new File(Environment.getExternalStorageDirectory(), "DCIM/ACE/Thumbnails");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        return new File(Environment.getExternalStorageDirectory(), String.format("DCIM/ACE/Pictures/%s", formatter.format(imageDate)));
     }
 
     /**
