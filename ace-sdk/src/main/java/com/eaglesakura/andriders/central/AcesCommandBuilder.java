@@ -6,7 +6,9 @@ import android.content.Intent;
 
 import com.eaglesakura.andriders.Environment;
 import com.eaglesakura.andriders.command.CommandKey;
+import com.eaglesakura.andriders.media.SoundKey;
 import com.eaglesakura.andriders.notification.NotificationData;
+import com.eaglesakura.andriders.notification.SoundData;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
@@ -91,6 +93,22 @@ public class AcesCommandBuilder {
     }
 
     /**
+     * 通知用のサウンドを追加
+     *
+     * @param soundData
+     * @return
+     */
+    public AcesCommandBuilder addSound(SoundData soundData) {
+        CommandPayload.Builder builder = CommandPayload.newBuilder();
+
+        builder.setCommandType(CommandProtocol.CommandType.SoundNotification.name());
+        // 通知情報を指定する
+        builder.setExtraPayload(soundData.buildPayload().toByteString());
+        commands.add(builder.build());
+        return this;
+    }
+
+    /**
      * 送信対象のPackage名を指定
      *
      * @param targetPackage
@@ -166,5 +184,31 @@ public class AcesCommandBuilder {
         AcesCommandBuilder builder = new AcesCommandBuilder(context);
         builder.setTargetPackage(Environment.getApplicationPackageName());
         return builder;
+    }
+
+    /**
+     * サウンドを指定してビルダーを生成する
+     *
+     * @param context
+     * @param key
+     * @param reqQueue
+     * @return
+     */
+    public static AcesCommandBuilder newSoundBuilder(Context context, SoundKey key, boolean reqQueue) {
+        SoundData data = new SoundData();
+        data.setQueue(reqQueue);
+        data.setSoundKey(key.getKey());
+        return newNotificationBuilder(context).addSound(data);
+    }
+
+    /**
+     * サウンドを指定してビルダーを生成する
+     *
+     * @param context
+     * @param key
+     * @return
+     */
+    public static AcesCommandBuilder newSoundBuilder(Context context, SoundKey key) {
+        return newSoundBuilder(context, key, true);
     }
 }

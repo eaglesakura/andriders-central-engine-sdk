@@ -419,7 +419,7 @@ public class AcesProtocolReceiver {
             } else if (CommandType.SoundNotification.name().equals(commandType)) {
                 // サウンド通知
                 CommandProtocol.SoundNotificationPayload soundNotificationPayload = CommandProtocol.SoundNotificationPayload.parseFrom(cmd.getExtraPayload());
-
+                onAcesSoundNotificationCommand(master, soundNotificationPayload);
             } else {
                 // 不明なコマンド
                 onUnknownCommandRecieved(master, cmd);
