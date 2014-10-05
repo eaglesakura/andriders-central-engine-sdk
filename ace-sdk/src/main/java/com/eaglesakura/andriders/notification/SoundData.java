@@ -3,6 +3,7 @@ package com.eaglesakura.andriders.notification;
 import android.net.Uri;
 
 import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.util.StringUtil;
 
 import java.io.File;
 
@@ -10,7 +11,7 @@ import java.io.File;
  * 通知を行うためのサウンドデータ
  */
 public class SoundData {
-    String defaultSoundKey;
+    String soundKey;
 
     Uri uri;
 
@@ -20,8 +21,8 @@ public class SoundData {
         if (sound.hasSourceUri()) {
             this.uri = Uri.parse(sound.getSourceUri());
         }
-        if (sound.hasDefaultSoundKey()) {
-            this.defaultSoundKey = sound.getDefaultSoundKey();
+        if (sound.hasSoundKey()) {
+            this.soundKey = sound.getSoundKey();
         }
         this.queue = sound.getQueue();
     }
@@ -47,8 +48,8 @@ public class SoundData {
         return uri;
     }
 
-    public String getDefaultSoundKey() {
-        return defaultSoundKey;
+    public String getSoundKey() {
+        return soundKey;
     }
 
     public void setUri(Uri uri) {
@@ -59,8 +60,8 @@ public class SoundData {
         this.uri = Uri.fromFile(file);
     }
 
-    public void setDefaultSoundKey(String defaultSoundKey) {
-        this.defaultSoundKey = defaultSoundKey;
+    public void setSoundKey(String defaultSoundKey) {
+        this.soundKey = defaultSoundKey;
     }
 
     /**
@@ -80,8 +81,12 @@ public class SoundData {
     public CommandProtocol.SoundNotificationPayload buildPayload() {
         CommandProtocol.SoundNotificationPayload.Builder builder = CommandProtocol.SoundNotificationPayload.newBuilder();
         builder.setQueue(queue);
-        builder.setSourceUri(uri.toString());
-        builder.setDefaultSoundKey(defaultSoundKey);
+        if (uri != null) {
+            builder.setSourceUri(uri.toString());
+        }
+        if (!StringUtil.isEmpty(soundKey)) {
+            builder.setSoundKey(soundKey);
+        }
         return builder.build();
     }
 }

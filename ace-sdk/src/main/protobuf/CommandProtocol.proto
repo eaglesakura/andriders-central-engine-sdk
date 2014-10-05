@@ -12,6 +12,9 @@ enum CommandType {
 
 	// ACEsに通知を行わせる
 	AcesNotification = 2;
+
+	// サウンドを鳴らす
+	SoundNotification = 3;
 }
 
 // 音声による通知を行う
@@ -22,8 +25,8 @@ message SoundNotificationPayload {
     // サウンドファイルのURI
     optional string sourceUri = 2;
 
-    // デフォルトで指定可能なサウンドキー
-    optional string defaultSoundKey = 3;
+    // 事前指定してある種類のサウンドを鳴らす
+    optional string soundKey = 3;
 }
 
 

@@ -34,6 +34,14 @@ public final class CommandProtocol {
      * </pre>
      */
     AcesNotification(1, 2),
+    /**
+     * <code>SoundNotification = 3;</code>
+     *
+     * <pre>
+     * サウンドを鳴らす
+     * </pre>
+     */
+    SoundNotification(2, 3),
     ;
 
     /**
@@ -53,6 +61,14 @@ public final class CommandProtocol {
      * </pre>
      */
     public static final int AcesNotification_VALUE = 2;
+    /**
+     * <code>SoundNotification = 3;</code>
+     *
+     * <pre>
+     * サウンドを鳴らす
+     * </pre>
+     */
+    public static final int SoundNotification_VALUE = 3;
 
 
     public final int getNumber() { return value; }
@@ -61,6 +77,7 @@ public final class CommandProtocol {
       switch (value) {
         case 1: return ExtensionTrigger;
         case 2: return AcesNotification;
+        case 3: return SoundNotification;
         default: return null;
       }
     }
@@ -298,32 +315,32 @@ public final class CommandProtocol {
     com.google.protobuf.ByteString
         getSourceUriBytes();
 
-    // optional string defaultSoundKey = 3;
+    // optional string soundKey = 3;
     /**
-     * <code>optional string defaultSoundKey = 3;</code>
+     * <code>optional string soundKey = 3;</code>
      *
      * <pre>
-     * デフォルトで指定可能なサウンドキー
+     * 事前指定してある種類のサウンドを鳴らす
      * </pre>
      */
-    boolean hasDefaultSoundKey();
+    boolean hasSoundKey();
     /**
-     * <code>optional string defaultSoundKey = 3;</code>
+     * <code>optional string soundKey = 3;</code>
      *
      * <pre>
-     * デフォルトで指定可能なサウンドキー
+     * 事前指定してある種類のサウンドを鳴らす
      * </pre>
      */
-    java.lang.String getDefaultSoundKey();
+    java.lang.String getSoundKey();
     /**
-     * <code>optional string defaultSoundKey = 3;</code>
+     * <code>optional string soundKey = 3;</code>
      *
      * <pre>
-     * デフォルトで指定可能なサウンドキー
+     * 事前指定してある種類のサウンドを鳴らす
      * </pre>
      */
     com.google.protobuf.ByteString
-        getDefaultSoundKeyBytes();
+        getSoundKeyBytes();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
@@ -392,7 +409,7 @@ public final class CommandProtocol {
             }
             case 26: {
               bitField0_ |= 0x00000004;
-              defaultSoundKey_ = input.readBytes();
+              soundKey_ = input.readBytes();
               break;
             }
           }
@@ -514,28 +531,28 @@ public final class CommandProtocol {
       }
     }
 
-    // optional string defaultSoundKey = 3;
-    public static final int DEFAULTSOUNDKEY_FIELD_NUMBER = 3;
-    private java.lang.Object defaultSoundKey_;
+    // optional string soundKey = 3;
+    public static final int SOUNDKEY_FIELD_NUMBER = 3;
+    private java.lang.Object soundKey_;
     /**
-     * <code>optional string defaultSoundKey = 3;</code>
+     * <code>optional string soundKey = 3;</code>
      *
      * <pre>
-     * デフォルトで指定可能なサウンドキー
+     * 事前指定してある種類のサウンドを鳴らす
      * </pre>
      */
-    public boolean hasDefaultSoundKey() {
+    public boolean hasSoundKey() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string defaultSoundKey = 3;</code>
+     * <code>optional string soundKey = 3;</code>
      *
      * <pre>
-     * デフォルトで指定可能なサウンドキー
+     * 事前指定してある種類のサウンドを鳴らす
      * </pre>
      */
-    public java.lang.String getDefaultSoundKey() {
-      java.lang.Object ref = defaultSoundKey_;
+    public java.lang.String getSoundKey() {
+      java.lang.Object ref = soundKey_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -543,26 +560,26 @@ public final class CommandProtocol {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          defaultSoundKey_ = s;
+          soundKey_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>optional string defaultSoundKey = 3;</code>
+     * <code>optional string soundKey = 3;</code>
      *
      * <pre>
-     * デフォルトで指定可能なサウンドキー
+     * 事前指定してある種類のサウンドを鳴らす
      * </pre>
      */
     public com.google.protobuf.ByteString
-        getDefaultSoundKeyBytes() {
-      java.lang.Object ref = defaultSoundKey_;
+        getSoundKeyBytes() {
+      java.lang.Object ref = soundKey_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        defaultSoundKey_ = b;
+        soundKey_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -572,7 +589,7 @@ public final class CommandProtocol {
     private void initFields() {
       queue_ = false;
       sourceUri_ = "";
-      defaultSoundKey_ = "";
+      soundKey_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -597,7 +614,7 @@ public final class CommandProtocol {
         output.writeBytes(2, getSourceUriBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getDefaultSoundKeyBytes());
+        output.writeBytes(3, getSoundKeyBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -618,7 +635,7 @@ public final class CommandProtocol {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getDefaultSoundKeyBytes());
+          .computeBytesSize(3, getSoundKeyBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -744,7 +761,7 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         sourceUri_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        defaultSoundKey_ = "";
+        soundKey_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -785,7 +802,7 @@ public final class CommandProtocol {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.defaultSoundKey_ = defaultSoundKey_;
+        result.soundKey_ = soundKey_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -810,9 +827,9 @@ public final class CommandProtocol {
           sourceUri_ = other.sourceUri_;
           onChanged();
         }
-        if (other.hasDefaultSoundKey()) {
+        if (other.hasSoundKey()) {
           bitField0_ |= 0x00000004;
-          defaultSoundKey_ = other.defaultSoundKey_;
+          soundKey_ = other.soundKey_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -993,100 +1010,100 @@ public final class CommandProtocol {
         return this;
       }
 
-      // optional string defaultSoundKey = 3;
-      private java.lang.Object defaultSoundKey_ = "";
+      // optional string soundKey = 3;
+      private java.lang.Object soundKey_ = "";
       /**
-       * <code>optional string defaultSoundKey = 3;</code>
+       * <code>optional string soundKey = 3;</code>
        *
        * <pre>
-       * デフォルトで指定可能なサウンドキー
+       * 事前指定してある種類のサウンドを鳴らす
        * </pre>
        */
-      public boolean hasDefaultSoundKey() {
+      public boolean hasSoundKey() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string defaultSoundKey = 3;</code>
+       * <code>optional string soundKey = 3;</code>
        *
        * <pre>
-       * デフォルトで指定可能なサウンドキー
+       * 事前指定してある種類のサウンドを鳴らす
        * </pre>
        */
-      public java.lang.String getDefaultSoundKey() {
-        java.lang.Object ref = defaultSoundKey_;
+      public java.lang.String getSoundKey() {
+        java.lang.Object ref = soundKey_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          defaultSoundKey_ = s;
+          soundKey_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string defaultSoundKey = 3;</code>
+       * <code>optional string soundKey = 3;</code>
        *
        * <pre>
-       * デフォルトで指定可能なサウンドキー
+       * 事前指定してある種類のサウンドを鳴らす
        * </pre>
        */
       public com.google.protobuf.ByteString
-          getDefaultSoundKeyBytes() {
-        java.lang.Object ref = defaultSoundKey_;
+          getSoundKeyBytes() {
+        java.lang.Object ref = soundKey_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          defaultSoundKey_ = b;
+          soundKey_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string defaultSoundKey = 3;</code>
+       * <code>optional string soundKey = 3;</code>
        *
        * <pre>
-       * デフォルトで指定可能なサウンドキー
+       * 事前指定してある種類のサウンドを鳴らす
        * </pre>
        */
-      public Builder setDefaultSoundKey(
+      public Builder setSoundKey(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000004;
-        defaultSoundKey_ = value;
+        soundKey_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string defaultSoundKey = 3;</code>
+       * <code>optional string soundKey = 3;</code>
        *
        * <pre>
-       * デフォルトで指定可能なサウンドキー
+       * 事前指定してある種類のサウンドを鳴らす
        * </pre>
        */
-      public Builder clearDefaultSoundKey() {
+      public Builder clearSoundKey() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        defaultSoundKey_ = getDefaultInstance().getDefaultSoundKey();
+        soundKey_ = getDefaultInstance().getSoundKey();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string defaultSoundKey = 3;</code>
+       * <code>optional string soundKey = 3;</code>
        *
        * <pre>
-       * デフォルトで指定可能なサウンドキー
+       * 事前指定してある種類のサウンドを鳴らす
        * </pre>
        */
-      public Builder setDefaultSoundKeyBytes(
+      public Builder setSoundKeyBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000004;
-        defaultSoundKey_ = value;
+        soundKey_ = value;
         onChanged();
         return this;
       }
@@ -5857,26 +5874,27 @@ public final class CommandProtocol {
     java.lang.String[] descriptorData = {
       "\n\025CommandProtocol.proto\022\017eaglesakura_ace" +
       "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
-      "\"U\n\030SoundNotificationPayload\022\r\n\005queue\030\001 " +
-      "\002(\010\022\021\n\tsourceUri\030\002 \001(\t\022\027\n\017defaultSoundKe" +
-      "y\030\003 \001(\t\"\370\001\n\032NotificationRequestPayload\022\017" +
-      "\n\007message\030\001 \002(\t\022\020\n\010iconFile\030\002 \001(\014\022\020\n\010ico" +
-      "nPath\030\003 \001(\t\0223\n\006length\030\004 \002(\0162#.eaglesakur" +
-      "a_ace.NotificationLength\022\020\n\010uniqueId\030\005 \002" +
-      "(\t\022\014\n\004date\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005" +
-      "\0228\n\005sound\030\010 \001(\0132).eaglesakura_ace.SoundN",
-      "otificationPayload\"\250\001\n\023TweetRequestPaylo" +
-      "ad\022\024\n\014tweetMessage\030\001 \002(\t\022\020\n\010hashtags\030\002 \003" +
-      "(\t\022\021\n\timageUris\030\004 \003(\t\022\023\n\013withCadence\030\005 \001" +
-      "(\010\022\025\n\rwithHeartrate\030\006 \001(\010\022\021\n\twithSpeed\030\007" +
-      " \001(\010\022\027\n\017withSpeedRecord\030\010 \001(\010\"2\n\016Trigger" +
-      "Payload\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(" +
-      "\t\";\n\016CommandPayload\022\023\n\013commandType\030\001 \002(\t" +
-      "\022\024\n\014extraPayload\030\002 \001(\014*9\n\013CommandType\022\024\n" +
-      "\020ExtensionTrigger\020\001\022\024\n\020AcesNotification\020" +
-      "\002*@\n\022NotificationLength\022\t\n\005Short\020\001\022\n\n\006No",
-      "rmal\020\002\022\010\n\004Long\020\003\022\t\n\005Never\020dB$\n\"com.eagle" +
-      "sakura.andriders.protocol"
+      "\"N\n\030SoundNotificationPayload\022\r\n\005queue\030\001 " +
+      "\002(\010\022\021\n\tsourceUri\030\002 \001(\t\022\020\n\010soundKey\030\003 \001(\t" +
+      "\"\370\001\n\032NotificationRequestPayload\022\017\n\007messa" +
+      "ge\030\001 \002(\t\022\020\n\010iconFile\030\002 \001(\014\022\020\n\010iconPath\030\003" +
+      " \001(\t\0223\n\006length\030\004 \002(\0162#.eaglesakura_ace.N" +
+      "otificationLength\022\020\n\010uniqueId\030\005 \002(\t\022\014\n\004d" +
+      "ate\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005\0228\n\005sou" +
+      "nd\030\010 \001(\0132).eaglesakura_ace.SoundNotifica",
+      "tionPayload\"\250\001\n\023TweetRequestPayload\022\024\n\014t" +
+      "weetMessage\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\ti" +
+      "mageUris\030\004 \003(\t\022\023\n\013withCadence\030\005 \001(\010\022\025\n\rw" +
+      "ithHeartrate\030\006 \001(\010\022\021\n\twithSpeed\030\007 \001(\010\022\027\n" +
+      "\017withSpeedRecord\030\010 \001(\010\"2\n\016TriggerPayload" +
+      "\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t\";\n\016Co" +
+      "mmandPayload\022\023\n\013commandType\030\001 \002(\t\022\024\n\014ext" +
+      "raPayload\030\002 \001(\014*P\n\013CommandType\022\024\n\020Extens" +
+      "ionTrigger\020\001\022\024\n\020AcesNotification\020\002\022\025\n\021So" +
+      "undNotification\020\003*@\n\022NotificationLength\022",
+      "\t\n\005Short\020\001\022\n\n\006Normal\020\002\022\010\n\004Long\020\003\022\t\n\005Neve" +
+      "r\020dB$\n\"com.eaglesakura.andriders.protoco" +
+      "l"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5888,7 +5906,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor,
-              new java.lang.String[] { "Queue", "SourceUri", "DefaultSoundKey", });
+              new java.lang.String[] { "Queue", "SourceUri", "SoundKey", });
           internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable = new
