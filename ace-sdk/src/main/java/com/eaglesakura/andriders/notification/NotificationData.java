@@ -7,6 +7,7 @@ import android.graphics.Color;
 import com.eaglesakura.andriders.media.SoundKey;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.android.util.ImageUtil;
+import com.eaglesakura.io.IOUtil;
 import com.eaglesakura.util.StringUtil;
 import com.google.protobuf.ByteString;
 
@@ -16,6 +17,40 @@ import java.util.Date;
  * 通知用データ
  */
 public class NotificationData {
+
+    public enum IconCompressLevel {
+        /**
+         * 非圧縮
+         */
+        Raw {
+            @Override
+            byte[] compress(Bitmap image) {
+                return ImageUtil.encodePng(image);
+            }
+        },
+
+        /**
+         * 圧縮するが、余り劣化を行わない
+         */
+        HighQuality {
+            @Override
+            byte[] compress(Bitmap image) {
+                return ImageUtil.encodeJpeg(image, 90);
+            }
+        },
+
+        /**
+         * 圧縮し、可能な限りサイズを小さくする
+         */
+        LowQuality {
+            @Override
+            byte[] compress(Bitmap image) {
+                return ImageUtil.encodeJpeg(image, 60);
+            }
+        };
+
+        abstract byte[] compress(Bitmap image);
+    }
 
     /**
      * 通知アイコンの大きさ
@@ -28,6 +63,12 @@ public class NotificationData {
      * 適当な大きさよりも大きい場合は縮小される
      */
     Bitmap icon;
+
+    /**
+     * 圧縮レベル
+     */
+    IconCompressLevel iconCompressLevel = IconCompressLevel.Raw;
+
 
     /**
      * 表示メッセージ
@@ -139,6 +180,19 @@ public class NotificationData {
     }
 
     /**
+     * アイコンを指定する。
+     * <p/>
+     * アイコンは自動的にサムネイルサイズに縮小される。
+     *
+     * @param icon
+     * @param level
+     */
+    public void setIcon(Bitmap icon, IconCompressLevel level) {
+        this.icon = ImageUtil.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
+        this.iconCompressLevel = level;
+    }
+
+    /**
      * アイコンを指定する
      *
      * @param context
@@ -174,7 +228,7 @@ public class NotificationData {
         CommandProtocol.NotificationRequestPayload.Builder builder = CommandProtocol.NotificationRequestPayload.newBuilder();
         builder.setUniqueId(uniqueId);
         if (icon != null) {
-            builder.setIconFile(ByteString.copyFrom(ImageUtil.encodePng(icon)));
+            builder.setIconFile(ByteString.copyFrom(iconCompressLevel.compress(icon)));
         }
         builder.setMessage(message);
         builder.setDate(StringUtil.toString(date));

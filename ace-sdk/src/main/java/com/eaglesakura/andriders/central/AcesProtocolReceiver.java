@@ -32,6 +32,7 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
 import com.eaglesakura.android.geo.GeohashGroup;
+import com.eaglesakura.io.IOUtil;
 import com.eaglesakura.util.LogUtil;
 import com.google.protobuf.ByteString;
 
@@ -517,6 +518,16 @@ public class AcesProtocolReceiver {
      * @param masterbuffer 受信したバッファ
      */
     public synchronized void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
+        {
+            final int beforeSize = masterbuffer.length;
+            masterbuffer = decompressMasterPayload(masterbuffer);
+
+            // サイズが変わっていたら、圧縮率を表示する
+            if (beforeSize != masterbuffer.length) {
+                LogUtil.log("decompress gzip(%d bytes) -> raw(%d bytes) %.2f compress", beforeSize, masterbuffer.length, (float) beforeSize / (float) masterbuffer.length);
+            }
+        }
+
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
         final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
 
@@ -661,5 +672,46 @@ public class AcesProtocolReceiver {
          * @param master すべてのデータを含んだペイロード
          */
         void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, MasterPayload master);
+    }
+
+    /**
+     * MasterPayloadを圧縮する
+     * <p/>
+     * 基本的にはgzipを用いる。
+     *
+     * @param buffer
+     * @return
+     */
+    public static byte[] compressMasterPayload(byte[] buffer) {
+        if (buffer.length > 1024) {
+            // ある程度データが大きくないと非効率的である
+            byte[] resultBuffer = IOUtil.compressGzip(buffer);
+            // データを比較し、もし圧縮率が高いようだったら圧縮した方を送信する
+            if (resultBuffer.length < buffer.length) {
+                LogUtil.log("compress raw(%d bytes) -> gzip(%d bytes) %.2f compress", buffer.length, resultBuffer.length, (float) resultBuffer.length / (float) buffer.length);
+                return resultBuffer;
+            } else {
+                LogUtil.log("no-compress raw(%d bytes) -> gzip(%d bytes) %.2f compress", buffer.length, resultBuffer.length, (float) resultBuffer.length / (float) buffer.length);
+                return buffer;
+            }
+        } else {
+            return buffer;
+        }
+
+//        return IOUtil.compressGzip(buffer);
+    }
+
+    /**
+     * MasterPayloadを元の状態に戻す。
+     *
+     * @param buffer
+     * @return
+     */
+    public static byte[] decompressMasterPayload(byte[] buffer) {
+        if (IOUtil.isGzip(buffer)) {
+            return IOUtil.decompressGzipOrNull(buffer);
+        } else {
+            return buffer;
+        }
     }
 }

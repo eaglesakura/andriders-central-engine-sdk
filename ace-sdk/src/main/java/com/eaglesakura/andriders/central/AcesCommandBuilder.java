@@ -138,6 +138,9 @@ public class AcesCommandBuilder {
         }
         masterPayload = masterBuilder.build().toByteArray();
 
+        // compress
+        masterPayload = AcesProtocolReceiver.compressMasterPayload(masterPayload);
+
         return this;
     }
 
