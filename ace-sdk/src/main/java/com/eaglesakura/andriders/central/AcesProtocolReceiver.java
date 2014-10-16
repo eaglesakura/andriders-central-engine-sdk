@@ -31,6 +31,7 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
+import com.eaglesakura.android.geo.Geohash;
 import com.eaglesakura.android.geo.GeohashGroup;
 import com.eaglesakura.io.IOUtil;
 import com.eaglesakura.util.LogUtil;
@@ -116,6 +117,11 @@ public class AcesProtocolReceiver {
     private GeoProtocol.GeoPayload beforeHashGeo;
 
     /**
+     * ロックオブジェクト
+     */
+    private final Object lock = new Object();
+
+    /**
      * データ取得クラスを構築する
      *
      * @param context
@@ -190,6 +196,37 @@ public class AcesProtocolReceiver {
      */
     public GeoProtocol.GeoPayload getLastReceivedGeo() {
         return lastReceivedGeo;
+    }
+
+    /**
+     * 現在自分がいる座標のジオハッシュを取得する
+     *
+     * @return
+     */
+    public String getCurrentGeohash() {
+        synchronized (lock) {
+            if (lastReceivedGeo != null) {
+                return geoGroup.getCenterGeohash();
+            } else {
+                return null;
+            }
+        }
+    }
+
+    /**
+     * 直前に所屬していたジオハッシュを取得する
+     *
+     * @return
+     */
+    public String getBeforeGeohash() {
+        synchronized (lock) {
+            if (beforeHashGeo == null) {
+                return null;
+            }
+
+            GeoProtocol.GeoPoint location = beforeHashGeo.getLocation();
+            return Geohash.encode(location.getLatitude(), location.getLongitude()).substring(0, geoGroup.getGeohashLength());
+        }
     }
 
     /**
@@ -485,27 +522,42 @@ public class AcesProtocolReceiver {
      * @throws Exception
      */
     protected void handleGeoStatus(MasterPayload master) throws Exception {
-        GeoProtocol.GeoPayload oldGeoStatus = lastReceivedGeo;
-        GeoProtocol.GeoPayload newGeoStatus = master.getGeoStatus();
+        final GeoProtocol.GeoPayload oldGeoStatus;
+        final GeoProtocol.GeoPayload newGeoStatus;
+        final GeoProtocol.GeoPoint newLocation;
+        final String oldGeohash;
+        final boolean updatedGeohash;
 
-        // 座標を上書き
-        lastReceivedGeo = newGeoStatus;
+        // ジオハッシュ処理はロック処理を行う
+        synchronized (lock) {
+            oldGeoStatus = lastReceivedGeo;
+            newGeoStatus = master.getGeoStatus();
 
+            // 座標を上書き
+            lastReceivedGeo = newGeoStatus;
+
+            // ジオハッシュを更新
+            newLocation = newGeoStatus.getLocation();
+            oldGeohash = geoGroup.getCenterGeohash();
+            updatedGeohash = geoGroup.updateLocation(newLocation.getLatitude(), newLocation.getLongitude());
+
+            if (updatedGeohash) {
+                // ジオハッシュ更新処理
+                LogUtil.log("geohash moved old(%s) -> new(%s)", oldGeohash, geoGroup.getCenterGeohash());
+                // ジオハッシュが更新されたら、前回の座標を保存する
+                beforeHashGeo = oldGeoStatus;
+
+            }
+        }
+
+        // オブジェクトにハンドリング
         // まずは受け取ったことを通知
         for (CentralDataHandler handler : centralHandlers) {
             handler.onGeoStatusReceived(this, master, newGeoStatus);
         }
 
-        // ジオハッシュを更新
-        GeoProtocol.GeoPoint location = newGeoStatus.getLocation();
-        String oldGeohash = geoGroup.getCenterGeohash();
-        if (geoGroup.updateLocation(location.getLatitude(), location.getLongitude())) {
-            LogUtil.log("geohash moved old(%s) -> new(%s)", oldGeohash, geoGroup.getCenterGeohash());
-
-            // ジオハッシュが更新されたら、前回の座標を保存する
-            beforeHashGeo = oldGeoStatus;
-
-            // 通知する
+        if (updatedGeohash) {
+            // ジオハッシュ通知
             for (CentralDataHandler handler : centralHandlers) {
                 handler.onGeohashUpdated(this, master, oldGeoStatus, newGeoStatus);
             }
