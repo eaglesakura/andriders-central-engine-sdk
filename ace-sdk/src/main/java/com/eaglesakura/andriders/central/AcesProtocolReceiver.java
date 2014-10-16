@@ -519,13 +519,7 @@ public class AcesProtocolReceiver {
      */
     public synchronized void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         {
-            final int beforeSize = masterbuffer.length;
             masterbuffer = decompressMasterPayload(masterbuffer);
-
-            // サイズが変わっていたら、圧縮率を表示する
-            if (beforeSize != masterbuffer.length) {
-                LogUtil.log("decompress gzip(%d bytes) -> raw(%d bytes) %.2f compress", beforeSize, masterbuffer.length, (float) beforeSize / (float) masterbuffer.length);
-            }
         }
 
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
@@ -709,7 +703,13 @@ public class AcesProtocolReceiver {
      */
     public static byte[] decompressMasterPayload(byte[] buffer) {
         if (IOUtil.isGzip(buffer)) {
-            return IOUtil.decompressGzipOrNull(buffer);
+            byte[] resultBuffer = IOUtil.decompressGzipOrNull(buffer);
+            if (resultBuffer == null) {
+                return buffer;
+            }
+
+            LogUtil.log("decompress gzip(%d bytes) -> raw(%d bytes) %.2f compress", buffer.length, resultBuffer.length, (float) buffer.length / (float) resultBuffer.length);
+            return resultBuffer;
         } else {
             return buffer;
         }
