@@ -112,6 +112,11 @@ public class AcesProtocolReceiver {
     private GeoProtocol.GeoPayload lastReceivedGeo;
 
     /**
+     * ジオハッシュの更新回数
+     */
+    private int geohashUpdatedCount;
+
+    /**
      * 古いジオハッシュで最後に受け取った位置情報
      */
     private GeoProtocol.GeoPayload beforeHashGeo;
@@ -211,6 +216,15 @@ public class AcesProtocolReceiver {
                 return null;
             }
         }
+    }
+
+    /**
+     * ジオハッシュ更新回数を取得する
+     *
+     * @return
+     */
+    public int getGeohashUpdatedCount() {
+        return geohashUpdatedCount;
     }
 
     /**
@@ -547,6 +561,7 @@ public class AcesProtocolReceiver {
                 // ジオハッシュが更新されたら、前回の座標を保存する
                 beforeHashGeo = oldGeoStatus;
 
+                ++geohashUpdatedCount;
             }
         }
 

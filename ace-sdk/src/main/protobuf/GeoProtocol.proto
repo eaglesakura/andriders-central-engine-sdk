@@ -19,4 +19,7 @@ message GeoPoint {
 message GeoPayload {
     // 現在のGPS座標
 	required GeoPoint location = 1;
+
+	// 打刻した時刻
+	required string date = 2;
 }

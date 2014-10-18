@@ -724,6 +724,33 @@ public final class GeoProtocol {
      * </pre>
      */
     com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
+
+    // required string date = 2;
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * 打刻した時刻
+     * </pre>
+     */
+    boolean hasDate();
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * 打刻した時刻
+     * </pre>
+     */
+    java.lang.String getDate();
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * 打刻した時刻
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getDateBytes();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.GeoPayload}
@@ -791,6 +818,11 @@ public final class GeoProtocol {
                 location_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              date_ = input.readBytes();
               break;
             }
           }
@@ -867,8 +899,64 @@ public final class GeoProtocol {
       return location_;
     }
 
+    // required string date = 2;
+    public static final int DATE_FIELD_NUMBER = 2;
+    private java.lang.Object date_;
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * 打刻した時刻
+     * </pre>
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * 打刻した時刻
+     * </pre>
+     */
+    public java.lang.String getDate() {
+      java.lang.Object ref = date_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          date_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * 打刻した時刻
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getDateBytes() {
+      java.lang.Object ref = date_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        date_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+      date_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -876,6 +964,10 @@ public final class GeoProtocol {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasLocation()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDate()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -893,6 +985,9 @@ public final class GeoProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, location_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDateBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -905,6 +1000,10 @@ public final class GeoProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, location_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDateBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1033,6 +1132,8 @@ public final class GeoProtocol {
           locationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        date_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1069,6 +1170,10 @@ public final class GeoProtocol {
         } else {
           result.location_ = locationBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.date_ = date_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1088,12 +1193,21 @@ public final class GeoProtocol {
         if (other.hasLocation()) {
           mergeLocation(other.getLocation());
         }
+        if (other.hasDate()) {
+          bitField0_ |= 0x00000002;
+          date_ = other.date_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasLocation()) {
+          
+          return false;
+        }
+        if (!hasDate()) {
           
           return false;
         }
@@ -1276,6 +1390,104 @@ public final class GeoProtocol {
         return locationBuilder_;
       }
 
+      // required string date = 2;
+      private java.lang.Object date_ = "";
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * 打刻した時刻
+       * </pre>
+       */
+      public boolean hasDate() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * 打刻した時刻
+       * </pre>
+       */
+      public java.lang.String getDate() {
+        java.lang.Object ref = date_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          date_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * 打刻した時刻
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getDateBytes() {
+        java.lang.Object ref = date_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          date_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * 打刻した時刻
+       * </pre>
+       */
+      public Builder setDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * 打刻した時刻
+       * </pre>
+       */
+      public Builder clearDate() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        date_ = getDefaultInstance().getDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * 打刻した時刻
+       * </pre>
+       */
+      public Builder setDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeoPayload)
     }
 
@@ -1309,9 +1521,9 @@ public final class GeoProtocol {
       "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\023Ac" +
       "esConstants.proto\"A\n\010GeoPoint\022\020\n\010latitud" +
       "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\022\020\n\010altitude\030\003" +
-      " \002(\001\"9\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031.e" +
-      "aglesakura_ace.GeoPointB$\n\"com.eaglesaku" +
-      "ra.andriders.protocol"
+      " \002(\001\"G\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031.e" +
+      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\tB$\n" +
+      "\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1329,7 +1541,7 @@ public final class GeoProtocol {
           internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_GeoPayload_descriptor,
-              new java.lang.String[] { "Location", });
+              new java.lang.String[] { "Location", "Date", });
           return null;
         }
       };
