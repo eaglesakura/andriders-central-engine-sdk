@@ -1,0 +1,32 @@
+package eaglesakura_ace;
+
+import "AcesConstants.proto";
+import "GeoProtocol.proto";
+import "SensorProtocol.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+/**
+ * メディア保存時点でのACE情報をメタデータとして出力する
+ * メディアファイル名.metaとして保存する
+ */
+message MediaMetaPayload {
+	// ペイロード作成日時
+	// "yyyyMMDD-hh:mm:ss.SS"で記述される
+	required string date = 1;
+
+	// ユーザーのGPS座標ステータス
+	optional GeoPayload geo = 2;
+
+	// ケイデンス情報
+	optional RawCadence cadence = 3;
+
+	// 心拍
+	optional RawHeartrate heartrate = 4;
+
+	// 直近の速度
+	optional RawSpeed speed = 5;
+
+	// キャプチャした地図画像ファイル
+	// 画質はエクスポート設定に従う
+	optional bytes mapImage = 6;
+}
