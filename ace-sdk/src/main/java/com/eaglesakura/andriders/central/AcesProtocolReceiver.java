@@ -122,6 +122,11 @@ public class AcesProtocolReceiver {
     private GeoProtocol.GeoPayload beforeHashGeo;
 
     /**
+     * ACEsの現在のステータス
+     */
+    private AcesProtocol.CentralStatus lastRceivedCentralStatus;
+
+    /**
      * ロックオブジェクト
      */
     private final Object lock = new Object();
@@ -165,6 +170,15 @@ public class AcesProtocolReceiver {
      */
     public void setCheckTargetPackage(boolean checkTargetPackage) {
         this.checkTargetPackage = checkTargetPackage;
+    }
+
+    /**
+     * 最後に受信した段階でのステータスを取得する
+     *
+     * @return
+     */
+    public AcesProtocol.CentralStatus getLastReceivedCentralStatus() {
+        return lastRceivedCentralStatus;
     }
 
     /**
@@ -585,9 +599,8 @@ public class AcesProtocolReceiver {
      * @param masterbuffer 受信したバッファ
      */
     public synchronized void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
-        {
-            masterbuffer = decompressMasterPayload(masterbuffer);
-        }
+        // バッファをデコードする
+        masterbuffer = decompressMasterPayload(masterbuffer);
 
         AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
         final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
@@ -612,6 +625,11 @@ public class AcesProtocolReceiver {
                     return;
                 }
             }
+        }
+
+        // centralのステータスを書き換える
+        if (master.hasCentralStatus()) {
+            lastRceivedCentralStatus = master.getCentralStatus();
         }
 
         // 位置情報を受け取った
@@ -720,19 +738,6 @@ public class AcesProtocolReceiver {
      */
     public void removeActivityEventHandler(ActivityEventHandler handler) {
         activityHandlers.remove(handler);
-    }
-
-    /**
-     * メインのステータス等のチェックを行う
-     */
-    public interface CentralDataListener {
-        /**
-         * マスターデータを受け取った
-         *
-         * @param buffer 受け取ったデータ
-         * @param master すべてのデータを含んだペイロード
-         */
-        void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, MasterPayload master);
     }
 
     /**

@@ -7,6 +7,7 @@ option java_package = "com.eaglesakura.andriders.protocol";
 
 /**
  * メディア保存時点でのACE情報をメタデータとして出力する
+ *
  * メディアファイル名.metaとして保存する
  */
 message MediaMetaPayload {
@@ -25,8 +26,4 @@ message MediaMetaPayload {
 
 	// 直近の速度
 	optional RawSpeed speed = 5;
-
-	// キャプチャした地図画像ファイル
-	// 画質はエクスポート設定に従う
-	optional bytes mapImage = 6;
 }

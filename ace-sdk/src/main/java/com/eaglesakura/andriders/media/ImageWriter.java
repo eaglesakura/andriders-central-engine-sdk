@@ -5,7 +5,12 @@ import android.media.ExifInterface;
 import android.os.Environment;
 
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.GeoProtocol;
+import com.eaglesakura.andriders.protocol.MediaMetaProtocol;
+import com.eaglesakura.andriders.protocol.SensorProtocol;
+import com.eaglesakura.google.spreadsheet.generic.StringField;
+import com.eaglesakura.util.StringUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,19 +24,9 @@ import java.util.Date;
 public class ImageWriter {
 
     /**
-     * 撮影時の心拍 bpm
+     * ACEのメタファイルの内容
      */
-    public static final String EXIF_ACES_HEARTRATE = "AcesHeartrate";
-
-    /**
-     * 撮影時のケイデンス rpm
-     */
-    public static final String EXIF_ACES_CADENCE = "AcesCadence";
-
-    /**
-     * 撮影時の速度 km/h
-     */
-    public static final String EXIF_ACES_SPEED_KMH = "AcesSpeedKmh";
+    public static final String METAFILE_EXT = ".mediameta";
 
     final Context context;
 
@@ -75,34 +70,52 @@ public class ImageWriter {
         return new File(Environment.getExternalStorageDirectory(), String.format("DCIM/ACE/Pictures/%s", formatter.format(imageDate)));
     }
 
+    public File getMediaMetaFileName() {
+        return new File(String.format("%s%s", imageFilePath.getAbsolutePath(), METAFILE_EXT));
+    }
+
     /**
-     * EXIF情報を上書きする
+     * メタ情報を書き出す
      *
      * @param receiver
      */
-    public void writeExif(AcesProtocolReceiver receiver) throws IOException {
-        ExifInterface exif = new ExifInterface(getImageFilePath().getAbsolutePath());
+    public void writeMediaMeta(AcesProtocolReceiver receiver) throws IOException {
 
-        // ケイデンス
-        if (receiver.getLastReceivedHeartrate() != null) {
-            int cadenceRpm = receiver.getLastReceivedCadence().getRpm();
-            exif.setAttribute(EXIF_ACES_CADENCE, String.valueOf(cadenceRpm));
+        final GeoProtocol.GeoPayload geo = receiver.getLastReceivedGeo();
+        final SensorProtocol.RawHeartrate heartrate = receiver.getLastReceivedHeartrate();
+        final SensorProtocol.RawSpeed speed = receiver.getLastReceivedSpeed();
+        final SensorProtocol.RawCadence cadence = receiver.getLastReceivedCadence();
+        final AcesProtocol.CentralStatus centralStatus = receiver.getLastReceivedCentralStatus();
+
+        if (centralStatus == null) {
+            // セントラルを取得できて無ければ何もしない
+            return;
         }
 
-        // 心拍
-        if (receiver.getLastReceivedHeartrate() != null) {
-            int heartrateBpm = receiver.getLastReceivedHeartrate().getBpm();
-            exif.setAttribute(EXIF_ACES_HEARTRATE, String.valueOf(heartrateBpm));
+        MediaMetaProtocol.MediaMetaPayload.Builder metaBuilder = MediaMetaProtocol.MediaMetaPayload.newBuilder();
+        metaBuilder.setDate(StringUtil.toString(new Date()));
+
+        if (geo != null) {
+            metaBuilder.setGeo(receiver.getLastReceivedGeo());
         }
 
-        // 速度
-        if (receiver.getLastReceivedSpeed() != null) {
-            float speedKmh = receiver.getLastReceivedSpeed().getSpeedKmPerHour();
-            exif.setAttribute(EXIF_ACES_SPEED_KMH, String.format("%.2f", speedKmh));
+        if (heartrate != null && centralStatus.getConnectedHeartrate()) {
+            metaBuilder.setHeartrate(heartrate);
         }
 
-        // 保存を行う
-        exif.saveAttributes();
+        if (cadence != null && centralStatus.getConnectedCadence()) {
+            metaBuilder.setCadence(cadence);
+        }
+
+        if (speed != null && centralStatus.getConnectedSpeed()) {
+            metaBuilder.setSpeed(speed);
+        }
+
+        // ファイルを書き出す
+        FileOutputStream os = new FileOutputStream(getMediaMetaFileName());
+        os.write(metaBuilder.build().toByteArray());
+        os.flush();
+        os.close();
     }
 
     /**
