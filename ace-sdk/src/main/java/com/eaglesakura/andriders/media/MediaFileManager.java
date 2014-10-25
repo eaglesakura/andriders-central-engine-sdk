@@ -21,7 +21,7 @@ import java.util.Date;
 /**
  * 画像書き込みを行う
  */
-public class ImageWriter {
+public class MediaFileManager {
 
     /**
      * ACEのメタファイルの内容
@@ -42,8 +42,16 @@ public class ImageWriter {
      */
     GeoProtocol.GeoPayload loc;
 
-    public ImageWriter(Context context) {
+    public MediaFileManager(Context context) {
         this.context = context.getApplicationContext();
+    }
+
+    public MediaFileManager(Context context, File file) {
+        if (!file.isFile()) {
+            throw new IllegalArgumentException("!= File");
+        }
+        this.context = context.getApplicationContext();
+        this.imageFilePath = file;
     }
 
     public Date getImageDate() {
