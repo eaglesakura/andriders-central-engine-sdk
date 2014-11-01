@@ -74,8 +74,7 @@ public class MediaFileManager {
      * @return
      */
     public File getImageDirectory() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        return new File(Environment.getExternalStorageDirectory(), String.format("DCIM/ACE/Pictures/%s", formatter.format(imageDate)));
+        return com.eaglesakura.andriders.Environment.getDateMediaDirectory(context, imageDate);
     }
 
     public File getMediaMetaFileName() {

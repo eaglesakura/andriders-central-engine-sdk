@@ -42,7 +42,7 @@ public class Environment {
         if (!appPackageName.equals(APPLICATION_PACKAGE_NAME)) {
             return new File(directory, "app/" + appPackageName);
         } else {
-            return new File(directory, "main");
+            return new File(directory, "central");
         }
     }
 
