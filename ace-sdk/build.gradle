@@ -29,7 +29,6 @@ dependencies {
     compile "com.googlecode.android-query:android-query:0.25.+"
     compile "com.google.protobuf:protobuf-java:2.5.+"
 
-//    compile "com.eaglesakura:eglibrary-android-java-core:0.1.20"
     compile project(':eglibrary-android-java-core')
     compile project(':eglibrary-android-java-wrapper')
 }
