@@ -35,13 +35,13 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 21
+    buildToolsVersion '21.1.1'
 
     defaultConfig {
         applicationId "com.eaglesakura.andriders.sdk"
         minSdkVersion 15
-        targetSdkVersion 15
+        targetSdkVersion 21
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"0.2.0\""
