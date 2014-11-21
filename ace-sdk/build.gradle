@@ -1,33 +1,8 @@
-buildscript {
-    repositories {
-        mavenCentral()
-
-        maven {
-            url "http://eaglesakura.github.io/maven/"
-        }
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.+'
-    }
-}
-
-repositories {
-    mavenCentral()
-    maven {
-        url "http://eaglesakura.github.io/maven/"
-    }
-}
-
 apply plugin: 'com.android.library'
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile "com.googlecode.android-query:android-query:0.25.+"
+    compile "com.googlecode.android-query:android-query:+"
     compile "com.google.protobuf:protobuf-java:2.5.+"
 
     compile project(':eglibrary-android-java-core')
