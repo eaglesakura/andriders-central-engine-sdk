@@ -10,6 +10,12 @@ import java.util.Date;
  * 環境を指定する
  */
 public class Environment {
+
+    /**
+     * ACE Extension Packのファイル拡張子
+     */
+    public static final String ACE_EXTENTION_PACK_FILE_EXT = ".aep";
+
     private static String APPLICATION_PACKAGE_NAME = "com.eaglesakura.andriders";
 
     /**
