@@ -13,20 +13,20 @@ message RawSessionPointPayload {
     optional RawCadence cadence = 1;
 
     // ハートレート
-    optional RawHeartrate heartrate = 2;
+    optional RawHeartrate heartrate = 3;
 
     // 速度
-    optional RawSpeed speed = 3;
+    optional RawSpeed speed = 4;
 
     // GPS座標
-    optional GeoPoint location = 4;
+    optional GeoPoint location = 5;
 
     // ログの打刻時間
     required string date = 100;
 
     // バッテリーの残量（％）
-    required int32 batteryLevel = 101;
+    optional int32 batteryLevel = 101;
 
     // 充電中の場合true
-    required bool batteryCharging = 102;
+    optional bool batteryCharging = 102;
 }

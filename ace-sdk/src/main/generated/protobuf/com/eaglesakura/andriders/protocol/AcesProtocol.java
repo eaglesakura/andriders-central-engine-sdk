@@ -675,6 +675,33 @@ public final class AcesProtocol {
   public interface CentralStatusOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
+    // required string sessionId = 5;
+    /**
+     * <code>required string sessionId = 5;</code>
+     *
+     * <pre>
+     * Serviceを起動する毎に付与されるセッションID
+     * </pre>
+     */
+    boolean hasSessionId();
+    /**
+     * <code>required string sessionId = 5;</code>
+     *
+     * <pre>
+     * Serviceを起動する毎に付与されるセッションID
+     * </pre>
+     */
+    java.lang.String getSessionId();
+    /**
+     * <code>required string sessionId = 5;</code>
+     *
+     * <pre>
+     * Serviceを起動する毎に付与されるセッションID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSessionIdBytes();
+
     // required bool connectedHeartrate = 1;
     /**
      * <code>required bool connectedHeartrate = 1;</code>
@@ -748,6 +775,60 @@ public final class AcesProtocol {
      * </pre>
      */
     boolean getConnectedTwitter();
+
+    // required bool connectedGps = 6;
+    /**
+     * <code>required bool connectedGps = 6;</code>
+     *
+     * <pre>
+     * GPSがONになっていたらtrue
+     * </pre>
+     */
+    boolean hasConnectedGps();
+    /**
+     * <code>required bool connectedGps = 6;</code>
+     *
+     * <pre>
+     * GPSがONになっていたらtrue
+     * </pre>
+     */
+    boolean getConnectedGps();
+
+    // optional float distanceTodayKm = 7;
+    /**
+     * <code>optional float distanceTodayKm = 7;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    boolean hasDistanceTodayKm();
+    /**
+     * <code>optional float distanceTodayKm = 7;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    float getDistanceTodayKm();
+
+    // optional float distanceSessionKm = 8;
+    /**
+     * <code>optional float distanceSessionKm = 8;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    boolean hasDistanceSessionKm();
+    /**
+     * <code>optional float distanceSessionKm = 8;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    float getDistanceSessionKm();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.CentralStatus}
@@ -806,23 +887,43 @@ public final class AcesProtocol {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               connectedHeartrate_ = input.readBool();
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               connectedCadence_ = input.readBool();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               connectedSpeed_ = input.readBool();
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               connectedTwitter_ = input.readBool();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000001;
+              sessionId_ = input.readBytes();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              connectedGps_ = input.readBool();
+              break;
+            }
+            case 61: {
+              bitField0_ |= 0x00000040;
+              distanceTodayKm_ = input.readFloat();
+              break;
+            }
+            case 69: {
+              bitField0_ |= 0x00000080;
+              distanceSessionKm_ = input.readFloat();
               break;
             }
           }
@@ -865,6 +966,61 @@ public final class AcesProtocol {
     }
 
     private int bitField0_;
+    // required string sessionId = 5;
+    public static final int SESSIONID_FIELD_NUMBER = 5;
+    private java.lang.Object sessionId_;
+    /**
+     * <code>required string sessionId = 5;</code>
+     *
+     * <pre>
+     * Serviceを起動する毎に付与されるセッションID
+     * </pre>
+     */
+    public boolean hasSessionId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string sessionId = 5;</code>
+     *
+     * <pre>
+     * Serviceを起動する毎に付与されるセッションID
+     * </pre>
+     */
+    public java.lang.String getSessionId() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sessionId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string sessionId = 5;</code>
+     *
+     * <pre>
+     * Serviceを起動する毎に付与されるセッションID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSessionIdBytes() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // required bool connectedHeartrate = 1;
     public static final int CONNECTEDHEARTRATE_FIELD_NUMBER = 1;
     private boolean connectedHeartrate_;
@@ -876,7 +1032,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasConnectedHeartrate() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required bool connectedHeartrate = 1;</code>
@@ -900,7 +1056,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasConnectedCadence() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required bool connectedCadence = 2;</code>
@@ -925,7 +1081,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasConnectedSpeed() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>required bool connectedSpeed = 3;</code>
@@ -950,7 +1106,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasConnectedTwitter() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>required bool connectedTwitter = 4;</code>
@@ -963,17 +1119,97 @@ public final class AcesProtocol {
       return connectedTwitter_;
     }
 
+    // required bool connectedGps = 6;
+    public static final int CONNECTEDGPS_FIELD_NUMBER = 6;
+    private boolean connectedGps_;
+    /**
+     * <code>required bool connectedGps = 6;</code>
+     *
+     * <pre>
+     * GPSがONになっていたらtrue
+     * </pre>
+     */
+    public boolean hasConnectedGps() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required bool connectedGps = 6;</code>
+     *
+     * <pre>
+     * GPSがONになっていたらtrue
+     * </pre>
+     */
+    public boolean getConnectedGps() {
+      return connectedGps_;
+    }
+
+    // optional float distanceTodayKm = 7;
+    public static final int DISTANCETODAYKM_FIELD_NUMBER = 7;
+    private float distanceTodayKm_;
+    /**
+     * <code>optional float distanceTodayKm = 7;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    public boolean hasDistanceTodayKm() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional float distanceTodayKm = 7;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    public float getDistanceTodayKm() {
+      return distanceTodayKm_;
+    }
+
+    // optional float distanceSessionKm = 8;
+    public static final int DISTANCESESSIONKM_FIELD_NUMBER = 8;
+    private float distanceSessionKm_;
+    /**
+     * <code>optional float distanceSessionKm = 8;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    public boolean hasDistanceSessionKm() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional float distanceSessionKm = 8;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    public float getDistanceSessionKm() {
+      return distanceSessionKm_;
+    }
+
     private void initFields() {
+      sessionId_ = "";
       connectedHeartrate_ = false;
       connectedCadence_ = false;
       connectedSpeed_ = false;
       connectedTwitter_ = false;
+      connectedGps_ = false;
+      distanceTodayKm_ = 0F;
+      distanceSessionKm_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasSessionId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasConnectedHeartrate()) {
         memoizedIsInitialized = 0;
         return false;
@@ -990,6 +1226,10 @@ public final class AcesProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasConnectedGps()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -997,17 +1237,29 @@ public final class AcesProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBool(1, connectedHeartrate_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBool(2, connectedCadence_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBool(3, connectedSpeed_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBool(4, connectedTwitter_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(5, getSessionIdBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBool(6, connectedGps_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeFloat(7, distanceTodayKm_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeFloat(8, distanceSessionKm_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1018,21 +1270,37 @@ public final class AcesProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, connectedHeartrate_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, connectedCadence_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(3, connectedSpeed_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(4, connectedTwitter_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getSessionIdBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, connectedGps_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(7, distanceTodayKm_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(8, distanceSessionKm_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1155,14 +1423,22 @@ public final class AcesProtocol {
 
       public Builder clear() {
         super.clear();
-        connectedHeartrate_ = false;
+        sessionId_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        connectedCadence_ = false;
+        connectedHeartrate_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
-        connectedSpeed_ = false;
+        connectedCadence_ = false;
         bitField0_ = (bitField0_ & ~0x00000004);
-        connectedTwitter_ = false;
+        connectedSpeed_ = false;
         bitField0_ = (bitField0_ & ~0x00000008);
+        connectedTwitter_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        connectedGps_ = false;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        distanceTodayKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        distanceSessionKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -1194,19 +1470,35 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.connectedHeartrate_ = connectedHeartrate_;
+        result.sessionId_ = sessionId_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.connectedCadence_ = connectedCadence_;
+        result.connectedHeartrate_ = connectedHeartrate_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.connectedSpeed_ = connectedSpeed_;
+        result.connectedCadence_ = connectedCadence_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
+        result.connectedSpeed_ = connectedSpeed_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.connectedTwitter_ = connectedTwitter_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.connectedGps_ = connectedGps_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.distanceTodayKm_ = distanceTodayKm_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.distanceSessionKm_ = distanceSessionKm_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1223,6 +1515,11 @@ public final class AcesProtocol {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus other) {
         if (other == com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance()) return this;
+        if (other.hasSessionId()) {
+          bitField0_ |= 0x00000001;
+          sessionId_ = other.sessionId_;
+          onChanged();
+        }
         if (other.hasConnectedHeartrate()) {
           setConnectedHeartrate(other.getConnectedHeartrate());
         }
@@ -1235,11 +1532,24 @@ public final class AcesProtocol {
         if (other.hasConnectedTwitter()) {
           setConnectedTwitter(other.getConnectedTwitter());
         }
+        if (other.hasConnectedGps()) {
+          setConnectedGps(other.getConnectedGps());
+        }
+        if (other.hasDistanceTodayKm()) {
+          setDistanceTodayKm(other.getDistanceTodayKm());
+        }
+        if (other.hasDistanceSessionKm()) {
+          setDistanceSessionKm(other.getDistanceSessionKm());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasSessionId()) {
+          
+          return false;
+        }
         if (!hasConnectedHeartrate()) {
           
           return false;
@@ -1253,6 +1563,10 @@ public final class AcesProtocol {
           return false;
         }
         if (!hasConnectedTwitter()) {
+          
+          return false;
+        }
+        if (!hasConnectedGps()) {
           
           return false;
         }
@@ -1278,6 +1592,104 @@ public final class AcesProtocol {
       }
       private int bitField0_;
 
+      // required string sessionId = 5;
+      private java.lang.Object sessionId_ = "";
+      /**
+       * <code>required string sessionId = 5;</code>
+       *
+       * <pre>
+       * Serviceを起動する毎に付与されるセッションID
+       * </pre>
+       */
+      public boolean hasSessionId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string sessionId = 5;</code>
+       *
+       * <pre>
+       * Serviceを起動する毎に付与されるセッションID
+       * </pre>
+       */
+      public java.lang.String getSessionId() {
+        java.lang.Object ref = sessionId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          sessionId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string sessionId = 5;</code>
+       *
+       * <pre>
+       * Serviceを起動する毎に付与されるセッションID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSessionIdBytes() {
+        java.lang.Object ref = sessionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string sessionId = 5;</code>
+       *
+       * <pre>
+       * Serviceを起動する毎に付与されるセッションID
+       * </pre>
+       */
+      public Builder setSessionId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string sessionId = 5;</code>
+       *
+       * <pre>
+       * Serviceを起動する毎に付与されるセッションID
+       * </pre>
+       */
+      public Builder clearSessionId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sessionId_ = getDefaultInstance().getSessionId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string sessionId = 5;</code>
+       *
+       * <pre>
+       * Serviceを起動する毎に付与されるセッションID
+       * </pre>
+       */
+      public Builder setSessionIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+
       // required bool connectedHeartrate = 1;
       private boolean connectedHeartrate_ ;
       /**
@@ -1288,7 +1700,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasConnectedHeartrate() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required bool connectedHeartrate = 1;</code>
@@ -1308,7 +1720,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder setConnectedHeartrate(boolean value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         connectedHeartrate_ = value;
         onChanged();
         return this;
@@ -1321,7 +1733,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearConnectedHeartrate() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         connectedHeartrate_ = false;
         onChanged();
         return this;
@@ -1337,7 +1749,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasConnectedCadence() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required bool connectedCadence = 2;</code>
@@ -1357,7 +1769,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder setConnectedCadence(boolean value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         connectedCadence_ = value;
         onChanged();
         return this;
@@ -1370,7 +1782,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearConnectedCadence() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         connectedCadence_ = false;
         onChanged();
         return this;
@@ -1387,7 +1799,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasConnectedSpeed() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>required bool connectedSpeed = 3;</code>
@@ -1409,7 +1821,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder setConnectedSpeed(boolean value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         connectedSpeed_ = value;
         onChanged();
         return this;
@@ -1423,7 +1835,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearConnectedSpeed() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         connectedSpeed_ = false;
         onChanged();
         return this;
@@ -1439,7 +1851,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasConnectedTwitter() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>required bool connectedTwitter = 4;</code>
@@ -1459,7 +1871,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder setConnectedTwitter(boolean value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         connectedTwitter_ = value;
         onChanged();
         return this;
@@ -1472,8 +1884,155 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearConnectedTwitter() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         connectedTwitter_ = false;
+        onChanged();
+        return this;
+      }
+
+      // required bool connectedGps = 6;
+      private boolean connectedGps_ ;
+      /**
+       * <code>required bool connectedGps = 6;</code>
+       *
+       * <pre>
+       * GPSがONになっていたらtrue
+       * </pre>
+       */
+      public boolean hasConnectedGps() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required bool connectedGps = 6;</code>
+       *
+       * <pre>
+       * GPSがONになっていたらtrue
+       * </pre>
+       */
+      public boolean getConnectedGps() {
+        return connectedGps_;
+      }
+      /**
+       * <code>required bool connectedGps = 6;</code>
+       *
+       * <pre>
+       * GPSがONになっていたらtrue
+       * </pre>
+       */
+      public Builder setConnectedGps(boolean value) {
+        bitField0_ |= 0x00000020;
+        connectedGps_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool connectedGps = 6;</code>
+       *
+       * <pre>
+       * GPSがONになっていたらtrue
+       * </pre>
+       */
+      public Builder clearConnectedGps() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        connectedGps_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional float distanceTodayKm = 7;
+      private float distanceTodayKm_ ;
+      /**
+       * <code>optional float distanceTodayKm = 7;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public boolean hasDistanceTodayKm() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional float distanceTodayKm = 7;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public float getDistanceTodayKm() {
+        return distanceTodayKm_;
+      }
+      /**
+       * <code>optional float distanceTodayKm = 7;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public Builder setDistanceTodayKm(float value) {
+        bitField0_ |= 0x00000040;
+        distanceTodayKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float distanceTodayKm = 7;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public Builder clearDistanceTodayKm() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        distanceTodayKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float distanceSessionKm = 8;
+      private float distanceSessionKm_ ;
+      /**
+       * <code>optional float distanceSessionKm = 8;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public boolean hasDistanceSessionKm() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional float distanceSessionKm = 8;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public float getDistanceSessionKm() {
+        return distanceSessionKm_;
+      }
+      /**
+       * <code>optional float distanceSessionKm = 8;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public Builder setDistanceSessionKm(float value) {
+        bitField0_ |= 0x00000080;
+        distanceSessionKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float distanceSessionKm = 8;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public Builder clearDistanceSessionKm() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        distanceSessionKm_ = 0F;
         onChanged();
         return this;
       }
@@ -4715,20 +5274,23 @@ public final class AcesProtocol {
       "to\032\024SensorProtocol.proto\032\025CommandProtoco" +
       "l.proto\032\021GeoProtocol.proto\">\n\013VersionInf" +
       "o\022\027\n\017protocolVersion\030\001 \002(\003\022\026\n\016appVersion" +
-      "Name\030\002 \002(\t\"w\n\rCentralStatus\022\032\n\022connected" +
-      "Heartrate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(" +
-      "\010\022\026\n\016connectedSpeed\030\003 \002(\010\022\030\n\020connectedTw" +
-      "itter\030\004 \002(\010\"\371\002\n\rMasterPayload\022\020\n\010uniqueI" +
-      "d\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t\022\025\n\rsenderPa",
-      "ckage\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rce" +
-      "ntralStatus\030\001 \001(\0132\036.eaglesakura_ace.Cent" +
-      "ralStatus\022.\n\tgeoStatus\030\010 \001(\0132\033.eaglesaku" +
-      "ra_ace.GeoPayload\0226\n\016sensorPayloads\030\002 \003(" +
-      "\0132\036.eaglesakura_ace.SensorPayload\0228\n\017com" +
-      "mandPayloads\030\005 \003(\0132\037.eaglesakura_ace.Com" +
-      "mandPayload\022:\n\020activityPayloads\030\t \003(\0132 ." +
-      "eaglesakura_ace.ActivityPayloadB$\n\"com.e" +
-      "aglesakura.andriders.protocol"
+      "Name\030\002 \002(\t\"\324\001\n\rCentralStatus\022\021\n\tsessionI" +
+      "d\030\005 \002(\t\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020c" +
+      "onnectedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030" +
+      "\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014conne" +
+      "ctedGps\030\006 \002(\010\022\027\n\017distanceTodayKm\030\007 \001(\002\022\031",
+      "\n\021distanceSessionKm\030\010 \001(\002\"\371\002\n\rMasterPayl" +
+      "oad\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002" +
+      "(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPacka" +
+      "ge\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagles" +
+      "akura_ace.CentralStatus\022.\n\tgeoStatus\030\010 \001" +
+      "(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016senso" +
+      "rPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sensor" +
+      "Payload\0228\n\017commandPayloads\030\005 \003(\0132\037.eagle" +
+      "sakura_ace.CommandPayload\022:\n\020activityPay" +
+      "loads\030\t \003(\0132 .eaglesakura_ace.ActivityPa",
+      "yloadB$\n\"com.eaglesakura.andriders.proto" +
+      "col"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4746,7 +5308,7 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
-              new java.lang.String[] { "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", });
+              new java.lang.String[] { "SessionId", "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", "ConnectedGps", "DistanceTodayKm", "DistanceSessionKm", });
           internal_static_eaglesakura_ace_MasterPayload_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new

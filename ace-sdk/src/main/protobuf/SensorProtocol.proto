@@ -30,6 +30,9 @@ message RawCadence {
 
 	// ケイデンスゾーン
 	required CadenceZone cadenceZone = 101;
+
+    // センサーへ接続してからの合計回転数（クランク）
+	required int32 crankRevolution = 102;
 }
 
 // 心拍連携データ
@@ -65,6 +68,9 @@ message RawSpeed {
 	// ホイールの回転数
 	// S&Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
 	optional float wheelRpm = 2;
+
+    // センサーへ接続してからの合計回転数（ホイール）
+	optional int32 wheelRevolution = 103;
 
 	// 今までの最高速度
 	optional float recordKmPerHour = 10;

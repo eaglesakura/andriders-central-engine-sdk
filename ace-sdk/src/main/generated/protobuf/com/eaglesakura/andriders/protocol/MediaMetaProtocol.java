@@ -151,6 +151,7 @@ public final class MediaMetaProtocol {
    * <pre>
    **
    * メディア保存時点でのACE情報をメタデータとして出力する
+   *
    * メディアファイル名.metaとして保存する
    * </pre>
    */
@@ -668,6 +669,7 @@ public final class MediaMetaProtocol {
      * <pre>
      **
      * メディア保存時点でのACE情報をメタデータとして出力する
+     *
      * メディアファイル名.metaとして保存する
      * </pre>
      */

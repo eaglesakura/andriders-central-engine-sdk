@@ -37,9 +37,9 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder();
 
-    // optional .eaglesakura_ace.RawHeartrate heartrate = 2;
+    // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
      *
      * <pre>
      * ハートレート
@@ -47,7 +47,7 @@ public final class LoggerProtocol {
      */
     boolean hasHeartrate();
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
      *
      * <pre>
      * ハートレート
@@ -55,7 +55,7 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate();
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
      *
      * <pre>
      * ハートレート
@@ -63,9 +63,9 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder();
 
-    // optional .eaglesakura_ace.RawSpeed speed = 3;
+    // optional .eaglesakura_ace.RawSpeed speed = 4;
     /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
      *
      * <pre>
      * 速度
@@ -73,7 +73,7 @@ public final class LoggerProtocol {
      */
     boolean hasSpeed();
     /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
      *
      * <pre>
      * 速度
@@ -81,7 +81,7 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed();
     /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
      *
      * <pre>
      * 速度
@@ -89,9 +89,9 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder();
 
-    // optional .eaglesakura_ace.GeoPoint location = 4;
+    // optional .eaglesakura_ace.GeoPoint location = 5;
     /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
      *
      * <pre>
      * GPS座標
@@ -99,7 +99,7 @@ public final class LoggerProtocol {
      */
     boolean hasLocation();
     /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
      *
      * <pre>
      * GPS座標
@@ -107,7 +107,7 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation();
     /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
      *
      * <pre>
      * GPS座標
@@ -142,9 +142,9 @@ public final class LoggerProtocol {
     com.google.protobuf.ByteString
         getDateBytes();
 
-    // required int32 batteryLevel = 101;
+    // optional int32 batteryLevel = 101;
     /**
-     * <code>required int32 batteryLevel = 101;</code>
+     * <code>optional int32 batteryLevel = 101;</code>
      *
      * <pre>
      * バッテリーの残量（％）
@@ -152,7 +152,7 @@ public final class LoggerProtocol {
      */
     boolean hasBatteryLevel();
     /**
-     * <code>required int32 batteryLevel = 101;</code>
+     * <code>optional int32 batteryLevel = 101;</code>
      *
      * <pre>
      * バッテリーの残量（％）
@@ -160,9 +160,9 @@ public final class LoggerProtocol {
      */
     int getBatteryLevel();
 
-    // required bool batteryCharging = 102;
+    // optional bool batteryCharging = 102;
     /**
-     * <code>required bool batteryCharging = 102;</code>
+     * <code>optional bool batteryCharging = 102;</code>
      *
      * <pre>
      * 充電中の場合true
@@ -170,7 +170,7 @@ public final class LoggerProtocol {
      */
     boolean hasBatteryCharging();
     /**
-     * <code>required bool batteryCharging = 102;</code>
+     * <code>optional bool batteryCharging = 102;</code>
      *
      * <pre>
      * 充電中の場合true
@@ -247,7 +247,7 @@ public final class LoggerProtocol {
               bitField0_ |= 0x00000001;
               break;
             }
-            case 18: {
+            case 26: {
               com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = heartrate_.toBuilder();
@@ -260,7 +260,7 @@ public final class LoggerProtocol {
               bitField0_ |= 0x00000002;
               break;
             }
-            case 26: {
+            case 34: {
               com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = speed_.toBuilder();
@@ -273,7 +273,7 @@ public final class LoggerProtocol {
               bitField0_ |= 0x00000004;
               break;
             }
-            case 34: {
+            case 42: {
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder subBuilder = null;
               if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = location_.toBuilder();
@@ -375,11 +375,11 @@ public final class LoggerProtocol {
       return cadence_;
     }
 
-    // optional .eaglesakura_ace.RawHeartrate heartrate = 2;
-    public static final int HEARTRATE_FIELD_NUMBER = 2;
+    // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
+    public static final int HEARTRATE_FIELD_NUMBER = 3;
     private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate heartrate_;
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
      *
      * <pre>
      * ハートレート
@@ -389,7 +389,7 @@ public final class LoggerProtocol {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
      *
      * <pre>
      * ハートレート
@@ -399,7 +399,7 @@ public final class LoggerProtocol {
       return heartrate_;
     }
     /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
      *
      * <pre>
      * ハートレート
@@ -409,11 +409,11 @@ public final class LoggerProtocol {
       return heartrate_;
     }
 
-    // optional .eaglesakura_ace.RawSpeed speed = 3;
-    public static final int SPEED_FIELD_NUMBER = 3;
+    // optional .eaglesakura_ace.RawSpeed speed = 4;
+    public static final int SPEED_FIELD_NUMBER = 4;
     private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed speed_;
     /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
      *
      * <pre>
      * 速度
@@ -423,7 +423,7 @@ public final class LoggerProtocol {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
      *
      * <pre>
      * 速度
@@ -433,7 +433,7 @@ public final class LoggerProtocol {
       return speed_;
     }
     /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
      *
      * <pre>
      * 速度
@@ -443,11 +443,11 @@ public final class LoggerProtocol {
       return speed_;
     }
 
-    // optional .eaglesakura_ace.GeoPoint location = 4;
-    public static final int LOCATION_FIELD_NUMBER = 4;
+    // optional .eaglesakura_ace.GeoPoint location = 5;
+    public static final int LOCATION_FIELD_NUMBER = 5;
     private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_;
     /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
      *
      * <pre>
      * GPS座標
@@ -457,7 +457,7 @@ public final class LoggerProtocol {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
      *
      * <pre>
      * GPS座標
@@ -467,7 +467,7 @@ public final class LoggerProtocol {
       return location_;
     }
     /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
      *
      * <pre>
      * GPS座標
@@ -532,11 +532,11 @@ public final class LoggerProtocol {
       }
     }
 
-    // required int32 batteryLevel = 101;
+    // optional int32 batteryLevel = 101;
     public static final int BATTERYLEVEL_FIELD_NUMBER = 101;
     private int batteryLevel_;
     /**
-     * <code>required int32 batteryLevel = 101;</code>
+     * <code>optional int32 batteryLevel = 101;</code>
      *
      * <pre>
      * バッテリーの残量（％）
@@ -546,7 +546,7 @@ public final class LoggerProtocol {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required int32 batteryLevel = 101;</code>
+     * <code>optional int32 batteryLevel = 101;</code>
      *
      * <pre>
      * バッテリーの残量（％）
@@ -556,11 +556,11 @@ public final class LoggerProtocol {
       return batteryLevel_;
     }
 
-    // required bool batteryCharging = 102;
+    // optional bool batteryCharging = 102;
     public static final int BATTERYCHARGING_FIELD_NUMBER = 102;
     private boolean batteryCharging_;
     /**
-     * <code>required bool batteryCharging = 102;</code>
+     * <code>optional bool batteryCharging = 102;</code>
      *
      * <pre>
      * 充電中の場合true
@@ -570,7 +570,7 @@ public final class LoggerProtocol {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>required bool batteryCharging = 102;</code>
+     * <code>optional bool batteryCharging = 102;</code>
      *
      * <pre>
      * 充電中の場合true
@@ -595,14 +595,6 @@ public final class LoggerProtocol {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasDate()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasBatteryLevel()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasBatteryCharging()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -641,13 +633,13 @@ public final class LoggerProtocol {
         output.writeMessage(1, cadence_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, heartrate_);
+        output.writeMessage(3, heartrate_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, speed_);
+        output.writeMessage(4, speed_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, location_);
+        output.writeMessage(5, location_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(100, getDateBytes());
@@ -673,15 +665,15 @@ public final class LoggerProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, heartrate_);
+          .computeMessageSize(3, heartrate_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, speed_);
+          .computeMessageSize(4, speed_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, location_);
+          .computeMessageSize(5, location_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
@@ -970,14 +962,6 @@ public final class LoggerProtocol {
           
           return false;
         }
-        if (!hasBatteryLevel()) {
-          
-          return false;
-        }
-        if (!hasBatteryCharging()) {
-          
-          return false;
-        }
         if (hasCadence()) {
           if (!getCadence().isInitialized()) {
             
@@ -1177,12 +1161,12 @@ public final class LoggerProtocol {
         return cadenceBuilder_;
       }
 
-      // optional .eaglesakura_ace.RawHeartrate heartrate = 2;
+      // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
       private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder> heartrateBuilder_;
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1192,7 +1176,7 @@ public final class LoggerProtocol {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1206,7 +1190,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1226,7 +1210,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1244,7 +1228,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1267,7 +1251,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1284,7 +1268,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1296,7 +1280,7 @@ public final class LoggerProtocol {
         return getHeartrateFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1310,7 +1294,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 2;</code>
+       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
        *
        * <pre>
        * ハートレート
@@ -1330,12 +1314,12 @@ public final class LoggerProtocol {
         return heartrateBuilder_;
       }
 
-      // optional .eaglesakura_ace.RawSpeed speed = 3;
+      // optional .eaglesakura_ace.RawSpeed speed = 4;
       private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder> speedBuilder_;
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1345,7 +1329,7 @@ public final class LoggerProtocol {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1359,7 +1343,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1379,7 +1363,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1397,7 +1381,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1420,7 +1404,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1437,7 +1421,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1449,7 +1433,7 @@ public final class LoggerProtocol {
         return getSpeedFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1463,7 +1447,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 3;</code>
+       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
        *
        * <pre>
        * 速度
@@ -1483,12 +1467,12 @@ public final class LoggerProtocol {
         return speedBuilder_;
       }
 
-      // optional .eaglesakura_ace.GeoPoint location = 4;
+      // optional .eaglesakura_ace.GeoPoint location = 5;
       private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> locationBuilder_;
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1498,7 +1482,7 @@ public final class LoggerProtocol {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1512,7 +1496,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1532,7 +1516,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1550,7 +1534,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1573,7 +1557,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1590,7 +1574,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1602,7 +1586,7 @@ public final class LoggerProtocol {
         return getLocationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1616,7 +1600,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 4;</code>
+       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
        *
        * <pre>
        * GPS座標
@@ -1734,10 +1718,10 @@ public final class LoggerProtocol {
         return this;
       }
 
-      // required int32 batteryLevel = 101;
+      // optional int32 batteryLevel = 101;
       private int batteryLevel_ ;
       /**
-       * <code>required int32 batteryLevel = 101;</code>
+       * <code>optional int32 batteryLevel = 101;</code>
        *
        * <pre>
        * バッテリーの残量（％）
@@ -1747,7 +1731,7 @@ public final class LoggerProtocol {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required int32 batteryLevel = 101;</code>
+       * <code>optional int32 batteryLevel = 101;</code>
        *
        * <pre>
        * バッテリーの残量（％）
@@ -1757,7 +1741,7 @@ public final class LoggerProtocol {
         return batteryLevel_;
       }
       /**
-       * <code>required int32 batteryLevel = 101;</code>
+       * <code>optional int32 batteryLevel = 101;</code>
        *
        * <pre>
        * バッテリーの残量（％）
@@ -1770,7 +1754,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>required int32 batteryLevel = 101;</code>
+       * <code>optional int32 batteryLevel = 101;</code>
        *
        * <pre>
        * バッテリーの残量（％）
@@ -1783,10 +1767,10 @@ public final class LoggerProtocol {
         return this;
       }
 
-      // required bool batteryCharging = 102;
+      // optional bool batteryCharging = 102;
       private boolean batteryCharging_ ;
       /**
-       * <code>required bool batteryCharging = 102;</code>
+       * <code>optional bool batteryCharging = 102;</code>
        *
        * <pre>
        * 充電中の場合true
@@ -1796,7 +1780,7 @@ public final class LoggerProtocol {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>required bool batteryCharging = 102;</code>
+       * <code>optional bool batteryCharging = 102;</code>
        *
        * <pre>
        * 充電中の場合true
@@ -1806,7 +1790,7 @@ public final class LoggerProtocol {
         return batteryCharging_;
       }
       /**
-       * <code>required bool batteryCharging = 102;</code>
+       * <code>optional bool batteryCharging = 102;</code>
        *
        * <pre>
        * 充電中の場合true
@@ -1819,7 +1803,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>required bool batteryCharging = 102;</code>
+       * <code>optional bool batteryCharging = 102;</code>
        *
        * <pre>
        * 充電中の場合true
@@ -1861,12 +1845,12 @@ public final class LoggerProtocol {
       "\023AcesConstants.proto\032\021GeoProtocol.proto\032" +
       "\024SensorProtocol.proto\"\214\002\n\026RawSessionPoin" +
       "tPayload\022,\n\007cadence\030\001 \001(\0132\033.eaglesakura_" +
-      "ace.RawCadence\0220\n\theartrate\030\002 \001(\0132\035.eagl" +
-      "esakura_ace.RawHeartrate\022(\n\005speed\030\003 \001(\0132" +
-      "\031.eaglesakura_ace.RawSpeed\022+\n\010location\030\004" +
+      "ace.RawCadence\0220\n\theartrate\030\003 \001(\0132\035.eagl" +
+      "esakura_ace.RawHeartrate\022(\n\005speed\030\004 \001(\0132" +
+      "\031.eaglesakura_ace.RawSpeed\022+\n\010location\030\005" +
       " \001(\0132\031.eaglesakura_ace.GeoPoint\022\014\n\004date\030" +
-      "d \002(\t\022\024\n\014batteryLevel\030e \002(\005\022\027\n\017batteryCh" +
-      "arging\030f \002(\010B$\n\"com.eaglesakura.andrider",
+      "d \002(\t\022\024\n\014batteryLevel\030e \001(\005\022\027\n\017batteryCh" +
+      "arging\030f \001(\010B$\n\"com.eaglesakura.andrider",
       "s.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

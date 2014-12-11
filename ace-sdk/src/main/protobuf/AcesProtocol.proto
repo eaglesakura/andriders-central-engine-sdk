@@ -21,7 +21,7 @@ message VersionInfo {
 // Serviceを起動している限り、常に付与して送付される
 message CentralStatus {
     // Serviceを起動する毎に付与されるセッションID
-    required sessionId = 5;
+    required string sessionId = 5;
 
     // ハートレートモニターに接続されていたらtrue
 	required bool connectedHeartrate = 1;
@@ -40,10 +40,10 @@ message CentralStatus {
 	required bool connectedGps = 6;
 
 	// 今日走った距離(km)
-	optional float distanceToday = 7;
+	optional float distanceTodayKm = 7;
 
 	// このセッションで走った距離(km)
-	optional float distanceSession = 8;
+	optional float distanceSessionKm = 8;
 }
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する

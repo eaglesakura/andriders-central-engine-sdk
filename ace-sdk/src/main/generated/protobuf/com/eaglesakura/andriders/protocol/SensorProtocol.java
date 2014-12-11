@@ -165,6 +165,24 @@ public final class SensorProtocol {
      * </pre>
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone getCadenceZone();
+
+    // required int32 crankRevolution = 102;
+    /**
+     * <code>required int32 crankRevolution = 102;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（クランク）
+     * </pre>
+     */
+    boolean hasCrankRevolution();
+    /**
+     * <code>required int32 crankRevolution = 102;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（クランク）
+     * </pre>
+     */
+    int getCrankRevolution();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.RawCadence}
@@ -235,6 +253,11 @@ public final class SensorProtocol {
                 bitField0_ |= 0x00000002;
                 cadenceZone_ = value;
               }
+              break;
+            }
+            case 816: {
+              bitField0_ |= 0x00000004;
+              crankRevolution_ = input.readInt32();
               break;
             }
           }
@@ -442,9 +465,34 @@ public final class SensorProtocol {
       return cadenceZone_;
     }
 
+    // required int32 crankRevolution = 102;
+    public static final int CRANKREVOLUTION_FIELD_NUMBER = 102;
+    private int crankRevolution_;
+    /**
+     * <code>required int32 crankRevolution = 102;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（クランク）
+     * </pre>
+     */
+    public boolean hasCrankRevolution() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 crankRevolution = 102;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（クランク）
+     * </pre>
+     */
+    public int getCrankRevolution() {
+      return crankRevolution_;
+    }
+
     private void initFields() {
       rpm_ = 0;
       cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
+      crankRevolution_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -456,6 +504,10 @@ public final class SensorProtocol {
         return false;
       }
       if (!hasCadenceZone()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCrankRevolution()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -471,6 +523,9 @@ public final class SensorProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(101, cadenceZone_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(102, crankRevolution_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -488,6 +543,10 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(101, cadenceZone_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(102, crankRevolution_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -613,6 +672,8 @@ public final class SensorProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
         bitField0_ = (bitField0_ & ~0x00000002);
+        crankRevolution_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -649,6 +710,10 @@ public final class SensorProtocol {
           to_bitField0_ |= 0x00000002;
         }
         result.cadenceZone_ = cadenceZone_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.crankRevolution_ = crankRevolution_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -671,6 +736,9 @@ public final class SensorProtocol {
         if (other.hasCadenceZone()) {
           setCadenceZone(other.getCadenceZone());
         }
+        if (other.hasCrankRevolution()) {
+          setCrankRevolution(other.getCrankRevolution());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -681,6 +749,10 @@ public final class SensorProtocol {
           return false;
         }
         if (!hasCadenceZone()) {
+          
+          return false;
+        }
+        if (!hasCrankRevolution()) {
           
           return false;
         }
@@ -803,6 +875,55 @@ public final class SensorProtocol {
       public Builder clearCadenceZone() {
         bitField0_ = (bitField0_ & ~0x00000002);
         cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
+        onChanged();
+        return this;
+      }
+
+      // required int32 crankRevolution = 102;
+      private int crankRevolution_ ;
+      /**
+       * <code>required int32 crankRevolution = 102;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（クランク）
+       * </pre>
+       */
+      public boolean hasCrankRevolution() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 crankRevolution = 102;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（クランク）
+       * </pre>
+       */
+      public int getCrankRevolution() {
+        return crankRevolution_;
+      }
+      /**
+       * <code>required int32 crankRevolution = 102;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（クランク）
+       * </pre>
+       */
+      public Builder setCrankRevolution(int value) {
+        bitField0_ |= 0x00000004;
+        crankRevolution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 crankRevolution = 102;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（クランク）
+       * </pre>
+       */
+      public Builder clearCrankRevolution() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        crankRevolution_ = 0;
         onChanged();
         return this;
       }
@@ -1615,6 +1736,24 @@ public final class SensorProtocol {
      */
     float getWheelRpm();
 
+    // optional int32 wheelRevolution = 103;
+    /**
+     * <code>optional int32 wheelRevolution = 103;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（ホイール）
+     * </pre>
+     */
+    boolean hasWheelRevolution();
+    /**
+     * <code>optional int32 wheelRevolution = 103;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（ホイール）
+     * </pre>
+     */
+    int getWheelRevolution();
+
     // optional float recordKmPerHour = 10;
     /**
      * <code>optional float recordKmPerHour = 10;</code>
@@ -1717,7 +1856,7 @@ public final class SensorProtocol {
               break;
             }
             case 85: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               recordKmPerHour_ = input.readFloat();
               break;
             }
@@ -1727,9 +1866,14 @@ public final class SensorProtocol {
               if (value == null) {
                 unknownFields.mergeVarintField(101, rawValue);
               } else {
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 speedZone_ = value;
               }
+              break;
+            }
+            case 824: {
+              bitField0_ |= 0x00000004;
+              wheelRevolution_ = input.readInt32();
               break;
             }
           }
@@ -1958,6 +2102,30 @@ public final class SensorProtocol {
       return wheelRpm_;
     }
 
+    // optional int32 wheelRevolution = 103;
+    public static final int WHEELREVOLUTION_FIELD_NUMBER = 103;
+    private int wheelRevolution_;
+    /**
+     * <code>optional int32 wheelRevolution = 103;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（ホイール）
+     * </pre>
+     */
+    public boolean hasWheelRevolution() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 wheelRevolution = 103;</code>
+     *
+     * <pre>
+     * センサーへ接続してからの合計回転数（ホイール）
+     * </pre>
+     */
+    public int getWheelRevolution() {
+      return wheelRevolution_;
+    }
+
     // optional float recordKmPerHour = 10;
     public static final int RECORDKMPERHOUR_FIELD_NUMBER = 10;
     private float recordKmPerHour_;
@@ -1969,7 +2137,7 @@ public final class SensorProtocol {
      * </pre>
      */
     public boolean hasRecordKmPerHour() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional float recordKmPerHour = 10;</code>
@@ -1993,7 +2161,7 @@ public final class SensorProtocol {
      * </pre>
      */
     public boolean hasSpeedZone() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
@@ -2009,6 +2177,7 @@ public final class SensorProtocol {
     private void initFields() {
       speedKmPerHour_ = 0F;
       wheelRpm_ = 0F;
+      wheelRevolution_ = 0;
       recordKmPerHour_ = 0F;
       speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
     }
@@ -2038,11 +2207,14 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeFloat(2, wheelRpm_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeFloat(10, recordKmPerHour_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(101, speedZone_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(103, wheelRevolution_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2061,13 +2233,17 @@ public final class SensorProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(2, wheelRpm_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(10, recordKmPerHour_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(101, speedZone_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(103, wheelRevolution_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2193,10 +2369,12 @@ public final class SensorProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         wheelRpm_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000002);
-        recordKmPerHour_ = 0F;
+        wheelRevolution_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+        recordKmPerHour_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
+        speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -2236,9 +2414,13 @@ public final class SensorProtocol {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.recordKmPerHour_ = recordKmPerHour_;
+        result.wheelRevolution_ = wheelRevolution_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
+        }
+        result.recordKmPerHour_ = recordKmPerHour_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         result.speedZone_ = speedZone_;
         result.bitField0_ = to_bitField0_;
@@ -2262,6 +2444,9 @@ public final class SensorProtocol {
         }
         if (other.hasWheelRpm()) {
           setWheelRpm(other.getWheelRpm());
+        }
+        if (other.hasWheelRevolution()) {
+          setWheelRevolution(other.getWheelRevolution());
         }
         if (other.hasRecordKmPerHour()) {
           setRecordKmPerHour(other.getRecordKmPerHour());
@@ -2406,6 +2591,55 @@ public final class SensorProtocol {
         return this;
       }
 
+      // optional int32 wheelRevolution = 103;
+      private int wheelRevolution_ ;
+      /**
+       * <code>optional int32 wheelRevolution = 103;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（ホイール）
+       * </pre>
+       */
+      public boolean hasWheelRevolution() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 wheelRevolution = 103;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（ホイール）
+       * </pre>
+       */
+      public int getWheelRevolution() {
+        return wheelRevolution_;
+      }
+      /**
+       * <code>optional int32 wheelRevolution = 103;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（ホイール）
+       * </pre>
+       */
+      public Builder setWheelRevolution(int value) {
+        bitField0_ |= 0x00000004;
+        wheelRevolution_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 wheelRevolution = 103;</code>
+       *
+       * <pre>
+       * センサーへ接続してからの合計回転数（ホイール）
+       * </pre>
+       */
+      public Builder clearWheelRevolution() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        wheelRevolution_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional float recordKmPerHour = 10;
       private float recordKmPerHour_ ;
       /**
@@ -2416,7 +2650,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public boolean hasRecordKmPerHour() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional float recordKmPerHour = 10;</code>
@@ -2436,7 +2670,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public Builder setRecordKmPerHour(float value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         recordKmPerHour_ = value;
         onChanged();
         return this;
@@ -2449,7 +2683,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public Builder clearRecordKmPerHour() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         recordKmPerHour_ = 0F;
         onChanged();
         return this;
@@ -2465,7 +2699,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public boolean hasSpeedZone() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
@@ -2488,7 +2722,7 @@ public final class SensorProtocol {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         speedZone_ = value;
         onChanged();
         return this;
@@ -2501,7 +2735,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public Builder clearSpeedZone() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
         onChanged();
         return this;
@@ -3133,25 +3367,27 @@ public final class SensorProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\024SensorProtocol.proto\022\017eaglesakura_ace\032" +
-      "\023AcesConstants.proto\"\205\001\n\nRawCadence\022\013\n\003r" +
+      "\023AcesConstants.proto\"\236\001\n\nRawCadence\022\013\n\003r" +
       "pm\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesak" +
-      "ura_ace.RawCadence.CadenceZone\",\n\013Cadenc" +
-      "eZone\022\010\n\004Slow\020\000\022\t\n\005Ideal\020\001\022\010\n\004High\020\002\"\334\001\n" +
-      "\014RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartrateZ" +
-      "one\030e \002(\0162+.eaglesakura_ace.RawHeartrate" +
-      ".HeartrateZone\"{\n\rHeartrateZone\022\n\n\006Repos" +
-      "e\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombustion\020\002\022\032\n\026Poss" +
-      "essionOxygenMotion\020\003\022\027\n\023NonOxygenatedMot",
-      "ion\020\004\022\014\n\010Overwork\020\005\"\276\001\n\010RawSpeed\022\026\n\016spee" +
-      "dKmPerHour\030\001 \002(\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027\n\017re" +
-      "cordKmPerHour\030\n \001(\002\0226\n\tspeedZone\030e \002(\0162#" +
-      ".eaglesakura_ace.RawSpeed.SpeedZone\"7\n\tS" +
-      "peedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002" +
-      "\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002 " +
-      "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff" +
-      "er\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMonit" +
-      "or\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020\002" +
-      "B$\n\"com.eaglesakura.andriders.protocol"
+      "ura_ace.RawCadence.CadenceZone\022\027\n\017crankR" +
+      "evolution\030f \002(\005\",\n\013CadenceZone\022\010\n\004Slow\020\000" +
+      "\022\t\n\005Ideal\020\001\022\010\n\004High\020\002\"\334\001\n\014RawHeartrate\022\013" +
+      "\n\003bpm\030d \002(\005\022B\n\rheartrateZone\030e \002(\0162+.eag" +
+      "lesakura_ace.RawHeartrate.HeartrateZone\"" +
+      "{\n\rHeartrateZone\022\n\n\006Repose\020\000\022\010\n\004Easy\020\001\022\021" +
+      "\n\rFatCombustion\020\002\022\032\n\026PossessionOxygenMot",
+      "ion\020\003\022\027\n\023NonOxygenatedMotion\020\004\022\014\n\010Overwo" +
+      "rk\020\005\"\327\001\n\010RawSpeed\022\026\n\016speedKmPerHour\030\001 \002(" +
+      "\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027\n\017wheelRevolution\030g" +
+      " \001(\005\022\027\n\017recordKmPerHour\030\n \001(\002\0226\n\tspeedZo" +
+      "ne\030e \002(\0162#.eaglesakura_ace.RawSpeed.Spee" +
+      "dZone\"7\n\tSpeedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n" +
+      "\n\006Cruise\020\002\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022" +
+      ")\n\004type\030\002 \002(\0162\033.eaglesakura_ace.SensorTy" +
+      "pe\022\016\n\006buffer\030\n \002(\014*F\n\nSensorType\022\024\n\020Hear" +
+      "trateMonitor\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013Spe",
+      "edSensor\020\002B$\n\"com.eaglesakura.andriders." +
+      "protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3163,7 +3399,7 @@ public final class SensorProtocol {
           internal_static_eaglesakura_ace_RawCadence_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawCadence_descriptor,
-              new java.lang.String[] { "Rpm", "CadenceZone", });
+              new java.lang.String[] { "Rpm", "CadenceZone", "CrankRevolution", });
           internal_static_eaglesakura_ace_RawHeartrate_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_RawHeartrate_fieldAccessorTable = new
@@ -3175,7 +3411,7 @@ public final class SensorProtocol {
           internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawSpeed_descriptor,
-              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "RecordKmPerHour", "SpeedZone", });
+              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "WheelRevolution", "RecordKmPerHour", "SpeedZone", });
           internal_static_eaglesakura_ace_SensorPayload_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable = new
