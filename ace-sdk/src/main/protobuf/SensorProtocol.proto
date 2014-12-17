@@ -75,6 +75,9 @@ message RawSpeed {
 	// 今までの最高速度
 	optional float recordKmPerHour = 10;
 
+    // 今日の最高速度
+    optional float recordKmPerHourToday = 11;
+
 	// 速度ゾーン
 	enum SpeedZone {
 	// 停止領域

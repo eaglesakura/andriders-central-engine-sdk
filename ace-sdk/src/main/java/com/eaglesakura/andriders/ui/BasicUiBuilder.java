@@ -226,38 +226,58 @@ public class BasicUiBuilder {
         return root;
     }
 
+
     /**
      * 速度表示をビルドする
      *
-     * @param currentSpeedView
-     * @param maxSpeedView
+     * @param view
      * @param master
      * @param speed
      * @return
      */
-    public void build(View currentSpeedView, View maxSpeedView, MasterPayload master, RawSpeed speed) {
-        // 現在速度を指定
-        if (currentSpeedView != null) {
-            AQuery q = new AQuery(currentSpeedView);
+    public void buildCurrentSpeed(View view, MasterPayload master, RawSpeed speed) {
+        AQuery q = new AQuery(view);
 
-            if (master.getCentralStatus().getConnectedSpeed()) {
-                q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getSpeedKmPerHour()));
-                q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(getZoneClor(speed.getSpeedZone()));
-                q.id(R.id.AceUI_BasicUI_ZoneTitle).text(getZoneInfoText(speed.getSpeedZone()));
-            } else {
-                q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
-                q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(0);
-                q.id(R.id.AceUI_BasicUI_ZoneTitle).text("");
-            }
+        if (master.getCentralStatus().getConnectedSpeed() && speed != null) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getSpeedKmPerHour()));
+            q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(getZoneClor(speed.getSpeedZone()));
+            q.id(R.id.AceUI_BasicUI_ZoneTitle).text(getZoneInfoText(speed.getSpeedZone()));
+        } else {
+            q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
+            q.id(R.id.AceUI_BasicUI_ZoneColor).backgroundColor(0);
+            q.id(R.id.AceUI_BasicUI_ZoneTitle).text("");
         }
-        // 最高速度を指定
-        if (maxSpeedView != null) {
-            AQuery q = new AQuery(maxSpeedView);
-            if (speed.hasRecordKmPerHour()) {
-                q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getRecordKmPerHour()));
-            } else {
-                q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
-            }
+    }
+
+    /**
+     * 速度表示をビルドする
+     *
+     * @param view
+     * @param master
+     * @return
+     */
+    public void buildMaxSpeed(View view, MasterPayload master, RawSpeed speed) {
+        AQuery q = new AQuery(view);
+        if (speed != null && speed.hasRecordKmPerHour()) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getRecordKmPerHour()));
+        } else {
+            q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
+        }
+    }
+
+    /**
+     * 今日速度表示をビルドする
+     *
+     * @param view
+     * @param master
+     * @return
+     */
+    public void buildMaxSpeedToday(View view, MasterPayload master, RawSpeed speed) {
+        AQuery q = new AQuery(view);
+        if (speed != null && speed.hasRecordKmPerHour()) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getRecordKmPerHourToday()));
+        } else {
+            q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
         }
     }
 }
