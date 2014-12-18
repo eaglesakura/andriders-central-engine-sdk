@@ -28,9 +28,9 @@
     <string name="AceUI.Zone.Heartrate.Overwork">危険域</string>
 
     <!-- ケイデンスゾーン名 -->
-    <string name="AceUI.Zone.Cadence.Easy">低速</string>
-    <string name="AceUI.Zone.Cadence.Beginner">低回転</string>
-    <string name="AceUI.Zone.Cadence.Ideal">巡航</string>
+    <string name="AceUI.Zone.Cadence.Slow">低回転</string>
+    <string name="AceUI.Zone.Cadence.Ideal">標準</string>
+    <string name="AceUI.Zone.Cadence.High">高回転</string>
 
     <!-- スピードゾーン名 -->
     <string name="AceUI.Zone.Speed.Stop">停止</string>

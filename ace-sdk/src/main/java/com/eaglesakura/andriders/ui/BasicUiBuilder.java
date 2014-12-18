@@ -19,7 +19,6 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone;
  * 指定したIDでUIを構築することで、共通化した内容を当てはめることが出来る。
  */
 public class BasicUiBuilder {
-    @SuppressWarnings("unused")
     private final Context context;
 
     /**
@@ -75,9 +74,9 @@ public class BasicUiBuilder {
         // ケイデンス
         {
             cadenceZoneTable = new String[]{
-                    res.getString(R.string.AceUI_Zone_Cadence_Easy), // 軽度
-                    res.getString(R.string.AceUI_Zone_Cadence_Beginner), // ビギナー
-                    res.getString(R.string.AceUI_Zone_Cadence_Ideal), // 巡航
+                    res.getString(R.string.AceUI_Zone_Cadence_Slow), // 軽度
+                    res.getString(R.string.AceUI_Zone_Cadence_Ideal), // 目標
+                    res.getString(R.string.AceUI_Zone_Cadence_High), // 高速
             };
         }
         // 心拍
