@@ -1754,42 +1754,6 @@ public final class SensorProtocol {
      */
     int getWheelRevolution();
 
-    // optional float recordKmPerHour = 10;
-    /**
-     * <code>optional float recordKmPerHour = 10;</code>
-     *
-     * <pre>
-     * 今までの最高速度
-     * </pre>
-     */
-    boolean hasRecordKmPerHour();
-    /**
-     * <code>optional float recordKmPerHour = 10;</code>
-     *
-     * <pre>
-     * 今までの最高速度
-     * </pre>
-     */
-    float getRecordKmPerHour();
-
-    // optional float recordKmPerHourToday = 11;
-    /**
-     * <code>optional float recordKmPerHourToday = 11;</code>
-     *
-     * <pre>
-     * 今日の最高速度
-     * </pre>
-     */
-    boolean hasRecordKmPerHourToday();
-    /**
-     * <code>optional float recordKmPerHourToday = 11;</code>
-     *
-     * <pre>
-     * 今日の最高速度
-     * </pre>
-     */
-    float getRecordKmPerHourToday();
-
     // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
     /**
      * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
@@ -1873,23 +1837,13 @@ public final class SensorProtocol {
               wheelRpm_ = input.readFloat();
               break;
             }
-            case 85: {
-              bitField0_ |= 0x00000008;
-              recordKmPerHour_ = input.readFloat();
-              break;
-            }
-            case 93: {
-              bitField0_ |= 0x00000010;
-              recordKmPerHourToday_ = input.readFloat();
-              break;
-            }
             case 808: {
               int rawValue = input.readEnum();
               com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone value = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(101, rawValue);
               } else {
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000008;
                 speedZone_ = value;
               }
               break;
@@ -2149,54 +2103,6 @@ public final class SensorProtocol {
       return wheelRevolution_;
     }
 
-    // optional float recordKmPerHour = 10;
-    public static final int RECORDKMPERHOUR_FIELD_NUMBER = 10;
-    private float recordKmPerHour_;
-    /**
-     * <code>optional float recordKmPerHour = 10;</code>
-     *
-     * <pre>
-     * 今までの最高速度
-     * </pre>
-     */
-    public boolean hasRecordKmPerHour() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional float recordKmPerHour = 10;</code>
-     *
-     * <pre>
-     * 今までの最高速度
-     * </pre>
-     */
-    public float getRecordKmPerHour() {
-      return recordKmPerHour_;
-    }
-
-    // optional float recordKmPerHourToday = 11;
-    public static final int RECORDKMPERHOURTODAY_FIELD_NUMBER = 11;
-    private float recordKmPerHourToday_;
-    /**
-     * <code>optional float recordKmPerHourToday = 11;</code>
-     *
-     * <pre>
-     * 今日の最高速度
-     * </pre>
-     */
-    public boolean hasRecordKmPerHourToday() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional float recordKmPerHourToday = 11;</code>
-     *
-     * <pre>
-     * 今日の最高速度
-     * </pre>
-     */
-    public float getRecordKmPerHourToday() {
-      return recordKmPerHourToday_;
-    }
-
     // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
     public static final int SPEEDZONE_FIELD_NUMBER = 101;
     private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone speedZone_;
@@ -2208,7 +2114,7 @@ public final class SensorProtocol {
      * </pre>
      */
     public boolean hasSpeedZone() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
@@ -2225,8 +2131,6 @@ public final class SensorProtocol {
       speedKmPerHour_ = 0F;
       wheelRpm_ = 0F;
       wheelRevolution_ = 0;
-      recordKmPerHour_ = 0F;
-      recordKmPerHourToday_ = 0F;
       speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
     }
     private byte memoizedIsInitialized = -1;
@@ -2256,12 +2160,6 @@ public final class SensorProtocol {
         output.writeFloat(2, wheelRpm_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(10, recordKmPerHour_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeFloat(11, recordKmPerHourToday_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeEnum(101, speedZone_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
@@ -2285,14 +2183,6 @@ public final class SensorProtocol {
           .computeFloatSize(2, wheelRpm_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(10, recordKmPerHour_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(11, recordKmPerHourToday_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(101, speedZone_.getNumber());
       }
@@ -2426,12 +2316,8 @@ public final class SensorProtocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         wheelRevolution_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        recordKmPerHour_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        recordKmPerHourToday_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
         speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -2475,14 +2361,6 @@ public final class SensorProtocol {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.recordKmPerHour_ = recordKmPerHour_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.recordKmPerHourToday_ = recordKmPerHourToday_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
         result.speedZone_ = speedZone_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2508,12 +2386,6 @@ public final class SensorProtocol {
         }
         if (other.hasWheelRevolution()) {
           setWheelRevolution(other.getWheelRevolution());
-        }
-        if (other.hasRecordKmPerHour()) {
-          setRecordKmPerHour(other.getRecordKmPerHour());
-        }
-        if (other.hasRecordKmPerHourToday()) {
-          setRecordKmPerHourToday(other.getRecordKmPerHourToday());
         }
         if (other.hasSpeedZone()) {
           setSpeedZone(other.getSpeedZone());
@@ -2704,104 +2576,6 @@ public final class SensorProtocol {
         return this;
       }
 
-      // optional float recordKmPerHour = 10;
-      private float recordKmPerHour_ ;
-      /**
-       * <code>optional float recordKmPerHour = 10;</code>
-       *
-       * <pre>
-       * 今までの最高速度
-       * </pre>
-       */
-      public boolean hasRecordKmPerHour() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional float recordKmPerHour = 10;</code>
-       *
-       * <pre>
-       * 今までの最高速度
-       * </pre>
-       */
-      public float getRecordKmPerHour() {
-        return recordKmPerHour_;
-      }
-      /**
-       * <code>optional float recordKmPerHour = 10;</code>
-       *
-       * <pre>
-       * 今までの最高速度
-       * </pre>
-       */
-      public Builder setRecordKmPerHour(float value) {
-        bitField0_ |= 0x00000008;
-        recordKmPerHour_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float recordKmPerHour = 10;</code>
-       *
-       * <pre>
-       * 今までの最高速度
-       * </pre>
-       */
-      public Builder clearRecordKmPerHour() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        recordKmPerHour_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float recordKmPerHourToday = 11;
-      private float recordKmPerHourToday_ ;
-      /**
-       * <code>optional float recordKmPerHourToday = 11;</code>
-       *
-       * <pre>
-       * 今日の最高速度
-       * </pre>
-       */
-      public boolean hasRecordKmPerHourToday() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional float recordKmPerHourToday = 11;</code>
-       *
-       * <pre>
-       * 今日の最高速度
-       * </pre>
-       */
-      public float getRecordKmPerHourToday() {
-        return recordKmPerHourToday_;
-      }
-      /**
-       * <code>optional float recordKmPerHourToday = 11;</code>
-       *
-       * <pre>
-       * 今日の最高速度
-       * </pre>
-       */
-      public Builder setRecordKmPerHourToday(float value) {
-        bitField0_ |= 0x00000010;
-        recordKmPerHourToday_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float recordKmPerHourToday = 11;</code>
-       *
-       * <pre>
-       * 今日の最高速度
-       * </pre>
-       */
-      public Builder clearRecordKmPerHourToday() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        recordKmPerHourToday_ = 0F;
-        onChanged();
-        return this;
-      }
-
       // required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;
       private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
       /**
@@ -2812,7 +2586,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public boolean hasSpeedZone() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>required .eaglesakura_ace.RawSpeed.SpeedZone speedZone = 101;</code>
@@ -2835,7 +2609,7 @@ public final class SensorProtocol {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000008;
         speedZone_ = value;
         onChanged();
         return this;
@@ -2848,7 +2622,7 @@ public final class SensorProtocol {
        * </pre>
        */
       public Builder clearSpeedZone() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
         onChanged();
         return this;
@@ -3490,17 +3264,16 @@ public final class SensorProtocol {
       "{\n\rHeartrateZone\022\n\n\006Repose\020\000\022\010\n\004Easy\020\001\022\021" +
       "\n\rFatCombustion\020\002\022\032\n\026PossessionOxygenMot",
       "ion\020\003\022\027\n\023NonOxygenatedMotion\020\004\022\014\n\010Overwo" +
-      "rk\020\005\"\365\001\n\010RawSpeed\022\026\n\016speedKmPerHour\030\001 \002(" +
+      "rk\020\005\"\276\001\n\010RawSpeed\022\026\n\016speedKmPerHour\030\001 \002(" +
       "\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027\n\017wheelRevolution\030g" +
-      " \001(\005\022\027\n\017recordKmPerHour\030\n \001(\002\022\034\n\024recordK" +
-      "mPerHourToday\030\013 \001(\002\0226\n\tspeedZone\030e \002(\0162#" +
-      ".eaglesakura_ace.RawSpeed.SpeedZone\"7\n\tS" +
-      "peedZone\022\010\n\004Stop\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002" +
-      "\022\n\n\006Sprint\020\003\"J\n\rSensorPayload\022)\n\004type\030\002 " +
-      "\002(\0162\033.eaglesakura_ace.SensorType\022\016\n\006buff" +
-      "er\030\n \002(\014*F\n\nSensorType\022\024\n\020HeartrateMonit",
-      "or\020\000\022\021\n\rCadenceSensor\020\001\022\017\n\013SpeedSensor\020\002" +
-      "B$\n\"com.eaglesakura.andriders.protocol"
+      " \001(\005\0226\n\tspeedZone\030e \002(\0162#.eaglesakura_ac" +
+      "e.RawSpeed.SpeedZone\"7\n\tSpeedZone\022\010\n\004Sto" +
+      "p\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002\022\n\n\006Sprint\020\003\"J\n" +
+      "\rSensorPayload\022)\n\004type\030\002 \002(\0162\033.eaglesaku" +
+      "ra_ace.SensorType\022\016\n\006buffer\030\n \002(\014*F\n\nSen" +
+      "sorType\022\024\n\020HeartrateMonitor\020\000\022\021\n\rCadence" +
+      "Sensor\020\001\022\017\n\013SpeedSensor\020\002B$\n\"com.eaglesa",
+      "kura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3524,7 +3297,7 @@ public final class SensorProtocol {
           internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawSpeed_descriptor,
-              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "WheelRevolution", "RecordKmPerHour", "RecordKmPerHourToday", "SpeedZone", });
+              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "WheelRevolution", "SpeedZone", });
           internal_static_eaglesakura_ace_SensorPayload_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable = new

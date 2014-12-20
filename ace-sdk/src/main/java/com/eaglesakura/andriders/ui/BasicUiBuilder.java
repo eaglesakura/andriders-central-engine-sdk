@@ -187,7 +187,6 @@ public class BasicUiBuilder {
      *
      * @param root
      * @param master
-     * @param heartarate
      * @return
      */
     public View build(View root, MasterPayload master, RawHeartrate heartrate) {
@@ -257,8 +256,8 @@ public class BasicUiBuilder {
      */
     public void buildMaxSpeed(View view, MasterPayload master, RawSpeed speed) {
         AQuery q = new AQuery(view);
-        if (speed != null && speed.hasRecordKmPerHour()) {
-            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getRecordKmPerHour()));
+        if (master != null && master.getUserRecord() != null && master.getUserRecord().hasMaxSpeedKmPerHour()) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", master.getUserRecord().getMaxSpeedKmPerHour()));
         } else {
             q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
         }
@@ -273,8 +272,8 @@ public class BasicUiBuilder {
      */
     public void buildMaxSpeedToday(View view, MasterPayload master, RawSpeed speed) {
         AQuery q = new AQuery(view);
-        if (speed != null && speed.hasRecordKmPerHour()) {
-            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", speed.getRecordKmPerHourToday()));
+        if (master != null && master.getUserRecord() != null && master.getUserRecord().hasMaxSpeedTodayKmPerHour()) {
+            q.id(R.id.AceUI_BasicUI_Value).text(String.format("%.01f", master.getUserRecord().getMaxSpeedTodayKmPerHour()));
         } else {
             q.id(R.id.AceUI_BasicUI_Value).text(R.string.AceUI_Information_NotConnected);
         }

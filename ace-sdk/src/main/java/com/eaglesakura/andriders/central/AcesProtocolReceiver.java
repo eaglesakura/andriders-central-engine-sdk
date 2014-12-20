@@ -126,6 +126,8 @@ public class AcesProtocolReceiver {
      */
     private AcesProtocol.CentralStatus lastRceivedCentralStatus;
 
+    private AcesProtocol.UserRecord lastReceivedUserRecord;
+
     /**
      * ロックオブジェクト
      */
@@ -179,6 +181,15 @@ public class AcesProtocolReceiver {
      */
     public AcesProtocol.CentralStatus getLastReceivedCentralStatus() {
         return lastRceivedCentralStatus;
+    }
+
+    /**
+     * 最後に受信した段階でのレコードを取得する
+     *
+     * @return
+     */
+    public AcesProtocol.UserRecord getLastReceivedUserRecord() {
+        return lastReceivedUserRecord;
     }
 
     /**
@@ -630,6 +641,10 @@ public class AcesProtocolReceiver {
         // centralのステータスを書き換える
         if (master.hasCentralStatus()) {
             lastRceivedCentralStatus = master.getCentralStatus();
+        }
+
+        if (master.hasUserRecord()) {
+            lastReceivedUserRecord = master.getUserRecord();
         }
 
         // 位置情報を受け取った

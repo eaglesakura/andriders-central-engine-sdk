@@ -72,12 +72,6 @@ message RawSpeed {
     // センサーへ接続してからの合計回転数（ホイール）
 	optional int32 wheelRevolution = 103;
 
-	// 今までの最高速度
-	optional float recordKmPerHour = 10;
-
-    // 今日の最高速度
-    optional float recordKmPerHourToday = 11;
-
 	// 速度ゾーン
 	enum SpeedZone {
 	// 停止領域

@@ -672,6 +672,781 @@ public final class AcesProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.VersionInfo)
   }
 
+  public interface UserRecordOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional float distanceTodayKm = 1;
+    /**
+     * <code>optional float distanceTodayKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    boolean hasDistanceTodayKm();
+    /**
+     * <code>optional float distanceTodayKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    float getDistanceTodayKm();
+
+    // optional float distanceSessionKm = 2;
+    /**
+     * <code>optional float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    boolean hasDistanceSessionKm();
+    /**
+     * <code>optional float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    float getDistanceSessionKm();
+
+    // optional float maxSpeedKmPerHour = 10;
+    /**
+     * <code>optional float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    boolean hasMaxSpeedKmPerHour();
+    /**
+     * <code>optional float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    float getMaxSpeedKmPerHour();
+
+    // optional float maxSpeedTodayKmPerHour = 11;
+    /**
+     * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * </pre>
+     */
+    boolean hasMaxSpeedTodayKmPerHour();
+    /**
+     * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * </pre>
+     */
+    float getMaxSpeedTodayKmPerHour();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.UserRecord}
+   *
+   * <pre>
+   * ユーザーの各種記録を参照する
+   * </pre>
+   */
+  public static final class UserRecord extends
+      com.google.protobuf.GeneratedMessage
+      implements UserRecordOrBuilder {
+    // Use UserRecord.newBuilder() to construct.
+    private UserRecord(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private UserRecord(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final UserRecord defaultInstance;
+    public static UserRecord getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public UserRecord getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserRecord(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 13: {
+              bitField0_ |= 0x00000001;
+              distanceTodayKm_ = input.readFloat();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              distanceSessionKm_ = input.readFloat();
+              break;
+            }
+            case 85: {
+              bitField0_ |= 0x00000004;
+              maxSpeedKmPerHour_ = input.readFloat();
+              break;
+            }
+            case 93: {
+              bitField0_ |= 0x00000008;
+              maxSpeedTodayKmPerHour_ = input.readFloat();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_UserRecord_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.class, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<UserRecord> PARSER =
+        new com.google.protobuf.AbstractParser<UserRecord>() {
+      public UserRecord parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserRecord(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserRecord> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional float distanceTodayKm = 1;
+    public static final int DISTANCETODAYKM_FIELD_NUMBER = 1;
+    private float distanceTodayKm_;
+    /**
+     * <code>optional float distanceTodayKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    public boolean hasDistanceTodayKm() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional float distanceTodayKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * </pre>
+     */
+    public float getDistanceTodayKm() {
+      return distanceTodayKm_;
+    }
+
+    // optional float distanceSessionKm = 2;
+    public static final int DISTANCESESSIONKM_FIELD_NUMBER = 2;
+    private float distanceSessionKm_;
+    /**
+     * <code>optional float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    public boolean hasDistanceSessionKm() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * </pre>
+     */
+    public float getDistanceSessionKm() {
+      return distanceSessionKm_;
+    }
+
+    // optional float maxSpeedKmPerHour = 10;
+    public static final int MAXSPEEDKMPERHOUR_FIELD_NUMBER = 10;
+    private float maxSpeedKmPerHour_;
+    /**
+     * <code>optional float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    public boolean hasMaxSpeedKmPerHour() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * </pre>
+     */
+    public float getMaxSpeedKmPerHour() {
+      return maxSpeedKmPerHour_;
+    }
+
+    // optional float maxSpeedTodayKmPerHour = 11;
+    public static final int MAXSPEEDTODAYKMPERHOUR_FIELD_NUMBER = 11;
+    private float maxSpeedTodayKmPerHour_;
+    /**
+     * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * </pre>
+     */
+    public boolean hasMaxSpeedTodayKmPerHour() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * </pre>
+     */
+    public float getMaxSpeedTodayKmPerHour() {
+      return maxSpeedTodayKmPerHour_;
+    }
+
+    private void initFields() {
+      distanceTodayKm_ = 0F;
+      distanceSessionKm_ = 0F;
+      maxSpeedKmPerHour_ = 0F;
+      maxSpeedTodayKmPerHour_ = 0F;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeFloat(1, distanceTodayKm_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, distanceSessionKm_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeFloat(10, maxSpeedKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(11, maxSpeedTodayKmPerHour_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(1, distanceTodayKm_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, distanceSessionKm_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(10, maxSpeedKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(11, maxSpeedTodayKmPerHour_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.UserRecord}
+     *
+     * <pre>
+     * ユーザーの各種記録を参照する
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_UserRecord_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.class, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        distanceTodayKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        distanceSessionKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        maxSpeedKmPerHour_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maxSpeedTodayKmPerHour_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_UserRecord_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord build() {
+        com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord buildPartial() {
+        com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord result = new com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.distanceTodayKm_ = distanceTodayKm_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.distanceSessionKm_ = distanceSessionKm_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.maxSpeedKmPerHour_ = maxSpeedKmPerHour_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.maxSpeedTodayKmPerHour_ = maxSpeedTodayKmPerHour_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord other) {
+        if (other == com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance()) return this;
+        if (other.hasDistanceTodayKm()) {
+          setDistanceTodayKm(other.getDistanceTodayKm());
+        }
+        if (other.hasDistanceSessionKm()) {
+          setDistanceSessionKm(other.getDistanceSessionKm());
+        }
+        if (other.hasMaxSpeedKmPerHour()) {
+          setMaxSpeedKmPerHour(other.getMaxSpeedKmPerHour());
+        }
+        if (other.hasMaxSpeedTodayKmPerHour()) {
+          setMaxSpeedTodayKmPerHour(other.getMaxSpeedTodayKmPerHour());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional float distanceTodayKm = 1;
+      private float distanceTodayKm_ ;
+      /**
+       * <code>optional float distanceTodayKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public boolean hasDistanceTodayKm() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional float distanceTodayKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public float getDistanceTodayKm() {
+        return distanceTodayKm_;
+      }
+      /**
+       * <code>optional float distanceTodayKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public Builder setDistanceTodayKm(float value) {
+        bitField0_ |= 0x00000001;
+        distanceTodayKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float distanceTodayKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * </pre>
+       */
+      public Builder clearDistanceTodayKm() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        distanceTodayKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float distanceSessionKm = 2;
+      private float distanceSessionKm_ ;
+      /**
+       * <code>optional float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public boolean hasDistanceSessionKm() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public float getDistanceSessionKm() {
+        return distanceSessionKm_;
+      }
+      /**
+       * <code>optional float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public Builder setDistanceSessionKm(float value) {
+        bitField0_ |= 0x00000002;
+        distanceSessionKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * </pre>
+       */
+      public Builder clearDistanceSessionKm() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        distanceSessionKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float maxSpeedKmPerHour = 10;
+      private float maxSpeedKmPerHour_ ;
+      /**
+       * <code>optional float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public boolean hasMaxSpeedKmPerHour() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public float getMaxSpeedKmPerHour() {
+        return maxSpeedKmPerHour_;
+      }
+      /**
+       * <code>optional float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public Builder setMaxSpeedKmPerHour(float value) {
+        bitField0_ |= 0x00000004;
+        maxSpeedKmPerHour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * </pre>
+       */
+      public Builder clearMaxSpeedKmPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        maxSpeedKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float maxSpeedTodayKmPerHour = 11;
+      private float maxSpeedTodayKmPerHour_ ;
+      /**
+       * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * </pre>
+       */
+      public boolean hasMaxSpeedTodayKmPerHour() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * </pre>
+       */
+      public float getMaxSpeedTodayKmPerHour() {
+        return maxSpeedTodayKmPerHour_;
+      }
+      /**
+       * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * </pre>
+       */
+      public Builder setMaxSpeedTodayKmPerHour(float value) {
+        bitField0_ |= 0x00000008;
+        maxSpeedTodayKmPerHour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * </pre>
+       */
+      public Builder clearMaxSpeedTodayKmPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxSpeedTodayKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.UserRecord)
+    }
+
+    static {
+      defaultInstance = new UserRecord(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.UserRecord)
+  }
+
   public interface CentralStatusOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -793,42 +1568,6 @@ public final class AcesProtocol {
      * </pre>
      */
     boolean getConnectedGps();
-
-    // optional float distanceTodayKm = 7;
-    /**
-     * <code>optional float distanceTodayKm = 7;</code>
-     *
-     * <pre>
-     * 今日走った距離(km)
-     * </pre>
-     */
-    boolean hasDistanceTodayKm();
-    /**
-     * <code>optional float distanceTodayKm = 7;</code>
-     *
-     * <pre>
-     * 今日走った距離(km)
-     * </pre>
-     */
-    float getDistanceTodayKm();
-
-    // optional float distanceSessionKm = 8;
-    /**
-     * <code>optional float distanceSessionKm = 8;</code>
-     *
-     * <pre>
-     * このセッションで走った距離(km)
-     * </pre>
-     */
-    boolean hasDistanceSessionKm();
-    /**
-     * <code>optional float distanceSessionKm = 8;</code>
-     *
-     * <pre>
-     * このセッションで走った距離(km)
-     * </pre>
-     */
-    float getDistanceSessionKm();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.CentralStatus}
@@ -914,16 +1653,6 @@ public final class AcesProtocol {
             case 48: {
               bitField0_ |= 0x00000020;
               connectedGps_ = input.readBool();
-              break;
-            }
-            case 61: {
-              bitField0_ |= 0x00000040;
-              distanceTodayKm_ = input.readFloat();
-              break;
-            }
-            case 69: {
-              bitField0_ |= 0x00000080;
-              distanceSessionKm_ = input.readFloat();
               break;
             }
           }
@@ -1143,54 +1872,6 @@ public final class AcesProtocol {
       return connectedGps_;
     }
 
-    // optional float distanceTodayKm = 7;
-    public static final int DISTANCETODAYKM_FIELD_NUMBER = 7;
-    private float distanceTodayKm_;
-    /**
-     * <code>optional float distanceTodayKm = 7;</code>
-     *
-     * <pre>
-     * 今日走った距離(km)
-     * </pre>
-     */
-    public boolean hasDistanceTodayKm() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional float distanceTodayKm = 7;</code>
-     *
-     * <pre>
-     * 今日走った距離(km)
-     * </pre>
-     */
-    public float getDistanceTodayKm() {
-      return distanceTodayKm_;
-    }
-
-    // optional float distanceSessionKm = 8;
-    public static final int DISTANCESESSIONKM_FIELD_NUMBER = 8;
-    private float distanceSessionKm_;
-    /**
-     * <code>optional float distanceSessionKm = 8;</code>
-     *
-     * <pre>
-     * このセッションで走った距離(km)
-     * </pre>
-     */
-    public boolean hasDistanceSessionKm() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional float distanceSessionKm = 8;</code>
-     *
-     * <pre>
-     * このセッションで走った距離(km)
-     * </pre>
-     */
-    public float getDistanceSessionKm() {
-      return distanceSessionKm_;
-    }
-
     private void initFields() {
       sessionId_ = "";
       connectedHeartrate_ = false;
@@ -1198,8 +1879,6 @@ public final class AcesProtocol {
       connectedSpeed_ = false;
       connectedTwitter_ = false;
       connectedGps_ = false;
-      distanceTodayKm_ = 0F;
-      distanceSessionKm_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1255,12 +1934,6 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBool(6, connectedGps_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeFloat(7, distanceTodayKm_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeFloat(8, distanceSessionKm_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1293,14 +1966,6 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(6, connectedGps_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(7, distanceTodayKm_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(8, distanceSessionKm_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1435,10 +2100,6 @@ public final class AcesProtocol {
         bitField0_ = (bitField0_ & ~0x00000010);
         connectedGps_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
-        distanceTodayKm_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        distanceSessionKm_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -1491,14 +2152,6 @@ public final class AcesProtocol {
           to_bitField0_ |= 0x00000020;
         }
         result.connectedGps_ = connectedGps_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.distanceTodayKm_ = distanceTodayKm_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.distanceSessionKm_ = distanceSessionKm_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1534,12 +2187,6 @@ public final class AcesProtocol {
         }
         if (other.hasConnectedGps()) {
           setConnectedGps(other.getConnectedGps());
-        }
-        if (other.hasDistanceTodayKm()) {
-          setDistanceTodayKm(other.getDistanceTodayKm());
-        }
-        if (other.hasDistanceSessionKm()) {
-          setDistanceSessionKm(other.getDistanceSessionKm());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1939,104 +2586,6 @@ public final class AcesProtocol {
         return this;
       }
 
-      // optional float distanceTodayKm = 7;
-      private float distanceTodayKm_ ;
-      /**
-       * <code>optional float distanceTodayKm = 7;</code>
-       *
-       * <pre>
-       * 今日走った距離(km)
-       * </pre>
-       */
-      public boolean hasDistanceTodayKm() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional float distanceTodayKm = 7;</code>
-       *
-       * <pre>
-       * 今日走った距離(km)
-       * </pre>
-       */
-      public float getDistanceTodayKm() {
-        return distanceTodayKm_;
-      }
-      /**
-       * <code>optional float distanceTodayKm = 7;</code>
-       *
-       * <pre>
-       * 今日走った距離(km)
-       * </pre>
-       */
-      public Builder setDistanceTodayKm(float value) {
-        bitField0_ |= 0x00000040;
-        distanceTodayKm_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float distanceTodayKm = 7;</code>
-       *
-       * <pre>
-       * 今日走った距離(km)
-       * </pre>
-       */
-      public Builder clearDistanceTodayKm() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        distanceTodayKm_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float distanceSessionKm = 8;
-      private float distanceSessionKm_ ;
-      /**
-       * <code>optional float distanceSessionKm = 8;</code>
-       *
-       * <pre>
-       * このセッションで走った距離(km)
-       * </pre>
-       */
-      public boolean hasDistanceSessionKm() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional float distanceSessionKm = 8;</code>
-       *
-       * <pre>
-       * このセッションで走った距離(km)
-       * </pre>
-       */
-      public float getDistanceSessionKm() {
-        return distanceSessionKm_;
-      }
-      /**
-       * <code>optional float distanceSessionKm = 8;</code>
-       *
-       * <pre>
-       * このセッションで走った距離(km)
-       * </pre>
-       */
-      public Builder setDistanceSessionKm(float value) {
-        bitField0_ |= 0x00000080;
-        distanceSessionKm_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float distanceSessionKm = 8;</code>
-       *
-       * <pre>
-       * このセッションで走った距離(km)
-       * </pre>
-       */
-      public Builder clearDistanceSessionKm() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        distanceSessionKm_ = 0F;
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.CentralStatus)
     }
 
@@ -2196,6 +2745,32 @@ public final class AcesProtocol {
      * </pre>
      */
     com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatusOrBuilder getCentralStatusOrBuilder();
+
+    // optional .eaglesakura_ace.UserRecord userRecord = 10;
+    /**
+     * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+     *
+     * <pre>
+     * ユーザーの各種記録
+     * </pre>
+     */
+    boolean hasUserRecord();
+    /**
+     * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+     *
+     * <pre>
+     * ユーザーの各種記録
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord getUserRecord();
+    /**
+     * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+     *
+     * <pre>
+     * ユーザーの各種記録
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder getUserRecordOrBuilder();
 
     // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
     /**
@@ -2427,9 +3002,9 @@ public final class AcesProtocol {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
                 sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000080;
               }
               sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.PARSER, extensionRegistry));
               break;
@@ -2445,9 +3020,9 @@ public final class AcesProtocol {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
                 commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000100;
               }
               commandPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.PARSER, extensionRegistry));
               break;
@@ -2464,7 +3039,7 @@ public final class AcesProtocol {
             }
             case 66: {
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
                 subBuilder = geoStatus_.toBuilder();
               }
               geoStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
@@ -2472,15 +3047,28 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(geoStatus_);
                 geoStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               break;
             }
             case 74: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
                 activityPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload>();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00000200;
               }
               activityPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload.PARSER, extensionRegistry));
+              break;
+            }
+            case 82: {
+              com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = userRecord_.toBuilder();
+              }
+              userRecord_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(userRecord_);
+                userRecord_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
               break;
             }
           }
@@ -2491,13 +3079,13 @@ public final class AcesProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
           commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
           activityPayloads_ = java.util.Collections.unmodifiableList(activityPayloads_);
         }
         this.unknownFields = unknownFields.build();
@@ -2798,6 +3386,40 @@ public final class AcesProtocol {
       return centralStatus_;
     }
 
+    // optional .eaglesakura_ace.UserRecord userRecord = 10;
+    public static final int USERRECORD_FIELD_NUMBER = 10;
+    private com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord userRecord_;
+    /**
+     * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+     *
+     * <pre>
+     * ユーザーの各種記録
+     * </pre>
+     */
+    public boolean hasUserRecord() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+     *
+     * <pre>
+     * ユーザーの各種記録
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord getUserRecord() {
+      return userRecord_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+     *
+     * <pre>
+     * ユーザーの各種記録
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder getUserRecordOrBuilder() {
+      return userRecord_;
+    }
+
     // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
     public static final int GEOSTATUS_FIELD_NUMBER = 8;
     private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload geoStatus_;
@@ -2809,7 +3431,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasGeoStatus() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
@@ -3006,6 +3628,7 @@ public final class AcesProtocol {
       senderPackage_ = "";
       targetPackage_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
+      userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
       geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
       commandPayloads_ = java.util.Collections.emptyList();
@@ -3086,11 +3709,14 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(7, getSenderPackageBytes());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(8, geoStatus_);
       }
       for (int i = 0; i < activityPayloads_.size(); i++) {
         output.writeMessage(9, activityPayloads_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(10, userRecord_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3129,13 +3755,17 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getSenderPackageBytes());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, geoStatus_);
       }
       for (int i = 0; i < activityPayloads_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, activityPayloads_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, userRecord_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3250,6 +3880,7 @@ public final class AcesProtocol {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getCentralStatusFieldBuilder();
+          getUserRecordFieldBuilder();
           getGeoStatusFieldBuilder();
           getSensorPayloadsFieldBuilder();
           getCommandPayloadsFieldBuilder();
@@ -3276,27 +3907,33 @@ public final class AcesProtocol {
           centralStatusBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (userRecordBuilder_ == null) {
+          userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
+        } else {
+          userRecordBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (geoStatusBuilder_ == null) {
           geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
         } else {
           geoStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
           sensorPayloadsBuilder_.clear();
         }
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           commandPayloadsBuilder_.clear();
         }
         if (activityPayloadsBuilder_ == null) {
           activityPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
         } else {
           activityPayloadsBuilder_.clear();
         }
@@ -3355,33 +3992,41 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
+        if (userRecordBuilder_ == null) {
+          result.userRecord_ = userRecord_;
+        } else {
+          result.userRecord_ = userRecordBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         if (geoStatusBuilder_ == null) {
           result.geoStatus_ = geoStatus_;
         } else {
           result.geoStatus_ = geoStatusBuilder_.build();
         }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
           result.sensorPayloads_ = sensorPayloadsBuilder_.build();
         }
         if (commandPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
             commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000100);
           }
           result.commandPayloads_ = commandPayloads_;
         } else {
           result.commandPayloads_ = commandPayloadsBuilder_.build();
         }
         if (activityPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
             activityPayloads_ = java.util.Collections.unmodifiableList(activityPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.activityPayloads_ = activityPayloads_;
         } else {
@@ -3426,6 +4071,9 @@ public final class AcesProtocol {
         if (other.hasCentralStatus()) {
           mergeCentralStatus(other.getCentralStatus());
         }
+        if (other.hasUserRecord()) {
+          mergeUserRecord(other.getUserRecord());
+        }
         if (other.hasGeoStatus()) {
           mergeGeoStatus(other.getGeoStatus());
         }
@@ -3433,7 +4081,7 @@ public final class AcesProtocol {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -3446,7 +4094,7 @@ public final class AcesProtocol {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000080);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -3459,7 +4107,7 @@ public final class AcesProtocol {
           if (!other.commandPayloads_.isEmpty()) {
             if (commandPayloads_.isEmpty()) {
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
             } else {
               ensureCommandPayloadsIsMutable();
               commandPayloads_.addAll(other.commandPayloads_);
@@ -3472,7 +4120,7 @@ public final class AcesProtocol {
               commandPayloadsBuilder_.dispose();
               commandPayloadsBuilder_ = null;
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
               commandPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCommandPayloadsFieldBuilder() : null;
@@ -3485,7 +4133,7 @@ public final class AcesProtocol {
           if (!other.activityPayloads_.isEmpty()) {
             if (activityPayloads_.isEmpty()) {
               activityPayloads_ = other.activityPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureActivityPayloadsIsMutable();
               activityPayloads_.addAll(other.activityPayloads_);
@@ -3498,7 +4146,7 @@ public final class AcesProtocol {
               activityPayloadsBuilder_.dispose();
               activityPayloadsBuilder_ = null;
               activityPayloads_ = other.activityPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000200);
               activityPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getActivityPayloadsFieldBuilder() : null;
@@ -4145,6 +4793,159 @@ public final class AcesProtocol {
         return centralStatusBuilder_;
       }
 
+      // optional .eaglesakura_ace.UserRecord userRecord = 10;
+      private com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder> userRecordBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public boolean hasUserRecord() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord getUserRecord() {
+        if (userRecordBuilder_ == null) {
+          return userRecord_;
+        } else {
+          return userRecordBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public Builder setUserRecord(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord value) {
+        if (userRecordBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          userRecord_ = value;
+          onChanged();
+        } else {
+          userRecordBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public Builder setUserRecord(
+          com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder builderForValue) {
+        if (userRecordBuilder_ == null) {
+          userRecord_ = builderForValue.build();
+          onChanged();
+        } else {
+          userRecordBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public Builder mergeUserRecord(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord value) {
+        if (userRecordBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              userRecord_ != com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance()) {
+            userRecord_ =
+              com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.newBuilder(userRecord_).mergeFrom(value).buildPartial();
+          } else {
+            userRecord_ = value;
+          }
+          onChanged();
+        } else {
+          userRecordBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public Builder clearUserRecord() {
+        if (userRecordBuilder_ == null) {
+          userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
+          onChanged();
+        } else {
+          userRecordBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder getUserRecordBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getUserRecordFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder getUserRecordOrBuilder() {
+        if (userRecordBuilder_ != null) {
+          return userRecordBuilder_.getMessageOrBuilder();
+        } else {
+          return userRecord_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
+       *
+       * <pre>
+       * ユーザーの各種記録
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder> 
+          getUserRecordFieldBuilder() {
+        if (userRecordBuilder_ == null) {
+          userRecordBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.UserRecordOrBuilder>(
+                  userRecord_,
+                  getParentForChildren(),
+                  isClean());
+          userRecord_ = null;
+        }
+        return userRecordBuilder_;
+      }
+
       // optional .eaglesakura_ace.GeoPayload geoStatus = 8;
       private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
@@ -4157,7 +4958,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasGeoStatus() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
@@ -4190,7 +4991,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -4208,7 +5009,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -4220,7 +5021,7 @@ public final class AcesProtocol {
        */
       public Builder mergeGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
         if (geoStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
               geoStatus_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
             geoStatus_ =
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(geoStatus_).mergeFrom(value).buildPartial();
@@ -4231,7 +5032,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -4248,7 +5049,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
@@ -4259,7 +5060,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getGeoStatusBuilder() {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
         return getGeoStatusFieldBuilder().getBuilder();
       }
@@ -4302,9 +5103,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000080;
          }
       }
 
@@ -4497,7 +5298,7 @@ public final class AcesProtocol {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -4602,7 +5403,7 @@ public final class AcesProtocol {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
@@ -4614,9 +5415,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_ =
         java.util.Collections.emptyList();
       private void ensureCommandPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
           commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>(commandPayloads_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000100;
          }
       }
 
@@ -4809,7 +5610,7 @@ public final class AcesProtocol {
       public Builder clearCommandPayloads() {
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
           onChanged();
         } else {
           commandPayloadsBuilder_.clear();
@@ -4914,7 +5715,7 @@ public final class AcesProtocol {
           commandPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder>(
                   commandPayloads_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  ((bitField0_ & 0x00000100) == 0x00000100),
                   getParentForChildren(),
                   isClean());
           commandPayloads_ = null;
@@ -4926,9 +5727,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload> activityPayloads_ =
         java.util.Collections.emptyList();
       private void ensureActivityPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
           activityPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload>(activityPayloads_);
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000200;
          }
       }
 
@@ -5121,7 +5922,7 @@ public final class AcesProtocol {
       public Builder clearActivityPayloads() {
         if (activityPayloadsBuilder_ == null) {
           activityPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
         } else {
           activityPayloadsBuilder_.clear();
@@ -5226,7 +6027,7 @@ public final class AcesProtocol {
           activityPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload, com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload.Builder, com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayloadOrBuilder>(
                   activityPayloads_,
-                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  ((bitField0_ & 0x00000200) == 0x00000200),
                   getParentForChildren(),
                   isClean());
           activityPayloads_ = null;
@@ -5251,6 +6052,11 @@ public final class AcesProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_VersionInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_UserRecord_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_CentralStatus_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5274,23 +6080,26 @@ public final class AcesProtocol {
       "to\032\024SensorProtocol.proto\032\025CommandProtoco" +
       "l.proto\032\021GeoProtocol.proto\">\n\013VersionInf" +
       "o\022\027\n\017protocolVersion\030\001 \002(\003\022\026\n\016appVersion" +
-      "Name\030\002 \002(\t\"\324\001\n\rCentralStatus\022\021\n\tsessionI" +
-      "d\030\005 \002(\t\022\032\n\022connectedHeartrate\030\001 \002(\010\022\030\n\020c" +
-      "onnectedCadence\030\002 \002(\010\022\026\n\016connectedSpeed\030" +
-      "\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014conne" +
-      "ctedGps\030\006 \002(\010\022\027\n\017distanceTodayKm\030\007 \001(\002\022\031",
-      "\n\021distanceSessionKm\030\010 \001(\002\"\371\002\n\rMasterPayl" +
-      "oad\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002" +
-      "(\t\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPacka" +
-      "ge\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagles" +
-      "akura_ace.CentralStatus\022.\n\tgeoStatus\030\010 \001" +
-      "(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016senso" +
-      "rPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sensor" +
-      "Payload\0228\n\017commandPayloads\030\005 \003(\0132\037.eagle" +
-      "sakura_ace.CommandPayload\022:\n\020activityPay" +
-      "loads\030\t \003(\0132 .eaglesakura_ace.ActivityPa",
-      "yloadB$\n\"com.eaglesakura.andriders.proto" +
-      "col"
+      "Name\030\002 \002(\t\"{\n\nUserRecord\022\027\n\017distanceToda" +
+      "yKm\030\001 \001(\002\022\031\n\021distanceSessionKm\030\002 \001(\002\022\031\n\021" +
+      "maxSpeedKmPerHour\030\n \001(\002\022\036\n\026maxSpeedToday" +
+      "KmPerHour\030\013 \001(\002\"\240\001\n\rCentralStatus\022\021\n\tses" +
+      "sionId\030\005 \002(\t\022\032\n\022connectedHeartrate\030\001 \002(\010",
+      "\022\030\n\020connectedCadence\030\002 \002(\010\022\026\n\016connectedS" +
+      "peed\030\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014" +
+      "connectedGps\030\006 \002(\010\"\252\003\n\rMasterPayload\022\020\n\010" +
+      "uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t\022\025\n\rs" +
+      "enderPackage\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(" +
+      "\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesakura_a" +
+      "ce.CentralStatus\022/\n\nuserRecord\030\n \001(\0132\033.e" +
+      "aglesakura_ace.UserRecord\022.\n\tgeoStatus\030\010" +
+      " \001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sen" +
+      "sorPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sens",
+      "orPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eag" +
+      "lesakura_ace.CommandPayload\022:\n\020activityP" +
+      "ayloads\030\t \003(\0132 .eaglesakura_ace.Activity" +
+      "PayloadB$\n\"com.eaglesakura.andriders.pro" +
+      "tocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5303,18 +6112,24 @@ public final class AcesProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_VersionInfo_descriptor,
               new java.lang.String[] { "ProtocolVersion", "AppVersionName", });
-          internal_static_eaglesakura_ace_CentralStatus_descriptor =
+          internal_static_eaglesakura_ace_UserRecord_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_UserRecord_descriptor,
+              new java.lang.String[] { "DistanceTodayKm", "DistanceSessionKm", "MaxSpeedKmPerHour", "MaxSpeedTodayKmPerHour", });
+          internal_static_eaglesakura_ace_CentralStatus_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
-              new java.lang.String[] { "SessionId", "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", "ConnectedGps", "DistanceTodayKm", "DistanceSessionKm", });
+              new java.lang.String[] { "SessionId", "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", "ConnectedGps", });
           internal_static_eaglesakura_ace_MasterPayload_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "GeoStatus", "SensorPayloads", "CommandPayloads", "ActivityPayloads", });
+              new java.lang.String[] { "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "UserRecord", "GeoStatus", "SensorPayloads", "CommandPayloads", "ActivityPayloads", });
           return null;
         }
       };

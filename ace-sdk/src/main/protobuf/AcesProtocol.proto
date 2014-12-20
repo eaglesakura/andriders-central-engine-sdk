@@ -1,20 +1,41 @@
 package eaglesakura_ace;
 
 import "AcesConstants.proto";
+
 import "ActivityProtocol.proto";
+
 import "SensorProtocol.proto";
+
 import "CommandProtocol.proto";
+
 import "GeoProtocol.proto";
+
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // セントラルサービスのバージョン
 message VersionInfo {
     // データフォーマットバージョン
     // 互換性の無いバージョンになったらCentralを更新する必要がある
-	required int64 protocolVersion = 1;
+    required int64 protocolVersion = 1;
 
-	// 実行しているCentralのアプリバージョン名
-	required string appVersionName = 2;
+    // 実行しているCentralのアプリバージョン名
+    required string appVersionName = 2;
+}
+
+// ユーザーの各種記録を参照する
+message UserRecord {
+    // 今日走った距離(km)
+    optional float distanceTodayKm = 1;
+
+    // このセッションで走った距離(km)
+    optional float distanceSessionKm = 2;
+
+
+    // 今までの最高速度
+    optional float maxSpeedKmPerHour = 10;
+
+    // 今日の最高速度
+    optional float maxSpeedTodayKmPerHour = 11;
 }
 
 // セントラルの情報を載せる
@@ -24,58 +45,56 @@ message CentralStatus {
     required string sessionId = 5;
 
     // ハートレートモニターに接続されていたらtrue
-	required bool connectedHeartrate = 1;
+    required bool connectedHeartrate = 1;
 
-	// ケイデンスセンサーに接続されていたらtrue
-	required bool connectedCadence = 2;
+    // ケイデンスセンサーに接続されていたらtrue
+    required bool connectedCadence = 2;
 
-	// スピードセンサーに接続されていたらtrue
-	// 基本的にはS&Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
-	required bool connectedSpeed = 3;
+    // スピードセンサーに接続されていたらtrue
+    // 基本的にはS&Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
+    required bool connectedSpeed = 3;
 
-	// ツイッター接続済みの場合true
-	required bool connectedTwitter = 4;
+    // ツイッター接続済みの場合true
+    required bool connectedTwitter = 4;
 
-	// GPSがONになっていたらtrue
-	required bool connectedGps = 6;
+    // GPSがONになっていたらtrue
+    required bool connectedGps = 6;
 
-	// 今日走った距離(km)
-	optional float distanceTodayKm = 7;
-
-	// このセッションで走った距離(km)
-	optional float distanceSessionKm = 8;
 }
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する
 message MasterPayload {
     // ペイロードごとに一意に確定するID
     // UUIDを使用して、お互いのIDを一意に識別出来るようにする
-	required string uniqueId = 4;
+    required string uniqueId = 4;
 
-	// ペイロード作成日時
-	// "yyyyMMDD-hh:mm:ss.SS"で記述される
-	required string createdDate = 3;
+    // ペイロード作成日時
+    // "yyyyMMDD-hh:mm:ss.SS"で記述される
+    required string createdDate = 3;
 
-	// 送信者のpackage
-	// 必ず付与すべきだが、完全な信頼性はない
-	required string senderPackage = 7;
+    // 送信者のpackage
+    // 必ず付与すべきだが、完全な信頼性はない
+    required string senderPackage = 7;
 
-	// 送信対象のpackage
-	// 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
-	optional string targetPackage = 6;
+    // 送信対象のpackage
+    // 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
+    optional string targetPackage = 6;
 
-	// セントラルアプリのステータス
-	optional CentralStatus centralStatus = 1;
+    // セントラルアプリのステータス
+    optional CentralStatus centralStatus = 1;
 
-	// ユーザーのGPS座標ステータス
-	optional GeoPayload geoStatus = 8;
+    // ユーザーの各種記録
+    optional UserRecord userRecord = 10;
 
-	// センサーの値
-	repeated SensorPayload sensorPayloads = 2;
+    // ユーザーのGPS座標ステータス
+    optional GeoPayload geoStatus = 8;
 
-	// 制御コマンド
-	repeated CommandPayload commandPayloads = 5;
+    // センサーの値
+    repeated SensorPayload sensorPayloads = 2;
 
-	// ユーザーの活動イベント
-	repeated ActivityPayload activityPayloads = 9;
+    // 制御コマンド
+    repeated CommandPayload commandPayloads = 5;
+
+    // ユーザーの活動イベント
+    repeated ActivityPayload activityPayloads = 9;
 }
