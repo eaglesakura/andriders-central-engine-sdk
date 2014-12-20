@@ -17,6 +17,8 @@
     <string name="AceUI.Information.Speed">スピード (km/h)</string>
     <string name="AceUI.Information.Speed.Max">最速 (km/h)</string>
     <string name="AceUI.Information.Speed.TodayMax">今日最速 (km/h)</string>
+    <string name="AceUI.Information.Distance.Session">走行距離 (km)</string>
+    <string name="AceUI.Information.Distance.Today">今日走行距離 (km)</string>
     <string name="AceUI.Information.NotConnected">N/A</string>
 
     <!-- 心拍ゾーン名 -->
@@ -37,7 +39,7 @@
     <string name="AceUI.Zone.Speed.Slow">低速</string>
     <string name="AceUI.Zone.Speed.Cruise">巡航</string>
     <string name="AceUI.Zone.Speed.Sprint">高速</string>
-    
+
     <!-- id定義 -->
     <!-- ゾーンタイトル（軽度、安静等） -->
     <item name="AceUI.BasicUI.ZoneTitle" type="id"></item>
