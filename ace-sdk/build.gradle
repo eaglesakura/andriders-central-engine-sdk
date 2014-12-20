@@ -18,7 +18,7 @@ android {
         targetSdkVersion 21
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"0.2.1\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"0.3.0\""
     }
 
     sourceSets {
