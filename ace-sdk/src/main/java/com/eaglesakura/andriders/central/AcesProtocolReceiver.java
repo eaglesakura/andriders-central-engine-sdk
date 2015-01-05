@@ -302,22 +302,22 @@ public class AcesProtocolReceiver {
     /**
      * ACEsの情報ハンドリングを行う
      */
-    private final Set<CentralDataHandler> centralHandlers = new HashSet<CentralDataHandler>();
+    private final Set<CentralDataHandler> centralHandlers = new HashSet<>();
 
     /**
      * センサーイベントのハンドリング
      */
-    private final Set<SensorEventHandler> sensorHandlers = new HashSet<SensorEventHandler>();
+    private final Set<SensorEventHandler> sensorHandlers = new HashSet<>();
 
     /**
      * コマンドイベントのハンドリング
      */
-    private final Set<CommandEventHandler> commandHandlers = new HashSet<CommandEventHandler>();
+    private final Set<CommandEventHandler> commandHandlers = new HashSet<>();
 
     /**
      * ユーザー活動のハンドリングを行う
      */
-    private final Set<ActivityEventHandler> activityHandlers = new HashSet<ActivityEventHandler>();
+    private final Set<ActivityEventHandler> activityHandlers = new HashSet<>();
 
     /**
      * 心拍を受け取った
