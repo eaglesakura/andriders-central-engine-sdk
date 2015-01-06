@@ -1,0 +1,3 @@
+[submodule "modules/eglibrary"]
+	path = modules/eglibrary
+	url = git@github.com:eaglesakura/eglibrary.git
