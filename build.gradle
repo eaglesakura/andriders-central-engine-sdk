@@ -69,6 +69,9 @@ task compileProtobuf(type: com.eaglesakura.gradle.tasks.ProtobufCompileTask) {
     javaOutput = file("src/main/generated/protobuf")
 }
 
+task uploadSdkArchives << {
+	tasks.uploadArchives.execute();
+}
 
 apply plugin: 'maven'
 
