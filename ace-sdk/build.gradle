@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+def ACES_SDK_VERSION = "0.3.1";
+def EGLIBRARY_ARTIFACT_VERSION = "0.1.24";
+
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile "com.googlecode.android-query:android-query:0.25.+"
@@ -18,7 +21,7 @@ android {
         targetSdkVersion 21
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"0.3.0\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}\""
     }
 
     sourceSets {
@@ -36,3 +39,46 @@ task compileProtobuf(type: com.eaglesakura.gradle.tasks.ProtobufCompileTask) {
     src = file("src/main/protobuf")
     javaOutput = file("src/main/generated/protobuf")
 }
+
+
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri(new File("/dev-home/workspaces/github/maven")))
+            pom.version = ACES_SDK_VERSION
+            pom.groupId = "com.eaglesakura"
+            pom.artifactId = "andriders-central-engine-sdk"
+        }
+    }
+}
+
+[uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
+    pom.project {
+        inceptionYear '2015'
+        packaging 'aar'
+        licenses {
+            license {
+                name 'NYSL'
+                url 'https://raw.github.com/eaglesakura/eglibrary/master/LICENSE'
+            }
+        }
+
+        dependencies {
+            dependency {
+                groupId = 'com.eaglesakura'
+                artifactId = 'eglibrary-android-java-core'
+                version = EGLIBRARY_ARTIFACT_VERSION
+                scope = 'compile'
+            }
+            dependency {
+                groupId = 'com.eaglesakura'
+                artifactId = 'eglibrary-android-java-wrapper'
+                version = EGLIBRARY_ARTIFACT_VERSION
+                scope = 'compile'
+            }
+        }
+    }
+}
+
