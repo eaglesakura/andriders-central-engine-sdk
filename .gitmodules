@@ -1,3 +1,6 @@
 [submodule "eglibrary"]
 	path = eglibrary
 	url = https://github.com/eaglesakura/eglibrary.git
+[submodule "ace-sdk/modules/eglibrary"]
+	path = ace-sdk/modules/eglibrary
+	url = git@github.com:eaglesakura/eglibrary.git

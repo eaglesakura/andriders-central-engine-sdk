@@ -1,0 +1,12 @@
+/**
+ * Libraries
+ */
+include ':eglibrary-java-core'
+include ':eglibrary-java-wrapper'
+project(':eglibrary-java-core').projectDir = file('modules/eglibrary/eglibrary-java-core');
+project(':eglibrary-java-wrapper').projectDir = file('modules/eglibrary/eglibrary-java-wrapper');
+
+include ':eglibrary-android-java-core'
+include ':eglibrary-android-java-wrapper'
+project(':eglibrary-android-java-core').projectDir = file('modules/eglibrary/eglibrary-android-java-core');
+project(':eglibrary-android-java-wrapper').projectDir = file('modules/eglibrary/eglibrary-android-java-wrapper');
