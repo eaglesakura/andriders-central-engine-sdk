@@ -12,9 +12,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:1.0.+'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
         classpath "com.eaglesakura:eglibrary-gradle-plugin:0.1.21"
-        classpath 'com.eaglesakura:joint-connector-plugin:0.1.13'
-
-        classpath 'com.deploygate:gradle:0.6'
     }
 }
 
@@ -38,7 +35,7 @@ dependencies {
     compile "com.google.protobuf:protobuf-java:2.5.+"
 
     compile project(':eglibrary-android-java-core')
-    compile project(':eglibrary-android-java-wrapper')
+    compile project(':eglibrary-java-wrapper')
 }
 
 android {
@@ -100,13 +97,13 @@ uploadArchives {
         dependencies {
             dependency {
                 groupId = 'com.eaglesakura'
-                artifactId = 'eglibrary-android-java-core'
+                artifactId = 'eglibrary-java-wrapper'
                 version = EGLIBRARY_ARTIFACT_VERSION
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
-                artifactId = 'eglibrary-android-java-wrapper'
+                artifactId = 'eglibrary-android-java-core'
                 version = EGLIBRARY_ARTIFACT_VERSION
                 scope = 'compile'
             }
