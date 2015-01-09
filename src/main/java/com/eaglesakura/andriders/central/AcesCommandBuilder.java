@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.central;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 
@@ -17,7 +16,6 @@ import com.eaglesakura.android.thread.UIHandler;
 import com.eaglesakura.android.util.AndroidUtil;
 import com.eaglesakura.util.StringUtil;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
