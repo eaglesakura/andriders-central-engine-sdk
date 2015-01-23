@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * 環境を指定する
  */
-public class Environment {
+public class AcesEnvironment {
 
     /**
      * ACE Extension Packのファイル拡張子

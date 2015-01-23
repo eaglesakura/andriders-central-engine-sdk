@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.eaglesakura.andriders.AceLog;
-import com.eaglesakura.andriders.Environment;
+import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload;
 
 public class TweetSettingUtil {
@@ -23,7 +23,7 @@ public class TweetSettingUtil {
      */
     public static Intent createDefaultTweetSettingActivityIntent(Context context) {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName(Environment.getApplicationPackageName(), "com.eaglesakura.andriders.ui.sns.TweetMessageInputActivity_"));
+        intent.setComponent(new ComponentName(AcesEnvironment.getApplicationPackageName(), "com.eaglesakura.andriders.ui.sns.TweetMessageInputActivity_"));
         return intent;
     }
 

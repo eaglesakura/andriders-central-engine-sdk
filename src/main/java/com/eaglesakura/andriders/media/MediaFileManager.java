@@ -1,15 +1,13 @@
 package com.eaglesakura.andriders.media;
 
 import android.content.Context;
-import android.media.ExifInterface;
-import android.os.Environment;
 
+import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.GeoProtocol;
 import com.eaglesakura.andriders.protocol.MediaMetaProtocol;
 import com.eaglesakura.andriders.protocol.SensorProtocol;
-import com.eaglesakura.google.spreadsheet.generic.StringField;
 import com.eaglesakura.util.StringUtil;
 
 import java.io.File;
@@ -74,7 +72,7 @@ public class MediaFileManager {
      * @return
      */
     public File getImageDirectory() {
-        return com.eaglesakura.andriders.Environment.getDateMediaDirectory(context, imageDate);
+        return AcesEnvironment.getDateMediaDirectory(context, imageDate);
     }
 
     public File getMediaMetaFileName() {

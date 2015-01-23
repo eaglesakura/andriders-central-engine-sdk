@@ -26,13 +26,13 @@ allprojects {
 
 apply plugin: 'com.android.library'
 
-def ACES_SDK_VERSION = "0.3.2";
+def ACES_SDK_VERSION = "0.3.3";
 def EGLIBRARY_ARTIFACT_VERSION = "0.1.25";
+def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile "com.googlecode.android-query:android-query:0.25.+"
-    compile "com.google.protobuf:protobuf-java:2.5.+"
+    compile "com.google.protobuf:protobuf-java:${PROTOBUF_ARTIFACT_VERSION}"
 
     compile project(':eglibrary-android-java-core')
     compile project(':eglibrary-java-wrapper')
@@ -67,7 +67,7 @@ task compileProtobuf(type: com.eaglesakura.gradle.tasks.ProtobufCompileTask) {
 }
 
 task uploadSdkArchives << {
-	tasks.uploadArchives.execute();
+    tasks.uploadArchives.execute();
 }
 
 apply plugin: 'maven'
@@ -105,6 +105,12 @@ uploadArchives {
                 groupId = 'com.eaglesakura'
                 artifactId = 'eglibrary-android-java-core'
                 version = EGLIBRARY_ARTIFACT_VERSION
+                scope = 'compile'
+            }
+            dependency {
+                groupId = 'com.google.protobuf'
+                artifactId = 'protobuf-java'
+                version = PROTOBUF_ARTIFACT_VERSION
                 scope = 'compile'
             }
         }

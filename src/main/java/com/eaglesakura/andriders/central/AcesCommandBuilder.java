@@ -3,7 +3,7 @@ package com.eaglesakura.andriders.central;
 import android.content.Context;
 import android.content.Intent;
 
-import com.eaglesakura.andriders.Environment;
+import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.media.SoundKey;
 import com.eaglesakura.andriders.notification.NotificationData;
@@ -183,7 +183,7 @@ public class AcesCommandBuilder {
      */
     public static AcesCommandBuilder newNotificationBuilder(Context context) {
         AcesCommandBuilder builder = new AcesCommandBuilder(context);
-        builder.setTargetPackage(Environment.getApplicationPackageName());
+        builder.setTargetPackage(AcesEnvironment.getApplicationPackageName());
         return builder;
     }
 
