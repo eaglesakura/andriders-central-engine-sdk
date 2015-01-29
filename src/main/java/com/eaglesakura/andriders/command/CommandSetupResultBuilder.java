@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
@@ -195,10 +196,20 @@ public class CommandSetupResultBuilder {
      *
      * @param flags
      */
-    public void setIntentFlags(int flags) {
+    public CommandSetupResultBuilder intentFlags(int flags) {
         intentPayload.setFlags(flags);
+        return this;
     }
 
+    /**
+     * Intent.setDataに渡すUriを指定する
+     *
+     * @param uri
+     */
+    public CommandSetupResultBuilder intentData(Uri uri) {
+        intentPayload.setDataUri(uri.toString());
+        return this;
+    }
 
     public CommandSetupResultBuilder putExtra(String key, boolean value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();

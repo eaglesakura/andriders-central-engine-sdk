@@ -5033,6 +5033,33 @@ public final class CommandProtocol {
      */
     int getFlags();
 
+    // optional string dataUri = 6;
+    /**
+     * <code>optional string dataUri = 6;</code>
+     *
+     * <pre>
+     * Intentに付与するData
+     * </pre>
+     */
+    boolean hasDataUri();
+    /**
+     * <code>optional string dataUri = 6;</code>
+     *
+     * <pre>
+     * Intentに付与するData
+     * </pre>
+     */
+    java.lang.String getDataUri();
+    /**
+     * <code>optional string dataUri = 6;</code>
+     *
+     * <pre>
+     * Intentに付与するData
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getDataUriBytes();
+
     // repeated .eaglesakura_ace.IntentExtra extras = 4;
     /**
      * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
@@ -5131,9 +5158,9 @@ public final class CommandProtocol {
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 extras_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               extras_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.PARSER, extensionRegistry));
               break;
@@ -5141,6 +5168,11 @@ public final class CommandProtocol {
             case 40: {
               bitField0_ |= 0x00000008;
               flags_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000010;
+              dataUri_ = input.readBytes();
               break;
             }
           }
@@ -5151,7 +5183,7 @@ public final class CommandProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           extras_ = java.util.Collections.unmodifiableList(extras_);
         }
         this.unknownFields = unknownFields.build();
@@ -5407,6 +5439,61 @@ public final class CommandProtocol {
       return flags_;
     }
 
+    // optional string dataUri = 6;
+    public static final int DATAURI_FIELD_NUMBER = 6;
+    private java.lang.Object dataUri_;
+    /**
+     * <code>optional string dataUri = 6;</code>
+     *
+     * <pre>
+     * Intentに付与するData
+     * </pre>
+     */
+    public boolean hasDataUri() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string dataUri = 6;</code>
+     *
+     * <pre>
+     * Intentに付与するData
+     * </pre>
+     */
+    public java.lang.String getDataUri() {
+      java.lang.Object ref = dataUri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          dataUri_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string dataUri = 6;</code>
+     *
+     * <pre>
+     * Intentに付与するData
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getDataUriBytes() {
+      java.lang.Object ref = dataUri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dataUri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // repeated .eaglesakura_ace.IntentExtra extras = 4;
     public static final int EXTRAS_FIELD_NUMBER = 4;
     private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> extras_;
@@ -5448,6 +5535,7 @@ public final class CommandProtocol {
       componentName_ = "";
       action_ = "";
       flags_ = 0;
+      dataUri_ = "";
       extras_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -5487,6 +5575,9 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(5, flags_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(6, getDataUriBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -5515,6 +5606,10 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, flags_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getDataUriBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5641,9 +5736,11 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         flags_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        dataUri_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (extrasBuilder_ == null) {
           extras_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           extrasBuilder_.clear();
         }
@@ -5691,10 +5788,14 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.flags_ = flags_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.dataUri_ = dataUri_;
         if (extrasBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
             extras_ = java.util.Collections.unmodifiableList(extras_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.extras_ = extras_;
         } else {
@@ -5732,11 +5833,16 @@ public final class CommandProtocol {
         if (other.hasFlags()) {
           setFlags(other.getFlags());
         }
+        if (other.hasDataUri()) {
+          bitField0_ |= 0x00000010;
+          dataUri_ = other.dataUri_;
+          onChanged();
+        }
         if (extrasBuilder_ == null) {
           if (!other.extras_.isEmpty()) {
             if (extras_.isEmpty()) {
               extras_ = other.extras_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensureExtrasIsMutable();
               extras_.addAll(other.extras_);
@@ -5749,7 +5855,7 @@ public final class CommandProtocol {
               extrasBuilder_.dispose();
               extrasBuilder_ = null;
               extras_ = other.extras_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
               extrasBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getExtrasFieldBuilder() : null;
@@ -6028,13 +6134,111 @@ public final class CommandProtocol {
         return this;
       }
 
+      // optional string dataUri = 6;
+      private java.lang.Object dataUri_ = "";
+      /**
+       * <code>optional string dataUri = 6;</code>
+       *
+       * <pre>
+       * Intentに付与するData
+       * </pre>
+       */
+      public boolean hasDataUri() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string dataUri = 6;</code>
+       *
+       * <pre>
+       * Intentに付与するData
+       * </pre>
+       */
+      public java.lang.String getDataUri() {
+        java.lang.Object ref = dataUri_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          dataUri_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string dataUri = 6;</code>
+       *
+       * <pre>
+       * Intentに付与するData
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getDataUriBytes() {
+        java.lang.Object ref = dataUri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dataUri_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string dataUri = 6;</code>
+       *
+       * <pre>
+       * Intentに付与するData
+       * </pre>
+       */
+      public Builder setDataUri(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        dataUri_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dataUri = 6;</code>
+       *
+       * <pre>
+       * Intentに付与するData
+       * </pre>
+       */
+      public Builder clearDataUri() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        dataUri_ = getDefaultInstance().getDataUri();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dataUri = 6;</code>
+       *
+       * <pre>
+       * Intentに付与するData
+       * </pre>
+       */
+      public Builder setDataUriBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        dataUri_ = value;
+        onChanged();
+        return this;
+      }
+
       // repeated .eaglesakura_ace.IntentExtra extras = 4;
       private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> extras_ =
         java.util.Collections.emptyList();
       private void ensureExtrasIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           extras_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>(extras_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -6183,7 +6387,7 @@ public final class CommandProtocol {
       public Builder clearExtras() {
         if (extrasBuilder_ == null) {
           extras_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           extrasBuilder_.clear();
@@ -6260,7 +6464,7 @@ public final class CommandProtocol {
           extrasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>(
                   extras_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           extras_ = null;
@@ -7750,20 +7954,20 @@ public final class CommandProtocol {
       "ype\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\003 \002(\t\"a\n\tValue" +
       "Type\022\n\n\006String\020\001\022\013\n\007Boolean\020\002\022\013\n\007Integer" +
       "\020\003\022\010\n\004Long\020\004\022\t\n\005Float\020\005\022\n\n\006Double\020\006\022\r\n\tB" +
-      "yteArray\020\007\"\340\001\n\rIntentPayload\0225\n\004type\030\001 \002" +
+      "yteArray\020\007\"\361\001\n\rIntentPayload\0225\n\004type\030\001 \002" +
       "(\0162\'.eaglesakura_ace.IntentPayload.BootT" +
       "ype\022\025\n\rcomponentName\030\002 \001(\t\022\016\n\006action\030\003 \001",
-      "(\t\022\r\n\005flags\030\005 \001(\005\022,\n\006extras\030\004 \003(\0132\034.eagl" +
-      "esakura_ace.IntentExtra\"4\n\010BootType\022\014\n\010A" +
-      "ctivity\020\001\022\r\n\tBroadcast\020\002\022\013\n\007Service\020\003\"2\n" +
-      "\016TriggerPayload\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtra" +
-      "Key\030\002 \002(\t\";\n\016CommandPayload\022\023\n\013commandTy" +
-      "pe\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*P\n\013Comman" +
-      "dType\022\024\n\020ExtensionTrigger\020\001\022\024\n\020AcesNotif" +
-      "ication\020\002\022\025\n\021SoundNotification\020\003*@\n\022Noti" +
-      "ficationLength\022\t\n\005Short\020\001\022\n\n\006Normal\020\002\022\010\n" +
-      "\004Long\020\003\022\t\n\005Never\020dB$\n\"com.eaglesakura.an",
-      "driders.protocol"
+      "(\t\022\r\n\005flags\030\005 \001(\005\022\017\n\007dataUri\030\006 \001(\t\022,\n\006ex" +
+      "tras\030\004 \003(\0132\034.eaglesakura_ace.IntentExtra" +
+      "\"4\n\010BootType\022\014\n\010Activity\020\001\022\r\n\tBroadcast\020" +
+      "\002\022\013\n\007Service\020\003\"2\n\016TriggerPayload\022\013\n\003key\030" +
+      "\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t\";\n\016CommandPay" +
+      "load\022\023\n\013commandType\030\001 \002(\t\022\024\n\014extraPayloa" +
+      "d\030\002 \001(\014*P\n\013CommandType\022\024\n\020ExtensionTrigg" +
+      "er\020\001\022\024\n\020AcesNotification\020\002\022\025\n\021SoundNotif" +
+      "ication\020\003*@\n\022NotificationLength\022\t\n\005Short" +
+      "\020\001\022\n\n\006Normal\020\002\022\010\n\004Long\020\003\022\t\n\005Never\020dB$\n\"c",
+      "om.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7799,7 +8003,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_IntentPayload_descriptor,
-              new java.lang.String[] { "Type", "ComponentName", "Action", "Flags", "Extras", });
+              new java.lang.String[] { "Type", "ComponentName", "Action", "Flags", "DataUri", "Extras", });
           internal_static_eaglesakura_ace_TriggerPayload_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new

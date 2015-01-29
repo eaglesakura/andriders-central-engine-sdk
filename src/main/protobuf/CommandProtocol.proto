@@ -131,6 +131,7 @@ message IntentPayload {
     optional string componentName = 2;
     optional string action = 3;
     optional int32 flags = 5;   // Intentに付与するフラグ
+    optional string dataUri = 6; // Intentに付与するData
     repeated IntentExtra extras = 4;
 }
 
