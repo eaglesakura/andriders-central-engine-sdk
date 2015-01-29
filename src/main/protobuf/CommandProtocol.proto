@@ -1,20 +1,22 @@
 package eaglesakura_ace;
 
 import "AcesConstants.proto";
+
 import "GeoProtocol.proto";
+
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // 標準コマンド
 enum CommandType {
     // 拡張機能トリガー起動された
     // トリガーは近接、Activity、時限、GEO等色々ある
-	ExtensionTrigger = 1;
+    ExtensionTrigger = 1;
 
-	// ACEsに通知を行わせる
-	AcesNotification = 2;
+    // ACEsに通知を行わせる
+    AcesNotification = 2;
 
-	// サウンドを鳴らす
-	SoundNotification = 3;
+    // サウンドを鳴らす
+    SoundNotification = 3;
 }
 
 // 音声による通知を行う
@@ -57,7 +59,7 @@ message NotificationRequestPayload {
     // 通知時に表示する画像
     // ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
     // なるべく小さなサイズが望ましい
-    optional bytes  iconFile = 2;
+    optional bytes iconFile = 2;
     optional string iconPath = 3;
 
     // 通知を表示する時間
@@ -80,40 +82,73 @@ message NotificationRequestPayload {
 // ツイートしたい内容を格納する
 message TweetRequestPayload {
     // ツイートする内容
-	required string tweetMessage = 1;
-	// ハッシュタグ一覧
-	// その他、強制的に #andriders が付与される。
-	repeated string hashtags = 2;
+    required string tweetMessage = 1;
+    // ハッシュタグ一覧
+    // その他、強制的に #andriders が付与される。
+    repeated string hashtags = 2;
 
-	// 画像ファイルへのURI一覧
-	// Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-	repeated string imageUris = 4;
+    // 画像ファイルへのURI一覧
+    // Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+    repeated string imageUris = 4;
 
-//	// ツイートオプション/ケイデンス
-//	optional bool withCadence = 5;
-//	// ツイートオプション/心拍
-//	optional bool withHeartrate = 6;
-//	// ツイートオプション/現在速度
-//	optional bool withSpeed = 7;
-//	// ツーとオプション/最高速度
-//	optional bool withSpeedRecord = 8;
+    //	// ツイートオプション/ケイデンス
+    //	optional bool withCadence = 5;
+    //	// ツイートオプション/心拍
+    //	optional bool withHeartrate = 6;
+    //	// ツイートオプション/現在速度
+    //	optional bool withSpeed = 7;
+    //	// ツーとオプション/最高速度
+    //	optional bool withSpeedRecord = 8;
+}
+
+message IntentExtra {
+    enum ValueType {
+        String = 1;
+        Boolean = 2;
+        Integer = 3;
+        Long = 4;
+        Float = 5;
+        Double = 6;
+        ByteArray = 7;
+    }
+    // Intentに渡す型
+    required ValueType type = 2;
+    // IntentのExtraKey
+    required string key = 1;
+    // Intentに渡す値（一旦stringとする）
+    required string value = 3;
+}
+
+message IntentPayload {
+    // 起動方法
+    enum BootType {
+        Activity = 1;
+        Broadcast = 2;
+        Service = 3;
+    }
+
+    required BootType type = 1;
+    optional string componentName = 2;
+    optional string action = 3;
+    optional int32 flags = 5;   // Intentに付与するフラグ
+    repeated IntentExtra extras = 4;
 }
 
 // コマンド用payload
 message TriggerPayload {
-	// コマンド実行キー
-	required string key = 1;
+    // コマンド実行キー
+    required string key = 1;
 
-	// 近接コマンド指定時に返した拡張Keyが指定される
-	required string appExtraKey = 2;
+    // コマンド実行時に渡されたIntentを起動する
+    required string appExtraKey = 2;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル
 message CommandPayload {
     // 何をするかのコマンド
     // CommandTypeが格納されるが、互換性維持のためstringとしておく
-	required string commandType = 1;
+    required string commandType = 1;
 
-	// 拡張データを格納するペイロード
-	optional bytes extraPayload = 2;
+    // 拡張データを格納するペイロード
+    optional bytes extraPayload = 2;
 }
