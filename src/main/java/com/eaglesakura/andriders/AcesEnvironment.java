@@ -30,6 +30,10 @@ public class AcesEnvironment {
         }
 
         APPLICATION_PACKAGE_NAME = context.getPackageName();
+        if (APPLICATION_PACKAGE_NAME.endsWith(".remote")) {
+            // Remoteの場合はそれを取り除く
+            APPLICATION_PACKAGE_NAME = APPLICATION_PACKAGE_NAME.replace(".remote", "");
+        }
     }
 
     public static String getApplicationPackageName() {
