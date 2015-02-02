@@ -51,7 +51,7 @@ public class AcesTriggerUtil {
      */
     public static CommandKey getKey(Intent intent) {
         String keyString = intent.getStringExtra(EXTRA_COMMAND_KEY_STRING);
-        if (StringUtil.isEmpty(keyString)) {
+        if (!StringUtil.isEmpty(keyString)) {
             return CommandKey.fromString(keyString);
         } else {
             return intent.getParcelableExtra(EXTRA_COMMAND_KEY);
