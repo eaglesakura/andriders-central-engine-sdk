@@ -1,5 +1,7 @@
 package com.eaglesakura.andriders.central.event;
 
+import android.content.Intent;
+
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
@@ -30,8 +32,7 @@ public class CommandEventHandler {
      * @param key      コマンド識別キー
      * @param trigger  トリガー本体
      */
-    public void onTriggerReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger) {
-
+    public void onTriggerReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger, Intent data) {
     }
 
     /**
@@ -43,7 +44,6 @@ public class CommandEventHandler {
      * @param payload
      */
     public void onNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
-
     }
 
     /**
@@ -55,7 +55,6 @@ public class CommandEventHandler {
      * @param payload
      */
     public void onSoundNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, SoundData soundData, CommandProtocol.SoundNotificationPayload payload) {
-
     }
 
     /**

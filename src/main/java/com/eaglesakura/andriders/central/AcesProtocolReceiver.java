@@ -5,15 +5,18 @@ import java.util.List;
 import java.util.Set;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 
 import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.central.event.ActivityEventHandler;
 import com.eaglesakura.andriders.central.event.CentralDataHandler;
 import com.eaglesakura.andriders.central.event.CommandEventHandler;
 import com.eaglesakura.andriders.central.event.SensorEventHandler;
+import com.eaglesakura.andriders.command.AcesTriggerUtil;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.notification.SoundData;
@@ -35,6 +38,7 @@ import com.eaglesakura.geo.Geohash;
 import com.eaglesakura.geo.GeohashGroup;
 import com.eaglesakura.io.IOUtil;
 import com.eaglesakura.util.LogUtil;
+import com.eaglesakura.util.StringUtil;
 import com.google.protobuf.ByteString;
 
 public class AcesProtocolReceiver {
@@ -432,6 +436,7 @@ public class AcesProtocolReceiver {
         }
     }
 
+
     /**
      * 近接コマンドを受け取った
      *
@@ -440,8 +445,13 @@ public class AcesProtocolReceiver {
      */
     private void onCommandReceived(MasterPayload master, TriggerPayload trigger) {
         CommandKey key = CommandKey.fromString(trigger.getKey());
+        Intent intent = null;
+        if (trigger.hasAppIntent()) {
+            intent = AcesTriggerUtil.makeIntent(trigger.getAppIntent());
+        }
+
         for (CommandEventHandler handler : commandHandlers) {
-            handler.onTriggerReceived(this, master, key, trigger);
+            handler.onTriggerReceived(this, master, key, trigger, intent);
         }
     }
 

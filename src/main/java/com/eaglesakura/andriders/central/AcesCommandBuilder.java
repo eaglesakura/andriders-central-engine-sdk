@@ -26,22 +26,22 @@ import java.util.UUID;
  */
 public class AcesCommandBuilder {
 
-    private final Context context;
+    protected final Context context;
 
     /**
      * 送信したいコマンド一覧
      */
-    List<CommandPayload> commands = new ArrayList<CommandProtocol.CommandPayload>();
+    protected List<CommandPayload> commands = new ArrayList<CommandProtocol.CommandPayload>();
 
     /**
      * 送信対象のPackage
      */
-    String targetPackage;
+    protected String targetPackage;
 
     /**
      * ビルドされたMasterデータ
      */
-    byte[] masterPayload;
+    protected byte[] masterPayload;
 
     /**
      * @param context

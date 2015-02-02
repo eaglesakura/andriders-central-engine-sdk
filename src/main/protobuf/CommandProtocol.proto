@@ -125,12 +125,15 @@ message IntentPayload {
         Activity = 1;
         Broadcast = 2;
         Service = 3;
+
+        // データのみを保持する
+        DataOnly = 10;
     }
 
     required BootType type = 1;
     optional string componentName = 2;
     optional string action = 3;
-    optional int32 flags = 5;   // Intentに付与するフラグ
+    optional int32 flags = 5; // Intentに付与するフラグ
     optional string dataUri = 6; // Intentに付与するData
     repeated IntentExtra extras = 4;
 }
@@ -142,6 +145,9 @@ message TriggerPayload {
 
     // コマンド実行時に渡されたIntentを起動する
     required string appExtraKey = 2;
+
+    // アプリの追加情報
+    optional IntentPayload appIntent = 3;
 }
 
 // 遠隔接続されたデバイスを制御するためのメッセージプロトコル

@@ -81,6 +81,9 @@ public class CommandSetupResultBuilder {
         } else {
             resultCode = Activity.RESULT_CANCELED;
         }
+
+        intentPayload = CommandProtocol.IntentPayload.newBuilder();
+        intentPayload.setType(CommandProtocol.IntentPayload.BootType.DataOnly);
     }
 
     /**
@@ -305,9 +308,11 @@ public class CommandSetupResultBuilder {
         data.putExtra(RESULT_EXTRA_THUMBNAIL_ICON, encode(icon));
         // コマンドキー
         data.putExtra(RESULT_EXTRA_COMMAND_KEY, AcesTriggerUtil.getKey(activity.getIntent()));
+
         // Intent
-        if (intentPayload != null) {
+        if (intentPayload.getType() != CommandProtocol.IntentPayload.BootType.DataOnly) {
             if (!extras.isEmpty()) {
+                // Intent用データを保存する
                 intentPayload.addAllExtras(extras);
             }
 
@@ -316,6 +321,13 @@ public class CommandSetupResultBuilder {
             data.putExtra(RESULT_EXTRA_APPEXTRAKEY, DEFAULT_COMMAND_LAUNCH_INTENT);
             data.putExtra(RESULT_EXTRA_PACKAGE_NAME, AcesEnvironment.getApplicationPackageName());
         } else {
+
+            if (!extras.isEmpty()) {
+                // Intent用データを保存する
+                intentPayload.addAllExtras(extras);
+                data.putExtra(RESULT_EXTRA_INTENTDATA, intentPayload.build().toByteArray());
+            }
+
             // 識別ID指定
             data.putExtra(RESULT_EXTRA_APPEXTRAKEY, appExtraKey);
             // パッケージ名

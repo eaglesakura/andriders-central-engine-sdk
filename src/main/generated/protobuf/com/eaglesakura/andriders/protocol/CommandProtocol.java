@@ -5238,6 +5238,14 @@ public final class CommandProtocol {
        * <code>Service = 3;</code>
        */
       Service(2, 3),
+      /**
+       * <code>DataOnly = 10;</code>
+       *
+       * <pre>
+       * データのみを保持する
+       * </pre>
+       */
+      DataOnly(3, 10),
       ;
 
       /**
@@ -5252,6 +5260,14 @@ public final class CommandProtocol {
        * <code>Service = 3;</code>
        */
       public static final int Service_VALUE = 3;
+      /**
+       * <code>DataOnly = 10;</code>
+       *
+       * <pre>
+       * データのみを保持する
+       * </pre>
+       */
+      public static final int DataOnly_VALUE = 10;
 
 
       public final int getNumber() { return value; }
@@ -5261,6 +5277,7 @@ public final class CommandProtocol {
           case 1: return Activity;
           case 2: return Broadcast;
           case 3: return Service;
+          case 10: return DataOnly;
           default: return null;
         }
       }
@@ -6539,6 +6556,32 @@ public final class CommandProtocol {
      */
     com.google.protobuf.ByteString
         getAppExtraKeyBytes();
+
+    // optional .eaglesakura_ace.IntentPayload appIntent = 3;
+    /**
+     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+     *
+     * <pre>
+     * アプリの追加情報
+     * </pre>
+     */
+    boolean hasAppIntent();
+    /**
+     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+     *
+     * <pre>
+     * アプリの追加情報
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent();
+    /**
+     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+     *
+     * <pre>
+     * アプリの追加情報
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.TriggerPayload}
@@ -6603,6 +6646,19 @@ public final class CommandProtocol {
             case 18: {
               bitField0_ |= 0x00000002;
               appExtraKey_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = appIntent_.toBuilder();
+              }
+              appIntent_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(appIntent_);
+                appIntent_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
               break;
             }
           }
@@ -6755,9 +6811,44 @@ public final class CommandProtocol {
       }
     }
 
+    // optional .eaglesakura_ace.IntentPayload appIntent = 3;
+    public static final int APPINTENT_FIELD_NUMBER = 3;
+    private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload appIntent_;
+    /**
+     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+     *
+     * <pre>
+     * アプリの追加情報
+     * </pre>
+     */
+    public boolean hasAppIntent() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+     *
+     * <pre>
+     * アプリの追加情報
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent() {
+      return appIntent_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+     *
+     * <pre>
+     * アプリの追加情報
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder() {
+      return appIntent_;
+    }
+
     private void initFields() {
       key_ = "";
       appExtraKey_ = "";
+      appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6772,6 +6863,12 @@ public final class CommandProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (hasAppIntent()) {
+        if (!getAppIntent().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6784,6 +6881,9 @@ public final class CommandProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getAppExtraKeyBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, appIntent_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6801,6 +6901,10 @@ public final class CommandProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getAppExtraKeyBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, appIntent_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6914,6 +7018,7 @@ public final class CommandProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getAppIntentFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6926,6 +7031,12 @@ public final class CommandProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         appExtraKey_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (appIntentBuilder_ == null) {
+          appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+        } else {
+          appIntentBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -6962,6 +7073,14 @@ public final class CommandProtocol {
           to_bitField0_ |= 0x00000002;
         }
         result.appExtraKey_ = appExtraKey_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (appIntentBuilder_ == null) {
+          result.appIntent_ = appIntent_;
+        } else {
+          result.appIntent_ = appIntentBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6988,6 +7107,9 @@ public final class CommandProtocol {
           appExtraKey_ = other.appExtraKey_;
           onChanged();
         }
+        if (other.hasAppIntent()) {
+          mergeAppIntent(other.getAppIntent());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -7000,6 +7122,12 @@ public final class CommandProtocol {
         if (!hasAppExtraKey()) {
           
           return false;
+        }
+        if (hasAppIntent()) {
+          if (!getAppIntent().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -7217,6 +7345,159 @@ public final class CommandProtocol {
         appExtraKey_ = value;
         onChanged();
         return this;
+      }
+
+      // optional .eaglesakura_ace.IntentPayload appIntent = 3;
+      private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> appIntentBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public boolean hasAppIntent() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent() {
+        if (appIntentBuilder_ == null) {
+          return appIntent_;
+        } else {
+          return appIntentBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public Builder setAppIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
+        if (appIntentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          appIntent_ = value;
+          onChanged();
+        } else {
+          appIntentBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public Builder setAppIntent(
+          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder builderForValue) {
+        if (appIntentBuilder_ == null) {
+          appIntent_ = builderForValue.build();
+          onChanged();
+        } else {
+          appIntentBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public Builder mergeAppIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
+        if (appIntentBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              appIntent_ != com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance()) {
+            appIntent_ =
+              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.newBuilder(appIntent_).mergeFrom(value).buildPartial();
+          } else {
+            appIntent_ = value;
+          }
+          onChanged();
+        } else {
+          appIntentBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public Builder clearAppIntent() {
+        if (appIntentBuilder_ == null) {
+          appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+          onChanged();
+        } else {
+          appIntentBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder getAppIntentBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getAppIntentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder() {
+        if (appIntentBuilder_ != null) {
+          return appIntentBuilder_.getMessageOrBuilder();
+        } else {
+          return appIntent_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+       *
+       * <pre>
+       * アプリの追加情報
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> 
+          getAppIntentFieldBuilder() {
+        if (appIntentBuilder_ == null) {
+          appIntentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder>(
+                  appIntent_,
+                  getParentForChildren(),
+                  isClean());
+          appIntent_ = null;
+        }
+        return appIntentBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TriggerPayload)
@@ -7954,20 +8235,22 @@ public final class CommandProtocol {
       "ype\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\003 \002(\t\"a\n\tValue" +
       "Type\022\n\n\006String\020\001\022\013\n\007Boolean\020\002\022\013\n\007Integer" +
       "\020\003\022\010\n\004Long\020\004\022\t\n\005Float\020\005\022\n\n\006Double\020\006\022\r\n\tB" +
-      "yteArray\020\007\"\361\001\n\rIntentPayload\0225\n\004type\030\001 \002" +
+      "yteArray\020\007\"\377\001\n\rIntentPayload\0225\n\004type\030\001 \002" +
       "(\0162\'.eaglesakura_ace.IntentPayload.BootT" +
       "ype\022\025\n\rcomponentName\030\002 \001(\t\022\016\n\006action\030\003 \001",
       "(\t\022\r\n\005flags\030\005 \001(\005\022\017\n\007dataUri\030\006 \001(\t\022,\n\006ex" +
       "tras\030\004 \003(\0132\034.eaglesakura_ace.IntentExtra" +
-      "\"4\n\010BootType\022\014\n\010Activity\020\001\022\r\n\tBroadcast\020" +
-      "\002\022\013\n\007Service\020\003\"2\n\016TriggerPayload\022\013\n\003key\030" +
-      "\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t\";\n\016CommandPay" +
-      "load\022\023\n\013commandType\030\001 \002(\t\022\024\n\014extraPayloa" +
-      "d\030\002 \001(\014*P\n\013CommandType\022\024\n\020ExtensionTrigg" +
-      "er\020\001\022\024\n\020AcesNotification\020\002\022\025\n\021SoundNotif" +
-      "ication\020\003*@\n\022NotificationLength\022\t\n\005Short" +
-      "\020\001\022\n\n\006Normal\020\002\022\010\n\004Long\020\003\022\t\n\005Never\020dB$\n\"c",
-      "om.eaglesakura.andriders.protocol"
+      "\"B\n\010BootType\022\014\n\010Activity\020\001\022\r\n\tBroadcast\020" +
+      "\002\022\013\n\007Service\020\003\022\014\n\010DataOnly\020\n\"e\n\016TriggerP" +
+      "ayload\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t" +
+      "\0221\n\tappIntent\030\003 \001(\0132\036.eaglesakura_ace.In" +
+      "tentPayload\";\n\016CommandPayload\022\023\n\013command" +
+      "Type\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*P\n\013Comm" +
+      "andType\022\024\n\020ExtensionTrigger\020\001\022\024\n\020AcesNot" +
+      "ification\020\002\022\025\n\021SoundNotification\020\003*@\n\022No",
+      "tificationLength\022\t\n\005Short\020\001\022\n\n\006Normal\020\002\022" +
+      "\010\n\004Long\020\003\022\t\n\005Never\020dB$\n\"com.eaglesakura." +
+      "andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8009,7 +8292,7 @@ public final class CommandProtocol {
           internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TriggerPayload_descriptor,
-              new java.lang.String[] { "Key", "AppExtraKey", });
+              new java.lang.String[] { "Key", "AppExtraKey", "AppIntent", });
           internal_static_eaglesakura_ace_CommandPayload_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new
