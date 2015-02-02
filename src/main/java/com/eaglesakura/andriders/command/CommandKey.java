@@ -16,19 +16,14 @@ public class CommandKey implements Parcelable {
     private static final String COMMAND_HEADER_PROXIMITY = "proximity#";
 
     /**
-     * Activityコマンドのヘッダ文字列
+     * スピードコマンド用ヘッダ文字
      */
-    private static final String COMMAND_HEADER_ACTIVITY = "activity#";
+    private static final String COMMAND_HEADER_SPEED = "speed#";
 
     /**
-     * Activity/最高速度更新時
+     * 距離コマンド用ヘッダ文字
      */
-    private static final String COMMAND_ID_ACTIVITY_MAXSPEED = "maxspeed#0";
-
-    /**
-     * Activity/停止時
-     */
-    private static final String COMMAND_ID_ACTIVITY_STOP = "stop#0";
+    private static final String COMMAND_HEADER_DISTANCE = "distance#";
 
     /**
      * タイマーコマンド
@@ -123,5 +118,25 @@ public class CommandKey implements Parcelable {
      */
     public static CommandKey fromTimer(long settingCurrentTime) {
         return new CommandKey(String.format("%stime%d", COMMAND_HEADER_TIMER, settingCurrentTime));
+    }
+
+    /**
+     * スピードコマンドのキーを生成する
+     *
+     * @param settingCurrentTime
+     * @return
+     */
+    public static CommandKey fromSpeed(long settingCurrentTime) {
+        return new CommandKey(String.format("%stime%d", COMMAND_HEADER_SPEED, settingCurrentTime));
+    }
+
+    /**
+     * 距離コマンドのキーを生成する
+     *
+     * @param settingCurrentTime
+     * @return
+     */
+    public static CommandKey fromDistance(long settingCurrentTime) {
+        return new CommandKey(String.format("%stime%d", COMMAND_HEADER_DISTANCE, settingCurrentTime));
     }
 }
