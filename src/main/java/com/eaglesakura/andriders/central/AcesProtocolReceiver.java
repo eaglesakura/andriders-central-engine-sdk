@@ -663,7 +663,7 @@ public class AcesProtocolReceiver {
 
         // centralのステータスを書き換える
         if (master.hasCentralStatus()) {
-            this.lastReceivedCentralMaster = lastReceivedCentralMaster;
+            this.lastReceivedCentralMaster = master;
             lastRceivedCentralStatus = master.getCentralStatus();
         }
 

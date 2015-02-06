@@ -148,10 +148,30 @@ public class SoundKey {
      */
     public static final SoundKey NOTIFICATION_TWITTER_TWEETED;
 
+    /**
+     * ビデオの録画を開始した
+     */
+    public static final SoundKey NOTIFICATION_CAMERA_RECORDVIDEO_START;
+
+    /**
+     * ビデオの録画を開始した
+     */
+    public static final SoundKey NOTIFICATION_CAMERA_RECORDVIDEO_EXTENSION;
+
+    /**
+     * ビデオの録画を停止した
+     */
+    public static final SoundKey NOTIFICATION_CAMERA_RECORDVIDEO_STOP;
+
+    /**
+     * 先頭交代
+     */
+    public static final SoundKey NOTIFICATION_TEAM_CHANGE_FIRST;
+
     private static final List<SoundKey> gSoundKeys;
 
     static {
-        gSoundKeys = new ArrayList<SoundKey>();
+        gSoundKeys = new ArrayList<>();
 
         gSoundKeys.add(SYSTEM_BOOT_ACE_SERVICE = new SoundKey("system-boot-ace-service"));
         gSoundKeys.add(NOTIFICATION_CAPTURE_PHOTO = new SoundKey("notification-capture-photo"));
@@ -175,6 +195,11 @@ public class SoundKey {
         gSoundKeys.add(NOTIFICATION_EXTRA_RECEIVED = new SoundKey("notification-extra-received"));
         gSoundKeys.add(NOTIFICATION_TWITTER_MENTION_RECEIVED = new SoundKey("notification-twitter-mention-received"));
         gSoundKeys.add(NOTIFICATION_TWITTER_TWEETED = new SoundKey("notification-twitter-tweeted"));
+
+        gSoundKeys.add(NOTIFICATION_CAMERA_RECORDVIDEO_START = new SoundKey("notification-camera-recordvideo-start"));
+        gSoundKeys.add(NOTIFICATION_CAMERA_RECORDVIDEO_EXTENSION = new SoundKey("notification-camera-recordvideo-extension"));
+        gSoundKeys.add(NOTIFICATION_CAMERA_RECORDVIDEO_STOP = new SoundKey("notification-camera-recordvideo-stop"));
+        gSoundKeys.add(NOTIFICATION_TEAM_CHANGE_FIRST = new SoundKey("notification-team-change-first"));
     }
 
 
@@ -184,6 +209,6 @@ public class SoundKey {
      * @return
      */
     public static List<SoundKey> list() {
-        return new ArrayList<SoundKey>(gSoundKeys);
+        return new ArrayList<>(gSoundKeys);
     }
 }
