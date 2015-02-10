@@ -33,7 +33,7 @@ public class MediaFileManager {
     /**
      * 書き込みを行った場合はファイルパスを保持しておく
      */
-    File imageFilePath;
+    File mediaFilePath;
 
     /**
      * 現在の位置
@@ -49,11 +49,17 @@ public class MediaFileManager {
             throw new IllegalArgumentException("!= File");
         }
         this.context = context.getApplicationContext();
-        this.imageFilePath = file;
+        this.mediaFilePath = file;
     }
 
     public Date getImageDate() {
         return imageDate;
+    }
+
+    static final SimpleDateFormat formatter = new SimpleDateFormat("HH-mm-ss");
+
+    public String getVideoFileName() {
+        return String.format("%s.mp4", formatter.format(imageDate));
     }
 
     /**
@@ -62,7 +68,6 @@ public class MediaFileManager {
      * @return
      */
     public String getImageFileName() {
-        SimpleDateFormat formatter = new SimpleDateFormat("HH-mm-ss");
         return String.format("%s.jpg", formatter.format(imageDate));
     }
 
@@ -76,7 +81,7 @@ public class MediaFileManager {
     }
 
     public File getMediaMetaFileName() {
-        return new File(String.format("%s%s", imageFilePath.getAbsolutePath(), METAFILE_EXT));
+        return new File(String.format("%s%s", mediaFilePath.getAbsolutePath(), METAFILE_EXT));
     }
 
     /**
@@ -135,15 +140,33 @@ public class MediaFileManager {
             return null;
         }
 
-        imageFilePath = new File(getImageDirectory(), getImageFileName());
-        imageFilePath.getParentFile().mkdirs();
+        mediaFilePath = new File(getImageDirectory(), getImageFileName());
+        mediaFilePath.getParentFile().mkdirs();
 
-        FileOutputStream os = new FileOutputStream(imageFilePath);
+        FileOutputStream os = new FileOutputStream(mediaFilePath);
         os.write(jpegImage);
         os.flush();
         os.close();
 
-        return imageFilePath;
+        return mediaFilePath;
+    }
+
+    /**
+     * 一時ファイルから本番領域にファイルを移す
+     *
+     * @param tempFile
+     * @return
+     */
+    public File swapVideo(File tempFile) {
+        if (tempFile == null || tempFile.length() == 0) {
+            return null;
+        }
+
+        mediaFilePath = new File(getImageDirectory(), getVideoFileName());
+        mediaFilePath.getParentFile().mkdirs();
+
+        tempFile.renameTo(mediaFilePath);
+        return mediaFilePath;
     }
 
     /**
@@ -151,7 +174,7 @@ public class MediaFileManager {
      *
      * @return
      */
-    public File getImageFilePath() {
-        return imageFilePath;
+    public File getMediaFilePath() {
+        return mediaFilePath;
     }
 }
