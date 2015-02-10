@@ -128,6 +128,24 @@ public class MediaFileManager {
         os.close();
     }
 
+    public void generateNomedia() {
+        FileOutputStream os = null;
+        try {
+            os = new FileOutputStream(
+                    new File(AcesEnvironment.getMediaDirectory(context), ".nomedia")
+            );
+            os.write(0);
+        } catch (Exception e) {
+        } finally {
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+    }
+
     /**
      * 画像を保存する
      *
