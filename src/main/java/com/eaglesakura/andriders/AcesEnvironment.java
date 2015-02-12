@@ -29,10 +29,22 @@ public class AcesEnvironment {
             throw new IllegalStateException();
         }
 
-        APPLICATION_PACKAGE_NAME = context.getPackageName();
-        if (APPLICATION_PACKAGE_NAME.endsWith(".remote")) {
-            // Remoteの場合はそれを取り除く
-            APPLICATION_PACKAGE_NAME = APPLICATION_PACKAGE_NAME.replace(".remote", "");
+        APPLICATION_PACKAGE_NAME = getSelfPackageName(context);
+    }
+
+    public static String getSelfPackageName(Context context) {
+        String packageName = context.getPackageName();
+        if (!packageName.startsWith("com.eaglesakura.andriders")) {
+            // 違うアプリの場合はそのまま返す
+            return packageName;
+        }
+
+        if (packageName.endsWith(".debug")) {
+            // debug build
+            return "com.eaglesakura.andriders.debug";
+        } else {
+            // release build
+            return "com.eaglesakura.andriders";
         }
     }
 

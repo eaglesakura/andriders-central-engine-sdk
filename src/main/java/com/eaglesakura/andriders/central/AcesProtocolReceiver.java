@@ -73,7 +73,7 @@ public class AcesProtocolReceiver {
     /**
      * 自分自身のpackage名
      */
-    private final String selfPackageName;
+    private String selfPackageName;
 
     /**
      * 自分自身のパッケージが送ったメッセージをハンドリングする
@@ -150,6 +150,10 @@ public class AcesProtocolReceiver {
     public AcesProtocolReceiver(Context context) {
         this.context = context.getApplicationContext();
         this.selfPackageName = context.getPackageName();
+    }
+
+    public void setSelfPackageName(String selfPackageName) {
+        this.selfPackageName = selfPackageName;
     }
 
     /**
