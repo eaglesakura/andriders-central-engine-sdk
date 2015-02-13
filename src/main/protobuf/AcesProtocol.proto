@@ -72,7 +72,7 @@ message Meta {
 // データ経路を限定することがないように、すべてのペイロードを一本化する
 message MasterPayload {
     // バージョン情報
-    required VersionInfo version = 11;
+    optional VersionInfo version = 11;
 
     // ペイロードごとに一意に確定するID
     // UUIDを使用して、お互いのIDを一意に識別出来るようにする

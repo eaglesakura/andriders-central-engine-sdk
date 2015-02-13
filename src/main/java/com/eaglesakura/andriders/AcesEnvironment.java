@@ -2,6 +2,8 @@ package com.eaglesakura.andriders;
 
 import android.content.Context;
 
+import com.eaglesakura.andriders.protocol.AcesProtocol;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +19,14 @@ public class AcesEnvironment {
     public static final String ACE_EXTENTION_PACK_FILE_EXT = ".aep";
 
     private static String APPLICATION_PACKAGE_NAME = "com.eaglesakura.andriders";
+
+    static {
+        {
+            AcesProtocol.VersionInfo.Builder builder = AcesProtocol.VersionInfo.newBuilder();
+            builder.setProtocolVersion(0);
+        }
+    }
+
 
     /**
      * 実行しているACE package nameを変更する。

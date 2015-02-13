@@ -124,6 +124,9 @@ public class AcesCommandBuilder {
      */
     public AcesCommandBuilder build() {
         MasterPayload.Builder masterBuilder = MasterPayload.newBuilder();
+        {
+
+        }
         masterBuilder.setUniqueId(UUID.randomUUID().toString());
         masterBuilder.setCreatedDate(StringUtil.toString(new Date()));
         masterBuilder.setSenderPackage(context.getPackageName());

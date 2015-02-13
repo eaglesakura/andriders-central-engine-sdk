@@ -3289,9 +3289,9 @@ public final class AcesProtocol {
   public interface MasterPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .eaglesakura_ace.VersionInfo version = 11;
+    // optional .eaglesakura_ace.VersionInfo version = 11;
     /**
-     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
      *
      * <pre>
      * バージョン情報
@@ -3299,7 +3299,7 @@ public final class AcesProtocol {
      */
     boolean hasVersion();
     /**
-     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
      *
      * <pre>
      * バージョン情報
@@ -3307,7 +3307,7 @@ public final class AcesProtocol {
      */
     com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo getVersion();
     /**
-     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
      *
      * <pre>
      * バージョン情報
@@ -3943,11 +3943,11 @@ public final class AcesProtocol {
     }
 
     private int bitField0_;
-    // required .eaglesakura_ace.VersionInfo version = 11;
+    // optional .eaglesakura_ace.VersionInfo version = 11;
     public static final int VERSION_FIELD_NUMBER = 11;
     private com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo version_;
     /**
-     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
      *
      * <pre>
      * バージョン情報
@@ -3957,7 +3957,7 @@ public final class AcesProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
      *
      * <pre>
      * バージョン情報
@@ -3967,7 +3967,7 @@ public final class AcesProtocol {
       return version_;
     }
     /**
-     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
      *
      * <pre>
      * バージョン情報
@@ -4589,10 +4589,6 @@ public final class AcesProtocol {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasVersion()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasUniqueId()) {
         memoizedIsInitialized = 0;
         return false;
@@ -4605,9 +4601,11 @@ public final class AcesProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getVersion().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasVersion()) {
+        if (!getVersion().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       if (hasCentralStatus()) {
         if (!getCentralStatus().isInitialized()) {
@@ -5229,10 +5227,6 @@ public final class AcesProtocol {
       }
 
       public final boolean isInitialized() {
-        if (!hasVersion()) {
-          
-          return false;
-        }
         if (!hasUniqueId()) {
           
           return false;
@@ -5245,9 +5239,11 @@ public final class AcesProtocol {
           
           return false;
         }
-        if (!getVersion().isInitialized()) {
-          
-          return false;
+        if (hasVersion()) {
+          if (!getVersion().isInitialized()) {
+            
+            return false;
+          }
         }
         if (hasCentralStatus()) {
           if (!getCentralStatus().isInitialized()) {
@@ -5313,12 +5309,12 @@ public final class AcesProtocol {
       }
       private int bitField0_;
 
-      // required .eaglesakura_ace.VersionInfo version = 11;
+      // optional .eaglesakura_ace.VersionInfo version = 11;
       private com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo version_ = com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder> versionBuilder_;
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5328,7 +5324,7 @@ public final class AcesProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5342,7 +5338,7 @@ public final class AcesProtocol {
         }
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5362,7 +5358,7 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5380,7 +5376,7 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5403,7 +5399,7 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5420,7 +5416,7 @@ public final class AcesProtocol {
         return this;
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5432,7 +5428,7 @@ public final class AcesProtocol {
         return getVersionFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -5446,7 +5442,7 @@ public final class AcesProtocol {
         }
       }
       /**
-       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       * <code>optional .eaglesakura_ace.VersionInfo version = 11;</code>
        *
        * <pre>
        * バージョン情報
@@ -7801,7 +7797,7 @@ public final class AcesProtocol {
       "peed\030\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014" +
       "connectedGps\030\006 \002(\010\"\"\n\004Meta\022\013\n\003key\030\001 \002(\t\022" +
       "\r\n\005value\030\002 \002(\t\"\271\004\n\rMasterPayload\022-\n\007vers" +
-      "ion\030\013 \002(\0132\034.eaglesakura_ace.VersionInfo\022" +
+      "ion\030\013 \001(\0132\034.eaglesakura_ace.VersionInfo\022" +
       "\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t\022\025" +
       "\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPackage\030\006" +
       " \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesakur" +
