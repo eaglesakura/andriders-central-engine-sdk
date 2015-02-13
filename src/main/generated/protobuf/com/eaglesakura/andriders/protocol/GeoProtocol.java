@@ -1499,6 +1499,1445 @@ public final class GeoProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeoPayload)
   }
 
+  public interface GeographyPayloadOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .eaglesakura_ace.GeoPoint location = 1;
+    /**
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+     *
+     * <pre>
+     * この情報を取得した時のGPS座標
+     * </pre>
+     */
+    boolean hasLocation();
+    /**
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+     *
+     * <pre>
+     * この情報を取得した時のGPS座標
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation();
+    /**
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+     *
+     * <pre>
+     * この情報を取得した時のGPS座標
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
+
+    // required string date = 2;
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * この情報を取得した時の時刻
+     * </pre>
+     */
+    boolean hasDate();
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * この情報を取得した時の時刻
+     * </pre>
+     */
+    java.lang.String getDate();
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * この情報を取得した時の時刻
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getDateBytes();
+
+    // optional string sunriseDate = 10;
+    /**
+     * <code>optional string sunriseDate = 10;</code>
+     *
+     * <pre>
+     * 日の出時刻
+     * </pre>
+     */
+    boolean hasSunriseDate();
+    /**
+     * <code>optional string sunriseDate = 10;</code>
+     *
+     * <pre>
+     * 日の出時刻
+     * </pre>
+     */
+    java.lang.String getSunriseDate();
+    /**
+     * <code>optional string sunriseDate = 10;</code>
+     *
+     * <pre>
+     * 日の出時刻
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSunriseDateBytes();
+
+    // optional string sunsetDate = 11;
+    /**
+     * <code>optional string sunsetDate = 11;</code>
+     *
+     * <pre>
+     * 日の入り時刻
+     * </pre>
+     */
+    boolean hasSunsetDate();
+    /**
+     * <code>optional string sunsetDate = 11;</code>
+     *
+     * <pre>
+     * 日の入り時刻
+     * </pre>
+     */
+    java.lang.String getSunsetDate();
+    /**
+     * <code>optional string sunsetDate = 11;</code>
+     *
+     * <pre>
+     * 日の入り時刻
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSunsetDateBytes();
+
+    // optional float temp = 12;
+    /**
+     * <code>optional float temp = 12;</code>
+     *
+     * <pre>
+     * 気温（摂氏）
+     * </pre>
+     */
+    boolean hasTemp();
+    /**
+     * <code>optional float temp = 12;</code>
+     *
+     * <pre>
+     * 気温（摂氏）
+     * </pre>
+     */
+    float getTemp();
+
+    // optional float windSpeedMeter = 13;
+    /**
+     * <code>optional float windSpeedMeter = 13;</code>
+     *
+     * <pre>
+     * 風速（メートル）
+     * </pre>
+     */
+    boolean hasWindSpeedMeter();
+    /**
+     * <code>optional float windSpeedMeter = 13;</code>
+     *
+     * <pre>
+     * 風速（メートル）
+     * </pre>
+     */
+    float getWindSpeedMeter();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.GeographyPayload}
+   *
+   * <pre>
+   **
+   * 地理情報
+   * </pre>
+   */
+  public static final class GeographyPayload extends
+      com.google.protobuf.GeneratedMessage
+      implements GeographyPayloadOrBuilder {
+    // Use GeographyPayload.newBuilder() to construct.
+    private GeographyPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GeographyPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GeographyPayload defaultInstance;
+    public static GeographyPayload getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GeographyPayload getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GeographyPayload(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = location_.toBuilder();
+              }
+              location_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(location_);
+                location_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              date_ = input.readBytes();
+              break;
+            }
+            case 82: {
+              bitField0_ |= 0x00000004;
+              sunriseDate_ = input.readBytes();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000008;
+              sunsetDate_ = input.readBytes();
+              break;
+            }
+            case 101: {
+              bitField0_ |= 0x00000010;
+              temp_ = input.readFloat();
+              break;
+            }
+            case 109: {
+              bitField0_ |= 0x00000020;
+              windSpeedMeter_ = input.readFloat();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GeographyPayload> PARSER =
+        new com.google.protobuf.AbstractParser<GeographyPayload>() {
+      public GeographyPayload parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GeographyPayload(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GeographyPayload> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .eaglesakura_ace.GeoPoint location = 1;
+    public static final int LOCATION_FIELD_NUMBER = 1;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_;
+    /**
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+     *
+     * <pre>
+     * この情報を取得した時のGPS座標
+     * </pre>
+     */
+    public boolean hasLocation() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+     *
+     * <pre>
+     * この情報を取得した時のGPS座標
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+      return location_;
+    }
+    /**
+     * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+     *
+     * <pre>
+     * この情報を取得した時のGPS座標
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+      return location_;
+    }
+
+    // required string date = 2;
+    public static final int DATE_FIELD_NUMBER = 2;
+    private java.lang.Object date_;
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * この情報を取得した時の時刻
+     * </pre>
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * この情報を取得した時の時刻
+     * </pre>
+     */
+    public java.lang.String getDate() {
+      java.lang.Object ref = date_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          date_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string date = 2;</code>
+     *
+     * <pre>
+     * この情報を取得した時の時刻
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getDateBytes() {
+      java.lang.Object ref = date_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        date_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string sunriseDate = 10;
+    public static final int SUNRISEDATE_FIELD_NUMBER = 10;
+    private java.lang.Object sunriseDate_;
+    /**
+     * <code>optional string sunriseDate = 10;</code>
+     *
+     * <pre>
+     * 日の出時刻
+     * </pre>
+     */
+    public boolean hasSunriseDate() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string sunriseDate = 10;</code>
+     *
+     * <pre>
+     * 日の出時刻
+     * </pre>
+     */
+    public java.lang.String getSunriseDate() {
+      java.lang.Object ref = sunriseDate_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sunriseDate_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string sunriseDate = 10;</code>
+     *
+     * <pre>
+     * 日の出時刻
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSunriseDateBytes() {
+      java.lang.Object ref = sunriseDate_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sunriseDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string sunsetDate = 11;
+    public static final int SUNSETDATE_FIELD_NUMBER = 11;
+    private java.lang.Object sunsetDate_;
+    /**
+     * <code>optional string sunsetDate = 11;</code>
+     *
+     * <pre>
+     * 日の入り時刻
+     * </pre>
+     */
+    public boolean hasSunsetDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string sunsetDate = 11;</code>
+     *
+     * <pre>
+     * 日の入り時刻
+     * </pre>
+     */
+    public java.lang.String getSunsetDate() {
+      java.lang.Object ref = sunsetDate_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sunsetDate_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string sunsetDate = 11;</code>
+     *
+     * <pre>
+     * 日の入り時刻
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSunsetDateBytes() {
+      java.lang.Object ref = sunsetDate_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sunsetDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional float temp = 12;
+    public static final int TEMP_FIELD_NUMBER = 12;
+    private float temp_;
+    /**
+     * <code>optional float temp = 12;</code>
+     *
+     * <pre>
+     * 気温（摂氏）
+     * </pre>
+     */
+    public boolean hasTemp() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional float temp = 12;</code>
+     *
+     * <pre>
+     * 気温（摂氏）
+     * </pre>
+     */
+    public float getTemp() {
+      return temp_;
+    }
+
+    // optional float windSpeedMeter = 13;
+    public static final int WINDSPEEDMETER_FIELD_NUMBER = 13;
+    private float windSpeedMeter_;
+    /**
+     * <code>optional float windSpeedMeter = 13;</code>
+     *
+     * <pre>
+     * 風速（メートル）
+     * </pre>
+     */
+    public boolean hasWindSpeedMeter() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional float windSpeedMeter = 13;</code>
+     *
+     * <pre>
+     * 風速（メートル）
+     * </pre>
+     */
+    public float getWindSpeedMeter() {
+      return windSpeedMeter_;
+    }
+
+    private void initFields() {
+      location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+      date_ = "";
+      sunriseDate_ = "";
+      sunsetDate_ = "";
+      temp_ = 0F;
+      windSpeedMeter_ = 0F;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasLocation()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getLocation().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, location_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDateBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(10, getSunriseDateBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(11, getSunsetDateBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(12, temp_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeFloat(13, windSpeedMeter_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, location_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDateBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getSunriseDateBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getSunsetDateBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(12, temp_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(13, windSpeedMeter_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.GeographyPayload}
+     *
+     * <pre>
+     **
+     * 地理情報
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getLocationFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (locationBuilder_ == null) {
+          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+        } else {
+          locationBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        date_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sunriseDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sunsetDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        temp_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        windSpeedMeter_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload build() {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload buildPartial() {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload result = new com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (locationBuilder_ == null) {
+          result.location_ = location_;
+        } else {
+          result.location_ = locationBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.date_ = date_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.sunriseDate_ = sunriseDate_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.sunsetDate_ = sunsetDate_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.temp_ = temp_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.windSpeedMeter_ = windSpeedMeter_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload other) {
+        if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance()) return this;
+        if (other.hasLocation()) {
+          mergeLocation(other.getLocation());
+        }
+        if (other.hasDate()) {
+          bitField0_ |= 0x00000002;
+          date_ = other.date_;
+          onChanged();
+        }
+        if (other.hasSunriseDate()) {
+          bitField0_ |= 0x00000004;
+          sunriseDate_ = other.sunriseDate_;
+          onChanged();
+        }
+        if (other.hasSunsetDate()) {
+          bitField0_ |= 0x00000008;
+          sunsetDate_ = other.sunsetDate_;
+          onChanged();
+        }
+        if (other.hasTemp()) {
+          setTemp(other.getTemp());
+        }
+        if (other.hasWindSpeedMeter()) {
+          setWindSpeedMeter(other.getWindSpeedMeter());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasLocation()) {
+          
+          return false;
+        }
+        if (!hasDate()) {
+          
+          return false;
+        }
+        if (!getLocation().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .eaglesakura_ace.GeoPoint location = 1;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> locationBuilder_;
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public boolean hasLocation() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+        if (locationBuilder_ == null) {
+          return location_;
+        } else {
+          return locationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public Builder setLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+        if (locationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          location_ = value;
+          onChanged();
+        } else {
+          locationBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public Builder setLocation(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder builderForValue) {
+        if (locationBuilder_ == null) {
+          location_ = builderForValue.build();
+          onChanged();
+        } else {
+          locationBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public Builder mergeLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+        if (locationBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              location_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance()) {
+            location_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.newBuilder(location_).mergeFrom(value).buildPartial();
+          } else {
+            location_ = value;
+          }
+          onChanged();
+        } else {
+          locationBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public Builder clearLocation() {
+        if (locationBuilder_ == null) {
+          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+          onChanged();
+        } else {
+          locationBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder getLocationBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getLocationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+        if (locationBuilder_ != null) {
+          return locationBuilder_.getMessageOrBuilder();
+        } else {
+          return location_;
+        }
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * この情報を取得した時のGPS座標
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> 
+          getLocationFieldBuilder() {
+        if (locationBuilder_ == null) {
+          locationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder>(
+                  location_,
+                  getParentForChildren(),
+                  isClean());
+          location_ = null;
+        }
+        return locationBuilder_;
+      }
+
+      // required string date = 2;
+      private java.lang.Object date_ = "";
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * この情報を取得した時の時刻
+       * </pre>
+       */
+      public boolean hasDate() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * この情報を取得した時の時刻
+       * </pre>
+       */
+      public java.lang.String getDate() {
+        java.lang.Object ref = date_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          date_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * この情報を取得した時の時刻
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getDateBytes() {
+        java.lang.Object ref = date_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          date_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * この情報を取得した時の時刻
+       * </pre>
+       */
+      public Builder setDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * この情報を取得した時の時刻
+       * </pre>
+       */
+      public Builder clearDate() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        date_ = getDefaultInstance().getDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string date = 2;</code>
+       *
+       * <pre>
+       * この情報を取得した時の時刻
+       * </pre>
+       */
+      public Builder setDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string sunriseDate = 10;
+      private java.lang.Object sunriseDate_ = "";
+      /**
+       * <code>optional string sunriseDate = 10;</code>
+       *
+       * <pre>
+       * 日の出時刻
+       * </pre>
+       */
+      public boolean hasSunriseDate() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string sunriseDate = 10;</code>
+       *
+       * <pre>
+       * 日の出時刻
+       * </pre>
+       */
+      public java.lang.String getSunriseDate() {
+        java.lang.Object ref = sunriseDate_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          sunriseDate_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string sunriseDate = 10;</code>
+       *
+       * <pre>
+       * 日の出時刻
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSunriseDateBytes() {
+        java.lang.Object ref = sunriseDate_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sunriseDate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string sunriseDate = 10;</code>
+       *
+       * <pre>
+       * 日の出時刻
+       * </pre>
+       */
+      public Builder setSunriseDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sunriseDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sunriseDate = 10;</code>
+       *
+       * <pre>
+       * 日の出時刻
+       * </pre>
+       */
+      public Builder clearSunriseDate() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sunriseDate_ = getDefaultInstance().getSunriseDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sunriseDate = 10;</code>
+       *
+       * <pre>
+       * 日の出時刻
+       * </pre>
+       */
+      public Builder setSunriseDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sunriseDate_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string sunsetDate = 11;
+      private java.lang.Object sunsetDate_ = "";
+      /**
+       * <code>optional string sunsetDate = 11;</code>
+       *
+       * <pre>
+       * 日の入り時刻
+       * </pre>
+       */
+      public boolean hasSunsetDate() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string sunsetDate = 11;</code>
+       *
+       * <pre>
+       * 日の入り時刻
+       * </pre>
+       */
+      public java.lang.String getSunsetDate() {
+        java.lang.Object ref = sunsetDate_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          sunsetDate_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string sunsetDate = 11;</code>
+       *
+       * <pre>
+       * 日の入り時刻
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSunsetDateBytes() {
+        java.lang.Object ref = sunsetDate_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sunsetDate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string sunsetDate = 11;</code>
+       *
+       * <pre>
+       * 日の入り時刻
+       * </pre>
+       */
+      public Builder setSunsetDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        sunsetDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sunsetDate = 11;</code>
+       *
+       * <pre>
+       * 日の入り時刻
+       * </pre>
+       */
+      public Builder clearSunsetDate() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        sunsetDate_ = getDefaultInstance().getSunsetDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string sunsetDate = 11;</code>
+       *
+       * <pre>
+       * 日の入り時刻
+       * </pre>
+       */
+      public Builder setSunsetDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        sunsetDate_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional float temp = 12;
+      private float temp_ ;
+      /**
+       * <code>optional float temp = 12;</code>
+       *
+       * <pre>
+       * 気温（摂氏）
+       * </pre>
+       */
+      public boolean hasTemp() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional float temp = 12;</code>
+       *
+       * <pre>
+       * 気温（摂氏）
+       * </pre>
+       */
+      public float getTemp() {
+        return temp_;
+      }
+      /**
+       * <code>optional float temp = 12;</code>
+       *
+       * <pre>
+       * 気温（摂氏）
+       * </pre>
+       */
+      public Builder setTemp(float value) {
+        bitField0_ |= 0x00000010;
+        temp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float temp = 12;</code>
+       *
+       * <pre>
+       * 気温（摂氏）
+       * </pre>
+       */
+      public Builder clearTemp() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        temp_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float windSpeedMeter = 13;
+      private float windSpeedMeter_ ;
+      /**
+       * <code>optional float windSpeedMeter = 13;</code>
+       *
+       * <pre>
+       * 風速（メートル）
+       * </pre>
+       */
+      public boolean hasWindSpeedMeter() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional float windSpeedMeter = 13;</code>
+       *
+       * <pre>
+       * 風速（メートル）
+       * </pre>
+       */
+      public float getWindSpeedMeter() {
+        return windSpeedMeter_;
+      }
+      /**
+       * <code>optional float windSpeedMeter = 13;</code>
+       *
+       * <pre>
+       * 風速（メートル）
+       * </pre>
+       */
+      public Builder setWindSpeedMeter(float value) {
+        bitField0_ |= 0x00000020;
+        windSpeedMeter_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float windSpeedMeter = 13;</code>
+       *
+       * <pre>
+       * 風速（メートル）
+       * </pre>
+       */
+      public Builder clearWindSpeedMeter() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        windSpeedMeter_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeographyPayload)
+    }
+
+    static {
+      defaultInstance = new GeographyPayload(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeographyPayload)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_GeoPoint_descriptor;
   private static
@@ -1509,6 +2948,11 @@ public final class GeoProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_GeographyPayload_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1522,8 +2966,12 @@ public final class GeoProtocol {
       "esConstants.proto\"A\n\010GeoPoint\022\020\n\010latitud" +
       "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\022\020\n\010altitude\030\003" +
       " \002(\001\"G\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031.e" +
-      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\tB$\n" +
-      "\"com.eaglesakura.andriders.protocol"
+      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\t\"\234\001" +
+      "\n\020GeographyPayload\022+\n\010location\030\001 \002(\0132\031.e" +
+      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\t\022\023\n" +
+      "\013sunriseDate\030\n \001(\t\022\022\n\nsunsetDate\030\013 \001(\t\022\014" +
+      "\n\004temp\030\014 \001(\002\022\026\n\016windSpeedMeter\030\r \001(\002B$\n\"" +
+      "com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1542,6 +2990,12 @@ public final class GeoProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_GeoPayload_descriptor,
               new java.lang.String[] { "Location", "Date", });
+          internal_static_eaglesakura_ace_GeographyPayload_descriptor =
+            getDescriptor().getMessageTypes().get(2);
+          internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_GeographyPayload_descriptor,
+              new java.lang.String[] { "Location", "Date", "SunriseDate", "SunsetDate", "Temp", "WindSpeedMeter", });
           return null;
         }
       };

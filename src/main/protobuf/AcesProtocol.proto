@@ -99,6 +99,9 @@ message MasterPayload {
     // ユーザーのGPS座標ステータス
     optional GeoPayload geoStatus = 8;
 
+    // 周辺情報
+    optional GeographyPayload geography = 12;
+
     // センサーの値
     repeated SensorPayload sensorPayloads = 2;
 
@@ -109,5 +112,5 @@ message MasterPayload {
     repeated ActivityPayload activityPayloads = 9;
 
     // メタデータ
-    repeated Meta metadatas = 11;
+    repeated Meta metadatas = 13;
 }

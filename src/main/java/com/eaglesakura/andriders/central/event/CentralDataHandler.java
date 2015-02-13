@@ -26,7 +26,6 @@ public class CentralDataHandler {
      * @param geo
      */
     public void onGeoStatusReceived(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload geo) {
-
     }
 
     /**
@@ -39,4 +38,26 @@ public class CentralDataHandler {
      */
     public void onGeohashUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload oldStatus, GeoProtocol.GeoPayload newStatus) {
     }
+
+    /**
+     * 周辺情報を受け取った
+     *
+     * @param receiver
+     * @param master
+     * @param geography
+     */
+    public void onGeographyReceived(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload geography) {
+    }
+
+    /**
+     * 周辺情報が更新された
+     *
+     * @param receiver
+     * @param master
+     * @param oldGeography
+     * @param newGeography
+     */
+    public void onGeographyUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload oldGeography, GeoProtocol.GeographyPayload newGeography) {
+    }
+
 }

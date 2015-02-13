@@ -1,6 +1,7 @@
 package eaglesakura_ace;
 
 import "AcesConstants.proto";
+
 option java_package = "com.eaglesakura.andriders.protocol";
 
 /**
@@ -18,8 +19,46 @@ message GeoPoint {
 // 現在位置の情報伝達
 message GeoPayload {
     // 現在のGPS座標
-	required GeoPoint location = 1;
+    required GeoPoint location = 1;
 
-	// 打刻した時刻
-	required string date = 2;
+    // 打刻した時刻
+    required string date = 2;
+}
+
+/**
+ * 地理情報
+ */
+message GeographyPayload {
+    // この情報を取得した時のGPS座標
+    required GeoPoint location = 1;
+    // この情報を取得した時の時刻
+    required string date = 2;
+
+    // 日の出時刻
+    optional string sunriseDate = 10;
+    // 日の入り時刻
+    optional string sunsetDate = 11;
+    // 気温（摂氏）
+    optional float temp = 12;
+    // 風速（メートル）
+    optional float windSpeedMeter = 13;
+
+    //    // 近所のスポット数
+    //    message Place {
+    //        // スポットがある位置
+    //        required GeoPoint location = 1;
+    //        // スポット名
+    //        required string name = 2;
+    //    }
+    //
+    //    message PlacesInfo {
+    //        // 最短距離にあるスポット
+    //        optional Place near = 1;
+    //        // スポット数
+    //        required int32 num = 2;
+    //    }
+    //    optional PlacesInfo placeRestStore = 50; // 補給が行える店舗数
+    //    optional PlacesInfo placeRest = 51; // トイレがあるであろう場所の数
+    //    optional PlacesInfo placeCycleStore = 52; // 緊急時に
+    //    optional float placeFindRadiusMeter = 53; // 検索範囲（メートル）
 }

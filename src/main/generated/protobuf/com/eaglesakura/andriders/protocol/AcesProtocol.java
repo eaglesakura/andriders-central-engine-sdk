@@ -2597,8 +2597,723 @@ public final class AcesProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.CentralStatus)
   }
 
+  public interface MetaOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string key = 1;
+    /**
+     * <code>required string key = 1;</code>
+     *
+     * <pre>
+     * </pre>
+     */
+    boolean hasKey();
+    /**
+     * <code>required string key = 1;</code>
+     *
+     * <pre>
+     * </pre>
+     */
+    java.lang.String getKey();
+    /**
+     * <code>required string key = 1;</code>
+     *
+     * <pre>
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getKeyBytes();
+
+    // required string value = 2;
+    /**
+     * <code>required string value = 2;</code>
+     */
+    boolean hasValue();
+    /**
+     * <code>required string value = 2;</code>
+     */
+    java.lang.String getValue();
+    /**
+     * <code>required string value = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getValueBytes();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.Meta}
+   *
+   * <pre>
+   * Key-Valueの軽量なメタ情報
+   * optionalなデータを付与したい場合に利用する
+   * </pre>
+   */
+  public static final class Meta extends
+      com.google.protobuf.GeneratedMessage
+      implements MetaOrBuilder {
+    // Use Meta.newBuilder() to construct.
+    private Meta(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Meta(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Meta defaultInstance;
+    public static Meta getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Meta getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Meta(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              value_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_Meta_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_Meta_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.AcesProtocol.Meta.class, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Meta> PARSER =
+        new com.google.protobuf.AbstractParser<Meta>() {
+      public Meta parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Meta(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Meta> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string key = 1;
+    public static final int KEY_FIELD_NUMBER = 1;
+    private java.lang.Object key_;
+    /**
+     * <code>required string key = 1;</code>
+     *
+     * <pre>
+     * </pre>
+     */
+    public boolean hasKey() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string key = 1;</code>
+     *
+     * <pre>
+     * </pre>
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          key_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string key = 1;</code>
+     *
+     * <pre>
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string value = 2;
+    public static final int VALUE_FIELD_NUMBER = 2;
+    private java.lang.Object value_;
+    /**
+     * <code>required string value = 2;</code>
+     */
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string value = 2;</code>
+     */
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          value_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string value = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getValueBytes() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        value_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      key_ = "";
+      value_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasValue()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getKeyBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getValueBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getKeyBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getValueBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.Meta parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.AcesProtocol.Meta prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.Meta}
+     *
+     * <pre>
+     * Key-Valueの軽量なメタ情報
+     * optionalなデータを付与したい場合に利用する
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_Meta_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_Meta_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.AcesProtocol.Meta.class, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.AcesProtocol.Meta.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        key_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        value_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_Meta_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.Meta.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta build() {
+        com.eaglesakura.andriders.protocol.AcesProtocol.Meta result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta buildPartial() {
+        com.eaglesakura.andriders.protocol.AcesProtocol.Meta result = new com.eaglesakura.andriders.protocol.AcesProtocol.Meta(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.key_ = key_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.value_ = value_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.AcesProtocol.Meta) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.AcesProtocol.Meta)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.Meta other) {
+        if (other == com.eaglesakura.andriders.protocol.AcesProtocol.Meta.getDefaultInstance()) return this;
+        if (other.hasKey()) {
+          bitField0_ |= 0x00000001;
+          key_ = other.key_;
+          onChanged();
+        }
+        if (other.hasValue()) {
+          bitField0_ |= 0x00000002;
+          value_ = other.value_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasKey()) {
+          
+          return false;
+        }
+        if (!hasValue()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.AcesProtocol.Meta parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.AcesProtocol.Meta) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string key = 1;
+      private java.lang.Object key_ = "";
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * </pre>
+       */
+      public boolean hasKey() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * </pre>
+       */
+      public java.lang.String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getKeyBytes() {
+        java.lang.Object ref = key_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          key_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * </pre>
+       */
+      public Builder setKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * </pre>
+       */
+      public Builder clearKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string key = 1;</code>
+       *
+       * <pre>
+       * </pre>
+       */
+      public Builder setKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string value = 2;
+      private java.lang.Object value_ = "";
+      /**
+       * <code>required string value = 2;</code>
+       */
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string value = 2;</code>
+       */
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          value_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string value = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string value = 2;</code>
+       */
+      public Builder setValue(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string value = 2;</code>
+       */
+      public Builder clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        value_ = getDefaultInstance().getValue();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string value = 2;</code>
+       */
+      public Builder setValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.Meta)
+    }
+
+    static {
+      defaultInstance = new Meta(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.Meta)
+  }
+
   public interface MasterPayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // required .eaglesakura_ace.VersionInfo version = 11;
+    /**
+     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     *
+     * <pre>
+     * バージョン情報
+     * </pre>
+     */
+    boolean hasVersion();
+    /**
+     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     *
+     * <pre>
+     * バージョン情報
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo getVersion();
+    /**
+     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     *
+     * <pre>
+     * バージョン情報
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder getVersionOrBuilder();
 
     // required string uniqueId = 4;
     /**
@@ -2798,6 +3513,32 @@ public final class AcesProtocol {
      */
     com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getGeoStatusOrBuilder();
 
+    // optional .eaglesakura_ace.GeographyPayload geography = 12;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+     *
+     * <pre>
+     * 周辺情報
+     * </pre>
+     */
+    boolean hasGeography();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+     *
+     * <pre>
+     * 周辺情報
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload getGeography();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+     *
+     * <pre>
+     * 周辺情報
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder getGeographyOrBuilder();
+
     // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
     /**
      * <code>repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;</code>
@@ -2932,6 +3673,51 @@ public final class AcesProtocol {
      */
     com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayloadOrBuilder getActivityPayloadsOrBuilder(
         int index);
+
+    // repeated .eaglesakura_ace.Meta metadatas = 13;
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta> 
+        getMetadatasList();
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.Meta getMetadatas(int index);
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    int getMetadatasCount();
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    java.util.List<? extends com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder> 
+        getMetadatasOrBuilderList();
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder getMetadatasOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code eaglesakura_ace.MasterPayload}
@@ -2990,7 +3776,7 @@ public final class AcesProtocol {
             }
             case 10: {
               com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
                 subBuilder = centralStatus_.toBuilder();
               }
               centralStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.PARSER, extensionRegistry);
@@ -2998,48 +3784,48 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(centralStatus_);
                 centralStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
                 sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000200;
               }
               sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.PARSER, extensionRegistry));
               break;
             }
             case 26: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               createdDate_ = input.readBytes();
               break;
             }
             case 34: {
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               uniqueId_ = input.readBytes();
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
                 commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00000400;
               }
               commandPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.PARSER, extensionRegistry));
               break;
             }
             case 50: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               targetPackage_ = input.readBytes();
               break;
             }
             case 58: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               senderPackage_ = input.readBytes();
               break;
             }
             case 66: {
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
                 subBuilder = geoStatus_.toBuilder();
               }
               geoStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
@@ -3047,20 +3833,20 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(geoStatus_);
                 geoStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               break;
             }
             case 74: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
                 activityPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload>();
-                mutable_bitField0_ |= 0x00000200;
+                mutable_bitField0_ |= 0x00000800;
               }
               activityPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload.PARSER, extensionRegistry));
               break;
             }
             case 82: {
               com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
                 subBuilder = userRecord_.toBuilder();
               }
               userRecord_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.PARSER, extensionRegistry);
@@ -3068,7 +3854,41 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(userRecord_);
                 userRecord_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 90: {
+              com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = version_.toBuilder();
+              }
+              version_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(version_);
+                version_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 98: {
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                subBuilder = geography_.toBuilder();
+              }
+              geography_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(geography_);
+                geography_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+            case 106: {
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+                metadatas_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.AcesProtocol.Meta>();
+                mutable_bitField0_ |= 0x00001000;
+              }
+              metadatas_.add(input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.Meta.PARSER, extensionRegistry));
               break;
             }
           }
@@ -3079,14 +3899,17 @@ public final class AcesProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
           commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
           activityPayloads_ = java.util.Collections.unmodifiableList(activityPayloads_);
+        }
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+          metadatas_ = java.util.Collections.unmodifiableList(metadatas_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -3120,6 +3943,40 @@ public final class AcesProtocol {
     }
 
     private int bitField0_;
+    // required .eaglesakura_ace.VersionInfo version = 11;
+    public static final int VERSION_FIELD_NUMBER = 11;
+    private com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo version_;
+    /**
+     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     *
+     * <pre>
+     * バージョン情報
+     * </pre>
+     */
+    public boolean hasVersion() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     *
+     * <pre>
+     * バージョン情報
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo getVersion() {
+      return version_;
+    }
+    /**
+     * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+     *
+     * <pre>
+     * バージョン情報
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder getVersionOrBuilder() {
+      return version_;
+    }
+
     // required string uniqueId = 4;
     public static final int UNIQUEID_FIELD_NUMBER = 4;
     private java.lang.Object uniqueId_;
@@ -3132,7 +3989,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasUniqueId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>required string uniqueId = 4;</code>
@@ -3190,7 +4047,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasCreatedDate() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required string createdDate = 3;</code>
@@ -3248,7 +4105,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasSenderPackage() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>required string senderPackage = 7;</code>
@@ -3306,7 +4163,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasTargetPackage() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional string targetPackage = 6;</code>
@@ -3363,7 +4220,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasCentralStatus() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -3397,7 +4254,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasUserRecord() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
@@ -3431,7 +4288,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasGeoStatus() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
@@ -3452,6 +4309,40 @@ public final class AcesProtocol {
      */
     public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getGeoStatusOrBuilder() {
       return geoStatus_;
+    }
+
+    // optional .eaglesakura_ace.GeographyPayload geography = 12;
+    public static final int GEOGRAPHY_FIELD_NUMBER = 12;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload geography_;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+     *
+     * <pre>
+     * 周辺情報
+     * </pre>
+     */
+    public boolean hasGeography() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+     *
+     * <pre>
+     * 周辺情報
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload getGeography() {
+      return geography_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+     *
+     * <pre>
+     * 周辺情報
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder getGeographyOrBuilder() {
+      return geography_;
     }
 
     // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
@@ -3622,7 +4513,64 @@ public final class AcesProtocol {
       return activityPayloads_.get(index);
     }
 
+    // repeated .eaglesakura_ace.Meta metadatas = 13;
+    public static final int METADATAS_FIELD_NUMBER = 13;
+    private java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta> metadatas_;
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    public java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta> getMetadatasList() {
+      return metadatas_;
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    public java.util.List<? extends com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder> 
+        getMetadatasOrBuilderList() {
+      return metadatas_;
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    public int getMetadatasCount() {
+      return metadatas_.size();
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.Meta getMetadatas(int index) {
+      return metadatas_.get(index);
+    }
+    /**
+     * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+     *
+     * <pre>
+     * メタデータ
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder getMetadatasOrBuilder(
+        int index) {
+      return metadatas_.get(index);
+    }
+
     private void initFields() {
+      version_ = com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.getDefaultInstance();
       uniqueId_ = "";
       createdDate_ = "";
       senderPackage_ = "";
@@ -3630,15 +4578,21 @@ public final class AcesProtocol {
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
       userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
       geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+      geography_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance();
       sensorPayloads_ = java.util.Collections.emptyList();
       commandPayloads_ = java.util.Collections.emptyList();
       activityPayloads_ = java.util.Collections.emptyList();
+      metadatas_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasVersion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasUniqueId()) {
         memoizedIsInitialized = 0;
         return false;
@@ -3651,6 +4605,10 @@ public final class AcesProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!getVersion().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (hasCentralStatus()) {
         if (!getCentralStatus().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -3659,6 +4617,12 @@ public final class AcesProtocol {
       }
       if (hasGeoStatus()) {
         if (!getGeoStatus().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasGeography()) {
+        if (!getGeography().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -3681,6 +4645,12 @@ public final class AcesProtocol {
           return false;
         }
       }
+      for (int i = 0; i < getMetadatasCount(); i++) {
+        if (!getMetadatas(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3688,35 +4658,44 @@ public final class AcesProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(1, centralStatus_);
       }
       for (int i = 0; i < sensorPayloads_.size(); i++) {
         output.writeMessage(2, sensorPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getCreatedDateBytes());
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(4, getUniqueIdBytes());
       }
       for (int i = 0; i < commandPayloads_.size(); i++) {
         output.writeMessage(5, commandPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(6, getTargetPackageBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(7, getSenderPackageBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(8, geoStatus_);
       }
       for (int i = 0; i < activityPayloads_.size(); i++) {
         output.writeMessage(9, activityPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(10, userRecord_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(11, version_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeMessage(12, geography_);
+      }
+      for (int i = 0; i < metadatas_.size(); i++) {
+        output.writeMessage(13, metadatas_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -3727,7 +4706,7 @@ public final class AcesProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, centralStatus_);
       }
@@ -3735,11 +4714,11 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, sensorPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getCreatedDateBytes());
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, getUniqueIdBytes());
       }
@@ -3747,15 +4726,15 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, commandPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getTargetPackageBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getSenderPackageBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, geoStatus_);
       }
@@ -3763,9 +4742,21 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, activityPayloads_.get(i));
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, userRecord_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, version_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, geography_);
+      }
+      for (int i = 0; i < metadatas_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, metadatas_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3879,12 +4870,15 @@ public final class AcesProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getVersionFieldBuilder();
           getCentralStatusFieldBuilder();
           getUserRecordFieldBuilder();
           getGeoStatusFieldBuilder();
+          getGeographyFieldBuilder();
           getSensorPayloadsFieldBuilder();
           getCommandPayloadsFieldBuilder();
           getActivityPayloadsFieldBuilder();
+          getMetadatasFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3893,49 +4887,67 @@ public final class AcesProtocol {
 
       public Builder clear() {
         super.clear();
-        uniqueId_ = "";
+        if (versionBuilder_ == null) {
+          version_ = com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.getDefaultInstance();
+        } else {
+          versionBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000001);
-        createdDate_ = "";
+        uniqueId_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        senderPackage_ = "";
+        createdDate_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        targetPackage_ = "";
+        senderPackage_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        targetPackage_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (centralStatusBuilder_ == null) {
           centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (userRecordBuilder_ == null) {
           userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
         } else {
           userRecordBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (geoStatusBuilder_ == null) {
           geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
         } else {
           geoStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (geographyBuilder_ == null) {
+          geography_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance();
+        } else {
+          geographyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000200);
         } else {
           sensorPayloadsBuilder_.clear();
         }
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000400);
         } else {
           commandPayloadsBuilder_.clear();
         }
         if (activityPayloadsBuilder_ == null) {
           activityPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000800);
         } else {
           activityPayloadsBuilder_.clear();
+        }
+        if (metadatasBuilder_ == null) {
+          metadatas_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00001000);
+        } else {
+          metadatasBuilder_.clear();
         }
         return this;
       }
@@ -3968,69 +4980,94 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.uniqueId_ = uniqueId_;
+        if (versionBuilder_ == null) {
+          result.version_ = version_;
+        } else {
+          result.version_ = versionBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.createdDate_ = createdDate_;
+        result.uniqueId_ = uniqueId_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.senderPackage_ = senderPackage_;
+        result.createdDate_ = createdDate_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.targetPackage_ = targetPackage_;
+        result.senderPackage_ = senderPackage_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
+        }
+        result.targetPackage_ = targetPackage_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
         }
         if (centralStatusBuilder_ == null) {
           result.centralStatus_ = centralStatus_;
         } else {
           result.centralStatus_ = centralStatusBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
         }
         if (userRecordBuilder_ == null) {
           result.userRecord_ = userRecord_;
         } else {
           result.userRecord_ = userRecordBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
         }
         if (geoStatusBuilder_ == null) {
           result.geoStatus_ = geoStatus_;
         } else {
           result.geoStatus_ = geoStatusBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        if (geographyBuilder_ == null) {
+          result.geography_ = geography_;
+        } else {
+          result.geography_ = geographyBuilder_.build();
+        }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
           result.sensorPayloads_ = sensorPayloadsBuilder_.build();
         }
         if (commandPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          if (((bitField0_ & 0x00000400) == 0x00000400)) {
             commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000400);
           }
           result.commandPayloads_ = commandPayloads_;
         } else {
           result.commandPayloads_ = commandPayloadsBuilder_.build();
         }
         if (activityPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200)) {
+          if (((bitField0_ & 0x00000800) == 0x00000800)) {
             activityPayloads_ = java.util.Collections.unmodifiableList(activityPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000200);
+            bitField0_ = (bitField0_ & ~0x00000800);
           }
           result.activityPayloads_ = activityPayloads_;
         } else {
           result.activityPayloads_ = activityPayloadsBuilder_.build();
+        }
+        if (metadatasBuilder_ == null) {
+          if (((bitField0_ & 0x00001000) == 0x00001000)) {
+            metadatas_ = java.util.Collections.unmodifiableList(metadatas_);
+            bitField0_ = (bitField0_ & ~0x00001000);
+          }
+          result.metadatas_ = metadatas_;
+        } else {
+          result.metadatas_ = metadatasBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -4048,23 +5085,26 @@ public final class AcesProtocol {
 
       public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload other) {
         if (other == com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.getDefaultInstance()) return this;
+        if (other.hasVersion()) {
+          mergeVersion(other.getVersion());
+        }
         if (other.hasUniqueId()) {
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
           uniqueId_ = other.uniqueId_;
           onChanged();
         }
         if (other.hasCreatedDate()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000004;
           createdDate_ = other.createdDate_;
           onChanged();
         }
         if (other.hasSenderPackage()) {
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
           senderPackage_ = other.senderPackage_;
           onChanged();
         }
         if (other.hasTargetPackage()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
           targetPackage_ = other.targetPackage_;
           onChanged();
         }
@@ -4077,11 +5117,14 @@ public final class AcesProtocol {
         if (other.hasGeoStatus()) {
           mergeGeoStatus(other.getGeoStatus());
         }
+        if (other.hasGeography()) {
+          mergeGeography(other.getGeography());
+        }
         if (sensorPayloadsBuilder_ == null) {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -4094,7 +5137,7 @@ public final class AcesProtocol {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000200);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -4107,7 +5150,7 @@ public final class AcesProtocol {
           if (!other.commandPayloads_.isEmpty()) {
             if (commandPayloads_.isEmpty()) {
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000400);
             } else {
               ensureCommandPayloadsIsMutable();
               commandPayloads_.addAll(other.commandPayloads_);
@@ -4120,7 +5163,7 @@ public final class AcesProtocol {
               commandPayloadsBuilder_.dispose();
               commandPayloadsBuilder_ = null;
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000400);
               commandPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCommandPayloadsFieldBuilder() : null;
@@ -4133,7 +5176,7 @@ public final class AcesProtocol {
           if (!other.activityPayloads_.isEmpty()) {
             if (activityPayloads_.isEmpty()) {
               activityPayloads_ = other.activityPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000800);
             } else {
               ensureActivityPayloadsIsMutable();
               activityPayloads_.addAll(other.activityPayloads_);
@@ -4146,7 +5189,7 @@ public final class AcesProtocol {
               activityPayloadsBuilder_.dispose();
               activityPayloadsBuilder_ = null;
               activityPayloads_ = other.activityPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000800);
               activityPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getActivityPayloadsFieldBuilder() : null;
@@ -4155,11 +5198,41 @@ public final class AcesProtocol {
             }
           }
         }
+        if (metadatasBuilder_ == null) {
+          if (!other.metadatas_.isEmpty()) {
+            if (metadatas_.isEmpty()) {
+              metadatas_ = other.metadatas_;
+              bitField0_ = (bitField0_ & ~0x00001000);
+            } else {
+              ensureMetadatasIsMutable();
+              metadatas_.addAll(other.metadatas_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.metadatas_.isEmpty()) {
+            if (metadatasBuilder_.isEmpty()) {
+              metadatasBuilder_.dispose();
+              metadatasBuilder_ = null;
+              metadatas_ = other.metadatas_;
+              bitField0_ = (bitField0_ & ~0x00001000);
+              metadatasBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMetadatasFieldBuilder() : null;
+            } else {
+              metadatasBuilder_.addAllMessages(other.metadatas_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasVersion()) {
+          
+          return false;
+        }
         if (!hasUniqueId()) {
           
           return false;
@@ -4172,6 +5245,10 @@ public final class AcesProtocol {
           
           return false;
         }
+        if (!getVersion().isInitialized()) {
+          
+          return false;
+        }
         if (hasCentralStatus()) {
           if (!getCentralStatus().isInitialized()) {
             
@@ -4180,6 +5257,12 @@ public final class AcesProtocol {
         }
         if (hasGeoStatus()) {
           if (!getGeoStatus().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasGeography()) {
+          if (!getGeography().isInitialized()) {
             
             return false;
           }
@@ -4198,6 +5281,12 @@ public final class AcesProtocol {
         }
         for (int i = 0; i < getActivityPayloadsCount(); i++) {
           if (!getActivityPayloads(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getMetadatasCount(); i++) {
+          if (!getMetadatas(i).isInitialized()) {
             
             return false;
           }
@@ -4224,6 +5313,159 @@ public final class AcesProtocol {
       }
       private int bitField0_;
 
+      // required .eaglesakura_ace.VersionInfo version = 11;
+      private com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo version_ = com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder> versionBuilder_;
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public boolean hasVersion() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo getVersion() {
+        if (versionBuilder_ == null) {
+          return version_;
+        } else {
+          return versionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public Builder setVersion(com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo value) {
+        if (versionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          version_ = value;
+          onChanged();
+        } else {
+          versionBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public Builder setVersion(
+          com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder builderForValue) {
+        if (versionBuilder_ == null) {
+          version_ = builderForValue.build();
+          onChanged();
+        } else {
+          versionBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public Builder mergeVersion(com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo value) {
+        if (versionBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              version_ != com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.getDefaultInstance()) {
+            version_ =
+              com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.newBuilder(version_).mergeFrom(value).buildPartial();
+          } else {
+            version_ = value;
+          }
+          onChanged();
+        } else {
+          versionBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public Builder clearVersion() {
+        if (versionBuilder_ == null) {
+          version_ = com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          versionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder getVersionBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getVersionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder getVersionOrBuilder() {
+        if (versionBuilder_ != null) {
+          return versionBuilder_.getMessageOrBuilder();
+        } else {
+          return version_;
+        }
+      }
+      /**
+       * <code>required .eaglesakura_ace.VersionInfo version = 11;</code>
+       *
+       * <pre>
+       * バージョン情報
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder> 
+          getVersionFieldBuilder() {
+        if (versionBuilder_ == null) {
+          versionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfo.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.VersionInfoOrBuilder>(
+                  version_,
+                  getParentForChildren(),
+                  isClean());
+          version_ = null;
+        }
+        return versionBuilder_;
+      }
+
       // required string uniqueId = 4;
       private java.lang.Object uniqueId_ = "";
       /**
@@ -4235,7 +5477,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasUniqueId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required string uniqueId = 4;</code>
@@ -4290,7 +5532,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         uniqueId_ = value;
         onChanged();
         return this;
@@ -4304,7 +5546,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearUniqueId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         uniqueId_ = getDefaultInstance().getUniqueId();
         onChanged();
         return this;
@@ -4322,7 +5564,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000002;
         uniqueId_ = value;
         onChanged();
         return this;
@@ -4339,7 +5581,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasCreatedDate() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required string createdDate = 3;</code>
@@ -4394,7 +5636,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         createdDate_ = value;
         onChanged();
         return this;
@@ -4408,7 +5650,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearCreatedDate() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         createdDate_ = getDefaultInstance().getCreatedDate();
         onChanged();
         return this;
@@ -4426,7 +5668,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000004;
         createdDate_ = value;
         onChanged();
         return this;
@@ -4443,7 +5685,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasSenderPackage() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>required string senderPackage = 7;</code>
@@ -4498,7 +5740,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         senderPackage_ = value;
         onChanged();
         return this;
@@ -4512,7 +5754,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearSenderPackage() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         senderPackage_ = getDefaultInstance().getSenderPackage();
         onChanged();
         return this;
@@ -4530,7 +5772,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000008;
         senderPackage_ = value;
         onChanged();
         return this;
@@ -4547,7 +5789,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasTargetPackage() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional string targetPackage = 6;</code>
@@ -4602,7 +5844,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         targetPackage_ = value;
         onChanged();
         return this;
@@ -4616,7 +5858,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public Builder clearTargetPackage() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         targetPackage_ = getDefaultInstance().getTargetPackage();
         onChanged();
         return this;
@@ -4634,7 +5876,7 @@ public final class AcesProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         targetPackage_ = value;
         onChanged();
         return this;
@@ -4652,7 +5894,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasCentralStatus() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .eaglesakura_ace.CentralStatus centralStatus = 1;</code>
@@ -4685,7 +5927,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -4703,7 +5945,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -4715,7 +5957,7 @@ public final class AcesProtocol {
        */
       public Builder mergeCentralStatus(com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus value) {
         if (centralStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
               centralStatus_ != com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance()) {
             centralStatus_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.newBuilder(centralStatus_).mergeFrom(value).buildPartial();
@@ -4726,7 +5968,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -4743,7 +5985,7 @@ public final class AcesProtocol {
         } else {
           centralStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       /**
@@ -4754,7 +5996,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.Builder getCentralStatusBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         onChanged();
         return getCentralStatusFieldBuilder().getBuilder();
       }
@@ -4805,7 +6047,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasUserRecord() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
@@ -4838,7 +6080,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -4856,7 +6098,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -4868,7 +6110,7 @@ public final class AcesProtocol {
        */
       public Builder mergeUserRecord(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord value) {
         if (userRecordBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
               userRecord_ != com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance()) {
             userRecord_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.newBuilder(userRecord_).mergeFrom(value).buildPartial();
@@ -4879,7 +6121,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -4896,7 +6138,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
@@ -4907,7 +6149,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder getUserRecordBuilder() {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
         return getUserRecordFieldBuilder().getBuilder();
       }
@@ -4958,7 +6200,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasGeoStatus() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
@@ -4991,7 +6233,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
@@ -5009,7 +6251,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
@@ -5021,7 +6263,7 @@ public final class AcesProtocol {
        */
       public Builder mergeGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
         if (geoStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
               geoStatus_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
             geoStatus_ =
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(geoStatus_).mergeFrom(value).buildPartial();
@@ -5032,7 +6274,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
@@ -5049,7 +6291,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
       /**
@@ -5060,7 +6302,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getGeoStatusBuilder() {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         onChanged();
         return getGeoStatusFieldBuilder().getBuilder();
       }
@@ -5099,13 +6341,166 @@ public final class AcesProtocol {
         return geoStatusBuilder_;
       }
 
+      // optional .eaglesakura_ace.GeographyPayload geography = 12;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload geography_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder> geographyBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public boolean hasGeography() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload getGeography() {
+        if (geographyBuilder_ == null) {
+          return geography_;
+        } else {
+          return geographyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public Builder setGeography(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload value) {
+        if (geographyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          geography_ = value;
+          onChanged();
+        } else {
+          geographyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public Builder setGeography(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder builderForValue) {
+        if (geographyBuilder_ == null) {
+          geography_ = builderForValue.build();
+          onChanged();
+        } else {
+          geographyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public Builder mergeGeography(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload value) {
+        if (geographyBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+              geography_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance()) {
+            geography_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.newBuilder(geography_).mergeFrom(value).buildPartial();
+          } else {
+            geography_ = value;
+          }
+          onChanged();
+        } else {
+          geographyBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public Builder clearGeography() {
+        if (geographyBuilder_ == null) {
+          geography_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance();
+          onChanged();
+        } else {
+          geographyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder getGeographyBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getGeographyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder getGeographyOrBuilder() {
+        if (geographyBuilder_ != null) {
+          return geographyBuilder_.getMessageOrBuilder();
+        } else {
+          return geography_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
+       *
+       * <pre>
+       * 周辺情報
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder> 
+          getGeographyFieldBuilder() {
+        if (geographyBuilder_ == null) {
+          geographyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayloadOrBuilder>(
+                  geography_,
+                  getParentForChildren(),
+                  isClean());
+          geography_ = null;
+        }
+        return geographyBuilder_;
+      }
+
       // repeated .eaglesakura_ace.SensorPayload sensorPayloads = 2;
       private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
           sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000200;
          }
       }
 
@@ -5298,7 +6693,7 @@ public final class AcesProtocol {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -5403,7 +6798,7 @@ public final class AcesProtocol {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  ((bitField0_ & 0x00000200) == 0x00000200),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
@@ -5415,9 +6810,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_ =
         java.util.Collections.emptyList();
       private void ensureCommandPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
           commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>(commandPayloads_);
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000400;
          }
       }
 
@@ -5610,7 +7005,7 @@ public final class AcesProtocol {
       public Builder clearCommandPayloads() {
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000400);
           onChanged();
         } else {
           commandPayloadsBuilder_.clear();
@@ -5715,7 +7110,7 @@ public final class AcesProtocol {
           commandPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder>(
                   commandPayloads_,
-                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  ((bitField0_ & 0x00000400) == 0x00000400),
                   getParentForChildren(),
                   isClean());
           commandPayloads_ = null;
@@ -5727,9 +7122,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload> activityPayloads_ =
         java.util.Collections.emptyList();
       private void ensureActivityPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
           activityPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload>(activityPayloads_);
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000800;
          }
       }
 
@@ -5922,7 +7317,7 @@ public final class AcesProtocol {
       public Builder clearActivityPayloads() {
         if (activityPayloadsBuilder_ == null) {
           activityPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000800);
           onChanged();
         } else {
           activityPayloadsBuilder_.clear();
@@ -6027,12 +7422,324 @@ public final class AcesProtocol {
           activityPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload, com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload.Builder, com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayloadOrBuilder>(
                   activityPayloads_,
-                  ((bitField0_ & 0x00000200) == 0x00000200),
+                  ((bitField0_ & 0x00000800) == 0x00000800),
                   getParentForChildren(),
                   isClean());
           activityPayloads_ = null;
         }
         return activityPayloadsBuilder_;
+      }
+
+      // repeated .eaglesakura_ace.Meta metadatas = 13;
+      private java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta> metadatas_ =
+        java.util.Collections.emptyList();
+      private void ensureMetadatasIsMutable() {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+          metadatas_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.AcesProtocol.Meta>(metadatas_);
+          bitField0_ |= 0x00001000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.Meta, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder> metadatasBuilder_;
+
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta> getMetadatasList() {
+        if (metadatasBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(metadatas_);
+        } else {
+          return metadatasBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public int getMetadatasCount() {
+        if (metadatasBuilder_ == null) {
+          return metadatas_.size();
+        } else {
+          return metadatasBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta getMetadatas(int index) {
+        if (metadatasBuilder_ == null) {
+          return metadatas_.get(index);
+        } else {
+          return metadatasBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder setMetadatas(
+          int index, com.eaglesakura.andriders.protocol.AcesProtocol.Meta value) {
+        if (metadatasBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMetadatasIsMutable();
+          metadatas_.set(index, value);
+          onChanged();
+        } else {
+          metadatasBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder setMetadatas(
+          int index, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder builderForValue) {
+        if (metadatasBuilder_ == null) {
+          ensureMetadatasIsMutable();
+          metadatas_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          metadatasBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder addMetadatas(com.eaglesakura.andriders.protocol.AcesProtocol.Meta value) {
+        if (metadatasBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMetadatasIsMutable();
+          metadatas_.add(value);
+          onChanged();
+        } else {
+          metadatasBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder addMetadatas(
+          int index, com.eaglesakura.andriders.protocol.AcesProtocol.Meta value) {
+        if (metadatasBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMetadatasIsMutable();
+          metadatas_.add(index, value);
+          onChanged();
+        } else {
+          metadatasBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder addMetadatas(
+          com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder builderForValue) {
+        if (metadatasBuilder_ == null) {
+          ensureMetadatasIsMutable();
+          metadatas_.add(builderForValue.build());
+          onChanged();
+        } else {
+          metadatasBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder addMetadatas(
+          int index, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder builderForValue) {
+        if (metadatasBuilder_ == null) {
+          ensureMetadatasIsMutable();
+          metadatas_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          metadatasBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder addAllMetadatas(
+          java.lang.Iterable<? extends com.eaglesakura.andriders.protocol.AcesProtocol.Meta> values) {
+        if (metadatasBuilder_ == null) {
+          ensureMetadatasIsMutable();
+          super.addAll(values, metadatas_);
+          onChanged();
+        } else {
+          metadatasBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder clearMetadatas() {
+        if (metadatasBuilder_ == null) {
+          metadatas_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00001000);
+          onChanged();
+        } else {
+          metadatasBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public Builder removeMetadatas(int index) {
+        if (metadatasBuilder_ == null) {
+          ensureMetadatasIsMutable();
+          metadatas_.remove(index);
+          onChanged();
+        } else {
+          metadatasBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder getMetadatasBuilder(
+          int index) {
+        return getMetadatasFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder getMetadatasOrBuilder(
+          int index) {
+        if (metadatasBuilder_ == null) {
+          return metadatas_.get(index);  } else {
+          return metadatasBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public java.util.List<? extends com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder> 
+           getMetadatasOrBuilderList() {
+        if (metadatasBuilder_ != null) {
+          return metadatasBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(metadatas_);
+        }
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder addMetadatasBuilder() {
+        return getMetadatasFieldBuilder().addBuilder(
+            com.eaglesakura.andriders.protocol.AcesProtocol.Meta.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder addMetadatasBuilder(
+          int index) {
+        return getMetadatasFieldBuilder().addBuilder(
+            index, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .eaglesakura_ace.Meta metadatas = 13;</code>
+       *
+       * <pre>
+       * メタデータ
+       * </pre>
+       */
+      public java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder> 
+           getMetadatasBuilderList() {
+        return getMetadatasFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.Meta, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder> 
+          getMetadatasFieldBuilder() {
+        if (metadatasBuilder_ == null) {
+          metadatasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.eaglesakura.andriders.protocol.AcesProtocol.Meta, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder>(
+                  metadatas_,
+                  ((bitField0_ & 0x00001000) == 0x00001000),
+                  getParentForChildren(),
+                  isClean());
+          metadatas_ = null;
+        }
+        return metadatasBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.MasterPayload)
@@ -6062,6 +7769,11 @@ public final class AcesProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_Meta_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_Meta_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_MasterPayload_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -6087,19 +7799,23 @@ public final class AcesProtocol {
       "sionId\030\005 \002(\t\022\032\n\022connectedHeartrate\030\001 \002(\010",
       "\022\030\n\020connectedCadence\030\002 \002(\010\022\026\n\016connectedS" +
       "peed\030\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014" +
-      "connectedGps\030\006 \002(\010\"\252\003\n\rMasterPayload\022\020\n\010" +
-      "uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t\022\025\n\rs" +
-      "enderPackage\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(" +
-      "\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesakura_a" +
-      "ce.CentralStatus\022/\n\nuserRecord\030\n \001(\0132\033.e" +
-      "aglesakura_ace.UserRecord\022.\n\tgeoStatus\030\010" +
-      " \001(\0132\033.eaglesakura_ace.GeoPayload\0226\n\016sen" +
-      "sorPayloads\030\002 \003(\0132\036.eaglesakura_ace.Sens",
-      "orPayload\0228\n\017commandPayloads\030\005 \003(\0132\037.eag" +
-      "lesakura_ace.CommandPayload\022:\n\020activityP" +
-      "ayloads\030\t \003(\0132 .eaglesakura_ace.Activity" +
-      "PayloadB$\n\"com.eaglesakura.andriders.pro" +
-      "tocol"
+      "connectedGps\030\006 \002(\010\"\"\n\004Meta\022\013\n\003key\030\001 \002(\t\022" +
+      "\r\n\005value\030\002 \002(\t\"\271\004\n\rMasterPayload\022-\n\007vers" +
+      "ion\030\013 \002(\0132\034.eaglesakura_ace.VersionInfo\022" +
+      "\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \002(\t\022\025" +
+      "\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPackage\030\006" +
+      " \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eaglesakur" +
+      "a_ace.CentralStatus\022/\n\nuserRecord\030\n \001(\0132" +
+      "\033.eaglesakura_ace.UserRecord\022.\n\tgeoStatu",
+      "s\030\010 \001(\0132\033.eaglesakura_ace.GeoPayload\0224\n\t" +
+      "geography\030\014 \001(\0132!.eaglesakura_ace.Geogra" +
+      "phyPayload\0226\n\016sensorPayloads\030\002 \003(\0132\036.eag" +
+      "lesakura_ace.SensorPayload\0228\n\017commandPay" +
+      "loads\030\005 \003(\0132\037.eaglesakura_ace.CommandPay" +
+      "load\022:\n\020activityPayloads\030\t \003(\0132 .eaglesa" +
+      "kura_ace.ActivityPayload\022(\n\tmetadatas\030\r " +
+      "\003(\0132\025.eaglesakura_ace.MetaB$\n\"com.eagles" +
+      "akura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -6124,12 +7840,18 @@ public final class AcesProtocol {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
               new java.lang.String[] { "SessionId", "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", "ConnectedGps", });
-          internal_static_eaglesakura_ace_MasterPayload_descriptor =
+          internal_static_eaglesakura_ace_Meta_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_eaglesakura_ace_Meta_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_Meta_descriptor,
+              new java.lang.String[] { "Key", "Value", });
+          internal_static_eaglesakura_ace_MasterPayload_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "UserRecord", "GeoStatus", "SensorPayloads", "CommandPayloads", "ActivityPayloads", });
+              new java.lang.String[] { "Version", "UniqueId", "CreatedDate", "SenderPackage", "TargetPackage", "CentralStatus", "UserRecord", "GeoStatus", "Geography", "SensorPayloads", "CommandPayloads", "ActivityPayloads", "Metadatas", });
           return null;
         }
       };

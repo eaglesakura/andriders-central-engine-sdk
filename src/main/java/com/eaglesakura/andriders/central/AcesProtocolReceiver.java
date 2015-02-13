@@ -126,6 +126,11 @@ public class AcesProtocolReceiver {
     private GeoProtocol.GeoPayload beforeHashGeo;
 
     /**
+     * 周辺情報
+     */
+    private GeoProtocol.GeographyPayload lastReceivedGeography;
+
+    /**
      * ACEsの現在のステータス
      */
     private AcesProtocol.CentralStatus lastRceivedCentralStatus;
@@ -247,6 +252,15 @@ public class AcesProtocolReceiver {
      */
     public GeoProtocol.GeoPayload getLastReceivedGeo() {
         return lastReceivedGeo;
+    }
+
+    /**
+     * 最後に受信した周辺情報を取得する
+     *
+     * @return
+     */
+    public GeoProtocol.GeographyPayload getLastReceivedGeography() {
+        return lastReceivedGeography;
     }
 
     /**
@@ -593,6 +607,8 @@ public class AcesProtocolReceiver {
         final GeoProtocol.GeoPoint newLocation;
         final String oldGeohash;
         final boolean updatedGeohash;
+        final boolean updatedGeography;
+        final GeoProtocol.GeographyPayload oldGeography = lastReceivedGeography;
 
         // ジオハッシュ処理はロック処理を行う
         synchronized (lock) {
@@ -615,6 +631,28 @@ public class AcesProtocolReceiver {
 
                 ++geohashUpdatedCount;
             }
+
+            // 周辺情報を持っている
+            if (master.hasGeography()) {
+                GeoProtocol.GeographyPayload newGeography = master.getGeography();
+                if (lastReceivedGeography == null) {
+                    // 新しい地理情報
+                    updatedGeography = true;
+                    lastReceivedGeography = newGeography;
+                } else {
+                    String lastDate = lastReceivedGeography.getDate();
+                    if (lastDate.equals(newGeography.getDate())) {
+                        // 同一時刻である場合は更新がない
+                        updatedGeography = false;
+                    } else {
+                        // 新しい地理情報
+                        updatedGeography = true;
+                        lastReceivedGeography = newGeography;
+                    }
+                }
+            } else {
+                updatedGeography = false;
+            }
         }
 
         // オブジェクトにハンドリング
@@ -627,6 +665,19 @@ public class AcesProtocolReceiver {
             // ジオハッシュ通知
             for (CentralDataHandler handler : centralHandlers) {
                 handler.onGeohashUpdated(this, master, oldGeoStatus, newGeoStatus);
+            }
+        }
+
+        // 周辺情報の通知
+        if (master.hasGeography()) {
+            for (CentralDataHandler handler : centralHandlers) {
+                handler.onGeographyReceived(this, master, master.getGeography());
+            }
+        }
+        if (updatedGeography) {
+            // ジオハッシュ通知
+            for (CentralDataHandler handler : centralHandlers) {
+                handler.onGeographyUpdated(this, master, oldGeography, lastReceivedGeography);
             }
         }
     }
