@@ -43,22 +43,24 @@ message GeographyPayload {
     // 風速（メートル）
     optional float windSpeedMeter = 13;
 
-    //    // 近所のスポット数
-    //    message Place {
-    //        // スポットがある位置
-    //        required GeoPoint location = 1;
-    //        // スポット名
-    //        required string name = 2;
-    //    }
-    //
-    //    message PlacesInfo {
-    //        // 最短距離にあるスポット
-    //        optional Place near = 1;
-    //        // スポット数
-    //        required int32 num = 2;
-    //    }
-    //    optional PlacesInfo placeRestStore = 50; // 補給が行える店舗数
-    //    optional PlacesInfo placeRest = 51; // トイレがあるであろう場所の数
-    //    optional PlacesInfo placeCycleStore = 52; // 緊急時に
+    // 近所のスポット数
+    message Place {
+        // スポットがある位置
+        required GeoPoint location = 1;
+        // スポット名
+        required string name = 2;
+    }
+
+    message PlacesInfo {
+        // 最短距離にあるスポット
+        optional Place nearPlace = 1;
+        // 近距離にあるスポット数
+        required int32 nearNum = 2;
+        // 遠距離にあるスポット数
+        required int32 farNum = 3;
+    }
+    optional PlacesInfo placeRestStore = 50; // 補給が行える店舗数
+    optional PlacesInfo placeRest = 51; // トイレがあるであろう場所の数
+    optional PlacesInfo placeCycleStore = 52; // 自転車屋
     //    optional float placeFindRadiusMeter = 53; // 検索範囲（メートル）
 }
