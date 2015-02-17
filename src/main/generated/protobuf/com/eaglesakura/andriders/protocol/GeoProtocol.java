@@ -1644,6 +1644,84 @@ public final class GeoProtocol {
      * </pre>
      */
     float getWindSpeedMeter();
+
+    // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+     *
+     * <pre>
+     * 補給が行える店舗数
+     * </pre>
+     */
+    boolean hasPlaceRestStore();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+     *
+     * <pre>
+     * 補給が行える店舗数
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceRestStore();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+     *
+     * <pre>
+     * 補給が行える店舗数
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceRestStoreOrBuilder();
+
+    // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+     *
+     * <pre>
+     * トイレがあるであろう場所の数
+     * </pre>
+     */
+    boolean hasPlaceRest();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+     *
+     * <pre>
+     * トイレがあるであろう場所の数
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceRest();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+     *
+     * <pre>
+     * トイレがあるであろう場所の数
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceRestOrBuilder();
+
+    // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+     *
+     * <pre>
+     * 自転車屋
+     * </pre>
+     */
+    boolean hasPlaceCycleStore();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+     *
+     * <pre>
+     * 自転車屋
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceCycleStore();
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+     *
+     * <pre>
+     * 自転車屋
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceCycleStoreOrBuilder();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.GeographyPayload}
@@ -1739,6 +1817,45 @@ public final class GeoProtocol {
               windSpeedMeter_ = input.readFloat();
               break;
             }
+            case 402: {
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = placeRestStore_.toBuilder();
+              }
+              placeRestStore_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(placeRestStore_);
+                placeRestStore_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 410: {
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = placeRest_.toBuilder();
+              }
+              placeRest_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(placeRest_);
+                placeRest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
+              break;
+            }
+            case 418: {
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                subBuilder = placeCycleStore_.toBuilder();
+              }
+              placeCycleStore_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(placeCycleStore_);
+                placeCycleStore_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1776,6 +1893,1630 @@ public final class GeoProtocol {
     @java.lang.Override
     public com.google.protobuf.Parser<GeographyPayload> getParserForType() {
       return PARSER;
+    }
+
+    public interface PlaceOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // required .eaglesakura_ace.GeoPoint location = 1;
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * スポットがある位置
+       * </pre>
+       */
+      boolean hasLocation();
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * スポットがある位置
+       * </pre>
+       */
+      com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation();
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * スポットがある位置
+       * </pre>
+       */
+      com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
+
+      // required string name = 2;
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       * スポット名
+       * </pre>
+       */
+      boolean hasName();
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       * スポット名
+       * </pre>
+       */
+      java.lang.String getName();
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       * スポット名
+       * </pre>
+       */
+      com.google.protobuf.ByteString
+          getNameBytes();
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.GeographyPayload.Place}
+     *
+     * <pre>
+     * 近所のスポット数
+     * </pre>
+     */
+    public static final class Place extends
+        com.google.protobuf.GeneratedMessage
+        implements PlaceOrBuilder {
+      // Use Place.newBuilder() to construct.
+      private Place(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private Place(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final Place defaultInstance;
+      public static Place getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public Place getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Place(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder subBuilder = null;
+                if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                  subBuilder = location_.toBuilder();
+                }
+                location_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.PARSER, extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(location_);
+                  location_ = subBuilder.buildPartial();
+                }
+                bitField0_ |= 0x00000001;
+                break;
+              }
+              case 18: {
+                bitField0_ |= 0x00000002;
+                name_ = input.readBytes();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_Place_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_Place_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<Place> PARSER =
+          new com.google.protobuf.AbstractParser<Place>() {
+        public Place parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Place(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Place> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // required .eaglesakura_ace.GeoPoint location = 1;
+      public static final int LOCATION_FIELD_NUMBER = 1;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_;
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * スポットがある位置
+       * </pre>
+       */
+      public boolean hasLocation() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * スポットがある位置
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+        return location_;
+      }
+      /**
+       * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+       *
+       * <pre>
+       * スポットがある位置
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+        return location_;
+      }
+
+      // required string name = 2;
+      public static final int NAME_FIELD_NUMBER = 2;
+      private java.lang.Object name_;
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       * スポット名
+       * </pre>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       * スポット名
+       * </pre>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>required string name = 2;</code>
+       *
+       * <pre>
+       * スポット名
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private void initFields() {
+        location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+        name_ = "";
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        if (!hasLocation()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasName()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!getLocation().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeMessage(1, location_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeBytes(2, getNameBytes());
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, location_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(2, getNameBytes());
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code eaglesakura_ace.GeographyPayload.Place}
+       *
+       * <pre>
+       * 近所のスポット数
+       * </pre>
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_Place_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_Place_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder.class);
+        }
+
+        // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+            getLocationFieldBuilder();
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          if (locationBuilder_ == null) {
+            location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+          } else {
+            locationBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000001);
+          name_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_Place_descriptor;
+        }
+
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place getDefaultInstanceForType() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance();
+        }
+
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place build() {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place buildPartial() {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place result = new com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          if (locationBuilder_ == null) {
+            result.location_ = location_;
+          } else {
+            result.location_ = locationBuilder_.build();
+          }
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.name_ = name_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place) {
+            return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place other) {
+          if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance()) return this;
+          if (other.hasLocation()) {
+            mergeLocation(other.getLocation());
+          }
+          if (other.hasName()) {
+            bitField0_ |= 0x00000002;
+            name_ = other.name_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          if (!hasLocation()) {
+            
+            return false;
+          }
+          if (!hasName()) {
+            
+            return false;
+          }
+          if (!getLocation().isInitialized()) {
+            
+            return false;
+          }
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // required .eaglesakura_ace.GeoPoint location = 1;
+        private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+        private com.google.protobuf.SingleFieldBuilder<
+            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> locationBuilder_;
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public boolean hasLocation() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+          if (locationBuilder_ == null) {
+            return location_;
+          } else {
+            return locationBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public Builder setLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+          if (locationBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            location_ = value;
+            onChanged();
+          } else {
+            locationBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000001;
+          return this;
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public Builder setLocation(
+            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder builderForValue) {
+          if (locationBuilder_ == null) {
+            location_ = builderForValue.build();
+            onChanged();
+          } else {
+            locationBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000001;
+          return this;
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public Builder mergeLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+          if (locationBuilder_ == null) {
+            if (((bitField0_ & 0x00000001) == 0x00000001) &&
+                location_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance()) {
+              location_ =
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.newBuilder(location_).mergeFrom(value).buildPartial();
+            } else {
+              location_ = value;
+            }
+            onChanged();
+          } else {
+            locationBuilder_.mergeFrom(value);
+          }
+          bitField0_ |= 0x00000001;
+          return this;
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public Builder clearLocation() {
+          if (locationBuilder_ == null) {
+            location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+            onChanged();
+          } else {
+            locationBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000001);
+          return this;
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder getLocationBuilder() {
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return getLocationFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+          if (locationBuilder_ != null) {
+            return locationBuilder_.getMessageOrBuilder();
+          } else {
+            return location_;
+          }
+        }
+        /**
+         * <code>required .eaglesakura_ace.GeoPoint location = 1;</code>
+         *
+         * <pre>
+         * スポットがある位置
+         * </pre>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> 
+            getLocationFieldBuilder() {
+          if (locationBuilder_ == null) {
+            locationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder>(
+                    location_,
+                    getParentForChildren(),
+                    isClean());
+            location_ = null;
+          }
+          return locationBuilder_;
+        }
+
+        // required string name = 2;
+        private java.lang.Object name_ = "";
+        /**
+         * <code>required string name = 2;</code>
+         *
+         * <pre>
+         * スポット名
+         * </pre>
+         */
+        public boolean hasName() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>required string name = 2;</code>
+         *
+         * <pre>
+         * スポット名
+         * </pre>
+         */
+        public java.lang.String getName() {
+          java.lang.Object ref = name_;
+          if (!(ref instanceof java.lang.String)) {
+            java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                .toStringUtf8();
+            name_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>required string name = 2;</code>
+         *
+         * <pre>
+         * スポット名
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+            getNameBytes() {
+          java.lang.Object ref = name_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            name_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>required string name = 2;</code>
+         *
+         * <pre>
+         * スポット名
+         * </pre>
+         */
+        public Builder setName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          name_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string name = 2;</code>
+         *
+         * <pre>
+         * スポット名
+         * </pre>
+         */
+        public Builder clearName() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          name_ = getDefaultInstance().getName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string name = 2;</code>
+         *
+         * <pre>
+         * スポット名
+         * </pre>
+         */
+        public Builder setNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          name_ = value;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeographyPayload.Place)
+      }
+
+      static {
+        defaultInstance = new Place(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeographyPayload.Place)
+    }
+
+    public interface PlacesInfoOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+       *
+       * <pre>
+       * 最短距離にあるスポット
+       * </pre>
+       */
+      boolean hasNearPlace();
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+       *
+       * <pre>
+       * 最短距離にあるスポット
+       * </pre>
+       */
+      com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place getNearPlace();
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+       *
+       * <pre>
+       * 最短距離にあるスポット
+       * </pre>
+       */
+      com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder getNearPlaceOrBuilder();
+
+      // required int32 nearNum = 2;
+      /**
+       * <code>required int32 nearNum = 2;</code>
+       *
+       * <pre>
+       * 近距離にあるスポット数
+       * </pre>
+       */
+      boolean hasNearNum();
+      /**
+       * <code>required int32 nearNum = 2;</code>
+       *
+       * <pre>
+       * 近距離にあるスポット数
+       * </pre>
+       */
+      int getNearNum();
+
+      // required int32 farNum = 3;
+      /**
+       * <code>required int32 farNum = 3;</code>
+       *
+       * <pre>
+       * 遠距離にあるスポット数
+       * </pre>
+       */
+      boolean hasFarNum();
+      /**
+       * <code>required int32 farNum = 3;</code>
+       *
+       * <pre>
+       * 遠距離にあるスポット数
+       * </pre>
+       */
+      int getFarNum();
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.GeographyPayload.PlacesInfo}
+     */
+    public static final class PlacesInfo extends
+        com.google.protobuf.GeneratedMessage
+        implements PlacesInfoOrBuilder {
+      // Use PlacesInfo.newBuilder() to construct.
+      private PlacesInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private PlacesInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final PlacesInfo defaultInstance;
+      public static PlacesInfo getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public PlacesInfo getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private PlacesInfo(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder subBuilder = null;
+                if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                  subBuilder = nearPlace_.toBuilder();
+                }
+                nearPlace_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.PARSER, extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(nearPlace_);
+                  nearPlace_ = subBuilder.buildPartial();
+                }
+                bitField0_ |= 0x00000001;
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                nearNum_ = input.readInt32();
+                break;
+              }
+              case 24: {
+                bitField0_ |= 0x00000004;
+                farNum_ = input.readInt32();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<PlacesInfo> PARSER =
+          new com.google.protobuf.AbstractParser<PlacesInfo>() {
+        public PlacesInfo parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new PlacesInfo(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<PlacesInfo> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;
+      public static final int NEARPLACE_FIELD_NUMBER = 1;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place nearPlace_;
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+       *
+       * <pre>
+       * 最短距離にあるスポット
+       * </pre>
+       */
+      public boolean hasNearPlace() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+       *
+       * <pre>
+       * 最短距離にあるスポット
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place getNearPlace() {
+        return nearPlace_;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+       *
+       * <pre>
+       * 最短距離にあるスポット
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder getNearPlaceOrBuilder() {
+        return nearPlace_;
+      }
+
+      // required int32 nearNum = 2;
+      public static final int NEARNUM_FIELD_NUMBER = 2;
+      private int nearNum_;
+      /**
+       * <code>required int32 nearNum = 2;</code>
+       *
+       * <pre>
+       * 近距離にあるスポット数
+       * </pre>
+       */
+      public boolean hasNearNum() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 nearNum = 2;</code>
+       *
+       * <pre>
+       * 近距離にあるスポット数
+       * </pre>
+       */
+      public int getNearNum() {
+        return nearNum_;
+      }
+
+      // required int32 farNum = 3;
+      public static final int FARNUM_FIELD_NUMBER = 3;
+      private int farNum_;
+      /**
+       * <code>required int32 farNum = 3;</code>
+       *
+       * <pre>
+       * 遠距離にあるスポット数
+       * </pre>
+       */
+      public boolean hasFarNum() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 farNum = 3;</code>
+       *
+       * <pre>
+       * 遠距離にあるスポット数
+       * </pre>
+       */
+      public int getFarNum() {
+        return farNum_;
+      }
+
+      private void initFields() {
+        nearPlace_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance();
+        nearNum_ = 0;
+        farNum_ = 0;
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        if (!hasNearNum()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasFarNum()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (hasNearPlace()) {
+          if (!getNearPlace().isInitialized()) {
+            memoizedIsInitialized = 0;
+            return false;
+          }
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeMessage(1, nearPlace_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeInt32(2, nearNum_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          output.writeInt32(3, farNum_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, nearPlace_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(2, nearNum_);
+        }
+        if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(3, farNum_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code eaglesakura_ace.GeographyPayload.PlacesInfo}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.class, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder.class);
+        }
+
+        // Construct using com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+            getNearPlaceFieldBuilder();
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          if (nearPlaceBuilder_ == null) {
+            nearPlace_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance();
+          } else {
+            nearPlaceBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000001);
+          nearNum_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          farNum_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000004);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_descriptor;
+        }
+
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getDefaultInstanceForType() {
+          return com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+        }
+
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo build() {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo buildPartial() {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo result = new com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          if (nearPlaceBuilder_ == null) {
+            result.nearPlace_ = nearPlace_;
+          } else {
+            result.nearPlace_ = nearPlaceBuilder_.build();
+          }
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.nearNum_ = nearNum_;
+          if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+            to_bitField0_ |= 0x00000004;
+          }
+          result.farNum_ = farNum_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo) {
+            return mergeFrom((com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo other) {
+          if (other == com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance()) return this;
+          if (other.hasNearPlace()) {
+            mergeNearPlace(other.getNearPlace());
+          }
+          if (other.hasNearNum()) {
+            setNearNum(other.getNearNum());
+          }
+          if (other.hasFarNum()) {
+            setFarNum(other.getFarNum());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          if (!hasNearNum()) {
+            
+            return false;
+          }
+          if (!hasFarNum()) {
+            
+            return false;
+          }
+          if (hasNearPlace()) {
+            if (!getNearPlace().isInitialized()) {
+              
+              return false;
+            }
+          }
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;
+        private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place nearPlace_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance();
+        private com.google.protobuf.SingleFieldBuilder<
+            com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder> nearPlaceBuilder_;
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public boolean hasNearPlace() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place getNearPlace() {
+          if (nearPlaceBuilder_ == null) {
+            return nearPlace_;
+          } else {
+            return nearPlaceBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public Builder setNearPlace(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place value) {
+          if (nearPlaceBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            nearPlace_ = value;
+            onChanged();
+          } else {
+            nearPlaceBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000001;
+          return this;
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public Builder setNearPlace(
+            com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder builderForValue) {
+          if (nearPlaceBuilder_ == null) {
+            nearPlace_ = builderForValue.build();
+            onChanged();
+          } else {
+            nearPlaceBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000001;
+          return this;
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public Builder mergeNearPlace(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place value) {
+          if (nearPlaceBuilder_ == null) {
+            if (((bitField0_ & 0x00000001) == 0x00000001) &&
+                nearPlace_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance()) {
+              nearPlace_ =
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.newBuilder(nearPlace_).mergeFrom(value).buildPartial();
+            } else {
+              nearPlace_ = value;
+            }
+            onChanged();
+          } else {
+            nearPlaceBuilder_.mergeFrom(value);
+          }
+          bitField0_ |= 0x00000001;
+          return this;
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public Builder clearNearPlace() {
+          if (nearPlaceBuilder_ == null) {
+            nearPlace_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.getDefaultInstance();
+            onChanged();
+          } else {
+            nearPlaceBuilder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000001);
+          return this;
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder getNearPlaceBuilder() {
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return getNearPlaceFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder getNearPlaceOrBuilder() {
+          if (nearPlaceBuilder_ != null) {
+            return nearPlaceBuilder_.getMessageOrBuilder();
+          } else {
+            return nearPlace_;
+          }
+        }
+        /**
+         * <code>optional .eaglesakura_ace.GeographyPayload.Place nearPlace = 1;</code>
+         *
+         * <pre>
+         * 最短距離にあるスポット
+         * </pre>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder> 
+            getNearPlaceFieldBuilder() {
+          if (nearPlaceBuilder_ == null) {
+            nearPlaceBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Place.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlaceOrBuilder>(
+                    nearPlace_,
+                    getParentForChildren(),
+                    isClean());
+            nearPlace_ = null;
+          }
+          return nearPlaceBuilder_;
+        }
+
+        // required int32 nearNum = 2;
+        private int nearNum_ ;
+        /**
+         * <code>required int32 nearNum = 2;</code>
+         *
+         * <pre>
+         * 近距離にあるスポット数
+         * </pre>
+         */
+        public boolean hasNearNum() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>required int32 nearNum = 2;</code>
+         *
+         * <pre>
+         * 近距離にあるスポット数
+         * </pre>
+         */
+        public int getNearNum() {
+          return nearNum_;
+        }
+        /**
+         * <code>required int32 nearNum = 2;</code>
+         *
+         * <pre>
+         * 近距離にあるスポット数
+         * </pre>
+         */
+        public Builder setNearNum(int value) {
+          bitField0_ |= 0x00000002;
+          nearNum_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required int32 nearNum = 2;</code>
+         *
+         * <pre>
+         * 近距離にあるスポット数
+         * </pre>
+         */
+        public Builder clearNearNum() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          nearNum_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // required int32 farNum = 3;
+        private int farNum_ ;
+        /**
+         * <code>required int32 farNum = 3;</code>
+         *
+         * <pre>
+         * 遠距離にあるスポット数
+         * </pre>
+         */
+        public boolean hasFarNum() {
+          return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+        /**
+         * <code>required int32 farNum = 3;</code>
+         *
+         * <pre>
+         * 遠距離にあるスポット数
+         * </pre>
+         */
+        public int getFarNum() {
+          return farNum_;
+        }
+        /**
+         * <code>required int32 farNum = 3;</code>
+         *
+         * <pre>
+         * 遠距離にあるスポット数
+         * </pre>
+         */
+        public Builder setFarNum(int value) {
+          bitField0_ |= 0x00000004;
+          farNum_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required int32 farNum = 3;</code>
+         *
+         * <pre>
+         * 遠距離にあるスポット数
+         * </pre>
+         */
+        public Builder clearFarNum() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          farNum_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeographyPayload.PlacesInfo)
+      }
+
+      static {
+        defaultInstance = new PlacesInfo(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:eaglesakura_ace.GeographyPayload.PlacesInfo)
     }
 
     private int bitField0_;
@@ -2026,6 +3767,108 @@ public final class GeoProtocol {
       return windSpeedMeter_;
     }
 
+    // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;
+    public static final int PLACERESTSTORE_FIELD_NUMBER = 50;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo placeRestStore_;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+     *
+     * <pre>
+     * 補給が行える店舗数
+     * </pre>
+     */
+    public boolean hasPlaceRestStore() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+     *
+     * <pre>
+     * 補給が行える店舗数
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceRestStore() {
+      return placeRestStore_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+     *
+     * <pre>
+     * 補給が行える店舗数
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceRestStoreOrBuilder() {
+      return placeRestStore_;
+    }
+
+    // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;
+    public static final int PLACEREST_FIELD_NUMBER = 51;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo placeRest_;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+     *
+     * <pre>
+     * トイレがあるであろう場所の数
+     * </pre>
+     */
+    public boolean hasPlaceRest() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+     *
+     * <pre>
+     * トイレがあるであろう場所の数
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceRest() {
+      return placeRest_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+     *
+     * <pre>
+     * トイレがあるであろう場所の数
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceRestOrBuilder() {
+      return placeRest_;
+    }
+
+    // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;
+    public static final int PLACECYCLESTORE_FIELD_NUMBER = 52;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo placeCycleStore_;
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+     *
+     * <pre>
+     * 自転車屋
+     * </pre>
+     */
+    public boolean hasPlaceCycleStore() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+     *
+     * <pre>
+     * 自転車屋
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceCycleStore() {
+      return placeCycleStore_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+     *
+     * <pre>
+     * 自転車屋
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceCycleStoreOrBuilder() {
+      return placeCycleStore_;
+    }
+
     private void initFields() {
       location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
       date_ = "";
@@ -2033,6 +3876,9 @@ public final class GeoProtocol {
       sunsetDate_ = "";
       temp_ = 0F;
       windSpeedMeter_ = 0F;
+      placeRestStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+      placeRest_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+      placeCycleStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2050,6 +3896,24 @@ public final class GeoProtocol {
       if (!getLocation().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasPlaceRestStore()) {
+        if (!getPlaceRestStore().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasPlaceRest()) {
+        if (!getPlaceRest().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasPlaceCycleStore()) {
+        if (!getPlaceCycleStore().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -2075,6 +3939,15 @@ public final class GeoProtocol {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeFloat(13, windSpeedMeter_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(50, placeRestStore_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(51, placeRest_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeMessage(52, placeCycleStore_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2108,6 +3981,18 @@ public final class GeoProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(13, windSpeedMeter_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(50, placeRestStore_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(51, placeRest_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(52, placeCycleStore_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2223,6 +4108,9 @@ public final class GeoProtocol {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getLocationFieldBuilder();
+          getPlaceRestStoreFieldBuilder();
+          getPlaceRestFieldBuilder();
+          getPlaceCycleStoreFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2247,6 +4135,24 @@ public final class GeoProtocol {
         bitField0_ = (bitField0_ & ~0x00000010);
         windSpeedMeter_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000020);
+        if (placeRestStoreBuilder_ == null) {
+          placeRestStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+        } else {
+          placeRestStoreBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (placeRestBuilder_ == null) {
+          placeRest_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+        } else {
+          placeRestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (placeCycleStoreBuilder_ == null) {
+          placeCycleStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+        } else {
+          placeCycleStoreBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -2303,6 +4209,30 @@ public final class GeoProtocol {
           to_bitField0_ |= 0x00000020;
         }
         result.windSpeedMeter_ = windSpeedMeter_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (placeRestStoreBuilder_ == null) {
+          result.placeRestStore_ = placeRestStore_;
+        } else {
+          result.placeRestStore_ = placeRestStoreBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        if (placeRestBuilder_ == null) {
+          result.placeRest_ = placeRest_;
+        } else {
+          result.placeRest_ = placeRestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        if (placeCycleStoreBuilder_ == null) {
+          result.placeCycleStore_ = placeCycleStore_;
+        } else {
+          result.placeCycleStore_ = placeCycleStoreBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2343,6 +4273,15 @@ public final class GeoProtocol {
         if (other.hasWindSpeedMeter()) {
           setWindSpeedMeter(other.getWindSpeedMeter());
         }
+        if (other.hasPlaceRestStore()) {
+          mergePlaceRestStore(other.getPlaceRestStore());
+        }
+        if (other.hasPlaceRest()) {
+          mergePlaceRest(other.getPlaceRest());
+        }
+        if (other.hasPlaceCycleStore()) {
+          mergePlaceCycleStore(other.getPlaceCycleStore());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -2359,6 +4298,24 @@ public final class GeoProtocol {
         if (!getLocation().isInitialized()) {
           
           return false;
+        }
+        if (hasPlaceRestStore()) {
+          if (!getPlaceRestStore().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasPlaceRest()) {
+          if (!getPlaceRest().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasPlaceCycleStore()) {
+          if (!getPlaceCycleStore().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -2927,6 +4884,465 @@ public final class GeoProtocol {
         return this;
       }
 
+      // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo placeRestStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder> placeRestStoreBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public boolean hasPlaceRestStore() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceRestStore() {
+        if (placeRestStoreBuilder_ == null) {
+          return placeRestStore_;
+        } else {
+          return placeRestStoreBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public Builder setPlaceRestStore(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo value) {
+        if (placeRestStoreBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          placeRestStore_ = value;
+          onChanged();
+        } else {
+          placeRestStoreBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public Builder setPlaceRestStore(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder builderForValue) {
+        if (placeRestStoreBuilder_ == null) {
+          placeRestStore_ = builderForValue.build();
+          onChanged();
+        } else {
+          placeRestStoreBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public Builder mergePlaceRestStore(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo value) {
+        if (placeRestStoreBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+              placeRestStore_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance()) {
+            placeRestStore_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.newBuilder(placeRestStore_).mergeFrom(value).buildPartial();
+          } else {
+            placeRestStore_ = value;
+          }
+          onChanged();
+        } else {
+          placeRestStoreBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public Builder clearPlaceRestStore() {
+        if (placeRestStoreBuilder_ == null) {
+          placeRestStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          placeRestStoreBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder getPlaceRestStoreBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getPlaceRestStoreFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceRestStoreOrBuilder() {
+        if (placeRestStoreBuilder_ != null) {
+          return placeRestStoreBuilder_.getMessageOrBuilder();
+        } else {
+          return placeRestStore_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRestStore = 50;</code>
+       *
+       * <pre>
+       * 補給が行える店舗数
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder> 
+          getPlaceRestStoreFieldBuilder() {
+        if (placeRestStoreBuilder_ == null) {
+          placeRestStoreBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder>(
+                  placeRestStore_,
+                  getParentForChildren(),
+                  isClean());
+          placeRestStore_ = null;
+        }
+        return placeRestStoreBuilder_;
+      }
+
+      // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo placeRest_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder> placeRestBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public boolean hasPlaceRest() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceRest() {
+        if (placeRestBuilder_ == null) {
+          return placeRest_;
+        } else {
+          return placeRestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public Builder setPlaceRest(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo value) {
+        if (placeRestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          placeRest_ = value;
+          onChanged();
+        } else {
+          placeRestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public Builder setPlaceRest(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder builderForValue) {
+        if (placeRestBuilder_ == null) {
+          placeRest_ = builderForValue.build();
+          onChanged();
+        } else {
+          placeRestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public Builder mergePlaceRest(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo value) {
+        if (placeRestBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              placeRest_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance()) {
+            placeRest_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.newBuilder(placeRest_).mergeFrom(value).buildPartial();
+          } else {
+            placeRest_ = value;
+          }
+          onChanged();
+        } else {
+          placeRestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public Builder clearPlaceRest() {
+        if (placeRestBuilder_ == null) {
+          placeRest_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          placeRestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder getPlaceRestBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getPlaceRestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceRestOrBuilder() {
+        if (placeRestBuilder_ != null) {
+          return placeRestBuilder_.getMessageOrBuilder();
+        } else {
+          return placeRest_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeRest = 51;</code>
+       *
+       * <pre>
+       * トイレがあるであろう場所の数
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder> 
+          getPlaceRestFieldBuilder() {
+        if (placeRestBuilder_ == null) {
+          placeRestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder>(
+                  placeRest_,
+                  getParentForChildren(),
+                  isClean());
+          placeRest_ = null;
+        }
+        return placeRestBuilder_;
+      }
+
+      // optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo placeCycleStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder> placeCycleStoreBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public boolean hasPlaceCycleStore() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo getPlaceCycleStore() {
+        if (placeCycleStoreBuilder_ == null) {
+          return placeCycleStore_;
+        } else {
+          return placeCycleStoreBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public Builder setPlaceCycleStore(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo value) {
+        if (placeCycleStoreBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          placeCycleStore_ = value;
+          onChanged();
+        } else {
+          placeCycleStoreBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public Builder setPlaceCycleStore(
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder builderForValue) {
+        if (placeCycleStoreBuilder_ == null) {
+          placeCycleStore_ = builderForValue.build();
+          onChanged();
+        } else {
+          placeCycleStoreBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public Builder mergePlaceCycleStore(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo value) {
+        if (placeCycleStoreBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+              placeCycleStore_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance()) {
+            placeCycleStore_ =
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.newBuilder(placeCycleStore_).mergeFrom(value).buildPartial();
+          } else {
+            placeCycleStore_ = value;
+          }
+          onChanged();
+        } else {
+          placeCycleStoreBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public Builder clearPlaceCycleStore() {
+        if (placeCycleStoreBuilder_ == null) {
+          placeCycleStore_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          placeCycleStoreBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder getPlaceCycleStoreBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getPlaceCycleStoreFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder getPlaceCycleStoreOrBuilder() {
+        if (placeCycleStoreBuilder_ != null) {
+          return placeCycleStoreBuilder_.getMessageOrBuilder();
+        } else {
+          return placeCycleStore_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.GeographyPayload.PlacesInfo placeCycleStore = 52;</code>
+       *
+       * <pre>
+       * 自転車屋
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder> 
+          getPlaceCycleStoreFieldBuilder() {
+        if (placeCycleStoreBuilder_ == null) {
+          placeCycleStoreBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfo.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PlacesInfoOrBuilder>(
+                  placeCycleStore_,
+                  getParentForChildren(),
+                  isClean());
+          placeCycleStore_ = null;
+        }
+        return placeCycleStoreBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.GeographyPayload)
     }
 
@@ -2953,6 +5369,16 @@ public final class GeoProtocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_GeographyPayload_Place_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_GeographyPayload_Place_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2966,12 +5392,22 @@ public final class GeoProtocol {
       "esConstants.proto\"A\n\010GeoPoint\022\020\n\010latitud" +
       "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\022\020\n\010altitude\030\003" +
       " \002(\001\"G\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031.e" +
-      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\t\"\234\001" +
+      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\t\"\231\004" +
       "\n\020GeographyPayload\022+\n\010location\030\001 \002(\0132\031.e" +
       "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\t\022\023\n" +
       "\013sunriseDate\030\n \001(\t\022\022\n\nsunsetDate\030\013 \001(\t\022\014" +
-      "\n\004temp\030\014 \001(\002\022\026\n\016windSpeedMeter\030\r \001(\002B$\n\"" +
-      "com.eaglesakura.andriders.protocol"
+      "\n\004temp\030\014 \001(\002\022\026\n\016windSpeedMeter\030\r \001(\002\022D\n\016" +
+      "placeRestStore\0302 \001(\0132,.eaglesakura_ace.G",
+      "eographyPayload.PlacesInfo\022?\n\tplaceRest\030" +
+      "3 \001(\0132,.eaglesakura_ace.GeographyPayload" +
+      ".PlacesInfo\022E\n\017placeCycleStore\0304 \001(\0132,.e" +
+      "aglesakura_ace.GeographyPayload.PlacesIn" +
+      "fo\032B\n\005Place\022+\n\010location\030\001 \002(\0132\031.eaglesak" +
+      "ura_ace.GeoPoint\022\014\n\004name\030\002 \002(\t\032i\n\nPlaces" +
+      "Info\022:\n\tnearPlace\030\001 \001(\0132\'.eaglesakura_ac" +
+      "e.GeographyPayload.Place\022\017\n\007nearNum\030\002 \002(" +
+      "\005\022\016\n\006farNum\030\003 \002(\005B$\n\"com.eaglesakura.and" +
+      "riders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2995,7 +5431,19 @@ public final class GeoProtocol {
           internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_GeographyPayload_descriptor,
-              new java.lang.String[] { "Location", "Date", "SunriseDate", "SunsetDate", "Temp", "WindSpeedMeter", });
+              new java.lang.String[] { "Location", "Date", "SunriseDate", "SunsetDate", "Temp", "WindSpeedMeter", "PlaceRestStore", "PlaceRest", "PlaceCycleStore", });
+          internal_static_eaglesakura_ace_GeographyPayload_Place_descriptor =
+            internal_static_eaglesakura_ace_GeographyPayload_descriptor.getNestedTypes().get(0);
+          internal_static_eaglesakura_ace_GeographyPayload_Place_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_GeographyPayload_Place_descriptor,
+              new java.lang.String[] { "Location", "Name", });
+          internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_descriptor =
+            internal_static_eaglesakura_ace_GeographyPayload_descriptor.getNestedTypes().get(1);
+          internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_GeographyPayload_PlacesInfo_descriptor,
+              new java.lang.String[] { "NearPlace", "NearNum", "FarNum", });
           return null;
         }
       };
