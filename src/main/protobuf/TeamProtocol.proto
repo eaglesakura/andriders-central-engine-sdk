@@ -15,7 +15,8 @@ message TeamMember {
         Disconnected = 2;
     }
 
-    // 誰のデータか
+    // 誰のデータ
+    // なるべく「人物」を一意に特定できるデータを提供する
     required string userId = 1;
     // データが送信された時刻をSystemTimeで指定する
     // この値が一番大きい物を現在のデータとして採用する
@@ -24,6 +25,10 @@ message TeamMember {
     required Status status = 3;
     // 電波強度レベル 0〜100
     required int32 signalLevel = 4;
+    // 表示用アイコンのURL
+    optional string iconUrl = 5;
+    // 表示名
+    optional string displayName = 6;
     // 送信対象のマスターデータ
     // ただし、データ軽量化のため、一部の情報が欠落する場合がある
     optional MasterPayload masterPayload = 10;

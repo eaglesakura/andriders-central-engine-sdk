@@ -94,6 +94,60 @@ public final class TeamProtocol {
      */
     int getSignalLevel();
 
+    // optional string iconUrl = 5;
+    /**
+     * <code>optional string iconUrl = 5;</code>
+     *
+     * <pre>
+     * 表示用アイコンのURL
+     * </pre>
+     */
+    boolean hasIconUrl();
+    /**
+     * <code>optional string iconUrl = 5;</code>
+     *
+     * <pre>
+     * 表示用アイコンのURL
+     * </pre>
+     */
+    java.lang.String getIconUrl();
+    /**
+     * <code>optional string iconUrl = 5;</code>
+     *
+     * <pre>
+     * 表示用アイコンのURL
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getIconUrlBytes();
+
+    // optional string displayName = 6;
+    /**
+     * <code>optional string displayName = 6;</code>
+     *
+     * <pre>
+     * 表示名
+     * </pre>
+     */
+    boolean hasDisplayName();
+    /**
+     * <code>optional string displayName = 6;</code>
+     *
+     * <pre>
+     * 表示名
+     * </pre>
+     */
+    java.lang.String getDisplayName();
+    /**
+     * <code>optional string displayName = 6;</code>
+     *
+     * <pre>
+     * 表示名
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getDisplayNameBytes();
+
     // optional .eaglesakura_ace.MasterPayload masterPayload = 10;
     /**
      * <code>optional .eaglesakura_ace.MasterPayload masterPayload = 10;</code>
@@ -204,9 +258,19 @@ public final class TeamProtocol {
               signalLevel_ = input.readInt32();
               break;
             }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              iconUrl_ = input.readBytes();
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000020;
+              displayName_ = input.readBytes();
+              break;
+            }
             case 82: {
               com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
                 subBuilder = masterPayload_.toBuilder();
               }
               masterPayload_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.PARSER, extensionRegistry);
@@ -214,7 +278,7 @@ public final class TeamProtocol {
                 subBuilder.mergeFrom(masterPayload_);
                 masterPayload_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000040;
               break;
             }
           }
@@ -273,7 +337,7 @@ public final class TeamProtocol {
        * <code>Disconnected = 2;</code>
        *
        * <pre>
-       * 切断中
+       * 切断された
        * </pre>
        */
       Disconnected(1, 2),
@@ -291,7 +355,7 @@ public final class TeamProtocol {
        * <code>Disconnected = 2;</code>
        *
        * <pre>
-       * 切断中
+       * 切断された
        * </pre>
        */
       public static final int Disconnected_VALUE = 2;
@@ -484,6 +548,116 @@ public final class TeamProtocol {
       return signalLevel_;
     }
 
+    // optional string iconUrl = 5;
+    public static final int ICONURL_FIELD_NUMBER = 5;
+    private java.lang.Object iconUrl_;
+    /**
+     * <code>optional string iconUrl = 5;</code>
+     *
+     * <pre>
+     * 表示用アイコンのURL
+     * </pre>
+     */
+    public boolean hasIconUrl() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string iconUrl = 5;</code>
+     *
+     * <pre>
+     * 表示用アイコンのURL
+     * </pre>
+     */
+    public java.lang.String getIconUrl() {
+      java.lang.Object ref = iconUrl_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          iconUrl_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string iconUrl = 5;</code>
+     *
+     * <pre>
+     * 表示用アイコンのURL
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getIconUrlBytes() {
+      java.lang.Object ref = iconUrl_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        iconUrl_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string displayName = 6;
+    public static final int DISPLAYNAME_FIELD_NUMBER = 6;
+    private java.lang.Object displayName_;
+    /**
+     * <code>optional string displayName = 6;</code>
+     *
+     * <pre>
+     * 表示名
+     * </pre>
+     */
+    public boolean hasDisplayName() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional string displayName = 6;</code>
+     *
+     * <pre>
+     * 表示名
+     * </pre>
+     */
+    public java.lang.String getDisplayName() {
+      java.lang.Object ref = displayName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          displayName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string displayName = 6;</code>
+     *
+     * <pre>
+     * 表示名
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getDisplayNameBytes() {
+      java.lang.Object ref = displayName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        displayName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // optional .eaglesakura_ace.MasterPayload masterPayload = 10;
     public static final int MASTERPAYLOAD_FIELD_NUMBER = 10;
     private com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload masterPayload_;
@@ -496,7 +670,7 @@ public final class TeamProtocol {
      * </pre>
      */
     public boolean hasMasterPayload() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .eaglesakura_ace.MasterPayload masterPayload = 10;</code>
@@ -526,6 +700,8 @@ public final class TeamProtocol {
       systemTime_ = 0L;
       status_ = com.eaglesakura.andriders.protocol.TeamProtocol.TeamMember.Status.Connected;
       signalLevel_ = 0;
+      iconUrl_ = "";
+      displayName_ = "";
       masterPayload_ = com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -575,6 +751,12 @@ public final class TeamProtocol {
         output.writeInt32(4, signalLevel_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getIconUrlBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getDisplayNameBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(10, masterPayload_);
       }
       getUnknownFields().writeTo(output);
@@ -603,6 +785,14 @@ public final class TeamProtocol {
           .computeInt32Size(4, signalLevel_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getIconUrlBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getDisplayNameBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, masterPayload_);
       }
@@ -735,12 +925,16 @@ public final class TeamProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         signalLevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        iconUrl_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        displayName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (masterPayloadBuilder_ == null) {
           masterPayload_ = com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.getDefaultInstance();
         } else {
           masterPayloadBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -788,6 +982,14 @@ public final class TeamProtocol {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
+        result.iconUrl_ = iconUrl_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.displayName_ = displayName_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         if (masterPayloadBuilder_ == null) {
           result.masterPayload_ = masterPayload_;
         } else {
@@ -822,6 +1024,16 @@ public final class TeamProtocol {
         }
         if (other.hasSignalLevel()) {
           setSignalLevel(other.getSignalLevel());
+        }
+        if (other.hasIconUrl()) {
+          bitField0_ |= 0x00000010;
+          iconUrl_ = other.iconUrl_;
+          onChanged();
+        }
+        if (other.hasDisplayName()) {
+          bitField0_ |= 0x00000020;
+          displayName_ = other.displayName_;
+          onChanged();
         }
         if (other.hasMasterPayload()) {
           mergeMasterPayload(other.getMasterPayload());
@@ -1127,6 +1339,202 @@ public final class TeamProtocol {
         return this;
       }
 
+      // optional string iconUrl = 5;
+      private java.lang.Object iconUrl_ = "";
+      /**
+       * <code>optional string iconUrl = 5;</code>
+       *
+       * <pre>
+       * 表示用アイコンのURL
+       * </pre>
+       */
+      public boolean hasIconUrl() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string iconUrl = 5;</code>
+       *
+       * <pre>
+       * 表示用アイコンのURL
+       * </pre>
+       */
+      public java.lang.String getIconUrl() {
+        java.lang.Object ref = iconUrl_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          iconUrl_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string iconUrl = 5;</code>
+       *
+       * <pre>
+       * 表示用アイコンのURL
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getIconUrlBytes() {
+        java.lang.Object ref = iconUrl_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          iconUrl_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string iconUrl = 5;</code>
+       *
+       * <pre>
+       * 表示用アイコンのURL
+       * </pre>
+       */
+      public Builder setIconUrl(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        iconUrl_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string iconUrl = 5;</code>
+       *
+       * <pre>
+       * 表示用アイコンのURL
+       * </pre>
+       */
+      public Builder clearIconUrl() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        iconUrl_ = getDefaultInstance().getIconUrl();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string iconUrl = 5;</code>
+       *
+       * <pre>
+       * 表示用アイコンのURL
+       * </pre>
+       */
+      public Builder setIconUrlBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        iconUrl_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string displayName = 6;
+      private java.lang.Object displayName_ = "";
+      /**
+       * <code>optional string displayName = 6;</code>
+       *
+       * <pre>
+       * 表示名
+       * </pre>
+       */
+      public boolean hasDisplayName() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional string displayName = 6;</code>
+       *
+       * <pre>
+       * 表示名
+       * </pre>
+       */
+      public java.lang.String getDisplayName() {
+        java.lang.Object ref = displayName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          displayName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string displayName = 6;</code>
+       *
+       * <pre>
+       * 表示名
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getDisplayNameBytes() {
+        java.lang.Object ref = displayName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          displayName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string displayName = 6;</code>
+       *
+       * <pre>
+       * 表示名
+       * </pre>
+       */
+      public Builder setDisplayName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        displayName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string displayName = 6;</code>
+       *
+       * <pre>
+       * 表示名
+       * </pre>
+       */
+      public Builder clearDisplayName() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        displayName_ = getDefaultInstance().getDisplayName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string displayName = 6;</code>
+       *
+       * <pre>
+       * 表示名
+       * </pre>
+       */
+      public Builder setDisplayNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        displayName_ = value;
+        onChanged();
+        return this;
+      }
+
       // optional .eaglesakura_ace.MasterPayload masterPayload = 10;
       private com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload masterPayload_ = com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
@@ -1140,7 +1548,7 @@ public final class TeamProtocol {
        * </pre>
        */
       public boolean hasMasterPayload() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .eaglesakura_ace.MasterPayload masterPayload = 10;</code>
@@ -1175,7 +1583,7 @@ public final class TeamProtocol {
         } else {
           masterPayloadBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -1194,7 +1602,7 @@ public final class TeamProtocol {
         } else {
           masterPayloadBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -1207,7 +1615,7 @@ public final class TeamProtocol {
        */
       public Builder mergeMasterPayload(com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload value) {
         if (masterPayloadBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
               masterPayload_ != com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.getDefaultInstance()) {
             masterPayload_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.newBuilder(masterPayload_).mergeFrom(value).buildPartial();
@@ -1218,7 +1626,7 @@ public final class TeamProtocol {
         } else {
           masterPayloadBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -1236,7 +1644,7 @@ public final class TeamProtocol {
         } else {
           masterPayloadBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
@@ -1248,7 +1656,7 @@ public final class TeamProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload.Builder getMasterPayloadBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         onChanged();
         return getMasterPayloadFieldBuilder().getBuilder();
       }
@@ -2014,15 +2422,16 @@ public final class TeamProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\022TeamProtocol.proto\022\017eaglesakura_ace\032\023A" +
-      "cesConstants.proto\032\022AcesProtocol.proto\"\333" +
-      "\001\n\nTeamMember\022\016\n\006userId\030\001 \002(\t\022\022\n\nsystemT" +
+      "cesConstants.proto\032\022AcesProtocol.proto\"\201" +
+      "\002\n\nTeamMember\022\016\n\006userId\030\001 \002(\t\022\022\n\nsystemT" +
       "ime\030\002 \002(\003\0222\n\006status\030\003 \002(\0162\".eaglesakura_" +
       "ace.TeamMember.Status\022\023\n\013signalLevel\030\004 \002" +
-      "(\005\0225\n\rmasterPayload\030\n \001(\0132\036.eaglesakura_" +
-      "ace.MasterPayload\")\n\006Status\022\r\n\tConnected" +
-      "\020\001\022\020\n\014Disconnected\020\002\";\n\013TeamPayload\022,\n\007m" +
-      "embers\030\001 \003(\0132\033.eaglesakura_ace.TeamMembe" +
-      "rB$\n\"com.eaglesakura.andriders.protocol"
+      "(\005\022\017\n\007iconUrl\030\005 \001(\t\022\023\n\013displayName\030\006 \001(\t" +
+      "\0225\n\rmasterPayload\030\n \001(\0132\036.eaglesakura_ac" +
+      "e.MasterPayload\")\n\006Status\022\r\n\tConnected\020\001" +
+      "\022\020\n\014Disconnected\020\002\";\n\013TeamPayload\022,\n\007mem" +
+      "bers\030\001 \003(\0132\033.eaglesakura_ace.TeamMemberB",
+      "$\n\"com.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2034,7 +2443,7 @@ public final class TeamProtocol {
           internal_static_eaglesakura_ace_TeamMember_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_TeamMember_descriptor,
-              new java.lang.String[] { "UserId", "SystemTime", "Status", "SignalLevel", "MasterPayload", });
+              new java.lang.String[] { "UserId", "SystemTime", "Status", "SignalLevel", "IconUrl", "DisplayName", "MasterPayload", });
           internal_static_eaglesakura_ace_TeamPayload_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_TeamPayload_fieldAccessorTable = new
