@@ -1,0 +1,35 @@
+package eaglesakura_ace;
+
+import "AcesConstants.proto";
+
+import "AcesProtocol.proto";
+
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// チーム間で送信を行うためのProtocol
+message TeamMember {
+    enum Status {
+        // 接続中
+        Connected = 1;
+        // 切断された
+        Disconnected = 2;
+    }
+
+    // 誰のデータか
+    required string userId = 1;
+    // データが送信された時刻をSystemTimeで指定する
+    // この値が一番大きい物を現在のデータとして採用する
+    required int64 systemTime = 2;
+    // 現在の接続ステータス
+    required Status status = 3;
+    // 電波強度レベル 0〜100
+    required int32 signalLevel = 4;
+    // 送信対象のマスターデータ
+    // ただし、データ軽量化のため、一部の情報が欠落する場合がある
+    optional MasterPayload masterPayload = 10;
+}
+
+// チーム全体のユーザーデータ
+message TeamPayload {
+    repeated TeamMember members = 1;
+}
