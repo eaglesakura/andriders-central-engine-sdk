@@ -1,15 +1,9 @@
 package com.eaglesakura.andriders.central;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 
 import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.central.event.ActivityEventHandler;
@@ -40,6 +34,11 @@ import com.eaglesakura.io.IOUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
 import com.google.protobuf.ByteString;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class AcesProtocolReceiver {
     /**
@@ -216,6 +215,19 @@ public class AcesProtocolReceiver {
 
     public MasterPayload getLastReceivedCentralMaster() {
         return lastReceivedCentralMaster;
+    }
+
+    /**
+     * 最後に受け取ったセントラルデータの打刻時刻を取得する
+     *
+     * @return
+     */
+    public Date getLastReceivedCentralMasterTime() {
+        if (lastReceivedCentralMaster == null) {
+            return null;
+        } else {
+            return StringUtil.toDate(lastReceivedCentralMaster.getCreatedDate());
+        }
     }
 
     /**
