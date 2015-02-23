@@ -17,10 +17,13 @@ public class TeamMemberReceiver extends AcesProtocolReceiver {
      */
     private TeamProtocol.TeamMember lastReceivedMemberData;
 
+    private TeamProtocol.TeamMember.Status connectedStatus;
+
     private Set<TeamMemberDataHandler> memberMasterHandlers = new HashSet<>();
 
     public TeamMemberReceiver(Context context) {
         super(context);
+        setCheckSelfPackage(false);
     }
 
     public void addMemberDataHandler(TeamMemberDataHandler handler) {
@@ -50,6 +53,14 @@ public class TeamMemberReceiver extends AcesProtocolReceiver {
         // マスターを受け取ったことを通知する
         for (TeamMemberDataHandler handler : memberMasterHandlers) {
             handler.onMasterPayloadReceived(this, master);
+        }
+
+        if (connectedStatus != master.getStatus()) {
+            // ステータスが変化したことを通知する
+            for (TeamMemberDataHandler handler : memberMasterHandlers) {
+                handler.onConnectedStateChanged(this, master);
+            }
+            connectedStatus = master.getStatus();
         }
 
         /**

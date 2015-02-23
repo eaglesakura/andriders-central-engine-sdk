@@ -121,6 +121,10 @@ public class TeamProtocolReceiver {
     public void onReceivedMasterPayload(byte[] master) throws Exception {
         synchronized (lock) {
             lastReceivedTeamPayload = TeamProtocol.TeamPayload.parseFrom(master);
+            // 新しいメンバーを受信したことを通知する
+            for (TeamDataHandler handler : teamDataHandlers) {
+                handler.onMasterPayloadReceived(this, master, lastReceivedTeamPayload);
+            }
 
             // メンバー情報を取り出す
             List<TeamProtocol.TeamMember> members = lastReceivedTeamPayload.getMembersList();
@@ -130,6 +134,8 @@ public class TeamProtocolReceiver {
                 if (memberReceiver == null) {
                     // 初めての相手が来た
                     memberReceiver = new TeamMemberReceiver(context);
+                    // MasterPayloadを受信と各々処理をさせる
+                    memberReceiver.onReceivedMasterPayload(member);
 
                     // 追加する
                     memberReceivers.put(member.getUserId(), memberReceiver);
@@ -138,10 +144,10 @@ public class TeamProtocolReceiver {
                     for (TeamDataHandler handler : teamDataHandlers) {
                         handler.onJoinTeamMember(this, lastReceivedTeamPayload, member.getUserId(), memberReceiver);
                     }
+                } else {
+                    // MasterPayloadを受信と各々処理をさせる
+                    memberReceiver.onReceivedMasterPayload(member);
                 }
-
-                // MasterPayloadを受信と各々処理をさせる
-                memberReceiver.onReceivedMasterPayload(member);
             }
         }
     }

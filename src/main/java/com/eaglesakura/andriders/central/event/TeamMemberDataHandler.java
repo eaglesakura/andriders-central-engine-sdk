@@ -15,4 +15,13 @@ public class TeamMemberDataHandler {
      */
     public void onMasterPayloadReceived(TeamMemberReceiver receiver, TeamProtocol.TeamMember master) {
     }
+
+    /**
+     * データの接続状態が変化したら呼び出される
+     *
+     * @param receiver
+     * @param master
+     */
+    public void onConnectedStateChanged(TeamMemberReceiver receiver, TeamProtocol.TeamMember master) {
+    }
 }
