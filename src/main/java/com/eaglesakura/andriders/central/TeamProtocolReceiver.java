@@ -10,6 +10,8 @@ import com.eaglesakura.andriders.central.event.TeamDataHandler;
 import com.eaglesakura.andriders.protocol.TeamProtocol;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -95,7 +97,9 @@ public class TeamProtocolReceiver {
      */
     public List<TeamMemberReceiver> listMembers() {
         synchronized (lock) {
-            return new ArrayList<>(memberReceivers.values());
+            List<TeamMemberReceiver> list = new ArrayList<>(memberReceivers.values());
+            sortById(list);
+            return list;
         }
     }
 
@@ -164,4 +168,16 @@ public class TeamProtocolReceiver {
             }
         }
     };
+
+    public static List<TeamMemberReceiver>  sortById(List<TeamMemberReceiver> receivers) {
+        Collections.sort(receivers, new Comparator<TeamMemberReceiver>() {
+            @Override
+            public int compare(TeamMemberReceiver lhs, TeamMemberReceiver rhs) {
+                String lhsData = lhs.getLastReceivedMemberData().getUserId();
+                String rhsData = rhs.getLastReceivedMemberData().getUserId();
+                return lhsData.compareTo(rhsData);
+            }
+        });
+        return receivers;
+    }
 }
