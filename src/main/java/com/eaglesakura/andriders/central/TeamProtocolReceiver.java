@@ -56,6 +56,8 @@ public class TeamProtocolReceiver {
 
     private Set<TeamDataHandler> teamDataHandlers = new HashSet<>();
 
+    private TeamProtocol.TeamPayload lastReceivedTeamPayload;
+
     public TeamProtocolReceiver(Context context) {
         this.context = context;
     }
@@ -80,6 +82,10 @@ public class TeamProtocolReceiver {
             context.unregisterReceiver(receiver);
             connected = false;
         }
+    }
+
+    public TeamProtocol.TeamPayload getLastReceivedTeamPayload() {
+        return lastReceivedTeamPayload;
     }
 
     /**
@@ -114,10 +120,10 @@ public class TeamProtocolReceiver {
      */
     public void onReceivedMasterPayload(byte[] master) throws Exception {
         synchronized (lock) {
-            TeamProtocol.TeamPayload teamPayload = TeamProtocol.TeamPayload.parseFrom(master);
+            lastReceivedTeamPayload = TeamProtocol.TeamPayload.parseFrom(master);
 
             // メンバー情報を取り出す
-            List<TeamProtocol.TeamMember> members = teamPayload.getMembersList();
+            List<TeamProtocol.TeamMember> members = lastReceivedTeamPayload.getMembersList();
             for (TeamProtocol.TeamMember member : members) {
                 TeamMemberReceiver memberReceiver = getMemberReceiver(member.getUserId());
                 // メンバーデータを追加
@@ -130,7 +136,7 @@ public class TeamProtocolReceiver {
 
                     // 新しいメンバーを受信したことを通知する
                     for (TeamDataHandler handler : teamDataHandlers) {
-                        handler.onJoinTeamMember(this, teamPayload, member.getUserId(), memberReceiver);
+                        handler.onJoinTeamMember(this, lastReceivedTeamPayload, member.getUserId(), memberReceiver);
                     }
                 }
 
