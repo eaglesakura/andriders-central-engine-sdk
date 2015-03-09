@@ -13,12 +13,14 @@ import java.util.Date;
  */
 public class AcesEnvironment {
 
+    private static final String BASIC_PACKAGE_NAME = "com.eaglesakura.andriders";
+
     /**
      * ACE Extension Packのファイル拡張子
      */
     public static final String ACE_EXTENTION_PACK_FILE_EXT = ".aep";
 
-    private static String APPLICATION_PACKAGE_NAME = "com.eaglesakura.andriders";
+    private static String APPLICATION_PACKAGE_NAME = BASIC_PACKAGE_NAME;
 
     static {
         {
@@ -35,7 +37,7 @@ public class AcesEnvironment {
      * @param context app context
      */
     static void initialize(Context context) {
-        if (!context.getPackageName().startsWith("com.eaglesakura.andriders")) {
+        if (!context.getPackageName().startsWith(BASIC_PACKAGE_NAME)) {
             throw new IllegalStateException();
         }
 
@@ -44,17 +46,17 @@ public class AcesEnvironment {
 
     public static String getSelfPackageName(Context context) {
         String packageName = context.getPackageName();
-        if (!packageName.startsWith("com.eaglesakura.andriders")) {
+        if (!packageName.startsWith(BASIC_PACKAGE_NAME)) {
             // 違うアプリの場合はそのまま返す
             return packageName;
         }
 
         if (packageName.endsWith(".debug")) {
             // debug build
-            return "com.eaglesakura.andriders.debug";
+            return BASIC_PACKAGE_NAME + ".debug";
         } else {
             // release build
-            return "com.eaglesakura.andriders";
+            return BASIC_PACKAGE_NAME;
         }
     }
 
@@ -71,7 +73,7 @@ public class AcesEnvironment {
         // base
         File directory = new File(android.os.Environment.getExternalStorageDirectory(), "andriders");
         final String appPackageName = context.getPackageName();
-        if (!appPackageName.equals(APPLICATION_PACKAGE_NAME)) {
+        if (!appPackageName.startsWith(BASIC_PACKAGE_NAME)) {
             return new File(directory, "app/" + appPackageName);
         } else {
             return new File(directory, "central");
