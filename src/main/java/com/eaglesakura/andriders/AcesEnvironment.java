@@ -1,12 +1,15 @@
 package com.eaglesakura.andriders;
 
 import android.content.Context;
+import android.os.Environment;
 
 import com.eaglesakura.andriders.protocol.AcesProtocol;
+import com.eaglesakura.android.device.external.StorageInfo;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 環境を指定する
@@ -64,14 +67,9 @@ public class AcesEnvironment {
         return APPLICATION_PACKAGE_NAME;
     }
 
-    /**
-     * ACEデータ保存用ディレクトリを取得する
-     *
-     * @return
-     */
-    public static File getAceDirectory(Context context) {
+    private static File getAceDirectory(Context context, File root) {
         // base
-        File directory = new File(android.os.Environment.getExternalStorageDirectory(), "andriders");
+        File directory = new File(root, "andriders");
         final String appPackageName = context.getPackageName();
         if (!appPackageName.startsWith(BASIC_PACKAGE_NAME)) {
             return new File(directory, "app/" + appPackageName);
@@ -81,13 +79,39 @@ public class AcesEnvironment {
     }
 
     /**
+     * ACEデータ保存用ディレクトリを取得する
+     *
+     * @return
+     */
+    public static File getAceDirectory(Context context) {
+        return getAceDirectory(context, Environment.getExternalStorageDirectory());
+    }
+
+    /**
      * メディア保存用のディレクトリを取得する
      *
      * @param context
      * @return
      */
     public static File getMediaDirectory(Context context) {
-        return new File(getAceDirectory(context), "media");
+        File mediaStorage = null;
+
+        final long CHECK_FREE_SIZE = 1024 * 1024 * 128; // 128 MiB以上の空き容量を確保しておく
+
+        List<StorageInfo> storageInfos = StorageInfo.listExternalStorages();
+        for (StorageInfo info : storageInfos) {
+            info.loadStorageInfo();
+            if (mediaStorage == null && info.getFreeSize() > CHECK_FREE_SIZE) {
+                mediaStorage = info.getPath();
+            }
+        }
+
+        if (mediaStorage == null) {
+            mediaStorage = getAceDirectory(context);
+        } else {
+            mediaStorage = getAceDirectory(context, mediaStorage);
+        }
+        return new File(mediaStorage, "media");
     }
 
     /**
