@@ -29,6 +29,13 @@
     <string name="AceUI.Zone.Heartrate.NonOxygenatedMotion">無酸素</string>
     <string name="AceUI.Zone.Heartrate.Overwork">危険域</string>
 
+    <!-- 時間名 -->
+    <string name="AceUI.Time.Active.Stop">停止</string>
+    <string name="AceUI.Time.Active.Active">アクティブ</string>
+    <string name="AceUI.Time.Session">走行時間（セッション）</string>
+    <string name="AceUI.Time.Date">走行時間（今日）</string>
+    <string name="AceUI.Time.Current">現在時刻</string>
+
     <!-- ケイデンスゾーン名 -->
     <string name="AceUI.Zone.Cadence.Slow">低回転</string>
     <string name="AceUI.Zone.Cadence.Ideal">標準</string>

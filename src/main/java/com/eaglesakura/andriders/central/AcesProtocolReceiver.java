@@ -231,6 +231,29 @@ public class AcesProtocolReceiver {
     }
 
     /**
+     * アクティブな状態であればtrue
+     *
+     * @return
+     */
+    public boolean isActiveMoving() {
+        RawCadence cadence = getLastReceivedCadence();
+        RawSpeed speed = getLastReceivedSpeed();
+
+        if (speed == null || speed.getSpeedZone() == RawSpeed.SpeedZone.Stop) {
+            // スピードがないか、停止状態であればnot active
+            return false;
+        }
+
+        if (cadence != null && cadence.getRpm() <= 0) {
+            // 脚が停止していたらnot active
+            return false;
+        }
+
+        // ひとまず動いているからactive
+        return true;
+    }
+
+    /**
      * 最後に受信したケイデンスを取得する
      *
      * @return
