@@ -26,7 +26,7 @@ allprojects {
 
 apply plugin: 'com.android.library'
 
-def ACES_SDK_VERSION = "0.4.0";
+def ACES_SDK_VERSION = "0.4.1";
 def EGLIBRARY_ARTIFACT_VERSION = "0.1.27";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 
@@ -39,12 +39,12 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 22
+    buildToolsVersion '22'
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 21
+        targetSdkVersion 22
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}\""

@@ -115,9 +115,9 @@ public final class LoggerProtocol {
      */
     com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
 
-    // required string date = 100;
+    // optional string date = 100;
     /**
-     * <code>required string date = 100;</code>
+     * <code>optional string date = 100;</code>
      *
      * <pre>
      * ログの打刻時間
@@ -125,7 +125,7 @@ public final class LoggerProtocol {
      */
     boolean hasDate();
     /**
-     * <code>required string date = 100;</code>
+     * <code>optional string date = 100;</code>
      *
      * <pre>
      * ログの打刻時間
@@ -133,7 +133,7 @@ public final class LoggerProtocol {
      */
     java.lang.String getDate();
     /**
-     * <code>required string date = 100;</code>
+     * <code>optional string date = 100;</code>
      *
      * <pre>
      * ログの打刻時間
@@ -141,6 +141,16 @@ public final class LoggerProtocol {
      */
     com.google.protobuf.ByteString
         getDateBytes();
+
+    // optional int64 dateInt = 103;
+    /**
+     * <code>optional int64 dateInt = 103;</code>
+     */
+    boolean hasDateInt();
+    /**
+     * <code>optional int64 dateInt = 103;</code>
+     */
+    long getDateInt();
 
     // optional int32 batteryLevel = 101;
     /**
@@ -292,13 +302,18 @@ public final class LoggerProtocol {
               break;
             }
             case 808: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               batteryLevel_ = input.readInt32();
               break;
             }
             case 816: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               batteryCharging_ = input.readBool();
+              break;
+            }
+            case 824: {
+              bitField0_ |= 0x00000020;
+              dateInt_ = input.readInt64();
               break;
             }
           }
@@ -477,11 +492,11 @@ public final class LoggerProtocol {
       return location_;
     }
 
-    // required string date = 100;
+    // optional string date = 100;
     public static final int DATE_FIELD_NUMBER = 100;
     private java.lang.Object date_;
     /**
-     * <code>required string date = 100;</code>
+     * <code>optional string date = 100;</code>
      *
      * <pre>
      * ログの打刻時間
@@ -491,7 +506,7 @@ public final class LoggerProtocol {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required string date = 100;</code>
+     * <code>optional string date = 100;</code>
      *
      * <pre>
      * ログの打刻時間
@@ -512,7 +527,7 @@ public final class LoggerProtocol {
       }
     }
     /**
-     * <code>required string date = 100;</code>
+     * <code>optional string date = 100;</code>
      *
      * <pre>
      * ログの打刻時間
@@ -532,6 +547,22 @@ public final class LoggerProtocol {
       }
     }
 
+    // optional int64 dateInt = 103;
+    public static final int DATEINT_FIELD_NUMBER = 103;
+    private long dateInt_;
+    /**
+     * <code>optional int64 dateInt = 103;</code>
+     */
+    public boolean hasDateInt() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int64 dateInt = 103;</code>
+     */
+    public long getDateInt() {
+      return dateInt_;
+    }
+
     // optional int32 batteryLevel = 101;
     public static final int BATTERYLEVEL_FIELD_NUMBER = 101;
     private int batteryLevel_;
@@ -543,7 +574,7 @@ public final class LoggerProtocol {
      * </pre>
      */
     public boolean hasBatteryLevel() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 batteryLevel = 101;</code>
@@ -567,7 +598,7 @@ public final class LoggerProtocol {
      * </pre>
      */
     public boolean hasBatteryCharging() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional bool batteryCharging = 102;</code>
@@ -586,6 +617,7 @@ public final class LoggerProtocol {
       speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
       location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
       date_ = "";
+      dateInt_ = 0L;
       batteryLevel_ = 0;
       batteryCharging_ = false;
     }
@@ -594,10 +626,6 @@ public final class LoggerProtocol {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasDate()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (hasCadence()) {
         if (!getCadence().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -644,11 +672,14 @@ public final class LoggerProtocol {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(100, getDateBytes());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(101, batteryLevel_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBool(102, batteryCharging_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt64(103, dateInt_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -679,13 +710,17 @@ public final class LoggerProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(100, getDateBytes());
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(101, batteryLevel_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(102, batteryCharging_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(103, dateInt_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -838,10 +873,12 @@ public final class LoggerProtocol {
         bitField0_ = (bitField0_ & ~0x00000008);
         date_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
-        batteryLevel_ = 0;
+        dateInt_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000020);
-        batteryCharging_ = false;
+        batteryLevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        batteryCharging_ = false;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -909,9 +946,13 @@ public final class LoggerProtocol {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.batteryLevel_ = batteryLevel_;
+        result.dateInt_ = dateInt_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
+        }
+        result.batteryLevel_ = batteryLevel_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
         }
         result.batteryCharging_ = batteryCharging_;
         result.bitField0_ = to_bitField0_;
@@ -947,6 +988,9 @@ public final class LoggerProtocol {
           date_ = other.date_;
           onChanged();
         }
+        if (other.hasDateInt()) {
+          setDateInt(other.getDateInt());
+        }
         if (other.hasBatteryLevel()) {
           setBatteryLevel(other.getBatteryLevel());
         }
@@ -958,10 +1002,6 @@ public final class LoggerProtocol {
       }
 
       public final boolean isInitialized() {
-        if (!hasDate()) {
-          
-          return false;
-        }
         if (hasCadence()) {
           if (!getCadence().isInitialized()) {
             
@@ -1620,10 +1660,10 @@ public final class LoggerProtocol {
         return locationBuilder_;
       }
 
-      // required string date = 100;
+      // optional string date = 100;
       private java.lang.Object date_ = "";
       /**
-       * <code>required string date = 100;</code>
+       * <code>optional string date = 100;</code>
        *
        * <pre>
        * ログの打刻時間
@@ -1633,7 +1673,7 @@ public final class LoggerProtocol {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required string date = 100;</code>
+       * <code>optional string date = 100;</code>
        *
        * <pre>
        * ログの打刻時間
@@ -1651,7 +1691,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>required string date = 100;</code>
+       * <code>optional string date = 100;</code>
        *
        * <pre>
        * ログの打刻時間
@@ -1671,7 +1711,7 @@ public final class LoggerProtocol {
         }
       }
       /**
-       * <code>required string date = 100;</code>
+       * <code>optional string date = 100;</code>
        *
        * <pre>
        * ログの打刻時間
@@ -1688,7 +1728,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>required string date = 100;</code>
+       * <code>optional string date = 100;</code>
        *
        * <pre>
        * ログの打刻時間
@@ -1701,7 +1741,7 @@ public final class LoggerProtocol {
         return this;
       }
       /**
-       * <code>required string date = 100;</code>
+       * <code>optional string date = 100;</code>
        *
        * <pre>
        * ログの打刻時間
@@ -1718,6 +1758,39 @@ public final class LoggerProtocol {
         return this;
       }
 
+      // optional int64 dateInt = 103;
+      private long dateInt_ ;
+      /**
+       * <code>optional int64 dateInt = 103;</code>
+       */
+      public boolean hasDateInt() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int64 dateInt = 103;</code>
+       */
+      public long getDateInt() {
+        return dateInt_;
+      }
+      /**
+       * <code>optional int64 dateInt = 103;</code>
+       */
+      public Builder setDateInt(long value) {
+        bitField0_ |= 0x00000020;
+        dateInt_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 dateInt = 103;</code>
+       */
+      public Builder clearDateInt() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        dateInt_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // optional int32 batteryLevel = 101;
       private int batteryLevel_ ;
       /**
@@ -1728,7 +1801,7 @@ public final class LoggerProtocol {
        * </pre>
        */
       public boolean hasBatteryLevel() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 batteryLevel = 101;</code>
@@ -1748,7 +1821,7 @@ public final class LoggerProtocol {
        * </pre>
        */
       public Builder setBatteryLevel(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         batteryLevel_ = value;
         onChanged();
         return this;
@@ -1761,7 +1834,7 @@ public final class LoggerProtocol {
        * </pre>
        */
       public Builder clearBatteryLevel() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         batteryLevel_ = 0;
         onChanged();
         return this;
@@ -1777,7 +1850,7 @@ public final class LoggerProtocol {
        * </pre>
        */
       public boolean hasBatteryCharging() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional bool batteryCharging = 102;</code>
@@ -1797,7 +1870,7 @@ public final class LoggerProtocol {
        * </pre>
        */
       public Builder setBatteryCharging(boolean value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         batteryCharging_ = value;
         onChanged();
         return this;
@@ -1810,7 +1883,7 @@ public final class LoggerProtocol {
        * </pre>
        */
       public Builder clearBatteryCharging() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         batteryCharging_ = false;
         onChanged();
         return this;
@@ -1843,15 +1916,15 @@ public final class LoggerProtocol {
     java.lang.String[] descriptorData = {
       "\n\024LoggerProtocol.proto\022\017eaglesakura_ace\032" +
       "\023AcesConstants.proto\032\021GeoProtocol.proto\032" +
-      "\024SensorProtocol.proto\"\214\002\n\026RawSessionPoin" +
+      "\024SensorProtocol.proto\"\235\002\n\026RawSessionPoin" +
       "tPayload\022,\n\007cadence\030\001 \001(\0132\033.eaglesakura_" +
       "ace.RawCadence\0220\n\theartrate\030\003 \001(\0132\035.eagl" +
       "esakura_ace.RawHeartrate\022(\n\005speed\030\004 \001(\0132" +
       "\031.eaglesakura_ace.RawSpeed\022+\n\010location\030\005" +
       " \001(\0132\031.eaglesakura_ace.GeoPoint\022\014\n\004date\030" +
-      "d \002(\t\022\024\n\014batteryLevel\030e \001(\005\022\027\n\017batteryCh" +
-      "arging\030f \001(\010B$\n\"com.eaglesakura.andrider",
-      "s.protocol"
+      "d \001(\t\022\017\n\007dateInt\030g \001(\003\022\024\n\014batteryLevel\030e" +
+      " \001(\005\022\027\n\017batteryCharging\030f \001(\010B$\n\"com.eag",
+      "lesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1863,7 +1936,7 @@ public final class LoggerProtocol {
           internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor,
-              new java.lang.String[] { "Cadence", "Heartrate", "Speed", "Location", "Date", "BatteryLevel", "BatteryCharging", });
+              new java.lang.String[] { "Cadence", "Heartrate", "Speed", "Location", "Date", "DateInt", "BatteryLevel", "BatteryCharging", });
           return null;
         }
       };

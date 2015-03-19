@@ -16,7 +16,8 @@ public final class TeamProtocol {
      * <code>required string userId = 1;</code>
      *
      * <pre>
-     * 誰のデータか
+     * 誰のデータ
+     * なるべく「人物」を一意に特定できるデータを提供する
      * </pre>
      */
     boolean hasUserId();
@@ -24,7 +25,8 @@ public final class TeamProtocol {
      * <code>required string userId = 1;</code>
      *
      * <pre>
-     * 誰のデータか
+     * 誰のデータ
+     * なるべく「人物」を一意に特定できるデータを提供する
      * </pre>
      */
     java.lang.String getUserId();
@@ -32,7 +34,8 @@ public final class TeamProtocol {
      * <code>required string userId = 1;</code>
      *
      * <pre>
-     * 誰のデータか
+     * 誰のデータ
+     * なるべく「人物」を一意に特定できるデータを提供する
      * </pre>
      */
     com.google.protobuf.ByteString
@@ -426,7 +429,8 @@ public final class TeamProtocol {
      * <code>required string userId = 1;</code>
      *
      * <pre>
-     * 誰のデータか
+     * 誰のデータ
+     * なるべく「人物」を一意に特定できるデータを提供する
      * </pre>
      */
     public boolean hasUserId() {
@@ -436,7 +440,8 @@ public final class TeamProtocol {
      * <code>required string userId = 1;</code>
      *
      * <pre>
-     * 誰のデータか
+     * 誰のデータ
+     * なるべく「人物」を一意に特定できるデータを提供する
      * </pre>
      */
     public java.lang.String getUserId() {
@@ -457,7 +462,8 @@ public final class TeamProtocol {
      * <code>required string userId = 1;</code>
      *
      * <pre>
-     * 誰のデータか
+     * 誰のデータ
+     * なるべく「人物」を一意に特定できるデータを提供する
      * </pre>
      */
     public com.google.protobuf.ByteString
@@ -1093,7 +1099,8 @@ public final class TeamProtocol {
        * <code>required string userId = 1;</code>
        *
        * <pre>
-       * 誰のデータか
+       * 誰のデータ
+       * なるべく「人物」を一意に特定できるデータを提供する
        * </pre>
        */
       public boolean hasUserId() {
@@ -1103,7 +1110,8 @@ public final class TeamProtocol {
        * <code>required string userId = 1;</code>
        *
        * <pre>
-       * 誰のデータか
+       * 誰のデータ
+       * なるべく「人物」を一意に特定できるデータを提供する
        * </pre>
        */
       public java.lang.String getUserId() {
@@ -1121,7 +1129,8 @@ public final class TeamProtocol {
        * <code>required string userId = 1;</code>
        *
        * <pre>
-       * 誰のデータか
+       * 誰のデータ
+       * なるべく「人物」を一意に特定できるデータを提供する
        * </pre>
        */
       public com.google.protobuf.ByteString
@@ -1141,7 +1150,8 @@ public final class TeamProtocol {
        * <code>required string userId = 1;</code>
        *
        * <pre>
-       * 誰のデータか
+       * 誰のデータ
+       * なるべく「人物」を一意に特定できるデータを提供する
        * </pre>
        */
       public Builder setUserId(
@@ -1158,7 +1168,8 @@ public final class TeamProtocol {
        * <code>required string userId = 1;</code>
        *
        * <pre>
-       * 誰のデータか
+       * 誰のデータ
+       * なるべく「人物」を一意に特定できるデータを提供する
        * </pre>
        */
       public Builder clearUserId() {
@@ -1171,7 +1182,8 @@ public final class TeamProtocol {
        * <code>required string userId = 1;</code>
        *
        * <pre>
-       * 誰のデータか
+       * 誰のデータ
+       * なるべく「人物」を一意に特定できるデータを提供する
        * </pre>
        */
       public Builder setUserIdBytes(

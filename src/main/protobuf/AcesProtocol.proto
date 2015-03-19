@@ -61,6 +61,27 @@ message CentralStatus {
     required bool connectedGps = 6;
 }
 
+// 走行セッションに関する情報を付与する
+message SessionStatus {
+    // セッションの開始時刻 : Unix Time
+    required int64  sessionStartTime = 1;
+
+    // 今日はじめてセッションを開始した時刻 : Unix Time
+    required int32  todayStartTime = 2;
+
+    // セッション中、自走している時間
+    required int32  sessionActiveTimeMs = 3;
+
+    // 今日自走した時間
+    required int32  todayActiveTimeMs = 4;
+
+    // セッション中、自走した距離(Km)
+    required float  sessionActiveDistanceKm = 5;
+
+    // 今日自走した距離
+    required float  todayActiveDistanceKm = 6;
+}
+
 // Key-Valueの軽量なメタ情報
 // optionalなデータを付与したい場合に利用する
 message Meta {
@@ -80,7 +101,10 @@ message MasterPayload {
 
     // ペイロード作成日時
     // "yyyyMMDD-hh:mm:ss.SS"で記述される
-    required string createdDate = 3;
+    optional string createdDate = 3;
+
+    // ペイロード作成日時 : Unix Time
+    optional int64  createdDateInt = 15;
 
     // 送信者のpackage
     // 必ず付与すべきだが、完全な信頼性はない
@@ -92,6 +116,9 @@ message MasterPayload {
 
     // セントラルアプリのステータス
     optional CentralStatus centralStatus = 1;
+
+    // セッション情報
+    optional SessionStatus sessionStatus = 16;
 
     // ユーザーの各種記録
     optional UserRecord userRecord = 10;
@@ -108,8 +135,8 @@ message MasterPayload {
     // 制御コマンド
     repeated CommandPayload commandPayloads = 5;
 
-    // ユーザーの活動イベント
-    repeated ActivityPayload activityPayloads = 9;
+    // ユーザーの活動情報
+    optional FitnessPayload fitness = 14;
 
     // メタデータ
     repeated Meta metadatas = 13;

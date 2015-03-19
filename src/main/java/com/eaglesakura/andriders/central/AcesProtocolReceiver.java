@@ -16,8 +16,6 @@ import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.notification.SoundData;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
-import com.eaglesakura.andriders.protocol.ActivityProtocol.ActivityPayload;
-import com.eaglesakura.andriders.protocol.ActivityProtocol.MaxSpeedActivity;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
@@ -581,33 +579,6 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * 最大速度更新情報を受信
-     *
-     * @param master 受信したマスターデータ
-     * @param buffer 受信したデータ本体
-     * @throws Exception
-     */
-    private void onMaxSpeedUpdateReceived(MasterPayload master, ByteString buffer) throws Exception {
-        MaxSpeedActivity maxSpeed = MaxSpeedActivity.parseFrom(buffer);
-        for (ActivityEventHandler handler : activityHandlers) {
-            handler.onMaxSpeedActivityReceived(this, master, maxSpeed);
-        }
-    }
-
-    /**
-     * 不明な活動記録を受信した
-     *
-     * @param master   受信したマスターデータ
-     * @param activity 活動データ
-     * @throws Exception
-     */
-    private void onUnknownActivityEventReceived(MasterPayload master, ActivityPayload activity) throws Exception {
-        for (ActivityEventHandler handler : activityHandlers) {
-            handler.onUnknownActivityEventReceived(this, master, activity);
-        }
-    }
-
-    /**
      * 活動イベントを受け取った
      *
      * @param master 受信したマスターデータ
@@ -617,17 +588,6 @@ public class AcesProtocolReceiver {
             return;
         }
 
-        List<ActivityPayload> activityPayloadsList = master.getActivityPayloadsList();
-        for (ActivityPayload activity : activityPayloadsList) {
-            switch (activity.getType()) {
-                case MaxSpeedUpdate:
-                    onMaxSpeedUpdateReceived(master, activity.getBuffer());
-                    break;
-                default:
-                    onUnknownActivityEventReceived(master, activity);
-                    break;
-            }
-        }
     }
 
     /**
