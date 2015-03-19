@@ -21,4 +21,10 @@ message FitnessPayload {
 
 	// 今日消費したカロリー
 	optional float todayCalories = 3;
+
+	// セッションで獲得したエクササイズ値
+	optional float sessionExercise = 7;
+
+	// 今日獲得したエクササイズ値
+	optional float todayExercise = 8;
 }

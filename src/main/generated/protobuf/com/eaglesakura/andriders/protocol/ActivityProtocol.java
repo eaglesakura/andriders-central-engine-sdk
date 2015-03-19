@@ -118,6 +118,42 @@ public final class ActivityProtocol {
      * </pre>
      */
     float getTodayCalories();
+
+    // optional float sessionExercise = 7;
+    /**
+     * <code>optional float sessionExercise = 7;</code>
+     *
+     * <pre>
+     * セッションで獲得したエクササイズ値
+     * </pre>
+     */
+    boolean hasSessionExercise();
+    /**
+     * <code>optional float sessionExercise = 7;</code>
+     *
+     * <pre>
+     * セッションで獲得したエクササイズ値
+     * </pre>
+     */
+    float getSessionExercise();
+
+    // optional float todayExercise = 8;
+    /**
+     * <code>optional float todayExercise = 8;</code>
+     *
+     * <pre>
+     * 今日獲得したエクササイズ値
+     * </pre>
+     */
+    boolean hasTodayExercise();
+    /**
+     * <code>optional float todayExercise = 8;</code>
+     *
+     * <pre>
+     * 今日獲得したエクササイズ値
+     * </pre>
+     */
+    float getTodayExercise();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.FitnessPayload}
@@ -198,6 +234,16 @@ public final class ActivityProtocol {
             case 48: {
               bitField0_ |= 0x00000002;
               normalHeartrate_ = input.readInt32();
+              break;
+            }
+            case 61: {
+              bitField0_ |= 0x00000040;
+              sessionExercise_ = input.readFloat();
+              break;
+            }
+            case 69: {
+              bitField0_ |= 0x00000080;
+              todayExercise_ = input.readFloat();
               break;
             }
           }
@@ -384,6 +430,54 @@ public final class ActivityProtocol {
       return todayCalories_;
     }
 
+    // optional float sessionExercise = 7;
+    public static final int SESSIONEXERCISE_FIELD_NUMBER = 7;
+    private float sessionExercise_;
+    /**
+     * <code>optional float sessionExercise = 7;</code>
+     *
+     * <pre>
+     * セッションで獲得したエクササイズ値
+     * </pre>
+     */
+    public boolean hasSessionExercise() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional float sessionExercise = 7;</code>
+     *
+     * <pre>
+     * セッションで獲得したエクササイズ値
+     * </pre>
+     */
+    public float getSessionExercise() {
+      return sessionExercise_;
+    }
+
+    // optional float todayExercise = 8;
+    public static final int TODAYEXERCISE_FIELD_NUMBER = 8;
+    private float todayExercise_;
+    /**
+     * <code>optional float todayExercise = 8;</code>
+     *
+     * <pre>
+     * 今日獲得したエクササイズ値
+     * </pre>
+     */
+    public boolean hasTodayExercise() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional float todayExercise = 8;</code>
+     *
+     * <pre>
+     * 今日獲得したエクササイズ値
+     * </pre>
+     */
+    public float getTodayExercise() {
+      return todayExercise_;
+    }
+
     private void initFields() {
       weight_ = 0F;
       normalHeartrate_ = 0;
@@ -391,6 +485,8 @@ public final class ActivityProtocol {
       mets_ = 0F;
       sessionCalories_ = 0F;
       todayCalories_ = 0F;
+      sessionExercise_ = 0F;
+      todayExercise_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -434,6 +530,12 @@ public final class ActivityProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(6, normalHeartrate_);
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeFloat(7, sessionExercise_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeFloat(8, todayExercise_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -466,6 +568,14 @@ public final class ActivityProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, normalHeartrate_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(7, sessionExercise_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(8, todayExercise_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -595,6 +705,10 @@ public final class ActivityProtocol {
         bitField0_ = (bitField0_ & ~0x00000010);
         todayCalories_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000020);
+        sessionExercise_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        todayExercise_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -647,6 +761,14 @@ public final class ActivityProtocol {
           to_bitField0_ |= 0x00000020;
         }
         result.todayCalories_ = todayCalories_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.sessionExercise_ = sessionExercise_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.todayExercise_ = todayExercise_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -680,6 +802,12 @@ public final class ActivityProtocol {
         }
         if (other.hasTodayCalories()) {
           setTodayCalories(other.getTodayCalories());
+        }
+        if (other.hasSessionExercise()) {
+          setSessionExercise(other.getSessionExercise());
+        }
+        if (other.hasTodayExercise()) {
+          setTodayExercise(other.getTodayExercise());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1014,6 +1142,104 @@ public final class ActivityProtocol {
         return this;
       }
 
+      // optional float sessionExercise = 7;
+      private float sessionExercise_ ;
+      /**
+       * <code>optional float sessionExercise = 7;</code>
+       *
+       * <pre>
+       * セッションで獲得したエクササイズ値
+       * </pre>
+       */
+      public boolean hasSessionExercise() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional float sessionExercise = 7;</code>
+       *
+       * <pre>
+       * セッションで獲得したエクササイズ値
+       * </pre>
+       */
+      public float getSessionExercise() {
+        return sessionExercise_;
+      }
+      /**
+       * <code>optional float sessionExercise = 7;</code>
+       *
+       * <pre>
+       * セッションで獲得したエクササイズ値
+       * </pre>
+       */
+      public Builder setSessionExercise(float value) {
+        bitField0_ |= 0x00000040;
+        sessionExercise_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float sessionExercise = 7;</code>
+       *
+       * <pre>
+       * セッションで獲得したエクササイズ値
+       * </pre>
+       */
+      public Builder clearSessionExercise() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        sessionExercise_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float todayExercise = 8;
+      private float todayExercise_ ;
+      /**
+       * <code>optional float todayExercise = 8;</code>
+       *
+       * <pre>
+       * 今日獲得したエクササイズ値
+       * </pre>
+       */
+      public boolean hasTodayExercise() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional float todayExercise = 8;</code>
+       *
+       * <pre>
+       * 今日獲得したエクササイズ値
+       * </pre>
+       */
+      public float getTodayExercise() {
+        return todayExercise_;
+      }
+      /**
+       * <code>optional float todayExercise = 8;</code>
+       *
+       * <pre>
+       * 今日獲得したエクササイズ値
+       * </pre>
+       */
+      public Builder setTodayExercise(float value) {
+        bitField0_ |= 0x00000080;
+        todayExercise_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float todayExercise = 8;</code>
+       *
+       * <pre>
+       * 今日獲得したエクササイズ値
+       * </pre>
+       */
+      public Builder clearTodayExercise() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        todayExercise_ = 0F;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.FitnessPayload)
     }
 
@@ -1040,12 +1266,13 @@ public final class ActivityProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\026ActivityProtocol.proto\022\017eaglesakura_ac" +
-      "e\032\023AcesConstants.proto\"\215\001\n\016FitnessPayloa" +
+      "e\032\023AcesConstants.proto\"\275\001\n\016FitnessPayloa" +
       "d\022\016\n\006weight\030\001 \002(\002\022\027\n\017normalHeartrate\030\006 \002" +
       "(\005\022\024\n\014maxHeartrate\030\005 \002(\005\022\014\n\004mets\030\004 \001(\002\022\027" +
       "\n\017sessionCalories\030\002 \001(\002\022\025\n\rtodayCalories" +
-      "\030\003 \001(\002B$\n\"com.eaglesakura.andriders.prot" +
-      "ocol"
+      "\030\003 \001(\002\022\027\n\017sessionExercise\030\007 \001(\002\022\025\n\rtoday" +
+      "Exercise\030\010 \001(\002B$\n\"com.eaglesakura.andrid" +
+      "ers.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -1057,7 +1284,7 @@ public final class ActivityProtocol {
           internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_FitnessPayload_descriptor,
-              new java.lang.String[] { "Weight", "NormalHeartrate", "MaxHeartrate", "Mets", "SessionCalories", "TodayCalories", });
+              new java.lang.String[] { "Weight", "NormalHeartrate", "MaxHeartrate", "Mets", "SessionCalories", "TodayCalories", "SessionExercise", "TodayExercise", });
           return null;
         }
       };
