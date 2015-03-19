@@ -29,9 +29,9 @@ public final class ActivityProtocol {
      */
     float getWeight();
 
-    // required float normalHeartrate = 6;
+    // required int32 normalHeartrate = 6;
     /**
-     * <code>required float normalHeartrate = 6;</code>
+     * <code>required int32 normalHeartrate = 6;</code>
      *
      * <pre>
      * 安静心拍数
@@ -39,17 +39,17 @@ public final class ActivityProtocol {
      */
     boolean hasNormalHeartrate();
     /**
-     * <code>required float normalHeartrate = 6;</code>
+     * <code>required int32 normalHeartrate = 6;</code>
      *
      * <pre>
      * 安静心拍数
      * </pre>
      */
-    float getNormalHeartrate();
+    int getNormalHeartrate();
 
-    // required float maxHeartrate = 5;
+    // required int32 maxHeartrate = 5;
     /**
-     * <code>required float maxHeartrate = 5;</code>
+     * <code>required int32 maxHeartrate = 5;</code>
      *
      * <pre>
      * 最大心拍数
@@ -57,13 +57,13 @@ public final class ActivityProtocol {
      */
     boolean hasMaxHeartrate();
     /**
-     * <code>required float maxHeartrate = 5;</code>
+     * <code>required int32 maxHeartrate = 5;</code>
      *
      * <pre>
      * 最大心拍数
      * </pre>
      */
-    float getMaxHeartrate();
+    int getMaxHeartrate();
 
     // optional float mets = 4;
     /**
@@ -190,14 +190,14 @@ public final class ActivityProtocol {
               mets_ = input.readFloat();
               break;
             }
-            case 45: {
+            case 40: {
               bitField0_ |= 0x00000004;
-              maxHeartrate_ = input.readFloat();
+              maxHeartrate_ = input.readInt32();
               break;
             }
-            case 53: {
+            case 48: {
               bitField0_ |= 0x00000002;
-              normalHeartrate_ = input.readFloat();
+              normalHeartrate_ = input.readInt32();
               break;
             }
           }
@@ -264,11 +264,11 @@ public final class ActivityProtocol {
       return weight_;
     }
 
-    // required float normalHeartrate = 6;
+    // required int32 normalHeartrate = 6;
     public static final int NORMALHEARTRATE_FIELD_NUMBER = 6;
-    private float normalHeartrate_;
+    private int normalHeartrate_;
     /**
-     * <code>required float normalHeartrate = 6;</code>
+     * <code>required int32 normalHeartrate = 6;</code>
      *
      * <pre>
      * 安静心拍数
@@ -278,21 +278,21 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required float normalHeartrate = 6;</code>
+     * <code>required int32 normalHeartrate = 6;</code>
      *
      * <pre>
      * 安静心拍数
      * </pre>
      */
-    public float getNormalHeartrate() {
+    public int getNormalHeartrate() {
       return normalHeartrate_;
     }
 
-    // required float maxHeartrate = 5;
+    // required int32 maxHeartrate = 5;
     public static final int MAXHEARTRATE_FIELD_NUMBER = 5;
-    private float maxHeartrate_;
+    private int maxHeartrate_;
     /**
-     * <code>required float maxHeartrate = 5;</code>
+     * <code>required int32 maxHeartrate = 5;</code>
      *
      * <pre>
      * 最大心拍数
@@ -302,13 +302,13 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required float maxHeartrate = 5;</code>
+     * <code>required int32 maxHeartrate = 5;</code>
      *
      * <pre>
      * 最大心拍数
      * </pre>
      */
-    public float getMaxHeartrate() {
+    public int getMaxHeartrate() {
       return maxHeartrate_;
     }
 
@@ -386,8 +386,8 @@ public final class ActivityProtocol {
 
     private void initFields() {
       weight_ = 0F;
-      normalHeartrate_ = 0F;
-      maxHeartrate_ = 0F;
+      normalHeartrate_ = 0;
+      maxHeartrate_ = 0;
       mets_ = 0F;
       sessionCalories_ = 0F;
       todayCalories_ = 0F;
@@ -429,10 +429,10 @@ public final class ActivityProtocol {
         output.writeFloat(4, mets_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(5, maxHeartrate_);
+        output.writeInt32(5, maxHeartrate_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(6, normalHeartrate_);
+        output.writeInt32(6, normalHeartrate_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -461,11 +461,11 @@ public final class ActivityProtocol {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(5, maxHeartrate_);
+          .computeInt32Size(5, maxHeartrate_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(6, normalHeartrate_);
+          .computeInt32Size(6, normalHeartrate_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -585,9 +585,9 @@ public final class ActivityProtocol {
         super.clear();
         weight_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000001);
-        normalHeartrate_ = 0F;
+        normalHeartrate_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        maxHeartrate_ = 0F;
+        maxHeartrate_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
         mets_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -769,10 +769,10 @@ public final class ActivityProtocol {
         return this;
       }
 
-      // required float normalHeartrate = 6;
-      private float normalHeartrate_ ;
+      // required int32 normalHeartrate = 6;
+      private int normalHeartrate_ ;
       /**
-       * <code>required float normalHeartrate = 6;</code>
+       * <code>required int32 normalHeartrate = 6;</code>
        *
        * <pre>
        * 安静心拍数
@@ -782,30 +782,30 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required float normalHeartrate = 6;</code>
+       * <code>required int32 normalHeartrate = 6;</code>
        *
        * <pre>
        * 安静心拍数
        * </pre>
        */
-      public float getNormalHeartrate() {
+      public int getNormalHeartrate() {
         return normalHeartrate_;
       }
       /**
-       * <code>required float normalHeartrate = 6;</code>
+       * <code>required int32 normalHeartrate = 6;</code>
        *
        * <pre>
        * 安静心拍数
        * </pre>
        */
-      public Builder setNormalHeartrate(float value) {
+      public Builder setNormalHeartrate(int value) {
         bitField0_ |= 0x00000002;
         normalHeartrate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required float normalHeartrate = 6;</code>
+       * <code>required int32 normalHeartrate = 6;</code>
        *
        * <pre>
        * 安静心拍数
@@ -813,15 +813,15 @@ public final class ActivityProtocol {
        */
       public Builder clearNormalHeartrate() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        normalHeartrate_ = 0F;
+        normalHeartrate_ = 0;
         onChanged();
         return this;
       }
 
-      // required float maxHeartrate = 5;
-      private float maxHeartrate_ ;
+      // required int32 maxHeartrate = 5;
+      private int maxHeartrate_ ;
       /**
-       * <code>required float maxHeartrate = 5;</code>
+       * <code>required int32 maxHeartrate = 5;</code>
        *
        * <pre>
        * 最大心拍数
@@ -831,30 +831,30 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required float maxHeartrate = 5;</code>
+       * <code>required int32 maxHeartrate = 5;</code>
        *
        * <pre>
        * 最大心拍数
        * </pre>
        */
-      public float getMaxHeartrate() {
+      public int getMaxHeartrate() {
         return maxHeartrate_;
       }
       /**
-       * <code>required float maxHeartrate = 5;</code>
+       * <code>required int32 maxHeartrate = 5;</code>
        *
        * <pre>
        * 最大心拍数
        * </pre>
        */
-      public Builder setMaxHeartrate(float value) {
+      public Builder setMaxHeartrate(int value) {
         bitField0_ |= 0x00000004;
         maxHeartrate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required float maxHeartrate = 5;</code>
+       * <code>required int32 maxHeartrate = 5;</code>
        *
        * <pre>
        * 最大心拍数
@@ -862,7 +862,7 @@ public final class ActivityProtocol {
        */
       public Builder clearMaxHeartrate() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        maxHeartrate_ = 0F;
+        maxHeartrate_ = 0;
         onChanged();
         return this;
       }
@@ -1042,7 +1042,7 @@ public final class ActivityProtocol {
       "\n\026ActivityProtocol.proto\022\017eaglesakura_ac" +
       "e\032\023AcesConstants.proto\"\215\001\n\016FitnessPayloa" +
       "d\022\016\n\006weight\030\001 \002(\002\022\027\n\017normalHeartrate\030\006 \002" +
-      "(\002\022\024\n\014maxHeartrate\030\005 \002(\002\022\014\n\004mets\030\004 \001(\002\022\027" +
+      "(\005\022\024\n\014maxHeartrate\030\005 \002(\005\022\014\n\004mets\030\004 \001(\002\022\027" +
       "\n\017sessionCalories\030\002 \001(\002\022\025\n\rtodayCalories" +
       "\030\003 \001(\002B$\n\"com.eaglesakura.andriders.prot" +
       "ocol"

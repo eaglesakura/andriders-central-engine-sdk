@@ -8,10 +8,10 @@ message FitnessPayload {
 	required float weight = 1;
 
 	// 安静心拍数
-	required float normalHeartrate = 6;
+	required int32 normalHeartrate = 6;
 
 	// 最大心拍数
-	required float maxHeartrate = 5;
+	required int32 maxHeartrate = 5;
 
 	// 現在のMETs値
 	optional float mets = 4;
