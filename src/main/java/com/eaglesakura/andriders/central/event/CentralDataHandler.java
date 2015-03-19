@@ -7,7 +7,7 @@ import com.eaglesakura.andriders.protocol.GeoProtocol;
 /**
  * ACEsの情報ハンドリングを行う
  */
-public class CentralDataHandler {
+public abstract class CentralDataHandler {
     /**
      * マスターデータを受け取った
      *
@@ -15,7 +15,14 @@ public class CentralDataHandler {
      * @param master すべてのデータを含んだペイロード
      */
     public void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, MasterPayload master) {
+    }
 
+    /**
+     * マスターデータの解析に失敗した
+     *
+     * @param receiver
+     */
+    public void onMasterPayloadParseFiled(AcesProtocolReceiver receiver, byte[] buffer) {
     }
 
     /**

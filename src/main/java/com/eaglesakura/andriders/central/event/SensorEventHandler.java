@@ -11,7 +11,7 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
  * センサーイベントに対するハンドリングを行う。
  * 必要なメソッドをオーバーライドして、適宜ハンドリングする。
  */
-public class SensorEventHandler {
+public abstract class SensorEventHandler {
 
     public SensorEventHandler() {
     }

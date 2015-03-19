@@ -67,7 +67,7 @@ message SessionStatus {
     required int64  sessionStartTime = 1;
 
     // 今日はじめてセッションを開始した時刻 : Unix Time
-    required int32  todayStartTime = 2;
+    required int64  todayStartTime = 2;
 
     // セッション中、自走している時間
     required int32  sessionActiveTimeMs = 3;

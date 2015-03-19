@@ -6,7 +6,7 @@ import com.eaglesakura.andriders.protocol.TeamProtocol;
 /**
  * チームメンバーの情報を受け取った際のハンドリング
  */
-public class TeamMemberDataHandler {
+public abstract class TeamMemberDataHandler {
     /**
      * マスターデータを受け取った
      *

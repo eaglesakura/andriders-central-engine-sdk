@@ -2618,9 +2618,9 @@ public final class AcesProtocol {
      */
     long getSessionStartTime();
 
-    // required int32 todayStartTime = 2;
+    // required int64 todayStartTime = 2;
     /**
-     * <code>required int32 todayStartTime = 2;</code>
+     * <code>required int64 todayStartTime = 2;</code>
      *
      * <pre>
      * 今日はじめてセッションを開始した時刻 : Unix Time
@@ -2628,13 +2628,13 @@ public final class AcesProtocol {
      */
     boolean hasTodayStartTime();
     /**
-     * <code>required int32 todayStartTime = 2;</code>
+     * <code>required int64 todayStartTime = 2;</code>
      *
      * <pre>
      * 今日はじめてセッションを開始した時刻 : Unix Time
      * </pre>
      */
-    int getTodayStartTime();
+    long getTodayStartTime();
 
     // required int32 sessionActiveTimeMs = 3;
     /**
@@ -2770,7 +2770,7 @@ public final class AcesProtocol {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              todayStartTime_ = input.readInt32();
+              todayStartTime_ = input.readInt64();
               break;
             }
             case 24: {
@@ -2857,11 +2857,11 @@ public final class AcesProtocol {
       return sessionStartTime_;
     }
 
-    // required int32 todayStartTime = 2;
+    // required int64 todayStartTime = 2;
     public static final int TODAYSTARTTIME_FIELD_NUMBER = 2;
-    private int todayStartTime_;
+    private long todayStartTime_;
     /**
-     * <code>required int32 todayStartTime = 2;</code>
+     * <code>required int64 todayStartTime = 2;</code>
      *
      * <pre>
      * 今日はじめてセッションを開始した時刻 : Unix Time
@@ -2871,13 +2871,13 @@ public final class AcesProtocol {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 todayStartTime = 2;</code>
+     * <code>required int64 todayStartTime = 2;</code>
      *
      * <pre>
      * 今日はじめてセッションを開始した時刻 : Unix Time
      * </pre>
      */
-    public int getTodayStartTime() {
+    public long getTodayStartTime() {
       return todayStartTime_;
     }
 
@@ -2979,7 +2979,7 @@ public final class AcesProtocol {
 
     private void initFields() {
       sessionStartTime_ = 0L;
-      todayStartTime_ = 0;
+      todayStartTime_ = 0L;
       sessionActiveTimeMs_ = 0;
       todayActiveTimeMs_ = 0;
       sessionActiveDistanceKm_ = 0F;
@@ -3025,7 +3025,7 @@ public final class AcesProtocol {
         output.writeInt64(1, sessionStartTime_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, todayStartTime_);
+        output.writeInt64(2, todayStartTime_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, sessionActiveTimeMs_);
@@ -3054,7 +3054,7 @@ public final class AcesProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, todayStartTime_);
+          .computeInt64Size(2, todayStartTime_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3194,7 +3194,7 @@ public final class AcesProtocol {
         super.clear();
         sessionStartTime_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        todayStartTime_ = 0;
+        todayStartTime_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
         sessionActiveTimeMs_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -3390,10 +3390,10 @@ public final class AcesProtocol {
         return this;
       }
 
-      // required int32 todayStartTime = 2;
-      private int todayStartTime_ ;
+      // required int64 todayStartTime = 2;
+      private long todayStartTime_ ;
       /**
-       * <code>required int32 todayStartTime = 2;</code>
+       * <code>required int64 todayStartTime = 2;</code>
        *
        * <pre>
        * 今日はじめてセッションを開始した時刻 : Unix Time
@@ -3403,30 +3403,30 @@ public final class AcesProtocol {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 todayStartTime = 2;</code>
+       * <code>required int64 todayStartTime = 2;</code>
        *
        * <pre>
        * 今日はじめてセッションを開始した時刻 : Unix Time
        * </pre>
        */
-      public int getTodayStartTime() {
+      public long getTodayStartTime() {
         return todayStartTime_;
       }
       /**
-       * <code>required int32 todayStartTime = 2;</code>
+       * <code>required int64 todayStartTime = 2;</code>
        *
        * <pre>
        * 今日はじめてセッションを開始した時刻 : Unix Time
        * </pre>
        */
-      public Builder setTodayStartTime(int value) {
+      public Builder setTodayStartTime(long value) {
         bitField0_ |= 0x00000002;
         todayStartTime_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 todayStartTime = 2;</code>
+       * <code>required int64 todayStartTime = 2;</code>
        *
        * <pre>
        * 今日はじめてセッションを開始した時刻 : Unix Time
@@ -3434,7 +3434,7 @@ public final class AcesProtocol {
        */
       public Builder clearTodayStartTime() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        todayStartTime_ = 0;
+        todayStartTime_ = 0L;
         onChanged();
         return this;
       }
@@ -8998,7 +8998,7 @@ public final class AcesProtocol {
       "peed\030\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014" +
       "connectedGps\030\006 \002(\010\"\271\001\n\rSessionStatus\022\030\n\020" +
       "sessionStartTime\030\001 \002(\003\022\026\n\016todayStartTime" +
-      "\030\002 \002(\005\022\033\n\023sessionActiveTimeMs\030\003 \002(\005\022\031\n\021t" +
+      "\030\002 \002(\003\022\033\n\023sessionActiveTimeMs\030\003 \002(\005\022\031\n\021t" +
       "odayActiveTimeMs\030\004 \002(\005\022\037\n\027sessionActiveD" +
       "istanceKm\030\005 \002(\002\022\035\n\025todayActiveDistanceKm" +
       "\030\006 \002(\002\"\"\n\004Meta\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\002 \002" +

@@ -14,7 +14,7 @@ import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
 /**
  * ACEsからコマンドを受け取った場合のコマンドハンドリング
  */
-public class CommandEventHandler {
+public abstract class CommandEventHandler {
 
     /**
      * 近接コマンドで送信対象が見つからなかった場合、EXTRA-UID指定される

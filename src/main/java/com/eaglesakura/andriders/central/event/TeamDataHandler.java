@@ -7,7 +7,7 @@ import com.eaglesakura.andriders.protocol.TeamProtocol;
 /**
  * ACEsの情報ハンドリングを行う
  */
-public class TeamDataHandler {
+public abstract class TeamDataHandler {
     /**
      * マスターデータを受け取った
      *

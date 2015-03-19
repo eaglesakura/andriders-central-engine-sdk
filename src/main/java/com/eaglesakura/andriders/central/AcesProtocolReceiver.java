@@ -16,6 +16,7 @@ import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.notification.SoundData;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.protocol.ActivityProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandType;
@@ -134,6 +135,8 @@ public class AcesProtocolReceiver {
 
     private AcesProtocol.UserRecord lastReceivedUserRecord;
 
+    private ActivityProtocol.FitnessPayload lastReceivedFitness;
+
     /**
      * 最後にセンサー情報を受け取ったマスター情報
      */
@@ -213,6 +216,10 @@ public class AcesProtocolReceiver {
 
     public MasterPayload getLastReceivedCentralMaster() {
         return lastReceivedCentralMaster;
+    }
+
+    public ActivityProtocol.FitnessPayload getLastReceivedFitness() {
+        return lastReceivedFitness;
     }
 
     /**
@@ -588,6 +595,13 @@ public class AcesProtocolReceiver {
             return;
         }
 
+        // フィットネスデータを取得した
+        if (master.hasFitness()) {
+            lastReceivedFitness = master.getFitness();
+            for (ActivityEventHandler handler : activityHandlers) {
+                handler.onFitnessDataReceived(this, master, lastReceivedFitness);
+            }
+        }
     }
 
     /**
@@ -685,8 +699,18 @@ public class AcesProtocolReceiver {
     public synchronized void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
         // バッファをデコードする
         masterbuffer = decompressMasterPayload(masterbuffer);
+        AcesProtocol.MasterPayload master;
 
-        AcesProtocol.MasterPayload master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
+        try {
+            master = AcesProtocol.MasterPayload.parseFrom(masterbuffer);
+        } catch (Exception e) {
+            // failed parse
+            for (CentralDataHandler handler : centralHandlers) {
+                handler.onMasterPayloadParseFiled(this, masterbuffer);
+            }
+            return;
+        }
+
         final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
 
         // senderが自分であれば反応しない
