@@ -36,9 +36,9 @@ public class MediaFileManager {
     File mediaFilePath;
 
     /**
-     * 現在の位置
+     * 1時間毎のディレクトリを生成する場合はtrue
      */
-    GeoProtocol.GeoPayload loc;
+    boolean mediaDirectory1h = false;
 
     public MediaFileManager(Context context) {
         this.context = context.getApplicationContext();
@@ -56,7 +56,16 @@ public class MediaFileManager {
         return imageDate;
     }
 
+    public boolean isMediaDirectory1h() {
+        return mediaDirectory1h;
+    }
+
+    public void setMediaDirectory1h(boolean mediaDirectory1h) {
+        this.mediaDirectory1h = mediaDirectory1h;
+    }
+
     static final SimpleDateFormat formatter = new SimpleDateFormat("HH-mm-ss");
+    static final SimpleDateFormat hourFormatter = new SimpleDateFormat("HH");
 
     public String getVideoFileName() {
         return String.format("%s.mp4", formatter.format(imageDate));
@@ -77,7 +86,12 @@ public class MediaFileManager {
      * @return
      */
     public File getImageDirectory() {
-        return AcesEnvironment.getDateMediaDirectory(context, imageDate);
+        File result = AcesEnvironment.getDateMediaDirectory(context, imageDate);
+        // 一時間ごとにディレクトリを区切る場合は再度区切る
+        if (mediaDirectory1h) {
+            result = new File(result, hourFormatter.format(imageDate));
+        }
+        return result;
     }
 
     public File getMediaMetaFileName() {
@@ -129,11 +143,15 @@ public class MediaFileManager {
     }
 
     public void generateNomedia() {
+        File nomedia = new File(AcesEnvironment.getMediaDirectory(context), ".nomedia");
+        // nomediaが存在する場合は何もしない
+        if (nomedia.exists()) {
+            return;
+        }
+
         FileOutputStream os = null;
         try {
-            os = new FileOutputStream(
-                    new File(AcesEnvironment.getMediaDirectory(context), ".nomedia")
-            );
+            os = new FileOutputStream(nomedia);
             os.write(0);
         } catch (Exception e) {
         } finally {
