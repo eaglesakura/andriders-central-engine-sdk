@@ -18,64 +18,64 @@ public final class GeoProtocol {
   public enum InclinationType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>None = 1;</code>
+     * <code>None = 0;</code>
      *
      * <pre>
      * 平坦
      * </pre>
      */
-    None(0, 1),
+    None(0, 0),
     /**
-     * <code>Hill = 2;</code>
+     * <code>Hill = 1;</code>
      *
      * <pre>
      * 坂道
      * </pre>
      */
-    Hill(1, 2),
+    Hill(1, 1),
     /**
-     * <code>IntenseHill = 3;</code>
+     * <code>IntenseHill = 2;</code>
      *
      * <pre>
      * 激坂
      * </pre>
      */
-    IntenseHill(2, 3),
+    IntenseHill(2, 2),
     ;
 
     /**
-     * <code>None = 1;</code>
+     * <code>None = 0;</code>
      *
      * <pre>
      * 平坦
      * </pre>
      */
-    public static final int None_VALUE = 1;
+    public static final int None_VALUE = 0;
     /**
-     * <code>Hill = 2;</code>
+     * <code>Hill = 1;</code>
      *
      * <pre>
      * 坂道
      * </pre>
      */
-    public static final int Hill_VALUE = 2;
+    public static final int Hill_VALUE = 1;
     /**
-     * <code>IntenseHill = 3;</code>
+     * <code>IntenseHill = 2;</code>
      *
      * <pre>
      * 激坂
      * </pre>
      */
-    public static final int IntenseHill_VALUE = 3;
+    public static final int IntenseHill_VALUE = 2;
 
 
     public final int getNumber() { return value; }
 
     public static InclinationType valueOf(int value) {
       switch (value) {
-        case 1: return None;
-        case 2: return Hill;
-        case 3: return IntenseHill;
+        case 0: return None;
+        case 1: return Hill;
+        case 2: return IntenseHill;
         default: return null;
       }
     }
@@ -5836,8 +5836,8 @@ public final class GeoProtocol {
       "t\022\014\n\004name\030\002 \002(\t\032i\n\nPlacesInfo\022:\n\tnearPla" +
       "ce\030\001 \001(\0132\'.eaglesakura_ace.GeographyPayl",
       "oad.Place\022\017\n\007nearNum\030\002 \002(\005\022\016\n\006farNum\030\003 \002" +
-      "(\005*6\n\017InclinationType\022\010\n\004None\020\001\022\010\n\004Hill\020" +
-      "\002\022\017\n\013IntenseHill\020\003B$\n\"com.eaglesakura.an" +
+      "(\005*6\n\017InclinationType\022\010\n\004None\020\000\022\010\n\004Hill\020" +
+      "\001\022\017\n\013IntenseHill\020\002B$\n\"com.eaglesakura.an" +
       "driders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

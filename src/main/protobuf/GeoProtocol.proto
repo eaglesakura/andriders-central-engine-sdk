@@ -19,11 +19,11 @@ message GeoPoint {
 // 坂の種類
 enum InclinationType {
     // 平坦
-    None = 1;
+    None = 0;
     // 坂道
-    Hill = 2;
+    Hill = 1;
     // 激坂
-    IntenseHill = 3;
+    IntenseHill = 2;
 }
 
 // 現在位置の情報伝達

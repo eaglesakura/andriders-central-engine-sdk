@@ -19,6 +19,7 @@
     <string name="AceUI.Information.Speed.TodayMax">今日最速 (km/h)</string>
     <string name="AceUI.Information.Distance.Session">走行距離 (km)</string>
     <string name="AceUI.Information.Distance.Today">今日走行距離 (km)</string>
+    <string name="AceUI.Information.Altitude.Inclination">傾斜</string>
     <string name="AceUI.Information.NotConnected">N/A</string>
 
     <!-- 心拍ゾーン名 -->
@@ -46,6 +47,11 @@
     <string name="AceUI.Zone.Speed.Slow">低速</string>
     <string name="AceUI.Zone.Speed.Cruise">巡航</string>
     <string name="AceUI.Zone.Speed.Sprint">高速</string>
+
+    <!-- 傾斜ゾーン名 -->
+    <string name="AceUI.Zone.Altitude.None">平地</string>
+    <string name="AceUI.Zone.Altitude.Hill">坂道</string>
+    <string name="AceUI.Zone.Altitude.IntenseHill">激坂</string>
 
     <!-- id定義 -->
     <!-- ゾーンタイトル（軽度、安静等） -->
