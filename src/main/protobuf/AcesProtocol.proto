@@ -41,7 +41,7 @@ message UserRecord {
     // 今日の獲得標高
     optional float sumAltitudeToday = 21;
     // セッションの最大標高差
-    optional float diffAltitudeSession = 22;
+//    optional float diffAltitudeSession = 22;
 }
 
 // セントラルの情報を載せる

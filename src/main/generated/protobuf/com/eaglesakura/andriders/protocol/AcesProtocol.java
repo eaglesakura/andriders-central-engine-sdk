@@ -746,6 +746,42 @@ public final class AcesProtocol {
      * </pre>
      */
     float getMaxSpeedTodayKmPerHour();
+
+    // optional float sumAltitudeSession = 20;
+    /**
+     * <code>optional float sumAltitudeSession = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * </pre>
+     */
+    boolean hasSumAltitudeSession();
+    /**
+     * <code>optional float sumAltitudeSession = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * </pre>
+     */
+    float getSumAltitudeSession();
+
+    // optional float sumAltitudeToday = 21;
+    /**
+     * <code>optional float sumAltitudeToday = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * </pre>
+     */
+    boolean hasSumAltitudeToday();
+    /**
+     * <code>optional float sumAltitudeToday = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * </pre>
+     */
+    float getSumAltitudeToday();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.UserRecord}
@@ -820,6 +856,16 @@ public final class AcesProtocol {
             case 93: {
               bitField0_ |= 0x00000008;
               maxSpeedTodayKmPerHour_ = input.readFloat();
+              break;
+            }
+            case 165: {
+              bitField0_ |= 0x00000010;
+              sumAltitudeSession_ = input.readFloat();
+              break;
+            }
+            case 173: {
+              bitField0_ |= 0x00000020;
+              sumAltitudeToday_ = input.readFloat();
               break;
             }
           }
@@ -958,11 +1004,61 @@ public final class AcesProtocol {
       return maxSpeedTodayKmPerHour_;
     }
 
+    // optional float sumAltitudeSession = 20;
+    public static final int SUMALTITUDESESSION_FIELD_NUMBER = 20;
+    private float sumAltitudeSession_;
+    /**
+     * <code>optional float sumAltitudeSession = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * </pre>
+     */
+    public boolean hasSumAltitudeSession() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional float sumAltitudeSession = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * </pre>
+     */
+    public float getSumAltitudeSession() {
+      return sumAltitudeSession_;
+    }
+
+    // optional float sumAltitudeToday = 21;
+    public static final int SUMALTITUDETODAY_FIELD_NUMBER = 21;
+    private float sumAltitudeToday_;
+    /**
+     * <code>optional float sumAltitudeToday = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * </pre>
+     */
+    public boolean hasSumAltitudeToday() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional float sumAltitudeToday = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * </pre>
+     */
+    public float getSumAltitudeToday() {
+      return sumAltitudeToday_;
+    }
+
     private void initFields() {
       distanceTodayKm_ = 0F;
       distanceSessionKm_ = 0F;
       maxSpeedKmPerHour_ = 0F;
       maxSpeedTodayKmPerHour_ = 0F;
+      sumAltitudeSession_ = 0F;
+      sumAltitudeToday_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -988,6 +1084,12 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeFloat(11, maxSpeedTodayKmPerHour_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(20, sumAltitudeSession_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeFloat(21, sumAltitudeToday_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1012,6 +1114,14 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(11, maxSpeedTodayKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(20, sumAltitudeSession_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(21, sumAltitudeToday_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1141,6 +1251,10 @@ public final class AcesProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         maxSpeedTodayKmPerHour_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000008);
+        sumAltitudeSession_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sumAltitudeToday_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -1185,6 +1299,14 @@ public final class AcesProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.maxSpeedTodayKmPerHour_ = maxSpeedTodayKmPerHour_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.sumAltitudeSession_ = sumAltitudeSession_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.sumAltitudeToday_ = sumAltitudeToday_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1212,6 +1334,12 @@ public final class AcesProtocol {
         }
         if (other.hasMaxSpeedTodayKmPerHour()) {
           setMaxSpeedTodayKmPerHour(other.getMaxSpeedTodayKmPerHour());
+        }
+        if (other.hasSumAltitudeSession()) {
+          setSumAltitudeSession(other.getSumAltitudeSession());
+        }
+        if (other.hasSumAltitudeToday()) {
+          setSumAltitudeToday(other.getSumAltitudeToday());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1432,6 +1560,104 @@ public final class AcesProtocol {
       public Builder clearMaxSpeedTodayKmPerHour() {
         bitField0_ = (bitField0_ & ~0x00000008);
         maxSpeedTodayKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float sumAltitudeSession = 20;
+      private float sumAltitudeSession_ ;
+      /**
+       * <code>optional float sumAltitudeSession = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * </pre>
+       */
+      public boolean hasSumAltitudeSession() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional float sumAltitudeSession = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * </pre>
+       */
+      public float getSumAltitudeSession() {
+        return sumAltitudeSession_;
+      }
+      /**
+       * <code>optional float sumAltitudeSession = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * </pre>
+       */
+      public Builder setSumAltitudeSession(float value) {
+        bitField0_ |= 0x00000010;
+        sumAltitudeSession_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float sumAltitudeSession = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * </pre>
+       */
+      public Builder clearSumAltitudeSession() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sumAltitudeSession_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional float sumAltitudeToday = 21;
+      private float sumAltitudeToday_ ;
+      /**
+       * <code>optional float sumAltitudeToday = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * </pre>
+       */
+      public boolean hasSumAltitudeToday() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional float sumAltitudeToday = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * </pre>
+       */
+      public float getSumAltitudeToday() {
+        return sumAltitudeToday_;
+      }
+      /**
+       * <code>optional float sumAltitudeToday = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * </pre>
+       */
+      public Builder setSumAltitudeToday(float value) {
+        bitField0_ |= 0x00000020;
+        sumAltitudeToday_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float sumAltitudeToday = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * </pre>
+       */
+      public Builder clearSumAltitudeToday() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sumAltitudeToday_ = 0F;
         onChanged();
         return this;
       }
@@ -8989,37 +9215,38 @@ public final class AcesProtocol {
       "to\032\024SensorProtocol.proto\032\025CommandProtoco" +
       "l.proto\032\021GeoProtocol.proto\">\n\013VersionInf" +
       "o\022\027\n\017protocolVersion\030\001 \002(\003\022\026\n\016appVersion" +
-      "Name\030\002 \002(\t\"{\n\nUserRecord\022\027\n\017distanceToda" +
-      "yKm\030\001 \001(\002\022\031\n\021distanceSessionKm\030\002 \001(\002\022\031\n\021" +
-      "maxSpeedKmPerHour\030\n \001(\002\022\036\n\026maxSpeedToday" +
-      "KmPerHour\030\013 \001(\002\"\240\001\n\rCentralStatus\022\021\n\tses" +
-      "sionId\030\005 \002(\t\022\032\n\022connectedHeartrate\030\001 \002(\010",
-      "\022\030\n\020connectedCadence\030\002 \002(\010\022\026\n\016connectedS" +
-      "peed\030\003 \002(\010\022\030\n\020connectedTwitter\030\004 \002(\010\022\024\n\014" +
-      "connectedGps\030\006 \002(\010\"\271\001\n\rSessionStatus\022\030\n\020" +
-      "sessionStartTime\030\001 \002(\003\022\026\n\016todayStartTime" +
-      "\030\002 \002(\003\022\033\n\023sessionActiveTimeMs\030\003 \002(\005\022\031\n\021t" +
-      "odayActiveTimeMs\030\004 \002(\005\022\037\n\027sessionActiveD" +
-      "istanceKm\030\005 \002(\002\022\035\n\025todayActiveDistanceKm" +
-      "\030\006 \002(\002\"\"\n\004Meta\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\002 \002" +
-      "(\t\"\376\004\n\rMasterPayload\022-\n\007version\030\013 \001(\0132\034." +
-      "eaglesakura_ace.VersionInfo\022\020\n\010uniqueId\030",
-      "\004 \002(\t\022\023\n\013createdDate\030\003 \001(\t\022\026\n\016createdDat" +
-      "eInt\030\017 \001(\003\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtar" +
-      "getPackage\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132" +
-      "\036.eaglesakura_ace.CentralStatus\0225\n\rsessi" +
-      "onStatus\030\020 \001(\0132\036.eaglesakura_ace.Session" +
-      "Status\022/\n\nuserRecord\030\n \001(\0132\033.eaglesakura" +
-      "_ace.UserRecord\022.\n\tgeoStatus\030\010 \001(\0132\033.eag" +
-      "lesakura_ace.GeoPayload\0224\n\tgeography\030\014 \001" +
-      "(\0132!.eaglesakura_ace.GeographyPayload\0226\n" +
-      "\016sensorPayloads\030\002 \003(\0132\036.eaglesakura_ace.",
-      "SensorPayload\0228\n\017commandPayloads\030\005 \003(\0132\037" +
-      ".eaglesakura_ace.CommandPayload\0220\n\007fitne" +
-      "ss\030\016 \001(\0132\037.eaglesakura_ace.FitnessPayloa" +
-      "d\022(\n\tmetadatas\030\r \003(\0132\025.eaglesakura_ace.M" +
-      "etaB$\n\"com.eaglesakura.andriders.protoco" +
-      "l"
+      "Name\030\002 \002(\t\"\261\001\n\nUserRecord\022\027\n\017distanceTod" +
+      "ayKm\030\001 \001(\002\022\031\n\021distanceSessionKm\030\002 \001(\002\022\031\n" +
+      "\021maxSpeedKmPerHour\030\n \001(\002\022\036\n\026maxSpeedToda" +
+      "yKmPerHour\030\013 \001(\002\022\032\n\022sumAltitudeSession\030\024" +
+      " \001(\002\022\030\n\020sumAltitudeToday\030\025 \001(\002\"\240\001\n\rCentr",
+      "alStatus\022\021\n\tsessionId\030\005 \002(\t\022\032\n\022connected" +
+      "Heartrate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(" +
+      "\010\022\026\n\016connectedSpeed\030\003 \002(\010\022\030\n\020connectedTw" +
+      "itter\030\004 \002(\010\022\024\n\014connectedGps\030\006 \002(\010\"\271\001\n\rSe" +
+      "ssionStatus\022\030\n\020sessionStartTime\030\001 \002(\003\022\026\n" +
+      "\016todayStartTime\030\002 \002(\003\022\033\n\023sessionActiveTi" +
+      "meMs\030\003 \002(\005\022\031\n\021todayActiveTimeMs\030\004 \002(\005\022\037\n" +
+      "\027sessionActiveDistanceKm\030\005 \002(\002\022\035\n\025todayA" +
+      "ctiveDistanceKm\030\006 \002(\002\"\"\n\004Meta\022\013\n\003key\030\001 \002" +
+      "(\t\022\r\n\005value\030\002 \002(\t\"\376\004\n\rMasterPayload\022-\n\007v",
+      "ersion\030\013 \001(\0132\034.eaglesakura_ace.VersionIn" +
+      "fo\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \001(" +
+      "\t\022\026\n\016createdDateInt\030\017 \001(\003\022\025\n\rsenderPacka" +
+      "ge\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rcentr" +
+      "alStatus\030\001 \001(\0132\036.eaglesakura_ace.Central" +
+      "Status\0225\n\rsessionStatus\030\020 \001(\0132\036.eaglesak" +
+      "ura_ace.SessionStatus\022/\n\nuserRecord\030\n \001(" +
+      "\0132\033.eaglesakura_ace.UserRecord\022.\n\tgeoSta" +
+      "tus\030\010 \001(\0132\033.eaglesakura_ace.GeoPayload\0224" +
+      "\n\tgeography\030\014 \001(\0132!.eaglesakura_ace.Geog",
+      "raphyPayload\0226\n\016sensorPayloads\030\002 \003(\0132\036.e" +
+      "aglesakura_ace.SensorPayload\0228\n\017commandP" +
+      "ayloads\030\005 \003(\0132\037.eaglesakura_ace.CommandP" +
+      "ayload\0220\n\007fitness\030\016 \001(\0132\037.eaglesakura_ac" +
+      "e.FitnessPayload\022(\n\tmetadatas\030\r \003(\0132\025.ea" +
+      "glesakura_ace.MetaB$\n\"com.eaglesakura.an" +
+      "driders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9037,7 +9264,7 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_UserRecord_descriptor,
-              new java.lang.String[] { "DistanceTodayKm", "DistanceSessionKm", "MaxSpeedKmPerHour", "MaxSpeedTodayKmPerHour", });
+              new java.lang.String[] { "DistanceTodayKm", "DistanceSessionKm", "MaxSpeedKmPerHour", "MaxSpeedTodayKmPerHour", "SumAltitudeSession", "SumAltitudeToday", });
           internal_static_eaglesakura_ace_CentralStatus_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
