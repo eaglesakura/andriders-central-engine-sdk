@@ -8,6 +8,125 @@ public final class GeoProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code eaglesakura_ace.InclinationType}
+   *
+   * <pre>
+   * 坂の種類
+   * </pre>
+   */
+  public enum InclinationType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>None = 1;</code>
+     *
+     * <pre>
+     * 平坦
+     * </pre>
+     */
+    None(0, 1),
+    /**
+     * <code>Hill = 2;</code>
+     *
+     * <pre>
+     * 坂道
+     * </pre>
+     */
+    Hill(1, 2),
+    /**
+     * <code>IntenseHill = 3;</code>
+     *
+     * <pre>
+     * 激坂
+     * </pre>
+     */
+    IntenseHill(2, 3),
+    ;
+
+    /**
+     * <code>None = 1;</code>
+     *
+     * <pre>
+     * 平坦
+     * </pre>
+     */
+    public static final int None_VALUE = 1;
+    /**
+     * <code>Hill = 2;</code>
+     *
+     * <pre>
+     * 坂道
+     * </pre>
+     */
+    public static final int Hill_VALUE = 2;
+    /**
+     * <code>IntenseHill = 3;</code>
+     *
+     * <pre>
+     * 激坂
+     * </pre>
+     */
+    public static final int IntenseHill_VALUE = 3;
+
+
+    public final int getNumber() { return value; }
+
+    public static InclinationType valueOf(int value) {
+      switch (value) {
+        case 1: return None;
+        case 2: return Hill;
+        case 3: return IntenseHill;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<InclinationType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<InclinationType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<InclinationType>() {
+            public InclinationType findValueByNumber(int number) {
+              return InclinationType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final InclinationType[] VALUES = values();
+
+    public static InclinationType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private InclinationType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.InclinationType)
+  }
+
   public interface GeoPointOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -761,6 +880,42 @@ public final class GeoProtocol {
      * <code>optional int64 dateInt = 3;</code>
      */
     long getDateInt();
+
+    // optional float inclinationPercent = 4;
+    /**
+     * <code>optional float inclinationPercent = 4;</code>
+     *
+     * <pre>
+     * 勾配(%単位、下り坂の場合は負の値)
+     * </pre>
+     */
+    boolean hasInclinationPercent();
+    /**
+     * <code>optional float inclinationPercent = 4;</code>
+     *
+     * <pre>
+     * 勾配(%単位、下り坂の場合は負の値)
+     * </pre>
+     */
+    float getInclinationPercent();
+
+    // optional .eaglesakura_ace.InclinationType inclinationType = 5;
+    /**
+     * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+     *
+     * <pre>
+     * 勾配の種類
+     * </pre>
+     */
+    boolean hasInclinationType();
+    /**
+     * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+     *
+     * <pre>
+     * 勾配の種類
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType getInclinationType();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.GeoPayload}
@@ -838,6 +993,22 @@ public final class GeoProtocol {
             case 24: {
               bitField0_ |= 0x00000004;
               dateInt_ = input.readInt64();
+              break;
+            }
+            case 37: {
+              bitField0_ |= 0x00000008;
+              inclinationPercent_ = input.readFloat();
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+              com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType value = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                inclinationType_ = value;
+              }
               break;
             }
           }
@@ -985,10 +1156,60 @@ public final class GeoProtocol {
       return dateInt_;
     }
 
+    // optional float inclinationPercent = 4;
+    public static final int INCLINATIONPERCENT_FIELD_NUMBER = 4;
+    private float inclinationPercent_;
+    /**
+     * <code>optional float inclinationPercent = 4;</code>
+     *
+     * <pre>
+     * 勾配(%単位、下り坂の場合は負の値)
+     * </pre>
+     */
+    public boolean hasInclinationPercent() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional float inclinationPercent = 4;</code>
+     *
+     * <pre>
+     * 勾配(%単位、下り坂の場合は負の値)
+     * </pre>
+     */
+    public float getInclinationPercent() {
+      return inclinationPercent_;
+    }
+
+    // optional .eaglesakura_ace.InclinationType inclinationType = 5;
+    public static final int INCLINATIONTYPE_FIELD_NUMBER = 5;
+    private com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType inclinationType_;
+    /**
+     * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+     *
+     * <pre>
+     * 勾配の種類
+     * </pre>
+     */
+    public boolean hasInclinationType() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+     *
+     * <pre>
+     * 勾配の種類
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType getInclinationType() {
+      return inclinationType_;
+    }
+
     private void initFields() {
       location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
       date_ = "";
       dateInt_ = 0L;
+      inclinationPercent_ = 0F;
+      inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1019,6 +1240,12 @@ public final class GeoProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt64(3, dateInt_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(4, inclinationPercent_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, inclinationType_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1039,6 +1266,14 @@ public final class GeoProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, dateInt_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, inclinationPercent_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, inclinationType_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1171,6 +1406,10 @@ public final class GeoProtocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         dateInt_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        inclinationPercent_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -1215,6 +1454,14 @@ public final class GeoProtocol {
           to_bitField0_ |= 0x00000004;
         }
         result.dateInt_ = dateInt_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.inclinationPercent_ = inclinationPercent_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.inclinationType_ = inclinationType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1241,6 +1488,12 @@ public final class GeoProtocol {
         }
         if (other.hasDateInt()) {
           setDateInt(other.getDateInt());
+        }
+        if (other.hasInclinationPercent()) {
+          setInclinationPercent(other.getInclinationPercent());
+        }
+        if (other.hasInclinationType()) {
+          setInclinationType(other.getInclinationType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1557,6 +1810,107 @@ public final class GeoProtocol {
       public Builder clearDateInt() {
         bitField0_ = (bitField0_ & ~0x00000004);
         dateInt_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional float inclinationPercent = 4;
+      private float inclinationPercent_ ;
+      /**
+       * <code>optional float inclinationPercent = 4;</code>
+       *
+       * <pre>
+       * 勾配(%単位、下り坂の場合は負の値)
+       * </pre>
+       */
+      public boolean hasInclinationPercent() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional float inclinationPercent = 4;</code>
+       *
+       * <pre>
+       * 勾配(%単位、下り坂の場合は負の値)
+       * </pre>
+       */
+      public float getInclinationPercent() {
+        return inclinationPercent_;
+      }
+      /**
+       * <code>optional float inclinationPercent = 4;</code>
+       *
+       * <pre>
+       * 勾配(%単位、下り坂の場合は負の値)
+       * </pre>
+       */
+      public Builder setInclinationPercent(float value) {
+        bitField0_ |= 0x00000008;
+        inclinationPercent_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float inclinationPercent = 4;</code>
+       *
+       * <pre>
+       * 勾配(%単位、下り坂の場合は負の値)
+       * </pre>
+       */
+      public Builder clearInclinationPercent() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        inclinationPercent_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional .eaglesakura_ace.InclinationType inclinationType = 5;
+      private com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
+      /**
+       * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+       *
+       * <pre>
+       * 勾配の種類
+       * </pre>
+       */
+      public boolean hasInclinationType() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+       *
+       * <pre>
+       * 勾配の種類
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType getInclinationType() {
+        return inclinationType_;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+       *
+       * <pre>
+       * 勾配の種類
+       * </pre>
+       */
+      public Builder setInclinationType(com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        inclinationType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
+       *
+       * <pre>
+       * 勾配の種類
+       * </pre>
+       */
+      public Builder clearInclinationType() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
         onChanged();
         return this;
       }
@@ -5464,23 +5818,27 @@ public final class GeoProtocol {
       "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\023Ac" +
       "esConstants.proto\"A\n\010GeoPoint\022\020\n\010latitud" +
       "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\022\020\n\010altitude\030\003" +
-      " \002(\001\"X\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031.e" +
-      "aglesakura_ace.GeoPoint\022\014\n\004date\030\002 \001(\t\022\017\n" +
-      "\007dateInt\030\003 \001(\003\"\231\004\n\020GeographyPayload\022+\n\010l" +
-      "ocation\030\001 \002(\0132\031.eaglesakura_ace.GeoPoint" +
-      "\022\014\n\004date\030\002 \002(\t\022\023\n\013sunriseDate\030\n \001(\t\022\022\n\ns" +
-      "unsetDate\030\013 \001(\t\022\014\n\004temp\030\014 \001(\002\022\026\n\016windSpe" +
-      "edMeter\030\r \001(\002\022D\n\016placeRestStore\0302 \001(\0132,.",
-      "eaglesakura_ace.GeographyPayload.PlacesI" +
-      "nfo\022?\n\tplaceRest\0303 \001(\0132,.eaglesakura_ace" +
-      ".GeographyPayload.PlacesInfo\022E\n\017placeCyc" +
-      "leStore\0304 \001(\0132,.eaglesakura_ace.Geograph" +
-      "yPayload.PlacesInfo\032B\n\005Place\022+\n\010location" +
-      "\030\001 \002(\0132\031.eaglesakura_ace.GeoPoint\022\014\n\004nam" +
-      "e\030\002 \002(\t\032i\n\nPlacesInfo\022:\n\tnearPlace\030\001 \001(\013" +
-      "2\'.eaglesakura_ace.GeographyPayload.Plac" +
-      "e\022\017\n\007nearNum\030\002 \002(\005\022\016\n\006farNum\030\003 \002(\005B$\n\"co" +
-      "m.eaglesakura.andriders.protocol"
+      " \002(\001\"\257\001\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031." +
+      "eaglesakura_ace.GeoPoint\022\014\n\004date\030\002 \001(\t\022\017" +
+      "\n\007dateInt\030\003 \001(\003\022\032\n\022inclinationPercent\030\004 " +
+      "\001(\002\0229\n\017inclinationType\030\005 \001(\0162 .eaglesaku" +
+      "ra_ace.InclinationType\"\231\004\n\020GeographyPayl" +
+      "oad\022+\n\010location\030\001 \002(\0132\031.eaglesakura_ace." +
+      "GeoPoint\022\014\n\004date\030\002 \002(\t\022\023\n\013sunriseDate\030\n ",
+      "\001(\t\022\022\n\nsunsetDate\030\013 \001(\t\022\014\n\004temp\030\014 \001(\002\022\026\n" +
+      "\016windSpeedMeter\030\r \001(\002\022D\n\016placeRestStore\030" +
+      "2 \001(\0132,.eaglesakura_ace.GeographyPayload" +
+      ".PlacesInfo\022?\n\tplaceRest\0303 \001(\0132,.eaglesa" +
+      "kura_ace.GeographyPayload.PlacesInfo\022E\n\017" +
+      "placeCycleStore\0304 \001(\0132,.eaglesakura_ace." +
+      "GeographyPayload.PlacesInfo\032B\n\005Place\022+\n\010" +
+      "location\030\001 \002(\0132\031.eaglesakura_ace.GeoPoin" +
+      "t\022\014\n\004name\030\002 \002(\t\032i\n\nPlacesInfo\022:\n\tnearPla" +
+      "ce\030\001 \001(\0132\'.eaglesakura_ace.GeographyPayl",
+      "oad.Place\022\017\n\007nearNum\030\002 \002(\005\022\016\n\006farNum\030\003 \002" +
+      "(\005*6\n\017InclinationType\022\010\n\004None\020\001\022\010\n\004Hill\020" +
+      "\002\022\017\n\013IntenseHill\020\003B$\n\"com.eaglesakura.an" +
+      "driders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5498,7 +5856,7 @@ public final class GeoProtocol {
           internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_GeoPayload_descriptor,
-              new java.lang.String[] { "Location", "Date", "DateInt", });
+              new java.lang.String[] { "Location", "Date", "DateInt", "InclinationPercent", "InclinationType", });
           internal_static_eaglesakura_ace_GeographyPayload_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable = new

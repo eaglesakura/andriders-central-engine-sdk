@@ -30,12 +30,18 @@ message UserRecord {
     // このセッションで走った距離(km)
     optional float distanceSessionKm = 2;
 
-
     // 今までの最高速度
     optional float maxSpeedKmPerHour = 10;
 
     // 今日の最高速度
     optional float maxSpeedTodayKmPerHour = 11;
+
+    // セッションの獲得標高
+    optional float sumAltitudeSession = 20;
+    // 今日の獲得標高
+    optional float sumAltitudeToday = 21;
+    // セッションの最大標高差
+    optional float diffAltitudeSession = 22;
 }
 
 // セントラルの情報を載せる
@@ -64,22 +70,22 @@ message CentralStatus {
 // 走行セッションに関する情報を付与する
 message SessionStatus {
     // セッションの開始時刻 : Unix Time
-    required int64  sessionStartTime = 1;
+    required int64 sessionStartTime = 1;
 
     // 今日はじめてセッションを開始した時刻 : Unix Time
-    required int64  todayStartTime = 2;
+    required int64 todayStartTime = 2;
 
     // セッション中、自走している時間
-    required int32  sessionActiveTimeMs = 3;
+    required int32 sessionActiveTimeMs = 3;
 
     // 今日自走した時間
-    required int32  todayActiveTimeMs = 4;
+    required int32 todayActiveTimeMs = 4;
 
     // セッション中、自走した距離(Km)
-    required float  sessionActiveDistanceKm = 5;
+    required float sessionActiveDistanceKm = 5;
 
     // 今日自走した距離
-    required float  todayActiveDistanceKm = 6;
+    required float todayActiveDistanceKm = 6;
 }
 
 // Key-Valueの軽量なメタ情報
@@ -104,7 +110,7 @@ message MasterPayload {
     optional string createdDate = 3;
 
     // ペイロード作成日時 : Unix Time
-    optional int64  createdDateInt = 15;
+    optional int64 createdDateInt = 15;
 
     // 送信者のpackage
     // 必ず付与すべきだが、完全な信頼性はない

@@ -16,6 +16,16 @@ message GeoPoint {
     required double altitude = 3;
 }
 
+// 坂の種類
+enum InclinationType {
+    // 平坦
+    None = 1;
+    // 坂道
+    Hill = 2;
+    // 激坂
+    IntenseHill = 3;
+}
+
 // 現在位置の情報伝達
 message GeoPayload {
     // 現在のGPS座標
@@ -23,7 +33,12 @@ message GeoPayload {
 
     // 打刻した時刻
     optional string date = 2;
-    optional int64  dateInt = 3;
+    optional int64 dateInt = 3;
+
+    // 勾配(%単位、下り坂の場合は負の値)
+    optional float inclinationPercent = 4;
+    // 勾配の種類
+    optional InclinationType inclinationType = 5;
 }
 
 /**
