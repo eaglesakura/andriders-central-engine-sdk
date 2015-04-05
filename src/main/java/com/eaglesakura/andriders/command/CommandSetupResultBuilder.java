@@ -9,6 +9,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
@@ -17,8 +18,6 @@ import com.eaglesakura.util.StringUtil;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Nullable;
 
 /**
  * 各種コマンドコマンド完了設定を行う

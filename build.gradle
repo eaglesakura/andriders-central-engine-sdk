@@ -34,6 +34,7 @@ def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
     compile "com.google.protobuf:protobuf-java:${PROTOBUF_ARTIFACT_VERSION}"
+    compile 'com.android.support:support-annotations:+'
 
     compile project(':eglibrary-android-java-core')
     compile project(':eglibrary-java-wrapper')
@@ -41,7 +42,7 @@ dependencies {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '22'
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         minSdkVersion 10
