@@ -133,6 +133,8 @@ public class AcesProtocolReceiver {
      */
     private AcesProtocol.CentralStatus lastRceivedCentralStatus;
 
+    private AcesProtocol.SessionStatus lastReceivedSessionStatus;
+
     private AcesProtocol.UserRecord lastReceivedUserRecord;
 
     private ActivityProtocol.FitnessPayload lastReceivedFitness;
@@ -199,6 +201,10 @@ public class AcesProtocolReceiver {
      */
     public AcesProtocol.CentralStatus getLastReceivedCentralStatus() {
         return lastRceivedCentralStatus;
+    }
+
+    public AcesProtocol.SessionStatus getLastReceivedSessionStatus() {
+        return lastReceivedSessionStatus;
     }
 
     /**
@@ -739,6 +745,9 @@ public class AcesProtocolReceiver {
         if (master.hasCentralStatus()) {
             this.lastReceivedCentralMaster = master;
             lastRceivedCentralStatus = master.getCentralStatus();
+        }
+        if (master.hasSessionStatus()) {
+            this.lastReceivedSessionStatus = master.getSessionStatus();
         }
 
         if (master.hasUserRecord()) {
