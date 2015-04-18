@@ -27,7 +27,8 @@ allprojects {
 apply plugin: 'com.android.library'
 
 // 0.4.2 : 獲得標高と傾斜に対応
-def ACES_SDK_VERSION = "0.4.2";
+// 0.4.3 : javadoc整理
+def ACES_SDK_VERSION = "0.4.3";
 def EGLIBRARY_ARTIFACT_VERSION = "0.2.0";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 
@@ -116,12 +117,21 @@ android.libraryVariants.all { variant ->
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: uri(new File("/dev-home/workspaces/github/maven")))
+            repository(url: uri(new File("${System.env.MAVEN_LOCAL_REPO}")))
             pom.version = ACES_SDK_VERSION
             pom.groupId = "com.eaglesakura"
             pom.artifactId = "andriders-central-engine-sdk"
         }
     }
+}
+
+task rsyncJavadoc << {
+    def src = file("build/docs/javadoc/");
+    def dst = file("${System.env.MAVEN_LOCAL_REPO}/doc/ace-sdk/")
+    dst.deleteDir();
+    dst.mkdirs();
+
+    ["/usr/bin/rsync", "-a", src.absolutePath, dst.absolutePath].execute().text;
 }
 
 [uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
