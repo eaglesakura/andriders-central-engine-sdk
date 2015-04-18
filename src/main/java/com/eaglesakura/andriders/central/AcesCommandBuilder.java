@@ -31,7 +31,7 @@ public class AcesCommandBuilder {
     /**
      * 送信したいコマンド一覧
      */
-    protected List<CommandPayload> commands = new ArrayList<CommandProtocol.CommandPayload>();
+    protected List<CommandPayload> commands = new ArrayList<>();
 
     /**
      * 送信対象のPackage
