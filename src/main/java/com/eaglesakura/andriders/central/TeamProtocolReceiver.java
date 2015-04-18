@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * チーム情報を受け取るためのレシーバ
+ * Team Andriders Central Engine Service(TACEs)のデータを受信・ハンドリングする。
  */
 public class TeamProtocolReceiver {
     /**
@@ -65,7 +65,7 @@ public class TeamProtocolReceiver {
     }
 
     /**
-     * サービスへ接続する
+     * TACEsへ接続する。
      */
     public void connect() {
         if (!connected) {
@@ -77,7 +77,7 @@ public class TeamProtocolReceiver {
     }
 
     /**
-     * サービスから切断する
+     * TACEsから切断する。
      */
     public void disconnect() {
         if (connected) {
@@ -91,9 +91,11 @@ public class TeamProtocolReceiver {
     }
 
     /**
-     * メンバー一覧を取得する
+     * メンバー一覧を取得する。
+     * <br>
+     * 招待後、まだroomに入っていないメンバーは取得できない。
      *
-     * @return
+     * @return IDによってソートされたメンバー一覧
      */
     public List<TeamMemberReceiver> listMembers() {
         synchronized (lock) {
@@ -103,24 +105,43 @@ public class TeamProtocolReceiver {
         }
     }
 
+    /**
+     * メンバーIDを指定してReceiverを取得する
+     *
+     * @param memberId 対象メンバーID
+     *
+     * @return メンバー用Receiver
+     */
     public TeamMemberReceiver getMemberReceiver(String memberId) {
         synchronized (lock) {
             return memberReceivers.get(memberId);
         }
     }
 
+    /**
+     * チーム自体のデータのハンドラを追加する。
+     *
+     * @param handler 対象ハンドラ
+     */
     public void addTeamDataHandler(TeamDataHandler handler) {
         teamDataHandlers.add(handler);
     }
 
+    /**
+     * チームデータのハンドラを削除する
+     *
+     * @param handler 対象ハンドラ
+     */
     public void removeTeamDataHandler(TeamDataHandler handler) {
         teamDataHandlers.remove(handler);
     }
 
     /**
-     * マスター情報を受け取った場合の処理
+     * マスター情報を受け取った場合の処理を行う。
+     * <br>
+     * 自動的に処理が行われるため、基本的にこのメソッドを明示的に呼び出す必要はない。
      *
-     * @param master
+     * @param master 受信した{@link com.eaglesakura.andriders.protocol.TeamProtocol.TeamPayload}の情報
      */
     public void onReceivedMasterPayload(byte[] master) throws Exception {
         synchronized (lock) {
@@ -169,7 +190,14 @@ public class TeamProtocolReceiver {
         }
     };
 
-    public static List<TeamMemberReceiver>  sortById(List<TeamMemberReceiver> receivers) {
+    /**
+     * メンバーをIDに従ってソートする
+     *
+     * @param receivers 全レシーバ
+     *
+     * @return ソートされたreceivers
+     */
+    public static List<TeamMemberReceiver> sortById(List<TeamMemberReceiver> receivers) {
         Collections.sort(receivers, new Comparator<TeamMemberReceiver>() {
             @Override
             public int compare(TeamMemberReceiver lhs, TeamMemberReceiver rhs) {

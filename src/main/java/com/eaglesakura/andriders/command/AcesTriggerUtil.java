@@ -11,7 +11,7 @@ import com.eaglesakura.util.StringUtil;
 import java.util.List;
 
 /**
- * トリガーコマンド用Key
+ * 各種トリガー用の共通処理を記述したUtil
  */
 public class AcesTriggerUtil {
     /**
@@ -32,8 +32,9 @@ public class AcesTriggerUtil {
     /**
      * Intentからマスター情報を取り出す
      *
-     * @param intent
-     * @return
+     * @param intent ACEsから起動された際に渡されたIntent
+     *
+     * @return MasterPayload
      */
     public static AcesProtocol.MasterPayload getMasterPayload(Intent intent) {
         try {
@@ -46,8 +47,9 @@ public class AcesTriggerUtil {
     /**
      * コマンドの起動キーを取得する
      *
-     * @param intent
-     * @return
+     * @param intent ACEsから起動された際に渡されたIntent
+     *
+     * @return コマンドのキー
      */
     public static CommandKey getKey(Intent intent) {
         String keyString = intent.getStringExtra(EXTRA_COMMAND_KEY_STRING);
@@ -58,6 +60,24 @@ public class AcesTriggerUtil {
         }
     }
 
+    /**
+     * {@link com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload}からIntentを生成する。
+     *
+     * @param payload 生成元payload
+     *
+     * @return 生成されたIntent
+     *
+     * @see Intent#setAction(String)
+     * @see Intent#setData(Uri)
+     * @see Intent#setFlags(int)
+     * @see Intent#putExtra(String, boolean)
+     * @see Intent#putExtra(String, int)
+     * @see Intent#putExtra(String, long)
+     * @see Intent#putExtra(String, float)
+     * @see Intent#putExtra(String, double)
+     * @see Intent#putExtra(String, byte[])
+     * @see Intent#putExtra(String, String)
+     */
     public static Intent makeIntent(CommandProtocol.IntentPayload payload) {
         Intent intent = new Intent();
         if (payload.hasAction()) {

@@ -27,8 +27,8 @@ public abstract class CommandEventHandler {
     /**
      * トリガーコマンドを受け取った
      *
-     * @param receiver
-     * @param master
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
      * @param key      コマンド識別キー
      * @param trigger  トリガー本体
      */
@@ -38,10 +38,10 @@ public abstract class CommandEventHandler {
     /**
      * 通知リクエストを受け取った
      *
-     * @param receiver
-     * @param master
-     * @param notificationData
-     * @param payload
+     * @param receiver         受信したレシーバ
+     * @param master           マスターデータ
+     * @param notificationData 通知データ
+     * @param payload          全ペイロード
      */
     public void onNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
     }
@@ -49,10 +49,10 @@ public abstract class CommandEventHandler {
     /**
      * サウンドリクエストを受け取った
      *
-     * @param receiver
-     * @param master
-     * @param soundData
-     * @param payload
+     * @param receiver  受信したレシーバ
+     * @param master    マスターデータ
+     * @param soundData サウンドデータ
+     * @param payload   全ペイロード
      */
     public void onSoundNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, SoundData soundData, CommandProtocol.SoundNotificationPayload payload) {
     }
@@ -60,11 +60,10 @@ public abstract class CommandEventHandler {
     /**
      * 不明なコマンドを受け取った
      *
-     * @param receiver
-     * @param master
-     * @param command
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
+     * @param command  不明なコマンド
      */
     public void onUnknownCommandReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandPayload command) {
-
     }
 }

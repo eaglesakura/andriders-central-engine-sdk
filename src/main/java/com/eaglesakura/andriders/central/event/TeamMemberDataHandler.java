@@ -19,8 +19,8 @@ public abstract class TeamMemberDataHandler {
     /**
      * データの接続状態が変化したら呼び出される
      *
-     * @param receiver
-     * @param master
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
      */
     public void onConnectedStateChanged(TeamMemberReceiver receiver, TeamProtocol.TeamMember master) {
     }

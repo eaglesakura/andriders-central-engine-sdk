@@ -53,9 +53,10 @@ public class AcesCommandBuilder {
     /**
      * コマンドを直接生成する
      *
-     * @param key
-     * @param appExtraKey
-     * @return
+     * @param key         コマンドのキー
+     * @param appExtraKey コマンドに付与する情報
+     *
+     * @return this
      */
     public AcesCommandBuilder addCommand(CommandKey key, String appExtraKey) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
@@ -77,8 +78,9 @@ public class AcesCommandBuilder {
     /**
      * 通知データを追加する
      *
-     * @param notificationData
-     * @return
+     * @param notificationData 追加する通知データ
+     *
+     * @return this
      */
     public AcesCommandBuilder addNotification(NotificationData notificationData) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
@@ -93,8 +95,9 @@ public class AcesCommandBuilder {
     /**
      * 通知用のサウンドを追加
      *
-     * @param soundData
-     * @return
+     * @param soundData 追加するサウンドデータ
+     *
+     * @return this
      */
     public AcesCommandBuilder addSound(SoundData soundData) {
         CommandPayload.Builder builder = CommandPayload.newBuilder();
@@ -107,10 +110,13 @@ public class AcesCommandBuilder {
     }
 
     /**
-     * 送信対象のPackage名を指定
+     * 送信対象のPackage名を指定する。
+     * <br>
+     * 指定されたpackage以外ではこのBuilderで生成されたマスターデータを処理しないが、{@link AcesProtocolReceiver#setCheckSelfPackage(boolean)}にfalseを指定した場合は強制的にマスターデータを受け取れる。
      *
-     * @param targetPackage
-     * @return
+     * @param targetPackage 送信対象のパッケージ名
+     *
+     * @return this
      */
     public AcesCommandBuilder setTargetPackage(String targetPackage) {
         this.targetPackage = targetPackage;
@@ -118,9 +124,9 @@ public class AcesCommandBuilder {
     }
 
     /**
-     * 送信用のマスターデータを生成する
+     * 送信用のマスターデータを生成する。
      *
-     * @return
+     * @return this
      */
     public AcesCommandBuilder build() {
         MasterPayload.Builder masterBuilder = MasterPayload.newBuilder();
@@ -146,16 +152,20 @@ public class AcesCommandBuilder {
     }
 
     /**
-     * マスターデータを取得する
+     * マスターデータを取得する。
+     * <br>
+     * {@link MasterPayload#toByteArray()}したbyte配列が返却される。
      *
-     * @return
+     * @return マスターデータのprotobuf
      */
     public byte[] getMasterPayload() {
         return masterPayload;
     }
 
     /**
-     * 他のアプリに投げる
+     * 端末内にMasterPayloadをbroadcastする。
+     * <br>
+     * 送信されたデータは{@link AcesProtocolReceiver}で受信できる。
      */
     public void send() {
         if (!AndroidUtil.isUIThread()) {
@@ -181,8 +191,9 @@ public class AcesCommandBuilder {
     /**
      * 通知用Builderを生成する
      *
-     * @param context
-     * @return
+     * @param context app context
+     *
+     * @return ACEsが受診するように設定されたbuilder
      */
     public static AcesCommandBuilder newNotificationBuilder(Context context) {
         AcesCommandBuilder builder = new AcesCommandBuilder(context);
@@ -193,10 +204,11 @@ public class AcesCommandBuilder {
     /**
      * サウンドを指定してビルダーを生成する
      *
-     * @param context
-     * @param key
-     * @param reqQueue
-     * @return
+     * @param context  app context
+     * @param key      鳴らすサウンドのキー
+     * @param reqQueue サウンドキューに登録する場合はtrue、すぐさま鳴らす場合はfalse
+     *
+     * @return builder
      */
     public static AcesCommandBuilder newSoundBuilder(Context context, SoundKey key, boolean reqQueue) {
         SoundData data = new SoundData();
@@ -206,11 +218,14 @@ public class AcesCommandBuilder {
     }
 
     /**
-     * サウンドを指定してビルダーを生成する
+     * サウンドを指定してビルダーを生成する。
+     * <br>
+     * 強制的にサウンドキューに登録される。
      *
-     * @param context
-     * @param key
-     * @return
+     * @param context app context
+     * @param key     鳴らすサウンドのキー
+     *
+     * @return builder
      */
     public static AcesCommandBuilder newSoundBuilder(Context context, SoundKey key) {
         return newSoundBuilder(context, key, true);

@@ -59,7 +59,7 @@ public class NotificationData {
 
     /**
      * アイコン
-     * <p/>
+     * <br>
      * 適当な大きさよりも大きい場合は縮小される
      */
     Bitmap icon;
@@ -170,7 +170,7 @@ public class NotificationData {
 
     /**
      * アイコンを指定する
-     * <p/>
+     * <br>
      * アイコンは自動的にサムネイルサイズに縮小される
      *
      * @param icon
@@ -181,7 +181,7 @@ public class NotificationData {
 
     /**
      * アイコンを指定する。
-     * <p/>
+     * <br>
      * アイコンは自動的にサムネイルサイズに縮小される。
      *
      * @param icon

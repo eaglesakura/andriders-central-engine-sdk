@@ -12,9 +12,9 @@ public abstract class ActivityEventHandler {
     /**
      * フィットネスデータを受け取った
      *
-     * @param receiver
-     * @param master
-     * @param fitness
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
+     * @param fitness  フィットネスデータ
      */
     public void onFitnessDataReceived(AcesProtocolReceiver receiver, AcesProtocol.MasterPayload master, ActivityProtocol.FitnessPayload fitness) {
     }

@@ -20,7 +20,7 @@ public abstract class CentralDataHandler {
     /**
      * マスターデータの解析に失敗した
      *
-     * @param receiver
+     * @param receiver 受信したレシーバ
      */
     public void onMasterPayloadParseFiled(AcesProtocolReceiver receiver, byte[] buffer) {
     }
@@ -28,9 +28,9 @@ public abstract class CentralDataHandler {
     /**
      * 位置情報を受け取った
      *
-     * @param receiver
-     * @param master
-     * @param geo
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
+     * @param geo      位置情報
      */
     public void onGeoStatusReceived(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload geo) {
     }
@@ -38,10 +38,10 @@ public abstract class CentralDataHandler {
     /**
      * ジオハッシュの更新が行われた
      *
-     * @param receiver
-     * @param master
-     * @param oldStatus
-     * @param newStatus
+     * @param receiver  受信したレシーバ
+     * @param master    マスターデータ
+     * @param oldStatus 古い位置情報
+     * @param newStatus 新しい位置情報
      */
     public void onGeohashUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload oldStatus, GeoProtocol.GeoPayload newStatus) {
     }
@@ -49,9 +49,9 @@ public abstract class CentralDataHandler {
     /**
      * 周辺情報を受け取った
      *
-     * @param receiver
-     * @param master
-     * @param geography
+     * @param receiver  受信したレシーバ
+     * @param master    マスターデータ
+     * @param geography 周辺データ
      */
     public void onGeographyReceived(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload geography) {
     }
@@ -59,10 +59,10 @@ public abstract class CentralDataHandler {
     /**
      * 周辺情報が更新された
      *
-     * @param receiver
-     * @param master
-     * @param oldGeography
-     * @param newGeography
+     * @param receiver     受信したレシーバ
+     * @param master       マスターデータ
+     * @param oldGeography 古い周辺データ
+     * @param newGeography 新しい周辺データ
      */
     public void onGeographyUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload oldGeography, GeoProtocol.GeographyPayload newGeography) {
     }

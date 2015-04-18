@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.util.StringUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -20,12 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 各種コマンドコマンド完了設定を行う
+ * ACE対応アプリからトリガーの設定完了をACEへ通知するIntentを生成する。
  */
 public class CommandSetupResultBuilder {
 
     /**
-     * サムネイル指定
+     * サムネイル指定を行う
      */
     public static final String RESULT_EXTRA_THUMBNAIL_ICON = "COMMAND_RESULT_EXTRA_THUMBNAIL_ICON";
 
@@ -73,6 +74,16 @@ public class CommandSetupResultBuilder {
     private CommandProtocol.IntentPayload.Builder intentPayload;
     private List<CommandProtocol.IntentExtra> extras = new ArrayList<>();
 
+    /**
+     * コマンドのセットアップが正常に終了したことをACEに伝える
+     *
+     * @param activity 設定用Activity
+     */
+    public CommandSetupResultBuilder(Activity activity) {
+        this(activity, true);
+    }
+
+    @Deprecated
     public CommandSetupResultBuilder(Activity activity, boolean commitOk) {
         this.activity = activity;
         if (commitOk) {
@@ -88,7 +99,9 @@ public class CommandSetupResultBuilder {
     /**
      * アイコン設定を行う
      *
-     * @param resourceId
+     * @param resourceId ACEで表示するアイコン
+     *
+     * @return this
      */
     public CommandSetupResultBuilder icon(int resourceId) {
         try {
@@ -102,7 +115,9 @@ public class CommandSetupResultBuilder {
     /**
      * アイコン設定を行う
      *
-     * @param image
+     * @param image ACEで表示するアイコン
+     *
+     * @return this
      */
     public CommandSetupResultBuilder icon(Bitmap image) {
         this.icon = image;
@@ -110,10 +125,9 @@ public class CommandSetupResultBuilder {
     }
 
     /**
-     * 識別用のID
-     * option
+     * ACE対応アプリ側でハンドリングを行うためのオプションキー
      *
-     * @param id
+     * @param id アプリ側でハンドリングを行うためのキー
      */
     public CommandSetupResultBuilder appExtraKey(String id) {
         this.appExtraKey = id;
@@ -121,11 +135,12 @@ public class CommandSetupResultBuilder {
     }
 
     /**
-     * Activityの起動を行わせる
+     * ACEsからトリガーのタイミングでActivityの起動を行わせる
      *
      * @param activityClass 起動対象のActivity
      * @param action        対象Action
-     * @return
+     *
+     * @return this
      */
     public CommandSetupResultBuilder bootActivity(Class<? extends Activity> activityClass, @Nullable String action) {
         intentPayload = CommandProtocol.IntentPayload.newBuilder();
@@ -139,12 +154,13 @@ public class CommandSetupResultBuilder {
     }
 
     /**
-     * Activityの起動を行わせる
+     * ACEsからトリガーのタイミングでActivityの起動を行わせる
      *
      * @param packageName   起動対象のPackage
      * @param activityClass 起動対象のActivity
      * @param action        対象Action
-     * @return
+     *
+     * @return this
      */
     public CommandSetupResultBuilder bootActivity(String packageName, String activityClass, @Nullable String action) {
         intentPayload = CommandProtocol.IntentPayload.newBuilder();
@@ -158,11 +174,12 @@ public class CommandSetupResultBuilder {
     }
 
     /**
-     * Serviceを起動する
+     * ACEsからトリガーのタイミングでServiceを起動する
      *
-     * @param serviceClass
-     * @param action
-     * @return
+     * @param serviceClass 起動するServiceクラス
+     * @param action       起動するAction
+     *
+     * @return this
      */
     public CommandSetupResultBuilder bootService(Class<? extends Service> serviceClass, @Nullable String action) {
         intentPayload = CommandProtocol.IntentPayload.newBuilder();
@@ -177,10 +194,11 @@ public class CommandSetupResultBuilder {
 
 
     /**
-     * Broadcastを投げる
+     * ACEからトリガーのタイミングでBroadcastを投げる
      *
-     * @param action
-     * @return
+     * @param action 送信するAction
+     *
+     * @return this
      */
     public CommandSetupResultBuilder bootBroadcast(@Nullable String action) {
         intentPayload = CommandProtocol.IntentPayload.newBuilder();
@@ -193,10 +211,12 @@ public class CommandSetupResultBuilder {
 
     /**
      * Intentのフラグを指定する
-     * <p/>
+     * <br>
      * 事前にbootXXXX系メソッドを呼び出さなければならない。
      *
-     * @param flags
+     * @param flags intentのフラグ
+     *
+     * @return this
      */
     public CommandSetupResultBuilder intentFlags(int flags) {
         intentPayload.setFlags(flags);
@@ -206,13 +226,23 @@ public class CommandSetupResultBuilder {
     /**
      * Intent.setDataに渡すUriを指定する
      *
-     * @param uri
+     * @param uri Intentに指定するURI
+     *
+     * @return this
      */
     public CommandSetupResultBuilder intentData(Uri uri) {
         intentPayload.setDataUri(uri.toString());
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, boolean)}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, boolean value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -222,6 +252,14 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, String)}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, String value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -231,6 +269,14 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, int)}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, int value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -240,6 +286,14 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, long)}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, long value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -249,6 +303,14 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, float)}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, float value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -258,6 +320,14 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, double)}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, double value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -267,6 +337,14 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
+    /**
+     * {@link Intent#putExtra(String, byte[])}を行う。
+     *
+     * @param key   Extra
+     * @param value value
+     *
+     * @return this
+     */
     public CommandSetupResultBuilder putExtra(String key, byte[] value) {
         CommandProtocol.IntentExtra.Builder extra = CommandProtocol.IntentExtra.newBuilder();
         extra.setKey(key);
@@ -276,19 +354,9 @@ public class CommandSetupResultBuilder {
         return this;
     }
 
-    private static byte[] encode(Bitmap image) {
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        try {
-            image.compress(CompressFormat.PNG, 100, os);
-            return os.toByteArray();
-        } catch (Exception e) {
-
-        }
-        return null;
-    }
 
     /**
-     * ビルドを完了し、アプリを終了する
+     * ビルドを完了し、Activityを終了する
      */
     public void finish() {
         if (resultCode != Activity.RESULT_OK) {
@@ -304,7 +372,7 @@ public class CommandSetupResultBuilder {
         }
 
         // アイコン指定
-        data.putExtra(RESULT_EXTRA_THUMBNAIL_ICON, encode(icon));
+        data.putExtra(RESULT_EXTRA_THUMBNAIL_ICON, ImageUtil.encodePng(icon));
         // コマンドキー
         data.putExtra(RESULT_EXTRA_COMMAND_KEY, AcesTriggerUtil.getKey(activity.getIntent()));
 

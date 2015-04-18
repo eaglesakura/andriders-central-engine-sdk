@@ -17,10 +17,13 @@ public abstract class SensorEventHandler {
     }
 
     /**
-     * スピード処理を行う
-     * @param receiver
-     * @param master
-     * @param speed
+     * 速度情報を受け取った
+     * <br>
+     * 速度はGPS由来である場合と、ケイデンスセンサー（ホイール回転数）由来である場合がある。これはユーザーの設定に依存する。
+     *
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
+     * @param speed    速度情報
      */
     public void onSpeedReceived(AcesProtocolReceiver receiver, MasterPayload master, RawSpeed speed) {
 
@@ -28,9 +31,10 @@ public abstract class SensorEventHandler {
 
     /**
      * ケイデンス処理を行う
-     * @param receiver
-     * @param master
-     * @param cadence
+     *
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
+     * @param cadence  ケイデンス情報
      */
     public void onCadenceReceived(AcesProtocolReceiver receiver, MasterPayload master, RawCadence cadence) {
 
@@ -38,9 +42,10 @@ public abstract class SensorEventHandler {
 
     /**
      * 心拍処理を行う
-     * @param receiver
-     * @param master
-     * @param heartrate
+     *
+     * @param receiver  受信したレシーバ
+     * @param master    マスターデータ
+     * @param heartrate 心拍情報
      */
     public void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate) {
 
@@ -48,9 +53,10 @@ public abstract class SensorEventHandler {
 
     /**
      * ハンドリング出来ないセンサーイベントを受け取った
-     * @param receiver
-     * @param master
-     * @param payload
+     *
+     * @param receiver 受信したレシーバ
+     * @param master   マスターデータ
+     * @param payload  センサー情報
      */
     public void onUnknownSensorReceived(AcesProtocolReceiver receiver, MasterPayload master, SensorPayload payload) {
 

@@ -28,7 +28,7 @@ apply plugin: 'com.android.library'
 
 // 0.4.2 : 獲得標高と傾斜に対応
 def ACES_SDK_VERSION = "0.4.2";
-def EGLIBRARY_ARTIFACT_VERSION = "0.1.27";
+def EGLIBRARY_ARTIFACT_VERSION = "0.2.0";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 
 dependencies {
@@ -38,6 +38,7 @@ dependencies {
 
     compile project(':eglibrary-android-java-core')
     compile project(':eglibrary-java-wrapper')
+    compile project(':eglibrary-java-geo')
 }
 
 android {
@@ -75,6 +76,43 @@ task uploadSdkArchives << {
 
 apply plugin: 'maven'
 
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+android.libraryVariants.all { variant ->
+    if (!"release".equals(variant.name)) {
+        return;
+    }
+
+    task("javadoc", type: Javadoc) {
+        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}"
+        description "Generates Android Javadoc for $variant.name."
+        source = variant.javaCompile.source
+        ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar) + files("build/intermediates/classes/${variant.name}/")
+        options.links("http://docs.oracle.com/javase/7/docs/api/");
+        options.links("http://d.android.com/reference/");
+        exclude '**/BuildConfig.java'
+        exclude '**/*Dao.java' /* ignore greenDAO */
+        exclude '**/DaoMaster.java' /* ignore greenDAO */
+        exclude '**/DaoSession.java' /* ignore greenDAO */
+        exclude '**/R.java' /* ignore greenDAO */
+    }
+
+
+    task("javadocJar", type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives javadocJar
+        archives sourcesJar
+    }
+}
+
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -107,6 +145,12 @@ uploadArchives {
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'eglibrary-android-java-core'
+                version = EGLIBRARY_ARTIFACT_VERSION
+                scope = 'compile'
+            }
+            dependency {
+                groupId = 'com.eaglesakura'
+                artifactId = 'eglibrary-java-geo'
                 version = EGLIBRARY_ARTIFACT_VERSION
                 scope = 'compile'
             }

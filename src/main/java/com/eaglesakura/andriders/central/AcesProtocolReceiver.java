@@ -131,7 +131,7 @@ public class AcesProtocolReceiver {
     /**
      * ACEsの現在のステータス
      */
-    private AcesProtocol.CentralStatus lastRceivedCentralStatus;
+    private AcesProtocol.CentralStatus lastReceivedCentralStatus;
 
     private AcesProtocol.SessionStatus lastReceivedSessionStatus;
 
@@ -159,13 +159,20 @@ public class AcesProtocolReceiver {
         this.selfPackageName = context.getPackageName();
     }
 
+    /**
+     * 自分自身のpackage名を指定する。
+     * <br>
+     * 他のアプリに送信された情報をハンドリングしたい場合に使用するが、動作内容が想定と変わるため、注意すること。
+     *
+     * @param selfPackageName
+     */
     public void setSelfPackageName(String selfPackageName) {
         this.selfPackageName = selfPackageName;
     }
 
     /**
      * ジオハッシュの文字数を指定する。
-     * <p/>
+     * <br>
      * 文字数は長いほど狭い範囲でしか扱えない。
      *
      * @param len
@@ -175,63 +182,69 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * 送信元のpackageチェックを行う
+     * 送信元のpackageチェックを行う。
+     * <br>
      * 自分自身が送ったブロードキャストで自分自身でハンドリングしたい場合はfalseを指定する
+     * <br>
+     * default = true
      *
-     * @param checkSelfPackage
+     * @param checkSelfPackage packageチェックを行わない場合はfalse
      */
     public void setCheckSelfPackage(boolean checkSelfPackage) {
         this.checkSelfPackage = checkSelfPackage;
     }
 
     /**
-     * 送信対象のpackageチェックを行う
+     * 送信対象のpackageチェックを行う。
+     * <br>
      * 自分以外のpackageに送られたブロードキャストに反応したい場合はfalseを指定する。
+     * <br>
+     * default = true
      *
-     * @param checkTargetPackage
+     * @param checkTargetPackage packageチェックを行わない場合はfalse
      */
     public void setCheckTargetPackage(boolean checkTargetPackage) {
         this.checkTargetPackage = checkTargetPackage;
     }
 
     /**
-     * 最後に受信した段階でのステータスを取得する
-     *
-     * @return
+     * 最後に受信したACEsステータスを取得する。
      */
     public AcesProtocol.CentralStatus getLastReceivedCentralStatus() {
-        return lastRceivedCentralStatus;
+        return lastReceivedCentralStatus;
     }
 
+    /**
+     * 最後に受信したセッション情報を取得する。
+     */
     public AcesProtocol.SessionStatus getLastReceivedSessionStatus() {
         return lastReceivedSessionStatus;
     }
 
     /**
-     * 最後に受信した段階でのレコードを取得する
-     *
-     * @return
+     * 最後に受信したユーザーの自己記録を取得する。
      */
     public AcesProtocol.UserRecord getLastReceivedUserRecord() {
         return lastReceivedUserRecord;
     }
 
-    public AcesProtocol.CentralStatus getLastRceivedCentralStatus() {
-        return lastRceivedCentralStatus;
-    }
 
+    /**
+     * 最後に受信したMasterPayloadを取得する。
+     */
     public MasterPayload getLastReceivedCentralMaster() {
         return lastReceivedCentralMaster;
     }
 
+    /**
+     * 最後に受信したフィットネス情報を取得する。
+     */
     public ActivityProtocol.FitnessPayload getLastReceivedFitness() {
         return lastReceivedFitness;
     }
 
     /**
-     * 最後に受け取ったセントラルデータの打刻時刻を取得する
-     *
-     * @return
+     * 最後に受け取ったMasterPayloadの打刻時刻を取得する。
      */
     public Date getLastReceivedCentralMasterTime() {
         if (lastReceivedCentralMaster == null) {
@@ -242,9 +255,15 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * アクティブな状態であればtrue
+     * 自走状態であることをチェックする。
+     * <br>
+     * 自分の脚で前進している状態であるため、速度がStopゾーンよりも大きく、ケイデンスが1rpm以上である必要がある。
+     * <br>
+     * ケイデンスセンサーが接続されていない場合、ケイデンスチェックはskipされる。
+     * <br>
+     * スピードが正常に取得できない場合、強制的にfalseを返却する。
      *
-     * @return
+     * @return 自走であればtrue
      */
     public boolean isActiveMoving() {
         RawCadence cadence = getLastReceivedCadence();
@@ -265,54 +284,42 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * 最後に受信したケイデンスを取得する
-     *
-     * @return
+     * 最後に受信したケイデンスを取得する。
      */
     public RawCadence getLastReceivedCadence() {
         return lastReceivedCadence;
     }
 
     /**
-     * 最後に受信した心拍を取得する
-     *
-     * @return
+     * 最後に受信した心拍を取得する。
      */
     public RawHeartrate getLastReceivedHeartrate() {
         return lastReceivedHeartrate;
     }
 
     /**
-     * 最後に受信したスピードを取得する
-     *
-     * @return
+     * 最後に受信したスピードを取得する。
      */
     public RawSpeed getLastReceivedSpeed() {
         return lastReceivedSpeed;
     }
 
     /**
-     * 最後に受信したGPS座標を取得する
-     *
-     * @return
+     * 最後に受信したGPS座標を取得する。
      */
     public GeoProtocol.GeoPayload getLastReceivedGeo() {
         return lastReceivedGeo;
     }
 
     /**
-     * 最後に受信した周辺情報を取得する
-     *
-     * @return
+     * 最後に受信した周辺情報を取得する。
      */
     public GeoProtocol.GeographyPayload getLastReceivedGeography() {
         return lastReceivedGeography;
     }
 
     /**
-     * 現在自分がいる座標のジオハッシュを取得する
-     *
-     * @return
+     * 現在自分がいる座標のジオハッシュを取得する。
      */
     public String getCurrentGeohash() {
         synchronized (lock) {
@@ -325,18 +332,16 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * ジオハッシュ更新回数を取得する
-     *
-     * @return
+     * ジオハッシュ更新回数を取得する。
      */
     public int getGeohashUpdatedCount() {
         return geohashUpdatedCount;
     }
 
     /**
-     * 直前に所屬していたジオハッシュを取得する
-     *
-     * @return
+     * 直前に所屬していたジオハッシュを取得する。
+     * <br>
+     * 起動直後で動いていない場合や、GPSが正常に取得できない等、nullが返却される場合がある。
      */
     public String getBeforeGeohash() {
         synchronized (lock) {
@@ -350,7 +355,7 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * サービスへ接続する
+     * ACEsへ接続する。
      */
     public void connect() {
         if (!connected) {
@@ -362,7 +367,7 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * サービスから切断する
+     * ACEsから切断する。
      */
     public void disconnect() {
         if (connected) {
@@ -372,9 +377,7 @@ public class AcesProtocolReceiver {
     }
 
     /**
-     * 接続済みの場合true
-     *
-     * @return
+     * ACEsへ接続済みの場合trueを返却する。
      */
     public boolean isConnected() {
         return connected;
@@ -404,6 +407,7 @@ public class AcesProtocolReceiver {
      * 心拍を受け取った
      *
      * @param payload
+     *
      * @throws Exception
      */
     private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
@@ -420,6 +424,7 @@ public class AcesProtocolReceiver {
      * ケイデンスを受け取った
      *
      * @param payload
+     *
      * @throws Exception
      */
     private void onCadenceReceived(MasterPayload master, ByteString payload) throws Exception {
@@ -437,6 +442,7 @@ public class AcesProtocolReceiver {
      *
      * @param master
      * @param payload
+     *
      * @throws Exception
      */
     private void onSpeedReceived(MasterPayload master, ByteString payload) throws Exception {
@@ -454,6 +460,7 @@ public class AcesProtocolReceiver {
      *
      * @param master
      * @param payload
+     *
      * @throws Exception
      */
     private void onUnknownSensorReceived(MasterPayload master, SensorPayload payload) throws Exception {
@@ -467,6 +474,7 @@ public class AcesProtocolReceiver {
      * センサー系イベントのハンドリングを行う
      *
      * @param master
+     *
      * @throws Exception
      */
     protected void handleSensorEvents(MasterPayload master) throws Exception {
@@ -614,6 +622,7 @@ public class AcesProtocolReceiver {
      * 位置情報を受け取った
      *
      * @param master
+     *
      * @throws Exception
      */
     protected void handleGeoStatus(MasterPayload master) throws Exception {
@@ -744,7 +753,7 @@ public class AcesProtocolReceiver {
         // centralのステータスを書き換える
         if (master.hasCentralStatus()) {
             this.lastReceivedCentralMaster = master;
-            lastRceivedCentralStatus = master.getCentralStatus();
+            lastReceivedCentralStatus = master.getCentralStatus();
         }
         if (master.hasSessionStatus()) {
             this.lastReceivedSessionStatus = master.getSessionStatus();
@@ -793,7 +802,7 @@ public class AcesProtocolReceiver {
     /**
      * センサーイベントを登録する
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void addSensorEventHandler(SensorEventHandler handler) {
         sensorHandlers.add(handler);
@@ -802,7 +811,7 @@ public class AcesProtocolReceiver {
     /**
      * センサーイベントを削除する
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void removeSensorEventHandler(SensorEventHandler handler) {
         sensorHandlers.remove(handler);
@@ -811,7 +820,7 @@ public class AcesProtocolReceiver {
     /**
      * コマンドイベントを登録する
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void addCommandEventHandler(CommandEventHandler handler) {
         commandHandlers.add(handler);
@@ -820,7 +829,7 @@ public class AcesProtocolReceiver {
     /**
      * コマンドイベントを削除する
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void removeCommandEventHandler(CommandEventHandler handler) {
         commandHandlers.remove(handler);
@@ -829,7 +838,7 @@ public class AcesProtocolReceiver {
     /**
      * ACEsのハンドリングを行う
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void addCentralDataHandler(CentralDataHandler handler) {
         centralHandlers.add(handler);
@@ -838,7 +847,7 @@ public class AcesProtocolReceiver {
     /**
      * ACEsのハンドリングを削除する
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void removeCentralDataHandler(CentralDataHandler handler) {
         centralHandlers.remove(handler);
@@ -847,7 +856,7 @@ public class AcesProtocolReceiver {
     /**
      * 活動イベントのハンドリングを行う
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void addActivityEventHandler(ActivityEventHandler handler) {
         activityHandlers.add(handler);
@@ -856,7 +865,7 @@ public class AcesProtocolReceiver {
     /**
      * 活動イベントのハンドリングを削除する
      *
-     * @param handler
+     * @param handler 対象ハンドラ
      */
     public void removeActivityEventHandler(ActivityEventHandler handler) {
         activityHandlers.remove(handler);
@@ -864,11 +873,12 @@ public class AcesProtocolReceiver {
 
     /**
      * MasterPayloadを圧縮する
-     * <p/>
-     * 基本的にはgzipを用いる。
+     * <br>
+     * 基本的にはgzipを用いる。また、gzip圧縮後の容量が元の容量を上回る場合、bufferをそのまま返却する。
      *
-     * @param buffer
-     * @return
+     * @param buffer 圧縮するバッファ
+     *
+     * @return 容量を小さくしたバッファ
      */
     public static byte[] compressMasterPayload(byte[] buffer) {
         if (buffer.length > 1024) {
@@ -891,9 +901,14 @@ public class AcesProtocolReceiver {
 
     /**
      * MasterPayloadを元の状態に戻す。
+     * <br>
+     * {@link #compressMasterPayload(byte[])}で圧縮されたバッファを返却する。
+     * <br>
+     * bufferがgzipでない場合、そのままバッファを返却する
      *
-     * @param buffer
-     * @return
+     * @param buffer 解凍するバッファ
+     *
+     * @return 解凍されたバッファ
      */
     public static byte[] decompressMasterPayload(byte[] buffer) {
         if (IOUtil.isGzip(buffer)) {

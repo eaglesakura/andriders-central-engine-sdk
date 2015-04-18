@@ -21,10 +21,10 @@ public abstract class TeamDataHandler {
     /**
      * チームメンバーの参加を検知した
      *
-     * @param receiver
-     * @param master
-     * @param memberId
-     * @param memberMasterReceiver
+     * @param receiver             受信したレシーバ
+     * @param master               マスターデータ
+     * @param memberId             参加したメンバーのID
+     * @param memberMasterReceiver 受信したチームレシーバ
      */
     public void onJoinTeamMember(TeamProtocolReceiver receiver, TeamProtocol.TeamPayload master, String memberId, TeamMemberReceiver memberMasterReceiver) {
     }
