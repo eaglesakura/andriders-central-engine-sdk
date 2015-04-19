@@ -120,9 +120,9 @@ uploadArchives {
     }
 }
 
-task rsyncJavadoc << {
+task uploadJavadoc << {
     def src = file("build/docs/javadoc/");
-    def dst = file("${System.env.MAVEN_LOCAL_REPO}/doc/ace-sdk/")
+    def dst = file("${System.env.MAVEN_LOCAL_REPO}/doc/andriders-central-engine-sdk/")
     dst.deleteDir();
     dst.mkdirs();
 
