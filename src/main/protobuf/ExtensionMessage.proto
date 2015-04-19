@@ -1,0 +1,16 @@
+package eaglesakura_ace;
+
+import "AcesConstants.proto";
+
+import "GeoProtocol.proto";
+
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// ベースとなるpayload
+message RemoteMessagePayload {
+    // メッセージの種類
+    required string type = 1;
+
+    // データ本体
+    optional bytes data = 2;
+}

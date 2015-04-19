@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.central.event.TeamDataHandler;
 import com.eaglesakura.andriders.protocol.TeamProtocol;
+import com.eaglesakura.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -185,7 +185,7 @@ public class TeamProtocolReceiver {
                 byte[] masterbuffer = intent.getByteArrayExtra(INTENT_EXTRA_MASTER);
                 onReceivedMasterPayload(masterbuffer);
             } catch (Exception e) {
-                AceLog.d(e);
+                LogUtil.d(e);
             }
         }
     };

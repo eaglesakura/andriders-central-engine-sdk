@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.central.event.ActivityEventHandler;
 import com.eaglesakura.andriders.central.event.CentralDataHandler;
 import com.eaglesakura.andriders.central.event.CommandEventHandler;
@@ -503,7 +502,7 @@ public class AcesProtocolReceiver {
                         break;
                 }
             } catch (Exception e) {
-                AceLog.d(e);
+                LogUtil.d(e);
             }
         }
     }
@@ -794,7 +793,7 @@ public class AcesProtocolReceiver {
                 byte[] masterbuffer = intent.getByteArrayExtra(INTENT_EXTRA_MASTER);
                 onReceivedMasterPayload(masterbuffer);
             } catch (Exception e) {
-                AceLog.d(e);
+                LogUtil.d(e);
             }
         }
     };

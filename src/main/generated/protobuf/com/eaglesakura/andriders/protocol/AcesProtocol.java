@@ -2904,6 +2904,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * セッション中、自走した距離(Km)
+     * not impl
      * </pre>
      */
     boolean hasSessionActiveDistanceKm();
@@ -2912,6 +2913,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * セッション中、自走した距離(Km)
+     * not impl
      * </pre>
      */
     float getSessionActiveDistanceKm();
@@ -2922,6 +2924,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * 今日自走した距離
+     * not impl
      * </pre>
      */
     boolean hasTodayActiveDistanceKm();
@@ -2930,6 +2933,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * 今日自走した距離
+     * not impl
      * </pre>
      */
     float getTodayActiveDistanceKm();
@@ -3163,6 +3167,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * セッション中、自走した距離(Km)
+     * not impl
      * </pre>
      */
     public boolean hasSessionActiveDistanceKm() {
@@ -3173,6 +3178,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * セッション中、自走した距離(Km)
+     * not impl
      * </pre>
      */
     public float getSessionActiveDistanceKm() {
@@ -3187,6 +3193,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * 今日自走した距離
+     * not impl
      * </pre>
      */
     public boolean hasTodayActiveDistanceKm() {
@@ -3197,6 +3204,7 @@ public final class AcesProtocol {
      *
      * <pre>
      * 今日自走した距離
+     * not impl
      * </pre>
      */
     public float getTodayActiveDistanceKm() {
@@ -3770,6 +3778,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * セッション中、自走した距離(Km)
+       * not impl
        * </pre>
        */
       public boolean hasSessionActiveDistanceKm() {
@@ -3780,6 +3789,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * セッション中、自走した距離(Km)
+       * not impl
        * </pre>
        */
       public float getSessionActiveDistanceKm() {
@@ -3790,6 +3800,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * セッション中、自走した距離(Km)
+       * not impl
        * </pre>
        */
       public Builder setSessionActiveDistanceKm(float value) {
@@ -3803,6 +3814,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * セッション中、自走した距離(Km)
+       * not impl
        * </pre>
        */
       public Builder clearSessionActiveDistanceKm() {
@@ -3819,6 +3831,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * 今日自走した距離
+       * not impl
        * </pre>
        */
       public boolean hasTodayActiveDistanceKm() {
@@ -3829,6 +3842,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * 今日自走した距離
+       * not impl
        * </pre>
        */
       public float getTodayActiveDistanceKm() {
@@ -3839,6 +3853,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * 今日自走した距離
+       * not impl
        * </pre>
        */
       public Builder setTodayActiveDistanceKm(float value) {
@@ -3852,6 +3867,7 @@ public final class AcesProtocol {
        *
        * <pre>
        * 今日自走した距離
+       * not impl
        * </pre>
        */
       public Builder clearTodayActiveDistanceKm() {

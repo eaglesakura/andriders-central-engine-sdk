@@ -10,11 +10,18 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 環境を指定する
  */
 public class AcesEnvironment {
+
+    /**
+     * ACEs Bluetooth P2P Connect Server Protocol
+     */
+    public static final UUID BLUETOOTH_SERVER_PROTOCOL = UUID.fromString("0000ACE0-0000-1000-8000-00805f9b34fb");
+
 
     private static final String BASIC_PACKAGE_NAME = "com.eaglesakura.andriders";
 
@@ -91,6 +98,7 @@ public class AcesEnvironment {
      * メディア保存用のディレクトリを取得する
      *
      * @param context
+     *
      * @return
      */
     public static File getMediaDirectory(Context context) {
@@ -119,6 +127,7 @@ public class AcesEnvironment {
      *
      * @param context
      * @param date    保存する日付
+     *
      * @return
      */
     public static File getDateMediaDirectory(Context context, Date date) {

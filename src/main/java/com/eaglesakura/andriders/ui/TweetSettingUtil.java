@@ -4,9 +4,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
-import com.eaglesakura.andriders.AceLog;
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload;
+import com.eaglesakura.util.LogUtil;
 
 public class TweetSettingUtil {
 
@@ -42,7 +42,7 @@ public class TweetSettingUtil {
         try {
             return TweetRequestPayload.parseFrom(extra);
         } catch (Exception e) {
-            AceLog.d(e);
+            LogUtil.d(e);
             return null;
         }
     }
