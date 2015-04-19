@@ -143,12 +143,6 @@ task rsyncJavadoc << {
         dependencies {
             dependency {
                 groupId = 'com.eaglesakura'
-                artifactId = 'eglibrary-java-wrapper'
-                version = EGLIBRARY_ARTIFACT_VERSION
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
                 artifactId = 'eglibrary-android-java-core'
                 version = EGLIBRARY_ARTIFACT_VERSION
                 scope = 'compile'
