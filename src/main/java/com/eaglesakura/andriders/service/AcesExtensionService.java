@@ -10,6 +10,7 @@ import com.eaglesakura.andriders.IAndridersCentralEngineService;
 import com.eaglesakura.andriders.IAndridersCentralEngineTeamService;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.central.TeamMemberReceiver;
+import com.eaglesakura.andriders.central.TeamProtocolReceiver;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.ExtensionMessage;
 
@@ -36,6 +37,8 @@ public abstract class AcesExtensionService extends Service {
     private IAndridersCentralEngineTeamService teamService;
 
     private AcesProtocolReceiver protocolReceiver;
+
+    private TeamProtocolReceiver teamProtocolReceiver;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -77,6 +80,9 @@ public abstract class AcesExtensionService extends Service {
         super.onCreate();
         protocolReceiver = new AcesProtocolReceiver(this);
         protocolReceiver.connect();
+
+        teamProtocolReceiver = new TeamProtocolReceiver(this);
+        teamProtocolReceiver.connect();
     }
 
     @Override
@@ -84,6 +90,9 @@ public abstract class AcesExtensionService extends Service {
         super.onDestroy();
         protocolReceiver.disconnect();
         protocolReceiver = null;
+
+        teamProtocolReceiver.disconnect();
+        teamProtocolReceiver = null;
     }
 
     public boolean isConnectedAces() {
@@ -114,8 +123,14 @@ public abstract class AcesExtensionService extends Service {
             }
 
             ExtensionMessage.RemoteMessagePayload.Builder message = ExtensionMessage.RemoteMessagePayload.newBuilder();
+            ExtensionMessage.TeamRemoteIntentMessage.Builder remoteIntentMessage = ExtensionMessage.TeamRemoteIntentMessage.newBuilder();
+
+            remoteIntentMessage.setTargetUserId(member.getLastReceivedMemberData().getUserId());
+            remoteIntentMessage.setIntent(remoteIntent);
+
             message.setType(MESSAGE_TYPE_TEAM_sendRemoteIntent);
-            message.setData(remoteIntent.toByteString());
+            message.setData(remoteIntentMessage.build().toByteString());
+
             teamService.sendRemoteMessage(message.build().toByteArray());
             return true;
         } catch (Exception e) {
@@ -130,5 +145,9 @@ public abstract class AcesExtensionService extends Service {
      */
     public AcesProtocolReceiver getProtocolReceiver() {
         return protocolReceiver;
+    }
+
+    public TeamProtocolReceiver getTeamProtocolReceiver() {
+        return teamProtocolReceiver;
     }
 }

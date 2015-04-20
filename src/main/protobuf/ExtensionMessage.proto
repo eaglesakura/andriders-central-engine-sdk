@@ -2,9 +2,20 @@ package eaglesakura_ace;
 
 import "AcesConstants.proto";
 
-import "GeoProtocol.proto";
+import "CommandProtocol.proto";
 
 option java_package = "com.eaglesakura.andriders.protocol";
+
+
+// チーム端末に対してIntentを発行する
+message TeamRemoteIntentMessage {
+    // ユーザーID
+    required string targetUserId = 1;
+
+    // 起動するIntent
+    required IntentPayload  intent = 2;
+}
+
 
 // ベースとなるpayload
 message RemoteMessagePayload {

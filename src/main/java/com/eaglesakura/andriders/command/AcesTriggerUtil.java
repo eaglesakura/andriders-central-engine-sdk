@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.command;
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -57,6 +58,29 @@ public class AcesTriggerUtil {
             return CommandKey.fromString(keyString);
         } else {
             return intent.getParcelableExtra(EXTRA_COMMAND_KEY);
+        }
+    }
+
+    /**
+     * Intentの起動を行う
+     *
+     * @param context app context
+     * @param payload 実行するIntent
+     *
+     * @throws Exception
+     */
+    public static void boot(Context context, CommandProtocol.IntentPayload payload) throws Exception {
+        Intent intent = makeIntent(payload);
+        switch (payload.getType()) {
+            case Activity:
+                context.startActivity(intent);
+                return;
+            case Broadcast:
+                context.sendBroadcast(intent);
+                return;
+            case Service:
+                context.startService(intent);
+                return;
         }
     }
 

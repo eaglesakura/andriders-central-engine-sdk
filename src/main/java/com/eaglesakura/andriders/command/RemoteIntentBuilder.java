@@ -42,7 +42,7 @@ public class RemoteIntentBuilder {
      *
      * @return this
      */
-    public RemoteIntentBuilder intentFlags(int flags) {
+    public RemoteIntentBuilder setFlags(int flags) {
         intent.setFlags(flags);
         return this;
     }

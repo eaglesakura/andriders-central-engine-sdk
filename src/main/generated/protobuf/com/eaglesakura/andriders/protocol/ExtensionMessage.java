@@ -8,6 +8,809 @@ public final class ExtensionMessage {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface TeamRemoteIntentMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string targetUserId = 1;
+    /**
+     * <code>required string targetUserId = 1;</code>
+     *
+     * <pre>
+     * ユーザーID
+     * </pre>
+     */
+    boolean hasTargetUserId();
+    /**
+     * <code>required string targetUserId = 1;</code>
+     *
+     * <pre>
+     * ユーザーID
+     * </pre>
+     */
+    java.lang.String getTargetUserId();
+    /**
+     * <code>required string targetUserId = 1;</code>
+     *
+     * <pre>
+     * ユーザーID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getTargetUserIdBytes();
+
+    // required .eaglesakura_ace.IntentPayload intent = 2;
+    /**
+     * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+     *
+     * <pre>
+     * 起動するIntent
+     * </pre>
+     */
+    boolean hasIntent();
+    /**
+     * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+     *
+     * <pre>
+     * 起動するIntent
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getIntent();
+    /**
+     * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+     *
+     * <pre>
+     * 起動するIntent
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getIntentOrBuilder();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.TeamRemoteIntentMessage}
+   *
+   * <pre>
+   * チーム端末に対してIntentを発行する
+   * </pre>
+   */
+  public static final class TeamRemoteIntentMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements TeamRemoteIntentMessageOrBuilder {
+    // Use TeamRemoteIntentMessage.newBuilder() to construct.
+    private TeamRemoteIntentMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private TeamRemoteIntentMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TeamRemoteIntentMessage defaultInstance;
+    public static TeamRemoteIntentMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public TeamRemoteIntentMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TeamRemoteIntentMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              targetUserId_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = intent_.toBuilder();
+              }
+              intent_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(intent_);
+                intent_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.ExtensionMessage.internal_static_eaglesakura_ace_TeamRemoteIntentMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.ExtensionMessage.internal_static_eaglesakura_ace_TeamRemoteIntentMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.class, com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<TeamRemoteIntentMessage> PARSER =
+        new com.google.protobuf.AbstractParser<TeamRemoteIntentMessage>() {
+      public TeamRemoteIntentMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TeamRemoteIntentMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TeamRemoteIntentMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string targetUserId = 1;
+    public static final int TARGETUSERID_FIELD_NUMBER = 1;
+    private java.lang.Object targetUserId_;
+    /**
+     * <code>required string targetUserId = 1;</code>
+     *
+     * <pre>
+     * ユーザーID
+     * </pre>
+     */
+    public boolean hasTargetUserId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string targetUserId = 1;</code>
+     *
+     * <pre>
+     * ユーザーID
+     * </pre>
+     */
+    public java.lang.String getTargetUserId() {
+      java.lang.Object ref = targetUserId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          targetUserId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string targetUserId = 1;</code>
+     *
+     * <pre>
+     * ユーザーID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getTargetUserIdBytes() {
+      java.lang.Object ref = targetUserId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        targetUserId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required .eaglesakura_ace.IntentPayload intent = 2;
+    public static final int INTENT_FIELD_NUMBER = 2;
+    private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload intent_;
+    /**
+     * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+     *
+     * <pre>
+     * 起動するIntent
+     * </pre>
+     */
+    public boolean hasIntent() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+     *
+     * <pre>
+     * 起動するIntent
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getIntent() {
+      return intent_;
+    }
+    /**
+     * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+     *
+     * <pre>
+     * 起動するIntent
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getIntentOrBuilder() {
+      return intent_;
+    }
+
+    private void initFields() {
+      targetUserId_ = "";
+      intent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasTargetUserId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIntent()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getIntent().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getTargetUserIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, intent_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getTargetUserIdBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, intent_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.TeamRemoteIntentMessage}
+     *
+     * <pre>
+     * チーム端末に対してIntentを発行する
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.ExtensionMessage.internal_static_eaglesakura_ace_TeamRemoteIntentMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.ExtensionMessage.internal_static_eaglesakura_ace_TeamRemoteIntentMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.class, com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIntentFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        targetUserId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (intentBuilder_ == null) {
+          intent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+        } else {
+          intentBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.ExtensionMessage.internal_static_eaglesakura_ace_TeamRemoteIntentMessage_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage build() {
+        com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage buildPartial() {
+        com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage result = new com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.targetUserId_ = targetUserId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (intentBuilder_ == null) {
+          result.intent_ = intent_;
+        } else {
+          result.intent_ = intentBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage other) {
+        if (other == com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage.getDefaultInstance()) return this;
+        if (other.hasTargetUserId()) {
+          bitField0_ |= 0x00000001;
+          targetUserId_ = other.targetUserId_;
+          onChanged();
+        }
+        if (other.hasIntent()) {
+          mergeIntent(other.getIntent());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTargetUserId()) {
+          
+          return false;
+        }
+        if (!hasIntent()) {
+          
+          return false;
+        }
+        if (!getIntent().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.ExtensionMessage.TeamRemoteIntentMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string targetUserId = 1;
+      private java.lang.Object targetUserId_ = "";
+      /**
+       * <code>required string targetUserId = 1;</code>
+       *
+       * <pre>
+       * ユーザーID
+       * </pre>
+       */
+      public boolean hasTargetUserId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string targetUserId = 1;</code>
+       *
+       * <pre>
+       * ユーザーID
+       * </pre>
+       */
+      public java.lang.String getTargetUserId() {
+        java.lang.Object ref = targetUserId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          targetUserId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string targetUserId = 1;</code>
+       *
+       * <pre>
+       * ユーザーID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getTargetUserIdBytes() {
+        java.lang.Object ref = targetUserId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          targetUserId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string targetUserId = 1;</code>
+       *
+       * <pre>
+       * ユーザーID
+       * </pre>
+       */
+      public Builder setTargetUserId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        targetUserId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string targetUserId = 1;</code>
+       *
+       * <pre>
+       * ユーザーID
+       * </pre>
+       */
+      public Builder clearTargetUserId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        targetUserId_ = getDefaultInstance().getTargetUserId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string targetUserId = 1;</code>
+       *
+       * <pre>
+       * ユーザーID
+       * </pre>
+       */
+      public Builder setTargetUserIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        targetUserId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required .eaglesakura_ace.IntentPayload intent = 2;
+      private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload intent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> intentBuilder_;
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public boolean hasIntent() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getIntent() {
+        if (intentBuilder_ == null) {
+          return intent_;
+        } else {
+          return intentBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public Builder setIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
+        if (intentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          intent_ = value;
+          onChanged();
+        } else {
+          intentBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public Builder setIntent(
+          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder builderForValue) {
+        if (intentBuilder_ == null) {
+          intent_ = builderForValue.build();
+          onChanged();
+        } else {
+          intentBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public Builder mergeIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
+        if (intentBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              intent_ != com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance()) {
+            intent_ =
+              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.newBuilder(intent_).mergeFrom(value).buildPartial();
+          } else {
+            intent_ = value;
+          }
+          onChanged();
+        } else {
+          intentBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public Builder clearIntent() {
+        if (intentBuilder_ == null) {
+          intent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+          onChanged();
+        } else {
+          intentBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder getIntentBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getIntentFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getIntentOrBuilder() {
+        if (intentBuilder_ != null) {
+          return intentBuilder_.getMessageOrBuilder();
+        } else {
+          return intent_;
+        }
+      }
+      /**
+       * <code>required .eaglesakura_ace.IntentPayload intent = 2;</code>
+       *
+       * <pre>
+       * 起動するIntent
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> 
+          getIntentFieldBuilder() {
+        if (intentBuilder_ == null) {
+          intentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder>(
+                  intent_,
+                  getParentForChildren(),
+                  isClean());
+          intent_ = null;
+        }
+        return intentBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TeamRemoteIntentMessage)
+    }
+
+    static {
+      defaultInstance = new TeamRemoteIntentMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.TeamRemoteIntentMessage)
+  }
+
   public interface RemoteMessagePayloadOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -660,6 +1463,11 @@ public final class ExtensionMessage {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_TeamRemoteIntentMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_TeamRemoteIntentMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_RemoteMessagePayload_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -674,18 +1482,26 @@ public final class ExtensionMessage {
   static {
     java.lang.String[] descriptorData = {
       "\n\026ExtensionMessage.proto\022\017eaglesakura_ac" +
-      "e\032\023AcesConstants.proto\032\021GeoProtocol.prot" +
-      "o\"2\n\024RemoteMessagePayload\022\014\n\004type\030\001 \002(\t\022" +
-      "\014\n\004data\030\002 \001(\014B$\n\"com.eaglesakura.andride" +
-      "rs.protocol"
+      "e\032\023AcesConstants.proto\032\025CommandProtocol." +
+      "proto\"_\n\027TeamRemoteIntentMessage\022\024\n\014targ" +
+      "etUserId\030\001 \002(\t\022.\n\006intent\030\002 \002(\0132\036.eaglesa" +
+      "kura_ace.IntentPayload\"2\n\024RemoteMessageP" +
+      "ayload\022\014\n\004type\030\001 \002(\t\022\014\n\004data\030\002 \001(\014B$\n\"co" +
+      "m.eaglesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_eaglesakura_ace_RemoteMessagePayload_descriptor =
+          internal_static_eaglesakura_ace_TeamRemoteIntentMessage_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_eaglesakura_ace_TeamRemoteIntentMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_TeamRemoteIntentMessage_descriptor,
+              new java.lang.String[] { "TargetUserId", "Intent", });
+          internal_static_eaglesakura_ace_RemoteMessagePayload_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_RemoteMessagePayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RemoteMessagePayload_descriptor,
@@ -697,7 +1513,7 @@ public final class ExtensionMessage {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
-          com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
+          com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor(),
         }, assigner);
   }
 
