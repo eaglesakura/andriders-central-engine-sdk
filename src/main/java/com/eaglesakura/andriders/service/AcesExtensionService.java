@@ -22,9 +22,9 @@ import com.eaglesakura.andriders.protocol.ExtensionMessage;
 public abstract class AcesExtensionService extends Service {
 
     /**
-     *
+     * ACEs/Team-ACEsから接続リクエストを送る
      */
-    public static final String ACTION_ACE_EXTENSION = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION";
+    public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND";
 
     /**
      * ローカルユーザー用Service
@@ -43,7 +43,7 @@ public abstract class AcesExtensionService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         String action = intent.getAction();
-        if (!ACTION_ACE_EXTENSION.equals(action)) {
+        if (!ACTION_ACE_EXTENSION_BIND.equals(action)) {
             throw new IllegalStateException("Action error :: " + action);
         }
 

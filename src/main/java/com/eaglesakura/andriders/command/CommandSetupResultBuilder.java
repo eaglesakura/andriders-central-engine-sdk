@@ -135,6 +135,16 @@ public class CommandSetupResultBuilder {
     }
 
     /**
+     * ACE側でIntentを保持させる
+     *
+     * @param intentPayload
+     */
+    public CommandSetupResultBuilder intent(CommandProtocol.IntentPayload intentPayload) {
+        this.intentPayload = intentPayload.toBuilder();
+        return this;
+    }
+
+    /**
      * ACEsからトリガーのタイミングでActivityの起動を行わせる
      *
      * @param activityClass 起動対象のActivity

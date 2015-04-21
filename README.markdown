@@ -21,7 +21,7 @@
 
 ## build.gradle
 
-* Maven Centralに追加するのがメンドウだったので、eglibraryを使用するためにはgithubのリポジトリをbuild.gradleへ追加する必要があります。
+* Maven Centralに追加するのがメンドウだったので、andriders-central-engine-sdkを使用するためにはgithubのリポジトリをbuild.gradleへ追加する必要があります。
 <pre>
 allprojects {
     repositories {
