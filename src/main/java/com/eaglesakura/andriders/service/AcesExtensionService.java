@@ -27,6 +27,20 @@ public abstract class AcesExtensionService extends Service {
     public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND";
 
     /**
+     * Intentを受け取った際に自動的に付与される
+     * <p/>
+     * 送信者名
+     */
+    public static final String EXTRA_SENDER_NAME = "EXTRA_SENDER_NAME";
+
+    /**
+     * Intentを受け取った際に自動的に付与される
+     * <p/>
+     * 送信者アイコンURL
+     */
+    public static final String EXTRA_SENDER_ICON_URL = "EXTRA_SENDER_ICON_URL";
+
+    /**
      * ローカルユーザー用Service
      */
     private IAndridersCentralEngineService aceService;

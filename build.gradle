@@ -24,8 +24,9 @@ apply plugin: 'com.android.library'
 
 // 0.4.2 : 獲得標高と傾斜に対応
 // 0.4.3 : javadoc整理
-def ACES_SDK_VERSION = "0.4.3";
-def EGLIBRARY_ARTIFACT_VERSION = "0.2.1c";
+// 0.4.4 : 常駐Serviceに対応
+def ACES_SDK_VERSION = "0.4.4";
+def EGLIBRARY_ARTIFACT_VERSION = "0.2.2";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 
 dependencies {
