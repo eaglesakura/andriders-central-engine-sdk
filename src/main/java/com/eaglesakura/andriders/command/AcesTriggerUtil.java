@@ -31,6 +31,21 @@ public class AcesTriggerUtil {
     public static final String EXTRA_MASTER_PAYLOAD = "COMMANDEXTRA_MASTER_PAYLOAD";
 
     /**
+     * チームオーダーでのターゲットID
+     */
+    public static final String EXTRA_MEMBER_ID = "EXTRA_MEMBER_ID";
+
+    /**
+     * チームオーダーでのターゲット名
+     */
+    public static final String EXTRA_MEMBER_NAME = "EXTRA_MEMBER_NAME";
+
+    /**
+     * アイコンのURL
+     */
+    public static final String EXTRA_MEMBER_ICON_URL = "EXTRA_MEMBER_ICON_URL";
+
+    /**
      * Intentからマスター情報を取り出す
      *
      * @param intent ACEsから起動された際に渡されたIntent
