@@ -25,6 +25,10 @@ public class AcesEnvironment {
 
     private static final String BASIC_PACKAGE_NAME = "com.eaglesakura.andriders";
 
+    public static final String SCHEMA_TRIGGER_COMMAND = "acestrigger";
+
+    public static final String SCHEMA_TRIGGER_ORDER = "acesteamorder";
+
     /**
      * ACE Extension Packのファイル拡張子
      */

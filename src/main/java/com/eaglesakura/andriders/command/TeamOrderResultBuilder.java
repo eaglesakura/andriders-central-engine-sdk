@@ -16,6 +16,11 @@ public class TeamOrderResultBuilder {
      */
     public static final String RESULT_EXTRA_INTENTDATA = "COMMAND_RESULT_EXTRA_INTENTDATA";
 
+    /**
+     * チームメンバーのID
+     */
+    public static final String RESULT_EXTRA_MEMBER_ID = "COMMAND_RESULT_EXTRA_MEMBER_ID";
+
 
     private CommandProtocol.IntentPayload.Builder remoteIntent;
 
@@ -48,6 +53,10 @@ public class TeamOrderResultBuilder {
 
         Intent data = new Intent();
         data.putExtra(RESULT_EXTRA_INTENTDATA, remoteIntent.build().toByteArray());
+
+        String memberId = activity.getIntent().getStringExtra(AcesTriggerUtil.EXTRA_MEMBER_ID);
+        data.putExtra(RESULT_EXTRA_MEMBER_ID, memberId);
+
         activity.setResult(Activity.RESULT_OK, data);
         activity.finish();
     }
