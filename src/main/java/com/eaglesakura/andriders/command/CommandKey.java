@@ -30,6 +30,11 @@ public class CommandKey implements Parcelable {
      */
     private static final String COMMAND_HEADER_TIMER = "timercmd#";
 
+    /**
+     * チームメイトにオーダーを出す
+     */
+    private static final String COMMAND_HEADER_TEAM_ORDER = "team.order#";
+
     final String key;
 
     private CommandKey(String key) {
@@ -151,4 +156,16 @@ public class CommandKey implements Parcelable {
     public static CommandKey fromDistance(long settingCurrentTime) {
         return new CommandKey(String.format("%stime%d", COMMAND_HEADER_DISTANCE, settingCurrentTime));
     }
+
+    /**
+     * チームメイトにオーダーを出す
+     *
+     * @param userId 対象ユーザーID
+     *
+     * @return
+     */
+    public static CommandKey fromTeamOrder(String userId) {
+        return new CommandKey(String.format("%s%s", COMMAND_HEADER_TEAM_ORDER, userId));
+    }
+
 }
