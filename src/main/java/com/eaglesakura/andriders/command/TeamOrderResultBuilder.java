@@ -7,7 +7,7 @@ import com.eaglesakura.andriders.protocol.CommandProtocol;
 
 /**
  * チームメンバーに対するオーダーを返却する
- * <p/>
+ * <br>
  * オーダーは相手端末にRemoteIntentとして送信され、Intent処理される。
  */
 public class TeamOrderResultBuilder {

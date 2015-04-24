@@ -16,7 +16,7 @@ import com.eaglesakura.andriders.protocol.ExtensionMessage;
 
 /**
  * ACEsに対して常にバインドを行わせるServiceを定義する。
- * <p/>
+ * <br>
  * ACEs/Team-ACEsのどちらか一方、もしくは両方がバインドされる。
  */
 public abstract class AcesExtensionService extends Service {
@@ -28,14 +28,14 @@ public abstract class AcesExtensionService extends Service {
 
     /**
      * Intentを受け取った際に自動的に付与される
-     * <p/>
+     * <br>
      * 送信者名
      */
     public static final String EXTRA_SENDER_NAME = "EXTRA_SENDER_NAME";
 
     /**
      * Intentを受け取った際に自動的に付与される
-     * <p/>
+     * <br>
      * 送信者アイコンURL
      */
     public static final String EXTRA_SENDER_ICON_URL = "EXTRA_SENDER_ICON_URL";
