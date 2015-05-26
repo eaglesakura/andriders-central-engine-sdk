@@ -1794,6 +1794,24 @@ public final class AcesProtocol {
      * </pre>
      */
     boolean getConnectedGps();
+
+    // optional bool connectedRemoteCentral = 10;
+    /**
+     * <code>optional bool connectedRemoteCentral = 10;</code>
+     *
+     * <pre>
+     * RemoteCentralに接続されていればtrue
+     * </pre>
+     */
+    boolean hasConnectedRemoteCentral();
+    /**
+     * <code>optional bool connectedRemoteCentral = 10;</code>
+     *
+     * <pre>
+     * RemoteCentralに接続されていればtrue
+     * </pre>
+     */
+    boolean getConnectedRemoteCentral();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.CentralStatus}
@@ -1879,6 +1897,11 @@ public final class AcesProtocol {
             case 48: {
               bitField0_ |= 0x00000020;
               connectedGps_ = input.readBool();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000040;
+              connectedRemoteCentral_ = input.readBool();
               break;
             }
           }
@@ -2098,6 +2121,30 @@ public final class AcesProtocol {
       return connectedGps_;
     }
 
+    // optional bool connectedRemoteCentral = 10;
+    public static final int CONNECTEDREMOTECENTRAL_FIELD_NUMBER = 10;
+    private boolean connectedRemoteCentral_;
+    /**
+     * <code>optional bool connectedRemoteCentral = 10;</code>
+     *
+     * <pre>
+     * RemoteCentralに接続されていればtrue
+     * </pre>
+     */
+    public boolean hasConnectedRemoteCentral() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional bool connectedRemoteCentral = 10;</code>
+     *
+     * <pre>
+     * RemoteCentralに接続されていればtrue
+     * </pre>
+     */
+    public boolean getConnectedRemoteCentral() {
+      return connectedRemoteCentral_;
+    }
+
     private void initFields() {
       sessionId_ = "";
       connectedHeartrate_ = false;
@@ -2105,6 +2152,7 @@ public final class AcesProtocol {
       connectedSpeed_ = false;
       connectedTwitter_ = false;
       connectedGps_ = false;
+      connectedRemoteCentral_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2160,6 +2208,9 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBool(6, connectedGps_);
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(10, connectedRemoteCentral_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2192,6 +2243,10 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(6, connectedGps_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(10, connectedRemoteCentral_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2326,6 +2381,8 @@ public final class AcesProtocol {
         bitField0_ = (bitField0_ & ~0x00000010);
         connectedGps_ = false;
         bitField0_ = (bitField0_ & ~0x00000020);
+        connectedRemoteCentral_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -2378,6 +2435,10 @@ public final class AcesProtocol {
           to_bitField0_ |= 0x00000020;
         }
         result.connectedGps_ = connectedGps_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.connectedRemoteCentral_ = connectedRemoteCentral_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2413,6 +2474,9 @@ public final class AcesProtocol {
         }
         if (other.hasConnectedGps()) {
           setConnectedGps(other.getConnectedGps());
+        }
+        if (other.hasConnectedRemoteCentral()) {
+          setConnectedRemoteCentral(other.getConnectedRemoteCentral());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2808,6 +2872,55 @@ public final class AcesProtocol {
       public Builder clearConnectedGps() {
         bitField0_ = (bitField0_ & ~0x00000020);
         connectedGps_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional bool connectedRemoteCentral = 10;
+      private boolean connectedRemoteCentral_ ;
+      /**
+       * <code>optional bool connectedRemoteCentral = 10;</code>
+       *
+       * <pre>
+       * RemoteCentralに接続されていればtrue
+       * </pre>
+       */
+      public boolean hasConnectedRemoteCentral() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional bool connectedRemoteCentral = 10;</code>
+       *
+       * <pre>
+       * RemoteCentralに接続されていればtrue
+       * </pre>
+       */
+      public boolean getConnectedRemoteCentral() {
+        return connectedRemoteCentral_;
+      }
+      /**
+       * <code>optional bool connectedRemoteCentral = 10;</code>
+       *
+       * <pre>
+       * RemoteCentralに接続されていればtrue
+       * </pre>
+       */
+      public Builder setConnectedRemoteCentral(boolean value) {
+        bitField0_ |= 0x00000040;
+        connectedRemoteCentral_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool connectedRemoteCentral = 10;</code>
+       *
+       * <pre>
+       * RemoteCentralに接続されていればtrue
+       * </pre>
+       */
+      public Builder clearConnectedRemoteCentral() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        connectedRemoteCentral_ = false;
         onChanged();
         return this;
       }
@@ -3888,29 +4001,797 @@ public final class AcesProtocol {
     // @@protoc_insertion_point(class_scope:eaglesakura_ace.SessionStatus)
   }
 
+  public interface RemoteCentralStatusOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string appVersionName = 1;
+    /**
+     * <code>required string appVersionName = 1;</code>
+     *
+     * <pre>
+     * アプリバージョン名
+     * </pre>
+     */
+    boolean hasAppVersionName();
+    /**
+     * <code>required string appVersionName = 1;</code>
+     *
+     * <pre>
+     * アプリバージョン名
+     * </pre>
+     */
+    java.lang.String getAppVersionName();
+    /**
+     * <code>required string appVersionName = 1;</code>
+     *
+     * <pre>
+     * アプリバージョン名
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getAppVersionNameBytes();
+
+    // required float batteryLevel = 2;
+    /**
+     * <code>required float batteryLevel = 2;</code>
+     *
+     * <pre>
+     * バッテリー残量
+     * </pre>
+     */
+    boolean hasBatteryLevel();
+    /**
+     * <code>required float batteryLevel = 2;</code>
+     *
+     * <pre>
+     * バッテリー残量
+     * </pre>
+     */
+    float getBatteryLevel();
+
+    // required int64 storageBytes = 3;
+    /**
+     * <code>required int64 storageBytes = 3;</code>
+     *
+     * <pre>
+     * 書き込み先ストレージの残量
+     * </pre>
+     */
+    boolean hasStorageBytes();
+    /**
+     * <code>required int64 storageBytes = 3;</code>
+     *
+     * <pre>
+     * 書き込み先ストレージの残量
+     * </pre>
+     */
+    long getStorageBytes();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.RemoteCentralStatus}
+   *
+   * <pre>
+   * リモートセントラルのステータス
+   * </pre>
+   */
+  public static final class RemoteCentralStatus extends
+      com.google.protobuf.GeneratedMessage
+      implements RemoteCentralStatusOrBuilder {
+    // Use RemoteCentralStatus.newBuilder() to construct.
+    private RemoteCentralStatus(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RemoteCentralStatus(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RemoteCentralStatus defaultInstance;
+    public static RemoteCentralStatus getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RemoteCentralStatus getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RemoteCentralStatus(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              appVersionName_ = input.readBytes();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              batteryLevel_ = input.readFloat();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              storageBytes_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_RemoteCentralStatus_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.class, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RemoteCentralStatus> PARSER =
+        new com.google.protobuf.AbstractParser<RemoteCentralStatus>() {
+      public RemoteCentralStatus parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RemoteCentralStatus(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RemoteCentralStatus> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string appVersionName = 1;
+    public static final int APPVERSIONNAME_FIELD_NUMBER = 1;
+    private java.lang.Object appVersionName_;
+    /**
+     * <code>required string appVersionName = 1;</code>
+     *
+     * <pre>
+     * アプリバージョン名
+     * </pre>
+     */
+    public boolean hasAppVersionName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string appVersionName = 1;</code>
+     *
+     * <pre>
+     * アプリバージョン名
+     * </pre>
+     */
+    public java.lang.String getAppVersionName() {
+      java.lang.Object ref = appVersionName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          appVersionName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string appVersionName = 1;</code>
+     *
+     * <pre>
+     * アプリバージョン名
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getAppVersionNameBytes() {
+      java.lang.Object ref = appVersionName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        appVersionName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required float batteryLevel = 2;
+    public static final int BATTERYLEVEL_FIELD_NUMBER = 2;
+    private float batteryLevel_;
+    /**
+     * <code>required float batteryLevel = 2;</code>
+     *
+     * <pre>
+     * バッテリー残量
+     * </pre>
+     */
+    public boolean hasBatteryLevel() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required float batteryLevel = 2;</code>
+     *
+     * <pre>
+     * バッテリー残量
+     * </pre>
+     */
+    public float getBatteryLevel() {
+      return batteryLevel_;
+    }
+
+    // required int64 storageBytes = 3;
+    public static final int STORAGEBYTES_FIELD_NUMBER = 3;
+    private long storageBytes_;
+    /**
+     * <code>required int64 storageBytes = 3;</code>
+     *
+     * <pre>
+     * 書き込み先ストレージの残量
+     * </pre>
+     */
+    public boolean hasStorageBytes() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int64 storageBytes = 3;</code>
+     *
+     * <pre>
+     * 書き込み先ストレージの残量
+     * </pre>
+     */
+    public long getStorageBytes() {
+      return storageBytes_;
+    }
+
+    private void initFields() {
+      appVersionName_ = "";
+      batteryLevel_ = 0F;
+      storageBytes_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasAppVersionName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBatteryLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStorageBytes()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getAppVersionNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, batteryLevel_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(3, storageBytes_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getAppVersionNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, batteryLevel_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, storageBytes_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.RemoteCentralStatus}
+     *
+     * <pre>
+     * リモートセントラルのステータス
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_RemoteCentralStatus_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.class, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        appVersionName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        batteryLevel_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        storageBytes_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus build() {
+        com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus buildPartial() {
+        com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus result = new com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.appVersionName_ = appVersionName_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.batteryLevel_ = batteryLevel_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.storageBytes_ = storageBytes_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus other) {
+        if (other == com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance()) return this;
+        if (other.hasAppVersionName()) {
+          bitField0_ |= 0x00000001;
+          appVersionName_ = other.appVersionName_;
+          onChanged();
+        }
+        if (other.hasBatteryLevel()) {
+          setBatteryLevel(other.getBatteryLevel());
+        }
+        if (other.hasStorageBytes()) {
+          setStorageBytes(other.getStorageBytes());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAppVersionName()) {
+          
+          return false;
+        }
+        if (!hasBatteryLevel()) {
+          
+          return false;
+        }
+        if (!hasStorageBytes()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string appVersionName = 1;
+      private java.lang.Object appVersionName_ = "";
+      /**
+       * <code>required string appVersionName = 1;</code>
+       *
+       * <pre>
+       * アプリバージョン名
+       * </pre>
+       */
+      public boolean hasAppVersionName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string appVersionName = 1;</code>
+       *
+       * <pre>
+       * アプリバージョン名
+       * </pre>
+       */
+      public java.lang.String getAppVersionName() {
+        java.lang.Object ref = appVersionName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          appVersionName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string appVersionName = 1;</code>
+       *
+       * <pre>
+       * アプリバージョン名
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getAppVersionNameBytes() {
+        java.lang.Object ref = appVersionName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          appVersionName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string appVersionName = 1;</code>
+       *
+       * <pre>
+       * アプリバージョン名
+       * </pre>
+       */
+      public Builder setAppVersionName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        appVersionName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string appVersionName = 1;</code>
+       *
+       * <pre>
+       * アプリバージョン名
+       * </pre>
+       */
+      public Builder clearAppVersionName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        appVersionName_ = getDefaultInstance().getAppVersionName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string appVersionName = 1;</code>
+       *
+       * <pre>
+       * アプリバージョン名
+       * </pre>
+       */
+      public Builder setAppVersionNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        appVersionName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required float batteryLevel = 2;
+      private float batteryLevel_ ;
+      /**
+       * <code>required float batteryLevel = 2;</code>
+       *
+       * <pre>
+       * バッテリー残量
+       * </pre>
+       */
+      public boolean hasBatteryLevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required float batteryLevel = 2;</code>
+       *
+       * <pre>
+       * バッテリー残量
+       * </pre>
+       */
+      public float getBatteryLevel() {
+        return batteryLevel_;
+      }
+      /**
+       * <code>required float batteryLevel = 2;</code>
+       *
+       * <pre>
+       * バッテリー残量
+       * </pre>
+       */
+      public Builder setBatteryLevel(float value) {
+        bitField0_ |= 0x00000002;
+        batteryLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float batteryLevel = 2;</code>
+       *
+       * <pre>
+       * バッテリー残量
+       * </pre>
+       */
+      public Builder clearBatteryLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        batteryLevel_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // required int64 storageBytes = 3;
+      private long storageBytes_ ;
+      /**
+       * <code>required int64 storageBytes = 3;</code>
+       *
+       * <pre>
+       * 書き込み先ストレージの残量
+       * </pre>
+       */
+      public boolean hasStorageBytes() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int64 storageBytes = 3;</code>
+       *
+       * <pre>
+       * 書き込み先ストレージの残量
+       * </pre>
+       */
+      public long getStorageBytes() {
+        return storageBytes_;
+      }
+      /**
+       * <code>required int64 storageBytes = 3;</code>
+       *
+       * <pre>
+       * 書き込み先ストレージの残量
+       * </pre>
+       */
+      public Builder setStorageBytes(long value) {
+        bitField0_ |= 0x00000004;
+        storageBytes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 storageBytes = 3;</code>
+       *
+       * <pre>
+       * 書き込み先ストレージの残量
+       * </pre>
+       */
+      public Builder clearStorageBytes() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        storageBytes_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RemoteCentralStatus)
+    }
+
+    static {
+      defaultInstance = new RemoteCentralStatus(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.RemoteCentralStatus)
+  }
+
   public interface MetaOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required string key = 1;
     /**
      * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * </pre>
      */
     boolean hasKey();
     /**
      * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * </pre>
      */
     java.lang.String getKey();
     /**
      * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * </pre>
      */
     com.google.protobuf.ByteString
         getKeyBytes();
@@ -4041,18 +4922,12 @@ public final class AcesProtocol {
     private java.lang.Object key_;
     /**
      * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * </pre>
      */
     public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * </pre>
      */
     public java.lang.String getKey() {
       java.lang.Object ref = key_;
@@ -4070,9 +4945,6 @@ public final class AcesProtocol {
     }
     /**
      * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * </pre>
      */
     public com.google.protobuf.ByteString
         getKeyBytes() {
@@ -4404,18 +5276,12 @@ public final class AcesProtocol {
       private java.lang.Object key_ = "";
       /**
        * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * </pre>
        */
       public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * </pre>
        */
       public java.lang.String getKey() {
         java.lang.Object ref = key_;
@@ -4430,9 +5296,6 @@ public final class AcesProtocol {
       }
       /**
        * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * </pre>
        */
       public com.google.protobuf.ByteString
           getKeyBytes() {
@@ -4449,9 +5312,6 @@ public final class AcesProtocol {
       }
       /**
        * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * </pre>
        */
       public Builder setKey(
           java.lang.String value) {
@@ -4465,9 +5325,6 @@ public final class AcesProtocol {
       }
       /**
        * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * </pre>
        */
       public Builder clearKey() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -4477,9 +5334,6 @@ public final class AcesProtocol {
       }
       /**
        * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * </pre>
        */
       public Builder setKeyBytes(
           com.google.protobuf.ByteString value) {
@@ -4769,6 +5623,32 @@ public final class AcesProtocol {
      * </pre>
      */
     com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatusOrBuilder getCentralStatusOrBuilder();
+
+    // optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;
+    /**
+     * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+     *
+     * <pre>
+     * リモートセントラルの状態
+     * </pre>
+     */
+    boolean hasRemoteCentralStatus();
+    /**
+     * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+     *
+     * <pre>
+     * リモートセントラルの状態
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus getRemoteCentralStatus();
+    /**
+     * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+     *
+     * <pre>
+     * リモートセントラルの状態
+     * </pre>
+     */
+    com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder getRemoteCentralStatusOrBuilder();
 
     // optional .eaglesakura_ace.SessionStatus sessionStatus = 16;
     /**
@@ -5104,9 +5984,9 @@ public final class AcesProtocol {
               break;
             }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
                 sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>();
-                mutable_bitField0_ |= 0x00000800;
+                mutable_bitField0_ |= 0x00001000;
               }
               sensorPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.PARSER, extensionRegistry));
               break;
@@ -5122,9 +6002,9 @@ public final class AcesProtocol {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
                 commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>();
-                mutable_bitField0_ |= 0x00001000;
+                mutable_bitField0_ |= 0x00002000;
               }
               commandPayloads_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.PARSER, extensionRegistry));
               break;
@@ -5141,7 +6021,7 @@ public final class AcesProtocol {
             }
             case 66: {
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000200) == 0x00000200)) {
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
                 subBuilder = geoStatus_.toBuilder();
               }
               geoStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
@@ -5149,12 +6029,12 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(geoStatus_);
                 geoStatus_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               break;
             }
             case 82: {
               com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+              if (((bitField0_ & 0x00000200) == 0x00000200)) {
                 subBuilder = userRecord_.toBuilder();
               }
               userRecord_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.PARSER, extensionRegistry);
@@ -5162,7 +6042,7 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(userRecord_);
                 userRecord_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               break;
             }
             case 90: {
@@ -5180,7 +6060,7 @@ public final class AcesProtocol {
             }
             case 98: {
               com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+              if (((bitField0_ & 0x00000800) == 0x00000800)) {
                 subBuilder = geography_.toBuilder();
               }
               geography_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.PARSER, extensionRegistry);
@@ -5188,20 +6068,20 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(geography_);
                 geography_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000800;
               break;
             }
             case 106: {
-              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+              if (!((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
                 metadatas_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.AcesProtocol.Meta>();
-                mutable_bitField0_ |= 0x00004000;
+                mutable_bitField0_ |= 0x00008000;
               }
               metadatas_.add(input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.Meta.PARSER, extensionRegistry));
               break;
             }
             case 114: {
               com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000800) == 0x00000800)) {
+              if (((bitField0_ & 0x00001000) == 0x00001000)) {
                 subBuilder = fitness_.toBuilder();
               }
               fitness_ = input.readMessage(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.PARSER, extensionRegistry);
@@ -5209,7 +6089,7 @@ public final class AcesProtocol {
                 subBuilder.mergeFrom(fitness_);
                 fitness_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00001000;
               break;
             }
             case 120: {
@@ -5219,13 +6099,26 @@ public final class AcesProtocol {
             }
             case 130: {
               com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
                 subBuilder = sessionStatus_.toBuilder();
               }
               sessionStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(sessionStatus_);
                 sessionStatus_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
+              break;
+            }
+            case 162: {
+              com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = remoteCentralStatus_.toBuilder();
+              }
+              remoteCentralStatus_ = input.readMessage(com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(remoteCentralStatus_);
+                remoteCentralStatus_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000080;
               break;
@@ -5238,13 +6131,13 @@ public final class AcesProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
           sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
         }
-        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+        if (((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
           metadatas_ = java.util.Collections.unmodifiableList(metadatas_);
         }
         this.unknownFields = unknownFields.build();
@@ -5603,6 +6496,40 @@ public final class AcesProtocol {
       return centralStatus_;
     }
 
+    // optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;
+    public static final int REMOTECENTRALSTATUS_FIELD_NUMBER = 20;
+    private com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus remoteCentralStatus_;
+    /**
+     * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+     *
+     * <pre>
+     * リモートセントラルの状態
+     * </pre>
+     */
+    public boolean hasRemoteCentralStatus() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+     *
+     * <pre>
+     * リモートセントラルの状態
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus getRemoteCentralStatus() {
+      return remoteCentralStatus_;
+    }
+    /**
+     * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+     *
+     * <pre>
+     * リモートセントラルの状態
+     * </pre>
+     */
+    public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder getRemoteCentralStatusOrBuilder() {
+      return remoteCentralStatus_;
+    }
+
     // optional .eaglesakura_ace.SessionStatus sessionStatus = 16;
     public static final int SESSIONSTATUS_FIELD_NUMBER = 16;
     private com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus sessionStatus_;
@@ -5614,7 +6541,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasSessionStatus() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .eaglesakura_ace.SessionStatus sessionStatus = 16;</code>
@@ -5648,7 +6575,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasUserRecord() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
@@ -5682,7 +6609,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasGeoStatus() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
@@ -5716,7 +6643,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasGeography() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
@@ -5862,7 +6789,7 @@ public final class AcesProtocol {
      * </pre>
      */
     public boolean hasFitness() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .eaglesakura_ace.FitnessPayload fitness = 14;</code>
@@ -5949,6 +6876,7 @@ public final class AcesProtocol {
       senderPackage_ = "";
       targetPackage_ = "";
       centralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.CentralStatus.getDefaultInstance();
+      remoteCentralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance();
       sessionStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.getDefaultInstance();
       userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
       geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
@@ -5979,6 +6907,12 @@ public final class AcesProtocol {
       }
       if (hasCentralStatus()) {
         if (!getCentralStatus().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasRemoteCentralStatus()) {
+        if (!getRemoteCentralStatus().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -6053,29 +6987,32 @@ public final class AcesProtocol {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(7, getSenderPackageBytes());
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeMessage(8, geoStatus_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(10, userRecord_);
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(11, version_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(12, geography_);
       }
       for (int i = 0; i < metadatas_.size(); i++) {
         output.writeMessage(13, metadatas_.get(i));
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeMessage(14, fitness_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt64(15, createdDateInt_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeMessage(16, sessionStatus_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(20, remoteCentralStatus_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -6114,11 +7051,11 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getSenderPackageBytes());
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, geoStatus_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, userRecord_);
       }
@@ -6126,7 +7063,7 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, version_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, geography_);
       }
@@ -6134,7 +7071,7 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, metadatas_.get(i));
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, fitness_);
       }
@@ -6142,9 +7079,13 @@ public final class AcesProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(15, createdDateInt_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(16, sessionStatus_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, remoteCentralStatus_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6260,6 +7201,7 @@ public final class AcesProtocol {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getVersionFieldBuilder();
           getCentralStatusFieldBuilder();
+          getRemoteCentralStatusFieldBuilder();
           getSessionStatusFieldBuilder();
           getUserRecordFieldBuilder();
           getGeoStatusFieldBuilder();
@@ -6298,39 +7240,45 @@ public final class AcesProtocol {
           centralStatusBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000040);
+        if (remoteCentralStatusBuilder_ == null) {
+          remoteCentralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance();
+        } else {
+          remoteCentralStatusBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         if (sessionStatusBuilder_ == null) {
           sessionStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.getDefaultInstance();
         } else {
           sessionStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         if (userRecordBuilder_ == null) {
           userRecord_ = com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance();
         } else {
           userRecordBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         if (geoStatusBuilder_ == null) {
           geoStatus_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
         } else {
           geoStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         if (geographyBuilder_ == null) {
           geography_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance();
         } else {
           geographyBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
         } else {
           sensorPayloadsBuilder_.clear();
         }
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
         } else {
           commandPayloadsBuilder_.clear();
         }
@@ -6339,10 +7287,10 @@ public final class AcesProtocol {
         } else {
           fitnessBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         if (metadatasBuilder_ == null) {
           metadatas_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00008000);
         } else {
           metadatasBuilder_.clear();
         }
@@ -6413,29 +7361,37 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
+        if (remoteCentralStatusBuilder_ == null) {
+          result.remoteCentralStatus_ = remoteCentralStatus_;
+        } else {
+          result.remoteCentralStatus_ = remoteCentralStatusBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
         if (sessionStatusBuilder_ == null) {
           result.sessionStatus_ = sessionStatus_;
         } else {
           result.sessionStatus_ = sessionStatusBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
         }
         if (userRecordBuilder_ == null) {
           result.userRecord_ = userRecord_;
         } else {
           result.userRecord_ = userRecordBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
         }
         if (geoStatusBuilder_ == null) {
           result.geoStatus_ = geoStatus_;
         } else {
           result.geoStatus_ = geoStatusBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
         }
         if (geographyBuilder_ == null) {
           result.geography_ = geography_;
@@ -6443,25 +7399,25 @@ public final class AcesProtocol {
           result.geography_ = geographyBuilder_.build();
         }
         if (sensorPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00000800) == 0x00000800)) {
+          if (((bitField0_ & 0x00001000) == 0x00001000)) {
             sensorPayloads_ = java.util.Collections.unmodifiableList(sensorPayloads_);
-            bitField0_ = (bitField0_ & ~0x00000800);
+            bitField0_ = (bitField0_ & ~0x00001000);
           }
           result.sensorPayloads_ = sensorPayloads_;
         } else {
           result.sensorPayloads_ = sensorPayloadsBuilder_.build();
         }
         if (commandPayloadsBuilder_ == null) {
-          if (((bitField0_ & 0x00001000) == 0x00001000)) {
+          if (((bitField0_ & 0x00002000) == 0x00002000)) {
             commandPayloads_ = java.util.Collections.unmodifiableList(commandPayloads_);
-            bitField0_ = (bitField0_ & ~0x00001000);
+            bitField0_ = (bitField0_ & ~0x00002000);
           }
           result.commandPayloads_ = commandPayloads_;
         } else {
           result.commandPayloads_ = commandPayloadsBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
-          to_bitField0_ |= 0x00000800;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00001000;
         }
         if (fitnessBuilder_ == null) {
           result.fitness_ = fitness_;
@@ -6469,9 +7425,9 @@ public final class AcesProtocol {
           result.fitness_ = fitnessBuilder_.build();
         }
         if (metadatasBuilder_ == null) {
-          if (((bitField0_ & 0x00004000) == 0x00004000)) {
+          if (((bitField0_ & 0x00008000) == 0x00008000)) {
             metadatas_ = java.util.Collections.unmodifiableList(metadatas_);
-            bitField0_ = (bitField0_ & ~0x00004000);
+            bitField0_ = (bitField0_ & ~0x00008000);
           }
           result.metadatas_ = metadatas_;
         } else {
@@ -6522,6 +7478,9 @@ public final class AcesProtocol {
         if (other.hasCentralStatus()) {
           mergeCentralStatus(other.getCentralStatus());
         }
+        if (other.hasRemoteCentralStatus()) {
+          mergeRemoteCentralStatus(other.getRemoteCentralStatus());
+        }
         if (other.hasSessionStatus()) {
           mergeSessionStatus(other.getSessionStatus());
         }
@@ -6538,7 +7497,7 @@ public final class AcesProtocol {
           if (!other.sensorPayloads_.isEmpty()) {
             if (sensorPayloads_.isEmpty()) {
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
             } else {
               ensureSensorPayloadsIsMutable();
               sensorPayloads_.addAll(other.sensorPayloads_);
@@ -6551,7 +7510,7 @@ public final class AcesProtocol {
               sensorPayloadsBuilder_.dispose();
               sensorPayloadsBuilder_ = null;
               sensorPayloads_ = other.sensorPayloads_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
               sensorPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getSensorPayloadsFieldBuilder() : null;
@@ -6564,7 +7523,7 @@ public final class AcesProtocol {
           if (!other.commandPayloads_.isEmpty()) {
             if (commandPayloads_.isEmpty()) {
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
             } else {
               ensureCommandPayloadsIsMutable();
               commandPayloads_.addAll(other.commandPayloads_);
@@ -6577,7 +7536,7 @@ public final class AcesProtocol {
               commandPayloadsBuilder_.dispose();
               commandPayloadsBuilder_ = null;
               commandPayloads_ = other.commandPayloads_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
               commandPayloadsBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCommandPayloadsFieldBuilder() : null;
@@ -6593,7 +7552,7 @@ public final class AcesProtocol {
           if (!other.metadatas_.isEmpty()) {
             if (metadatas_.isEmpty()) {
               metadatas_ = other.metadatas_;
-              bitField0_ = (bitField0_ & ~0x00004000);
+              bitField0_ = (bitField0_ & ~0x00008000);
             } else {
               ensureMetadatasIsMutable();
               metadatas_.addAll(other.metadatas_);
@@ -6606,7 +7565,7 @@ public final class AcesProtocol {
               metadatasBuilder_.dispose();
               metadatasBuilder_ = null;
               metadatas_ = other.metadatas_;
-              bitField0_ = (bitField0_ & ~0x00004000);
+              bitField0_ = (bitField0_ & ~0x00008000);
               metadatasBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getMetadatasFieldBuilder() : null;
@@ -6636,6 +7595,12 @@ public final class AcesProtocol {
         }
         if (hasCentralStatus()) {
           if (!getCentralStatus().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasRemoteCentralStatus()) {
+          if (!getRemoteCentralStatus().isInitialized()) {
             
             return false;
           }
@@ -7475,6 +8440,159 @@ public final class AcesProtocol {
         return centralStatusBuilder_;
       }
 
+      // optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;
+      private com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus remoteCentralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder> remoteCentralStatusBuilder_;
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public boolean hasRemoteCentralStatus() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus getRemoteCentralStatus() {
+        if (remoteCentralStatusBuilder_ == null) {
+          return remoteCentralStatus_;
+        } else {
+          return remoteCentralStatusBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public Builder setRemoteCentralStatus(com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus value) {
+        if (remoteCentralStatusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          remoteCentralStatus_ = value;
+          onChanged();
+        } else {
+          remoteCentralStatusBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public Builder setRemoteCentralStatus(
+          com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder builderForValue) {
+        if (remoteCentralStatusBuilder_ == null) {
+          remoteCentralStatus_ = builderForValue.build();
+          onChanged();
+        } else {
+          remoteCentralStatusBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public Builder mergeRemoteCentralStatus(com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus value) {
+        if (remoteCentralStatusBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              remoteCentralStatus_ != com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance()) {
+            remoteCentralStatus_ =
+              com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.newBuilder(remoteCentralStatus_).mergeFrom(value).buildPartial();
+          } else {
+            remoteCentralStatus_ = value;
+          }
+          onChanged();
+        } else {
+          remoteCentralStatusBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public Builder clearRemoteCentralStatus() {
+        if (remoteCentralStatusBuilder_ == null) {
+          remoteCentralStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.getDefaultInstance();
+          onChanged();
+        } else {
+          remoteCentralStatusBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder getRemoteCentralStatusBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getRemoteCentralStatusFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      public com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder getRemoteCentralStatusOrBuilder() {
+        if (remoteCentralStatusBuilder_ != null) {
+          return remoteCentralStatusBuilder_.getMessageOrBuilder();
+        } else {
+          return remoteCentralStatus_;
+        }
+      }
+      /**
+       * <code>optional .eaglesakura_ace.RemoteCentralStatus remoteCentralStatus = 20;</code>
+       *
+       * <pre>
+       * リモートセントラルの状態
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder> 
+          getRemoteCentralStatusFieldBuilder() {
+        if (remoteCentralStatusBuilder_ == null) {
+          remoteCentralStatusBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatus.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.RemoteCentralStatusOrBuilder>(
+                  remoteCentralStatus_,
+                  getParentForChildren(),
+                  isClean());
+          remoteCentralStatus_ = null;
+        }
+        return remoteCentralStatusBuilder_;
+      }
+
       // optional .eaglesakura_ace.SessionStatus sessionStatus = 16;
       private com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus sessionStatus_ = com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
@@ -7487,7 +8605,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasSessionStatus() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .eaglesakura_ace.SessionStatus sessionStatus = 16;</code>
@@ -7520,7 +8638,7 @@ public final class AcesProtocol {
         } else {
           sessionStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         return this;
       }
       /**
@@ -7538,7 +8656,7 @@ public final class AcesProtocol {
         } else {
           sessionStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         return this;
       }
       /**
@@ -7550,7 +8668,7 @@ public final class AcesProtocol {
        */
       public Builder mergeSessionStatus(com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus value) {
         if (sessionStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
               sessionStatus_ != com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.getDefaultInstance()) {
             sessionStatus_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.newBuilder(sessionStatus_).mergeFrom(value).buildPartial();
@@ -7561,7 +8679,7 @@ public final class AcesProtocol {
         } else {
           sessionStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         return this;
       }
       /**
@@ -7578,7 +8696,7 @@ public final class AcesProtocol {
         } else {
           sessionStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
       /**
@@ -7589,7 +8707,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.SessionStatus.Builder getSessionStatusBuilder() {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         onChanged();
         return getSessionStatusFieldBuilder().getBuilder();
       }
@@ -7640,7 +8758,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasUserRecord() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .eaglesakura_ace.UserRecord userRecord = 10;</code>
@@ -7673,7 +8791,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
@@ -7691,7 +8809,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
@@ -7703,7 +8821,7 @@ public final class AcesProtocol {
        */
       public Builder mergeUserRecord(com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord value) {
         if (userRecordBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+          if (((bitField0_ & 0x00000200) == 0x00000200) &&
               userRecord_ != com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.getDefaultInstance()) {
             userRecord_ =
               com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.newBuilder(userRecord_).mergeFrom(value).buildPartial();
@@ -7714,7 +8832,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
@@ -7731,7 +8849,7 @@ public final class AcesProtocol {
         } else {
           userRecordBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
       /**
@@ -7742,7 +8860,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.AcesProtocol.UserRecord.Builder getUserRecordBuilder() {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         onChanged();
         return getUserRecordFieldBuilder().getBuilder();
       }
@@ -7793,7 +8911,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasGeoStatus() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .eaglesakura_ace.GeoPayload geoStatus = 8;</code>
@@ -7826,7 +8944,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
@@ -7844,7 +8962,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
@@ -7856,7 +8974,7 @@ public final class AcesProtocol {
        */
       public Builder mergeGeoStatus(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
         if (geoStatusBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200) &&
+          if (((bitField0_ & 0x00000400) == 0x00000400) &&
               geoStatus_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
             geoStatus_ =
               com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(geoStatus_).mergeFrom(value).buildPartial();
@@ -7867,7 +8985,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
@@ -7884,7 +9002,7 @@ public final class AcesProtocol {
         } else {
           geoStatusBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
       /**
@@ -7895,7 +9013,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getGeoStatusBuilder() {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         onChanged();
         return getGeoStatusFieldBuilder().getBuilder();
       }
@@ -7946,7 +9064,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasGeography() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .eaglesakura_ace.GeographyPayload geography = 12;</code>
@@ -7979,7 +9097,7 @@ public final class AcesProtocol {
         } else {
           geographyBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         return this;
       }
       /**
@@ -7997,7 +9115,7 @@ public final class AcesProtocol {
         } else {
           geographyBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         return this;
       }
       /**
@@ -8009,7 +9127,7 @@ public final class AcesProtocol {
        */
       public Builder mergeGeography(com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload value) {
         if (geographyBuilder_ == null) {
-          if (((bitField0_ & 0x00000400) == 0x00000400) &&
+          if (((bitField0_ & 0x00000800) == 0x00000800) &&
               geography_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.getDefaultInstance()) {
             geography_ =
               com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.newBuilder(geography_).mergeFrom(value).buildPartial();
@@ -8020,7 +9138,7 @@ public final class AcesProtocol {
         } else {
           geographyBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         return this;
       }
       /**
@@ -8037,7 +9155,7 @@ public final class AcesProtocol {
         } else {
           geographyBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
       /**
@@ -8048,7 +9166,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.GeoProtocol.GeographyPayload.Builder getGeographyBuilder() {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         onChanged();
         return getGeographyFieldBuilder().getBuilder();
       }
@@ -8091,9 +9209,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload> sensorPayloads_ =
         java.util.Collections.emptyList();
       private void ensureSensorPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
           sensorPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload>(sensorPayloads_);
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00001000;
          }
       }
 
@@ -8286,7 +9404,7 @@ public final class AcesProtocol {
       public Builder clearSensorPayloads() {
         if (sensorPayloadsBuilder_ == null) {
           sensorPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
           onChanged();
         } else {
           sensorPayloadsBuilder_.clear();
@@ -8391,7 +9509,7 @@ public final class AcesProtocol {
           sensorPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayloadOrBuilder>(
                   sensorPayloads_,
-                  ((bitField0_ & 0x00000800) == 0x00000800),
+                  ((bitField0_ & 0x00001000) == 0x00001000),
                   getParentForChildren(),
                   isClean());
           sensorPayloads_ = null;
@@ -8403,9 +9521,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload> commandPayloads_ =
         java.util.Collections.emptyList();
       private void ensureCommandPayloadsIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
           commandPayloads_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload>(commandPayloads_);
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00002000;
          }
       }
 
@@ -8598,7 +9716,7 @@ public final class AcesProtocol {
       public Builder clearCommandPayloads() {
         if (commandPayloadsBuilder_ == null) {
           commandPayloads_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
           onChanged();
         } else {
           commandPayloadsBuilder_.clear();
@@ -8703,7 +9821,7 @@ public final class AcesProtocol {
           commandPayloadsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder>(
                   commandPayloads_,
-                  ((bitField0_ & 0x00001000) == 0x00001000),
+                  ((bitField0_ & 0x00002000) == 0x00002000),
                   getParentForChildren(),
                   isClean());
           commandPayloads_ = null;
@@ -8723,7 +9841,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public boolean hasFitness() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .eaglesakura_ace.FitnessPayload fitness = 14;</code>
@@ -8756,7 +9874,7 @@ public final class AcesProtocol {
         } else {
           fitnessBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         return this;
       }
       /**
@@ -8774,7 +9892,7 @@ public final class AcesProtocol {
         } else {
           fitnessBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         return this;
       }
       /**
@@ -8786,7 +9904,7 @@ public final class AcesProtocol {
        */
       public Builder mergeFitness(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload value) {
         if (fitnessBuilder_ == null) {
-          if (((bitField0_ & 0x00002000) == 0x00002000) &&
+          if (((bitField0_ & 0x00004000) == 0x00004000) &&
               fitness_ != com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance()) {
             fitness_ =
               com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.newBuilder(fitness_).mergeFrom(value).buildPartial();
@@ -8797,7 +9915,7 @@ public final class AcesProtocol {
         } else {
           fitnessBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         return this;
       }
       /**
@@ -8814,7 +9932,7 @@ public final class AcesProtocol {
         } else {
           fitnessBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
       /**
@@ -8825,7 +9943,7 @@ public final class AcesProtocol {
        * </pre>
        */
       public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder getFitnessBuilder() {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return getFitnessFieldBuilder().getBuilder();
       }
@@ -8868,9 +9986,9 @@ public final class AcesProtocol {
       private java.util.List<com.eaglesakura.andriders.protocol.AcesProtocol.Meta> metadatas_ =
         java.util.Collections.emptyList();
       private void ensureMetadatasIsMutable() {
-        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
+        if (!((bitField0_ & 0x00008000) == 0x00008000)) {
           metadatas_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.AcesProtocol.Meta>(metadatas_);
-          bitField0_ |= 0x00004000;
+          bitField0_ |= 0x00008000;
          }
       }
 
@@ -9063,7 +10181,7 @@ public final class AcesProtocol {
       public Builder clearMetadatas() {
         if (metadatasBuilder_ == null) {
           metadatas_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00008000);
           onChanged();
         } else {
           metadatasBuilder_.clear();
@@ -9168,7 +10286,7 @@ public final class AcesProtocol {
           metadatasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.AcesProtocol.Meta, com.eaglesakura.andriders.protocol.AcesProtocol.Meta.Builder, com.eaglesakura.andriders.protocol.AcesProtocol.MetaOrBuilder>(
                   metadatas_,
-                  ((bitField0_ & 0x00004000) == 0x00004000),
+                  ((bitField0_ & 0x00008000) == 0x00008000),
                   getParentForChildren(),
                   isClean());
           metadatas_ = null;
@@ -9208,6 +10326,11 @@ public final class AcesProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_eaglesakura_ace_SessionStatus_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_RemoteCentralStatus_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_eaglesakura_ace_Meta_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -9235,34 +10358,39 @@ public final class AcesProtocol {
       "ayKm\030\001 \001(\002\022\031\n\021distanceSessionKm\030\002 \001(\002\022\031\n" +
       "\021maxSpeedKmPerHour\030\n \001(\002\022\036\n\026maxSpeedToda" +
       "yKmPerHour\030\013 \001(\002\022\032\n\022sumAltitudeSession\030\024" +
-      " \001(\002\022\030\n\020sumAltitudeToday\030\025 \001(\002\"\240\001\n\rCentr",
+      " \001(\002\022\030\n\020sumAltitudeToday\030\025 \001(\002\"\300\001\n\rCentr",
       "alStatus\022\021\n\tsessionId\030\005 \002(\t\022\032\n\022connected" +
       "Heartrate\030\001 \002(\010\022\030\n\020connectedCadence\030\002 \002(" +
       "\010\022\026\n\016connectedSpeed\030\003 \002(\010\022\030\n\020connectedTw" +
-      "itter\030\004 \002(\010\022\024\n\014connectedGps\030\006 \002(\010\"\271\001\n\rSe" +
-      "ssionStatus\022\030\n\020sessionStartTime\030\001 \002(\003\022\026\n" +
-      "\016todayStartTime\030\002 \002(\003\022\033\n\023sessionActiveTi" +
-      "meMs\030\003 \002(\005\022\031\n\021todayActiveTimeMs\030\004 \002(\005\022\037\n" +
-      "\027sessionActiveDistanceKm\030\005 \002(\002\022\035\n\025todayA" +
-      "ctiveDistanceKm\030\006 \002(\002\"\"\n\004Meta\022\013\n\003key\030\001 \002" +
-      "(\t\022\r\n\005value\030\002 \002(\t\"\376\004\n\rMasterPayload\022-\n\007v",
-      "ersion\030\013 \001(\0132\034.eaglesakura_ace.VersionIn" +
-      "fo\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003 \001(" +
-      "\t\022\026\n\016createdDateInt\030\017 \001(\003\022\025\n\rsenderPacka" +
-      "ge\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rcentr" +
-      "alStatus\030\001 \001(\0132\036.eaglesakura_ace.Central" +
-      "Status\0225\n\rsessionStatus\030\020 \001(\0132\036.eaglesak" +
-      "ura_ace.SessionStatus\022/\n\nuserRecord\030\n \001(" +
-      "\0132\033.eaglesakura_ace.UserRecord\022.\n\tgeoSta" +
-      "tus\030\010 \001(\0132\033.eaglesakura_ace.GeoPayload\0224" +
-      "\n\tgeography\030\014 \001(\0132!.eaglesakura_ace.Geog",
-      "raphyPayload\0226\n\016sensorPayloads\030\002 \003(\0132\036.e" +
-      "aglesakura_ace.SensorPayload\0228\n\017commandP" +
-      "ayloads\030\005 \003(\0132\037.eaglesakura_ace.CommandP" +
-      "ayload\0220\n\007fitness\030\016 \001(\0132\037.eaglesakura_ac" +
-      "e.FitnessPayload\022(\n\tmetadatas\030\r \003(\0132\025.ea" +
-      "glesakura_ace.MetaB$\n\"com.eaglesakura.an" +
-      "driders.protocol"
+      "itter\030\004 \002(\010\022\024\n\014connectedGps\030\006 \002(\010\022\036\n\026con" +
+      "nectedRemoteCentral\030\n \001(\010\"\271\001\n\rSessionSta" +
+      "tus\022\030\n\020sessionStartTime\030\001 \002(\003\022\026\n\016todaySt" +
+      "artTime\030\002 \002(\003\022\033\n\023sessionActiveTimeMs\030\003 \002" +
+      "(\005\022\031\n\021todayActiveTimeMs\030\004 \002(\005\022\037\n\027session" +
+      "ActiveDistanceKm\030\005 \002(\002\022\035\n\025todayActiveDis" +
+      "tanceKm\030\006 \002(\002\"Y\n\023RemoteCentralStatus\022\026\n\016",
+      "appVersionName\030\001 \002(\t\022\024\n\014batteryLevel\030\002 \002" +
+      "(\002\022\024\n\014storageBytes\030\003 \002(\003\"\"\n\004Meta\022\013\n\003key\030" +
+      "\001 \002(\t\022\r\n\005value\030\002 \002(\t\"\301\005\n\rMasterPayload\022-" +
+      "\n\007version\030\013 \001(\0132\034.eaglesakura_ace.Versio" +
+      "nInfo\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003" +
+      " \001(\t\022\026\n\016createdDateInt\030\017 \001(\003\022\025\n\rsenderPa" +
+      "ckage\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rce" +
+      "ntralStatus\030\001 \001(\0132\036.eaglesakura_ace.Cent" +
+      "ralStatus\022A\n\023remoteCentralStatus\030\024 \001(\0132$" +
+      ".eaglesakura_ace.RemoteCentralStatus\0225\n\r",
+      "sessionStatus\030\020 \001(\0132\036.eaglesakura_ace.Se" +
+      "ssionStatus\022/\n\nuserRecord\030\n \001(\0132\033.eagles" +
+      "akura_ace.UserRecord\022.\n\tgeoStatus\030\010 \001(\0132" +
+      "\033.eaglesakura_ace.GeoPayload\0224\n\tgeograph" +
+      "y\030\014 \001(\0132!.eaglesakura_ace.GeographyPaylo" +
+      "ad\0226\n\016sensorPayloads\030\002 \003(\0132\036.eaglesakura" +
+      "_ace.SensorPayload\0228\n\017commandPayloads\030\005 " +
+      "\003(\0132\037.eaglesakura_ace.CommandPayload\0220\n\007" +
+      "fitness\030\016 \001(\0132\037.eaglesakura_ace.FitnessP" +
+      "ayload\022(\n\tmetadatas\030\r \003(\0132\025.eaglesakura_",
+      "ace.MetaB$\n\"com.eaglesakura.andriders.pr" +
+      "otocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9286,25 +10414,31 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_CentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_CentralStatus_descriptor,
-              new java.lang.String[] { "SessionId", "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", "ConnectedGps", });
+              new java.lang.String[] { "SessionId", "ConnectedHeartrate", "ConnectedCadence", "ConnectedSpeed", "ConnectedTwitter", "ConnectedGps", "ConnectedRemoteCentral", });
           internal_static_eaglesakura_ace_SessionStatus_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_SessionStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_SessionStatus_descriptor,
               new java.lang.String[] { "SessionStartTime", "TodayStartTime", "SessionActiveTimeMs", "TodayActiveTimeMs", "SessionActiveDistanceKm", "TodayActiveDistanceKm", });
-          internal_static_eaglesakura_ace_Meta_descriptor =
+          internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor =
             getDescriptor().getMessageTypes().get(4);
+          internal_static_eaglesakura_ace_RemoteCentralStatus_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor,
+              new java.lang.String[] { "AppVersionName", "BatteryLevel", "StorageBytes", });
+          internal_static_eaglesakura_ace_Meta_descriptor =
+            getDescriptor().getMessageTypes().get(5);
           internal_static_eaglesakura_ace_Meta_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_Meta_descriptor,
               new java.lang.String[] { "Key", "Value", });
           internal_static_eaglesakura_ace_MasterPayload_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_eaglesakura_ace_MasterPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_MasterPayload_descriptor,
-              new java.lang.String[] { "Version", "UniqueId", "CreatedDate", "CreatedDateInt", "SenderPackage", "TargetPackage", "CentralStatus", "SessionStatus", "UserRecord", "GeoStatus", "Geography", "SensorPayloads", "CommandPayloads", "Fitness", "Metadatas", });
+              new java.lang.String[] { "Version", "UniqueId", "CreatedDate", "CreatedDateInt", "SenderPackage", "TargetPackage", "CentralStatus", "RemoteCentralStatus", "SessionStatus", "UserRecord", "GeoStatus", "Geography", "SensorPayloads", "CommandPayloads", "Fitness", "Metadatas", });
           return null;
         }
       };

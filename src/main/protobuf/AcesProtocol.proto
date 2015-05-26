@@ -65,6 +65,9 @@ message CentralStatus {
 
     // GPSがONになっていたらtrue
     required bool connectedGps = 6;
+
+    // RemoteCentralに接続されていればtrue
+    optional bool connectedRemoteCentral = 10;
 }
 
 // 走行セッションに関する情報を付与する
@@ -90,10 +93,22 @@ message SessionStatus {
     required float todayActiveDistanceKm = 6;
 }
 
+// リモートセントラルのステータス
+message RemoteCentralStatus {
+    // アプリバージョン名
+    required string appVersionName = 1;
+
+    // バッテリー残量
+    required float batteryLevel = 2;
+
+    // 書き込み先ストレージの残量
+    required int64 storageBytes = 3;
+}
+
+
 // Key-Valueの軽量なメタ情報
 // optionalなデータを付与したい場合に利用する
 message Meta {
-    //
     required string key = 1;
     required string value = 2;
 }
@@ -124,6 +139,9 @@ message MasterPayload {
 
     // セントラルアプリのステータス
     optional CentralStatus centralStatus = 1;
+
+    // リモートセントラルの状態
+    optional RemoteCentralStatus remoteCentralStatus = 20;
 
     // セッション情報
     optional SessionStatus sessionStatus = 16;
