@@ -132,6 +132,8 @@ public class AcesProtocolReceiver {
      */
     private AcesProtocol.CentralStatus lastReceivedCentralStatus;
 
+    private AcesProtocol.RemoteCentralStatus lastReceivedRemoteCentralStatus;
+
     private AcesProtocol.SessionStatus lastReceivedSessionStatus;
 
     private AcesProtocol.UserRecord lastReceivedUserRecord;
@@ -211,6 +213,10 @@ public class AcesProtocolReceiver {
      */
     public AcesProtocol.CentralStatus getLastReceivedCentralStatus() {
         return lastReceivedCentralStatus;
+    }
+
+    public AcesProtocol.RemoteCentralStatus getLastReceivedRemoteCentralStatus() {
+        return lastReceivedRemoteCentralStatus;
     }
 
     /**
@@ -748,6 +754,10 @@ public class AcesProtocolReceiver {
             this.lastReceivedCentralMaster = master;
             lastReceivedCentralStatus = master.getCentralStatus();
         }
+        if (master.hasRemoteCentralStatus()) {
+            this.lastReceivedRemoteCentralStatus = master.getRemoteCentralStatus();
+        }
+
         if (master.hasSessionStatus()) {
             this.lastReceivedSessionStatus = master.getSessionStatus();
         }
