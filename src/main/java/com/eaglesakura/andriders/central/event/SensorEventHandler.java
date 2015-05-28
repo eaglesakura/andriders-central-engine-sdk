@@ -26,7 +26,6 @@ public abstract class SensorEventHandler {
      * @param speed    速度情報
      */
     public void onSpeedReceived(AcesProtocolReceiver receiver, MasterPayload master, RawSpeed speed) {
-
     }
 
     /**

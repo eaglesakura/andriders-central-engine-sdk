@@ -98,11 +98,14 @@ message RemoteCentralStatus {
     // アプリバージョン名
     required string appVersionName = 1;
 
+    // ステータスチェック時刻(Unix Time)
+    required int64 date = 2;
+
     // バッテリー残量
-    required float batteryLevel = 2;
+    required float batteryLevel = 3;
 
     // 書き込み先ストレージの残量
-    required int64 storageBytes = 3;
+    required int64 storageBytes = 4;
 }
 
 

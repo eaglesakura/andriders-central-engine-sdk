@@ -4031,9 +4031,27 @@ public final class AcesProtocol {
     com.google.protobuf.ByteString
         getAppVersionNameBytes();
 
-    // required float batteryLevel = 2;
+    // required int64 date = 2;
     /**
-     * <code>required float batteryLevel = 2;</code>
+     * <code>required int64 date = 2;</code>
+     *
+     * <pre>
+     * ステータスチェック時刻(Unix Time)
+     * </pre>
+     */
+    boolean hasDate();
+    /**
+     * <code>required int64 date = 2;</code>
+     *
+     * <pre>
+     * ステータスチェック時刻(Unix Time)
+     * </pre>
+     */
+    long getDate();
+
+    // required float batteryLevel = 3;
+    /**
+     * <code>required float batteryLevel = 3;</code>
      *
      * <pre>
      * バッテリー残量
@@ -4041,7 +4059,7 @@ public final class AcesProtocol {
      */
     boolean hasBatteryLevel();
     /**
-     * <code>required float batteryLevel = 2;</code>
+     * <code>required float batteryLevel = 3;</code>
      *
      * <pre>
      * バッテリー残量
@@ -4049,9 +4067,9 @@ public final class AcesProtocol {
      */
     float getBatteryLevel();
 
-    // required int64 storageBytes = 3;
+    // required int64 storageBytes = 4;
     /**
-     * <code>required int64 storageBytes = 3;</code>
+     * <code>required int64 storageBytes = 4;</code>
      *
      * <pre>
      * 書き込み先ストレージの残量
@@ -4059,7 +4077,7 @@ public final class AcesProtocol {
      */
     boolean hasStorageBytes();
     /**
-     * <code>required int64 storageBytes = 3;</code>
+     * <code>required int64 storageBytes = 4;</code>
      *
      * <pre>
      * 書き込み先ストレージの残量
@@ -4127,13 +4145,18 @@ public final class AcesProtocol {
               appVersionName_ = input.readBytes();
               break;
             }
-            case 21: {
+            case 16: {
               bitField0_ |= 0x00000002;
+              date_ = input.readInt64();
+              break;
+            }
+            case 29: {
+              bitField0_ |= 0x00000004;
               batteryLevel_ = input.readFloat();
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000004;
+            case 32: {
+              bitField0_ |= 0x00000008;
               storageBytes_ = input.readInt64();
               break;
             }
@@ -4232,21 +4255,45 @@ public final class AcesProtocol {
       }
     }
 
-    // required float batteryLevel = 2;
-    public static final int BATTERYLEVEL_FIELD_NUMBER = 2;
+    // required int64 date = 2;
+    public static final int DATE_FIELD_NUMBER = 2;
+    private long date_;
+    /**
+     * <code>required int64 date = 2;</code>
+     *
+     * <pre>
+     * ステータスチェック時刻(Unix Time)
+     * </pre>
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int64 date = 2;</code>
+     *
+     * <pre>
+     * ステータスチェック時刻(Unix Time)
+     * </pre>
+     */
+    public long getDate() {
+      return date_;
+    }
+
+    // required float batteryLevel = 3;
+    public static final int BATTERYLEVEL_FIELD_NUMBER = 3;
     private float batteryLevel_;
     /**
-     * <code>required float batteryLevel = 2;</code>
+     * <code>required float batteryLevel = 3;</code>
      *
      * <pre>
      * バッテリー残量
      * </pre>
      */
     public boolean hasBatteryLevel() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required float batteryLevel = 2;</code>
+     * <code>required float batteryLevel = 3;</code>
      *
      * <pre>
      * バッテリー残量
@@ -4256,21 +4303,21 @@ public final class AcesProtocol {
       return batteryLevel_;
     }
 
-    // required int64 storageBytes = 3;
-    public static final int STORAGEBYTES_FIELD_NUMBER = 3;
+    // required int64 storageBytes = 4;
+    public static final int STORAGEBYTES_FIELD_NUMBER = 4;
     private long storageBytes_;
     /**
-     * <code>required int64 storageBytes = 3;</code>
+     * <code>required int64 storageBytes = 4;</code>
      *
      * <pre>
      * 書き込み先ストレージの残量
      * </pre>
      */
     public boolean hasStorageBytes() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int64 storageBytes = 3;</code>
+     * <code>required int64 storageBytes = 4;</code>
      *
      * <pre>
      * 書き込み先ストレージの残量
@@ -4282,6 +4329,7 @@ public final class AcesProtocol {
 
     private void initFields() {
       appVersionName_ = "";
+      date_ = 0L;
       batteryLevel_ = 0F;
       storageBytes_ = 0L;
     }
@@ -4291,6 +4339,10 @@ public final class AcesProtocol {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasAppVersionName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDate()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -4313,10 +4365,13 @@ public final class AcesProtocol {
         output.writeBytes(1, getAppVersionNameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(2, batteryLevel_);
+        output.writeInt64(2, date_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt64(3, storageBytes_);
+        output.writeFloat(3, batteryLevel_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(4, storageBytes_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -4333,11 +4388,15 @@ public final class AcesProtocol {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, batteryLevel_);
+          .computeInt64Size(2, date_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, storageBytes_);
+          .computeFloatSize(3, batteryLevel_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, storageBytes_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4461,10 +4520,12 @@ public final class AcesProtocol {
         super.clear();
         appVersionName_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        batteryLevel_ = 0F;
+        date_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        storageBytes_ = 0L;
+        batteryLevel_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000004);
+        storageBytes_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -4500,9 +4561,13 @@ public final class AcesProtocol {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.batteryLevel_ = batteryLevel_;
+        result.date_ = date_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
+        }
+        result.batteryLevel_ = batteryLevel_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.storageBytes_ = storageBytes_;
         result.bitField0_ = to_bitField0_;
@@ -4526,6 +4591,9 @@ public final class AcesProtocol {
           appVersionName_ = other.appVersionName_;
           onChanged();
         }
+        if (other.hasDate()) {
+          setDate(other.getDate());
+        }
         if (other.hasBatteryLevel()) {
           setBatteryLevel(other.getBatteryLevel());
         }
@@ -4538,6 +4606,10 @@ public final class AcesProtocol {
 
       public final boolean isInitialized() {
         if (!hasAppVersionName()) {
+          
+          return false;
+        }
+        if (!hasDate()) {
           
           return false;
         }
@@ -4669,20 +4741,69 @@ public final class AcesProtocol {
         return this;
       }
 
-      // required float batteryLevel = 2;
+      // required int64 date = 2;
+      private long date_ ;
+      /**
+       * <code>required int64 date = 2;</code>
+       *
+       * <pre>
+       * ステータスチェック時刻(Unix Time)
+       * </pre>
+       */
+      public boolean hasDate() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int64 date = 2;</code>
+       *
+       * <pre>
+       * ステータスチェック時刻(Unix Time)
+       * </pre>
+       */
+      public long getDate() {
+        return date_;
+      }
+      /**
+       * <code>required int64 date = 2;</code>
+       *
+       * <pre>
+       * ステータスチェック時刻(Unix Time)
+       * </pre>
+       */
+      public Builder setDate(long value) {
+        bitField0_ |= 0x00000002;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 date = 2;</code>
+       *
+       * <pre>
+       * ステータスチェック時刻(Unix Time)
+       * </pre>
+       */
+      public Builder clearDate() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        date_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // required float batteryLevel = 3;
       private float batteryLevel_ ;
       /**
-       * <code>required float batteryLevel = 2;</code>
+       * <code>required float batteryLevel = 3;</code>
        *
        * <pre>
        * バッテリー残量
        * </pre>
        */
       public boolean hasBatteryLevel() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required float batteryLevel = 2;</code>
+       * <code>required float batteryLevel = 3;</code>
        *
        * <pre>
        * バッテリー残量
@@ -4692,46 +4813,46 @@ public final class AcesProtocol {
         return batteryLevel_;
       }
       /**
-       * <code>required float batteryLevel = 2;</code>
+       * <code>required float batteryLevel = 3;</code>
        *
        * <pre>
        * バッテリー残量
        * </pre>
        */
       public Builder setBatteryLevel(float value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         batteryLevel_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required float batteryLevel = 2;</code>
+       * <code>required float batteryLevel = 3;</code>
        *
        * <pre>
        * バッテリー残量
        * </pre>
        */
       public Builder clearBatteryLevel() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         batteryLevel_ = 0F;
         onChanged();
         return this;
       }
 
-      // required int64 storageBytes = 3;
+      // required int64 storageBytes = 4;
       private long storageBytes_ ;
       /**
-       * <code>required int64 storageBytes = 3;</code>
+       * <code>required int64 storageBytes = 4;</code>
        *
        * <pre>
        * 書き込み先ストレージの残量
        * </pre>
        */
       public boolean hasStorageBytes() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int64 storageBytes = 3;</code>
+       * <code>required int64 storageBytes = 4;</code>
        *
        * <pre>
        * 書き込み先ストレージの残量
@@ -4741,27 +4862,27 @@ public final class AcesProtocol {
         return storageBytes_;
       }
       /**
-       * <code>required int64 storageBytes = 3;</code>
+       * <code>required int64 storageBytes = 4;</code>
        *
        * <pre>
        * 書き込み先ストレージの残量
        * </pre>
        */
       public Builder setStorageBytes(long value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         storageBytes_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 storageBytes = 3;</code>
+       * <code>required int64 storageBytes = 4;</code>
        *
        * <pre>
        * 書き込み先ストレージの残量
        * </pre>
        */
       public Builder clearStorageBytes() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         storageBytes_ = 0L;
         onChanged();
         return this;
@@ -10368,29 +10489,29 @@ public final class AcesProtocol {
       "artTime\030\002 \002(\003\022\033\n\023sessionActiveTimeMs\030\003 \002" +
       "(\005\022\031\n\021todayActiveTimeMs\030\004 \002(\005\022\037\n\027session" +
       "ActiveDistanceKm\030\005 \002(\002\022\035\n\025todayActiveDis" +
-      "tanceKm\030\006 \002(\002\"Y\n\023RemoteCentralStatus\022\026\n\016",
-      "appVersionName\030\001 \002(\t\022\024\n\014batteryLevel\030\002 \002" +
-      "(\002\022\024\n\014storageBytes\030\003 \002(\003\"\"\n\004Meta\022\013\n\003key\030" +
-      "\001 \002(\t\022\r\n\005value\030\002 \002(\t\"\301\005\n\rMasterPayload\022-" +
-      "\n\007version\030\013 \001(\0132\034.eaglesakura_ace.Versio" +
-      "nInfo\022\020\n\010uniqueId\030\004 \002(\t\022\023\n\013createdDate\030\003" +
-      " \001(\t\022\026\n\016createdDateInt\030\017 \001(\003\022\025\n\rsenderPa" +
-      "ckage\030\007 \002(\t\022\025\n\rtargetPackage\030\006 \001(\t\0225\n\rce" +
-      "ntralStatus\030\001 \001(\0132\036.eaglesakura_ace.Cent" +
-      "ralStatus\022A\n\023remoteCentralStatus\030\024 \001(\0132$" +
-      ".eaglesakura_ace.RemoteCentralStatus\0225\n\r",
-      "sessionStatus\030\020 \001(\0132\036.eaglesakura_ace.Se" +
-      "ssionStatus\022/\n\nuserRecord\030\n \001(\0132\033.eagles" +
-      "akura_ace.UserRecord\022.\n\tgeoStatus\030\010 \001(\0132" +
-      "\033.eaglesakura_ace.GeoPayload\0224\n\tgeograph" +
-      "y\030\014 \001(\0132!.eaglesakura_ace.GeographyPaylo" +
-      "ad\0226\n\016sensorPayloads\030\002 \003(\0132\036.eaglesakura" +
-      "_ace.SensorPayload\0228\n\017commandPayloads\030\005 " +
-      "\003(\0132\037.eaglesakura_ace.CommandPayload\0220\n\007" +
-      "fitness\030\016 \001(\0132\037.eaglesakura_ace.FitnessP" +
-      "ayload\022(\n\tmetadatas\030\r \003(\0132\025.eaglesakura_",
-      "ace.MetaB$\n\"com.eaglesakura.andriders.pr" +
-      "otocol"
+      "tanceKm\030\006 \002(\002\"g\n\023RemoteCentralStatus\022\026\n\016",
+      "appVersionName\030\001 \002(\t\022\014\n\004date\030\002 \002(\003\022\024\n\014ba" +
+      "tteryLevel\030\003 \002(\002\022\024\n\014storageBytes\030\004 \002(\003\"\"" +
+      "\n\004Meta\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\002 \002(\t\"\301\005\n\rM" +
+      "asterPayload\022-\n\007version\030\013 \001(\0132\034.eaglesak" +
+      "ura_ace.VersionInfo\022\020\n\010uniqueId\030\004 \002(\t\022\023\n" +
+      "\013createdDate\030\003 \001(\t\022\026\n\016createdDateInt\030\017 \001" +
+      "(\003\022\025\n\rsenderPackage\030\007 \002(\t\022\025\n\rtargetPacka" +
+      "ge\030\006 \001(\t\0225\n\rcentralStatus\030\001 \001(\0132\036.eagles" +
+      "akura_ace.CentralStatus\022A\n\023remoteCentral" +
+      "Status\030\024 \001(\0132$.eaglesakura_ace.RemoteCen",
+      "tralStatus\0225\n\rsessionStatus\030\020 \001(\0132\036.eagl" +
+      "esakura_ace.SessionStatus\022/\n\nuserRecord\030" +
+      "\n \001(\0132\033.eaglesakura_ace.UserRecord\022.\n\tge" +
+      "oStatus\030\010 \001(\0132\033.eaglesakura_ace.GeoPaylo" +
+      "ad\0224\n\tgeography\030\014 \001(\0132!.eaglesakura_ace." +
+      "GeographyPayload\0226\n\016sensorPayloads\030\002 \003(\013" +
+      "2\036.eaglesakura_ace.SensorPayload\0228\n\017comm" +
+      "andPayloads\030\005 \003(\0132\037.eaglesakura_ace.Comm" +
+      "andPayload\0220\n\007fitness\030\016 \001(\0132\037.eaglesakur" +
+      "a_ace.FitnessPayload\022(\n\tmetadatas\030\r \003(\0132",
+      "\025.eaglesakura_ace.MetaB$\n\"com.eaglesakur" +
+      "a.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10426,7 +10547,7 @@ public final class AcesProtocol {
           internal_static_eaglesakura_ace_RemoteCentralStatus_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RemoteCentralStatus_descriptor,
-              new java.lang.String[] { "AppVersionName", "BatteryLevel", "StorageBytes", });
+              new java.lang.String[] { "AppVersionName", "Date", "BatteryLevel", "StorageBytes", });
           internal_static_eaglesakura_ace_Meta_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_eaglesakura_ace_Meta_fieldAccessorTable = new
