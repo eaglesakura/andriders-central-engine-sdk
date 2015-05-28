@@ -183,6 +183,24 @@ public final class SensorProtocol {
      * </pre>
      */
     int getCrankRevolution();
+
+    // optional int64 date = 104;
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * ケイデンスを送信した時刻
+     * </pre>
+     */
+    boolean hasDate();
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * ケイデンスを送信した時刻
+     * </pre>
+     */
+    long getDate();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.RawCadence}
@@ -258,6 +276,11 @@ public final class SensorProtocol {
             case 816: {
               bitField0_ |= 0x00000004;
               crankRevolution_ = input.readInt32();
+              break;
+            }
+            case 832: {
+              bitField0_ |= 0x00000008;
+              date_ = input.readInt64();
               break;
             }
           }
@@ -489,10 +512,35 @@ public final class SensorProtocol {
       return crankRevolution_;
     }
 
+    // optional int64 date = 104;
+    public static final int DATE_FIELD_NUMBER = 104;
+    private long date_;
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * ケイデンスを送信した時刻
+     * </pre>
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * ケイデンスを送信した時刻
+     * </pre>
+     */
+    public long getDate() {
+      return date_;
+    }
+
     private void initFields() {
       rpm_ = 0;
       cadenceZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.CadenceZone.Slow;
       crankRevolution_ = 0;
+      date_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -527,6 +575,9 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(102, crankRevolution_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(104, date_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -547,6 +598,10 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(102, crankRevolution_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(104, date_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -674,6 +729,8 @@ public final class SensorProtocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         crankRevolution_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        date_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -714,6 +771,10 @@ public final class SensorProtocol {
           to_bitField0_ |= 0x00000004;
         }
         result.crankRevolution_ = crankRevolution_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.date_ = date_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -738,6 +799,9 @@ public final class SensorProtocol {
         }
         if (other.hasCrankRevolution()) {
           setCrankRevolution(other.getCrankRevolution());
+        }
+        if (other.hasDate()) {
+          setDate(other.getDate());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -928,6 +992,55 @@ public final class SensorProtocol {
         return this;
       }
 
+      // optional int64 date = 104;
+      private long date_ ;
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * ケイデンスを送信した時刻
+       * </pre>
+       */
+      public boolean hasDate() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * ケイデンスを送信した時刻
+       * </pre>
+       */
+      public long getDate() {
+        return date_;
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * ケイデンスを送信した時刻
+       * </pre>
+       */
+      public Builder setDate(long value) {
+        bitField0_ |= 0x00000008;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * ケイデンスを送信した時刻
+       * </pre>
+       */
+      public Builder clearDate() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        date_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawCadence)
     }
 
@@ -981,6 +1094,24 @@ public final class SensorProtocol {
      * </pre>
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone getHeartrateZone();
+
+    // optional int64 date = 104;
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * 心拍を送信した時刻
+     * </pre>
+     */
+    boolean hasDate();
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * 心拍を送信した時刻
+     * </pre>
+     */
+    long getDate();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.RawHeartrate}
@@ -1051,6 +1182,11 @@ public final class SensorProtocol {
                 bitField0_ |= 0x00000002;
                 heartrateZone_ = value;
               }
+              break;
+            }
+            case 832: {
+              bitField0_ |= 0x00000004;
+              date_ = input.readInt64();
               break;
             }
           }
@@ -1311,9 +1447,34 @@ public final class SensorProtocol {
       return heartrateZone_;
     }
 
+    // optional int64 date = 104;
+    public static final int DATE_FIELD_NUMBER = 104;
+    private long date_;
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * 心拍を送信した時刻
+     * </pre>
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * 心拍を送信した時刻
+     * </pre>
+     */
+    public long getDate() {
+      return date_;
+    }
+
     private void initFields() {
       bpm_ = 0;
       heartrateZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone.Repose;
+      date_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1341,6 +1502,9 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(101, heartrateZone_.getNumber());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(104, date_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1357,6 +1521,10 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(101, heartrateZone_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(104, date_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1482,6 +1650,8 @@ public final class SensorProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         heartrateZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.HeartrateZone.Repose;
         bitField0_ = (bitField0_ & ~0x00000002);
+        date_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -1518,6 +1688,10 @@ public final class SensorProtocol {
           to_bitField0_ |= 0x00000002;
         }
         result.heartrateZone_ = heartrateZone_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.date_ = date_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1539,6 +1713,9 @@ public final class SensorProtocol {
         }
         if (other.hasHeartrateZone()) {
           setHeartrateZone(other.getHeartrateZone());
+        }
+        if (other.hasDate()) {
+          setDate(other.getDate());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1684,6 +1861,55 @@ public final class SensorProtocol {
         return this;
       }
 
+      // optional int64 date = 104;
+      private long date_ ;
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * 心拍を送信した時刻
+       * </pre>
+       */
+      public boolean hasDate() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * 心拍を送信した時刻
+       * </pre>
+       */
+      public long getDate() {
+        return date_;
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * 心拍を送信した時刻
+       * </pre>
+       */
+      public Builder setDate(long value) {
+        bitField0_ |= 0x00000004;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * 心拍を送信した時刻
+       * </pre>
+       */
+      public Builder clearDate() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        date_ = 0L;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawHeartrate)
     }
 
@@ -1771,6 +1997,24 @@ public final class SensorProtocol {
      * </pre>
      */
     com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone getSpeedZone();
+
+    // optional int64 date = 104;
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * スピードを送信した時刻
+     * </pre>
+     */
+    boolean hasDate();
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * スピードを送信した時刻
+     * </pre>
+     */
+    long getDate();
   }
   /**
    * Protobuf type {@code eaglesakura_ace.RawSpeed}
@@ -1851,6 +2095,11 @@ public final class SensorProtocol {
             case 824: {
               bitField0_ |= 0x00000004;
               wheelRevolution_ = input.readInt32();
+              break;
+            }
+            case 832: {
+              bitField0_ |= 0x00000010;
+              date_ = input.readInt64();
               break;
             }
           }
@@ -2127,11 +2376,36 @@ public final class SensorProtocol {
       return speedZone_;
     }
 
+    // optional int64 date = 104;
+    public static final int DATE_FIELD_NUMBER = 104;
+    private long date_;
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * スピードを送信した時刻
+     * </pre>
+     */
+    public boolean hasDate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int64 date = 104;</code>
+     *
+     * <pre>
+     * スピードを送信した時刻
+     * </pre>
+     */
+    public long getDate() {
+      return date_;
+    }
+
     private void initFields() {
       speedKmPerHour_ = 0F;
       wheelRpm_ = 0F;
       wheelRevolution_ = 0;
       speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+      date_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2165,6 +2439,9 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(103, wheelRevolution_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt64(104, date_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2189,6 +2466,10 @@ public final class SensorProtocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(103, wheelRevolution_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(104, date_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2318,6 +2599,8 @@ public final class SensorProtocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
         bitField0_ = (bitField0_ & ~0x00000008);
+        date_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -2362,6 +2645,10 @@ public final class SensorProtocol {
           to_bitField0_ |= 0x00000008;
         }
         result.speedZone_ = speedZone_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.date_ = date_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2389,6 +2676,9 @@ public final class SensorProtocol {
         }
         if (other.hasSpeedZone()) {
           setSpeedZone(other.getSpeedZone());
+        }
+        if (other.hasDate()) {
+          setDate(other.getDate());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2624,6 +2914,55 @@ public final class SensorProtocol {
       public Builder clearSpeedZone() {
         bitField0_ = (bitField0_ & ~0x00000008);
         speedZone_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.SpeedZone.Stop;
+        onChanged();
+        return this;
+      }
+
+      // optional int64 date = 104;
+      private long date_ ;
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * スピードを送信した時刻
+       * </pre>
+       */
+      public boolean hasDate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * スピードを送信した時刻
+       * </pre>
+       */
+      public long getDate() {
+        return date_;
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * スピードを送信した時刻
+       * </pre>
+       */
+      public Builder setDate(long value) {
+        bitField0_ |= 0x00000010;
+        date_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 date = 104;</code>
+       *
+       * <pre>
+       * スピードを送信した時刻
+       * </pre>
+       */
+      public Builder clearDate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        date_ = 0L;
         onChanged();
         return this;
       }
@@ -3254,26 +3593,27 @@ public final class SensorProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\024SensorProtocol.proto\022\017eaglesakura_ace\032" +
-      "\023AcesConstants.proto\"\236\001\n\nRawCadence\022\013\n\003r" +
+      "\023AcesConstants.proto\"\254\001\n\nRawCadence\022\013\n\003r" +
       "pm\030d \002(\005\022<\n\013cadenceZone\030e \002(\0162\'.eaglesak" +
       "ura_ace.RawCadence.CadenceZone\022\027\n\017crankR" +
-      "evolution\030f \002(\005\",\n\013CadenceZone\022\010\n\004Slow\020\000" +
-      "\022\t\n\005Ideal\020\001\022\010\n\004High\020\002\"\334\001\n\014RawHeartrate\022\013" +
-      "\n\003bpm\030d \002(\005\022B\n\rheartrateZone\030e \002(\0162+.eag" +
-      "lesakura_ace.RawHeartrate.HeartrateZone\"" +
-      "{\n\rHeartrateZone\022\n\n\006Repose\020\000\022\010\n\004Easy\020\001\022\021" +
-      "\n\rFatCombustion\020\002\022\032\n\026PossessionOxygenMot",
-      "ion\020\003\022\027\n\023NonOxygenatedMotion\020\004\022\014\n\010Overwo" +
-      "rk\020\005\"\276\001\n\010RawSpeed\022\026\n\016speedKmPerHour\030\001 \002(" +
-      "\002\022\020\n\010wheelRpm\030\002 \001(\002\022\027\n\017wheelRevolution\030g" +
-      " \001(\005\0226\n\tspeedZone\030e \002(\0162#.eaglesakura_ac" +
-      "e.RawSpeed.SpeedZone\"7\n\tSpeedZone\022\010\n\004Sto" +
-      "p\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002\022\n\n\006Sprint\020\003\"J\n" +
-      "\rSensorPayload\022)\n\004type\030\002 \002(\0162\033.eaglesaku" +
-      "ra_ace.SensorType\022\016\n\006buffer\030\n \002(\014*F\n\nSen" +
-      "sorType\022\024\n\020HeartrateMonitor\020\000\022\021\n\rCadence" +
-      "Sensor\020\001\022\017\n\013SpeedSensor\020\002B$\n\"com.eaglesa",
-      "kura.andriders.protocol"
+      "evolution\030f \002(\005\022\014\n\004date\030h \001(\003\",\n\013Cadence" +
+      "Zone\022\010\n\004Slow\020\000\022\t\n\005Ideal\020\001\022\010\n\004High\020\002\"\352\001\n\014" +
+      "RawHeartrate\022\013\n\003bpm\030d \002(\005\022B\n\rheartrateZo" +
+      "ne\030e \002(\0162+.eaglesakura_ace.RawHeartrate." +
+      "HeartrateZone\022\014\n\004date\030h \001(\003\"{\n\rHeartrate" +
+      "Zone\022\n\n\006Repose\020\000\022\010\n\004Easy\020\001\022\021\n\rFatCombust",
+      "ion\020\002\022\032\n\026PossessionOxygenMotion\020\003\022\027\n\023Non" +
+      "OxygenatedMotion\020\004\022\014\n\010Overwork\020\005\"\314\001\n\010Raw" +
+      "Speed\022\026\n\016speedKmPerHour\030\001 \002(\002\022\020\n\010wheelRp" +
+      "m\030\002 \001(\002\022\027\n\017wheelRevolution\030g \001(\005\0226\n\tspee" +
+      "dZone\030e \002(\0162#.eaglesakura_ace.RawSpeed.S" +
+      "peedZone\022\014\n\004date\030h \001(\003\"7\n\tSpeedZone\022\010\n\004S" +
+      "top\020\000\022\010\n\004Slow\020\001\022\n\n\006Cruise\020\002\022\n\n\006Sprint\020\003\"" +
+      "J\n\rSensorPayload\022)\n\004type\030\002 \002(\0162\033.eaglesa" +
+      "kura_ace.SensorType\022\016\n\006buffer\030\n \002(\014*F\n\nS" +
+      "ensorType\022\024\n\020HeartrateMonitor\020\000\022\021\n\rCaden",
+      "ceSensor\020\001\022\017\n\013SpeedSensor\020\002B$\n\"com.eagle" +
+      "sakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3285,19 +3625,19 @@ public final class SensorProtocol {
           internal_static_eaglesakura_ace_RawCadence_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawCadence_descriptor,
-              new java.lang.String[] { "Rpm", "CadenceZone", "CrankRevolution", });
+              new java.lang.String[] { "Rpm", "CadenceZone", "CrankRevolution", "Date", });
           internal_static_eaglesakura_ace_RawHeartrate_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_eaglesakura_ace_RawHeartrate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawHeartrate_descriptor,
-              new java.lang.String[] { "Bpm", "HeartrateZone", });
+              new java.lang.String[] { "Bpm", "HeartrateZone", "Date", });
           internal_static_eaglesakura_ace_RawSpeed_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_RawSpeed_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_RawSpeed_descriptor,
-              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "WheelRevolution", "SpeedZone", });
+              new java.lang.String[] { "SpeedKmPerHour", "WheelRpm", "WheelRevolution", "SpeedZone", "Date", });
           internal_static_eaglesakura_ace_SensorPayload_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_eaglesakura_ace_SensorPayload_fieldAccessorTable = new

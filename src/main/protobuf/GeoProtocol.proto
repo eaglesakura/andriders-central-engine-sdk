@@ -31,6 +31,12 @@ message GeoPayload {
     // 現在のGPS座標
     required GeoPoint location = 1;
 
+    // 位置精度（メートル単位）
+    optional float locationAccuracy = 7;
+
+    // ユーザーがこの精度を信頼すると認めている
+    optional bool locationReliance = 8;
+
     // 打刻した時刻
     optional string date = 2;
     optional int64 dateInt = 3;

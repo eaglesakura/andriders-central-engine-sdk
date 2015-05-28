@@ -25,7 +25,8 @@ apply plugin: 'com.android.library'
 // 0.4.2 : 獲得標高と傾斜に対応
 // 0.4.3 : javadoc整理
 // 0.4.4 : 常駐Serviceに対応
-def ACES_SDK_VERSION = "0.4.4";
+// 0.4.5 : RemoteCentralに対応 / センサーの受信時刻に対応 / 位置情報の信頼性についての情報を追加（予定 / トンネル対策）
+def ACES_SDK_VERSION = "0.4.5";
 def EGLIBRARY_ARTIFACT_VERSION = "0.2.3";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 

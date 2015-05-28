@@ -406,7 +406,6 @@ public class AcesProtocolReceiver {
      * 心拍を受け取った
      *
      * @param payload
-     *
      * @throws Exception
      */
     private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
@@ -423,7 +422,6 @@ public class AcesProtocolReceiver {
      * ケイデンスを受け取った
      *
      * @param payload
-     *
      * @throws Exception
      */
     private void onCadenceReceived(MasterPayload master, ByteString payload) throws Exception {
@@ -441,7 +439,6 @@ public class AcesProtocolReceiver {
      *
      * @param master
      * @param payload
-     *
      * @throws Exception
      */
     private void onSpeedReceived(MasterPayload master, ByteString payload) throws Exception {
@@ -459,7 +456,6 @@ public class AcesProtocolReceiver {
      *
      * @param master
      * @param payload
-     *
      * @throws Exception
      */
     private void onUnknownSensorReceived(MasterPayload master, SensorPayload payload) throws Exception {
@@ -473,7 +469,6 @@ public class AcesProtocolReceiver {
      * センサー系イベントのハンドリングを行う
      *
      * @param master
-     *
      * @throws Exception
      */
     protected void handleSensorEvents(MasterPayload master) throws Exception {
@@ -621,7 +616,6 @@ public class AcesProtocolReceiver {
      * 位置情報を受け取った
      *
      * @param master
-     *
      * @throws Exception
      */
     protected void handleGeoStatus(MasterPayload master) throws Exception {
@@ -876,7 +870,6 @@ public class AcesProtocolReceiver {
      * 基本的にはgzipを用いる。また、gzip圧縮後の容量が元の容量を上回る場合、bufferをそのまま返却する。
      *
      * @param buffer 圧縮するバッファ
-     *
      * @return 容量を小さくしたバッファ
      */
     public static byte[] compressMasterPayload(byte[] buffer) {
@@ -906,7 +899,6 @@ public class AcesProtocolReceiver {
      * bufferがgzipでない場合、そのままバッファを返却する
      *
      * @param buffer 解凍するバッファ
-     *
      * @return 解凍されたバッファ
      */
     public static byte[] decompressMasterPayload(byte[] buffer) {

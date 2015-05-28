@@ -844,6 +844,42 @@ public final class GeoProtocol {
      */
     com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
 
+    // optional float locationAccuracy = 7;
+    /**
+     * <code>optional float locationAccuracy = 7;</code>
+     *
+     * <pre>
+     * 位置精度（メートル単位）
+     * </pre>
+     */
+    boolean hasLocationAccuracy();
+    /**
+     * <code>optional float locationAccuracy = 7;</code>
+     *
+     * <pre>
+     * 位置精度（メートル単位）
+     * </pre>
+     */
+    float getLocationAccuracy();
+
+    // optional bool locationReliance = 8;
+    /**
+     * <code>optional bool locationReliance = 8;</code>
+     *
+     * <pre>
+     * ユーザーがこの精度を信頼すると認めている
+     * </pre>
+     */
+    boolean hasLocationReliance();
+    /**
+     * <code>optional bool locationReliance = 8;</code>
+     *
+     * <pre>
+     * ユーザーがこの精度を信頼すると認めている
+     * </pre>
+     */
+    boolean getLocationReliance();
+
     // optional string date = 2;
     /**
      * <code>optional string date = 2;</code>
@@ -986,17 +1022,17 @@ public final class GeoProtocol {
               break;
             }
             case 18: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000008;
               date_ = input.readBytes();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000010;
               dateInt_ = input.readInt64();
               break;
             }
             case 37: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000020;
               inclinationPercent_ = input.readFloat();
               break;
             }
@@ -1006,9 +1042,19 @@ public final class GeoProtocol {
               if (value == null) {
                 unknownFields.mergeVarintField(5, rawValue);
               } else {
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000040;
                 inclinationType_ = value;
               }
+              break;
+            }
+            case 61: {
+              bitField0_ |= 0x00000002;
+              locationAccuracy_ = input.readFloat();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000004;
+              locationReliance_ = input.readBool();
               break;
             }
           }
@@ -1085,6 +1131,54 @@ public final class GeoProtocol {
       return location_;
     }
 
+    // optional float locationAccuracy = 7;
+    public static final int LOCATIONACCURACY_FIELD_NUMBER = 7;
+    private float locationAccuracy_;
+    /**
+     * <code>optional float locationAccuracy = 7;</code>
+     *
+     * <pre>
+     * 位置精度（メートル単位）
+     * </pre>
+     */
+    public boolean hasLocationAccuracy() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional float locationAccuracy = 7;</code>
+     *
+     * <pre>
+     * 位置精度（メートル単位）
+     * </pre>
+     */
+    public float getLocationAccuracy() {
+      return locationAccuracy_;
+    }
+
+    // optional bool locationReliance = 8;
+    public static final int LOCATIONRELIANCE_FIELD_NUMBER = 8;
+    private boolean locationReliance_;
+    /**
+     * <code>optional bool locationReliance = 8;</code>
+     *
+     * <pre>
+     * ユーザーがこの精度を信頼すると認めている
+     * </pre>
+     */
+    public boolean hasLocationReliance() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional bool locationReliance = 8;</code>
+     *
+     * <pre>
+     * ユーザーがこの精度を信頼すると認めている
+     * </pre>
+     */
+    public boolean getLocationReliance() {
+      return locationReliance_;
+    }
+
     // optional string date = 2;
     public static final int DATE_FIELD_NUMBER = 2;
     private java.lang.Object date_;
@@ -1096,7 +1190,7 @@ public final class GeoProtocol {
      * </pre>
      */
     public boolean hasDate() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional string date = 2;</code>
@@ -1147,7 +1241,7 @@ public final class GeoProtocol {
      * <code>optional int64 dateInt = 3;</code>
      */
     public boolean hasDateInt() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int64 dateInt = 3;</code>
@@ -1167,7 +1261,7 @@ public final class GeoProtocol {
      * </pre>
      */
     public boolean hasInclinationPercent() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional float inclinationPercent = 4;</code>
@@ -1191,7 +1285,7 @@ public final class GeoProtocol {
      * </pre>
      */
     public boolean hasInclinationType() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
@@ -1206,6 +1300,8 @@ public final class GeoProtocol {
 
     private void initFields() {
       location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+      locationAccuracy_ = 0F;
+      locationReliance_ = false;
       date_ = "";
       dateInt_ = 0L;
       inclinationPercent_ = 0F;
@@ -1234,17 +1330,23 @@ public final class GeoProtocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, location_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(2, getDateBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt64(3, dateInt_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeFloat(4, inclinationPercent_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeEnum(5, inclinationType_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(7, locationAccuracy_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBool(8, locationReliance_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1259,21 +1361,29 @@ public final class GeoProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, location_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getDateBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, dateInt_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(4, inclinationPercent_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, inclinationType_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(7, locationAccuracy_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, locationReliance_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1402,14 +1512,18 @@ public final class GeoProtocol {
           locationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        date_ = "";
+        locationAccuracy_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000002);
-        dateInt_ = 0L;
+        locationReliance_ = false;
         bitField0_ = (bitField0_ & ~0x00000004);
-        inclinationPercent_ = 0F;
+        date_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
-        inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
+        dateInt_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000010);
+        inclinationPercent_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -1449,17 +1563,25 @@ public final class GeoProtocol {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.date_ = date_;
+        result.locationAccuracy_ = locationAccuracy_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.dateInt_ = dateInt_;
+        result.locationReliance_ = locationReliance_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.inclinationPercent_ = inclinationPercent_;
+        result.date_ = date_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
+        }
+        result.dateInt_ = dateInt_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.inclinationPercent_ = inclinationPercent_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
         }
         result.inclinationType_ = inclinationType_;
         result.bitField0_ = to_bitField0_;
@@ -1481,8 +1603,14 @@ public final class GeoProtocol {
         if (other.hasLocation()) {
           mergeLocation(other.getLocation());
         }
+        if (other.hasLocationAccuracy()) {
+          setLocationAccuracy(other.getLocationAccuracy());
+        }
+        if (other.hasLocationReliance()) {
+          setLocationReliance(other.getLocationReliance());
+        }
         if (other.hasDate()) {
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000008;
           date_ = other.date_;
           onChanged();
         }
@@ -1683,6 +1811,104 @@ public final class GeoProtocol {
         return locationBuilder_;
       }
 
+      // optional float locationAccuracy = 7;
+      private float locationAccuracy_ ;
+      /**
+       * <code>optional float locationAccuracy = 7;</code>
+       *
+       * <pre>
+       * 位置精度（メートル単位）
+       * </pre>
+       */
+      public boolean hasLocationAccuracy() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional float locationAccuracy = 7;</code>
+       *
+       * <pre>
+       * 位置精度（メートル単位）
+       * </pre>
+       */
+      public float getLocationAccuracy() {
+        return locationAccuracy_;
+      }
+      /**
+       * <code>optional float locationAccuracy = 7;</code>
+       *
+       * <pre>
+       * 位置精度（メートル単位）
+       * </pre>
+       */
+      public Builder setLocationAccuracy(float value) {
+        bitField0_ |= 0x00000002;
+        locationAccuracy_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float locationAccuracy = 7;</code>
+       *
+       * <pre>
+       * 位置精度（メートル単位）
+       * </pre>
+       */
+      public Builder clearLocationAccuracy() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        locationAccuracy_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // optional bool locationReliance = 8;
+      private boolean locationReliance_ ;
+      /**
+       * <code>optional bool locationReliance = 8;</code>
+       *
+       * <pre>
+       * ユーザーがこの精度を信頼すると認めている
+       * </pre>
+       */
+      public boolean hasLocationReliance() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bool locationReliance = 8;</code>
+       *
+       * <pre>
+       * ユーザーがこの精度を信頼すると認めている
+       * </pre>
+       */
+      public boolean getLocationReliance() {
+        return locationReliance_;
+      }
+      /**
+       * <code>optional bool locationReliance = 8;</code>
+       *
+       * <pre>
+       * ユーザーがこの精度を信頼すると認めている
+       * </pre>
+       */
+      public Builder setLocationReliance(boolean value) {
+        bitField0_ |= 0x00000004;
+        locationReliance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool locationReliance = 8;</code>
+       *
+       * <pre>
+       * ユーザーがこの精度を信頼すると認めている
+       * </pre>
+       */
+      public Builder clearLocationReliance() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        locationReliance_ = false;
+        onChanged();
+        return this;
+      }
+
       // optional string date = 2;
       private java.lang.Object date_ = "";
       /**
@@ -1693,7 +1919,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public boolean hasDate() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional string date = 2;</code>
@@ -1745,7 +1971,7 @@ public final class GeoProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000008;
         date_ = value;
         onChanged();
         return this;
@@ -1758,7 +1984,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public Builder clearDate() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000008);
         date_ = getDefaultInstance().getDate();
         onChanged();
         return this;
@@ -1775,7 +2001,7 @@ public final class GeoProtocol {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  bitField0_ |= 0x00000008;
         date_ = value;
         onChanged();
         return this;
@@ -1787,7 +2013,7 @@ public final class GeoProtocol {
        * <code>optional int64 dateInt = 3;</code>
        */
       public boolean hasDateInt() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int64 dateInt = 3;</code>
@@ -1799,7 +2025,7 @@ public final class GeoProtocol {
        * <code>optional int64 dateInt = 3;</code>
        */
       public Builder setDateInt(long value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         dateInt_ = value;
         onChanged();
         return this;
@@ -1808,7 +2034,7 @@ public final class GeoProtocol {
        * <code>optional int64 dateInt = 3;</code>
        */
       public Builder clearDateInt() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         dateInt_ = 0L;
         onChanged();
         return this;
@@ -1824,7 +2050,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public boolean hasInclinationPercent() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional float inclinationPercent = 4;</code>
@@ -1844,7 +2070,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public Builder setInclinationPercent(float value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         inclinationPercent_ = value;
         onChanged();
         return this;
@@ -1857,7 +2083,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public Builder clearInclinationPercent() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000020);
         inclinationPercent_ = 0F;
         onChanged();
         return this;
@@ -1873,7 +2099,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public boolean hasInclinationType() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .eaglesakura_ace.InclinationType inclinationType = 5;</code>
@@ -1896,7 +2122,7 @@ public final class GeoProtocol {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         inclinationType_ = value;
         onChanged();
         return this;
@@ -1909,7 +2135,7 @@ public final class GeoProtocol {
        * </pre>
        */
       public Builder clearInclinationType() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000040);
         inclinationType_ = com.eaglesakura.andriders.protocol.GeoProtocol.InclinationType.None;
         onChanged();
         return this;
@@ -5818,27 +6044,28 @@ public final class GeoProtocol {
       "\n\021GeoProtocol.proto\022\017eaglesakura_ace\032\023Ac" +
       "esConstants.proto\"A\n\010GeoPoint\022\020\n\010latitud" +
       "e\030\001 \002(\001\022\021\n\tlongitude\030\002 \002(\001\022\020\n\010altitude\030\003" +
-      " \002(\001\"\257\001\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031." +
-      "eaglesakura_ace.GeoPoint\022\014\n\004date\030\002 \001(\t\022\017" +
-      "\n\007dateInt\030\003 \001(\003\022\032\n\022inclinationPercent\030\004 " +
-      "\001(\002\0229\n\017inclinationType\030\005 \001(\0162 .eaglesaku" +
-      "ra_ace.InclinationType\"\231\004\n\020GeographyPayl" +
-      "oad\022+\n\010location\030\001 \002(\0132\031.eaglesakura_ace." +
-      "GeoPoint\022\014\n\004date\030\002 \002(\t\022\023\n\013sunriseDate\030\n ",
-      "\001(\t\022\022\n\nsunsetDate\030\013 \001(\t\022\014\n\004temp\030\014 \001(\002\022\026\n" +
-      "\016windSpeedMeter\030\r \001(\002\022D\n\016placeRestStore\030" +
-      "2 \001(\0132,.eaglesakura_ace.GeographyPayload" +
-      ".PlacesInfo\022?\n\tplaceRest\0303 \001(\0132,.eaglesa" +
-      "kura_ace.GeographyPayload.PlacesInfo\022E\n\017" +
-      "placeCycleStore\0304 \001(\0132,.eaglesakura_ace." +
-      "GeographyPayload.PlacesInfo\032B\n\005Place\022+\n\010" +
-      "location\030\001 \002(\0132\031.eaglesakura_ace.GeoPoin" +
-      "t\022\014\n\004name\030\002 \002(\t\032i\n\nPlacesInfo\022:\n\tnearPla" +
-      "ce\030\001 \001(\0132\'.eaglesakura_ace.GeographyPayl",
-      "oad.Place\022\017\n\007nearNum\030\002 \002(\005\022\016\n\006farNum\030\003 \002" +
-      "(\005*6\n\017InclinationType\022\010\n\004None\020\000\022\010\n\004Hill\020" +
-      "\001\022\017\n\013IntenseHill\020\002B$\n\"com.eaglesakura.an" +
-      "driders.protocol"
+      " \002(\001\"\343\001\n\nGeoPayload\022+\n\010location\030\001 \002(\0132\031." +
+      "eaglesakura_ace.GeoPoint\022\030\n\020locationAccu" +
+      "racy\030\007 \001(\002\022\030\n\020locationReliance\030\010 \001(\010\022\014\n\004" +
+      "date\030\002 \001(\t\022\017\n\007dateInt\030\003 \001(\003\022\032\n\022inclinati" +
+      "onPercent\030\004 \001(\002\0229\n\017inclinationType\030\005 \001(\016" +
+      "2 .eaglesakura_ace.InclinationType\"\231\004\n\020G" +
+      "eographyPayload\022+\n\010location\030\001 \002(\0132\031.eagl",
+      "esakura_ace.GeoPoint\022\014\n\004date\030\002 \002(\t\022\023\n\013su" +
+      "nriseDate\030\n \001(\t\022\022\n\nsunsetDate\030\013 \001(\t\022\014\n\004t" +
+      "emp\030\014 \001(\002\022\026\n\016windSpeedMeter\030\r \001(\002\022D\n\016pla" +
+      "ceRestStore\0302 \001(\0132,.eaglesakura_ace.Geog" +
+      "raphyPayload.PlacesInfo\022?\n\tplaceRest\0303 \001" +
+      "(\0132,.eaglesakura_ace.GeographyPayload.Pl" +
+      "acesInfo\022E\n\017placeCycleStore\0304 \001(\0132,.eagl" +
+      "esakura_ace.GeographyPayload.PlacesInfo\032" +
+      "B\n\005Place\022+\n\010location\030\001 \002(\0132\031.eaglesakura" +
+      "_ace.GeoPoint\022\014\n\004name\030\002 \002(\t\032i\n\nPlacesInf",
+      "o\022:\n\tnearPlace\030\001 \001(\0132\'.eaglesakura_ace.G" +
+      "eographyPayload.Place\022\017\n\007nearNum\030\002 \002(\005\022\016" +
+      "\n\006farNum\030\003 \002(\005*6\n\017InclinationType\022\010\n\004Non" +
+      "e\020\000\022\010\n\004Hill\020\001\022\017\n\013IntenseHill\020\002B$\n\"com.ea" +
+      "glesakura.andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5856,7 +6083,7 @@ public final class GeoProtocol {
           internal_static_eaglesakura_ace_GeoPayload_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_eaglesakura_ace_GeoPayload_descriptor,
-              new java.lang.String[] { "Location", "Date", "DateInt", "InclinationPercent", "InclinationType", });
+              new java.lang.String[] { "Location", "LocationAccuracy", "LocationReliance", "Date", "DateInt", "InclinationPercent", "InclinationType", });
           internal_static_eaglesakura_ace_GeographyPayload_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_eaglesakura_ace_GeographyPayload_fieldAccessorTable = new
