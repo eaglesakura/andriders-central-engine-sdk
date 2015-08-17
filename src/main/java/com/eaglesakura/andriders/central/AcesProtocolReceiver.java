@@ -517,7 +517,7 @@ public class AcesProtocolReceiver {
      */
     private void onCommandReceived(MasterPayload master, TriggerPayload trigger) {
         CommandKey key = CommandKey.fromString(trigger.getKey());
-        Intent intent = null;
+        Intent intent = new Intent();
         if (trigger.hasAppIntent()) {
             intent = AcesTriggerUtil.makeIntent(trigger.getAppIntent());
         }

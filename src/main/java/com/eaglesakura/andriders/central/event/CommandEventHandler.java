@@ -31,6 +31,8 @@ public abstract class CommandEventHandler {
      * @param master   マスターデータ
      * @param key      コマンド識別キー
      * @param trigger  トリガー本体
+     * @param data     CommandSetupResultBuilder.putExtraで保存した値
+     * @see com.eaglesakura.andriders.command.CommandSetupResultBuilder
      */
     public void onTriggerReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger, Intent data) {
     }
