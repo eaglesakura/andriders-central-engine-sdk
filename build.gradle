@@ -27,7 +27,8 @@ apply plugin: 'com.android.library'
 // 0.4.4 : 常駐Serviceに対応
 // 0.4.5 : RemoteCentralに対応 / センサーの受信時刻に対応 / 位置情報の信頼性についての情報を追加（トンネル対策）
 // 0.4.6 : EGLIB module update
-def ACES_SDK_VERSION = "0.4.5";
+// 1.0.0 : ACE v3対応
+def ACES_SDK_VERSION = "1.0.0";
 def EGLIBRARY_ARTIFACT_VERSION = "0.2.9";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.0";
 
@@ -35,11 +36,11 @@ dependencies {
     compile "com.google.protobuf:protobuf-java:${PROTOBUF_ARTIFACT_VERSION}"
     compile 'com.android.support:support-annotations:+'
 
-    // release only
-    releaseCompile "com.eaglesakura:eglibrary-android-java-core:${EGLIBRARY_ARTIFACT_VERSION}"
+//    // release only
+//    releaseCompile "com.eaglesakura:eglibrary-android-java-core:${EGLIBRARY_ARTIFACT_VERSION}"
 
     // debug only
-    debugCompile project(':eglibrary-android-java-core')
+    compile project(':app:eglibrary-subset')
 }
 
 android {
