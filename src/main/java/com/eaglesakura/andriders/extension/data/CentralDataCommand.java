@@ -20,5 +20,5 @@ public class CentralDataCommand {
     /**
      * 拡張情報を取得する
      */
-    public static final String CMD_PULL_EXTENSION_INFORMATION = "CMD_PULL_EXTENSION_INFORMATION";
+    public static final String CMD_PULL_EXTENSION_INFORMATIONS = "CMD_PULL_EXTENSION_INFORMATIONS";
 }

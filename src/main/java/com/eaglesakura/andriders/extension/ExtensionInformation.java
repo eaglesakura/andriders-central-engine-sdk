@@ -4,6 +4,10 @@ import android.app.Activity;
 
 import com.eaglesakura.andriders.idl.remote.IdlExtensionInfo;
 import com.eaglesakura.android.db.BaseProperties;
+import com.eaglesakura.util.Util;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 拡張情報
@@ -64,16 +68,28 @@ public class ExtensionInformation {
         return raw.toByteArray();
     }
 
+    public static byte[] serialize(List<ExtensionInformation> list) {
+        List<IdlExtensionInfo> rawList = new ArrayList<>();
+        for (ExtensionInformation item : list) {
+            rawList.add(item.raw);
+        }
+        return BaseProperties.serialize(rawList);
+    }
+
     /**
      * バッファからデシリアライズする
      *
      * @param buffer
      * @return
      */
-    public static ExtensionInformation deserialize(byte[] buffer) {
-        IdlExtensionInfo raw = BaseProperties.deserializeInstance(null, IdlExtensionInfo.class, buffer);
-        if (raw != null) {
-            return new ExtensionInformation(raw);
+    public static List<ExtensionInformation> deserialize(byte[] buffer) {
+        List<IdlExtensionInfo> rawList = BaseProperties.deserializeToArray(null, IdlExtensionInfo.class, buffer);
+        if (rawList != null) {
+            List<ExtensionInformation> result = new ArrayList<>();
+            for (IdlExtensionInfo raw : rawList) {
+                result.add(new ExtensionInformation(raw));
+            }
+            return result;
         } else {
             throw new IllegalArgumentException("deserialize failed");
         }

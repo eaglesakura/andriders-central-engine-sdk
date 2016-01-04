@@ -2,6 +2,8 @@ package com.eaglesakura.andriders.extension;
 
 import com.eaglesakura.andriders.extension.data.RemoteDataManager;
 
+import java.util.List;
+
 /**
  * 拡張機能を実装したService
  * <p/>
@@ -26,7 +28,7 @@ public interface IExtensionService {
      *
      * @return
      */
-    ExtensionInformation getExtensionInformation();
+    List<ExtensionInformation> getExtensionInformations();
 
     /**
      * ACEに接続され、サイコンの使用準備ができた
