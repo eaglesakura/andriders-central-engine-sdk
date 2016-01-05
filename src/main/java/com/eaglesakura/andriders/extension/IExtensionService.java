@@ -28,7 +28,7 @@ public interface IExtensionService {
      *
      * @return
      */
-    List<ExtensionInformation> getExtensionInformations();
+    ExtensionInformation getExtensionInformation();
 
     /**
      * ACEに接続され、サイコンの使用準備ができた

@@ -26,14 +26,6 @@ public class ExtensionInformation {
         this(null);
     }
 
-    public void setName(String set) {
-        raw.setName(set);
-    }
-
-    public String getName() {
-        return raw.getName();
-    }
-
     public void setText(String set) {
         raw.setText(set);
     }

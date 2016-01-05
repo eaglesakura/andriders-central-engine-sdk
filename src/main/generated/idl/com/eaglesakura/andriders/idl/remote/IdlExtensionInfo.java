@@ -4,7 +4,6 @@ import android.content.Context;
 
 public class IdlExtensionInfo extends com.eaglesakura.android.db.BaseProperties {
     
-    public static final String ID_NAME = "IdlExtensionInfo.name";
     public static final String ID_TEXT = "IdlExtensionInfo.text";
     public static final String ID_CATEGORY = "IdlExtensionInfo.category";
     public static final String ID_SETTINGACTIVITYNAME = "IdlExtensionInfo.settingActivityName";
@@ -13,7 +12,6 @@ public class IdlExtensionInfo extends com.eaglesakura.android.db.BaseProperties 
     public IdlExtensionInfo(Context context, String dbFileName){ super(context, dbFileName); _initialize(); }
     protected void _initialize() {
             
-        addProperty("IdlExtensionInfo.name", "");
         addProperty("IdlExtensionInfo.text", "");
         addProperty("IdlExtensionInfo.category", "others");
         addProperty("IdlExtensionInfo.settingActivityName", "");
@@ -21,8 +19,6 @@ public class IdlExtensionInfo extends com.eaglesakura.android.db.BaseProperties 
         load();
         
     }
-    public void setName(String set){ setProperty("IdlExtensionInfo.name", set); }
-    public String getName(){ return getStringProperty("IdlExtensionInfo.name"); }
     public void setText(String set){ setProperty("IdlExtensionInfo.text", set); }
     public String getText(){ return getStringProperty("IdlExtensionInfo.text"); }
     public void setCategory(String set){ setProperty("IdlExtensionInfo.category", set); }

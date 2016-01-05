@@ -18,6 +18,7 @@ import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
 import com.eaglesakura.util.LogUtil;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class RemoteDataManager {
@@ -182,8 +183,8 @@ public class RemoteDataManager {
         acesCommandMap.addAction(CentralDataCommand.CMD_PULL_EXTENSION_INFORMATIONS, new CommandMap.Action() {
             @Override
             public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
-                List<ExtensionInformation> informations = service.getExtensionInformations();
-                return ExtensionInformation.serialize(informations);
+                ExtensionInformation information = service.getExtensionInformation();
+                return ExtensionInformation.serialize(Arrays.asList(information));
             }
         });
     }
