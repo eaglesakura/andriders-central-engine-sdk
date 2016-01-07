@@ -19,6 +19,7 @@ import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
 import com.eaglesakura.android.thread.UIHandler;
+import com.eaglesakura.math.Progress;
 import com.eaglesakura.util.LogUtil;
 
 import java.util.Arrays;
@@ -107,7 +108,7 @@ public class RemoteDataManager {
 
         try {
             server.postToAces(CentralDataCommand.CMD_setLocation, idl);
-        }catch (Exception e) {
+        } catch (Exception e) {
 
         }
     }
@@ -259,6 +260,17 @@ public class RemoteDataManager {
                         service.startSetting(RemoteDataManager.this);
                     }
                 });
+                return null;
+            }
+        });
+
+        /**
+         * 強制再起動を行う
+         */
+        acesCommandMap.addAction(CentralDataCommand.CMD_requestRebootExtention, new CommandMap.Action() {
+            @Override
+            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+                android.os.Process.killProcess(android.os.Process.myPid());
                 return null;
             }
         });

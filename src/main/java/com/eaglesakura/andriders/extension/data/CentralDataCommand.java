@@ -41,4 +41,9 @@ public class CentralDataCommand {
      * 設定ボタンが押された
      */
     public static final String CMD_onSettingStart = "CMD_onSettingStart";
+
+    /**
+     * 自身のServiceを速やかに殺し、再起動を促す
+     */
+    public static final String CMD_requestRebootExtention = "CMD_requestRebootExtention";
 }
