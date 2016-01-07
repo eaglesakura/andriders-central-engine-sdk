@@ -38,8 +38,7 @@ message GeoPayload {
     optional bool locationReliance = 8;
 
     // 打刻した時刻
-    optional string date = 2;
-    optional int64 dateInt = 3;
+    required int64 date = 9;
 
     // 勾配(%単位、下り坂の場合は負の値)
     optional float inclinationPercent = 4;
@@ -57,9 +56,9 @@ message GeographyPayload {
     required string date = 2;
 
     // 日の出時刻
-    optional string sunriseDate = 10;
+    optional int64 sunriseDate = 14;
     // 日の入り時刻
-    optional string sunsetDate = 11;
+    optional int64 sunsetDate = 15;
     // 気温（摂氏）
     optional float temp = 12;
     // 風速（メートル）
