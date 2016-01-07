@@ -23,6 +23,11 @@ public class CentralDataCommand {
     public static final String CMD_getInformations = "CMD_getInformations";
 
     /**
+     * ロケーションを更新する
+     */
+    public static final String CMD_setLocation = "CMD_setLocation";
+
+    /**
      * 拡張機能が有効化された
      */
     public static final String CMD_onExtensionEnable = "CMD_onExtensionEnable";

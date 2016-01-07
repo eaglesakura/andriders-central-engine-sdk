@@ -3,12 +3,14 @@ package com.eaglesakura.andriders.extension.data;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.IBinder;
 import android.os.RemoteException;
 
 import com.eaglesakura.andriders.extension.ExtensionInformation;
 import com.eaglesakura.andriders.extension.IExtensionService;
 import com.eaglesakura.andriders.idl.remote.IdlHeartrate;
+import com.eaglesakura.andriders.idl.remote.IdlLocation;
 import com.eaglesakura.andriders.idl.remote.IdlSpeedAndCadence;
 import com.eaglesakura.andriders.idl.remote.IdlStringProperty;
 import com.eaglesakura.andriders.protocol.SensorProtocol;
@@ -16,6 +18,7 @@ import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
+import com.eaglesakura.android.thread.UIHandler;
 import com.eaglesakura.util.LogUtil;
 
 import java.util.Arrays;
@@ -93,6 +96,21 @@ public class RemoteDataManager {
         return null;
     }
 
+    public void setLocation(Location loc) {
+        validAces();
+
+        IdlLocation idl = new IdlLocation(null);
+        idl.setLatitude(loc.getLatitude());
+        idl.setLongitude(loc.getLongitude());
+        idl.setAltitude(loc.getAltitude());
+        idl.setAccuracyMeter(loc.getAccuracy());
+
+        try {
+            server.postToAces(CentralDataCommand.CMD_setLocation, idl);
+        }catch (Exception e) {
+
+        }
+    }
 
     /**
      * 心拍を更新する
@@ -163,14 +181,24 @@ public class RemoteDataManager {
         @Override
         protected void onRegisterClient(String id, ICommandClientCallback callback) {
             if (IExtensionService.CLIENT_ID_ACE_SERVICE.equals(id)) {
-                service.onAceServiceConnected(RemoteDataManager.this);
+                UIHandler.postUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        service.onAceServiceConnected(RemoteDataManager.this);
+                    }
+                });
             }
         }
 
         @Override
         protected void onUnregisterClient(String id) {
             if (IExtensionService.CLIENT_ID_ACE_SERVICE.equals(id)) {
-                service.onAceServiceDisconnected(RemoteDataManager.this);
+                UIHandler.postUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        service.onAceServiceDisconnected(RemoteDataManager.this);
+                    }
+                });
             }
         }
     }
@@ -193,7 +221,12 @@ public class RemoteDataManager {
         acesCommandMap.addAction(CentralDataCommand.CMD_onExtensionEnable, new CommandMap.Action() {
             @Override
             public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
-                service.onEnable(RemoteDataManager.this);
+                UIHandler.postUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        service.onEnable(RemoteDataManager.this);
+                    }
+                });
                 return null;
             }
         });
@@ -204,7 +237,12 @@ public class RemoteDataManager {
         acesCommandMap.addAction(CentralDataCommand.CMD_onExtensionDisable, new CommandMap.Action() {
             @Override
             public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
-                service.onDisable(RemoteDataManager.this);
+                UIHandler.postUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        service.onDisable(RemoteDataManager.this);
+                    }
+                });
                 return null;
             }
         });
@@ -215,7 +253,12 @@ public class RemoteDataManager {
         acesCommandMap.addAction(CentralDataCommand.CMD_onSettingStart, new CommandMap.Action() {
             @Override
             public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
-                service.startSetting(RemoteDataManager.this);
+                UIHandler.postUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        service.startSetting(RemoteDataManager.this);
+                    }
+                });
                 return null;
             }
         });
