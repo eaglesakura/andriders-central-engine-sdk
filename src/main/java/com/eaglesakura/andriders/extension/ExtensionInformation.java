@@ -34,14 +34,13 @@ public class ExtensionInformation {
         return raw.getText();
     }
 
-    public void setSettingActivityName(Class<? extends Activity> clazz) {
-        raw.setSettingActivityName(clazz.getName());
+    public boolean hasSetting() {
+        return raw.getHasSetting();
     }
 
-    public String getSettingActivityName() {
-        return raw.getSettingActivityName();
+    public void setHasSetting(boolean set) {
+        raw.setHasSetting(set);
     }
-
 
     public ExtensionCategory getCategory() {
         return ExtensionCategory.fromName(raw.getCategory());

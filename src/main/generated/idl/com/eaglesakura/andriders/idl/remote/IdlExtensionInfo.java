@@ -6,7 +6,7 @@ public class IdlExtensionInfo extends com.eaglesakura.android.db.BaseProperties 
     
     public static final String ID_TEXT = "IdlExtensionInfo.text";
     public static final String ID_CATEGORY = "IdlExtensionInfo.category";
-    public static final String ID_SETTINGACTIVITYNAME = "IdlExtensionInfo.settingActivityName";
+    public static final String ID_HASSETTING = "IdlExtensionInfo.hasSetting";
     
     public IdlExtensionInfo(Context context){ super(context, "props.db"); _initialize(); }
     public IdlExtensionInfo(Context context, String dbFileName){ super(context, dbFileName); _initialize(); }
@@ -14,7 +14,7 @@ public class IdlExtensionInfo extends com.eaglesakura.android.db.BaseProperties 
             
         addProperty("IdlExtensionInfo.text", "");
         addProperty("IdlExtensionInfo.category", "others");
-        addProperty("IdlExtensionInfo.settingActivityName", "");
+        addProperty("IdlExtensionInfo.hasSetting", "false");
         
         load();
         
@@ -23,7 +23,7 @@ public class IdlExtensionInfo extends com.eaglesakura.android.db.BaseProperties 
     public String getText(){ return getStringProperty("IdlExtensionInfo.text"); }
     public void setCategory(String set){ setProperty("IdlExtensionInfo.category", set); }
     public String getCategory(){ return getStringProperty("IdlExtensionInfo.category"); }
-    public void setSettingActivityName(String set){ setProperty("IdlExtensionInfo.settingActivityName", set); }
-    public String getSettingActivityName(){ return getStringProperty("IdlExtensionInfo.settingActivityName"); }
+    public void setHasSetting(boolean set){ setProperty("IdlExtensionInfo.hasSetting", set); }
+    public boolean getHasSetting(){ return getBooleanProperty("IdlExtensionInfo.hasSetting"); }
     
 }

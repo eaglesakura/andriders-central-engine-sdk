@@ -117,7 +117,8 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
 //    IdlExtensionInfo.stringProperty "name", "" // 拡張機能名
     IdlExtensionInfo.stringProperty "text", "" // ヘルプテキスト
     IdlExtensionInfo.stringProperty "category", "others" // 識別用のカテゴリ。ON/OFFの排他や重複を設定する
-    IdlExtensionInfo.stringProperty "settingActivityName", "" // 設定画面の表示名
+    IdlExtensionInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue
+//    IdlExtensionInfo.stringProperty "settingActivityName", "" // 設定画面の表示名
 }
 
 task uploadSdkArchives << {

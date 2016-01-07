@@ -19,7 +19,6 @@ import com.eaglesakura.android.service.aidl.ICommandClientCallback;
 import com.eaglesakura.util.LogUtil;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class RemoteDataManager {
 
@@ -85,7 +84,7 @@ public class RemoteDataManager {
         idl.setValue(type.toString());
 
         try {
-            IdlStringProperty addr = server.postToAces(IdlStringProperty.class, CentralDataCommand.CMD_POST_QUERY_BLE_GADGET_ADDRESS, idl);
+            IdlStringProperty addr = server.postToAces(IdlStringProperty.class, CentralDataCommand.CMD_setBleGadgetAddress, idl);
             return addr.getValue();
         } catch (Exception e) {
             LogUtil.log(e);
@@ -107,7 +106,7 @@ public class RemoteDataManager {
         idl.setBpm(bpm);
 
         try {
-            server.postToAces(CentralDataCommand.CMD_POST_HEARTRATE, idl);
+            server.postToAces(CentralDataCommand.CMD_setHeartrate, idl);
         } catch (Exception e) {
             LogUtil.log(e);
         }
@@ -131,7 +130,7 @@ public class RemoteDataManager {
         idl.setWheelRevolution(wheelRevolution);
 
         try {
-            server.postToAces(CentralDataCommand.CMD_POST_SPEED_AND_CADENCE, idl);
+            server.postToAces(CentralDataCommand.CMD_setSpeedAndCadence, idl);
         } catch (Exception e) {
             LogUtil.log(e);
         }
@@ -180,11 +179,44 @@ public class RemoteDataManager {
         /**
          * 拡張機能情報を取得する
          */
-        acesCommandMap.addAction(CentralDataCommand.CMD_PULL_EXTENSION_INFORMATIONS, new CommandMap.Action() {
+        acesCommandMap.addAction(CentralDataCommand.CMD_getInformations, new CommandMap.Action() {
             @Override
             public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
                 ExtensionInformation information = service.getExtensionInformation();
                 return ExtensionInformation.serialize(Arrays.asList(information));
+            }
+        });
+
+        /**
+         * 拡張機能が有効化された
+         */
+        acesCommandMap.addAction(CentralDataCommand.CMD_onExtensionEnable, new CommandMap.Action() {
+            @Override
+            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+                service.onEnable(RemoteDataManager.this);
+                return null;
+            }
+        });
+
+        /**
+         * 拡張機能が無効化された
+         */
+        acesCommandMap.addAction(CentralDataCommand.CMD_onExtensionDisable, new CommandMap.Action() {
+            @Override
+            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+                service.onDisable(RemoteDataManager.this);
+                return null;
+            }
+        });
+
+        /**
+         * 設定ボタンが押された
+         */
+        acesCommandMap.addAction(CentralDataCommand.CMD_onSettingStart, new CommandMap.Action() {
+            @Override
+            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+                service.startSetting(RemoteDataManager.this);
+                return null;
             }
         });
     }

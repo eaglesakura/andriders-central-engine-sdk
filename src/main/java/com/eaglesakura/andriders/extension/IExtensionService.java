@@ -43,4 +43,25 @@ public interface IExtensionService {
      * @param dataManager
      */
     void onAceServiceDisconnected(RemoteDataManager dataManager);
+
+    /**
+     * 拡張サービスが有効化された
+     *
+     * @param dataManager
+     */
+    void onEnable(RemoteDataManager dataManager);
+
+    /**
+     * 拡張サービスが無効化された
+     *
+     * @param dataManager
+     */
+    void onDisable(RemoteDataManager dataManager);
+
+    /**
+     * 設定画面を開く
+     *
+     * @param dataManager
+     */
+    void startSetting(RemoteDataManager dataManager);
 }
