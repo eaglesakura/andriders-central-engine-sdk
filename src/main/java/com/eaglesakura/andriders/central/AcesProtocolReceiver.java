@@ -28,7 +28,7 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
 import com.eaglesakura.geo.Geohash;
 import com.eaglesakura.geo.GeohashGroup;
-import com.eaglesakura.io.IOUtil;
+import com.eaglesakura.util.IOUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
 import com.google.protobuf.ByteString;

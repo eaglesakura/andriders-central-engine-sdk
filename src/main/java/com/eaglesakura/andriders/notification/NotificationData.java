@@ -6,8 +6,8 @@ import android.graphics.Color;
 
 import com.eaglesakura.andriders.media.SoundKey;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
-import com.eaglesakura.io.IOUtil;
 import com.eaglesakura.util.StringUtil;
 import com.google.protobuf.ByteString;
 
@@ -176,7 +176,7 @@ public class NotificationData {
      * @param icon
      */
     public void setIcon(Bitmap icon) {
-        this.icon = ImageUtil.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
+        this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
     }
 
     /**
@@ -188,7 +188,7 @@ public class NotificationData {
      * @param level
      */
     public void setIcon(Bitmap icon, IconCompressLevel level) {
-        this.icon = ImageUtil.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
+        this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
         this.iconCompressLevel = level;
     }
 

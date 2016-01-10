@@ -12,8 +12,8 @@ import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
-import com.eaglesakura.android.thread.UIHandler;
-import com.eaglesakura.android.util.AndroidUtil;
+import com.eaglesakura.android.thread.ui.UIHandler;
+import com.eaglesakura.android.util.AndroidThreadUtil;
 import com.eaglesakura.util.StringUtil;
 
 import java.util.ArrayList;
@@ -168,7 +168,7 @@ public class AcesCommandBuilder {
      * 送信されたデータは{@link AcesProtocolReceiver}で受信できる。
      */
     public void send() {
-        if (!AndroidUtil.isUIThread()) {
+        if (!AndroidThreadUtil.isUIThread()) {
             UIHandler.postUI(new Runnable() {
                 @Override
                 public void run() {

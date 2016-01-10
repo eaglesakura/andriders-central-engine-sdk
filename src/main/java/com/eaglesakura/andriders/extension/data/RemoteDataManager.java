@@ -18,8 +18,7 @@ import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
-import com.eaglesakura.android.thread.UIHandler;
-import com.eaglesakura.math.Progress;
+import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.util.LogUtil;
 
 import java.util.Arrays;
