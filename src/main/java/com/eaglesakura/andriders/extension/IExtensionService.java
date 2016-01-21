@@ -31,6 +31,13 @@ public interface IExtensionService {
     ExtensionInformation getExtensionInformation();
 
     /**
+     * ディスプレイの表示情報を取得する
+     *
+     * @return
+     */
+    List<DisplayInformation> getDisplayInformation();
+
+    /**
      * ACEに接続され、サイコンの使用準備ができた
      *
      * @param dataManager

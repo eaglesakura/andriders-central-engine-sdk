@@ -1,10 +1,7 @@
 package com.eaglesakura.andriders.extension;
 
-import android.app.Activity;
-
 import com.eaglesakura.andriders.idl.remote.IdlExtensionInfo;
 import com.eaglesakura.android.db.BaseProperties;
-import com.eaglesakura.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;

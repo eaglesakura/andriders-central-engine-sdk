@@ -7,6 +7,7 @@ import android.location.Location;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.extension.ExtensionInformation;
 import com.eaglesakura.andriders.extension.IExtensionService;
 import com.eaglesakura.andriders.idl.remote.IdlHeartrate;
@@ -14,6 +15,7 @@ import com.eaglesakura.andriders.idl.remote.IdlLocation;
 import com.eaglesakura.andriders.idl.remote.IdlSpeedAndCadence;
 import com.eaglesakura.andriders.idl.remote.IdlStringProperty;
 import com.eaglesakura.andriders.protocol.SensorProtocol;
+import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
@@ -22,6 +24,7 @@ import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.util.LogUtil;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class RemoteDataManager {
 
@@ -205,6 +208,18 @@ public class RemoteDataManager {
 
     private void buildCommandMap() {
         /**
+         * SDKバージョンを取得する
+         */
+        acesCommandMap.addAction(CentralDataCommand.CMD_getSDKVersion, new CommandMap.Action() {
+            @Override
+            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+                IdlStringProperty prop = new IdlStringProperty(null);
+                prop.setValue(BuildConfig.ACE_SDK_VERSION);
+                return prop.toByteArray();
+            }
+        });
+
+        /**
          * 拡張機能情報を取得する
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_getInformations, new CommandMap.Action() {
@@ -212,6 +227,17 @@ public class RemoteDataManager {
             public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
                 ExtensionInformation information = service.getExtensionInformation();
                 return ExtensionInformation.serialize(Arrays.asList(information));
+            }
+        });
+
+        /**
+         * 表示情報を取得する
+         */
+        acesCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, new CommandMap.Action() {
+            @Override
+            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+                List<DisplayInformation> displayInformation = service.getDisplayInformation();
+                return DisplayInformation.serialize(displayInformation);
             }
         });
 

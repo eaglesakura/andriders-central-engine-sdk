@@ -114,11 +114,26 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
      * 拡張機能情報
      */
     def IdlExtensionInfo = newProps("com.eaglesakura.andriders.idl.remote.IdlExtensionInfo");
-//    IdlExtensionInfo.stringProperty "name", "" // 拡張機能名
     IdlExtensionInfo.stringProperty "text", "" // ヘルプテキスト
     IdlExtensionInfo.stringProperty "category", "others" // 識別用のカテゴリ。ON/OFFの排他や重複を設定する
     IdlExtensionInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue
-//    IdlExtensionInfo.stringProperty "settingActivityName", "" // 設定画面の表示名
+
+    /**
+     * サイコンのディスプレイ情報を設定する
+     */
+    def IdlCycleDisplayInfo = newProps("com.eaglesakura.andriders.idl.display.IdlCycleDisplayInfo");
+    IdlCycleDisplayInfo.stringProperty "id", "" // 一意に識別するためのID
+    IdlCycleDisplayInfo.stringProperty "title", ""
+    IdlCycleDisplayInfo.stringProperty "text", ""
+    IdlCycleDisplayInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue
+
+    /**
+     * サイコンに表示するディスプレイ情報を通知する
+     */
+    def IdlCycleDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlCycleDisplayValue");
+    IdlCycleDisplayValue.stringProperty "id", "" // 一意に識別するためのID
+    IdlCycleDisplayValue.stringProperty "type", "" // 表示タイプ
+    IdlCycleDisplayValue.stringProperty "values", "" // 表示内容を示したJSON。表示内容は非常に小さいので、JSONレベルの大きさでも問題ないはず。
 }
 
 task uploadSdkArchives << {
