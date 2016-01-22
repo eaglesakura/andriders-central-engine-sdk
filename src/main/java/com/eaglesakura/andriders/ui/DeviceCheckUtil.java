@@ -7,9 +7,6 @@ public class DeviceCheckUtil {
 
     /**
      * 端末にACEがインストール済みであればtrueを返却する
-     *
-     * @param context
-     * @return
      */
     public static boolean isAceInstalled(Context context) {
         return false;
@@ -17,8 +14,6 @@ public class DeviceCheckUtil {
 
     /**
      * ACEのインストールを促すダイアログを表示する
-     *
-     * @param context
      */
     public static void showAceInstallDialog(Context context) {
 
@@ -26,9 +21,6 @@ public class DeviceCheckUtil {
 
     /**
      * ACEが起動中であればtrueを返却する
-     *
-     * @param context
-     * @return
      */
     public static boolean isAceBooted(Context context) {
         return false;
@@ -36,8 +28,6 @@ public class DeviceCheckUtil {
 
     /**
      * ACEの起動を促すダイアログを表示する
-     *
-     * @param context
      */
     public static void showAceServiceBootDialog(Context context) {
     }

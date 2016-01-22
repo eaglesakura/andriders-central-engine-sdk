@@ -1,13 +1,21 @@
 <resources>
 
     <!-- 近接コマンドカテゴリ -->
-    <string name="com.eaglesakura.andriders.category.TRIGGER_PROXIMITY">com.eaglesakura.andriders.category.TRIGGER_PROXIMITY</string>
+    <string name="com.eaglesakura.andriders.category.TRIGGER_PROXIMITY">
+        com.eaglesakura.andriders.category.TRIGGER_PROXIMITY
+    </string>
     <!-- ジオコマンドカテゴリ -->
-    <string name="com.eaglesakura.andriders.category.TRIGGER_GEO">com.eaglesakura.andriders.category.TRIGGER_GEO</string>
+    <string name="com.eaglesakura.andriders.category.TRIGGER_GEO">
+        com.eaglesakura.andriders.category.TRIGGER_GEO
+    </string>
     <!-- 活動コマンドカテゴリ -->
-    <string name="com.eaglesakura.andriders.category.TRIGGER_ACTIVITY">com.eaglesakura.andriders.category.TRIGGER_ACTIVITY</string>
-    
+    <string name="com.eaglesakura.andriders.category.TRIGGER_ACTIVITY">
+        com.eaglesakura.andriders.category.TRIGGER_ACTIVITY
+    </string>
+
     <!-- SNSへの送信を許可する -->
-    <string name="com.eaglesakura.andriders.permission.POST_SNS">com.eaglesakura.andriders.permission.POST_SNS</string>
+    <string name="com.eaglesakura.andriders.permission.POST_SNS">
+        com.eaglesakura.andriders.permission.POST_SNS
+    </string>
 
 </resources>

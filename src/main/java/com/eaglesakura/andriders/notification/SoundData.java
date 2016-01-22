@@ -1,9 +1,9 @@
 package com.eaglesakura.andriders.notification;
 
-import android.net.Uri;
-
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.util.StringUtil;
+
+import android.net.Uri;
 
 import java.io.File;
 
@@ -32,8 +32,6 @@ public class SoundData {
 
     /**
      * キューに追加する場合はtrue
-     *
-     * @return
      */
     public boolean isQueue() {
         return queue;
@@ -41,8 +39,6 @@ public class SoundData {
 
     /**
      * URIを取得する
-     *
-     * @return
      */
     public Uri getUri() {
         return uri;
@@ -66,8 +62,6 @@ public class SoundData {
 
     /**
      * キューに貯める場合はtrue
-     *
-     * @param queue
      */
     public void setQueue(boolean queue) {
         this.queue = queue;
@@ -75,8 +69,6 @@ public class SoundData {
 
     /**
      * ビルドを行う
-     *
-     * @return
      */
     public CommandProtocol.SoundNotificationPayload buildPayload() {
         CommandProtocol.SoundNotificationPayload.Builder builder = CommandProtocol.SoundNotificationPayload.newBuilder();

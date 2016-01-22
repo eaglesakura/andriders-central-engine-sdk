@@ -1,9 +1,9 @@
 package com.eaglesakura.andriders.central;
 
-import android.content.Context;
-
 import com.eaglesakura.andriders.central.event.TeamMemberDataHandler;
 import com.eaglesakura.andriders.protocol.TeamProtocol;
+
+import android.content.Context;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -64,8 +64,6 @@ public class TeamMemberReceiver extends AcesProtocolReceiver {
      * メンバーのMasterPayloadを受け取った際のハンドリングを行う
      *
      * @param master 　MasterPayload
-     *
-     * @throws Exception
      */
     public synchronized void onReceivedMasterPayload(TeamProtocol.TeamMember master) throws Exception {
         this.lastReceivedMemberData = master;

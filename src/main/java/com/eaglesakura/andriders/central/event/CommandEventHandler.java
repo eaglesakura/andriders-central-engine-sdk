@@ -1,7 +1,5 @@
 package com.eaglesakura.andriders.central.event;
 
-import android.content.Intent;
-
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
@@ -10,6 +8,8 @@ import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+
+import android.content.Intent;
 
 /**
  * ACEsからコマンドを受け取った場合のコマンドハンドリング

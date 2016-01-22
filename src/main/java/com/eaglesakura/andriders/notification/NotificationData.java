@@ -1,15 +1,16 @@
 package com.eaglesakura.andriders.notification;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import com.google.protobuf.ByteString;
 
 import com.eaglesakura.andriders.media.SoundKey;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.util.StringUtil;
-import com.google.protobuf.ByteString;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
 import java.util.Date;
 
@@ -172,8 +173,6 @@ public class NotificationData {
      * アイコンを指定する
      * <br>
      * アイコンは自動的にサムネイルサイズに縮小される
-     *
-     * @param icon
      */
     public void setIcon(Bitmap icon) {
         this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
@@ -183,9 +182,6 @@ public class NotificationData {
      * アイコンを指定する。
      * <br>
      * アイコンは自動的にサムネイルサイズに縮小される。
-     *
-     * @param icon
-     * @param level
      */
     public void setIcon(Bitmap icon, IconCompressLevel level) {
         this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
@@ -194,9 +190,6 @@ public class NotificationData {
 
     /**
      * アイコンを指定する
-     *
-     * @param context
-     * @param drawableid
      */
     public void setIcon(Context context, int drawableid) {
         setIcon(ImageUtil.decode(context, drawableid));
@@ -208,8 +201,6 @@ public class NotificationData {
 
     /**
      * 背景色を指定する。ただし、アルファは削除される。
-     *
-     * @param color
      */
     public void setBackgroundColor(int color) {
         this.backgroundColor = (0xFF000000 | color);
@@ -221,8 +212,6 @@ public class NotificationData {
 
     /**
      * payloadを構築する
-     *
-     * @return
      */
     public CommandProtocol.NotificationRequestPayload buildPayload() {
         CommandProtocol.NotificationRequestPayload.Builder builder = CommandProtocol.NotificationRequestPayload.newBuilder();

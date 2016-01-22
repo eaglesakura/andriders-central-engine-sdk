@@ -4,717 +4,373 @@
 package com.eaglesakura.andriders.protocol;
 
 public final class CommandProtocol {
-  private CommandProtocol() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-  }
-  /**
-   * Protobuf enum {@code eaglesakura_ace.CommandType}
-   *
-   * <pre>
-   * 標準コマンド
-   * </pre>
-   */
-  public enum CommandType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>ExtensionTrigger = 1;</code>
-     *
-     * <pre>
-     * 拡張機能トリガー起動された
-     * トリガーは近接、Activity、時限、GEO等色々ある
-     * </pre>
-     */
-    ExtensionTrigger(0, 1),
-    /**
-     * <code>AcesNotification = 2;</code>
-     *
-     * <pre>
-     * ACEsに通知を行わせる
-     * </pre>
-     */
-    AcesNotification(1, 2),
-    /**
-     * <code>SoundNotification = 3;</code>
-     *
-     * <pre>
-     * サウンドを鳴らす
-     * </pre>
-     */
-    SoundNotification(2, 3),
-    ;
-
-    /**
-     * <code>ExtensionTrigger = 1;</code>
-     *
-     * <pre>
-     * 拡張機能トリガー起動された
-     * トリガーは近接、Activity、時限、GEO等色々ある
-     * </pre>
-     */
-    public static final int ExtensionTrigger_VALUE = 1;
-    /**
-     * <code>AcesNotification = 2;</code>
-     *
-     * <pre>
-     * ACEsに通知を行わせる
-     * </pre>
-     */
-    public static final int AcesNotification_VALUE = 2;
-    /**
-     * <code>SoundNotification = 3;</code>
-     *
-     * <pre>
-     * サウンドを鳴らす
-     * </pre>
-     */
-    public static final int SoundNotification_VALUE = 3;
-
-
-    public final int getNumber() { return value; }
-
-    public static CommandType valueOf(int value) {
-      switch (value) {
-        case 1: return ExtensionTrigger;
-        case 2: return AcesNotification;
-        case 3: return SoundNotification;
-        default: return null;
-      }
+    private CommandProtocol() {
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<CommandType>
-        internalGetValueMap() {
-      return internalValueMap;
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<CommandType>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<CommandType>() {
-            public CommandType findValueByNumber(int number) {
-              return CommandType.valueOf(number);
+
+    /**
+     * Protobuf enum {@code eaglesakura_ace.CommandType}
+     *
+     * <pre>
+     * 標準コマンド
+     * </pre>
+     */
+    public enum CommandType
+            implements com.google.protobuf.ProtocolMessageEnum {
+        /**
+         * <code>ExtensionTrigger = 1;</code>
+         *
+         * <pre>
+         * 拡張機能トリガー起動された
+         * トリガーは近接、Activity、時限、GEO等色々ある
+         * </pre>
+         */
+        ExtensionTrigger(0, 1),
+        /**
+         * <code>AcesNotification = 2;</code>
+         *
+         * <pre>
+         * ACEsに通知を行わせる
+         * </pre>
+         */
+        AcesNotification(1, 2),
+        /**
+         * <code>SoundNotification = 3;</code>
+         *
+         * <pre>
+         * サウンドを鳴らす
+         * </pre>
+         */
+        SoundNotification(2, 3),;
+
+        /**
+         * <code>ExtensionTrigger = 1;</code>
+         *
+         * <pre>
+         * 拡張機能トリガー起動された
+         * トリガーは近接、Activity、時限、GEO等色々ある
+         * </pre>
+         */
+        public static final int ExtensionTrigger_VALUE = 1;
+        /**
+         * <code>AcesNotification = 2;</code>
+         *
+         * <pre>
+         * ACEsに通知を行わせる
+         * </pre>
+         */
+        public static final int AcesNotification_VALUE = 2;
+        /**
+         * <code>SoundNotification = 3;</code>
+         *
+         * <pre>
+         * サウンドを鳴らす
+         * </pre>
+         */
+        public static final int SoundNotification_VALUE = 3;
+
+
+        public final int getNumber() {
+            return value;
+        }
+
+        public static CommandType valueOf(int value) {
+            switch (value) {
+                case 1:
+                    return ExtensionTrigger;
+                case 2:
+                    return AcesNotification;
+                case 3:
+                    return SoundNotification;
+                default:
+                    return null;
             }
-          };
+        }
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final CommandType[] VALUES = values();
-
-    public static CommandType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private CommandType(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.CommandType)
-  }
-
-  /**
-   * Protobuf enum {@code eaglesakura_ace.NotificationLength}
-   *
-   * <pre>
-   * Notifiationの長さを指定する
-   * </pre>
-   */
-  public enum NotificationLength
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>Short = 1;</code>
-     *
-     * <pre>
-     * 短い時間だけ通知を表示する
-     * </pre>
-     */
-    Short(0, 1),
-    /**
-     * <code>Normal = 2;</code>
-     *
-     * <pre>
-     * 通常の時間だけ通知を表示する
-     * </pre>
-     */
-    Normal(1, 2),
-    /**
-     * <code>Long = 3;</code>
-     *
-     * <pre>
-     * 長めに通知を表示する
-     * </pre>
-     */
-    Long(2, 3),
-    /**
-     * <code>Never = 100;</code>
-     *
-     * <pre>
-     * 通知を常に表示する
-     * 通知を削除する場合、短いメッセージで上書きする
-     * </pre>
-     */
-    Never(3, 100),
-    ;
-
-    /**
-     * <code>Short = 1;</code>
-     *
-     * <pre>
-     * 短い時間だけ通知を表示する
-     * </pre>
-     */
-    public static final int Short_VALUE = 1;
-    /**
-     * <code>Normal = 2;</code>
-     *
-     * <pre>
-     * 通常の時間だけ通知を表示する
-     * </pre>
-     */
-    public static final int Normal_VALUE = 2;
-    /**
-     * <code>Long = 3;</code>
-     *
-     * <pre>
-     * 長めに通知を表示する
-     * </pre>
-     */
-    public static final int Long_VALUE = 3;
-    /**
-     * <code>Never = 100;</code>
-     *
-     * <pre>
-     * 通知を常に表示する
-     * 通知を削除する場合、短いメッセージで上書きする
-     * </pre>
-     */
-    public static final int Never_VALUE = 100;
-
-
-    public final int getNumber() { return value; }
-
-    public static NotificationLength valueOf(int value) {
-      switch (value) {
-        case 1: return Short;
-        case 2: return Normal;
-        case 3: return Long;
-        case 100: return Never;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<NotificationLength>
+        public static com.google.protobuf.Internal.EnumLiteMap<CommandType>
         internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<NotificationLength>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<NotificationLength>() {
-            public NotificationLength findValueByNumber(int number) {
-              return NotificationLength.valueOf(number);
-            }
-          };
+            return internalValueMap;
+        }
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        private static com.google.protobuf.Internal.EnumLiteMap<CommandType>
+                internalValueMap =
+                new com.google.protobuf.Internal.EnumLiteMap<CommandType>() {
+                    public CommandType findValueByNumber(int number) {
+                        return CommandType.valueOf(number);
+                    }
+                };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
+            return getDescriptor().getValues().get(index);
+        }
+
+        public final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
+            return getDescriptor();
+        }
+
+        public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(1);
+            return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(0);
+        }
+
+        private static final CommandType[] VALUES = values();
+
+        public static CommandType valueOf(
+                com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            if (desc.getType() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                        "EnumValueDescriptor is not for this type.");
+            }
+            return VALUES[desc.getIndex()];
+        }
+
+        private final int index;
+        private final int value;
+
+        private CommandType(int index, int value) {
+            this.index = index;
+            this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:eaglesakura_ace.CommandType)
     }
 
-    private static final NotificationLength[] VALUES = values();
+    /**
+     * Protobuf enum {@code eaglesakura_ace.NotificationLength}
+     *
+     * <pre>
+     * Notifiationの長さを指定する
+     * </pre>
+     */
+    public enum NotificationLength
+            implements com.google.protobuf.ProtocolMessageEnum {
+        /**
+         * <code>Short = 1;</code>
+         *
+         * <pre>
+         * 短い時間だけ通知を表示する
+         * </pre>
+         */
+        Short(0, 1),
+        /**
+         * <code>Normal = 2;</code>
+         *
+         * <pre>
+         * 通常の時間だけ通知を表示する
+         * </pre>
+         */
+        Normal(1, 2),
+        /**
+         * <code>Long = 3;</code>
+         *
+         * <pre>
+         * 長めに通知を表示する
+         * </pre>
+         */
+        Long(2, 3),
+        /**
+         * <code>Never = 100;</code>
+         *
+         * <pre>
+         * 通知を常に表示する
+         * 通知を削除する場合、短いメッセージで上書きする
+         * </pre>
+         */
+        Never(3, 100),;
 
-    public static NotificationLength valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
+        /**
+         * <code>Short = 1;</code>
+         *
+         * <pre>
+         * 短い時間だけ通知を表示する
+         * </pre>
+         */
+        public static final int Short_VALUE = 1;
+        /**
+         * <code>Normal = 2;</code>
+         *
+         * <pre>
+         * 通常の時間だけ通知を表示する
+         * </pre>
+         */
+        public static final int Normal_VALUE = 2;
+        /**
+         * <code>Long = 3;</code>
+         *
+         * <pre>
+         * 長めに通知を表示する
+         * </pre>
+         */
+        public static final int Long_VALUE = 3;
+        /**
+         * <code>Never = 100;</code>
+         *
+         * <pre>
+         * 通知を常に表示する
+         * 通知を削除する場合、短いメッセージで上書きする
+         * </pre>
+         */
+        public static final int Never_VALUE = 100;
+
+
+        public final int getNumber() {
+            return value;
+        }
+
+        public static NotificationLength valueOf(int value) {
+            switch (value) {
+                case 1:
+                    return Short;
+                case 2:
+                    return Normal;
+                case 3:
+                    return Long;
+                case 100:
+                    return Never;
+                default:
+                    return null;
+            }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<NotificationLength>
+        internalGetValueMap() {
+            return internalValueMap;
+        }
+
+        private static com.google.protobuf.Internal.EnumLiteMap<NotificationLength>
+                internalValueMap =
+                new com.google.protobuf.Internal.EnumLiteMap<NotificationLength>() {
+                    public NotificationLength findValueByNumber(int number) {
+                        return NotificationLength.valueOf(number);
+                    }
+                };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+            return getDescriptor().getValues().get(index);
+        }
+
+        public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+            return getDescriptor();
+        }
+
+        public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.getDescriptor().getEnumTypes().get(1);
+        }
+
+        private static final NotificationLength[] VALUES = values();
+
+        public static NotificationLength valueOf(
+                com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+            if (desc.getType() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                        "EnumValueDescriptor is not for this type.");
+            }
+            return VALUES[desc.getIndex()];
+        }
+
+        private final int index;
+        private final int value;
+
+        private NotificationLength(int index, int value) {
+            this.index = index;
+            this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:eaglesakura_ace.NotificationLength)
     }
 
-    private final int index;
-    private final int value;
+    public interface SoundNotificationPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    private NotificationLength(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
+        // required bool queue = 1;
 
-    // @@protoc_insertion_point(enum_scope:eaglesakura_ace.NotificationLength)
-  }
+        /**
+         * <code>required bool queue = 1;</code>
+         *
+         * <pre>
+         * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+         * </pre>
+         */
+        boolean hasQueue();
 
-  public interface SoundNotificationPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>required bool queue = 1;</code>
+         *
+         * <pre>
+         * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+         * </pre>
+         */
+        boolean getQueue();
 
-    // required bool queue = 1;
-    /**
-     * <code>required bool queue = 1;</code>
-     *
-     * <pre>
-     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-     * </pre>
-     */
-    boolean hasQueue();
-    /**
-     * <code>required bool queue = 1;</code>
-     *
-     * <pre>
-     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-     * </pre>
-     */
-    boolean getQueue();
+        // optional string sourceUri = 2;
 
-    // optional string sourceUri = 2;
-    /**
-     * <code>optional string sourceUri = 2;</code>
-     *
-     * <pre>
-     * サウンドファイルのURI
-     * </pre>
-     */
-    boolean hasSourceUri();
-    /**
-     * <code>optional string sourceUri = 2;</code>
-     *
-     * <pre>
-     * サウンドファイルのURI
-     * </pre>
-     */
-    java.lang.String getSourceUri();
-    /**
-     * <code>optional string sourceUri = 2;</code>
-     *
-     * <pre>
-     * サウンドファイルのURI
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>optional string sourceUri = 2;</code>
+         *
+         * <pre>
+         * サウンドファイルのURI
+         * </pre>
+         */
+        boolean hasSourceUri();
+
+        /**
+         * <code>optional string sourceUri = 2;</code>
+         *
+         * <pre>
+         * サウンドファイルのURI
+         * </pre>
+         */
+        java.lang.String getSourceUri();
+
+        /**
+         * <code>optional string sourceUri = 2;</code>
+         *
+         * <pre>
+         * サウンドファイルのURI
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getSourceUriBytes();
 
-    // optional string soundKey = 3;
-    /**
-     * <code>optional string soundKey = 3;</code>
-     *
-     * <pre>
-     * 事前指定してある種類のサウンドを鳴らす
-     * </pre>
-     */
-    boolean hasSoundKey();
-    /**
-     * <code>optional string soundKey = 3;</code>
-     *
-     * <pre>
-     * 事前指定してある種類のサウンドを鳴らす
-     * </pre>
-     */
-    java.lang.String getSoundKey();
-    /**
-     * <code>optional string soundKey = 3;</code>
-     *
-     * <pre>
-     * 事前指定してある種類のサウンドを鳴らす
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // optional string soundKey = 3;
+
+        /**
+         * <code>optional string soundKey = 3;</code>
+         *
+         * <pre>
+         * 事前指定してある種類のサウンドを鳴らす
+         * </pre>
+         */
+        boolean hasSoundKey();
+
+        /**
+         * <code>optional string soundKey = 3;</code>
+         *
+         * <pre>
+         * 事前指定してある種類のサウンドを鳴らす
+         * </pre>
+         */
+        java.lang.String getSoundKey();
+
+        /**
+         * <code>optional string soundKey = 3;</code>
+         *
+         * <pre>
+         * 事前指定してある種類のサウンドを鳴らす
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getSoundKeyBytes();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
-   *
-   * <pre>
-   * 音声による通知を行う
-   * </pre>
-   */
-  public static final class SoundNotificationPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements SoundNotificationPayloadOrBuilder {
-    // Use SoundNotificationPayload.newBuilder() to construct.
-    private SoundNotificationPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private SoundNotificationPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final SoundNotificationPayload defaultInstance;
-    public static SoundNotificationPayload getDefaultInstance() {
-      return defaultInstance;
     }
 
-    public SoundNotificationPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SoundNotificationPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              queue_ = input.readBool();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              sourceUri_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              soundKey_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<SoundNotificationPayload> PARSER =
-        new com.google.protobuf.AbstractParser<SoundNotificationPayload>() {
-      public SoundNotificationPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SoundNotificationPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SoundNotificationPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required bool queue = 1;
-    public static final int QUEUE_FIELD_NUMBER = 1;
-    private boolean queue_;
-    /**
-     * <code>required bool queue = 1;</code>
-     *
-     * <pre>
-     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-     * </pre>
-     */
-    public boolean hasQueue() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required bool queue = 1;</code>
-     *
-     * <pre>
-     * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-     * </pre>
-     */
-    public boolean getQueue() {
-      return queue_;
-    }
-
-    // optional string sourceUri = 2;
-    public static final int SOURCEURI_FIELD_NUMBER = 2;
-    private java.lang.Object sourceUri_;
-    /**
-     * <code>optional string sourceUri = 2;</code>
-     *
-     * <pre>
-     * サウンドファイルのURI
-     * </pre>
-     */
-    public boolean hasSourceUri() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional string sourceUri = 2;</code>
-     *
-     * <pre>
-     * サウンドファイルのURI
-     * </pre>
-     */
-    public java.lang.String getSourceUri() {
-      java.lang.Object ref = sourceUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          sourceUri_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string sourceUri = 2;</code>
-     *
-     * <pre>
-     * サウンドファイルのURI
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getSourceUriBytes() {
-      java.lang.Object ref = sourceUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sourceUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional string soundKey = 3;
-    public static final int SOUNDKEY_FIELD_NUMBER = 3;
-    private java.lang.Object soundKey_;
-    /**
-     * <code>optional string soundKey = 3;</code>
-     *
-     * <pre>
-     * 事前指定してある種類のサウンドを鳴らす
-     * </pre>
-     */
-    public boolean hasSoundKey() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string soundKey = 3;</code>
-     *
-     * <pre>
-     * 事前指定してある種類のサウンドを鳴らす
-     * </pre>
-     */
-    public java.lang.String getSoundKey() {
-      java.lang.Object ref = soundKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          soundKey_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string soundKey = 3;</code>
-     *
-     * <pre>
-     * 事前指定してある種類のサウンドを鳴らす
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getSoundKeyBytes() {
-      java.lang.Object ref = soundKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        soundKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private void initFields() {
-      queue_ = false;
-      sourceUri_ = "";
-      soundKey_ = "";
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasQueue()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBool(1, queue_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getSourceUriBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getSoundKeyBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, queue_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getSourceUriBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getSoundKeyBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
      *
@@ -722,1254 +378,1045 @@ public final class CommandProtocol {
      * 音声による通知を行う
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder.class);
-      }
-
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+    public static final class SoundNotificationPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements SoundNotificationPayloadOrBuilder {
+        // Use SoundNotificationPayload.newBuilder() to construct.
+        private SoundNotificationPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        queue_ = false;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        sourceUri_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        soundKey_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
+        private SoundNotificationPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private static final SoundNotificationPayload defaultInstance;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
-      }
+        public static SoundNotificationPayload getDefaultInstance() {
+            return defaultInstance;
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
-      }
+        public SoundNotificationPayload getDefaultInstanceForType() {
+            return defaultInstance;
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
         }
-        result.queue_ = queue_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.sourceUri_ = sourceUri_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.soundKey_ = soundKey_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        private SoundNotificationPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            queue_ = input.readBool();
+                            break;
+                        }
+                        case 18: {
+                            bitField0_ |= 0x00000002;
+                            sourceUri_ = input.readBytes();
+                            break;
+                        }
+                        case 26: {
+                            bitField0_ |= 0x00000004;
+                            soundKey_ = input.readBytes();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
         }
-      }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance()) return this;
-        if (other.hasQueue()) {
-          setQueue(other.getQueue());
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
         }
-        if (other.hasSourceUri()) {
-          bitField0_ |= 0x00000002;
-          sourceUri_ = other.sourceUri_;
-          onChanged();
-        }
-        if (other.hasSoundKey()) {
-          bitField0_ |= 0x00000004;
-          soundKey_ = other.soundKey_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasQueue()) {
-          
-          return false;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder.class);
         }
-        return true;
-      }
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
+        public static com.google.protobuf.Parser<SoundNotificationPayload> PARSER =
+                new com.google.protobuf.AbstractParser<SoundNotificationPayload>() {
+                    public SoundNotificationPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new SoundNotificationPayload(input, extensionRegistry);
+                    }
+                };
 
-      // required bool queue = 1;
-      private boolean queue_ ;
-      /**
-       * <code>required bool queue = 1;</code>
-       *
-       * <pre>
-       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-       * </pre>
-       */
-      public boolean hasQueue() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required bool queue = 1;</code>
-       *
-       * <pre>
-       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-       * </pre>
-       */
-      public boolean getQueue() {
-        return queue_;
-      }
-      /**
-       * <code>required bool queue = 1;</code>
-       *
-       * <pre>
-       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-       * </pre>
-       */
-      public Builder setQueue(boolean value) {
-        bitField0_ |= 0x00000001;
-        queue_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required bool queue = 1;</code>
-       *
-       * <pre>
-       * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
-       * </pre>
-       */
-      public Builder clearQueue() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        queue_ = false;
-        onChanged();
-        return this;
-      }
+        @java.lang.Override
+        public com.google.protobuf.Parser<SoundNotificationPayload> getParserForType() {
+            return PARSER;
+        }
 
-      // optional string sourceUri = 2;
-      private java.lang.Object sourceUri_ = "";
-      /**
-       * <code>optional string sourceUri = 2;</code>
-       *
-       * <pre>
-       * サウンドファイルのURI
-       * </pre>
-       */
-      public boolean hasSourceUri() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string sourceUri = 2;</code>
-       *
-       * <pre>
-       * サウンドファイルのURI
-       * </pre>
-       */
-      public java.lang.String getSourceUri() {
-        java.lang.Object ref = sourceUri_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          sourceUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string sourceUri = 2;</code>
-       *
-       * <pre>
-       * サウンドファイルのURI
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getSourceUriBytes() {
-        java.lang.Object ref = sourceUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sourceUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string sourceUri = 2;</code>
-       *
-       * <pre>
-       * サウンドファイルのURI
-       * </pre>
-       */
-      public Builder setSourceUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        sourceUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string sourceUri = 2;</code>
-       *
-       * <pre>
-       * サウンドファイルのURI
-       * </pre>
-       */
-      public Builder clearSourceUri() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        sourceUri_ = getDefaultInstance().getSourceUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string sourceUri = 2;</code>
-       *
-       * <pre>
-       * サウンドファイルのURI
-       * </pre>
-       */
-      public Builder setSourceUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        sourceUri_ = value;
-        onChanged();
-        return this;
-      }
+        private int bitField0_;
+        // required bool queue = 1;
+        public static final int QUEUE_FIELD_NUMBER = 1;
+        private boolean queue_;
 
-      // optional string soundKey = 3;
-      private java.lang.Object soundKey_ = "";
-      /**
-       * <code>optional string soundKey = 3;</code>
-       *
-       * <pre>
-       * 事前指定してある種類のサウンドを鳴らす
-       * </pre>
-       */
-      public boolean hasSoundKey() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string soundKey = 3;</code>
-       *
-       * <pre>
-       * 事前指定してある種類のサウンドを鳴らす
-       * </pre>
-       */
-      public java.lang.String getSoundKey() {
-        java.lang.Object ref = soundKey_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          soundKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        /**
+         * <code>required bool queue = 1;</code>
+         *
+         * <pre>
+         * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+         * </pre>
+         */
+        public boolean hasQueue() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-      }
-      /**
-       * <code>optional string soundKey = 3;</code>
-       *
-       * <pre>
-       * 事前指定してある種類のサウンドを鳴らす
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getSoundKeyBytes() {
-        java.lang.Object ref = soundKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          soundKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string soundKey = 3;</code>
-       *
-       * <pre>
-       * 事前指定してある種類のサウンドを鳴らす
-       * </pre>
-       */
-      public Builder setSoundKey(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        soundKey_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string soundKey = 3;</code>
-       *
-       * <pre>
-       * 事前指定してある種類のサウンドを鳴らす
-       * </pre>
-       */
-      public Builder clearSoundKey() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        soundKey_ = getDefaultInstance().getSoundKey();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string soundKey = 3;</code>
-       *
-       * <pre>
-       * 事前指定してある種類のサウンドを鳴らす
-       * </pre>
-       */
-      public Builder setSoundKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        soundKey_ = value;
-        onChanged();
-        return this;
-      }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.SoundNotificationPayload)
+        /**
+         * <code>required bool queue = 1;</code>
+         *
+         * <pre>
+         * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+         * </pre>
+         */
+        public boolean getQueue() {
+            return queue_;
+        }
+
+        // optional string sourceUri = 2;
+        public static final int SOURCEURI_FIELD_NUMBER = 2;
+        private java.lang.Object sourceUri_;
+
+        /**
+         * <code>optional string sourceUri = 2;</code>
+         *
+         * <pre>
+         * サウンドファイルのURI
+         * </pre>
+         */
+        public boolean hasSourceUri() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+
+        /**
+         * <code>optional string sourceUri = 2;</code>
+         *
+         * <pre>
+         * サウンドファイルのURI
+         * </pre>
+         */
+        public java.lang.String getSourceUri() {
+            java.lang.Object ref = sourceUri_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    sourceUri_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string sourceUri = 2;</code>
+         *
+         * <pre>
+         * サウンドファイルのURI
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getSourceUriBytes() {
+            java.lang.Object ref = sourceUri_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                sourceUri_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional string soundKey = 3;
+        public static final int SOUNDKEY_FIELD_NUMBER = 3;
+        private java.lang.Object soundKey_;
+
+        /**
+         * <code>optional string soundKey = 3;</code>
+         *
+         * <pre>
+         * 事前指定してある種類のサウンドを鳴らす
+         * </pre>
+         */
+        public boolean hasSoundKey() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+
+        /**
+         * <code>optional string soundKey = 3;</code>
+         *
+         * <pre>
+         * 事前指定してある種類のサウンドを鳴らす
+         * </pre>
+         */
+        public java.lang.String getSoundKey() {
+            java.lang.Object ref = soundKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    soundKey_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string soundKey = 3;</code>
+         *
+         * <pre>
+         * 事前指定してある種類のサウンドを鳴らす
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getSoundKeyBytes() {
+            java.lang.Object ref = soundKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                soundKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        private void initFields() {
+            queue_ = false;
+            sourceUri_ = "";
+            soundKey_ = "";
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasQueue()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeBool(1, queue_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeBytes(2, getSourceUriBytes());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeBytes(3, getSoundKeyBytes());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(1, queue_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(2, getSourceUriBytes());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(3, getSoundKeyBytes());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
+         *
+         * <pre>
+         * 音声による通知を行う
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                queue_ = false;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                sourceUri_ = "";
+                bitField0_ = (bitField0_ & ~0x00000002);
+                soundKey_ = "";
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.queue_ = queue_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.sourceUri_ = sourceUri_;
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.soundKey_ = soundKey_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance())
+                    return this;
+                if (other.hasQueue()) {
+                    setQueue(other.getQueue());
+                }
+                if (other.hasSourceUri()) {
+                    bitField0_ |= 0x00000002;
+                    sourceUri_ = other.sourceUri_;
+                    onChanged();
+                }
+                if (other.hasSoundKey()) {
+                    bitField0_ |= 0x00000004;
+                    soundKey_ = other.soundKey_;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasQueue()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required bool queue = 1;
+            private boolean queue_;
+
+            /**
+             * <code>required bool queue = 1;</code>
+             *
+             * <pre>
+             * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+             * </pre>
+             */
+            public boolean hasQueue() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required bool queue = 1;</code>
+             *
+             * <pre>
+             * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+             * </pre>
+             */
+            public boolean getQueue() {
+                return queue_;
+            }
+
+            /**
+             * <code>required bool queue = 1;</code>
+             *
+             * <pre>
+             * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+             * </pre>
+             */
+            public Builder setQueue(boolean value) {
+                bitField0_ |= 0x00000001;
+                queue_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required bool queue = 1;</code>
+             *
+             * <pre>
+             * サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
+             * </pre>
+             */
+            public Builder clearQueue() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                queue_ = false;
+                onChanged();
+                return this;
+            }
+
+            // optional string sourceUri = 2;
+            private java.lang.Object sourceUri_ = "";
+
+            /**
+             * <code>optional string sourceUri = 2;</code>
+             *
+             * <pre>
+             * サウンドファイルのURI
+             * </pre>
+             */
+            public boolean hasSourceUri() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>optional string sourceUri = 2;</code>
+             *
+             * <pre>
+             * サウンドファイルのURI
+             * </pre>
+             */
+            public java.lang.String getSourceUri() {
+                java.lang.Object ref = sourceUri_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    sourceUri_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string sourceUri = 2;</code>
+             *
+             * <pre>
+             * サウンドファイルのURI
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getSourceUriBytes() {
+                java.lang.Object ref = sourceUri_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    sourceUri_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string sourceUri = 2;</code>
+             *
+             * <pre>
+             * サウンドファイルのURI
+             * </pre>
+             */
+            public Builder setSourceUri(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                sourceUri_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string sourceUri = 2;</code>
+             *
+             * <pre>
+             * サウンドファイルのURI
+             * </pre>
+             */
+            public Builder clearSourceUri() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                sourceUri_ = getDefaultInstance().getSourceUri();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string sourceUri = 2;</code>
+             *
+             * <pre>
+             * サウンドファイルのURI
+             * </pre>
+             */
+            public Builder setSourceUriBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                sourceUri_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional string soundKey = 3;
+            private java.lang.Object soundKey_ = "";
+
+            /**
+             * <code>optional string soundKey = 3;</code>
+             *
+             * <pre>
+             * 事前指定してある種類のサウンドを鳴らす
+             * </pre>
+             */
+            public boolean hasSoundKey() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>optional string soundKey = 3;</code>
+             *
+             * <pre>
+             * 事前指定してある種類のサウンドを鳴らす
+             * </pre>
+             */
+            public java.lang.String getSoundKey() {
+                java.lang.Object ref = soundKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    soundKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string soundKey = 3;</code>
+             *
+             * <pre>
+             * 事前指定してある種類のサウンドを鳴らす
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getSoundKeyBytes() {
+                java.lang.Object ref = soundKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    soundKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string soundKey = 3;</code>
+             *
+             * <pre>
+             * 事前指定してある種類のサウンドを鳴らす
+             * </pre>
+             */
+            public Builder setSoundKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                soundKey_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string soundKey = 3;</code>
+             *
+             * <pre>
+             * 事前指定してある種類のサウンドを鳴らす
+             * </pre>
+             */
+            public Builder clearSoundKey() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                soundKey_ = getDefaultInstance().getSoundKey();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string soundKey = 3;</code>
+             *
+             * <pre>
+             * 事前指定してある種類のサウンドを鳴らす
+             * </pre>
+             */
+            public Builder setSoundKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                soundKey_ = value;
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.SoundNotificationPayload)
+        }
+
+        static {
+            defaultInstance = new SoundNotificationPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.SoundNotificationPayload)
     }
 
-    static {
-      defaultInstance = new SoundNotificationPayload(true);
-      defaultInstance.initFields();
-    }
+    public interface NotificationRequestPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.SoundNotificationPayload)
-  }
+        // required string message = 1;
 
-  public interface NotificationRequestPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>required string message = 1;</code>
+         *
+         * <pre>
+         * 表示されるテキストメッセージ
+         * 長すぎる場合は途中で端折られる
+         * </pre>
+         */
+        boolean hasMessage();
 
-    // required string message = 1;
-    /**
-     * <code>required string message = 1;</code>
-     *
-     * <pre>
-     * 表示されるテキストメッセージ
-     * 長すぎる場合は途中で端折られる
-     * </pre>
-     */
-    boolean hasMessage();
-    /**
-     * <code>required string message = 1;</code>
-     *
-     * <pre>
-     * 表示されるテキストメッセージ
-     * 長すぎる場合は途中で端折られる
-     * </pre>
-     */
-    java.lang.String getMessage();
-    /**
-     * <code>required string message = 1;</code>
-     *
-     * <pre>
-     * 表示されるテキストメッセージ
-     * 長すぎる場合は途中で端折られる
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>required string message = 1;</code>
+         *
+         * <pre>
+         * 表示されるテキストメッセージ
+         * 長すぎる場合は途中で端折られる
+         * </pre>
+         */
+        java.lang.String getMessage();
+
+        /**
+         * <code>required string message = 1;</code>
+         *
+         * <pre>
+         * 表示されるテキストメッセージ
+         * 長すぎる場合は途中で端折られる
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getMessageBytes();
 
-    // optional bytes iconFile = 2;
-    /**
-     * <code>optional bytes iconFile = 2;</code>
-     *
-     * <pre>
-     * 通知時に表示する画像
-     * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-     * なるべく小さなサイズが望ましい
-     * </pre>
-     */
-    boolean hasIconFile();
-    /**
-     * <code>optional bytes iconFile = 2;</code>
-     *
-     * <pre>
-     * 通知時に表示する画像
-     * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-     * なるべく小さなサイズが望ましい
-     * </pre>
-     */
-    com.google.protobuf.ByteString getIconFile();
+        // optional bytes iconFile = 2;
 
-    // optional string iconPath = 3;
-    /**
-     * <code>optional string iconPath = 3;</code>
-     */
-    boolean hasIconPath();
-    /**
-     * <code>optional string iconPath = 3;</code>
-     */
-    java.lang.String getIconPath();
-    /**
-     * <code>optional string iconPath = 3;</code>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>optional bytes iconFile = 2;</code>
+         *
+         * <pre>
+         * 通知時に表示する画像
+         * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+         * なるべく小さなサイズが望ましい
+         * </pre>
+         */
+        boolean hasIconFile();
+
+        /**
+         * <code>optional bytes iconFile = 2;</code>
+         *
+         * <pre>
+         * 通知時に表示する画像
+         * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+         * なるべく小さなサイズが望ましい
+         * </pre>
+         */
+        com.google.protobuf.ByteString getIconFile();
+
+        // optional string iconPath = 3;
+
+        /**
+         * <code>optional string iconPath = 3;</code>
+         */
+        boolean hasIconPath();
+
+        /**
+         * <code>optional string iconPath = 3;</code>
+         */
+        java.lang.String getIconPath();
+
+        /**
+         * <code>optional string iconPath = 3;</code>
+         */
+        com.google.protobuf.ByteString
         getIconPathBytes();
 
-    // required .eaglesakura_ace.NotificationLength length = 4;
-    /**
-     * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-     *
-     * <pre>
-     * 通知を表示する時間
-     * </pre>
-     */
-    boolean hasLength();
-    /**
-     * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-     *
-     * <pre>
-     * 通知を表示する時間
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength getLength();
+        // required .eaglesakura_ace.NotificationLength length = 4;
 
-    // required string uniqueId = 5;
-    /**
-     * <code>required string uniqueId = 5;</code>
-     *
-     * <pre>
-     * 通知ID
-     * 同じIDで、かつ既に表示中の場合は上書き表示される
-     * </pre>
-     */
-    boolean hasUniqueId();
-    /**
-     * <code>required string uniqueId = 5;</code>
-     *
-     * <pre>
-     * 通知ID
-     * 同じIDで、かつ既に表示中の場合は上書き表示される
-     * </pre>
-     */
-    java.lang.String getUniqueId();
-    /**
-     * <code>required string uniqueId = 5;</code>
-     *
-     * <pre>
-     * 通知ID
-     * 同じIDで、かつ既に表示中の場合は上書き表示される
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+         *
+         * <pre>
+         * 通知を表示する時間
+         * </pre>
+         */
+        boolean hasLength();
+
+        /**
+         * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+         *
+         * <pre>
+         * 通知を表示する時間
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength getLength();
+
+        // required string uniqueId = 5;
+
+        /**
+         * <code>required string uniqueId = 5;</code>
+         *
+         * <pre>
+         * 通知ID
+         * 同じIDで、かつ既に表示中の場合は上書き表示される
+         * </pre>
+         */
+        boolean hasUniqueId();
+
+        /**
+         * <code>required string uniqueId = 5;</code>
+         *
+         * <pre>
+         * 通知ID
+         * 同じIDで、かつ既に表示中の場合は上書き表示される
+         * </pre>
+         */
+        java.lang.String getUniqueId();
+
+        /**
+         * <code>required string uniqueId = 5;</code>
+         *
+         * <pre>
+         * 通知ID
+         * 同じIDで、かつ既に表示中の場合は上書き表示される
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getUniqueIdBytes();
 
-    // required string date = 6;
-    /**
-     * <code>required string date = 6;</code>
-     *
-     * <pre>
-     * 通知の発行時刻
-     * </pre>
-     */
-    boolean hasDate();
-    /**
-     * <code>required string date = 6;</code>
-     *
-     * <pre>
-     * 通知の発行時刻
-     * </pre>
-     */
-    java.lang.String getDate();
-    /**
-     * <code>required string date = 6;</code>
-     *
-     * <pre>
-     * 通知の発行時刻
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // required string date = 6;
+
+        /**
+         * <code>required string date = 6;</code>
+         *
+         * <pre>
+         * 通知の発行時刻
+         * </pre>
+         */
+        boolean hasDate();
+
+        /**
+         * <code>required string date = 6;</code>
+         *
+         * <pre>
+         * 通知の発行時刻
+         * </pre>
+         */
+        java.lang.String getDate();
+
+        /**
+         * <code>required string date = 6;</code>
+         *
+         * <pre>
+         * 通知の発行時刻
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getDateBytes();
 
-    // optional int32 backgroundXRGB = 7;
-    /**
-     * <code>optional int32 backgroundXRGB = 7;</code>
-     *
-     * <pre>
-     * 背景色のXRGBカラー、文字色は反転色となる
-     * </pre>
-     */
-    boolean hasBackgroundXRGB();
-    /**
-     * <code>optional int32 backgroundXRGB = 7;</code>
-     *
-     * <pre>
-     * 背景色のXRGBカラー、文字色は反転色となる
-     * </pre>
-     */
-    int getBackgroundXRGB();
+        // optional int32 backgroundXRGB = 7;
 
-    // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
-    /**
-     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-     *
-     * <pre>
-     * サウンドの通知指定
-     * </pre>
-     */
-    boolean hasSound();
-    /**
-     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-     *
-     * <pre>
-     * サウンドの通知指定
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound();
-    /**
-     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-     *
-     * <pre>
-     * サウンドの通知指定
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
-   *
-   * <pre>
-   * 通知を表示させる
-   * 基本的にはACEs-UIに対して表示する
-   * 対応している場合はWear等へのブロードキャストを行う
-   * </pre>
-   */
-  public static final class NotificationRequestPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements NotificationRequestPayloadOrBuilder {
-    // Use NotificationRequestPayload.newBuilder() to construct.
-    private NotificationRequestPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private NotificationRequestPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+        /**
+         * <code>optional int32 backgroundXRGB = 7;</code>
+         *
+         * <pre>
+         * 背景色のXRGBカラー、文字色は反転色となる
+         * </pre>
+         */
+        boolean hasBackgroundXRGB();
 
-    private static final NotificationRequestPayload defaultInstance;
-    public static NotificationRequestPayload getDefaultInstance() {
-      return defaultInstance;
+        /**
+         * <code>optional int32 backgroundXRGB = 7;</code>
+         *
+         * <pre>
+         * 背景色のXRGBカラー、文字色は反転色となる
+         * </pre>
+         */
+        int getBackgroundXRGB();
+
+        // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
+
+        /**
+         * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+         *
+         * <pre>
+         * サウンドの通知指定
+         * </pre>
+         */
+        boolean hasSound();
+
+        /**
+         * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+         *
+         * <pre>
+         * サウンドの通知指定
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound();
+
+        /**
+         * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+         *
+         * <pre>
+         * サウンドの通知指定
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder();
     }
 
-    public NotificationRequestPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private NotificationRequestPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              message_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              iconFile_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              iconPath_ = input.readBytes();
-              break;
-            }
-            case 32: {
-              int rawValue = input.readEnum();
-              com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength value = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(4, rawValue);
-              } else {
-                bitField0_ |= 0x00000008;
-                length_ = value;
-              }
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              uniqueId_ = input.readBytes();
-              break;
-            }
-            case 50: {
-              bitField0_ |= 0x00000020;
-              date_ = input.readBytes();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              backgroundXRGB_ = input.readInt32();
-              break;
-            }
-            case 66: {
-              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
-                subBuilder = sound_.toBuilder();
-              }
-              sound_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(sound_);
-                sound_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000080;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<NotificationRequestPayload> PARSER =
-        new com.google.protobuf.AbstractParser<NotificationRequestPayload>() {
-      public NotificationRequestPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new NotificationRequestPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<NotificationRequestPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required string message = 1;
-    public static final int MESSAGE_FIELD_NUMBER = 1;
-    private java.lang.Object message_;
-    /**
-     * <code>required string message = 1;</code>
-     *
-     * <pre>
-     * 表示されるテキストメッセージ
-     * 長すぎる場合は途中で端折られる
-     * </pre>
-     */
-    public boolean hasMessage() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string message = 1;</code>
-     *
-     * <pre>
-     * 表示されるテキストメッセージ
-     * 長すぎる場合は途中で端折られる
-     * </pre>
-     */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          message_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string message = 1;</code>
-     *
-     * <pre>
-     * 表示されるテキストメッセージ
-     * 長すぎる場合は途中で端折られる
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional bytes iconFile = 2;
-    public static final int ICONFILE_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString iconFile_;
-    /**
-     * <code>optional bytes iconFile = 2;</code>
-     *
-     * <pre>
-     * 通知時に表示する画像
-     * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-     * なるべく小さなサイズが望ましい
-     * </pre>
-     */
-    public boolean hasIconFile() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional bytes iconFile = 2;</code>
-     *
-     * <pre>
-     * 通知時に表示する画像
-     * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-     * なるべく小さなサイズが望ましい
-     * </pre>
-     */
-    public com.google.protobuf.ByteString getIconFile() {
-      return iconFile_;
-    }
-
-    // optional string iconPath = 3;
-    public static final int ICONPATH_FIELD_NUMBER = 3;
-    private java.lang.Object iconPath_;
-    /**
-     * <code>optional string iconPath = 3;</code>
-     */
-    public boolean hasIconPath() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string iconPath = 3;</code>
-     */
-    public java.lang.String getIconPath() {
-      java.lang.Object ref = iconPath_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          iconPath_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string iconPath = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIconPathBytes() {
-      java.lang.Object ref = iconPath_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        iconPath_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required .eaglesakura_ace.NotificationLength length = 4;
-    public static final int LENGTH_FIELD_NUMBER = 4;
-    private com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength length_;
-    /**
-     * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-     *
-     * <pre>
-     * 通知を表示する時間
-     * </pre>
-     */
-    public boolean hasLength() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-     *
-     * <pre>
-     * 通知を表示する時間
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength getLength() {
-      return length_;
-    }
-
-    // required string uniqueId = 5;
-    public static final int UNIQUEID_FIELD_NUMBER = 5;
-    private java.lang.Object uniqueId_;
-    /**
-     * <code>required string uniqueId = 5;</code>
-     *
-     * <pre>
-     * 通知ID
-     * 同じIDで、かつ既に表示中の場合は上書き表示される
-     * </pre>
-     */
-    public boolean hasUniqueId() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>required string uniqueId = 5;</code>
-     *
-     * <pre>
-     * 通知ID
-     * 同じIDで、かつ既に表示中の場合は上書き表示される
-     * </pre>
-     */
-    public java.lang.String getUniqueId() {
-      java.lang.Object ref = uniqueId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          uniqueId_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string uniqueId = 5;</code>
-     *
-     * <pre>
-     * 通知ID
-     * 同じIDで、かつ既に表示中の場合は上書き表示される
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getUniqueIdBytes() {
-      java.lang.Object ref = uniqueId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        uniqueId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required string date = 6;
-    public static final int DATE_FIELD_NUMBER = 6;
-    private java.lang.Object date_;
-    /**
-     * <code>required string date = 6;</code>
-     *
-     * <pre>
-     * 通知の発行時刻
-     * </pre>
-     */
-    public boolean hasDate() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>required string date = 6;</code>
-     *
-     * <pre>
-     * 通知の発行時刻
-     * </pre>
-     */
-    public java.lang.String getDate() {
-      java.lang.Object ref = date_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          date_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string date = 6;</code>
-     *
-     * <pre>
-     * 通知の発行時刻
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getDateBytes() {
-      java.lang.Object ref = date_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        date_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 backgroundXRGB = 7;
-    public static final int BACKGROUNDXRGB_FIELD_NUMBER = 7;
-    private int backgroundXRGB_;
-    /**
-     * <code>optional int32 backgroundXRGB = 7;</code>
-     *
-     * <pre>
-     * 背景色のXRGBカラー、文字色は反転色となる
-     * </pre>
-     */
-    public boolean hasBackgroundXRGB() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 backgroundXRGB = 7;</code>
-     *
-     * <pre>
-     * 背景色のXRGBカラー、文字色は反転色となる
-     * </pre>
-     */
-    public int getBackgroundXRGB() {
-      return backgroundXRGB_;
-    }
-
-    // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
-    public static final int SOUND_FIELD_NUMBER = 8;
-    private com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload sound_;
-    /**
-     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-     *
-     * <pre>
-     * サウンドの通知指定
-     * </pre>
-     */
-    public boolean hasSound() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-     *
-     * <pre>
-     * サウンドの通知指定
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound() {
-      return sound_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-     *
-     * <pre>
-     * サウンドの通知指定
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder() {
-      return sound_;
-    }
-
-    private void initFields() {
-      message_ = "";
-      iconFile_ = com.google.protobuf.ByteString.EMPTY;
-      iconPath_ = "";
-      length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
-      uniqueId_ = "";
-      date_ = "";
-      backgroundXRGB_ = 0;
-      sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasMessage()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLength()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUniqueId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasDate()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (hasSound()) {
-        if (!getSound().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getMessageBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, iconFile_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getIconPathBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeEnum(4, length_.getNumber());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getUniqueIdBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBytes(6, getDateBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, backgroundXRGB_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(8, sound_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getMessageBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, iconFile_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getIconPathBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, length_.getNumber());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getUniqueIdBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getDateBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, backgroundXRGB_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, sound_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
      *
@@ -1979,1454 +1426,1812 @@ public final class CommandProtocol {
      * 対応している場合はWear等へのブロードキャストを行う
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
-      }
+    public static final class NotificationRequestPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements NotificationRequestPayloadOrBuilder {
+        // Use NotificationRequestPayload.newBuilder() to construct.
+        private NotificationRequestPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
+        }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.Builder.class);
-      }
+        private NotificationRequestPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private static final NotificationRequestPayload defaultInstance;
 
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getSoundFieldBuilder();
+        public static NotificationRequestPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        message_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        iconFile_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        iconPath_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        uniqueId_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
-        date_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
-        backgroundXRGB_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        if (soundBuilder_ == null) {
-          sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
-        } else {
-          soundBuilder_.clear();
+        public NotificationRequestPayload getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
-      }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.getDefaultInstance();
-      }
+        private NotificationRequestPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            bitField0_ |= 0x00000001;
+                            message_ = input.readBytes();
+                            break;
+                        }
+                        case 18: {
+                            bitField0_ |= 0x00000002;
+                            iconFile_ = input.readBytes();
+                            break;
+                        }
+                        case 26: {
+                            bitField0_ |= 0x00000004;
+                            iconPath_ = input.readBytes();
+                            break;
+                        }
+                        case 32: {
+                            int rawValue = input.readEnum();
+                            com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength value = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.valueOf(rawValue);
+                            if (value == null) {
+                                unknownFields.mergeVarintField(4, rawValue);
+                            } else {
+                                bitField0_ |= 0x00000008;
+                                length_ = value;
+                            }
+                            break;
+                        }
+                        case 42: {
+                            bitField0_ |= 0x00000010;
+                            uniqueId_ = input.readBytes();
+                            break;
+                        }
+                        case 50: {
+                            bitField0_ |= 0x00000020;
+                            date_ = input.readBytes();
+                            break;
+                        }
+                        case 56: {
+                            bitField0_ |= 0x00000040;
+                            backgroundXRGB_ = input.readInt32();
+                            break;
+                        }
+                        case 66: {
+                            com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                                subBuilder = sound_.toBuilder();
+                            }
+                            sound_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(sound_);
+                                sound_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000080;
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.Builder.class);
         }
-        result.message_ = message_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.iconFile_ = iconFile_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.iconPath_ = iconPath_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.length_ = length_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.uniqueId_ = uniqueId_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.date_ = date_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.backgroundXRGB_ = backgroundXRGB_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        if (soundBuilder_ == null) {
-          result.sound_ = sound_;
-        } else {
-          result.sound_ = soundBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
+        public static com.google.protobuf.Parser<NotificationRequestPayload> PARSER =
+                new com.google.protobuf.AbstractParser<NotificationRequestPayload>() {
+                    public NotificationRequestPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new NotificationRequestPayload(input, extensionRegistry);
+                    }
+                };
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.getDefaultInstance()) return this;
-        if (other.hasMessage()) {
-          bitField0_ |= 0x00000001;
-          message_ = other.message_;
-          onChanged();
+        @java.lang.Override
+        public com.google.protobuf.Parser<NotificationRequestPayload> getParserForType() {
+            return PARSER;
         }
-        if (other.hasIconFile()) {
-          setIconFile(other.getIconFile());
-        }
-        if (other.hasIconPath()) {
-          bitField0_ |= 0x00000004;
-          iconPath_ = other.iconPath_;
-          onChanged();
-        }
-        if (other.hasLength()) {
-          setLength(other.getLength());
-        }
-        if (other.hasUniqueId()) {
-          bitField0_ |= 0x00000010;
-          uniqueId_ = other.uniqueId_;
-          onChanged();
-        }
-        if (other.hasDate()) {
-          bitField0_ |= 0x00000020;
-          date_ = other.date_;
-          onChanged();
-        }
-        if (other.hasBackgroundXRGB()) {
-          setBackgroundXRGB(other.getBackgroundXRGB());
-        }
-        if (other.hasSound()) {
-          mergeSound(other.getSound());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasMessage()) {
-          
-          return false;
-        }
-        if (!hasLength()) {
-          
-          return false;
-        }
-        if (!hasUniqueId()) {
-          
-          return false;
-        }
-        if (!hasDate()) {
-          
-          return false;
-        }
-        if (hasSound()) {
-          if (!getSound().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
+        private int bitField0_;
+        // required string message = 1;
+        public static final int MESSAGE_FIELD_NUMBER = 1;
+        private java.lang.Object message_;
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        /**
+         * <code>required string message = 1;</code>
+         *
+         * <pre>
+         * 表示されるテキストメッセージ
+         * 長すぎる場合は途中で端折られる
+         * </pre>
+         */
+        public boolean hasMessage() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // required string message = 1;
-      private java.lang.Object message_ = "";
-      /**
-       * <code>required string message = 1;</code>
-       *
-       * <pre>
-       * 表示されるテキストメッセージ
-       * 長すぎる場合は途中で端折られる
-       * </pre>
-       */
-      public boolean hasMessage() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required string message = 1;</code>
-       *
-       * <pre>
-       * 表示されるテキストメッセージ
-       * 長すぎる場合は途中で端折られる
-       * </pre>
-       */
-      public java.lang.String getMessage() {
-        java.lang.Object ref = message_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          message_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        /**
+         * <code>required string message = 1;</code>
+         *
+         * <pre>
+         * 表示されるテキストメッセージ
+         * 長すぎる場合は途中で端折られる
+         * </pre>
+         */
+        public java.lang.String getMessage() {
+            java.lang.Object ref = message_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    message_ = s;
+                }
+                return s;
+            }
         }
-      }
-      /**
-       * <code>required string message = 1;</code>
-       *
-       * <pre>
-       * 表示されるテキストメッセージ
-       * 長すぎる場合は途中で端折られる
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getMessageBytes() {
-        java.lang.Object ref = message_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          message_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string message = 1;</code>
-       *
-       * <pre>
-       * 表示されるテキストメッセージ
-       * 長すぎる場合は途中で端折られる
-       * </pre>
-       */
-      public Builder setMessage(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        message_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string message = 1;</code>
-       *
-       * <pre>
-       * 表示されるテキストメッセージ
-       * 長すぎる場合は途中で端折られる
-       * </pre>
-       */
-      public Builder clearMessage() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        message_ = getDefaultInstance().getMessage();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string message = 1;</code>
-       *
-       * <pre>
-       * 表示されるテキストメッセージ
-       * 長すぎる場合は途中で端折られる
-       * </pre>
-       */
-      public Builder setMessageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        message_ = value;
-        onChanged();
-        return this;
-      }
 
-      // optional bytes iconFile = 2;
-      private com.google.protobuf.ByteString iconFile_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>optional bytes iconFile = 2;</code>
-       *
-       * <pre>
-       * 通知時に表示する画像
-       * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-       * なるべく小さなサイズが望ましい
-       * </pre>
-       */
-      public boolean hasIconFile() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional bytes iconFile = 2;</code>
-       *
-       * <pre>
-       * 通知時に表示する画像
-       * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-       * なるべく小さなサイズが望ましい
-       * </pre>
-       */
-      public com.google.protobuf.ByteString getIconFile() {
-        return iconFile_;
-      }
-      /**
-       * <code>optional bytes iconFile = 2;</code>
-       *
-       * <pre>
-       * 通知時に表示する画像
-       * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-       * なるべく小さなサイズが望ましい
-       * </pre>
-       */
-      public Builder setIconFile(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        iconFile_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes iconFile = 2;</code>
-       *
-       * <pre>
-       * 通知時に表示する画像
-       * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
-       * なるべく小さなサイズが望ましい
-       * </pre>
-       */
-      public Builder clearIconFile() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        iconFile_ = getDefaultInstance().getIconFile();
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>required string message = 1;</code>
+         *
+         * <pre>
+         * 表示されるテキストメッセージ
+         * 長すぎる場合は途中で端折られる
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getMessageBytes() {
+            java.lang.Object ref = message_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                message_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
 
-      // optional string iconPath = 3;
-      private java.lang.Object iconPath_ = "";
-      /**
-       * <code>optional string iconPath = 3;</code>
-       */
-      public boolean hasIconPath() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string iconPath = 3;</code>
-       */
-      public java.lang.String getIconPath() {
-        java.lang.Object ref = iconPath_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          iconPath_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string iconPath = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIconPathBytes() {
-        java.lang.Object ref = iconPath_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          iconPath_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string iconPath = 3;</code>
-       */
-      public Builder setIconPath(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        iconPath_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string iconPath = 3;</code>
-       */
-      public Builder clearIconPath() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        iconPath_ = getDefaultInstance().getIconPath();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string iconPath = 3;</code>
-       */
-      public Builder setIconPathBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        iconPath_ = value;
-        onChanged();
-        return this;
-      }
+        // optional bytes iconFile = 2;
+        public static final int ICONFILE_FIELD_NUMBER = 2;
+        private com.google.protobuf.ByteString iconFile_;
 
-      // required .eaglesakura_ace.NotificationLength length = 4;
-      private com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
-      /**
-       * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-       *
-       * <pre>
-       * 通知を表示する時間
-       * </pre>
-       */
-      public boolean hasLength() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-       *
-       * <pre>
-       * 通知を表示する時間
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength getLength() {
-        return length_;
-      }
-      /**
-       * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-       *
-       * <pre>
-       * 通知を表示する時間
-       * </pre>
-       */
-      public Builder setLength(com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength value) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>optional bytes iconFile = 2;</code>
+         *
+         * <pre>
+         * 通知時に表示する画像
+         * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+         * なるべく小さなサイズが望ましい
+         * </pre>
+         */
+        public boolean hasIconFile() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        bitField0_ |= 0x00000008;
-        length_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
-       *
-       * <pre>
-       * 通知を表示する時間
-       * </pre>
-       */
-      public Builder clearLength() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
-        onChanged();
-        return this;
-      }
 
-      // required string uniqueId = 5;
-      private java.lang.Object uniqueId_ = "";
-      /**
-       * <code>required string uniqueId = 5;</code>
-       *
-       * <pre>
-       * 通知ID
-       * 同じIDで、かつ既に表示中の場合は上書き表示される
-       * </pre>
-       */
-      public boolean hasUniqueId() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>required string uniqueId = 5;</code>
-       *
-       * <pre>
-       * 通知ID
-       * 同じIDで、かつ既に表示中の場合は上書き表示される
-       * </pre>
-       */
-      public java.lang.String getUniqueId() {
-        java.lang.Object ref = uniqueId_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          uniqueId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        /**
+         * <code>optional bytes iconFile = 2;</code>
+         *
+         * <pre>
+         * 通知時に表示する画像
+         * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+         * なるべく小さなサイズが望ましい
+         * </pre>
+         */
+        public com.google.protobuf.ByteString getIconFile() {
+            return iconFile_;
         }
-      }
-      /**
-       * <code>required string uniqueId = 5;</code>
-       *
-       * <pre>
-       * 通知ID
-       * 同じIDで、かつ既に表示中の場合は上書き表示される
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getUniqueIdBytes() {
-        java.lang.Object ref = uniqueId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          uniqueId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string uniqueId = 5;</code>
-       *
-       * <pre>
-       * 通知ID
-       * 同じIDで、かつ既に表示中の場合は上書き表示される
-       * </pre>
-       */
-      public Builder setUniqueId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        uniqueId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string uniqueId = 5;</code>
-       *
-       * <pre>
-       * 通知ID
-       * 同じIDで、かつ既に表示中の場合は上書き表示される
-       * </pre>
-       */
-      public Builder clearUniqueId() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        uniqueId_ = getDefaultInstance().getUniqueId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string uniqueId = 5;</code>
-       *
-       * <pre>
-       * 通知ID
-       * 同じIDで、かつ既に表示中の場合は上書き表示される
-       * </pre>
-       */
-      public Builder setUniqueIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        uniqueId_ = value;
-        onChanged();
-        return this;
-      }
 
-      // required string date = 6;
-      private java.lang.Object date_ = "";
-      /**
-       * <code>required string date = 6;</code>
-       *
-       * <pre>
-       * 通知の発行時刻
-       * </pre>
-       */
-      public boolean hasDate() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>required string date = 6;</code>
-       *
-       * <pre>
-       * 通知の発行時刻
-       * </pre>
-       */
-      public java.lang.String getDate() {
-        java.lang.Object ref = date_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          date_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string date = 6;</code>
-       *
-       * <pre>
-       * 通知の発行時刻
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getDateBytes() {
-        java.lang.Object ref = date_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          date_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string date = 6;</code>
-       *
-       * <pre>
-       * 通知の発行時刻
-       * </pre>
-       */
-      public Builder setDate(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        date_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string date = 6;</code>
-       *
-       * <pre>
-       * 通知の発行時刻
-       * </pre>
-       */
-      public Builder clearDate() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        date_ = getDefaultInstance().getDate();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string date = 6;</code>
-       *
-       * <pre>
-       * 通知の発行時刻
-       * </pre>
-       */
-      public Builder setDateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        date_ = value;
-        onChanged();
-        return this;
-      }
+        // optional string iconPath = 3;
+        public static final int ICONPATH_FIELD_NUMBER = 3;
+        private java.lang.Object iconPath_;
 
-      // optional int32 backgroundXRGB = 7;
-      private int backgroundXRGB_ ;
-      /**
-       * <code>optional int32 backgroundXRGB = 7;</code>
-       *
-       * <pre>
-       * 背景色のXRGBカラー、文字色は反転色となる
-       * </pre>
-       */
-      public boolean hasBackgroundXRGB() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 backgroundXRGB = 7;</code>
-       *
-       * <pre>
-       * 背景色のXRGBカラー、文字色は反転色となる
-       * </pre>
-       */
-      public int getBackgroundXRGB() {
-        return backgroundXRGB_;
-      }
-      /**
-       * <code>optional int32 backgroundXRGB = 7;</code>
-       *
-       * <pre>
-       * 背景色のXRGBカラー、文字色は反転色となる
-       * </pre>
-       */
-      public Builder setBackgroundXRGB(int value) {
-        bitField0_ |= 0x00000040;
-        backgroundXRGB_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 backgroundXRGB = 7;</code>
-       *
-       * <pre>
-       * 背景色のXRGBカラー、文字色は反転色となる
-       * </pre>
-       */
-      public Builder clearBackgroundXRGB() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        backgroundXRGB_ = 0;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional string iconPath = 3;</code>
+         */
+        public boolean hasIconPath() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
 
-      // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
-      private com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder> soundBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public boolean hasSound() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound() {
-        if (soundBuilder_ == null) {
-          return sound_;
-        } else {
-          return soundBuilder_.getMessage();
+        /**
+         * <code>optional string iconPath = 3;</code>
+         */
+        public java.lang.String getIconPath() {
+            java.lang.Object ref = iconPath_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    iconPath_ = s;
+                }
+                return s;
+            }
         }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public Builder setSound(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload value) {
-        if (soundBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          sound_ = value;
-          onChanged();
-        } else {
-          soundBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000080;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public Builder setSound(
-          com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder builderForValue) {
-        if (soundBuilder_ == null) {
-          sound_ = builderForValue.build();
-          onChanged();
-        } else {
-          soundBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000080;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public Builder mergeSound(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload value) {
-        if (soundBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
-              sound_ != com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance()) {
-            sound_ =
-              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.newBuilder(sound_).mergeFrom(value).buildPartial();
-          } else {
-            sound_ = value;
-          }
-          onChanged();
-        } else {
-          soundBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000080;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public Builder clearSound() {
-        if (soundBuilder_ == null) {
-          sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
-          onChanged();
-        } else {
-          soundBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000080);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder getSoundBuilder() {
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return getSoundFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder() {
-        if (soundBuilder_ != null) {
-          return soundBuilder_.getMessageOrBuilder();
-        } else {
-          return sound_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
-       *
-       * <pre>
-       * サウンドの通知指定
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder> 
-          getSoundFieldBuilder() {
-        if (soundBuilder_ == null) {
-          soundBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder>(
-                  sound_,
-                  getParentForChildren(),
-                  isClean());
-          sound_ = null;
-        }
-        return soundBuilder_;
-      }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.NotificationRequestPayload)
+        /**
+         * <code>optional string iconPath = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+        getIconPathBytes() {
+            java.lang.Object ref = iconPath_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                iconPath_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // required .eaglesakura_ace.NotificationLength length = 4;
+        public static final int LENGTH_FIELD_NUMBER = 4;
+        private com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength length_;
+
+        /**
+         * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+         *
+         * <pre>
+         * 通知を表示する時間
+         * </pre>
+         */
+        public boolean hasLength() {
+            return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+
+        /**
+         * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+         *
+         * <pre>
+         * 通知を表示する時間
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength getLength() {
+            return length_;
+        }
+
+        // required string uniqueId = 5;
+        public static final int UNIQUEID_FIELD_NUMBER = 5;
+        private java.lang.Object uniqueId_;
+
+        /**
+         * <code>required string uniqueId = 5;</code>
+         *
+         * <pre>
+         * 通知ID
+         * 同じIDで、かつ既に表示中の場合は上書き表示される
+         * </pre>
+         */
+        public boolean hasUniqueId() {
+            return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+
+        /**
+         * <code>required string uniqueId = 5;</code>
+         *
+         * <pre>
+         * 通知ID
+         * 同じIDで、かつ既に表示中の場合は上書き表示される
+         * </pre>
+         */
+        public java.lang.String getUniqueId() {
+            java.lang.Object ref = uniqueId_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    uniqueId_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string uniqueId = 5;</code>
+         *
+         * <pre>
+         * 通知ID
+         * 同じIDで、かつ既に表示中の場合は上書き表示される
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getUniqueIdBytes() {
+            java.lang.Object ref = uniqueId_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                uniqueId_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // required string date = 6;
+        public static final int DATE_FIELD_NUMBER = 6;
+        private java.lang.Object date_;
+
+        /**
+         * <code>required string date = 6;</code>
+         *
+         * <pre>
+         * 通知の発行時刻
+         * </pre>
+         */
+        public boolean hasDate() {
+            return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
+
+        /**
+         * <code>required string date = 6;</code>
+         *
+         * <pre>
+         * 通知の発行時刻
+         * </pre>
+         */
+        public java.lang.String getDate() {
+            java.lang.Object ref = date_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    date_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string date = 6;</code>
+         *
+         * <pre>
+         * 通知の発行時刻
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getDateBytes() {
+            java.lang.Object ref = date_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                date_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional int32 backgroundXRGB = 7;
+        public static final int BACKGROUNDXRGB_FIELD_NUMBER = 7;
+        private int backgroundXRGB_;
+
+        /**
+         * <code>optional int32 backgroundXRGB = 7;</code>
+         *
+         * <pre>
+         * 背景色のXRGBカラー、文字色は反転色となる
+         * </pre>
+         */
+        public boolean hasBackgroundXRGB() {
+            return ((bitField0_ & 0x00000040) == 0x00000040);
+        }
+
+        /**
+         * <code>optional int32 backgroundXRGB = 7;</code>
+         *
+         * <pre>
+         * 背景色のXRGBカラー、文字色は反転色となる
+         * </pre>
+         */
+        public int getBackgroundXRGB() {
+            return backgroundXRGB_;
+        }
+
+        // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
+        public static final int SOUND_FIELD_NUMBER = 8;
+        private com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload sound_;
+
+        /**
+         * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+         *
+         * <pre>
+         * サウンドの通知指定
+         * </pre>
+         */
+        public boolean hasSound() {
+            return ((bitField0_ & 0x00000080) == 0x00000080);
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+         *
+         * <pre>
+         * サウンドの通知指定
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound() {
+            return sound_;
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+         *
+         * <pre>
+         * サウンドの通知指定
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder() {
+            return sound_;
+        }
+
+        private void initFields() {
+            message_ = "";
+            iconFile_ = com.google.protobuf.ByteString.EMPTY;
+            iconPath_ = "";
+            length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
+            uniqueId_ = "";
+            date_ = "";
+            backgroundXRGB_ = 0;
+            sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasMessage()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasLength()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasUniqueId()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasDate()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (hasSound()) {
+                if (!getSound().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeBytes(1, getMessageBytes());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeBytes(2, iconFile_);
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeBytes(3, getIconPathBytes());
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                output.writeEnum(4, length_.getNumber());
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                output.writeBytes(5, getUniqueIdBytes());
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                output.writeBytes(6, getDateBytes());
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                output.writeInt32(7, backgroundXRGB_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                output.writeMessage(8, sound_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(1, getMessageBytes());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(2, iconFile_);
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(3, getIconPathBytes());
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeEnumSize(4, length_.getNumber());
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(5, getUniqueIdBytes());
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(6, getDateBytes());
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(7, backgroundXRGB_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(8, sound_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
+         *
+         * <pre>
+         * 通知を表示させる
+         * 基本的にはACEs-UIに対して表示する
+         * 対応している場合はWear等へのブロードキャストを行う
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                    getSoundFieldBuilder();
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                message_ = "";
+                bitField0_ = (bitField0_ & ~0x00000001);
+                iconFile_ = com.google.protobuf.ByteString.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                iconPath_ = "";
+                bitField0_ = (bitField0_ & ~0x00000004);
+                length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                uniqueId_ = "";
+                bitField0_ = (bitField0_ & ~0x00000010);
+                date_ = "";
+                bitField0_ = (bitField0_ & ~0x00000020);
+                backgroundXRGB_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000040);
+                if (soundBuilder_ == null) {
+                    sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+                } else {
+                    soundBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000080);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.message_ = message_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.iconFile_ = iconFile_;
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.iconPath_ = iconPath_;
+                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.length_ = length_;
+                if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.uniqueId_ = uniqueId_;
+                if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.date_ = date_;
+                if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+                    to_bitField0_ |= 0x00000040;
+                }
+                result.backgroundXRGB_ = backgroundXRGB_;
+                if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+                    to_bitField0_ |= 0x00000080;
+                }
+                if (soundBuilder_ == null) {
+                    result.sound_ = sound_;
+                } else {
+                    result.sound_ = soundBuilder_.build();
+                }
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload.getDefaultInstance())
+                    return this;
+                if (other.hasMessage()) {
+                    bitField0_ |= 0x00000001;
+                    message_ = other.message_;
+                    onChanged();
+                }
+                if (other.hasIconFile()) {
+                    setIconFile(other.getIconFile());
+                }
+                if (other.hasIconPath()) {
+                    bitField0_ |= 0x00000004;
+                    iconPath_ = other.iconPath_;
+                    onChanged();
+                }
+                if (other.hasLength()) {
+                    setLength(other.getLength());
+                }
+                if (other.hasUniqueId()) {
+                    bitField0_ |= 0x00000010;
+                    uniqueId_ = other.uniqueId_;
+                    onChanged();
+                }
+                if (other.hasDate()) {
+                    bitField0_ |= 0x00000020;
+                    date_ = other.date_;
+                    onChanged();
+                }
+                if (other.hasBackgroundXRGB()) {
+                    setBackgroundXRGB(other.getBackgroundXRGB());
+                }
+                if (other.hasSound()) {
+                    mergeSound(other.getSound());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasMessage()) {
+
+                    return false;
+                }
+                if (!hasLength()) {
+
+                    return false;
+                }
+                if (!hasUniqueId()) {
+
+                    return false;
+                }
+                if (!hasDate()) {
+
+                    return false;
+                }
+                if (hasSound()) {
+                    if (!getSound().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.NotificationRequestPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required string message = 1;
+            private java.lang.Object message_ = "";
+
+            /**
+             * <code>required string message = 1;</code>
+             *
+             * <pre>
+             * 表示されるテキストメッセージ
+             * 長すぎる場合は途中で端折られる
+             * </pre>
+             */
+            public boolean hasMessage() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required string message = 1;</code>
+             *
+             * <pre>
+             * 表示されるテキストメッセージ
+             * 長すぎる場合は途中で端折られる
+             * </pre>
+             */
+            public java.lang.String getMessage() {
+                java.lang.Object ref = message_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    message_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string message = 1;</code>
+             *
+             * <pre>
+             * 表示されるテキストメッセージ
+             * 長すぎる場合は途中で端折られる
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getMessageBytes() {
+                java.lang.Object ref = message_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    message_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string message = 1;</code>
+             *
+             * <pre>
+             * 表示されるテキストメッセージ
+             * 長すぎる場合は途中で端折られる
+             * </pre>
+             */
+            public Builder setMessage(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                message_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string message = 1;</code>
+             *
+             * <pre>
+             * 表示されるテキストメッセージ
+             * 長すぎる場合は途中で端折られる
+             * </pre>
+             */
+            public Builder clearMessage() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                message_ = getDefaultInstance().getMessage();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string message = 1;</code>
+             *
+             * <pre>
+             * 表示されるテキストメッセージ
+             * 長すぎる場合は途中で端折られる
+             * </pre>
+             */
+            public Builder setMessageBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                message_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional bytes iconFile = 2;
+            private com.google.protobuf.ByteString iconFile_ = com.google.protobuf.ByteString.EMPTY;
+
+            /**
+             * <code>optional bytes iconFile = 2;</code>
+             *
+             * <pre>
+             * 通知時に表示する画像
+             * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+             * なるべく小さなサイズが望ましい
+             * </pre>
+             */
+            public boolean hasIconFile() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>optional bytes iconFile = 2;</code>
+             *
+             * <pre>
+             * 通知時に表示する画像
+             * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+             * なるべく小さなサイズが望ましい
+             * </pre>
+             */
+            public com.google.protobuf.ByteString getIconFile() {
+                return iconFile_;
+            }
+
+            /**
+             * <code>optional bytes iconFile = 2;</code>
+             *
+             * <pre>
+             * 通知時に表示する画像
+             * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+             * なるべく小さなサイズが望ましい
+             * </pre>
+             */
+            public Builder setIconFile(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                iconFile_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional bytes iconFile = 2;</code>
+             *
+             * <pre>
+             * 通知時に表示する画像
+             * ファイル、もしくはパスを指定する。必要に応じ、自動的に拡大縮小される
+             * なるべく小さなサイズが望ましい
+             * </pre>
+             */
+            public Builder clearIconFile() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                iconFile_ = getDefaultInstance().getIconFile();
+                onChanged();
+                return this;
+            }
+
+            // optional string iconPath = 3;
+            private java.lang.Object iconPath_ = "";
+
+            /**
+             * <code>optional string iconPath = 3;</code>
+             */
+            public boolean hasIconPath() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>optional string iconPath = 3;</code>
+             */
+            public java.lang.String getIconPath() {
+                java.lang.Object ref = iconPath_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    iconPath_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string iconPath = 3;</code>
+             */
+            public com.google.protobuf.ByteString
+            getIconPathBytes() {
+                java.lang.Object ref = iconPath_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    iconPath_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string iconPath = 3;</code>
+             */
+            public Builder setIconPath(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                iconPath_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string iconPath = 3;</code>
+             */
+            public Builder clearIconPath() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                iconPath_ = getDefaultInstance().getIconPath();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string iconPath = 3;</code>
+             */
+            public Builder setIconPathBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                iconPath_ = value;
+                onChanged();
+                return this;
+            }
+
+            // required .eaglesakura_ace.NotificationLength length = 4;
+            private com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
+
+            /**
+             * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+             *
+             * <pre>
+             * 通知を表示する時間
+             * </pre>
+             */
+            public boolean hasLength() {
+                return ((bitField0_ & 0x00000008) == 0x00000008);
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+             *
+             * <pre>
+             * 通知を表示する時間
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength getLength() {
+                return length_;
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+             *
+             * <pre>
+             * 通知を表示する時間
+             * </pre>
+             */
+            public Builder setLength(com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000008;
+                length_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.NotificationLength length = 4;</code>
+             *
+             * <pre>
+             * 通知を表示する時間
+             * </pre>
+             */
+            public Builder clearLength() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                length_ = com.eaglesakura.andriders.protocol.CommandProtocol.NotificationLength.Short;
+                onChanged();
+                return this;
+            }
+
+            // required string uniqueId = 5;
+            private java.lang.Object uniqueId_ = "";
+
+            /**
+             * <code>required string uniqueId = 5;</code>
+             *
+             * <pre>
+             * 通知ID
+             * 同じIDで、かつ既に表示中の場合は上書き表示される
+             * </pre>
+             */
+            public boolean hasUniqueId() {
+                return ((bitField0_ & 0x00000010) == 0x00000010);
+            }
+
+            /**
+             * <code>required string uniqueId = 5;</code>
+             *
+             * <pre>
+             * 通知ID
+             * 同じIDで、かつ既に表示中の場合は上書き表示される
+             * </pre>
+             */
+            public java.lang.String getUniqueId() {
+                java.lang.Object ref = uniqueId_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    uniqueId_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string uniqueId = 5;</code>
+             *
+             * <pre>
+             * 通知ID
+             * 同じIDで、かつ既に表示中の場合は上書き表示される
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getUniqueIdBytes() {
+                java.lang.Object ref = uniqueId_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    uniqueId_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string uniqueId = 5;</code>
+             *
+             * <pre>
+             * 通知ID
+             * 同じIDで、かつ既に表示中の場合は上書き表示される
+             * </pre>
+             */
+            public Builder setUniqueId(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                uniqueId_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string uniqueId = 5;</code>
+             *
+             * <pre>
+             * 通知ID
+             * 同じIDで、かつ既に表示中の場合は上書き表示される
+             * </pre>
+             */
+            public Builder clearUniqueId() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                uniqueId_ = getDefaultInstance().getUniqueId();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string uniqueId = 5;</code>
+             *
+             * <pre>
+             * 通知ID
+             * 同じIDで、かつ既に表示中の場合は上書き表示される
+             * </pre>
+             */
+            public Builder setUniqueIdBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                uniqueId_ = value;
+                onChanged();
+                return this;
+            }
+
+            // required string date = 6;
+            private java.lang.Object date_ = "";
+
+            /**
+             * <code>required string date = 6;</code>
+             *
+             * <pre>
+             * 通知の発行時刻
+             * </pre>
+             */
+            public boolean hasDate() {
+                return ((bitField0_ & 0x00000020) == 0x00000020);
+            }
+
+            /**
+             * <code>required string date = 6;</code>
+             *
+             * <pre>
+             * 通知の発行時刻
+             * </pre>
+             */
+            public java.lang.String getDate() {
+                java.lang.Object ref = date_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    date_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string date = 6;</code>
+             *
+             * <pre>
+             * 通知の発行時刻
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getDateBytes() {
+                java.lang.Object ref = date_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    date_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string date = 6;</code>
+             *
+             * <pre>
+             * 通知の発行時刻
+             * </pre>
+             */
+            public Builder setDate(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000020;
+                date_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string date = 6;</code>
+             *
+             * <pre>
+             * 通知の発行時刻
+             * </pre>
+             */
+            public Builder clearDate() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                date_ = getDefaultInstance().getDate();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string date = 6;</code>
+             *
+             * <pre>
+             * 通知の発行時刻
+             * </pre>
+             */
+            public Builder setDateBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000020;
+                date_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional int32 backgroundXRGB = 7;
+            private int backgroundXRGB_;
+
+            /**
+             * <code>optional int32 backgroundXRGB = 7;</code>
+             *
+             * <pre>
+             * 背景色のXRGBカラー、文字色は反転色となる
+             * </pre>
+             */
+            public boolean hasBackgroundXRGB() {
+                return ((bitField0_ & 0x00000040) == 0x00000040);
+            }
+
+            /**
+             * <code>optional int32 backgroundXRGB = 7;</code>
+             *
+             * <pre>
+             * 背景色のXRGBカラー、文字色は反転色となる
+             * </pre>
+             */
+            public int getBackgroundXRGB() {
+                return backgroundXRGB_;
+            }
+
+            /**
+             * <code>optional int32 backgroundXRGB = 7;</code>
+             *
+             * <pre>
+             * 背景色のXRGBカラー、文字色は反転色となる
+             * </pre>
+             */
+            public Builder setBackgroundXRGB(int value) {
+                bitField0_ |= 0x00000040;
+                backgroundXRGB_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 backgroundXRGB = 7;</code>
+             *
+             * <pre>
+             * 背景色のXRGBカラー、文字色は反転色となる
+             * </pre>
+             */
+            public Builder clearBackgroundXRGB() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                backgroundXRGB_ = 0;
+                onChanged();
+                return this;
+            }
+
+            // optional .eaglesakura_ace.SoundNotificationPayload sound = 8;
+            private com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder> soundBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public boolean hasSound() {
+                return ((bitField0_ & 0x00000080) == 0x00000080);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload getSound() {
+                if (soundBuilder_ == null) {
+                    return sound_;
+                } else {
+                    return soundBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public Builder setSound(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload value) {
+                if (soundBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    sound_ = value;
+                    onChanged();
+                } else {
+                    soundBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000080;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public Builder setSound(
+                    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder builderForValue) {
+                if (soundBuilder_ == null) {
+                    sound_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    soundBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000080;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public Builder mergeSound(com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload value) {
+                if (soundBuilder_ == null) {
+                    if (((bitField0_ & 0x00000080) == 0x00000080) &&
+                            sound_ != com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance()) {
+                        sound_ =
+                                com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.newBuilder(sound_).mergeFrom(value).buildPartial();
+                    } else {
+                        sound_ = value;
+                    }
+                    onChanged();
+                } else {
+                    soundBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000080;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public Builder clearSound() {
+                if (soundBuilder_ == null) {
+                    sound_ = com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.getDefaultInstance();
+                    onChanged();
+                } else {
+                    soundBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000080);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder getSoundBuilder() {
+                bitField0_ |= 0x00000080;
+                onChanged();
+                return getSoundFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder getSoundOrBuilder() {
+                if (soundBuilder_ != null) {
+                    return soundBuilder_.getMessageOrBuilder();
+                } else {
+                    return sound_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.SoundNotificationPayload sound = 8;</code>
+             *
+             * <pre>
+             * サウンドの通知指定
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder>
+            getSoundFieldBuilder() {
+                if (soundBuilder_ == null) {
+                    soundBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.SoundNotificationPayloadOrBuilder>(
+                            sound_,
+                            getParentForChildren(),
+                            isClean());
+                    sound_ = null;
+                }
+                return soundBuilder_;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.NotificationRequestPayload)
+        }
+
+        static {
+            defaultInstance = new NotificationRequestPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.NotificationRequestPayload)
     }
 
-    static {
-      defaultInstance = new NotificationRequestPayload(true);
-      defaultInstance.initFields();
-    }
+    public interface TweetRequestPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.NotificationRequestPayload)
-  }
+        // required string tweetMessage = 1;
 
-  public interface TweetRequestPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>required string tweetMessage = 1;</code>
+         *
+         * <pre>
+         * ツイートする内容
+         * </pre>
+         */
+        boolean hasTweetMessage();
 
-    // required string tweetMessage = 1;
-    /**
-     * <code>required string tweetMessage = 1;</code>
-     *
-     * <pre>
-     * ツイートする内容
-     * </pre>
-     */
-    boolean hasTweetMessage();
-    /**
-     * <code>required string tweetMessage = 1;</code>
-     *
-     * <pre>
-     * ツイートする内容
-     * </pre>
-     */
-    java.lang.String getTweetMessage();
-    /**
-     * <code>required string tweetMessage = 1;</code>
-     *
-     * <pre>
-     * ツイートする内容
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>required string tweetMessage = 1;</code>
+         *
+         * <pre>
+         * ツイートする内容
+         * </pre>
+         */
+        java.lang.String getTweetMessage();
+
+        /**
+         * <code>required string tweetMessage = 1;</code>
+         *
+         * <pre>
+         * ツイートする内容
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getTweetMessageBytes();
 
-    // repeated string hashtags = 2;
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    java.util.List<java.lang.String>
-    getHashtagsList();
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    int getHashtagsCount();
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    java.lang.String getHashtags(int index);
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // repeated string hashtags = 2;
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        java.util.List<java.lang.String>
+        getHashtagsList();
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        int getHashtagsCount();
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        java.lang.String getHashtags(int index);
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getHashtagsBytes(int index);
 
-    // repeated string imageUris = 4;
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    java.util.List<java.lang.String>
-    getImageUrisList();
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    int getImageUrisCount();
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    java.lang.String getImageUris(int index);
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // repeated string imageUris = 4;
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        java.util.List<java.lang.String>
+        getImageUrisList();
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        int getImageUrisCount();
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        java.lang.String getImageUris(int index);
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getImageUrisBytes(int index);
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
-   *
-   * <pre>
-   * ツイートしたい内容を格納する
-   * </pre>
-   */
-  public static final class TweetRequestPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements TweetRequestPayloadOrBuilder {
-    // Use TweetRequestPayload.newBuilder() to construct.
-    private TweetRequestPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private TweetRequestPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final TweetRequestPayload defaultInstance;
-    public static TweetRequestPayload getDefaultInstance() {
-      return defaultInstance;
     }
 
-    public TweetRequestPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private TweetRequestPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              tweetMessage_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                hashtags_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              hashtags_.add(input.readBytes());
-              break;
-            }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                imageUris_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              imageUris_.add(input.readBytes());
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          hashtags_ = new com.google.protobuf.UnmodifiableLazyStringList(hashtags_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          imageUris_ = new com.google.protobuf.UnmodifiableLazyStringList(imageUris_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<TweetRequestPayload> PARSER =
-        new com.google.protobuf.AbstractParser<TweetRequestPayload>() {
-      public TweetRequestPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TweetRequestPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TweetRequestPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required string tweetMessage = 1;
-    public static final int TWEETMESSAGE_FIELD_NUMBER = 1;
-    private java.lang.Object tweetMessage_;
-    /**
-     * <code>required string tweetMessage = 1;</code>
-     *
-     * <pre>
-     * ツイートする内容
-     * </pre>
-     */
-    public boolean hasTweetMessage() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string tweetMessage = 1;</code>
-     *
-     * <pre>
-     * ツイートする内容
-     * </pre>
-     */
-    public java.lang.String getTweetMessage() {
-      java.lang.Object ref = tweetMessage_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          tweetMessage_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string tweetMessage = 1;</code>
-     *
-     * <pre>
-     * ツイートする内容
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getTweetMessageBytes() {
-      java.lang.Object ref = tweetMessage_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        tweetMessage_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // repeated string hashtags = 2;
-    public static final int HASHTAGS_FIELD_NUMBER = 2;
-    private com.google.protobuf.LazyStringList hashtags_;
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    public java.util.List<java.lang.String>
-        getHashtagsList() {
-      return hashtags_;
-    }
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    public int getHashtagsCount() {
-      return hashtags_.size();
-    }
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    public java.lang.String getHashtags(int index) {
-      return hashtags_.get(index);
-    }
-    /**
-     * <code>repeated string hashtags = 2;</code>
-     *
-     * <pre>
-     * ハッシュタグ一覧
-     * その他、強制的に #andriders が付与される。
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getHashtagsBytes(int index) {
-      return hashtags_.getByteString(index);
-    }
-
-    // repeated string imageUris = 4;
-    public static final int IMAGEURIS_FIELD_NUMBER = 4;
-    private com.google.protobuf.LazyStringList imageUris_;
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    public java.util.List<java.lang.String>
-        getImageUrisList() {
-      return imageUris_;
-    }
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    public int getImageUrisCount() {
-      return imageUris_.size();
-    }
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    public java.lang.String getImageUris(int index) {
-      return imageUris_.get(index);
-    }
-    /**
-     * <code>repeated string imageUris = 4;</code>
-     *
-     * <pre>
-     * 画像ファイルへのURI一覧
-     * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getImageUrisBytes(int index) {
-      return imageUris_.getByteString(index);
-    }
-
-    private void initFields() {
-      tweetMessage_ = "";
-      hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasTweetMessage()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getTweetMessageBytes());
-      }
-      for (int i = 0; i < hashtags_.size(); i++) {
-        output.writeBytes(2, hashtags_.getByteString(i));
-      }
-      for (int i = 0; i < imageUris_.size(); i++) {
-        output.writeBytes(4, imageUris_.getByteString(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getTweetMessageBytes());
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < hashtags_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(hashtags_.getByteString(i));
-        }
-        size += dataSize;
-        size += 1 * getHashtagsList().size();
-      }
-      {
-        int dataSize = 0;
-        for (int i = 0; i < imageUris_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeBytesSizeNoTag(imageUris_.getByteString(i));
-        }
-        size += dataSize;
-        size += 1 * getImageUrisList().size();
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
      *
@@ -3434,3556 +3239,3857 @@ public final class CommandProtocol {
      * ツイートしたい内容を格納する
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.Builder.class);
-      }
-
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+    public static final class TweetRequestPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements TweetRequestPayloadOrBuilder {
+        // Use TweetRequestPayload.newBuilder() to construct.
+        private TweetRequestPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        tweetMessage_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.getDefaultInstance();
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        private TweetRequestPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.tweetMessage_ = tweetMessage_;
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          hashtags_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              hashtags_);
-          bitField0_ = (bitField0_ & ~0x00000002);
-        }
-        result.hashtags_ = hashtags_;
-        if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          imageUris_ = new com.google.protobuf.UnmodifiableLazyStringList(
-              imageUris_);
-          bitField0_ = (bitField0_ & ~0x00000004);
-        }
-        result.imageUris_ = imageUris_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
+        private static final TweetRequestPayload defaultInstance;
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        public static TweetRequestPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.getDefaultInstance()) return this;
-        if (other.hasTweetMessage()) {
-          bitField0_ |= 0x00000001;
-          tweetMessage_ = other.tweetMessage_;
-          onChanged();
+        public TweetRequestPayload getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        if (!other.hashtags_.isEmpty()) {
-          if (hashtags_.isEmpty()) {
-            hashtags_ = other.hashtags_;
-            bitField0_ = (bitField0_ & ~0x00000002);
-          } else {
-            ensureHashtagsIsMutable();
-            hashtags_.addAll(other.hashtags_);
-          }
-          onChanged();
-        }
-        if (!other.imageUris_.isEmpty()) {
-          if (imageUris_.isEmpty()) {
-            imageUris_ = other.imageUris_;
-            bitField0_ = (bitField0_ & ~0x00000004);
-          } else {
-            ensureImageUrisIsMutable();
-            imageUris_.addAll(other.imageUris_);
-          }
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasTweetMessage()) {
-          
-          return false;
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
         }
-        return true;
-      }
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        private TweetRequestPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            bitField0_ |= 0x00000001;
+                            tweetMessage_ = input.readBytes();
+                            break;
+                        }
+                        case 18: {
+                            if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                                hashtags_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000002;
+                            }
+                            hashtags_.add(input.readBytes());
+                            break;
+                        }
+                        case 34: {
+                            if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                                imageUris_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000004;
+                            }
+                            imageUris_.add(input.readBytes());
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                    hashtags_ = new com.google.protobuf.UnmodifiableLazyStringList(hashtags_);
+                }
+                if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                    imageUris_ = new com.google.protobuf.UnmodifiableLazyStringList(imageUris_);
+                }
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // required string tweetMessage = 1;
-      private java.lang.Object tweetMessage_ = "";
-      /**
-       * <code>required string tweetMessage = 1;</code>
-       *
-       * <pre>
-       * ツイートする内容
-       * </pre>
-       */
-      public boolean hasTweetMessage() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required string tweetMessage = 1;</code>
-       *
-       * <pre>
-       * ツイートする内容
-       * </pre>
-       */
-      public java.lang.String getTweetMessage() {
-        java.lang.Object ref = tweetMessage_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          tweetMessage_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
         }
-      }
-      /**
-       * <code>required string tweetMessage = 1;</code>
-       *
-       * <pre>
-       * ツイートする内容
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getTweetMessageBytes() {
-        java.lang.Object ref = tweetMessage_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          tweetMessage_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.Builder.class);
         }
-      }
-      /**
-       * <code>required string tweetMessage = 1;</code>
-       *
-       * <pre>
-       * ツイートする内容
-       * </pre>
-       */
-      public Builder setTweetMessage(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        tweetMessage_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string tweetMessage = 1;</code>
-       *
-       * <pre>
-       * ツイートする内容
-       * </pre>
-       */
-      public Builder clearTweetMessage() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        tweetMessage_ = getDefaultInstance().getTweetMessage();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string tweetMessage = 1;</code>
-       *
-       * <pre>
-       * ツイートする内容
-       * </pre>
-       */
-      public Builder setTweetMessageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        tweetMessage_ = value;
-        onChanged();
-        return this;
-      }
 
-      // repeated string hashtags = 2;
-      private com.google.protobuf.LazyStringList hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureHashtagsIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          hashtags_ = new com.google.protobuf.LazyStringArrayList(hashtags_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public java.util.List<java.lang.String>
-          getHashtagsList() {
-        return java.util.Collections.unmodifiableList(hashtags_);
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public int getHashtagsCount() {
-        return hashtags_.size();
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public java.lang.String getHashtags(int index) {
-        return hashtags_.get(index);
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getHashtagsBytes(int index) {
-        return hashtags_.getByteString(index);
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public Builder setHashtags(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureHashtagsIsMutable();
-        hashtags_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public Builder addHashtags(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureHashtagsIsMutable();
-        hashtags_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public Builder addAllHashtags(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureHashtagsIsMutable();
-        super.addAll(values, hashtags_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public Builder clearHashtags() {
-        hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string hashtags = 2;</code>
-       *
-       * <pre>
-       * ハッシュタグ一覧
-       * その他、強制的に #andriders が付与される。
-       * </pre>
-       */
-      public Builder addHashtagsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureHashtagsIsMutable();
-        hashtags_.add(value);
-        onChanged();
-        return this;
-      }
+        public static com.google.protobuf.Parser<TweetRequestPayload> PARSER =
+                new com.google.protobuf.AbstractParser<TweetRequestPayload>() {
+                    public TweetRequestPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new TweetRequestPayload(input, extensionRegistry);
+                    }
+                };
 
-      // repeated string imageUris = 4;
-      private com.google.protobuf.LazyStringList imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureImageUrisIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          imageUris_ = new com.google.protobuf.LazyStringArrayList(imageUris_);
-          bitField0_ |= 0x00000004;
-         }
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public java.util.List<java.lang.String>
-          getImageUrisList() {
-        return java.util.Collections.unmodifiableList(imageUris_);
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public int getImageUrisCount() {
-        return imageUris_.size();
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public java.lang.String getImageUris(int index) {
-        return imageUris_.get(index);
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getImageUrisBytes(int index) {
-        return imageUris_.getByteString(index);
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public Builder setImageUris(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureImageUrisIsMutable();
-        imageUris_.set(index, value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public Builder addImageUris(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureImageUrisIsMutable();
-        imageUris_.add(value);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public Builder addAllImageUris(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureImageUrisIsMutable();
-        super.addAll(values, imageUris_);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public Builder clearImageUris() {
-        imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>repeated string imageUris = 4;</code>
-       *
-       * <pre>
-       * 画像ファイルへのURI一覧
-       * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
-       * </pre>
-       */
-      public Builder addImageUrisBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureImageUrisIsMutable();
-        imageUris_.add(value);
-        onChanged();
-        return this;
-      }
+        @java.lang.Override
+        public com.google.protobuf.Parser<TweetRequestPayload> getParserForType() {
+            return PARSER;
+        }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TweetRequestPayload)
+        private int bitField0_;
+        // required string tweetMessage = 1;
+        public static final int TWEETMESSAGE_FIELD_NUMBER = 1;
+        private java.lang.Object tweetMessage_;
+
+        /**
+         * <code>required string tweetMessage = 1;</code>
+         *
+         * <pre>
+         * ツイートする内容
+         * </pre>
+         */
+        public boolean hasTweetMessage() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+
+        /**
+         * <code>required string tweetMessage = 1;</code>
+         *
+         * <pre>
+         * ツイートする内容
+         * </pre>
+         */
+        public java.lang.String getTweetMessage() {
+            java.lang.Object ref = tweetMessage_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    tweetMessage_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string tweetMessage = 1;</code>
+         *
+         * <pre>
+         * ツイートする内容
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getTweetMessageBytes() {
+            java.lang.Object ref = tweetMessage_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                tweetMessage_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // repeated string hashtags = 2;
+        public static final int HASHTAGS_FIELD_NUMBER = 2;
+        private com.google.protobuf.LazyStringList hashtags_;
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        public java.util.List<java.lang.String>
+        getHashtagsList() {
+            return hashtags_;
+        }
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        public int getHashtagsCount() {
+            return hashtags_.size();
+        }
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        public java.lang.String getHashtags(int index) {
+            return hashtags_.get(index);
+        }
+
+        /**
+         * <code>repeated string hashtags = 2;</code>
+         *
+         * <pre>
+         * ハッシュタグ一覧
+         * その他、強制的に #andriders が付与される。
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getHashtagsBytes(int index) {
+            return hashtags_.getByteString(index);
+        }
+
+        // repeated string imageUris = 4;
+        public static final int IMAGEURIS_FIELD_NUMBER = 4;
+        private com.google.protobuf.LazyStringList imageUris_;
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        public java.util.List<java.lang.String>
+        getImageUrisList() {
+            return imageUris_;
+        }
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        public int getImageUrisCount() {
+            return imageUris_.size();
+        }
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        public java.lang.String getImageUris(int index) {
+            return imageUris_.get(index);
+        }
+
+        /**
+         * <code>repeated string imageUris = 4;</code>
+         *
+         * <pre>
+         * 画像ファイルへのURI一覧
+         * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getImageUrisBytes(int index) {
+            return imageUris_.getByteString(index);
+        }
+
+        private void initFields() {
+            tweetMessage_ = "";
+            hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasTweetMessage()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeBytes(1, getTweetMessageBytes());
+            }
+            for (int i = 0; i < hashtags_.size(); i++) {
+                output.writeBytes(2, hashtags_.getByteString(i));
+            }
+            for (int i = 0; i < imageUris_.size(); i++) {
+                output.writeBytes(4, imageUris_.getByteString(i));
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(1, getTweetMessageBytes());
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < hashtags_.size(); i++) {
+                    dataSize += com.google.protobuf.CodedOutputStream
+                            .computeBytesSizeNoTag(hashtags_.getByteString(i));
+                }
+                size += dataSize;
+                size += 1 * getHashtagsList().size();
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < imageUris_.size(); i++) {
+                    dataSize += com.google.protobuf.CodedOutputStream
+                            .computeBytesSizeNoTag(imageUris_.getByteString(i));
+                }
+                size += dataSize;
+                size += 1 * getImageUrisList().size();
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
+         *
+         * <pre>
+         * ツイートしたい内容を格納する
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                tweetMessage_ = "";
+                bitField0_ = (bitField0_ & ~0x00000001);
+                hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.tweetMessage_ = tweetMessage_;
+                if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                    hashtags_ = new com.google.protobuf.UnmodifiableLazyStringList(
+                            hashtags_);
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                }
+                result.hashtags_ = hashtags_;
+                if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                    imageUris_ = new com.google.protobuf.UnmodifiableLazyStringList(
+                            imageUris_);
+                    bitField0_ = (bitField0_ & ~0x00000004);
+                }
+                result.imageUris_ = imageUris_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload.getDefaultInstance())
+                    return this;
+                if (other.hasTweetMessage()) {
+                    bitField0_ |= 0x00000001;
+                    tweetMessage_ = other.tweetMessage_;
+                    onChanged();
+                }
+                if (!other.hashtags_.isEmpty()) {
+                    if (hashtags_.isEmpty()) {
+                        hashtags_ = other.hashtags_;
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    } else {
+                        ensureHashtagsIsMutable();
+                        hashtags_.addAll(other.hashtags_);
+                    }
+                    onChanged();
+                }
+                if (!other.imageUris_.isEmpty()) {
+                    if (imageUris_.isEmpty()) {
+                        imageUris_ = other.imageUris_;
+                        bitField0_ = (bitField0_ & ~0x00000004);
+                    } else {
+                        ensureImageUrisIsMutable();
+                        imageUris_.addAll(other.imageUris_);
+                    }
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasTweetMessage()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required string tweetMessage = 1;
+            private java.lang.Object tweetMessage_ = "";
+
+            /**
+             * <code>required string tweetMessage = 1;</code>
+             *
+             * <pre>
+             * ツイートする内容
+             * </pre>
+             */
+            public boolean hasTweetMessage() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required string tweetMessage = 1;</code>
+             *
+             * <pre>
+             * ツイートする内容
+             * </pre>
+             */
+            public java.lang.String getTweetMessage() {
+                java.lang.Object ref = tweetMessage_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    tweetMessage_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string tweetMessage = 1;</code>
+             *
+             * <pre>
+             * ツイートする内容
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getTweetMessageBytes() {
+                java.lang.Object ref = tweetMessage_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    tweetMessage_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string tweetMessage = 1;</code>
+             *
+             * <pre>
+             * ツイートする内容
+             * </pre>
+             */
+            public Builder setTweetMessage(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                tweetMessage_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string tweetMessage = 1;</code>
+             *
+             * <pre>
+             * ツイートする内容
+             * </pre>
+             */
+            public Builder clearTweetMessage() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                tweetMessage_ = getDefaultInstance().getTweetMessage();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string tweetMessage = 1;</code>
+             *
+             * <pre>
+             * ツイートする内容
+             * </pre>
+             */
+            public Builder setTweetMessageBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                tweetMessage_ = value;
+                onChanged();
+                return this;
+            }
+
+            // repeated string hashtags = 2;
+            private com.google.protobuf.LazyStringList hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureHashtagsIsMutable() {
+                if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+                    hashtags_ = new com.google.protobuf.LazyStringArrayList(hashtags_);
+                    bitField0_ |= 0x00000002;
+                }
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public java.util.List<java.lang.String>
+            getHashtagsList() {
+                return java.util.Collections.unmodifiableList(hashtags_);
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public int getHashtagsCount() {
+                return hashtags_.size();
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public java.lang.String getHashtags(int index) {
+                return hashtags_.get(index);
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getHashtagsBytes(int index) {
+                return hashtags_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public Builder setHashtags(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureHashtagsIsMutable();
+                hashtags_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public Builder addHashtags(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureHashtagsIsMutable();
+                hashtags_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public Builder addAllHashtags(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureHashtagsIsMutable();
+                super.addAll(values, hashtags_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public Builder clearHashtags() {
+                hashtags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string hashtags = 2;</code>
+             *
+             * <pre>
+             * ハッシュタグ一覧
+             * その他、強制的に #andriders が付与される。
+             * </pre>
+             */
+            public Builder addHashtagsBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureHashtagsIsMutable();
+                hashtags_.add(value);
+                onChanged();
+                return this;
+            }
+
+            // repeated string imageUris = 4;
+            private com.google.protobuf.LazyStringList imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+            private void ensureImageUrisIsMutable() {
+                if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+                    imageUris_ = new com.google.protobuf.LazyStringArrayList(imageUris_);
+                    bitField0_ |= 0x00000004;
+                }
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public java.util.List<java.lang.String>
+            getImageUrisList() {
+                return java.util.Collections.unmodifiableList(imageUris_);
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public int getImageUrisCount() {
+                return imageUris_.size();
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public java.lang.String getImageUris(int index) {
+                return imageUris_.get(index);
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getImageUrisBytes(int index) {
+                return imageUris_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public Builder setImageUris(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureImageUrisIsMutable();
+                imageUris_.set(index, value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public Builder addImageUris(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureImageUrisIsMutable();
+                imageUris_.add(value);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public Builder addAllImageUris(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureImageUrisIsMutable();
+                super.addAll(values, imageUris_);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public Builder clearImageUris() {
+                imageUris_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>repeated string imageUris = 4;</code>
+             *
+             * <pre>
+             * 画像ファイルへのURI一覧
+             * Payloadの容量を小さくするため、なるべくこちらを利用することを推奨
+             * </pre>
+             */
+            public Builder addImageUrisBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureImageUrisIsMutable();
+                imageUris_.add(value);
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TweetRequestPayload)
+        }
+
+        static {
+            defaultInstance = new TweetRequestPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetRequestPayload)
     }
 
-    static {
-      defaultInstance = new TweetRequestPayload(true);
-      defaultInstance.initFields();
-    }
+    public interface IntentExtraOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.TweetRequestPayload)
-  }
+        // required .eaglesakura_ace.IntentExtra.ValueType type = 2;
 
-  public interface IntentExtraOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+         *
+         * <pre>
+         * Intentに渡す型
+         * </pre>
+         */
+        boolean hasType();
 
-    // required .eaglesakura_ace.IntentExtra.ValueType type = 2;
-    /**
-     * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-     *
-     * <pre>
-     * Intentに渡す型
-     * </pre>
-     */
-    boolean hasType();
-    /**
-     * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-     *
-     * <pre>
-     * Intentに渡す型
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType getType();
+        /**
+         * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+         *
+         * <pre>
+         * Intentに渡す型
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType getType();
 
-    // required string key = 1;
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * IntentのExtraKey
-     * </pre>
-     */
-    boolean hasKey();
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * IntentのExtraKey
-     * </pre>
-     */
-    java.lang.String getKey();
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * IntentのExtraKey
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // required string key = 1;
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * IntentのExtraKey
+         * </pre>
+         */
+        boolean hasKey();
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * IntentのExtraKey
+         * </pre>
+         */
+        java.lang.String getKey();
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * IntentのExtraKey
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getKeyBytes();
 
-    // required string value = 3;
-    /**
-     * <code>required string value = 3;</code>
-     *
-     * <pre>
-     * Intentに渡す値（一旦stringとする）
-     * </pre>
-     */
-    boolean hasValue();
-    /**
-     * <code>required string value = 3;</code>
-     *
-     * <pre>
-     * Intentに渡す値（一旦stringとする）
-     * </pre>
-     */
-    java.lang.String getValue();
-    /**
-     * <code>required string value = 3;</code>
-     *
-     * <pre>
-     * Intentに渡す値（一旦stringとする）
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // required string value = 3;
+
+        /**
+         * <code>required string value = 3;</code>
+         *
+         * <pre>
+         * Intentに渡す値（一旦stringとする）
+         * </pre>
+         */
+        boolean hasValue();
+
+        /**
+         * <code>required string value = 3;</code>
+         *
+         * <pre>
+         * Intentに渡す値（一旦stringとする）
+         * </pre>
+         */
+        java.lang.String getValue();
+
+        /**
+         * <code>required string value = 3;</code>
+         *
+         * <pre>
+         * Intentに渡す値（一旦stringとする）
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getValueBytes();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.IntentExtra}
-   */
-  public static final class IntentExtra extends
-      com.google.protobuf.GeneratedMessage
-      implements IntentExtraOrBuilder {
-    // Use IntentExtra.newBuilder() to construct.
-    private IntentExtra(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private IntentExtra(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final IntentExtra defaultInstance;
-    public static IntentExtra getDefaultInstance() {
-      return defaultInstance;
     }
 
-    public IntentExtra getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private IntentExtra(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000002;
-              key_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType value = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000001;
-                type_ = value;
-              }
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              value_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<IntentExtra> PARSER =
-        new com.google.protobuf.AbstractParser<IntentExtra>() {
-      public IntentExtra parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new IntentExtra(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<IntentExtra> getParserForType() {
-      return PARSER;
-    }
-
-    /**
-     * Protobuf enum {@code eaglesakura_ace.IntentExtra.ValueType}
-     */
-    public enum ValueType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>String = 1;</code>
-       */
-      String(0, 1),
-      /**
-       * <code>Boolean = 2;</code>
-       */
-      Boolean(1, 2),
-      /**
-       * <code>Integer = 3;</code>
-       */
-      Integer(2, 3),
-      /**
-       * <code>Long = 4;</code>
-       */
-      Long(3, 4),
-      /**
-       * <code>Float = 5;</code>
-       */
-      Float(4, 5),
-      /**
-       * <code>Double = 6;</code>
-       */
-      Double(5, 6),
-      /**
-       * <code>ByteArray = 7;</code>
-       */
-      ByteArray(6, 7),
-      ;
-
-      /**
-       * <code>String = 1;</code>
-       */
-      public static final int String_VALUE = 1;
-      /**
-       * <code>Boolean = 2;</code>
-       */
-      public static final int Boolean_VALUE = 2;
-      /**
-       * <code>Integer = 3;</code>
-       */
-      public static final int Integer_VALUE = 3;
-      /**
-       * <code>Long = 4;</code>
-       */
-      public static final int Long_VALUE = 4;
-      /**
-       * <code>Float = 5;</code>
-       */
-      public static final int Float_VALUE = 5;
-      /**
-       * <code>Double = 6;</code>
-       */
-      public static final int Double_VALUE = 6;
-      /**
-       * <code>ByteArray = 7;</code>
-       */
-      public static final int ByteArray_VALUE = 7;
-
-
-      public final int getNumber() { return value; }
-
-      public static ValueType valueOf(int value) {
-        switch (value) {
-          case 1: return String;
-          case 2: return Boolean;
-          case 3: return Integer;
-          case 4: return Long;
-          case 5: return Float;
-          case 6: return Double;
-          case 7: return ByteArray;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<ValueType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<ValueType>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<ValueType>() {
-              public ValueType findValueByNumber(int number) {
-                return ValueType.valueOf(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final ValueType[] VALUES = values();
-
-      public static ValueType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private ValueType(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:eaglesakura_ace.IntentExtra.ValueType)
-    }
-
-    private int bitField0_;
-    // required .eaglesakura_ace.IntentExtra.ValueType type = 2;
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType type_;
-    /**
-     * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-     *
-     * <pre>
-     * Intentに渡す型
-     * </pre>
-     */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-     *
-     * <pre>
-     * Intentに渡す型
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType getType() {
-      return type_;
-    }
-
-    // required string key = 1;
-    public static final int KEY_FIELD_NUMBER = 1;
-    private java.lang.Object key_;
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * IntentのExtraKey
-     * </pre>
-     */
-    public boolean hasKey() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * IntentのExtraKey
-     * </pre>
-     */
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          key_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * IntentのExtraKey
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getKeyBytes() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        key_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required string value = 3;
-    public static final int VALUE_FIELD_NUMBER = 3;
-    private java.lang.Object value_;
-    /**
-     * <code>required string value = 3;</code>
-     *
-     * <pre>
-     * Intentに渡す値（一旦stringとする）
-     * </pre>
-     */
-    public boolean hasValue() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required string value = 3;</code>
-     *
-     * <pre>
-     * Intentに渡す値（一旦stringとする）
-     * </pre>
-     */
-    public java.lang.String getValue() {
-      java.lang.Object ref = value_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          value_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string value = 3;</code>
-     *
-     * <pre>
-     * Intentに渡す値（一旦stringとする）
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getValueBytes() {
-      java.lang.Object ref = value_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        value_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private void initFields() {
-      type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
-      key_ = "";
-      value_ = "";
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasKey()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasValue()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(1, getKeyBytes());
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(2, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getValueBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getKeyBytes());
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getValueBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.IntentExtra}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder.class);
-      }
-
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+    public static final class IntentExtra extends
+            com.google.protobuf.GeneratedMessage
+            implements IntentExtraOrBuilder {
+        // Use IntentExtra.newBuilder() to construct.
+        private IntentExtra(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        key_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        value_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_descriptor;
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance();
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        private IntentExtra(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra result = new com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        private static final IntentExtra defaultInstance;
+
+        public static IntentExtra getDefaultInstance() {
+            return defaultInstance;
         }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
+
+        public IntentExtra getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        result.key_ = key_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.value_ = value_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance()) return this;
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasKey()) {
-          bitField0_ |= 0x00000002;
-          key_ = other.key_;
-          onChanged();
-        }
-        if (other.hasValue()) {
-          bitField0_ |= 0x00000004;
-          value_ = other.value_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasType()) {
-          
-          return false;
-        }
-        if (!hasKey()) {
-          
-          return false;
-        }
-        if (!hasValue()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required .eaglesakura_ace.IntentExtra.ValueType type = 2;
-      private com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
-      /**
-       * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-       *
-       * <pre>
-       * Intentに渡す型
-       * </pre>
-       */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-       *
-       * <pre>
-       * Intentに渡す型
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType getType() {
-        return type_;
-      }
-      /**
-       * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-       *
-       * <pre>
-       * Intentに渡す型
-       * </pre>
-       */
-      public Builder setType(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        type_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
-       *
-       * <pre>
-       * Intentに渡す型
-       * </pre>
-       */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
-        onChanged();
-        return this;
-      }
-
-      // required string key = 1;
-      private java.lang.Object key_ = "";
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * IntentのExtraKey
-       * </pre>
-       */
-      public boolean hasKey() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * IntentのExtraKey
-       * </pre>
-       */
-      public java.lang.String getKey() {
-        java.lang.Object ref = key_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          key_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * IntentのExtraKey
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getKeyBytes() {
-        java.lang.Object ref = key_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          key_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * IntentのExtraKey
-       * </pre>
-       */
-      public Builder setKey(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        key_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * IntentのExtraKey
-       * </pre>
-       */
-      public Builder clearKey() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        key_ = getDefaultInstance().getKey();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * IntentのExtraKey
-       * </pre>
-       */
-      public Builder setKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        key_ = value;
-        onChanged();
-        return this;
-      }
-
-      // required string value = 3;
-      private java.lang.Object value_ = "";
-      /**
-       * <code>required string value = 3;</code>
-       *
-       * <pre>
-       * Intentに渡す値（一旦stringとする）
-       * </pre>
-       */
-      public boolean hasValue() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required string value = 3;</code>
-       *
-       * <pre>
-       * Intentに渡す値（一旦stringとする）
-       * </pre>
-       */
-      public java.lang.String getValue() {
-        java.lang.Object ref = value_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          value_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string value = 3;</code>
-       *
-       * <pre>
-       * Intentに渡す値（一旦stringとする）
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getValueBytes() {
-        java.lang.Object ref = value_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          value_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string value = 3;</code>
-       *
-       * <pre>
-       * Intentに渡す値（一旦stringとする）
-       * </pre>
-       */
-      public Builder setValue(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        value_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string value = 3;</code>
-       *
-       * <pre>
-       * Intentに渡す値（一旦stringとする）
-       * </pre>
-       */
-      public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = getDefaultInstance().getValue();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string value = 3;</code>
-       *
-       * <pre>
-       * Intentに渡す値（一旦stringとする）
-       * </pre>
-       */
-      public Builder setValueBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        value_ = value;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.IntentExtra)
-    }
-
-    static {
-      defaultInstance = new IntentExtra(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.IntentExtra)
-  }
-
-  public interface IntentPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required .eaglesakura_ace.IntentPayload.BootType type = 1;
-    /**
-     * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-     */
-    boolean hasType();
-    /**
-     * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType getType();
-
-    // optional string componentName = 2;
-    /**
-     * <code>optional string componentName = 2;</code>
-     */
-    boolean hasComponentName();
-    /**
-     * <code>optional string componentName = 2;</code>
-     */
-    java.lang.String getComponentName();
-    /**
-     * <code>optional string componentName = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getComponentNameBytes();
-
-    // optional string action = 3;
-    /**
-     * <code>optional string action = 3;</code>
-     */
-    boolean hasAction();
-    /**
-     * <code>optional string action = 3;</code>
-     */
-    java.lang.String getAction();
-    /**
-     * <code>optional string action = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getActionBytes();
-
-    // optional int32 flags = 5;
-    /**
-     * <code>optional int32 flags = 5;</code>
-     *
-     * <pre>
-     * Intentに付与するフラグ
-     * </pre>
-     */
-    boolean hasFlags();
-    /**
-     * <code>optional int32 flags = 5;</code>
-     *
-     * <pre>
-     * Intentに付与するフラグ
-     * </pre>
-     */
-    int getFlags();
-
-    // optional string dataUri = 6;
-    /**
-     * <code>optional string dataUri = 6;</code>
-     *
-     * <pre>
-     * Intentに付与するData
-     * </pre>
-     */
-    boolean hasDataUri();
-    /**
-     * <code>optional string dataUri = 6;</code>
-     *
-     * <pre>
-     * Intentに付与するData
-     * </pre>
-     */
-    java.lang.String getDataUri();
-    /**
-     * <code>optional string dataUri = 6;</code>
-     *
-     * <pre>
-     * Intentに付与するData
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getDataUriBytes();
-
-    // repeated .eaglesakura_ace.IntentExtra extras = 4;
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> 
-        getExtrasList();
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getExtras(int index);
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    int getExtrasCount();
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder> 
-        getExtrasOrBuilderList();
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder getExtrasOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.IntentPayload}
-   */
-  public static final class IntentPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements IntentPayloadOrBuilder {
-    // Use IntentPayload.newBuilder() to construct.
-    private IntentPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private IntentPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final IntentPayload defaultInstance;
-    public static IntentPayload getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public IntentPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
-      return this.unknownFields;
-    }
-    private IntentPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
+            return this.unknownFields;
+        }
+
+        private IntentExtra(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            bitField0_ |= 0x00000002;
+                            key_ = input.readBytes();
+                            break;
+                        }
+                        case 16: {
+                            int rawValue = input.readEnum();
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType value = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.valueOf(rawValue);
+                            if (value == null) {
+                                unknownFields.mergeVarintField(2, rawValue);
+                            } else {
+                                bitField0_ |= 0x00000001;
+                                type_ = value;
+                            }
+                            break;
+                        }
+                        case 26: {
+                            bitField0_ |= 0x00000004;
+                            value_ = input.readBytes();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
             }
-            case 8: {
-              int rawValue = input.readEnum();
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType value = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
-              } else {
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder.class);
+        }
+
+        public static com.google.protobuf.Parser<IntentExtra> PARSER =
+                new com.google.protobuf.AbstractParser<IntentExtra>() {
+                    public IntentExtra parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new IntentExtra(input, extensionRegistry);
+                    }
+                };
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<IntentExtra> getParserForType() {
+            return PARSER;
+        }
+
+        /**
+         * Protobuf enum {@code eaglesakura_ace.IntentExtra.ValueType}
+         */
+        public enum ValueType
+                implements com.google.protobuf.ProtocolMessageEnum {
+            /**
+             * <code>String = 1;</code>
+             */
+            String(0, 1),
+            /**
+             * <code>Boolean = 2;</code>
+             */
+            Boolean(1, 2),
+            /**
+             * <code>Integer = 3;</code>
+             */
+            Integer(2, 3),
+            /**
+             * <code>Long = 4;</code>
+             */
+            Long(3, 4),
+            /**
+             * <code>Float = 5;</code>
+             */
+            Float(4, 5),
+            /**
+             * <code>Double = 6;</code>
+             */
+            Double(5, 6),
+            /**
+             * <code>ByteArray = 7;</code>
+             */
+            ByteArray(6, 7),;
+
+            /**
+             * <code>String = 1;</code>
+             */
+            public static final int String_VALUE = 1;
+            /**
+             * <code>Boolean = 2;</code>
+             */
+            public static final int Boolean_VALUE = 2;
+            /**
+             * <code>Integer = 3;</code>
+             */
+            public static final int Integer_VALUE = 3;
+            /**
+             * <code>Long = 4;</code>
+             */
+            public static final int Long_VALUE = 4;
+            /**
+             * <code>Float = 5;</code>
+             */
+            public static final int Float_VALUE = 5;
+            /**
+             * <code>Double = 6;</code>
+             */
+            public static final int Double_VALUE = 6;
+            /**
+             * <code>ByteArray = 7;</code>
+             */
+            public static final int ByteArray_VALUE = 7;
+
+
+            public final int getNumber() {
+                return value;
+            }
+
+            public static ValueType valueOf(int value) {
+                switch (value) {
+                    case 1:
+                        return String;
+                    case 2:
+                        return Boolean;
+                    case 3:
+                        return Integer;
+                    case 4:
+                        return Long;
+                    case 5:
+                        return Float;
+                    case 6:
+                        return Double;
+                    case 7:
+                        return ByteArray;
+                    default:
+                        return null;
+                }
+            }
+
+            public static com.google.protobuf.Internal.EnumLiteMap<ValueType>
+            internalGetValueMap() {
+                return internalValueMap;
+            }
+
+            private static com.google.protobuf.Internal.EnumLiteMap<ValueType>
+                    internalValueMap =
+                    new com.google.protobuf.Internal.EnumLiteMap<ValueType>() {
+                        public ValueType findValueByNumber(int number) {
+                            return ValueType.valueOf(number);
+                        }
+                    };
+
+            public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+                return getDescriptor().getValues().get(index);
+            }
+
+            public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+                return getDescriptor();
+            }
+
+            public static final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDescriptor().getEnumTypes().get(0);
+            }
+
+            private static final ValueType[] VALUES = values();
+
+            public static ValueType valueOf(
+                    com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                    throw new java.lang.IllegalArgumentException(
+                            "EnumValueDescriptor is not for this type.");
+                }
+                return VALUES[desc.getIndex()];
+            }
+
+            private final int index;
+            private final int value;
+
+            private ValueType(int index, int value) {
+                this.index = index;
+                this.value = value;
+            }
+
+            // @@protoc_insertion_point(enum_scope:eaglesakura_ace.IntentExtra.ValueType)
+        }
+
+        private int bitField0_;
+        // required .eaglesakura_ace.IntentExtra.ValueType type = 2;
+        public static final int TYPE_FIELD_NUMBER = 2;
+        private com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType type_;
+
+        /**
+         * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+         *
+         * <pre>
+         * Intentに渡す型
+         * </pre>
+         */
+        public boolean hasType() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+
+        /**
+         * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+         *
+         * <pre>
+         * Intentに渡す型
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType getType() {
+            return type_;
+        }
+
+        // required string key = 1;
+        public static final int KEY_FIELD_NUMBER = 1;
+        private java.lang.Object key_;
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * IntentのExtraKey
+         * </pre>
+         */
+        public boolean hasKey() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * IntentのExtraKey
+         * </pre>
+         */
+        public java.lang.String getKey() {
+            java.lang.Object ref = key_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    key_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * IntentのExtraKey
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getKeyBytes() {
+            java.lang.Object ref = key_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                key_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // required string value = 3;
+        public static final int VALUE_FIELD_NUMBER = 3;
+        private java.lang.Object value_;
+
+        /**
+         * <code>required string value = 3;</code>
+         *
+         * <pre>
+         * Intentに渡す値（一旦stringとする）
+         * </pre>
+         */
+        public boolean hasValue() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+
+        /**
+         * <code>required string value = 3;</code>
+         *
+         * <pre>
+         * Intentに渡す値（一旦stringとする）
+         * </pre>
+         */
+        public java.lang.String getValue() {
+            java.lang.Object ref = value_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    value_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string value = 3;</code>
+         *
+         * <pre>
+         * Intentに渡す値（一旦stringとする）
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getValueBytes() {
+            java.lang.Object ref = value_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                value_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        private void initFields() {
+            type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
+            key_ = "";
+            value_ = "";
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasType()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasKey()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasValue()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeBytes(1, getKeyBytes());
+            }
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeEnum(2, type_.getNumber());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeBytes(3, getValueBytes());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(1, getKeyBytes());
+            }
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeEnumSize(2, type_.getNumber());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(3, getValueBytes());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.IntentExtra}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                key_ = "";
+                bitField0_ = (bitField0_ & ~0x00000002);
+                value_ = "";
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentExtra_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra result = new com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.type_ = type_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.key_ = key_;
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.value_ = value_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance())
+                    return this;
+                if (other.hasType()) {
+                    setType(other.getType());
+                }
+                if (other.hasKey()) {
+                    bitField0_ |= 0x00000002;
+                    key_ = other.key_;
+                    onChanged();
+                }
+                if (other.hasValue()) {
+                    bitField0_ |= 0x00000004;
+                    value_ = other.value_;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasType()) {
+
+                    return false;
+                }
+                if (!hasKey()) {
+
+                    return false;
+                }
+                if (!hasValue()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required .eaglesakura_ace.IntentExtra.ValueType type = 2;
+            private com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
+
+            /**
+             * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+             *
+             * <pre>
+             * Intentに渡す型
+             * </pre>
+             */
+            public boolean hasType() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+             *
+             * <pre>
+             * Intentに渡す型
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType getType() {
+                return type_;
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+             *
+             * <pre>
+             * Intentに渡す型
+             * </pre>
+             */
+            public Builder setType(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
                 bitField0_ |= 0x00000001;
                 type_ = value;
-              }
-              break;
+                onChanged();
+                return this;
             }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              componentName_ = input.readBytes();
-              break;
+
+            /**
+             * <code>required .eaglesakura_ace.IntentExtra.ValueType type = 2;</code>
+             *
+             * <pre>
+             * Intentに渡す型
+             * </pre>
+             */
+            public Builder clearType() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.ValueType.String;
+                onChanged();
+                return this;
             }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              action_ = input.readBytes();
-              break;
+
+            // required string key = 1;
+            private java.lang.Object key_ = "";
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * IntentのExtraKey
+             * </pre>
+             */
+            public boolean hasKey() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                extras_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>();
-                mutable_bitField0_ |= 0x00000020;
-              }
-              extras_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.PARSER, extensionRegistry));
-              break;
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * IntentのExtraKey
+             * </pre>
+             */
+            public java.lang.String getKey() {
+                java.lang.Object ref = key_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    key_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
             }
-            case 40: {
-              bitField0_ |= 0x00000008;
-              flags_ = input.readInt32();
-              break;
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * IntentのExtraKey
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getKeyBytes() {
+                java.lang.Object ref = key_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    key_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
             }
-            case 50: {
-              bitField0_ |= 0x00000010;
-              dataUri_ = input.readBytes();
-              break;
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * IntentのExtraKey
+             * </pre>
+             */
+            public Builder setKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                key_ = value;
+                onChanged();
+                return this;
             }
-          }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * IntentのExtraKey
+             * </pre>
+             */
+            public Builder clearKey() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                key_ = getDefaultInstance().getKey();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * IntentのExtraKey
+             * </pre>
+             */
+            public Builder setKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                key_ = value;
+                onChanged();
+                return this;
+            }
+
+            // required string value = 3;
+            private java.lang.Object value_ = "";
+
+            /**
+             * <code>required string value = 3;</code>
+             *
+             * <pre>
+             * Intentに渡す値（一旦stringとする）
+             * </pre>
+             */
+            public boolean hasValue() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>required string value = 3;</code>
+             *
+             * <pre>
+             * Intentに渡す値（一旦stringとする）
+             * </pre>
+             */
+            public java.lang.String getValue() {
+                java.lang.Object ref = value_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    value_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string value = 3;</code>
+             *
+             * <pre>
+             * Intentに渡す値（一旦stringとする）
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getValueBytes() {
+                java.lang.Object ref = value_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    value_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string value = 3;</code>
+             *
+             * <pre>
+             * Intentに渡す値（一旦stringとする）
+             * </pre>
+             */
+            public Builder setValue(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                value_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string value = 3;</code>
+             *
+             * <pre>
+             * Intentに渡す値（一旦stringとする）
+             * </pre>
+             */
+            public Builder clearValue() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                value_ = getDefaultInstance().getValue();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string value = 3;</code>
+             *
+             * <pre>
+             * Intentに渡す値（一旦stringとする）
+             * </pre>
+             */
+            public Builder setValueBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                value_ = value;
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.IntentExtra)
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-          extras_ = java.util.Collections.unmodifiableList(extras_);
+
+        static {
+            defaultInstance = new IntentExtra(true);
+            defaultInstance.initFields();
         }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_descriptor;
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.IntentExtra)
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder.class);
+    public interface IntentPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
+
+        // required .eaglesakura_ace.IntentPayload.BootType type = 1;
+
+        /**
+         * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+         */
+        boolean hasType();
+
+        /**
+         * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType getType();
+
+        // optional string componentName = 2;
+
+        /**
+         * <code>optional string componentName = 2;</code>
+         */
+        boolean hasComponentName();
+
+        /**
+         * <code>optional string componentName = 2;</code>
+         */
+        java.lang.String getComponentName();
+
+        /**
+         * <code>optional string componentName = 2;</code>
+         */
+        com.google.protobuf.ByteString
+        getComponentNameBytes();
+
+        // optional string action = 3;
+
+        /**
+         * <code>optional string action = 3;</code>
+         */
+        boolean hasAction();
+
+        /**
+         * <code>optional string action = 3;</code>
+         */
+        java.lang.String getAction();
+
+        /**
+         * <code>optional string action = 3;</code>
+         */
+        com.google.protobuf.ByteString
+        getActionBytes();
+
+        // optional int32 flags = 5;
+
+        /**
+         * <code>optional int32 flags = 5;</code>
+         *
+         * <pre>
+         * Intentに付与するフラグ
+         * </pre>
+         */
+        boolean hasFlags();
+
+        /**
+         * <code>optional int32 flags = 5;</code>
+         *
+         * <pre>
+         * Intentに付与するフラグ
+         * </pre>
+         */
+        int getFlags();
+
+        // optional string dataUri = 6;
+
+        /**
+         * <code>optional string dataUri = 6;</code>
+         *
+         * <pre>
+         * Intentに付与するData
+         * </pre>
+         */
+        boolean hasDataUri();
+
+        /**
+         * <code>optional string dataUri = 6;</code>
+         *
+         * <pre>
+         * Intentに付与するData
+         * </pre>
+         */
+        java.lang.String getDataUri();
+
+        /**
+         * <code>optional string dataUri = 6;</code>
+         *
+         * <pre>
+         * Intentに付与するData
+         * </pre>
+         */
+        com.google.protobuf.ByteString
+        getDataUriBytes();
+
+        // repeated .eaglesakura_ace.IntentExtra extras = 4;
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>
+        getExtrasList();
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getExtras(int index);
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        int getExtrasCount();
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>
+        getExtrasOrBuilderList();
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder getExtrasOrBuilder(
+                int index);
     }
 
-    public static com.google.protobuf.Parser<IntentPayload> PARSER =
-        new com.google.protobuf.AbstractParser<IntentPayload>() {
-      public IntentPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new IntentPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<IntentPayload> getParserForType() {
-      return PARSER;
-    }
-
-    /**
-     * Protobuf enum {@code eaglesakura_ace.IntentPayload.BootType}
-     *
-     * <pre>
-     * 起動方法
-     * </pre>
-     */
-    public enum BootType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>Activity = 1;</code>
-       */
-      Activity(0, 1),
-      /**
-       * <code>Broadcast = 2;</code>
-       */
-      Broadcast(1, 2),
-      /**
-       * <code>Service = 3;</code>
-       */
-      Service(2, 3),
-      /**
-       * <code>DataOnly = 10;</code>
-       *
-       * <pre>
-       * データのみを保持する
-       * </pre>
-       */
-      DataOnly(3, 10),
-      ;
-
-      /**
-       * <code>Activity = 1;</code>
-       */
-      public static final int Activity_VALUE = 1;
-      /**
-       * <code>Broadcast = 2;</code>
-       */
-      public static final int Broadcast_VALUE = 2;
-      /**
-       * <code>Service = 3;</code>
-       */
-      public static final int Service_VALUE = 3;
-      /**
-       * <code>DataOnly = 10;</code>
-       *
-       * <pre>
-       * データのみを保持する
-       * </pre>
-       */
-      public static final int DataOnly_VALUE = 10;
-
-
-      public final int getNumber() { return value; }
-
-      public static BootType valueOf(int value) {
-        switch (value) {
-          case 1: return Activity;
-          case 2: return Broadcast;
-          case 3: return Service;
-          case 10: return DataOnly;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<BootType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<BootType>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<BootType>() {
-              public BootType findValueByNumber(int number) {
-                return BootType.valueOf(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final BootType[] VALUES = values();
-
-      public static BootType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private BootType(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:eaglesakura_ace.IntentPayload.BootType)
-    }
-
-    private int bitField0_;
-    // required .eaglesakura_ace.IntentPayload.BootType type = 1;
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType type_;
-    /**
-     * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-     */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType getType() {
-      return type_;
-    }
-
-    // optional string componentName = 2;
-    public static final int COMPONENTNAME_FIELD_NUMBER = 2;
-    private java.lang.Object componentName_;
-    /**
-     * <code>optional string componentName = 2;</code>
-     */
-    public boolean hasComponentName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional string componentName = 2;</code>
-     */
-    public java.lang.String getComponentName() {
-      java.lang.Object ref = componentName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          componentName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string componentName = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getComponentNameBytes() {
-      java.lang.Object ref = componentName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        componentName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional string action = 3;
-    public static final int ACTION_FIELD_NUMBER = 3;
-    private java.lang.Object action_;
-    /**
-     * <code>optional string action = 3;</code>
-     */
-    public boolean hasAction() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string action = 3;</code>
-     */
-    public java.lang.String getAction() {
-      java.lang.Object ref = action_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          action_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string action = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getActionBytes() {
-      java.lang.Object ref = action_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        action_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 flags = 5;
-    public static final int FLAGS_FIELD_NUMBER = 5;
-    private int flags_;
-    /**
-     * <code>optional int32 flags = 5;</code>
-     *
-     * <pre>
-     * Intentに付与するフラグ
-     * </pre>
-     */
-    public boolean hasFlags() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 flags = 5;</code>
-     *
-     * <pre>
-     * Intentに付与するフラグ
-     * </pre>
-     */
-    public int getFlags() {
-      return flags_;
-    }
-
-    // optional string dataUri = 6;
-    public static final int DATAURI_FIELD_NUMBER = 6;
-    private java.lang.Object dataUri_;
-    /**
-     * <code>optional string dataUri = 6;</code>
-     *
-     * <pre>
-     * Intentに付与するData
-     * </pre>
-     */
-    public boolean hasDataUri() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string dataUri = 6;</code>
-     *
-     * <pre>
-     * Intentに付与するData
-     * </pre>
-     */
-    public java.lang.String getDataUri() {
-      java.lang.Object ref = dataUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          dataUri_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string dataUri = 6;</code>
-     *
-     * <pre>
-     * Intentに付与するData
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getDataUriBytes() {
-      java.lang.Object ref = dataUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        dataUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // repeated .eaglesakura_ace.IntentExtra extras = 4;
-    public static final int EXTRAS_FIELD_NUMBER = 4;
-    private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> extras_;
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> getExtrasList() {
-      return extras_;
-    }
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    public java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder> 
-        getExtrasOrBuilderList() {
-      return extras_;
-    }
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    public int getExtrasCount() {
-      return extras_.size();
-    }
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getExtras(int index) {
-      return extras_.get(index);
-    }
-    /**
-     * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder getExtrasOrBuilder(
-        int index) {
-      return extras_.get(index);
-    }
-
-    private void initFields() {
-      type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
-      componentName_ = "";
-      action_ = "";
-      flags_ = 0;
-      dataUri_ = "";
-      extras_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getExtrasCount(); i++) {
-        if (!getExtras(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getComponentNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getActionBytes());
-      }
-      for (int i = 0; i < extras_.size(); i++) {
-        output.writeMessage(4, extras_.get(i));
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, flags_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(6, getDataUriBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getComponentNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getActionBytes());
-      }
-      for (int i = 0; i < extras_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, extras_.get(i));
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, flags_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getDataUriBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.IntentPayload}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_descriptor;
-      }
+    public static final class IntentPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements IntentPayloadOrBuilder {
+        // Use IntentPayload.newBuilder() to construct.
+        private IntentPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
+        }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder.class);
-      }
+        private IntentPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private static final IntentPayload defaultInstance;
 
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getExtrasFieldBuilder();
+        public static IntentPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        componentName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        action_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        flags_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        dataUri_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (extrasBuilder_ == null) {
-          extras_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
-        } else {
-          extrasBuilder_.clear();
+        public IntentPayload getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_descriptor;
-      }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.componentName_ = componentName_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.action_ = action_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.flags_ = flags_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.dataUri_ = dataUri_;
-        if (extrasBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
-            extras_ = java.util.Collections.unmodifiableList(extras_);
-            bitField0_ = (bitField0_ & ~0x00000020);
-          }
-          result.extras_ = extras_;
-        } else {
-          result.extras_ = extrasBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance()) return this;
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasComponentName()) {
-          bitField0_ |= 0x00000002;
-          componentName_ = other.componentName_;
-          onChanged();
-        }
-        if (other.hasAction()) {
-          bitField0_ |= 0x00000004;
-          action_ = other.action_;
-          onChanged();
-        }
-        if (other.hasFlags()) {
-          setFlags(other.getFlags());
-        }
-        if (other.hasDataUri()) {
-          bitField0_ |= 0x00000010;
-          dataUri_ = other.dataUri_;
-          onChanged();
-        }
-        if (extrasBuilder_ == null) {
-          if (!other.extras_.isEmpty()) {
-            if (extras_.isEmpty()) {
-              extras_ = other.extras_;
-              bitField0_ = (bitField0_ & ~0x00000020);
-            } else {
-              ensureExtrasIsMutable();
-              extras_.addAll(other.extras_);
+        private IntentPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 8: {
+                            int rawValue = input.readEnum();
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType value = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.valueOf(rawValue);
+                            if (value == null) {
+                                unknownFields.mergeVarintField(1, rawValue);
+                            } else {
+                                bitField0_ |= 0x00000001;
+                                type_ = value;
+                            }
+                            break;
+                        }
+                        case 18: {
+                            bitField0_ |= 0x00000002;
+                            componentName_ = input.readBytes();
+                            break;
+                        }
+                        case 26: {
+                            bitField0_ |= 0x00000004;
+                            action_ = input.readBytes();
+                            break;
+                        }
+                        case 34: {
+                            if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                                extras_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>();
+                                mutable_bitField0_ |= 0x00000020;
+                            }
+                            extras_.add(input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.PARSER, extensionRegistry));
+                            break;
+                        }
+                        case 40: {
+                            bitField0_ |= 0x00000008;
+                            flags_ = input.readInt32();
+                            break;
+                        }
+                        case 50: {
+                            bitField0_ |= 0x00000010;
+                            dataUri_ = input.readBytes();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                    extras_ = java.util.Collections.unmodifiableList(extras_);
+                }
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
             }
-            onChanged();
-          }
-        } else {
-          if (!other.extras_.isEmpty()) {
-            if (extrasBuilder_.isEmpty()) {
-              extrasBuilder_.dispose();
-              extrasBuilder_ = null;
-              extras_ = other.extras_;
-              bitField0_ = (bitField0_ & ~0x00000020);
-              extrasBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getExtrasFieldBuilder() : null;
-            } else {
-              extrasBuilder_.addAllMessages(other.extras_);
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder.class);
+        }
+
+        public static com.google.protobuf.Parser<IntentPayload> PARSER =
+                new com.google.protobuf.AbstractParser<IntentPayload>() {
+                    public IntentPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new IntentPayload(input, extensionRegistry);
+                    }
+                };
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<IntentPayload> getParserForType() {
+            return PARSER;
+        }
+
+        /**
+         * Protobuf enum {@code eaglesakura_ace.IntentPayload.BootType}
+         *
+         * <pre>
+         * 起動方法
+         * </pre>
+         */
+        public enum BootType
+                implements com.google.protobuf.ProtocolMessageEnum {
+            /**
+             * <code>Activity = 1;</code>
+             */
+            Activity(0, 1),
+            /**
+             * <code>Broadcast = 2;</code>
+             */
+            Broadcast(1, 2),
+            /**
+             * <code>Service = 3;</code>
+             */
+            Service(2, 3),
+            /**
+             * <code>DataOnly = 10;</code>
+             *
+             * <pre>
+             * データのみを保持する
+             * </pre>
+             */
+            DataOnly(3, 10),;
+
+            /**
+             * <code>Activity = 1;</code>
+             */
+            public static final int Activity_VALUE = 1;
+            /**
+             * <code>Broadcast = 2;</code>
+             */
+            public static final int Broadcast_VALUE = 2;
+            /**
+             * <code>Service = 3;</code>
+             */
+            public static final int Service_VALUE = 3;
+            /**
+             * <code>DataOnly = 10;</code>
+             *
+             * <pre>
+             * データのみを保持する
+             * </pre>
+             */
+            public static final int DataOnly_VALUE = 10;
+
+
+            public final int getNumber() {
+                return value;
             }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasType()) {
-          
-          return false;
-        }
-        for (int i = 0; i < getExtrasCount(); i++) {
-          if (!getExtras(i).isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
+            public static BootType valueOf(int value) {
+                switch (value) {
+                    case 1:
+                        return Activity;
+                    case 2:
+                        return Broadcast;
+                    case 3:
+                        return Service;
+                    case 10:
+                        return DataOnly;
+                    default:
+                        return null;
+                }
+            }
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
+            public static com.google.protobuf.Internal.EnumLiteMap<BootType>
+            internalGetValueMap() {
+                return internalValueMap;
+            }
 
-      // required .eaglesakura_ace.IntentPayload.BootType type = 1;
-      private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
-      /**
-       * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-       */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType getType() {
-        return type_;
-      }
-      /**
-       * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-       */
-      public Builder setType(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        type_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
-       */
-      public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
-        onChanged();
-        return this;
-      }
+            private static com.google.protobuf.Internal.EnumLiteMap<BootType>
+                    internalValueMap =
+                    new com.google.protobuf.Internal.EnumLiteMap<BootType>() {
+                        public BootType findValueByNumber(int number) {
+                            return BootType.valueOf(number);
+                        }
+                    };
 
-      // optional string componentName = 2;
-      private java.lang.Object componentName_ = "";
-      /**
-       * <code>optional string componentName = 2;</code>
-       */
-      public boolean hasComponentName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string componentName = 2;</code>
-       */
-      public java.lang.String getComponentName() {
-        java.lang.Object ref = componentName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          componentName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string componentName = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getComponentNameBytes() {
-        java.lang.Object ref = componentName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          componentName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string componentName = 2;</code>
-       */
-      public Builder setComponentName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        componentName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string componentName = 2;</code>
-       */
-      public Builder clearComponentName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        componentName_ = getDefaultInstance().getComponentName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string componentName = 2;</code>
-       */
-      public Builder setComponentNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        componentName_ = value;
-        onChanged();
-        return this;
-      }
+            public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+                return getDescriptor().getValues().get(index);
+            }
 
-      // optional string action = 3;
-      private java.lang.Object action_ = "";
-      /**
-       * <code>optional string action = 3;</code>
-       */
-      public boolean hasAction() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string action = 3;</code>
-       */
-      public java.lang.String getAction() {
-        java.lang.Object ref = action_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          action_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string action = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getActionBytes() {
-        java.lang.Object ref = action_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          action_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string action = 3;</code>
-       */
-      public Builder setAction(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        action_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string action = 3;</code>
-       */
-      public Builder clearAction() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        action_ = getDefaultInstance().getAction();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string action = 3;</code>
-       */
-      public Builder setActionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        action_ = value;
-        onChanged();
-        return this;
-      }
+            public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+                return getDescriptor();
+            }
 
-      // optional int32 flags = 5;
-      private int flags_ ;
-      /**
-       * <code>optional int32 flags = 5;</code>
-       *
-       * <pre>
-       * Intentに付与するフラグ
-       * </pre>
-       */
-      public boolean hasFlags() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 flags = 5;</code>
-       *
-       * <pre>
-       * Intentに付与するフラグ
-       * </pre>
-       */
-      public int getFlags() {
-        return flags_;
-      }
-      /**
-       * <code>optional int32 flags = 5;</code>
-       *
-       * <pre>
-       * Intentに付与するフラグ
-       * </pre>
-       */
-      public Builder setFlags(int value) {
-        bitField0_ |= 0x00000008;
-        flags_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 flags = 5;</code>
-       *
-       * <pre>
-       * Intentに付与するフラグ
-       * </pre>
-       */
-      public Builder clearFlags() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        flags_ = 0;
-        onChanged();
-        return this;
-      }
+            public static final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDescriptor().getEnumTypes().get(0);
+            }
 
-      // optional string dataUri = 6;
-      private java.lang.Object dataUri_ = "";
-      /**
-       * <code>optional string dataUri = 6;</code>
-       *
-       * <pre>
-       * Intentに付与するData
-       * </pre>
-       */
-      public boolean hasDataUri() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string dataUri = 6;</code>
-       *
-       * <pre>
-       * Intentに付与するData
-       * </pre>
-       */
-      public java.lang.String getDataUri() {
-        java.lang.Object ref = dataUri_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          dataUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string dataUri = 6;</code>
-       *
-       * <pre>
-       * Intentに付与するData
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getDataUriBytes() {
-        java.lang.Object ref = dataUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          dataUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string dataUri = 6;</code>
-       *
-       * <pre>
-       * Intentに付与するData
-       * </pre>
-       */
-      public Builder setDataUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        dataUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string dataUri = 6;</code>
-       *
-       * <pre>
-       * Intentに付与するData
-       * </pre>
-       */
-      public Builder clearDataUri() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        dataUri_ = getDefaultInstance().getDataUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string dataUri = 6;</code>
-       *
-       * <pre>
-       * Intentに付与するData
-       * </pre>
-       */
-      public Builder setDataUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        dataUri_ = value;
-        onChanged();
-        return this;
-      }
+            private static final BootType[] VALUES = values();
 
-      // repeated .eaglesakura_ace.IntentExtra extras = 4;
-      private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> extras_ =
-        java.util.Collections.emptyList();
-      private void ensureExtrasIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
-          extras_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>(extras_);
-          bitField0_ |= 0x00000020;
-         }
-      }
+            public static BootType valueOf(
+                    com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+                if (desc.getType() != getDescriptor()) {
+                    throw new java.lang.IllegalArgumentException(
+                            "EnumValueDescriptor is not for this type.");
+                }
+                return VALUES[desc.getIndex()];
+            }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder> extrasBuilder_;
+            private final int index;
+            private final int value;
 
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> getExtrasList() {
-        if (extrasBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(extras_);
-        } else {
-          return extrasBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public int getExtrasCount() {
-        if (extrasBuilder_ == null) {
-          return extras_.size();
-        } else {
-          return extrasBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getExtras(int index) {
-        if (extrasBuilder_ == null) {
-          return extras_.get(index);
-        } else {
-          return extrasBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder setExtras(
-          int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra value) {
-        if (extrasBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureExtrasIsMutable();
-          extras_.set(index, value);
-          onChanged();
-        } else {
-          extrasBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder setExtras(
-          int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder builderForValue) {
-        if (extrasBuilder_ == null) {
-          ensureExtrasIsMutable();
-          extras_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          extrasBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder addExtras(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra value) {
-        if (extrasBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureExtrasIsMutable();
-          extras_.add(value);
-          onChanged();
-        } else {
-          extrasBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder addExtras(
-          int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra value) {
-        if (extrasBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureExtrasIsMutable();
-          extras_.add(index, value);
-          onChanged();
-        } else {
-          extrasBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder addExtras(
-          com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder builderForValue) {
-        if (extrasBuilder_ == null) {
-          ensureExtrasIsMutable();
-          extras_.add(builderForValue.build());
-          onChanged();
-        } else {
-          extrasBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder addExtras(
-          int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder builderForValue) {
-        if (extrasBuilder_ == null) {
-          ensureExtrasIsMutable();
-          extras_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          extrasBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder addAllExtras(
-          java.lang.Iterable<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> values) {
-        if (extrasBuilder_ == null) {
-          ensureExtrasIsMutable();
-          super.addAll(values, extras_);
-          onChanged();
-        } else {
-          extrasBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder clearExtras() {
-        if (extrasBuilder_ == null) {
-          extras_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
-          onChanged();
-        } else {
-          extrasBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public Builder removeExtras(int index) {
-        if (extrasBuilder_ == null) {
-          ensureExtrasIsMutable();
-          extras_.remove(index);
-          onChanged();
-        } else {
-          extrasBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder getExtrasBuilder(
-          int index) {
-        return getExtrasFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder getExtrasOrBuilder(
-          int index) {
-        if (extrasBuilder_ == null) {
-          return extras_.get(index);  } else {
-          return extrasBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder> 
-           getExtrasOrBuilderList() {
-        if (extrasBuilder_ != null) {
-          return extrasBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(extras_);
-        }
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder addExtrasBuilder() {
-        return getExtrasFieldBuilder().addBuilder(
-            com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder addExtrasBuilder(
-          int index) {
-        return getExtrasFieldBuilder().addBuilder(
-            index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
-       */
-      public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder> 
-           getExtrasBuilderList() {
-        return getExtrasFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder> 
-          getExtrasFieldBuilder() {
-        if (extrasBuilder_ == null) {
-          extrasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>(
-                  extras_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
-                  getParentForChildren(),
-                  isClean());
-          extras_ = null;
-        }
-        return extrasBuilder_;
-      }
+            private BootType(int index, int value) {
+                this.index = index;
+                this.value = value;
+            }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.IntentPayload)
+            // @@protoc_insertion_point(enum_scope:eaglesakura_ace.IntentPayload.BootType)
+        }
+
+        private int bitField0_;
+        // required .eaglesakura_ace.IntentPayload.BootType type = 1;
+        public static final int TYPE_FIELD_NUMBER = 1;
+        private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType type_;
+
+        /**
+         * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+         */
+        public boolean hasType() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+
+        /**
+         * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType getType() {
+            return type_;
+        }
+
+        // optional string componentName = 2;
+        public static final int COMPONENTNAME_FIELD_NUMBER = 2;
+        private java.lang.Object componentName_;
+
+        /**
+         * <code>optional string componentName = 2;</code>
+         */
+        public boolean hasComponentName() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+
+        /**
+         * <code>optional string componentName = 2;</code>
+         */
+        public java.lang.String getComponentName() {
+            java.lang.Object ref = componentName_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    componentName_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string componentName = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+        getComponentNameBytes() {
+            java.lang.Object ref = componentName_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                componentName_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional string action = 3;
+        public static final int ACTION_FIELD_NUMBER = 3;
+        private java.lang.Object action_;
+
+        /**
+         * <code>optional string action = 3;</code>
+         */
+        public boolean hasAction() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+
+        /**
+         * <code>optional string action = 3;</code>
+         */
+        public java.lang.String getAction() {
+            java.lang.Object ref = action_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    action_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string action = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+        getActionBytes() {
+            java.lang.Object ref = action_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                action_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional int32 flags = 5;
+        public static final int FLAGS_FIELD_NUMBER = 5;
+        private int flags_;
+
+        /**
+         * <code>optional int32 flags = 5;</code>
+         *
+         * <pre>
+         * Intentに付与するフラグ
+         * </pre>
+         */
+        public boolean hasFlags() {
+            return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+
+        /**
+         * <code>optional int32 flags = 5;</code>
+         *
+         * <pre>
+         * Intentに付与するフラグ
+         * </pre>
+         */
+        public int getFlags() {
+            return flags_;
+        }
+
+        // optional string dataUri = 6;
+        public static final int DATAURI_FIELD_NUMBER = 6;
+        private java.lang.Object dataUri_;
+
+        /**
+         * <code>optional string dataUri = 6;</code>
+         *
+         * <pre>
+         * Intentに付与するData
+         * </pre>
+         */
+        public boolean hasDataUri() {
+            return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+
+        /**
+         * <code>optional string dataUri = 6;</code>
+         *
+         * <pre>
+         * Intentに付与するData
+         * </pre>
+         */
+        public java.lang.String getDataUri() {
+            java.lang.Object ref = dataUri_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    dataUri_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string dataUri = 6;</code>
+         *
+         * <pre>
+         * Intentに付与するData
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getDataUriBytes() {
+            java.lang.Object ref = dataUri_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                dataUri_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // repeated .eaglesakura_ace.IntentExtra extras = 4;
+        public static final int EXTRAS_FIELD_NUMBER = 4;
+        private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> extras_;
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> getExtrasList() {
+            return extras_;
+        }
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        public java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>
+        getExtrasOrBuilderList() {
+            return extras_;
+        }
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        public int getExtrasCount() {
+            return extras_.size();
+        }
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getExtras(int index) {
+            return extras_.get(index);
+        }
+
+        /**
+         * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder getExtrasOrBuilder(
+                int index) {
+            return extras_.get(index);
+        }
+
+        private void initFields() {
+            type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
+            componentName_ = "";
+            action_ = "";
+            flags_ = 0;
+            dataUri_ = "";
+            extras_ = java.util.Collections.emptyList();
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasType()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            for (int i = 0; i < getExtrasCount(); i++) {
+                if (!getExtras(i).isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeEnum(1, type_.getNumber());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeBytes(2, getComponentNameBytes());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeBytes(3, getActionBytes());
+            }
+            for (int i = 0; i < extras_.size(); i++) {
+                output.writeMessage(4, extras_.get(i));
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                output.writeInt32(5, flags_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                output.writeBytes(6, getDataUriBytes());
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeEnumSize(1, type_.getNumber());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(2, getComponentNameBytes());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(3, getActionBytes());
+            }
+            for (int i = 0; i < extras_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(4, extras_.get(i));
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(5, flags_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(6, getDataUriBytes());
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.IntentPayload}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                    getExtrasFieldBuilder();
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                componentName_ = "";
+                bitField0_ = (bitField0_ & ~0x00000002);
+                action_ = "";
+                bitField0_ = (bitField0_ & ~0x00000004);
+                flags_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                dataUri_ = "";
+                bitField0_ = (bitField0_ & ~0x00000010);
+                if (extrasBuilder_ == null) {
+                    extras_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000020);
+                } else {
+                    extrasBuilder_.clear();
+                }
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_IntentPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.type_ = type_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.componentName_ = componentName_;
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.action_ = action_;
+                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.flags_ = flags_;
+                if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.dataUri_ = dataUri_;
+                if (extrasBuilder_ == null) {
+                    if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                        extras_ = java.util.Collections.unmodifiableList(extras_);
+                        bitField0_ = (bitField0_ & ~0x00000020);
+                    }
+                    result.extras_ = extras_;
+                } else {
+                    result.extras_ = extrasBuilder_.build();
+                }
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance())
+                    return this;
+                if (other.hasType()) {
+                    setType(other.getType());
+                }
+                if (other.hasComponentName()) {
+                    bitField0_ |= 0x00000002;
+                    componentName_ = other.componentName_;
+                    onChanged();
+                }
+                if (other.hasAction()) {
+                    bitField0_ |= 0x00000004;
+                    action_ = other.action_;
+                    onChanged();
+                }
+                if (other.hasFlags()) {
+                    setFlags(other.getFlags());
+                }
+                if (other.hasDataUri()) {
+                    bitField0_ |= 0x00000010;
+                    dataUri_ = other.dataUri_;
+                    onChanged();
+                }
+                if (extrasBuilder_ == null) {
+                    if (!other.extras_.isEmpty()) {
+                        if (extras_.isEmpty()) {
+                            extras_ = other.extras_;
+                            bitField0_ = (bitField0_ & ~0x00000020);
+                        } else {
+                            ensureExtrasIsMutable();
+                            extras_.addAll(other.extras_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.extras_.isEmpty()) {
+                        if (extrasBuilder_.isEmpty()) {
+                            extrasBuilder_.dispose();
+                            extrasBuilder_ = null;
+                            extras_ = other.extras_;
+                            bitField0_ = (bitField0_ & ~0x00000020);
+                            extrasBuilder_ =
+                                    com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                                            getExtrasFieldBuilder() : null;
+                        } else {
+                            extrasBuilder_.addAllMessages(other.extras_);
+                        }
+                    }
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasType()) {
+
+                    return false;
+                }
+                for (int i = 0; i < getExtrasCount(); i++) {
+                    if (!getExtras(i).isInitialized()) {
+
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required .eaglesakura_ace.IntentPayload.BootType type = 1;
+            private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
+
+            /**
+             * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+             */
+            public boolean hasType() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType getType() {
+                return type_;
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+             */
+            public Builder setType(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                type_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required .eaglesakura_ace.IntentPayload.BootType type = 1;</code>
+             */
+            public Builder clearType() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                type_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.BootType.Activity;
+                onChanged();
+                return this;
+            }
+
+            // optional string componentName = 2;
+            private java.lang.Object componentName_ = "";
+
+            /**
+             * <code>optional string componentName = 2;</code>
+             */
+            public boolean hasComponentName() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>optional string componentName = 2;</code>
+             */
+            public java.lang.String getComponentName() {
+                java.lang.Object ref = componentName_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    componentName_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string componentName = 2;</code>
+             */
+            public com.google.protobuf.ByteString
+            getComponentNameBytes() {
+                java.lang.Object ref = componentName_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    componentName_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string componentName = 2;</code>
+             */
+            public Builder setComponentName(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                componentName_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string componentName = 2;</code>
+             */
+            public Builder clearComponentName() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                componentName_ = getDefaultInstance().getComponentName();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string componentName = 2;</code>
+             */
+            public Builder setComponentNameBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                componentName_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional string action = 3;
+            private java.lang.Object action_ = "";
+
+            /**
+             * <code>optional string action = 3;</code>
+             */
+            public boolean hasAction() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>optional string action = 3;</code>
+             */
+            public java.lang.String getAction() {
+                java.lang.Object ref = action_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    action_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string action = 3;</code>
+             */
+            public com.google.protobuf.ByteString
+            getActionBytes() {
+                java.lang.Object ref = action_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    action_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string action = 3;</code>
+             */
+            public Builder setAction(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                action_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string action = 3;</code>
+             */
+            public Builder clearAction() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                action_ = getDefaultInstance().getAction();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string action = 3;</code>
+             */
+            public Builder setActionBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                action_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional int32 flags = 5;
+            private int flags_;
+
+            /**
+             * <code>optional int32 flags = 5;</code>
+             *
+             * <pre>
+             * Intentに付与するフラグ
+             * </pre>
+             */
+            public boolean hasFlags() {
+                return ((bitField0_ & 0x00000008) == 0x00000008);
+            }
+
+            /**
+             * <code>optional int32 flags = 5;</code>
+             *
+             * <pre>
+             * Intentに付与するフラグ
+             * </pre>
+             */
+            public int getFlags() {
+                return flags_;
+            }
+
+            /**
+             * <code>optional int32 flags = 5;</code>
+             *
+             * <pre>
+             * Intentに付与するフラグ
+             * </pre>
+             */
+            public Builder setFlags(int value) {
+                bitField0_ |= 0x00000008;
+                flags_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 flags = 5;</code>
+             *
+             * <pre>
+             * Intentに付与するフラグ
+             * </pre>
+             */
+            public Builder clearFlags() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                flags_ = 0;
+                onChanged();
+                return this;
+            }
+
+            // optional string dataUri = 6;
+            private java.lang.Object dataUri_ = "";
+
+            /**
+             * <code>optional string dataUri = 6;</code>
+             *
+             * <pre>
+             * Intentに付与するData
+             * </pre>
+             */
+            public boolean hasDataUri() {
+                return ((bitField0_ & 0x00000010) == 0x00000010);
+            }
+
+            /**
+             * <code>optional string dataUri = 6;</code>
+             *
+             * <pre>
+             * Intentに付与するData
+             * </pre>
+             */
+            public java.lang.String getDataUri() {
+                java.lang.Object ref = dataUri_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    dataUri_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string dataUri = 6;</code>
+             *
+             * <pre>
+             * Intentに付与するData
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getDataUriBytes() {
+                java.lang.Object ref = dataUri_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    dataUri_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string dataUri = 6;</code>
+             *
+             * <pre>
+             * Intentに付与するData
+             * </pre>
+             */
+            public Builder setDataUri(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                dataUri_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string dataUri = 6;</code>
+             *
+             * <pre>
+             * Intentに付与するData
+             * </pre>
+             */
+            public Builder clearDataUri() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                dataUri_ = getDefaultInstance().getDataUri();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string dataUri = 6;</code>
+             *
+             * <pre>
+             * Intentに付与するData
+             * </pre>
+             */
+            public Builder setDataUriBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                dataUri_ = value;
+                onChanged();
+                return this;
+            }
+
+            // repeated .eaglesakura_ace.IntentExtra extras = 4;
+            private java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> extras_ =
+                    java.util.Collections.emptyList();
+
+            private void ensureExtrasIsMutable() {
+                if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+                    extras_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra>(extras_);
+                    bitField0_ |= 0x00000020;
+                }
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilder<
+                    com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder> extrasBuilder_;
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> getExtrasList() {
+                if (extrasBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(extras_);
+                } else {
+                    return extrasBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public int getExtrasCount() {
+                if (extrasBuilder_ == null) {
+                    return extras_.size();
+                } else {
+                    return extrasBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra getExtras(int index) {
+                if (extrasBuilder_ == null) {
+                    return extras_.get(index);
+                } else {
+                    return extrasBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder setExtras(
+                    int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra value) {
+                if (extrasBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureExtrasIsMutable();
+                    extras_.set(index, value);
+                    onChanged();
+                } else {
+                    extrasBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder setExtras(
+                    int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder builderForValue) {
+                if (extrasBuilder_ == null) {
+                    ensureExtrasIsMutable();
+                    extras_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    extrasBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder addExtras(com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra value) {
+                if (extrasBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureExtrasIsMutable();
+                    extras_.add(value);
+                    onChanged();
+                } else {
+                    extrasBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder addExtras(
+                    int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra value) {
+                if (extrasBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureExtrasIsMutable();
+                    extras_.add(index, value);
+                    onChanged();
+                } else {
+                    extrasBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder addExtras(
+                    com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder builderForValue) {
+                if (extrasBuilder_ == null) {
+                    ensureExtrasIsMutable();
+                    extras_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    extrasBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder addExtras(
+                    int index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder builderForValue) {
+                if (extrasBuilder_ == null) {
+                    ensureExtrasIsMutable();
+                    extras_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    extrasBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder addAllExtras(
+                    java.lang.Iterable<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra> values) {
+                if (extrasBuilder_ == null) {
+                    ensureExtrasIsMutable();
+                    super.addAll(values, extras_);
+                    onChanged();
+                } else {
+                    extrasBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder clearExtras() {
+                if (extrasBuilder_ == null) {
+                    extras_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000020);
+                    onChanged();
+                } else {
+                    extrasBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public Builder removeExtras(int index) {
+                if (extrasBuilder_ == null) {
+                    ensureExtrasIsMutable();
+                    extras_.remove(index);
+                    onChanged();
+                } else {
+                    extrasBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder getExtrasBuilder(
+                    int index) {
+                return getExtrasFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder getExtrasOrBuilder(
+                    int index) {
+                if (extrasBuilder_ == null) {
+                    return extras_.get(index);
+                } else {
+                    return extrasBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public java.util.List<? extends com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>
+            getExtrasOrBuilderList() {
+                if (extrasBuilder_ != null) {
+                    return extrasBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(extras_);
+                }
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder addExtrasBuilder() {
+                return getExtrasFieldBuilder().addBuilder(
+                        com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder addExtrasBuilder(
+                    int index) {
+                return getExtrasFieldBuilder().addBuilder(
+                        index, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .eaglesakura_ace.IntentExtra extras = 4;</code>
+             */
+            public java.util.List<com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder>
+            getExtrasBuilderList() {
+                return getExtrasFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilder<
+                    com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>
+            getExtrasFieldBuilder() {
+                if (extrasBuilder_ == null) {
+                    extrasBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtra.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentExtraOrBuilder>(
+                            extras_,
+                            ((bitField0_ & 0x00000020) == 0x00000020),
+                            getParentForChildren(),
+                            isClean());
+                    extras_ = null;
+                }
+                return extrasBuilder_;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.IntentPayload)
+        }
+
+        static {
+            defaultInstance = new IntentPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.IntentPayload)
     }
 
-    static {
-      defaultInstance = new IntentPayload(true);
-      defaultInstance.initFields();
-    }
+    public interface TriggerPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.IntentPayload)
-  }
+        // required string key = 1;
 
-  public interface TriggerPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * コマンド実行キー
+         * </pre>
+         */
+        boolean hasKey();
 
-    // required string key = 1;
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * コマンド実行キー
-     * </pre>
-     */
-    boolean hasKey();
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * コマンド実行キー
-     * </pre>
-     */
-    java.lang.String getKey();
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * コマンド実行キー
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * コマンド実行キー
+         * </pre>
+         */
+        java.lang.String getKey();
+
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * コマンド実行キー
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getKeyBytes();
 
-    // required string appExtraKey = 2;
-    /**
-     * <code>required string appExtraKey = 2;</code>
-     *
-     * <pre>
-     * コマンド実行時に渡されたIntentを起動する
-     * </pre>
-     */
-    boolean hasAppExtraKey();
-    /**
-     * <code>required string appExtraKey = 2;</code>
-     *
-     * <pre>
-     * コマンド実行時に渡されたIntentを起動する
-     * </pre>
-     */
-    java.lang.String getAppExtraKey();
-    /**
-     * <code>required string appExtraKey = 2;</code>
-     *
-     * <pre>
-     * コマンド実行時に渡されたIntentを起動する
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        // required string appExtraKey = 2;
+
+        /**
+         * <code>required string appExtraKey = 2;</code>
+         *
+         * <pre>
+         * コマンド実行時に渡されたIntentを起動する
+         * </pre>
+         */
+        boolean hasAppExtraKey();
+
+        /**
+         * <code>required string appExtraKey = 2;</code>
+         *
+         * <pre>
+         * コマンド実行時に渡されたIntentを起動する
+         * </pre>
+         */
+        java.lang.String getAppExtraKey();
+
+        /**
+         * <code>required string appExtraKey = 2;</code>
+         *
+         * <pre>
+         * コマンド実行時に渡されたIntentを起動する
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getAppExtraKeyBytes();
 
-    // optional .eaglesakura_ace.IntentPayload appIntent = 3;
-    /**
-     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-     *
-     * <pre>
-     * アプリの追加情報
-     * </pre>
-     */
-    boolean hasAppIntent();
-    /**
-     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-     *
-     * <pre>
-     * アプリの追加情報
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent();
-    /**
-     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-     *
-     * <pre>
-     * アプリの追加情報
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.TriggerPayload}
-   *
-   * <pre>
-   * コマンド用payload
-   * </pre>
-   */
-  public static final class TriggerPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements TriggerPayloadOrBuilder {
-    // Use TriggerPayload.newBuilder() to construct.
-    private TriggerPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private TriggerPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+        // optional .eaglesakura_ace.IntentPayload appIntent = 3;
 
-    private static final TriggerPayload defaultInstance;
-    public static TriggerPayload getDefaultInstance() {
-      return defaultInstance;
+        /**
+         * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+         *
+         * <pre>
+         * アプリの追加情報
+         * </pre>
+         */
+        boolean hasAppIntent();
+
+        /**
+         * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+         *
+         * <pre>
+         * アプリの追加情報
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent();
+
+        /**
+         * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+         *
+         * <pre>
+         * アプリの追加情報
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder();
     }
 
-    public TriggerPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private TriggerPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              key_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              appExtraKey_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = appIntent_.toBuilder();
-              }
-              appIntent_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(appIntent_);
-                appIntent_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<TriggerPayload> PARSER =
-        new com.google.protobuf.AbstractParser<TriggerPayload>() {
-      public TriggerPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TriggerPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TriggerPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required string key = 1;
-    public static final int KEY_FIELD_NUMBER = 1;
-    private java.lang.Object key_;
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * コマンド実行キー
-     * </pre>
-     */
-    public boolean hasKey() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * コマンド実行キー
-     * </pre>
-     */
-    public java.lang.String getKey() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          key_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string key = 1;</code>
-     *
-     * <pre>
-     * コマンド実行キー
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getKeyBytes() {
-      java.lang.Object ref = key_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        key_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // required string appExtraKey = 2;
-    public static final int APPEXTRAKEY_FIELD_NUMBER = 2;
-    private java.lang.Object appExtraKey_;
-    /**
-     * <code>required string appExtraKey = 2;</code>
-     *
-     * <pre>
-     * コマンド実行時に渡されたIntentを起動する
-     * </pre>
-     */
-    public boolean hasAppExtraKey() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required string appExtraKey = 2;</code>
-     *
-     * <pre>
-     * コマンド実行時に渡されたIntentを起動する
-     * </pre>
-     */
-    public java.lang.String getAppExtraKey() {
-      java.lang.Object ref = appExtraKey_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          appExtraKey_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string appExtraKey = 2;</code>
-     *
-     * <pre>
-     * コマンド実行時に渡されたIntentを起動する
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getAppExtraKeyBytes() {
-      java.lang.Object ref = appExtraKey_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        appExtraKey_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional .eaglesakura_ace.IntentPayload appIntent = 3;
-    public static final int APPINTENT_FIELD_NUMBER = 3;
-    private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload appIntent_;
-    /**
-     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-     *
-     * <pre>
-     * アプリの追加情報
-     * </pre>
-     */
-    public boolean hasAppIntent() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-     *
-     * <pre>
-     * アプリの追加情報
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent() {
-      return appIntent_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-     *
-     * <pre>
-     * アプリの追加情報
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder() {
-      return appIntent_;
-    }
-
-    private void initFields() {
-      key_ = "";
-      appExtraKey_ = "";
-      appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasKey()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasAppExtraKey()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (hasAppIntent()) {
-        if (!getAppIntent().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getKeyBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getAppExtraKeyBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, appIntent_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getKeyBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getAppExtraKeyBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, appIntent_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.TriggerPayload}
      *
@@ -6991,885 +7097,1048 @@ public final class CommandProtocol {
      * コマンド用payload
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_descriptor;
-      }
+    public static final class TriggerPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements TriggerPayloadOrBuilder {
+        // Use TriggerPayload.newBuilder() to construct.
+        private TriggerPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
+        }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.Builder.class);
-      }
+        private TriggerPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private static final TriggerPayload defaultInstance;
 
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getAppIntentFieldBuilder();
+        public static TriggerPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        key_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        appExtraKey_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (appIntentBuilder_ == null) {
-          appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
-        } else {
-          appIntentBuilder_.clear();
+        public TriggerPayload getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_descriptor;
-      }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.getDefaultInstance();
-      }
+        private TriggerPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            bitField0_ |= 0x00000001;
+                            key_ = input.readBytes();
+                            break;
+                        }
+                        case 18: {
+                            bitField0_ |= 0x00000002;
+                            appExtraKey_ = input.readBytes();
+                            break;
+                        }
+                        case 26: {
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                                subBuilder = appIntent_.toBuilder();
+                            }
+                            appIntent_ = input.readMessage(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(appIntent_);
+                                appIntent_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000004;
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_descriptor;
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.Builder.class);
         }
-        result.key_ = key_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.appExtraKey_ = appExtraKey_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        if (appIntentBuilder_ == null) {
-          result.appIntent_ = appIntent_;
-        } else {
-          result.appIntent_ = appIntentBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
+        public static com.google.protobuf.Parser<TriggerPayload> PARSER =
+                new com.google.protobuf.AbstractParser<TriggerPayload>() {
+                    public TriggerPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new TriggerPayload(input, extensionRegistry);
+                    }
+                };
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.getDefaultInstance()) return this;
-        if (other.hasKey()) {
-          bitField0_ |= 0x00000001;
-          key_ = other.key_;
-          onChanged();
+        @java.lang.Override
+        public com.google.protobuf.Parser<TriggerPayload> getParserForType() {
+            return PARSER;
         }
-        if (other.hasAppExtraKey()) {
-          bitField0_ |= 0x00000002;
-          appExtraKey_ = other.appExtraKey_;
-          onChanged();
-        }
-        if (other.hasAppIntent()) {
-          mergeAppIntent(other.getAppIntent());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasKey()) {
-          
-          return false;
-        }
-        if (!hasAppExtraKey()) {
-          
-          return false;
-        }
-        if (hasAppIntent()) {
-          if (!getAppIntent().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
+        private int bitField0_;
+        // required string key = 1;
+        public static final int KEY_FIELD_NUMBER = 1;
+        private java.lang.Object key_;
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * コマンド実行キー
+         * </pre>
+         */
+        public boolean hasKey() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // required string key = 1;
-      private java.lang.Object key_ = "";
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * コマンド実行キー
-       * </pre>
-       */
-      public boolean hasKey() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * コマンド実行キー
-       * </pre>
-       */
-      public java.lang.String getKey() {
-        java.lang.Object ref = key_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          key_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * コマンド実行キー
+         * </pre>
+         */
+        public java.lang.String getKey() {
+            java.lang.Object ref = key_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    key_ = s;
+                }
+                return s;
+            }
         }
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * コマンド実行キー
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getKeyBytes() {
-        java.lang.Object ref = key_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          key_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * コマンド実行キー
-       * </pre>
-       */
-      public Builder setKey(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        key_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * コマンド実行キー
-       * </pre>
-       */
-      public Builder clearKey() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        key_ = getDefaultInstance().getKey();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string key = 1;</code>
-       *
-       * <pre>
-       * コマンド実行キー
-       * </pre>
-       */
-      public Builder setKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        key_ = value;
-        onChanged();
-        return this;
-      }
 
-      // required string appExtraKey = 2;
-      private java.lang.Object appExtraKey_ = "";
-      /**
-       * <code>required string appExtraKey = 2;</code>
-       *
-       * <pre>
-       * コマンド実行時に渡されたIntentを起動する
-       * </pre>
-       */
-      public boolean hasAppExtraKey() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string appExtraKey = 2;</code>
-       *
-       * <pre>
-       * コマンド実行時に渡されたIntentを起動する
-       * </pre>
-       */
-      public java.lang.String getAppExtraKey() {
-        java.lang.Object ref = appExtraKey_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          appExtraKey_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        /**
+         * <code>required string key = 1;</code>
+         *
+         * <pre>
+         * コマンド実行キー
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getKeyBytes() {
+            java.lang.Object ref = key_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                key_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
         }
-      }
-      /**
-       * <code>required string appExtraKey = 2;</code>
-       *
-       * <pre>
-       * コマンド実行時に渡されたIntentを起動する
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getAppExtraKeyBytes() {
-        java.lang.Object ref = appExtraKey_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          appExtraKey_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string appExtraKey = 2;</code>
-       *
-       * <pre>
-       * コマンド実行時に渡されたIntentを起動する
-       * </pre>
-       */
-      public Builder setAppExtraKey(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        appExtraKey_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string appExtraKey = 2;</code>
-       *
-       * <pre>
-       * コマンド実行時に渡されたIntentを起動する
-       * </pre>
-       */
-      public Builder clearAppExtraKey() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        appExtraKey_ = getDefaultInstance().getAppExtraKey();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string appExtraKey = 2;</code>
-       *
-       * <pre>
-       * コマンド実行時に渡されたIntentを起動する
-       * </pre>
-       */
-      public Builder setAppExtraKeyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        appExtraKey_ = value;
-        onChanged();
-        return this;
-      }
 
-      // optional .eaglesakura_ace.IntentPayload appIntent = 3;
-      private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> appIntentBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public boolean hasAppIntent() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent() {
-        if (appIntentBuilder_ == null) {
-          return appIntent_;
-        } else {
-          return appIntentBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public Builder setAppIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
-        if (appIntentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          appIntent_ = value;
-          onChanged();
-        } else {
-          appIntentBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public Builder setAppIntent(
-          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder builderForValue) {
-        if (appIntentBuilder_ == null) {
-          appIntent_ = builderForValue.build();
-          onChanged();
-        } else {
-          appIntentBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public Builder mergeAppIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
-        if (appIntentBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              appIntent_ != com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance()) {
-            appIntent_ =
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.newBuilder(appIntent_).mergeFrom(value).buildPartial();
-          } else {
-            appIntent_ = value;
-          }
-          onChanged();
-        } else {
-          appIntentBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public Builder clearAppIntent() {
-        if (appIntentBuilder_ == null) {
-          appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
-          onChanged();
-        } else {
-          appIntentBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder getAppIntentBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getAppIntentFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder() {
-        if (appIntentBuilder_ != null) {
-          return appIntentBuilder_.getMessageOrBuilder();
-        } else {
-          return appIntent_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
-       *
-       * <pre>
-       * アプリの追加情報
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> 
-          getAppIntentFieldBuilder() {
-        if (appIntentBuilder_ == null) {
-          appIntentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder>(
-                  appIntent_,
-                  getParentForChildren(),
-                  isClean());
-          appIntent_ = null;
-        }
-        return appIntentBuilder_;
-      }
+        // required string appExtraKey = 2;
+        public static final int APPEXTRAKEY_FIELD_NUMBER = 2;
+        private java.lang.Object appExtraKey_;
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TriggerPayload)
+        /**
+         * <code>required string appExtraKey = 2;</code>
+         *
+         * <pre>
+         * コマンド実行時に渡されたIntentを起動する
+         * </pre>
+         */
+        public boolean hasAppExtraKey() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+
+        /**
+         * <code>required string appExtraKey = 2;</code>
+         *
+         * <pre>
+         * コマンド実行時に渡されたIntentを起動する
+         * </pre>
+         */
+        public java.lang.String getAppExtraKey() {
+            java.lang.Object ref = appExtraKey_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    appExtraKey_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string appExtraKey = 2;</code>
+         *
+         * <pre>
+         * コマンド実行時に渡されたIntentを起動する
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getAppExtraKeyBytes() {
+            java.lang.Object ref = appExtraKey_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                appExtraKey_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional .eaglesakura_ace.IntentPayload appIntent = 3;
+        public static final int APPINTENT_FIELD_NUMBER = 3;
+        private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload appIntent_;
+
+        /**
+         * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+         *
+         * <pre>
+         * アプリの追加情報
+         * </pre>
+         */
+        public boolean hasAppIntent() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+         *
+         * <pre>
+         * アプリの追加情報
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent() {
+            return appIntent_;
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+         *
+         * <pre>
+         * アプリの追加情報
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder() {
+            return appIntent_;
+        }
+
+        private void initFields() {
+            key_ = "";
+            appExtraKey_ = "";
+            appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasKey()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasAppExtraKey()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (hasAppIntent()) {
+                if (!getAppIntent().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeBytes(1, getKeyBytes());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeBytes(2, getAppExtraKeyBytes());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeMessage(3, appIntent_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(1, getKeyBytes());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(2, getAppExtraKeyBytes());
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(3, appIntent_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.TriggerPayload}
+         *
+         * <pre>
+         * コマンド用payload
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                    getAppIntentFieldBuilder();
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                key_ = "";
+                bitField0_ = (bitField0_ & ~0x00000001);
+                appExtraKey_ = "";
+                bitField0_ = (bitField0_ & ~0x00000002);
+                if (appIntentBuilder_ == null) {
+                    appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+                } else {
+                    appIntentBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_TriggerPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.key_ = key_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.appExtraKey_ = appExtraKey_;
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                if (appIntentBuilder_ == null) {
+                    result.appIntent_ = appIntent_;
+                } else {
+                    result.appIntent_ = appIntentBuilder_.build();
+                }
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload.getDefaultInstance())
+                    return this;
+                if (other.hasKey()) {
+                    bitField0_ |= 0x00000001;
+                    key_ = other.key_;
+                    onChanged();
+                }
+                if (other.hasAppExtraKey()) {
+                    bitField0_ |= 0x00000002;
+                    appExtraKey_ = other.appExtraKey_;
+                    onChanged();
+                }
+                if (other.hasAppIntent()) {
+                    mergeAppIntent(other.getAppIntent());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasKey()) {
+
+                    return false;
+                }
+                if (!hasAppExtraKey()) {
+
+                    return false;
+                }
+                if (hasAppIntent()) {
+                    if (!getAppIntent().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required string key = 1;
+            private java.lang.Object key_ = "";
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * コマンド実行キー
+             * </pre>
+             */
+            public boolean hasKey() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * コマンド実行キー
+             * </pre>
+             */
+            public java.lang.String getKey() {
+                java.lang.Object ref = key_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    key_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * コマンド実行キー
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getKeyBytes() {
+                java.lang.Object ref = key_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    key_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * コマンド実行キー
+             * </pre>
+             */
+            public Builder setKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                key_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * コマンド実行キー
+             * </pre>
+             */
+            public Builder clearKey() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                key_ = getDefaultInstance().getKey();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string key = 1;</code>
+             *
+             * <pre>
+             * コマンド実行キー
+             * </pre>
+             */
+            public Builder setKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                key_ = value;
+                onChanged();
+                return this;
+            }
+
+            // required string appExtraKey = 2;
+            private java.lang.Object appExtraKey_ = "";
+
+            /**
+             * <code>required string appExtraKey = 2;</code>
+             *
+             * <pre>
+             * コマンド実行時に渡されたIntentを起動する
+             * </pre>
+             */
+            public boolean hasAppExtraKey() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>required string appExtraKey = 2;</code>
+             *
+             * <pre>
+             * コマンド実行時に渡されたIntentを起動する
+             * </pre>
+             */
+            public java.lang.String getAppExtraKey() {
+                java.lang.Object ref = appExtraKey_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    appExtraKey_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string appExtraKey = 2;</code>
+             *
+             * <pre>
+             * コマンド実行時に渡されたIntentを起動する
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getAppExtraKeyBytes() {
+                java.lang.Object ref = appExtraKey_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    appExtraKey_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string appExtraKey = 2;</code>
+             *
+             * <pre>
+             * コマンド実行時に渡されたIntentを起動する
+             * </pre>
+             */
+            public Builder setAppExtraKey(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                appExtraKey_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string appExtraKey = 2;</code>
+             *
+             * <pre>
+             * コマンド実行時に渡されたIntentを起動する
+             * </pre>
+             */
+            public Builder clearAppExtraKey() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                appExtraKey_ = getDefaultInstance().getAppExtraKey();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string appExtraKey = 2;</code>
+             *
+             * <pre>
+             * コマンド実行時に渡されたIntentを起動する
+             * </pre>
+             */
+            public Builder setAppExtraKeyBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                appExtraKey_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional .eaglesakura_ace.IntentPayload appIntent = 3;
+            private com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder> appIntentBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public boolean hasAppIntent() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload getAppIntent() {
+                if (appIntentBuilder_ == null) {
+                    return appIntent_;
+                } else {
+                    return appIntentBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public Builder setAppIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
+                if (appIntentBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    appIntent_ = value;
+                    onChanged();
+                } else {
+                    appIntentBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public Builder setAppIntent(
+                    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder builderForValue) {
+                if (appIntentBuilder_ == null) {
+                    appIntent_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    appIntentBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public Builder mergeAppIntent(com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload value) {
+                if (appIntentBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) == 0x00000004) &&
+                            appIntent_ != com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance()) {
+                        appIntent_ =
+                                com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.newBuilder(appIntent_).mergeFrom(value).buildPartial();
+                    } else {
+                        appIntent_ = value;
+                    }
+                    onChanged();
+                } else {
+                    appIntentBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public Builder clearAppIntent() {
+                if (appIntentBuilder_ == null) {
+                    appIntent_ = com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.getDefaultInstance();
+                    onChanged();
+                } else {
+                    appIntentBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder getAppIntentBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getAppIntentFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder getAppIntentOrBuilder() {
+                if (appIntentBuilder_ != null) {
+                    return appIntentBuilder_.getMessageOrBuilder();
+                } else {
+                    return appIntent_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.IntentPayload appIntent = 3;</code>
+             *
+             * <pre>
+             * アプリの追加情報
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder>
+            getAppIntentFieldBuilder() {
+                if (appIntentBuilder_ == null) {
+                    appIntentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload.Builder, com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayloadOrBuilder>(
+                            appIntent_,
+                            getParentForChildren(),
+                            isClean());
+                    appIntent_ = null;
+                }
+                return appIntentBuilder_;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.TriggerPayload)
+        }
+
+        static {
+            defaultInstance = new TriggerPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.TriggerPayload)
     }
 
-    static {
-      defaultInstance = new TriggerPayload(true);
-      defaultInstance.initFields();
-    }
+    public interface CommandPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.TriggerPayload)
-  }
+        // required string commandType = 1;
 
-  public interface CommandPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>required string commandType = 1;</code>
+         *
+         * <pre>
+         * 何をするかのコマンド
+         * CommandTypeが格納されるが、互換性維持のためstringとしておく
+         * </pre>
+         */
+        boolean hasCommandType();
 
-    // required string commandType = 1;
-    /**
-     * <code>required string commandType = 1;</code>
-     *
-     * <pre>
-     * 何をするかのコマンド
-     * CommandTypeが格納されるが、互換性維持のためstringとしておく
-     * </pre>
-     */
-    boolean hasCommandType();
-    /**
-     * <code>required string commandType = 1;</code>
-     *
-     * <pre>
-     * 何をするかのコマンド
-     * CommandTypeが格納されるが、互換性維持のためstringとしておく
-     * </pre>
-     */
-    java.lang.String getCommandType();
-    /**
-     * <code>required string commandType = 1;</code>
-     *
-     * <pre>
-     * 何をするかのコマンド
-     * CommandTypeが格納されるが、互換性維持のためstringとしておく
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>required string commandType = 1;</code>
+         *
+         * <pre>
+         * 何をするかのコマンド
+         * CommandTypeが格納されるが、互換性維持のためstringとしておく
+         * </pre>
+         */
+        java.lang.String getCommandType();
+
+        /**
+         * <code>required string commandType = 1;</code>
+         *
+         * <pre>
+         * 何をするかのコマンド
+         * CommandTypeが格納されるが、互換性維持のためstringとしておく
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getCommandTypeBytes();
 
-    // optional bytes extraPayload = 2;
-    /**
-     * <code>optional bytes extraPayload = 2;</code>
-     *
-     * <pre>
-     * 拡張データを格納するペイロード
-     * </pre>
-     */
-    boolean hasExtraPayload();
-    /**
-     * <code>optional bytes extraPayload = 2;</code>
-     *
-     * <pre>
-     * 拡張データを格納するペイロード
-     * </pre>
-     */
-    com.google.protobuf.ByteString getExtraPayload();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.CommandPayload}
-   *
-   * <pre>
-   * 遠隔接続されたデバイスを制御するためのメッセージプロトコル
-   * </pre>
-   */
-  public static final class CommandPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements CommandPayloadOrBuilder {
-    // Use CommandPayload.newBuilder() to construct.
-    private CommandPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private CommandPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+        // optional bytes extraPayload = 2;
 
-    private static final CommandPayload defaultInstance;
-    public static CommandPayload getDefaultInstance() {
-      return defaultInstance;
+        /**
+         * <code>optional bytes extraPayload = 2;</code>
+         *
+         * <pre>
+         * 拡張データを格納するペイロード
+         * </pre>
+         */
+        boolean hasExtraPayload();
+
+        /**
+         * <code>optional bytes extraPayload = 2;</code>
+         *
+         * <pre>
+         * 拡張データを格納するペイロード
+         * </pre>
+         */
+        com.google.protobuf.ByteString getExtraPayload();
     }
 
-    public CommandPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CommandPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              commandType_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              extraPayload_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<CommandPayload> PARSER =
-        new com.google.protobuf.AbstractParser<CommandPayload>() {
-      public CommandPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CommandPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CommandPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required string commandType = 1;
-    public static final int COMMANDTYPE_FIELD_NUMBER = 1;
-    private java.lang.Object commandType_;
-    /**
-     * <code>required string commandType = 1;</code>
-     *
-     * <pre>
-     * 何をするかのコマンド
-     * CommandTypeが格納されるが、互換性維持のためstringとしておく
-     * </pre>
-     */
-    public boolean hasCommandType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required string commandType = 1;</code>
-     *
-     * <pre>
-     * 何をするかのコマンド
-     * CommandTypeが格納されるが、互換性維持のためstringとしておく
-     * </pre>
-     */
-    public java.lang.String getCommandType() {
-      java.lang.Object ref = commandType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          commandType_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string commandType = 1;</code>
-     *
-     * <pre>
-     * 何をするかのコマンド
-     * CommandTypeが格納されるが、互換性維持のためstringとしておく
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getCommandTypeBytes() {
-      java.lang.Object ref = commandType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        commandType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional bytes extraPayload = 2;
-    public static final int EXTRAPAYLOAD_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString extraPayload_;
-    /**
-     * <code>optional bytes extraPayload = 2;</code>
-     *
-     * <pre>
-     * 拡張データを格納するペイロード
-     * </pre>
-     */
-    public boolean hasExtraPayload() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional bytes extraPayload = 2;</code>
-     *
-     * <pre>
-     * 拡張データを格納するペイロード
-     * </pre>
-     */
-    public com.google.protobuf.ByteString getExtraPayload() {
-      return extraPayload_;
-    }
-
-    private void initFields() {
-      commandType_ = "";
-      extraPayload_ = com.google.protobuf.ByteString.EMPTY;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasCommandType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getCommandTypeBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, extraPayload_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getCommandTypeBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, extraPayload_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.CommandPayload}
      *
@@ -7877,438 +8146,797 @@ public final class CommandProtocol {
      * 遠隔接続されたデバイスを制御するためのメッセージプロトコル
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder.class);
-      }
-
-      // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+    public static final class CommandPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements CommandPayloadOrBuilder {
+        // Use CommandPayload.newBuilder() to construct.
+        private CommandPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        commandType_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        extraPayload_ = com.google.protobuf.ByteString.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_descriptor;
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance();
-      }
-
-      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload build() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        private CommandPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.commandType_ = commandType_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.extraPayload_ = extraPayload_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
+        private static final CommandPayload defaultInstance;
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        public static CommandPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance()) return this;
-        if (other.hasCommandType()) {
-          bitField0_ |= 0x00000001;
-          commandType_ = other.commandType_;
-          onChanged();
+        public CommandPayload getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        if (other.hasExtraPayload()) {
-          setExtraPayload(other.getExtraPayload());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasCommandType()) {
-          
-          return false;
-        }
-        return true;
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // required string commandType = 1;
-      private java.lang.Object commandType_ = "";
-      /**
-       * <code>required string commandType = 1;</code>
-       *
-       * <pre>
-       * 何をするかのコマンド
-       * CommandTypeが格納されるが、互換性維持のためstringとしておく
-       * </pre>
-       */
-      public boolean hasCommandType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required string commandType = 1;</code>
-       *
-       * <pre>
-       * 何をするかのコマンド
-       * CommandTypeが格納されるが、互換性維持のためstringとしておく
-       * </pre>
-       */
-      public java.lang.String getCommandType() {
-        java.lang.Object ref = commandType_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          commandType_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        private CommandPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            bitField0_ |= 0x00000001;
+                            commandType_ = input.readBytes();
+                            break;
+                        }
+                        case 18: {
+                            bitField0_ |= 0x00000002;
+                            extraPayload_ = input.readBytes();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
         }
-      }
-      /**
-       * <code>required string commandType = 1;</code>
-       *
-       * <pre>
-       * 何をするかのコマンド
-       * CommandTypeが格納されるが、互換性維持のためstringとしておく
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getCommandTypeBytes() {
-        java.lang.Object ref = commandType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          commandType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_descriptor;
         }
-      }
-      /**
-       * <code>required string commandType = 1;</code>
-       *
-       * <pre>
-       * 何をするかのコマンド
-       * CommandTypeが格納されるが、互換性維持のためstringとしておく
-       * </pre>
-       */
-      public Builder setCommandType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        commandType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string commandType = 1;</code>
-       *
-       * <pre>
-       * 何をするかのコマンド
-       * CommandTypeが格納されるが、互換性維持のためstringとしておく
-       * </pre>
-       */
-      public Builder clearCommandType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        commandType_ = getDefaultInstance().getCommandType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string commandType = 1;</code>
-       *
-       * <pre>
-       * 何をするかのコマンド
-       * CommandTypeが格納されるが、互換性維持のためstringとしておく
-       * </pre>
-       */
-      public Builder setCommandTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        commandType_ = value;
-        onChanged();
-        return this;
-      }
 
-      // optional bytes extraPayload = 2;
-      private com.google.protobuf.ByteString extraPayload_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>optional bytes extraPayload = 2;</code>
-       *
-       * <pre>
-       * 拡張データを格納するペイロード
-       * </pre>
-       */
-      public boolean hasExtraPayload() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional bytes extraPayload = 2;</code>
-       *
-       * <pre>
-       * 拡張データを格納するペイロード
-       * </pre>
-       */
-      public com.google.protobuf.ByteString getExtraPayload() {
-        return extraPayload_;
-      }
-      /**
-       * <code>optional bytes extraPayload = 2;</code>
-       *
-       * <pre>
-       * 拡張データを格納するペイロード
-       * </pre>
-       */
-      public Builder setExtraPayload(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        extraPayload_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes extraPayload = 2;</code>
-       *
-       * <pre>
-       * 拡張データを格納するペイロード
-       * </pre>
-       */
-      public Builder clearExtraPayload() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        extraPayload_ = getDefaultInstance().getExtraPayload();
-        onChanged();
-        return this;
-      }
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder.class);
+        }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.CommandPayload)
+        public static com.google.protobuf.Parser<CommandPayload> PARSER =
+                new com.google.protobuf.AbstractParser<CommandPayload>() {
+                    public CommandPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new CommandPayload(input, extensionRegistry);
+                    }
+                };
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<CommandPayload> getParserForType() {
+            return PARSER;
+        }
+
+        private int bitField0_;
+        // required string commandType = 1;
+        public static final int COMMANDTYPE_FIELD_NUMBER = 1;
+        private java.lang.Object commandType_;
+
+        /**
+         * <code>required string commandType = 1;</code>
+         *
+         * <pre>
+         * 何をするかのコマンド
+         * CommandTypeが格納されるが、互換性維持のためstringとしておく
+         * </pre>
+         */
+        public boolean hasCommandType() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+
+        /**
+         * <code>required string commandType = 1;</code>
+         *
+         * <pre>
+         * 何をするかのコマンド
+         * CommandTypeが格納されるが、互換性維持のためstringとしておく
+         * </pre>
+         */
+        public java.lang.String getCommandType() {
+            java.lang.Object ref = commandType_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    commandType_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>required string commandType = 1;</code>
+         *
+         * <pre>
+         * 何をするかのコマンド
+         * CommandTypeが格納されるが、互換性維持のためstringとしておく
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getCommandTypeBytes() {
+            java.lang.Object ref = commandType_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                commandType_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional bytes extraPayload = 2;
+        public static final int EXTRAPAYLOAD_FIELD_NUMBER = 2;
+        private com.google.protobuf.ByteString extraPayload_;
+
+        /**
+         * <code>optional bytes extraPayload = 2;</code>
+         *
+         * <pre>
+         * 拡張データを格納するペイロード
+         * </pre>
+         */
+        public boolean hasExtraPayload() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+
+        /**
+         * <code>optional bytes extraPayload = 2;</code>
+         *
+         * <pre>
+         * 拡張データを格納するペイロード
+         * </pre>
+         */
+        public com.google.protobuf.ByteString getExtraPayload() {
+            return extraPayload_;
+        }
+
+        private void initFields() {
+            commandType_ = "";
+            extraPayload_ = com.google.protobuf.ByteString.EMPTY;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasCommandType()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeBytes(1, getCommandTypeBytes());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeBytes(2, extraPayload_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(1, getCommandTypeBytes());
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(2, extraPayload_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.CommandPayload}
+         *
+         * <pre>
+         * 遠隔接続されたデバイスを制御するためのメッセージプロトコル
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.class, com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                commandType_ = "";
+                bitField0_ = (bitField0_ & ~0x00000001);
+                extraPayload_ = com.google.protobuf.ByteString.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.internal_static_eaglesakura_ace_CommandPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload build() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload result = new com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.commandType_ = commandType_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.extraPayload_ = extraPayload_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload.getDefaultInstance())
+                    return this;
+                if (other.hasCommandType()) {
+                    bitField0_ |= 0x00000001;
+                    commandType_ = other.commandType_;
+                    onChanged();
+                }
+                if (other.hasExtraPayload()) {
+                    setExtraPayload(other.getExtraPayload());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasCommandType()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required string commandType = 1;
+            private java.lang.Object commandType_ = "";
+
+            /**
+             * <code>required string commandType = 1;</code>
+             *
+             * <pre>
+             * 何をするかのコマンド
+             * CommandTypeが格納されるが、互換性維持のためstringとしておく
+             * </pre>
+             */
+            public boolean hasCommandType() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required string commandType = 1;</code>
+             *
+             * <pre>
+             * 何をするかのコマンド
+             * CommandTypeが格納されるが、互換性維持のためstringとしておく
+             * </pre>
+             */
+            public java.lang.String getCommandType() {
+                java.lang.Object ref = commandType_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    commandType_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>required string commandType = 1;</code>
+             *
+             * <pre>
+             * 何をするかのコマンド
+             * CommandTypeが格納されるが、互換性維持のためstringとしておく
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getCommandTypeBytes() {
+                java.lang.Object ref = commandType_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    commandType_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>required string commandType = 1;</code>
+             *
+             * <pre>
+             * 何をするかのコマンド
+             * CommandTypeが格納されるが、互換性維持のためstringとしておく
+             * </pre>
+             */
+            public Builder setCommandType(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                commandType_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string commandType = 1;</code>
+             *
+             * <pre>
+             * 何をするかのコマンド
+             * CommandTypeが格納されるが、互換性維持のためstringとしておく
+             * </pre>
+             */
+            public Builder clearCommandType() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                commandType_ = getDefaultInstance().getCommandType();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required string commandType = 1;</code>
+             *
+             * <pre>
+             * 何をするかのコマンド
+             * CommandTypeが格納されるが、互換性維持のためstringとしておく
+             * </pre>
+             */
+            public Builder setCommandTypeBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                commandType_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional bytes extraPayload = 2;
+            private com.google.protobuf.ByteString extraPayload_ = com.google.protobuf.ByteString.EMPTY;
+
+            /**
+             * <code>optional bytes extraPayload = 2;</code>
+             *
+             * <pre>
+             * 拡張データを格納するペイロード
+             * </pre>
+             */
+            public boolean hasExtraPayload() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>optional bytes extraPayload = 2;</code>
+             *
+             * <pre>
+             * 拡張データを格納するペイロード
+             * </pre>
+             */
+            public com.google.protobuf.ByteString getExtraPayload() {
+                return extraPayload_;
+            }
+
+            /**
+             * <code>optional bytes extraPayload = 2;</code>
+             *
+             * <pre>
+             * 拡張データを格納するペイロード
+             * </pre>
+             */
+            public Builder setExtraPayload(com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                extraPayload_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional bytes extraPayload = 2;</code>
+             *
+             * <pre>
+             * 拡張データを格納するペイロード
+             * </pre>
+             */
+            public Builder clearExtraPayload() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                extraPayload_ = getDefaultInstance().getExtraPayload();
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.CommandPayload)
+        }
+
+        static {
+            defaultInstance = new CommandPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.CommandPayload)
     }
+
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_IntentExtra_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_IntentPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_TriggerPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_CommandPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable;
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
     static {
-      defaultInstance = new CommandPayload(true);
-      defaultInstance.initFields();
+        java.lang.String[] descriptorData = {
+                "\n\025CommandProtocol.proto\022\017eaglesakura_ace" +
+                        "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
+                        "\"N\n\030SoundNotificationPayload\022\r\n\005queue\030\001 " +
+                        "\002(\010\022\021\n\tsourceUri\030\002 \001(\t\022\020\n\010soundKey\030\003 \001(\t" +
+                        "\"\370\001\n\032NotificationRequestPayload\022\017\n\007messa" +
+                        "ge\030\001 \002(\t\022\020\n\010iconFile\030\002 \001(\014\022\020\n\010iconPath\030\003" +
+                        " \001(\t\0223\n\006length\030\004 \002(\0162#.eaglesakura_ace.N" +
+                        "otificationLength\022\020\n\010uniqueId\030\005 \002(\t\022\014\n\004d" +
+                        "ate\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005\0228\n\005sou" +
+                        "nd\030\010 \001(\0132).eaglesakura_ace.SoundNotifica",
+                "tionPayload\"P\n\023TweetRequestPayload\022\024\n\014tw" +
+                        "eetMessage\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\tim" +
+                        "ageUris\030\004 \003(\t\"\302\001\n\013IntentExtra\0224\n\004type\030\002 " +
+                        "\002(\0162&.eaglesakura_ace.IntentExtra.ValueT" +
+                        "ype\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\003 \002(\t\"a\n\tValue" +
+                        "Type\022\n\n\006String\020\001\022\013\n\007Boolean\020\002\022\013\n\007Integer" +
+                        "\020\003\022\010\n\004Long\020\004\022\t\n\005Float\020\005\022\n\n\006Double\020\006\022\r\n\tB" +
+                        "yteArray\020\007\"\377\001\n\rIntentPayload\0225\n\004type\030\001 \002" +
+                        "(\0162\'.eaglesakura_ace.IntentPayload.BootT" +
+                        "ype\022\025\n\rcomponentName\030\002 \001(\t\022\016\n\006action\030\003 \001",
+                "(\t\022\r\n\005flags\030\005 \001(\005\022\017\n\007dataUri\030\006 \001(\t\022,\n\006ex" +
+                        "tras\030\004 \003(\0132\034.eaglesakura_ace.IntentExtra" +
+                        "\"B\n\010BootType\022\014\n\010Activity\020\001\022\r\n\tBroadcast\020" +
+                        "\002\022\013\n\007Service\020\003\022\014\n\010DataOnly\020\n\"e\n\016TriggerP" +
+                        "ayload\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t" +
+                        "\0221\n\tappIntent\030\003 \001(\0132\036.eaglesakura_ace.In" +
+                        "tentPayload\";\n\016CommandPayload\022\023\n\013command" +
+                        "Type\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*P\n\013Comm" +
+                        "andType\022\024\n\020ExtensionTrigger\020\001\022\024\n\020AcesNot" +
+                        "ification\020\002\022\025\n\021SoundNotification\020\003*@\n\022No",
+                "tificationLength\022\t\n\005Short\020\001\022\n\n\006Normal\020\002\022" +
+                        "\010\n\004Long\020\003\022\t\n\005Never\020dB$\n\"com.eaglesakura." +
+                        "andriders.protocol"
+        };
+        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+                new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+                    public com.google.protobuf.ExtensionRegistry assignDescriptors(
+                            com.google.protobuf.Descriptors.FileDescriptor root) {
+                        descriptor = root;
+                        internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(0);
+                        internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor,
+                                new java.lang.String[]{"Queue", "SourceUri", "SoundKey",});
+                        internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(1);
+                        internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor,
+                                new java.lang.String[]{"Message", "IconFile", "IconPath", "Length", "UniqueId", "Date", "BackgroundXRGB", "Sound",});
+                        internal_static_eaglesakura_ace_TweetRequestPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(2);
+                        internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_TweetRequestPayload_descriptor,
+                                new java.lang.String[]{"TweetMessage", "Hashtags", "ImageUris",});
+                        internal_static_eaglesakura_ace_IntentExtra_descriptor =
+                                getDescriptor().getMessageTypes().get(3);
+                        internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_IntentExtra_descriptor,
+                                new java.lang.String[]{"Type", "Key", "Value",});
+                        internal_static_eaglesakura_ace_IntentPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(4);
+                        internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_IntentPayload_descriptor,
+                                new java.lang.String[]{"Type", "ComponentName", "Action", "Flags", "DataUri", "Extras",});
+                        internal_static_eaglesakura_ace_TriggerPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(5);
+                        internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_TriggerPayload_descriptor,
+                                new java.lang.String[]{"Key", "AppExtraKey", "AppIntent",});
+                        internal_static_eaglesakura_ace_CommandPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(6);
+                        internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_CommandPayload_descriptor,
+                                new java.lang.String[]{"CommandType", "ExtraPayload",});
+                        return null;
+                    }
+                };
+        com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                                com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
+                                com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
+                        }, assigner);
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.CommandPayload)
-  }
-
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_TweetRequestPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_IntentExtra_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_IntentPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_TriggerPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_CommandPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\025CommandProtocol.proto\022\017eaglesakura_ace" +
-      "\032\023AcesConstants.proto\032\021GeoProtocol.proto" +
-      "\"N\n\030SoundNotificationPayload\022\r\n\005queue\030\001 " +
-      "\002(\010\022\021\n\tsourceUri\030\002 \001(\t\022\020\n\010soundKey\030\003 \001(\t" +
-      "\"\370\001\n\032NotificationRequestPayload\022\017\n\007messa" +
-      "ge\030\001 \002(\t\022\020\n\010iconFile\030\002 \001(\014\022\020\n\010iconPath\030\003" +
-      " \001(\t\0223\n\006length\030\004 \002(\0162#.eaglesakura_ace.N" +
-      "otificationLength\022\020\n\010uniqueId\030\005 \002(\t\022\014\n\004d" +
-      "ate\030\006 \002(\t\022\026\n\016backgroundXRGB\030\007 \001(\005\0228\n\005sou" +
-      "nd\030\010 \001(\0132).eaglesakura_ace.SoundNotifica",
-      "tionPayload\"P\n\023TweetRequestPayload\022\024\n\014tw" +
-      "eetMessage\030\001 \002(\t\022\020\n\010hashtags\030\002 \003(\t\022\021\n\tim" +
-      "ageUris\030\004 \003(\t\"\302\001\n\013IntentExtra\0224\n\004type\030\002 " +
-      "\002(\0162&.eaglesakura_ace.IntentExtra.ValueT" +
-      "ype\022\013\n\003key\030\001 \002(\t\022\r\n\005value\030\003 \002(\t\"a\n\tValue" +
-      "Type\022\n\n\006String\020\001\022\013\n\007Boolean\020\002\022\013\n\007Integer" +
-      "\020\003\022\010\n\004Long\020\004\022\t\n\005Float\020\005\022\n\n\006Double\020\006\022\r\n\tB" +
-      "yteArray\020\007\"\377\001\n\rIntentPayload\0225\n\004type\030\001 \002" +
-      "(\0162\'.eaglesakura_ace.IntentPayload.BootT" +
-      "ype\022\025\n\rcomponentName\030\002 \001(\t\022\016\n\006action\030\003 \001",
-      "(\t\022\r\n\005flags\030\005 \001(\005\022\017\n\007dataUri\030\006 \001(\t\022,\n\006ex" +
-      "tras\030\004 \003(\0132\034.eaglesakura_ace.IntentExtra" +
-      "\"B\n\010BootType\022\014\n\010Activity\020\001\022\r\n\tBroadcast\020" +
-      "\002\022\013\n\007Service\020\003\022\014\n\010DataOnly\020\n\"e\n\016TriggerP" +
-      "ayload\022\013\n\003key\030\001 \002(\t\022\023\n\013appExtraKey\030\002 \002(\t" +
-      "\0221\n\tappIntent\030\003 \001(\0132\036.eaglesakura_ace.In" +
-      "tentPayload\";\n\016CommandPayload\022\023\n\013command" +
-      "Type\030\001 \002(\t\022\024\n\014extraPayload\030\002 \001(\014*P\n\013Comm" +
-      "andType\022\024\n\020ExtensionTrigger\020\001\022\024\n\020AcesNot" +
-      "ification\020\002\022\025\n\021SoundNotification\020\003*@\n\022No",
-      "tificationLength\022\t\n\005Short\020\001\022\n\n\006Normal\020\002\022" +
-      "\010\n\004Long\020\003\022\t\n\005Never\020dB$\n\"com.eaglesakura." +
-      "andriders.protocol"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_eaglesakura_ace_SoundNotificationPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_SoundNotificationPayload_descriptor,
-              new java.lang.String[] { "Queue", "SourceUri", "SoundKey", });
-          internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_eaglesakura_ace_NotificationRequestPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_NotificationRequestPayload_descriptor,
-              new java.lang.String[] { "Message", "IconFile", "IconPath", "Length", "UniqueId", "Date", "BackgroundXRGB", "Sound", });
-          internal_static_eaglesakura_ace_TweetRequestPayload_descriptor =
-            getDescriptor().getMessageTypes().get(2);
-          internal_static_eaglesakura_ace_TweetRequestPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_TweetRequestPayload_descriptor,
-              new java.lang.String[] { "TweetMessage", "Hashtags", "ImageUris", });
-          internal_static_eaglesakura_ace_IntentExtra_descriptor =
-            getDescriptor().getMessageTypes().get(3);
-          internal_static_eaglesakura_ace_IntentExtra_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_IntentExtra_descriptor,
-              new java.lang.String[] { "Type", "Key", "Value", });
-          internal_static_eaglesakura_ace_IntentPayload_descriptor =
-            getDescriptor().getMessageTypes().get(4);
-          internal_static_eaglesakura_ace_IntentPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_IntentPayload_descriptor,
-              new java.lang.String[] { "Type", "ComponentName", "Action", "Flags", "DataUri", "Extras", });
-          internal_static_eaglesakura_ace_TriggerPayload_descriptor =
-            getDescriptor().getMessageTypes().get(5);
-          internal_static_eaglesakura_ace_TriggerPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_TriggerPayload_descriptor,
-              new java.lang.String[] { "Key", "AppExtraKey", "AppIntent", });
-          internal_static_eaglesakura_ace_CommandPayload_descriptor =
-            getDescriptor().getMessageTypes().get(6);
-          internal_static_eaglesakura_ace_CommandPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_CommandPayload_descriptor,
-              new java.lang.String[] { "CommandType", "ExtraPayload", });
-          return null;
-        }
-      };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
-          com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
-        }, assigner);
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

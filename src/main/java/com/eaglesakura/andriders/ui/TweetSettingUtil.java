@@ -1,12 +1,12 @@
 package com.eaglesakura.andriders.ui;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload;
 import com.eaglesakura.util.LogUtil;
+
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 
 public class TweetSettingUtil {
 
@@ -17,9 +17,6 @@ public class TweetSettingUtil {
 
     /**
      * ツイート設定用Activityを開く
-     *
-     * @param context
-     * @return
      */
     public static Intent createDefaultTweetSettingActivityIntent(Context context) {
         Intent intent = new Intent();
@@ -29,9 +26,6 @@ public class TweetSettingUtil {
 
     /**
      * ツイート設定Activityからツイート設定メッセージを受け取る
-     *
-     * @param resultIntent
-     * @return
      */
     public static TweetRequestPayload getResultTweetRequest(Intent resultIntent) {
         byte[] extra = resultIntent.getByteArrayExtra(EXTRA_TWEETREQUEST_PAYLOAD);

@@ -25,50 +25,36 @@ public interface IExtensionService {
 
     /**
      * 拡張機能情報を取得する
-     *
-     * @return
      */
     ExtensionInformation getExtensionInformation();
 
     /**
      * ディスプレイの表示情報を取得する
-     *
-     * @return
      */
     List<DisplayInformation> getDisplayInformation();
 
     /**
      * ACEに接続され、サイコンの使用準備ができた
-     *
-     * @param dataManager
      */
     void onAceServiceConnected(RemoteDataManager dataManager);
 
     /**
      * ACE
-     *
-     * @param dataManager
      */
     void onAceServiceDisconnected(RemoteDataManager dataManager);
 
     /**
      * 拡張サービスが有効化された
-     *
-     * @param dataManager
      */
     void onEnable(RemoteDataManager dataManager);
 
     /**
      * 拡張サービスが無効化された
-     *
-     * @param dataManager
      */
     void onDisable(RemoteDataManager dataManager);
 
     /**
      * 設定画面を開く
-     *
-     * @param dataManager
      */
     void startSetting(RemoteDataManager dataManager);
 }

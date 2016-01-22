@@ -1,13 +1,13 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.andriders.protocol.AcesProtocol;
+import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.util.StringUtil;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
-import com.eaglesakura.andriders.protocol.AcesProtocol;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
-import com.eaglesakura.util.StringUtil;
 
 import java.util.List;
 
@@ -49,7 +49,6 @@ public class AcesTriggerUtil {
      * Intentからマスター情報を取り出す
      *
      * @param intent ACEsから起動された際に渡されたIntent
-     *
      * @return MasterPayload
      */
     public static AcesProtocol.MasterPayload getMasterPayload(Intent intent) {
@@ -64,7 +63,6 @@ public class AcesTriggerUtil {
      * コマンドの起動キーを取得する
      *
      * @param intent ACEsから起動された際に渡されたIntent
-     *
      * @return コマンドのキー
      */
     public static CommandKey getKey(Intent intent) {
@@ -81,8 +79,6 @@ public class AcesTriggerUtil {
      *
      * @param context app context
      * @param payload 実行するIntent
-     *
-     * @throws Exception
      */
     public static void boot(Context context, CommandProtocol.IntentPayload payload) throws Exception {
         Intent intent = makeIntent(payload);
@@ -103,9 +99,7 @@ public class AcesTriggerUtil {
      * {@link com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload}からIntentを生成する。
      *
      * @param payload 生成元payload
-     *
      * @return 生成されたIntent
-     *
      * @see Intent#setAction(String)
      * @see Intent#setData(Uri)
      * @see Intent#setFlags(int)

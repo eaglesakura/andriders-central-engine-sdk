@@ -1,9 +1,9 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.andriders.protocol.CommandProtocol;
+
 import android.app.Activity;
 import android.content.Intent;
-
-import com.eaglesakura.andriders.protocol.CommandProtocol;
 
 /**
  * チームメンバーに対するオーダーを返却する
@@ -32,8 +32,6 @@ public class TeamOrderResultBuilder {
 
     /**
      * 相手端末で起動するIntentを指定する
-     *
-     * @param remoteIntent
      */
     public void setRemoteIntent(CommandProtocol.IntentPayload remoteIntent) {
         this.remoteIntent = remoteIntent.toBuilder();

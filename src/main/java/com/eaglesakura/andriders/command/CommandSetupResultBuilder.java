@@ -1,22 +1,20 @@
 package com.eaglesakura.andriders.command;
 
-import android.app.Activity;
-import android.app.Service;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.support.annotation.Nullable;
-
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.util.StringUtil;
 
-import java.io.ByteArrayOutputStream;
+import android.app.Activity;
+import android.app.Service;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.support.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,7 +98,6 @@ public class CommandSetupResultBuilder {
      * アイコン設定を行う
      *
      * @param resourceId ACEで表示するアイコン
-     *
      * @return this
      */
     public CommandSetupResultBuilder icon(int resourceId) {
@@ -116,7 +113,6 @@ public class CommandSetupResultBuilder {
      * アイコン設定を行う
      *
      * @param image ACEで表示するアイコン
-     *
      * @return this
      */
     public CommandSetupResultBuilder icon(Bitmap image) {
@@ -136,8 +132,6 @@ public class CommandSetupResultBuilder {
 
     /**
      * ACE側でIntentを保持させる
-     *
-     * @param intentPayload
      */
     public CommandSetupResultBuilder intent(CommandProtocol.IntentPayload intentPayload) {
         this.intentPayload = intentPayload.toBuilder();
@@ -149,7 +143,6 @@ public class CommandSetupResultBuilder {
      *
      * @param activityClass 起動対象のActivity
      * @param action        対象Action
-     *
      * @return this
      */
     public CommandSetupResultBuilder bootActivity(Class<? extends Activity> activityClass, @Nullable String action) {
@@ -169,7 +162,6 @@ public class CommandSetupResultBuilder {
      * @param packageName   起動対象のPackage
      * @param activityClass 起動対象のActivity
      * @param action        対象Action
-     *
      * @return this
      */
     public CommandSetupResultBuilder bootActivity(String packageName, String activityClass, @Nullable String action) {
@@ -188,7 +180,6 @@ public class CommandSetupResultBuilder {
      *
      * @param serviceClass 起動するServiceクラス
      * @param action       起動するAction
-     *
      * @return this
      */
     public CommandSetupResultBuilder bootService(Class<? extends Service> serviceClass, @Nullable String action) {
@@ -207,7 +198,6 @@ public class CommandSetupResultBuilder {
      * ACEからトリガーのタイミングでBroadcastを投げる
      *
      * @param action 送信するAction
-     *
      * @return this
      */
     public CommandSetupResultBuilder bootBroadcast(@Nullable String action) {
@@ -225,7 +215,6 @@ public class CommandSetupResultBuilder {
      * 事前にbootXXXX系メソッドを呼び出さなければならない。
      *
      * @param flags intentのフラグ
-     *
      * @return this
      */
     public CommandSetupResultBuilder intentFlags(int flags) {
@@ -237,7 +226,6 @@ public class CommandSetupResultBuilder {
      * Intent.setDataに渡すUriを指定する
      *
      * @param uri Intentに指定するURI
-     *
      * @return this
      */
     public CommandSetupResultBuilder intentData(Uri uri) {
@@ -250,7 +238,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, boolean value) {
@@ -267,7 +254,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, String value) {
@@ -284,7 +270,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, int value) {
@@ -301,7 +286,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, long value) {
@@ -318,7 +302,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, float value) {
@@ -335,7 +318,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, double value) {
@@ -352,7 +334,6 @@ public class CommandSetupResultBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public CommandSetupResultBuilder putExtra(String key, byte[] value) {

@@ -1,7 +1,5 @@
 package com.eaglesakura.andriders.media;
 
-import android.content.Context;
-
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.central.AcesProtocolReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
@@ -9,6 +7,8 @@ import com.eaglesakura.andriders.protocol.GeoProtocol;
 import com.eaglesakura.andriders.protocol.MediaMetaProtocol;
 import com.eaglesakura.andriders.protocol.SensorProtocol;
 import com.eaglesakura.util.StringUtil;
+
+import android.content.Context;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -73,8 +73,6 @@ public class MediaFileManager {
 
     /**
      * 画像ファイル名を取得する
-     *
-     * @return
      */
     public String getImageFileName() {
         return String.format("%s.jpg", formatter.format(imageDate));
@@ -82,8 +80,6 @@ public class MediaFileManager {
 
     /**
      * 画像ディレクトリを取得する
-     *
-     * @return
      */
     public File getImageDirectory() {
         File result = AcesEnvironment.getDateMediaDirectory(context, imageDate);
@@ -100,8 +96,6 @@ public class MediaFileManager {
 
     /**
      * メタ情報を書き出す
-     *
-     * @param receiver
      */
     public void writeMediaMeta(AcesProtocolReceiver receiver) throws IOException {
 
@@ -169,7 +163,6 @@ public class MediaFileManager {
      *
      * @param jpegImage 　Jpeg画像配列
      * @return 書き込んだ画像のURI
-     * @throws IOException
      */
     public File writeImage(byte[] jpegImage) throws IOException {
         if (jpegImage == null || jpegImage.length == 0) {
@@ -189,9 +182,6 @@ public class MediaFileManager {
 
     /**
      * 一時ファイルから本番領域にファイルを移す
-     *
-     * @param tempFile
-     * @return
      */
     public File swapVideo(File tempFile) {
         if (tempFile == null || tempFile.length() == 0) {
@@ -207,8 +197,6 @@ public class MediaFileManager {
 
     /**
      * 画像ファイル本体を取得する
-     *
-     * @return
      */
     public File getMediaFilePath() {
         return mediaFilePath;

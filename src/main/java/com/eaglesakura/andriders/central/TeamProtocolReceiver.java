@@ -1,13 +1,13 @@
 package com.eaglesakura.andriders.central;
 
+import com.eaglesakura.andriders.central.event.TeamDataHandler;
+import com.eaglesakura.andriders.protocol.TeamProtocol;
+import com.eaglesakura.util.LogUtil;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-
-import com.eaglesakura.andriders.central.event.TeamDataHandler;
-import com.eaglesakura.andriders.protocol.TeamProtocol;
-import com.eaglesakura.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,8 +39,6 @@ public class TeamProtocolReceiver {
 
     /**
      * 他のアプリへデータを投げる
-     *
-     * @return
      */
     static Intent newBroadcastIntent() {
         Intent intent = new Intent(INTENT_ACTION);
@@ -109,7 +107,6 @@ public class TeamProtocolReceiver {
      * メンバーIDを指定してReceiverを取得する
      *
      * @param memberId 対象メンバーID
-     *
      * @return メンバー用Receiver
      */
     public TeamMemberReceiver getMemberReceiver(String memberId) {
@@ -194,7 +191,6 @@ public class TeamProtocolReceiver {
      * メンバーをIDに従ってソートする
      *
      * @param receivers 全レシーバ
-     *
      * @return ソートされたreceivers
      */
     public static List<TeamMemberReceiver> sortById(List<TeamMemberReceiver> receivers) {

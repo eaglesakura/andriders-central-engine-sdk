@@ -104,7 +104,6 @@ public class CommandKey implements Parcelable {
      * 近接コマンドからキーを生成する
      *
      * @param commandSec 秒数
-     *
      * @return キー
      */
     public static CommandKey fromProximity(int commandSec) {
@@ -115,7 +114,6 @@ public class CommandKey implements Parcelable {
      * 文字列キーから生成する。基本的には復元用
      *
      * @param key キー文字列
-     *
      * @return キー
      */
     public static CommandKey fromString(String key) {
@@ -128,7 +126,6 @@ public class CommandKey implements Parcelable {
      * タイマーは複数指定できるため、追加された時刻をキーとする
      *
      * @param settingCurrentTime 設定するスロット番号
-     *
      * @return キー
      */
     public static CommandKey fromTimer(long settingCurrentTime) {
@@ -139,7 +136,6 @@ public class CommandKey implements Parcelable {
      * スピードコマンドのキーを生成する
      *
      * @param settingCurrentTime 現在の時刻
-     *
      * @return キー
      */
     public static CommandKey fromSpeed(long settingCurrentTime) {
@@ -150,7 +146,6 @@ public class CommandKey implements Parcelable {
      * 距離コマンドのキーを生成する
      *
      * @param settingCurrentTime 現在の時刻
-     *
      * @return キー
      */
     public static CommandKey fromDistance(long settingCurrentTime) {
@@ -161,8 +156,6 @@ public class CommandKey implements Parcelable {
      * チームメイトにオーダーを出す
      *
      * @param userId 対象ユーザーID
-     *
-     * @return
      */
     public static CommandKey fromTeamOrder(String userId) {
         return new CommandKey(String.format("%s%s", COMMAND_HEADER_TEAM_ORDER, userId));

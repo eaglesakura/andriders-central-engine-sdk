@@ -1,9 +1,6 @@
 package com.eaglesakura.andriders.central;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import com.google.protobuf.ByteString;
 
 import com.eaglesakura.andriders.central.event.ActivityEventHandler;
 import com.eaglesakura.andriders.central.event.CentralDataHandler;
@@ -31,7 +28,11 @@ import com.eaglesakura.geo.GeohashGroup;
 import com.eaglesakura.util.IOUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
-import com.google.protobuf.ByteString;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -56,8 +57,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 他のアプリへデータを投げる
-     *
-     * @return
      */
     static Intent newBroadcastIntent() {
         Intent intent = new Intent(INTENT_ACTION);
@@ -152,8 +151,6 @@ public class AcesProtocolReceiver {
 
     /**
      * データ取得クラスを構築する
-     *
-     * @param context
      */
     public AcesProtocolReceiver(Context context) {
         this.context = context.getApplicationContext();
@@ -164,8 +161,6 @@ public class AcesProtocolReceiver {
      * 自分自身のpackage名を指定する。
      * <br>
      * 他のアプリに送信された情報をハンドリングしたい場合に使用するが、動作内容が想定と変わるため、注意すること。
-     *
-     * @param selfPackageName
      */
     public void setSelfPackageName(String selfPackageName) {
         this.selfPackageName = selfPackageName;
@@ -175,8 +170,6 @@ public class AcesProtocolReceiver {
      * ジオハッシュの文字数を指定する。
      * <br>
      * 文字数は長いほど狭い範囲でしか扱えない。
-     *
-     * @param len
      */
     public void setGeohashLength(int len) {
         geoGroup.setGeohashLength(len);
@@ -410,9 +403,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 心拍を受け取った
-     *
-     * @param payload
-     * @throws Exception
      */
     private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
         RawHeartrate heartrate = RawHeartrate.parseFrom(payload);
@@ -426,9 +416,6 @@ public class AcesProtocolReceiver {
 
     /**
      * ケイデンスを受け取った
-     *
-     * @param payload
-     * @throws Exception
      */
     private void onCadenceReceived(MasterPayload master, ByteString payload) throws Exception {
         RawCadence cadence = RawCadence.parseFrom(payload);
@@ -442,10 +429,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 速度を受け取った
-     *
-     * @param master
-     * @param payload
-     * @throws Exception
      */
     private void onSpeedReceived(MasterPayload master, ByteString payload) throws Exception {
         RawSpeed speed = RawSpeed.parseFrom(payload);
@@ -459,10 +442,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 不明なセンサーを受け取った
-     *
-     * @param master
-     * @param payload
-     * @throws Exception
      */
     private void onUnknownSensorReceived(MasterPayload master, SensorPayload payload) throws Exception {
         // ハンドラに通知
@@ -473,9 +452,6 @@ public class AcesProtocolReceiver {
 
     /**
      * センサー系イベントのハンドリングを行う
-     *
-     * @param master
-     * @throws Exception
      */
     protected void handleSensorEvents(MasterPayload master) throws Exception {
         List<SensorPayload> payloads = master.getSensorPayloadsList();
@@ -511,9 +487,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 近接コマンドを受け取った
-     *
-     * @param master
-     * @param trigger
      */
     private void onCommandReceived(MasterPayload master, TriggerPayload trigger) {
         CommandKey key = CommandKey.fromString(trigger.getKey());
@@ -529,9 +502,6 @@ public class AcesProtocolReceiver {
 
     /**
      * ACEsへの通知を受け取った
-     *
-     * @param master
-     * @param requestPayload
      */
     private void onAcesNotificationCommand(MasterPayload master, CommandProtocol.NotificationRequestPayload requestPayload) {
         NotificationData notificationData = new NotificationData(requestPayload);
@@ -542,9 +512,6 @@ public class AcesProtocolReceiver {
 
     /**
      * ACEsへのサウンドリクエストを受け取った
-     *
-     * @param master
-     * @param soundNotificationPayload
      */
     private void onAcesSoundNotificationCommand(MasterPayload master, CommandProtocol.SoundNotificationPayload soundNotificationPayload) {
         SoundData soundData = new SoundData(soundNotificationPayload);
@@ -555,9 +522,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 不明なコマンドを受け取った
-     *
-     * @param master
-     * @param command
      */
     private void onUnknownCommandRecieved(MasterPayload master, CommandPayload command) {
         for (CommandEventHandler handler : commandHandlers) {
@@ -567,8 +531,6 @@ public class AcesProtocolReceiver {
 
     /**
      * コマンド処理のハンドリング
-     *
-     * @param master
      */
     protected void handleCommandEvents(MasterPayload master) throws Exception {
         if (commandHandlers.isEmpty()) {
@@ -620,9 +582,6 @@ public class AcesProtocolReceiver {
 
     /**
      * 位置情報を受け取った
-     *
-     * @param master
-     * @throws Exception
      */
     protected void handleGeoStatus(MasterPayload master) throws Exception {
         final GeoProtocol.GeoPayload oldGeoStatus;

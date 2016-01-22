@@ -1,12 +1,5 @@
 package com.eaglesakura.andriders.extension.data;
 
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.location.Location;
-import android.os.IBinder;
-import android.os.RemoteException;
-
 import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.extension.ExtensionInformation;
 import com.eaglesakura.andriders.extension.IExtensionService;
@@ -22,6 +15,13 @@ import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
 import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.util.LogUtil;
+
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.location.Location;
+import android.os.IBinder;
+import android.os.RemoteException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,8 +68,6 @@ public class RemoteDataManager {
      * ACEsに接続されていればtrueを返却する
      * <p/>
      * 設定画面から接続されている、もしくは接続されていない場合はfalseを返却する
-     *
-     * @return
      */
     public boolean isConnectedAces() {
         return server != null && server.hasClient(IExtensionService.CLIENT_ID_ACE_SERVICE);
@@ -79,9 +77,6 @@ public class RemoteDataManager {
      * 接続先のMACアドレスを取得する
      * <p/>
      * このアドレスにしたがってデータを得る
-     *
-     * @param type
-     * @return
      */
     public String getGadgetAddress(SensorProtocol.SensorType type) {
         validAces();
@@ -117,8 +112,6 @@ public class RemoteDataManager {
 
     /**
      * 心拍を更新する
-     *
-     * @param bpm
      */
     public void setHeartrate(int bpm) {
         validAces();
@@ -135,11 +128,6 @@ public class RemoteDataManager {
 
     /**
      * S&Cセンサーの情報を更新する
-     *
-     * @param crankRpm
-     * @param crankRevolution
-     * @param wheelRpm
-     * @param wheelRevolution
      */
     public void setSpeedAndCadence(float crankRpm, int crankRevolution, float wheelRpm, int wheelRevolution) {
         validAces();

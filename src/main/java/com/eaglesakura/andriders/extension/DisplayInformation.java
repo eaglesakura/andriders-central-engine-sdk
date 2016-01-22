@@ -50,8 +50,6 @@ public class DisplayInformation {
 
     /**
      * データをシリアライズする
-     *
-     * @return
      */
     public byte[] serialize() {
         return raw.toByteArray();
@@ -71,9 +69,6 @@ public class DisplayInformation {
 
     /**
      * バッファからデシリアライズする
-     *
-     * @param buffer
-     * @return
      */
     public static List<DisplayInformation> deserialize(byte[] buffer) {
         List<IdlCycleDisplayInfo> rawList = BaseProperties.deserializeToArray(null, IdlCycleDisplayInfo.class, buffer);

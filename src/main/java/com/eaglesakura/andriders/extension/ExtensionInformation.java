@@ -49,8 +49,6 @@ public class ExtensionInformation {
 
     /**
      * データをシリアライズする
-     *
-     * @return
      */
     public byte[] serialize() {
         return raw.toByteArray();
@@ -66,9 +64,6 @@ public class ExtensionInformation {
 
     /**
      * バッファからデシリアライズする
-     *
-     * @param buffer
-     * @return
      */
     public static List<ExtensionInformation> deserialize(byte[] buffer) {
         List<IdlExtensionInfo> rawList = BaseProperties.deserializeToArray(null, IdlExtensionInfo.class, buffer);

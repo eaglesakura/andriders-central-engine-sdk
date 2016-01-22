@@ -4,2817 +4,3018 @@
 package com.eaglesakura.andriders.protocol;
 
 public final class LoggerProtocol {
-  private LoggerProtocol() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-  }
-  public interface RawSessionExtraOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-     *
-     * <pre>
-     * 最高高度地点
-     * </pre>
-     */
-    boolean hasMaxAltitudePoint();
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-     *
-     * <pre>
-     * 最高高度地点
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMaxAltitudePoint();
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-     *
-     * <pre>
-     * 最高高度地点
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMaxAltitudePointOrBuilder();
-
-    // optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-     *
-     * <pre>
-     * 最低高度地点
-     * </pre>
-     */
-    boolean hasMinAltitudePoint();
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-     *
-     * <pre>
-     * 最低高度地点
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMinAltitudePoint();
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-     *
-     * <pre>
-     * 最低高度地点
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMinAltitudePointOrBuilder();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.RawSessionExtra}
-   *
-   * <pre>
-   **
-   * SessionLogExtra
-   * </pre>
-   */
-  public static final class RawSessionExtra extends
-      com.google.protobuf.GeneratedMessage
-      implements RawSessionExtraOrBuilder {
-    // Use RawSessionExtra.newBuilder() to construct.
-    private RawSessionExtra(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private RawSessionExtra(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final RawSessionExtra defaultInstance;
-    public static RawSessionExtra getDefaultInstance() {
-      return defaultInstance;
+    private LoggerProtocol() {
     }
 
-    public RawSessionExtra getDefaultInstanceForType() {
-      return defaultInstance;
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RawSessionExtra(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = maxAltitudePoint_.toBuilder();
-              }
-              maxAltitudePoint_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(maxAltitudePoint_);
-                maxAltitudePoint_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 18: {
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = minAltitudePoint_.toBuilder();
-              }
-              minAltitudePoint_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(minAltitudePoint_);
-                minAltitudePoint_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
+    public interface RawSessionExtraOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
+
+        // optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+         *
+         * <pre>
+         * 最高高度地点
+         * </pre>
+         */
+        boolean hasMaxAltitudePoint();
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+         *
+         * <pre>
+         * 最高高度地点
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMaxAltitudePoint();
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+         *
+         * <pre>
+         * 最高高度地点
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMaxAltitudePointOrBuilder();
+
+        // optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+         *
+         * <pre>
+         * 最低高度地点
+         * </pre>
+         */
+        boolean hasMinAltitudePoint();
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+         *
+         * <pre>
+         * 最低高度地点
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMinAltitudePoint();
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+         *
+         * <pre>
+         * 最低高度地点
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMinAltitudePointOrBuilder();
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<RawSessionExtra> PARSER =
-        new com.google.protobuf.AbstractParser<RawSessionExtra>() {
-      public RawSessionExtra parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RawSessionExtra(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RawSessionExtra> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;
-    public static final int MAXALTITUDEPOINT_FIELD_NUMBER = 1;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload maxAltitudePoint_;
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-     *
-     * <pre>
-     * 最高高度地点
-     * </pre>
-     */
-    public boolean hasMaxAltitudePoint() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-     *
-     * <pre>
-     * 最高高度地点
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMaxAltitudePoint() {
-      return maxAltitudePoint_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-     *
-     * <pre>
-     * 最高高度地点
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMaxAltitudePointOrBuilder() {
-      return maxAltitudePoint_;
-    }
-
-    // optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;
-    public static final int MINALTITUDEPOINT_FIELD_NUMBER = 2;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload minAltitudePoint_;
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-     *
-     * <pre>
-     * 最低高度地点
-     * </pre>
-     */
-    public boolean hasMinAltitudePoint() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-     *
-     * <pre>
-     * 最低高度地点
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMinAltitudePoint() {
-      return minAltitudePoint_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-     *
-     * <pre>
-     * 最低高度地点
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMinAltitudePointOrBuilder() {
-      return minAltitudePoint_;
-    }
-
-    private void initFields() {
-      maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-      minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (hasMaxAltitudePoint()) {
-        if (!getMaxAltitudePoint().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasMinAltitudePoint()) {
-        if (!getMinAltitudePoint().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, maxAltitudePoint_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, minAltitudePoint_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, maxAltitudePoint_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, minAltitudePoint_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.RawSessionExtra}
      *
      * <pre>
-     **
+     * *
      * SessionLogExtra
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtraOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
-      }
+    public static final class RawSessionExtra extends
+            com.google.protobuf.GeneratedMessage
+            implements RawSessionExtraOrBuilder {
+        // Use RawSessionExtra.newBuilder() to construct.
+        private RawSessionExtra(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
+        }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.Builder.class);
-      }
+        private RawSessionExtra(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      // Construct using com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private static final RawSessionExtra defaultInstance;
 
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getMaxAltitudePointFieldBuilder();
-          getMinAltitudePointFieldBuilder();
+        public static RawSessionExtra getDefaultInstance() {
+            return defaultInstance;
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        if (maxAltitudePointBuilder_ == null) {
-          maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-        } else {
-          maxAltitudePointBuilder_.clear();
+        public RawSessionExtra getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (minAltitudePointBuilder_ == null) {
-          minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-        } else {
-          minAltitudePointBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
-      }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
 
-      public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.getDefaultInstance();
-      }
+        private RawSessionExtra(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                                subBuilder = maxAltitudePoint_.toBuilder();
+                            }
+                            maxAltitudePoint_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(maxAltitudePoint_);
+                                maxAltitudePoint_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000001;
+                            break;
+                        }
+                        case 18: {
+                            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                                subBuilder = minAltitudePoint_.toBuilder();
+                            }
+                            minAltitudePoint_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(minAltitudePoint_);
+                                minAltitudePoint_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000002;
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
 
-      public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra build() {
-        com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra buildPartial() {
-        com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra result = new com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.Builder.class);
         }
-        if (maxAltitudePointBuilder_ == null) {
-          result.maxAltitudePoint_ = maxAltitudePoint_;
-        } else {
-          result.maxAltitudePoint_ = maxAltitudePointBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        if (minAltitudePointBuilder_ == null) {
-          result.minAltitudePoint_ = minAltitudePoint_;
-        } else {
-          result.minAltitudePoint_ = minAltitudePointBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
+        public static com.google.protobuf.Parser<RawSessionExtra> PARSER =
+                new com.google.protobuf.AbstractParser<RawSessionExtra>() {
+                    public RawSessionExtra parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new RawSessionExtra(input, extensionRegistry);
+                    }
+                };
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra other) {
-        if (other == com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.getDefaultInstance()) return this;
-        if (other.hasMaxAltitudePoint()) {
-          mergeMaxAltitudePoint(other.getMaxAltitudePoint());
+        @java.lang.Override
+        public com.google.protobuf.Parser<RawSessionExtra> getParserForType() {
+            return PARSER;
         }
-        if (other.hasMinAltitudePoint()) {
-          mergeMinAltitudePoint(other.getMinAltitudePoint());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (hasMaxAltitudePoint()) {
-          if (!getMaxAltitudePoint().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasMinAltitudePoint()) {
-          if (!getMinAltitudePoint().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
+        private int bitField0_;
+        // optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;
+        public static final int MAXALTITUDEPOINT_FIELD_NUMBER = 1;
+        private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload maxAltitudePoint_;
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+         *
+         * <pre>
+         * 最高高度地点
+         * </pre>
+         */
+        public boolean hasMaxAltitudePoint() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> maxAltitudePointBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public boolean hasMaxAltitudePoint() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMaxAltitudePoint() {
-        if (maxAltitudePointBuilder_ == null) {
-          return maxAltitudePoint_;
-        } else {
-          return maxAltitudePointBuilder_.getMessage();
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+         *
+         * <pre>
+         * 最高高度地点
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMaxAltitudePoint() {
+            return maxAltitudePoint_;
         }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public Builder setMaxAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
-        if (maxAltitudePointBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          maxAltitudePoint_ = value;
-          onChanged();
-        } else {
-          maxAltitudePointBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public Builder setMaxAltitudePoint(
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder builderForValue) {
-        if (maxAltitudePointBuilder_ == null) {
-          maxAltitudePoint_ = builderForValue.build();
-          onChanged();
-        } else {
-          maxAltitudePointBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public Builder mergeMaxAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
-        if (maxAltitudePointBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              maxAltitudePoint_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
-            maxAltitudePoint_ =
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(maxAltitudePoint_).mergeFrom(value).buildPartial();
-          } else {
-            maxAltitudePoint_ = value;
-          }
-          onChanged();
-        } else {
-          maxAltitudePointBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public Builder clearMaxAltitudePoint() {
-        if (maxAltitudePointBuilder_ == null) {
-          maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-          onChanged();
-        } else {
-          maxAltitudePointBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getMaxAltitudePointBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getMaxAltitudePointFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMaxAltitudePointOrBuilder() {
-        if (maxAltitudePointBuilder_ != null) {
-          return maxAltitudePointBuilder_.getMessageOrBuilder();
-        } else {
-          return maxAltitudePoint_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
-       *
-       * <pre>
-       * 最高高度地点
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> 
-          getMaxAltitudePointFieldBuilder() {
-        if (maxAltitudePointBuilder_ == null) {
-          maxAltitudePointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>(
-                  maxAltitudePoint_,
-                  getParentForChildren(),
-                  isClean());
-          maxAltitudePoint_ = null;
-        }
-        return maxAltitudePointBuilder_;
-      }
 
-      // optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> minAltitudePointBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public boolean hasMinAltitudePoint() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMinAltitudePoint() {
-        if (minAltitudePointBuilder_ == null) {
-          return minAltitudePoint_;
-        } else {
-          return minAltitudePointBuilder_.getMessage();
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+         *
+         * <pre>
+         * 最高高度地点
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMaxAltitudePointOrBuilder() {
+            return maxAltitudePoint_;
         }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public Builder setMinAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
-        if (minAltitudePointBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          minAltitudePoint_ = value;
-          onChanged();
-        } else {
-          minAltitudePointBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public Builder setMinAltitudePoint(
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder builderForValue) {
-        if (minAltitudePointBuilder_ == null) {
-          minAltitudePoint_ = builderForValue.build();
-          onChanged();
-        } else {
-          minAltitudePointBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public Builder mergeMinAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
-        if (minAltitudePointBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              minAltitudePoint_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
-            minAltitudePoint_ =
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(minAltitudePoint_).mergeFrom(value).buildPartial();
-          } else {
-            minAltitudePoint_ = value;
-          }
-          onChanged();
-        } else {
-          minAltitudePointBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public Builder clearMinAltitudePoint() {
-        if (minAltitudePointBuilder_ == null) {
-          minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
-          onChanged();
-        } else {
-          minAltitudePointBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getMinAltitudePointBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getMinAltitudePointFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMinAltitudePointOrBuilder() {
-        if (minAltitudePointBuilder_ != null) {
-          return minAltitudePointBuilder_.getMessageOrBuilder();
-        } else {
-          return minAltitudePoint_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
-       *
-       * <pre>
-       * 最低高度地点
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> 
-          getMinAltitudePointFieldBuilder() {
-        if (minAltitudePointBuilder_ == null) {
-          minAltitudePointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>(
-                  minAltitudePoint_,
-                  getParentForChildren(),
-                  isClean());
-          minAltitudePoint_ = null;
-        }
-        return minAltitudePointBuilder_;
-      }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawSessionExtra)
+        // optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;
+        public static final int MINALTITUDEPOINT_FIELD_NUMBER = 2;
+        private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload minAltitudePoint_;
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+         *
+         * <pre>
+         * 最低高度地点
+         * </pre>
+         */
+        public boolean hasMinAltitudePoint() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+         *
+         * <pre>
+         * 最低高度地点
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMinAltitudePoint() {
+            return minAltitudePoint_;
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+         *
+         * <pre>
+         * 最低高度地点
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMinAltitudePointOrBuilder() {
+            return minAltitudePoint_;
+        }
+
+        private void initFields() {
+            maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+            minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (hasMaxAltitudePoint()) {
+                if (!getMaxAltitudePoint().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            if (hasMinAltitudePoint()) {
+                if (!getMinAltitudePoint().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeMessage(1, maxAltitudePoint_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeMessage(2, minAltitudePoint_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(1, maxAltitudePoint_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(2, minAltitudePoint_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.RawSessionExtra}
+         *
+         * <pre>
+         * *
+         * SessionLogExtra
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtraOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                    getMaxAltitudePointFieldBuilder();
+                    getMinAltitudePointFieldBuilder();
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                if (maxAltitudePointBuilder_ == null) {
+                    maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+                } else {
+                    maxAltitudePointBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                if (minAltitudePointBuilder_ == null) {
+                    minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+                } else {
+                    minAltitudePointBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra build() {
+                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra buildPartial() {
+                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra result = new com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (maxAltitudePointBuilder_ == null) {
+                    result.maxAltitudePoint_ = maxAltitudePoint_;
+                } else {
+                    result.maxAltitudePoint_ = maxAltitudePointBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (minAltitudePointBuilder_ == null) {
+                    result.minAltitudePoint_ = minAltitudePoint_;
+                } else {
+                    result.minAltitudePoint_ = minAltitudePointBuilder_.build();
+                }
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra other) {
+                if (other == com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra.getDefaultInstance())
+                    return this;
+                if (other.hasMaxAltitudePoint()) {
+                    mergeMaxAltitudePoint(other.getMaxAltitudePoint());
+                }
+                if (other.hasMinAltitudePoint()) {
+                    mergeMinAltitudePoint(other.getMinAltitudePoint());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (hasMaxAltitudePoint()) {
+                    if (!getMaxAltitudePoint().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                if (hasMinAltitudePoint()) {
+                    if (!getMinAltitudePoint().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionExtra) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;
+            private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> maxAltitudePointBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public boolean hasMaxAltitudePoint() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMaxAltitudePoint() {
+                if (maxAltitudePointBuilder_ == null) {
+                    return maxAltitudePoint_;
+                } else {
+                    return maxAltitudePointBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public Builder setMaxAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
+                if (maxAltitudePointBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    maxAltitudePoint_ = value;
+                    onChanged();
+                } else {
+                    maxAltitudePointBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public Builder setMaxAltitudePoint(
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder builderForValue) {
+                if (maxAltitudePointBuilder_ == null) {
+                    maxAltitudePoint_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    maxAltitudePointBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public Builder mergeMaxAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
+                if (maxAltitudePointBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) == 0x00000001) &&
+                            maxAltitudePoint_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
+                        maxAltitudePoint_ =
+                                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(maxAltitudePoint_).mergeFrom(value).buildPartial();
+                    } else {
+                        maxAltitudePoint_ = value;
+                    }
+                    onChanged();
+                } else {
+                    maxAltitudePointBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public Builder clearMaxAltitudePoint() {
+                if (maxAltitudePointBuilder_ == null) {
+                    maxAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+                    onChanged();
+                } else {
+                    maxAltitudePointBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getMaxAltitudePointBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getMaxAltitudePointFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMaxAltitudePointOrBuilder() {
+                if (maxAltitudePointBuilder_ != null) {
+                    return maxAltitudePointBuilder_.getMessageOrBuilder();
+                } else {
+                    return maxAltitudePoint_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload maxAltitudePoint = 1;</code>
+             *
+             * <pre>
+             * 最高高度地点
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>
+            getMaxAltitudePointFieldBuilder() {
+                if (maxAltitudePointBuilder_ == null) {
+                    maxAltitudePointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>(
+                            maxAltitudePoint_,
+                            getParentForChildren(),
+                            isClean());
+                    maxAltitudePoint_ = null;
+                }
+                return maxAltitudePointBuilder_;
+            }
+
+            // optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;
+            private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder> minAltitudePointBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public boolean hasMinAltitudePoint() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload getMinAltitudePoint() {
+                if (minAltitudePointBuilder_ == null) {
+                    return minAltitudePoint_;
+                } else {
+                    return minAltitudePointBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public Builder setMinAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
+                if (minAltitudePointBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    minAltitudePoint_ = value;
+                    onChanged();
+                } else {
+                    minAltitudePointBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public Builder setMinAltitudePoint(
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder builderForValue) {
+                if (minAltitudePointBuilder_ == null) {
+                    minAltitudePoint_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    minAltitudePointBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public Builder mergeMinAltitudePoint(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload value) {
+                if (minAltitudePointBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) == 0x00000002) &&
+                            minAltitudePoint_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance()) {
+                        minAltitudePoint_ =
+                                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.newBuilder(minAltitudePoint_).mergeFrom(value).buildPartial();
+                    } else {
+                        minAltitudePoint_ = value;
+                    }
+                    onChanged();
+                } else {
+                    minAltitudePointBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public Builder clearMinAltitudePoint() {
+                if (minAltitudePointBuilder_ == null) {
+                    minAltitudePoint_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.getDefaultInstance();
+                    onChanged();
+                } else {
+                    minAltitudePointBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder getMinAltitudePointBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getMinAltitudePointFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder getMinAltitudePointOrBuilder() {
+                if (minAltitudePointBuilder_ != null) {
+                    return minAltitudePointBuilder_.getMessageOrBuilder();
+                } else {
+                    return minAltitudePoint_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPayload minAltitudePoint = 2;</code>
+             *
+             * <pre>
+             * 最低高度地点
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>
+            getMinAltitudePointFieldBuilder() {
+                if (minAltitudePointBuilder_ == null) {
+                    minAltitudePointBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayload.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPayloadOrBuilder>(
+                            minAltitudePoint_,
+                            getParentForChildren(),
+                            isClean());
+                    minAltitudePoint_ = null;
+                }
+                return minAltitudePointBuilder_;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawSessionExtra)
+        }
+
+        static {
+            defaultInstance = new RawSessionExtra(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawSessionExtra)
     }
 
-    static {
-      defaultInstance = new RawSessionExtra(true);
-      defaultInstance.initFields();
-    }
+    public interface RawSessionPointPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawSessionExtra)
-  }
+        // optional .eaglesakura_ace.RawCadence cadence = 1;
 
-  public interface RawSessionPointPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+        /**
+         * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+         *
+         * <pre>
+         * ケイデンス値
+         * </pre>
+         */
+        boolean hasCadence();
 
-    // optional .eaglesakura_ace.RawCadence cadence = 1;
-    /**
-     * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-     *
-     * <pre>
-     * ケイデンス値
-     * </pre>
-     */
-    boolean hasCadence();
-    /**
-     * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-     *
-     * <pre>
-     * ケイデンス値
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence getCadence();
-    /**
-     * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-     *
-     * <pre>
-     * ケイデンス値
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder();
+        /**
+         * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+         *
+         * <pre>
+         * ケイデンス値
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence getCadence();
 
-    // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
-    /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-     *
-     * <pre>
-     * ハートレート
-     * </pre>
-     */
-    boolean hasHeartrate();
-    /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-     *
-     * <pre>
-     * ハートレート
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate();
-    /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-     *
-     * <pre>
-     * ハートレート
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder();
+        /**
+         * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+         *
+         * <pre>
+         * ケイデンス値
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder();
 
-    // optional .eaglesakura_ace.RawSpeed speed = 4;
-    /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-     *
-     * <pre>
-     * 速度
-     * </pre>
-     */
-    boolean hasSpeed();
-    /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-     *
-     * <pre>
-     * 速度
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed();
-    /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-     *
-     * <pre>
-     * 速度
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder();
+        // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
 
-    // optional .eaglesakura_ace.GeoPoint location = 5;
-    /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-     *
-     * <pre>
-     * GPS座標
-     * </pre>
-     */
-    boolean hasLocation();
-    /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-     *
-     * <pre>
-     * GPS座標
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation();
-    /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-     *
-     * <pre>
-     * GPS座標
-     * </pre>
-     */
-    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
+        /**
+         * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+         *
+         * <pre>
+         * ハートレート
+         * </pre>
+         */
+        boolean hasHeartrate();
 
-    // optional string date = 100;
-    /**
-     * <code>optional string date = 100;</code>
-     *
-     * <pre>
-     * ログの打刻時間
-     * </pre>
-     */
-    boolean hasDate();
-    /**
-     * <code>optional string date = 100;</code>
-     *
-     * <pre>
-     * ログの打刻時間
-     * </pre>
-     */
-    java.lang.String getDate();
-    /**
-     * <code>optional string date = 100;</code>
-     *
-     * <pre>
-     * ログの打刻時間
-     * </pre>
-     */
-    com.google.protobuf.ByteString
+        /**
+         * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+         *
+         * <pre>
+         * ハートレート
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate();
+
+        /**
+         * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+         *
+         * <pre>
+         * ハートレート
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder();
+
+        // optional .eaglesakura_ace.RawSpeed speed = 4;
+
+        /**
+         * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+         *
+         * <pre>
+         * 速度
+         * </pre>
+         */
+        boolean hasSpeed();
+
+        /**
+         * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+         *
+         * <pre>
+         * 速度
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed();
+
+        /**
+         * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+         *
+         * <pre>
+         * 速度
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder();
+
+        // optional .eaglesakura_ace.GeoPoint location = 5;
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+         *
+         * <pre>
+         * GPS座標
+         * </pre>
+         */
+        boolean hasLocation();
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+         *
+         * <pre>
+         * GPS座標
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation();
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+         *
+         * <pre>
+         * GPS座標
+         * </pre>
+         */
+        com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder();
+
+        // optional string date = 100;
+
+        /**
+         * <code>optional string date = 100;</code>
+         *
+         * <pre>
+         * ログの打刻時間
+         * </pre>
+         */
+        boolean hasDate();
+
+        /**
+         * <code>optional string date = 100;</code>
+         *
+         * <pre>
+         * ログの打刻時間
+         * </pre>
+         */
+        java.lang.String getDate();
+
+        /**
+         * <code>optional string date = 100;</code>
+         *
+         * <pre>
+         * ログの打刻時間
+         * </pre>
+         */
+        com.google.protobuf.ByteString
         getDateBytes();
 
-    // optional int64 dateInt = 103;
-    /**
-     * <code>optional int64 dateInt = 103;</code>
-     */
-    boolean hasDateInt();
-    /**
-     * <code>optional int64 dateInt = 103;</code>
-     */
-    long getDateInt();
+        // optional int64 dateInt = 103;
 
-    // optional int32 batteryLevel = 101;
-    /**
-     * <code>optional int32 batteryLevel = 101;</code>
-     *
-     * <pre>
-     * バッテリーの残量（％）
-     * </pre>
-     */
-    boolean hasBatteryLevel();
-    /**
-     * <code>optional int32 batteryLevel = 101;</code>
-     *
-     * <pre>
-     * バッテリーの残量（％）
-     * </pre>
-     */
-    int getBatteryLevel();
+        /**
+         * <code>optional int64 dateInt = 103;</code>
+         */
+        boolean hasDateInt();
 
-    // optional bool batteryCharging = 102;
-    /**
-     * <code>optional bool batteryCharging = 102;</code>
-     *
-     * <pre>
-     * 充電中の場合true
-     * </pre>
-     */
-    boolean hasBatteryCharging();
-    /**
-     * <code>optional bool batteryCharging = 102;</code>
-     *
-     * <pre>
-     * 充電中の場合true
-     * </pre>
-     */
-    boolean getBatteryCharging();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.RawSessionPointPayload}
-   *
-   * <pre>
-   **
-   * 継続的に取得する、ある特定瞬間のログを保持する
-   * </pre>
-   */
-  public static final class RawSessionPointPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements RawSessionPointPayloadOrBuilder {
-    // Use RawSessionPointPayload.newBuilder() to construct.
-    private RawSessionPointPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private RawSessionPointPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+        /**
+         * <code>optional int64 dateInt = 103;</code>
+         */
+        long getDateInt();
 
-    private static final RawSessionPointPayload defaultInstance;
-    public static RawSessionPointPayload getDefaultInstance() {
-      return defaultInstance;
+        // optional int32 batteryLevel = 101;
+
+        /**
+         * <code>optional int32 batteryLevel = 101;</code>
+         *
+         * <pre>
+         * バッテリーの残量（％）
+         * </pre>
+         */
+        boolean hasBatteryLevel();
+
+        /**
+         * <code>optional int32 batteryLevel = 101;</code>
+         *
+         * <pre>
+         * バッテリーの残量（％）
+         * </pre>
+         */
+        int getBatteryLevel();
+
+        // optional bool batteryCharging = 102;
+
+        /**
+         * <code>optional bool batteryCharging = 102;</code>
+         *
+         * <pre>
+         * 充電中の場合true
+         * </pre>
+         */
+        boolean hasBatteryCharging();
+
+        /**
+         * <code>optional bool batteryCharging = 102;</code>
+         *
+         * <pre>
+         * 充電中の場合true
+         * </pre>
+         */
+        boolean getBatteryCharging();
     }
 
-    public RawSessionPointPayload getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RawSessionPointPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = cadence_.toBuilder();
-              }
-              cadence_ = input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(cadence_);
-                cadence_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-            case 26: {
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = heartrate_.toBuilder();
-              }
-              heartrate_ = input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(heartrate_);
-                heartrate_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 34: {
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = speed_.toBuilder();
-              }
-              speed_ = input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(speed_);
-                speed_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 42: {
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = location_.toBuilder();
-              }
-              location_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(location_);
-                location_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
-              break;
-            }
-            case 802: {
-              bitField0_ |= 0x00000010;
-              date_ = input.readBytes();
-              break;
-            }
-            case 808: {
-              bitField0_ |= 0x00000040;
-              batteryLevel_ = input.readInt32();
-              break;
-            }
-            case 816: {
-              bitField0_ |= 0x00000080;
-              batteryCharging_ = input.readBool();
-              break;
-            }
-            case 824: {
-              bitField0_ |= 0x00000020;
-              dateInt_ = input.readInt64();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<RawSessionPointPayload> PARSER =
-        new com.google.protobuf.AbstractParser<RawSessionPointPayload>() {
-      public RawSessionPointPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RawSessionPointPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RawSessionPointPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional .eaglesakura_ace.RawCadence cadence = 1;
-    public static final int CADENCE_FIELD_NUMBER = 1;
-    private com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence cadence_;
-    /**
-     * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-     *
-     * <pre>
-     * ケイデンス値
-     * </pre>
-     */
-    public boolean hasCadence() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-     *
-     * <pre>
-     * ケイデンス値
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence getCadence() {
-      return cadence_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-     *
-     * <pre>
-     * ケイデンス値
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder() {
-      return cadence_;
-    }
-
-    // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
-    public static final int HEARTRATE_FIELD_NUMBER = 3;
-    private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate heartrate_;
-    /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-     *
-     * <pre>
-     * ハートレート
-     * </pre>
-     */
-    public boolean hasHeartrate() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-     *
-     * <pre>
-     * ハートレート
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate() {
-      return heartrate_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-     *
-     * <pre>
-     * ハートレート
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder() {
-      return heartrate_;
-    }
-
-    // optional .eaglesakura_ace.RawSpeed speed = 4;
-    public static final int SPEED_FIELD_NUMBER = 4;
-    private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed speed_;
-    /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-     *
-     * <pre>
-     * 速度
-     * </pre>
-     */
-    public boolean hasSpeed() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-     *
-     * <pre>
-     * 速度
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed() {
-      return speed_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-     *
-     * <pre>
-     * 速度
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder() {
-      return speed_;
-    }
-
-    // optional .eaglesakura_ace.GeoPoint location = 5;
-    public static final int LOCATION_FIELD_NUMBER = 5;
-    private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_;
-    /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-     *
-     * <pre>
-     * GPS座標
-     * </pre>
-     */
-    public boolean hasLocation() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-     *
-     * <pre>
-     * GPS座標
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
-      return location_;
-    }
-    /**
-     * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-     *
-     * <pre>
-     * GPS座標
-     * </pre>
-     */
-    public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
-      return location_;
-    }
-
-    // optional string date = 100;
-    public static final int DATE_FIELD_NUMBER = 100;
-    private java.lang.Object date_;
-    /**
-     * <code>optional string date = 100;</code>
-     *
-     * <pre>
-     * ログの打刻時間
-     * </pre>
-     */
-    public boolean hasDate() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string date = 100;</code>
-     *
-     * <pre>
-     * ログの打刻時間
-     * </pre>
-     */
-    public java.lang.String getDate() {
-      java.lang.Object ref = date_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          date_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string date = 100;</code>
-     *
-     * <pre>
-     * ログの打刻時間
-     * </pre>
-     */
-    public com.google.protobuf.ByteString
-        getDateBytes() {
-      java.lang.Object ref = date_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        date_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int64 dateInt = 103;
-    public static final int DATEINT_FIELD_NUMBER = 103;
-    private long dateInt_;
-    /**
-     * <code>optional int64 dateInt = 103;</code>
-     */
-    public boolean hasDateInt() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int64 dateInt = 103;</code>
-     */
-    public long getDateInt() {
-      return dateInt_;
-    }
-
-    // optional int32 batteryLevel = 101;
-    public static final int BATTERYLEVEL_FIELD_NUMBER = 101;
-    private int batteryLevel_;
-    /**
-     * <code>optional int32 batteryLevel = 101;</code>
-     *
-     * <pre>
-     * バッテリーの残量（％）
-     * </pre>
-     */
-    public boolean hasBatteryLevel() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 batteryLevel = 101;</code>
-     *
-     * <pre>
-     * バッテリーの残量（％）
-     * </pre>
-     */
-    public int getBatteryLevel() {
-      return batteryLevel_;
-    }
-
-    // optional bool batteryCharging = 102;
-    public static final int BATTERYCHARGING_FIELD_NUMBER = 102;
-    private boolean batteryCharging_;
-    /**
-     * <code>optional bool batteryCharging = 102;</code>
-     *
-     * <pre>
-     * 充電中の場合true
-     * </pre>
-     */
-    public boolean hasBatteryCharging() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional bool batteryCharging = 102;</code>
-     *
-     * <pre>
-     * 充電中の場合true
-     * </pre>
-     */
-    public boolean getBatteryCharging() {
-      return batteryCharging_;
-    }
-
-    private void initFields() {
-      cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
-      heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
-      speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
-      location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
-      date_ = "";
-      dateInt_ = 0L;
-      batteryLevel_ = 0;
-      batteryCharging_ = false;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (hasCadence()) {
-        if (!getCadence().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasHeartrate()) {
-        if (!getHeartrate().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasSpeed()) {
-        if (!getSpeed().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasLocation()) {
-        if (!getLocation().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, cadence_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(3, heartrate_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(4, speed_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(5, location_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(100, getDateBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(101, batteryLevel_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeBool(102, batteryCharging_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt64(103, dateInt_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, cadence_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, heartrate_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, speed_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, location_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(100, getDateBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(101, batteryLevel_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(102, batteryCharging_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(103, dateInt_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.RawSessionPointPayload}
      *
      * <pre>
-     **
+     * *
      * 継続的に取得する、ある特定瞬間のログを保持する
      * </pre>
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
-      }
+    public static final class RawSessionPointPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements RawSessionPointPayloadOrBuilder {
+        // Use RawSessionPointPayload.newBuilder() to construct.
+        private RawSessionPointPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
+        }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.Builder.class);
-      }
+        private RawSessionPointPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      // Construct using com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private static final RawSessionPointPayload defaultInstance;
 
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getCadenceFieldBuilder();
-          getHeartrateFieldBuilder();
-          getSpeedFieldBuilder();
-          getLocationFieldBuilder();
+        public static RawSessionPointPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        if (cadenceBuilder_ == null) {
-          cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
-        } else {
-          cadenceBuilder_.clear();
+        public RawSessionPointPayload getDefaultInstanceForType() {
+            return defaultInstance;
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (heartrateBuilder_ == null) {
-          heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
-        } else {
-          heartrateBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        if (speedBuilder_ == null) {
-          speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
-        } else {
-          speedBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (locationBuilder_ == null) {
-          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
-        } else {
-          locationBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        date_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
-        dateInt_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        batteryLevel_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        batteryCharging_ = false;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        return this;
-      }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
-      }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
 
-      public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.getDefaultInstance();
-      }
+        private RawSessionPointPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 10: {
+                            com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                                subBuilder = cadence_.toBuilder();
+                            }
+                            cadence_ = input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(cadence_);
+                                cadence_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000001;
+                            break;
+                        }
+                        case 26: {
+                            com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                                subBuilder = heartrate_.toBuilder();
+                            }
+                            heartrate_ = input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(heartrate_);
+                                heartrate_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000002;
+                            break;
+                        }
+                        case 34: {
+                            com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                                subBuilder = speed_.toBuilder();
+                            }
+                            speed_ = input.readMessage(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(speed_);
+                                speed_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000004;
+                            break;
+                        }
+                        case 42: {
+                            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                                subBuilder = location_.toBuilder();
+                            }
+                            location_ = input.readMessage(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(location_);
+                                location_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000008;
+                            break;
+                        }
+                        case 802: {
+                            bitField0_ |= 0x00000010;
+                            date_ = input.readBytes();
+                            break;
+                        }
+                        case 808: {
+                            bitField0_ |= 0x00000040;
+                            batteryLevel_ = input.readInt32();
+                            break;
+                        }
+                        case 816: {
+                            bitField0_ |= 0x00000080;
+                            batteryCharging_ = input.readBool();
+                            break;
+                        }
+                        case 824: {
+                            bitField0_ |= 0x00000020;
+                            dateInt_ = input.readInt64();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
 
-      public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload build() {
-        com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload result = new com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.Builder.class);
         }
-        if (cadenceBuilder_ == null) {
-          result.cadence_ = cadence_;
-        } else {
-          result.cadence_ = cadenceBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        if (heartrateBuilder_ == null) {
-          result.heartrate_ = heartrate_;
-        } else {
-          result.heartrate_ = heartrateBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        if (speedBuilder_ == null) {
-          result.speed_ = speed_;
-        } else {
-          result.speed_ = speedBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        if (locationBuilder_ == null) {
-          result.location_ = location_;
-        } else {
-          result.location_ = locationBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.date_ = date_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.dateInt_ = dateInt_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.batteryLevel_ = batteryLevel_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.batteryCharging_ = batteryCharging_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
+        public static com.google.protobuf.Parser<RawSessionPointPayload> PARSER =
+                new com.google.protobuf.AbstractParser<RawSessionPointPayload>() {
+                    public RawSessionPointPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new RawSessionPointPayload(input, extensionRegistry);
+                    }
+                };
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.getDefaultInstance()) return this;
-        if (other.hasCadence()) {
-          mergeCadence(other.getCadence());
+        @java.lang.Override
+        public com.google.protobuf.Parser<RawSessionPointPayload> getParserForType() {
+            return PARSER;
         }
-        if (other.hasHeartrate()) {
-          mergeHeartrate(other.getHeartrate());
-        }
-        if (other.hasSpeed()) {
-          mergeSpeed(other.getSpeed());
-        }
-        if (other.hasLocation()) {
-          mergeLocation(other.getLocation());
-        }
-        if (other.hasDate()) {
-          bitField0_ |= 0x00000010;
-          date_ = other.date_;
-          onChanged();
-        }
-        if (other.hasDateInt()) {
-          setDateInt(other.getDateInt());
-        }
-        if (other.hasBatteryLevel()) {
-          setBatteryLevel(other.getBatteryLevel());
-        }
-        if (other.hasBatteryCharging()) {
-          setBatteryCharging(other.getBatteryCharging());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (hasCadence()) {
-          if (!getCadence().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasHeartrate()) {
-          if (!getHeartrate().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasSpeed()) {
-          if (!getSpeed().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasLocation()) {
-          if (!getLocation().isInitialized()) {
-            
-            return false;
-          }
-        }
-        return true;
-      }
+        private int bitField0_;
+        // optional .eaglesakura_ace.RawCadence cadence = 1;
+        public static final int CADENCE_FIELD_NUMBER = 1;
+        private com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence cadence_;
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        /**
+         * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+         *
+         * <pre>
+         * ケイデンス値
+         * </pre>
+         */
+        public boolean hasCadence() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // optional .eaglesakura_ace.RawCadence cadence = 1;
-      private com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder> cadenceBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public boolean hasCadence() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence getCadence() {
-        if (cadenceBuilder_ == null) {
-          return cadence_;
-        } else {
-          return cadenceBuilder_.getMessage();
+        /**
+         * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+         *
+         * <pre>
+         * ケイデンス値
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence getCadence() {
+            return cadence_;
         }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public Builder setCadence(com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence value) {
-        if (cadenceBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          cadence_ = value;
-          onChanged();
-        } else {
-          cadenceBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public Builder setCadence(
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder builderForValue) {
-        if (cadenceBuilder_ == null) {
-          cadence_ = builderForValue.build();
-          onChanged();
-        } else {
-          cadenceBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public Builder mergeCadence(com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence value) {
-        if (cadenceBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              cadence_ != com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance()) {
-            cadence_ =
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.newBuilder(cadence_).mergeFrom(value).buildPartial();
-          } else {
-            cadence_ = value;
-          }
-          onChanged();
-        } else {
-          cadenceBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000001;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public Builder clearCadence() {
-        if (cadenceBuilder_ == null) {
-          cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
-          onChanged();
-        } else {
-          cadenceBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder getCadenceBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getCadenceFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder() {
-        if (cadenceBuilder_ != null) {
-          return cadenceBuilder_.getMessageOrBuilder();
-        } else {
-          return cadence_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
-       *
-       * <pre>
-       * ケイデンス値
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder> 
-          getCadenceFieldBuilder() {
-        if (cadenceBuilder_ == null) {
-          cadenceBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder>(
-                  cadence_,
-                  getParentForChildren(),
-                  isClean());
-          cadence_ = null;
-        }
-        return cadenceBuilder_;
-      }
 
-      // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
-      private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder> heartrateBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public boolean hasHeartrate() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate() {
-        if (heartrateBuilder_ == null) {
-          return heartrate_;
-        } else {
-          return heartrateBuilder_.getMessage();
+        /**
+         * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+         *
+         * <pre>
+         * ケイデンス値
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder() {
+            return cadence_;
         }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public Builder setHeartrate(com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate value) {
-        if (heartrateBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          heartrate_ = value;
-          onChanged();
-        } else {
-          heartrateBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public Builder setHeartrate(
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder builderForValue) {
-        if (heartrateBuilder_ == null) {
-          heartrate_ = builderForValue.build();
-          onChanged();
-        } else {
-          heartrateBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public Builder mergeHeartrate(com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate value) {
-        if (heartrateBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              heartrate_ != com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance()) {
-            heartrate_ =
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.newBuilder(heartrate_).mergeFrom(value).buildPartial();
-          } else {
-            heartrate_ = value;
-          }
-          onChanged();
-        } else {
-          heartrateBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public Builder clearHeartrate() {
-        if (heartrateBuilder_ == null) {
-          heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
-          onChanged();
-        } else {
-          heartrateBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder getHeartrateBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getHeartrateFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder() {
-        if (heartrateBuilder_ != null) {
-          return heartrateBuilder_.getMessageOrBuilder();
-        } else {
-          return heartrate_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
-       *
-       * <pre>
-       * ハートレート
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder> 
-          getHeartrateFieldBuilder() {
-        if (heartrateBuilder_ == null) {
-          heartrateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder>(
-                  heartrate_,
-                  getParentForChildren(),
-                  isClean());
-          heartrate_ = null;
-        }
-        return heartrateBuilder_;
-      }
 
-      // optional .eaglesakura_ace.RawSpeed speed = 4;
-      private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder> speedBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public boolean hasSpeed() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed() {
-        if (speedBuilder_ == null) {
-          return speed_;
-        } else {
-          return speedBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public Builder setSpeed(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed value) {
-        if (speedBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          speed_ = value;
-          onChanged();
-        } else {
-          speedBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public Builder setSpeed(
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder builderForValue) {
-        if (speedBuilder_ == null) {
-          speed_ = builderForValue.build();
-          onChanged();
-        } else {
-          speedBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public Builder mergeSpeed(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed value) {
-        if (speedBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              speed_ != com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance()) {
-            speed_ =
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.newBuilder(speed_).mergeFrom(value).buildPartial();
-          } else {
-            speed_ = value;
-          }
-          onChanged();
-        } else {
-          speedBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public Builder clearSpeed() {
-        if (speedBuilder_ == null) {
-          speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
-          onChanged();
-        } else {
-          speedBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder getSpeedBuilder() {
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return getSpeedFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder() {
-        if (speedBuilder_ != null) {
-          return speedBuilder_.getMessageOrBuilder();
-        } else {
-          return speed_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
-       *
-       * <pre>
-       * 速度
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder> 
-          getSpeedFieldBuilder() {
-        if (speedBuilder_ == null) {
-          speedBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder>(
-                  speed_,
-                  getParentForChildren(),
-                  isClean());
-          speed_ = null;
-        }
-        return speedBuilder_;
-      }
+        // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
+        public static final int HEARTRATE_FIELD_NUMBER = 3;
+        private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate heartrate_;
 
-      // optional .eaglesakura_ace.GeoPoint location = 5;
-      private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> locationBuilder_;
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public boolean hasLocation() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
-        if (locationBuilder_ == null) {
-          return location_;
-        } else {
-          return locationBuilder_.getMessage();
+        /**
+         * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+         *
+         * <pre>
+         * ハートレート
+         * </pre>
+         */
+        public boolean hasHeartrate() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public Builder setLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
-        if (locationBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          location_ = value;
-          onChanged();
-        } else {
-          locationBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public Builder setLocation(
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder builderForValue) {
-        if (locationBuilder_ == null) {
-          location_ = builderForValue.build();
-          onChanged();
-        } else {
-          locationBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public Builder mergeLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
-        if (locationBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              location_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance()) {
-            location_ =
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.newBuilder(location_).mergeFrom(value).buildPartial();
-          } else {
-            location_ = value;
-          }
-          onChanged();
-        } else {
-          locationBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public Builder clearLocation() {
-        if (locationBuilder_ == null) {
-          location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
-          onChanged();
-        } else {
-          locationBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder getLocationBuilder() {
-        bitField0_ |= 0x00000008;
-        onChanged();
-        return getLocationFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
-        if (locationBuilder_ != null) {
-          return locationBuilder_.getMessageOrBuilder();
-        } else {
-          return location_;
-        }
-      }
-      /**
-       * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
-       *
-       * <pre>
-       * GPS座標
-       * </pre>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> 
-          getLocationFieldBuilder() {
-        if (locationBuilder_ == null) {
-          locationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder>(
-                  location_,
-                  getParentForChildren(),
-                  isClean());
-          location_ = null;
-        }
-        return locationBuilder_;
-      }
 
-      // optional string date = 100;
-      private java.lang.Object date_ = "";
-      /**
-       * <code>optional string date = 100;</code>
-       *
-       * <pre>
-       * ログの打刻時間
-       * </pre>
-       */
-      public boolean hasDate() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string date = 100;</code>
-       *
-       * <pre>
-       * ログの打刻時間
-       * </pre>
-       */
-      public java.lang.String getDate() {
-        java.lang.Object ref = date_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          date_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+        /**
+         * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+         *
+         * <pre>
+         * ハートレート
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate() {
+            return heartrate_;
         }
-      }
-      /**
-       * <code>optional string date = 100;</code>
-       *
-       * <pre>
-       * ログの打刻時間
-       * </pre>
-       */
-      public com.google.protobuf.ByteString
-          getDateBytes() {
-        java.lang.Object ref = date_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          date_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+
+        /**
+         * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+         *
+         * <pre>
+         * ハートレート
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder() {
+            return heartrate_;
         }
-      }
-      /**
-       * <code>optional string date = 100;</code>
-       *
-       * <pre>
-       * ログの打刻時間
-       * </pre>
-       */
-      public Builder setDate(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        date_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string date = 100;</code>
-       *
-       * <pre>
-       * ログの打刻時間
-       * </pre>
-       */
-      public Builder clearDate() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        date_ = getDefaultInstance().getDate();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string date = 100;</code>
-       *
-       * <pre>
-       * ログの打刻時間
-       * </pre>
-       */
-      public Builder setDateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        date_ = value;
-        onChanged();
-        return this;
-      }
 
-      // optional int64 dateInt = 103;
-      private long dateInt_ ;
-      /**
-       * <code>optional int64 dateInt = 103;</code>
-       */
-      public boolean hasDateInt() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int64 dateInt = 103;</code>
-       */
-      public long getDateInt() {
-        return dateInt_;
-      }
-      /**
-       * <code>optional int64 dateInt = 103;</code>
-       */
-      public Builder setDateInt(long value) {
-        bitField0_ |= 0x00000020;
-        dateInt_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int64 dateInt = 103;</code>
-       */
-      public Builder clearDateInt() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        dateInt_ = 0L;
-        onChanged();
-        return this;
-      }
+        // optional .eaglesakura_ace.RawSpeed speed = 4;
+        public static final int SPEED_FIELD_NUMBER = 4;
+        private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed speed_;
 
-      // optional int32 batteryLevel = 101;
-      private int batteryLevel_ ;
-      /**
-       * <code>optional int32 batteryLevel = 101;</code>
-       *
-       * <pre>
-       * バッテリーの残量（％）
-       * </pre>
-       */
-      public boolean hasBatteryLevel() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 batteryLevel = 101;</code>
-       *
-       * <pre>
-       * バッテリーの残量（％）
-       * </pre>
-       */
-      public int getBatteryLevel() {
-        return batteryLevel_;
-      }
-      /**
-       * <code>optional int32 batteryLevel = 101;</code>
-       *
-       * <pre>
-       * バッテリーの残量（％）
-       * </pre>
-       */
-      public Builder setBatteryLevel(int value) {
-        bitField0_ |= 0x00000040;
-        batteryLevel_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 batteryLevel = 101;</code>
-       *
-       * <pre>
-       * バッテリーの残量（％）
-       * </pre>
-       */
-      public Builder clearBatteryLevel() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        batteryLevel_ = 0;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+         *
+         * <pre>
+         * 速度
+         * </pre>
+         */
+        public boolean hasSpeed() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
 
-      // optional bool batteryCharging = 102;
-      private boolean batteryCharging_ ;
-      /**
-       * <code>optional bool batteryCharging = 102;</code>
-       *
-       * <pre>
-       * 充電中の場合true
-       * </pre>
-       */
-      public boolean hasBatteryCharging() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional bool batteryCharging = 102;</code>
-       *
-       * <pre>
-       * 充電中の場合true
-       * </pre>
-       */
-      public boolean getBatteryCharging() {
-        return batteryCharging_;
-      }
-      /**
-       * <code>optional bool batteryCharging = 102;</code>
-       *
-       * <pre>
-       * 充電中の場合true
-       * </pre>
-       */
-      public Builder setBatteryCharging(boolean value) {
-        bitField0_ |= 0x00000080;
-        batteryCharging_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bool batteryCharging = 102;</code>
-       *
-       * <pre>
-       * 充電中の場合true
-       * </pre>
-       */
-      public Builder clearBatteryCharging() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        batteryCharging_ = false;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+         *
+         * <pre>
+         * 速度
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed() {
+            return speed_;
+        }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawSessionPointPayload)
+        /**
+         * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+         *
+         * <pre>
+         * 速度
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder() {
+            return speed_;
+        }
+
+        // optional .eaglesakura_ace.GeoPoint location = 5;
+        public static final int LOCATION_FIELD_NUMBER = 5;
+        private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_;
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+         *
+         * <pre>
+         * GPS座標
+         * </pre>
+         */
+        public boolean hasLocation() {
+            return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+         *
+         * <pre>
+         * GPS座標
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+            return location_;
+        }
+
+        /**
+         * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+         *
+         * <pre>
+         * GPS座標
+         * </pre>
+         */
+        public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+            return location_;
+        }
+
+        // optional string date = 100;
+        public static final int DATE_FIELD_NUMBER = 100;
+        private java.lang.Object date_;
+
+        /**
+         * <code>optional string date = 100;</code>
+         *
+         * <pre>
+         * ログの打刻時間
+         * </pre>
+         */
+        public boolean hasDate() {
+            return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+
+        /**
+         * <code>optional string date = 100;</code>
+         *
+         * <pre>
+         * ログの打刻時間
+         * </pre>
+         */
+        public java.lang.String getDate() {
+            java.lang.Object ref = date_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    date_ = s;
+                }
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string date = 100;</code>
+         *
+         * <pre>
+         * ログの打刻時間
+         * </pre>
+         */
+        public com.google.protobuf.ByteString
+        getDateBytes() {
+            java.lang.Object ref = date_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                date_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        // optional int64 dateInt = 103;
+        public static final int DATEINT_FIELD_NUMBER = 103;
+        private long dateInt_;
+
+        /**
+         * <code>optional int64 dateInt = 103;</code>
+         */
+        public boolean hasDateInt() {
+            return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
+
+        /**
+         * <code>optional int64 dateInt = 103;</code>
+         */
+        public long getDateInt() {
+            return dateInt_;
+        }
+
+        // optional int32 batteryLevel = 101;
+        public static final int BATTERYLEVEL_FIELD_NUMBER = 101;
+        private int batteryLevel_;
+
+        /**
+         * <code>optional int32 batteryLevel = 101;</code>
+         *
+         * <pre>
+         * バッテリーの残量（％）
+         * </pre>
+         */
+        public boolean hasBatteryLevel() {
+            return ((bitField0_ & 0x00000040) == 0x00000040);
+        }
+
+        /**
+         * <code>optional int32 batteryLevel = 101;</code>
+         *
+         * <pre>
+         * バッテリーの残量（％）
+         * </pre>
+         */
+        public int getBatteryLevel() {
+            return batteryLevel_;
+        }
+
+        // optional bool batteryCharging = 102;
+        public static final int BATTERYCHARGING_FIELD_NUMBER = 102;
+        private boolean batteryCharging_;
+
+        /**
+         * <code>optional bool batteryCharging = 102;</code>
+         *
+         * <pre>
+         * 充電中の場合true
+         * </pre>
+         */
+        public boolean hasBatteryCharging() {
+            return ((bitField0_ & 0x00000080) == 0x00000080);
+        }
+
+        /**
+         * <code>optional bool batteryCharging = 102;</code>
+         *
+         * <pre>
+         * 充電中の場合true
+         * </pre>
+         */
+        public boolean getBatteryCharging() {
+            return batteryCharging_;
+        }
+
+        private void initFields() {
+            cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
+            heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
+            speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
+            location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+            date_ = "";
+            dateInt_ = 0L;
+            batteryLevel_ = 0;
+            batteryCharging_ = false;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (hasCadence()) {
+                if (!getCadence().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            if (hasHeartrate()) {
+                if (!getHeartrate().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            if (hasSpeed()) {
+                if (!getSpeed().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            if (hasLocation()) {
+                if (!getLocation().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeMessage(1, cadence_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeMessage(3, heartrate_);
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeMessage(4, speed_);
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                output.writeMessage(5, location_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                output.writeBytes(100, getDateBytes());
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                output.writeInt32(101, batteryLevel_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                output.writeBool(102, batteryCharging_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                output.writeInt64(103, dateInt_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(1, cadence_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(3, heartrate_);
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(4, speed_);
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(5, location_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBytesSize(100, getDateBytes());
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(101, batteryLevel_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeBoolSize(102, batteryCharging_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt64Size(103, dateInt_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.RawSessionPointPayload}
+         *
+         * <pre>
+         * *
+         * 継続的に取得する、ある特定瞬間のログを保持する
+         * </pre>
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.class, com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                    getCadenceFieldBuilder();
+                    getHeartrateFieldBuilder();
+                    getSpeedFieldBuilder();
+                    getLocationFieldBuilder();
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                if (cadenceBuilder_ == null) {
+                    cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
+                } else {
+                    cadenceBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                if (heartrateBuilder_ == null) {
+                    heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
+                } else {
+                    heartrateBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                if (speedBuilder_ == null) {
+                    speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
+                } else {
+                    speedBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                if (locationBuilder_ == null) {
+                    location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+                } else {
+                    locationBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000008);
+                date_ = "";
+                bitField0_ = (bitField0_ & ~0x00000010);
+                dateInt_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000020);
+                batteryLevel_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000040);
+                batteryCharging_ = false;
+                bitField0_ = (bitField0_ & ~0x00000080);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload build() {
+                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload result = new com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (cadenceBuilder_ == null) {
+                    result.cadence_ = cadence_;
+                } else {
+                    result.cadence_ = cadenceBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (heartrateBuilder_ == null) {
+                    result.heartrate_ = heartrate_;
+                } else {
+                    result.heartrate_ = heartrateBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                if (speedBuilder_ == null) {
+                    result.speed_ = speed_;
+                } else {
+                    result.speed_ = speedBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                if (locationBuilder_ == null) {
+                    result.location_ = location_;
+                } else {
+                    result.location_ = locationBuilder_.build();
+                }
+                if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.date_ = date_;
+                if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.dateInt_ = dateInt_;
+                if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+                    to_bitField0_ |= 0x00000040;
+                }
+                result.batteryLevel_ = batteryLevel_;
+                if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+                    to_bitField0_ |= 0x00000080;
+                }
+                result.batteryCharging_ = batteryCharging_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload.getDefaultInstance())
+                    return this;
+                if (other.hasCadence()) {
+                    mergeCadence(other.getCadence());
+                }
+                if (other.hasHeartrate()) {
+                    mergeHeartrate(other.getHeartrate());
+                }
+                if (other.hasSpeed()) {
+                    mergeSpeed(other.getSpeed());
+                }
+                if (other.hasLocation()) {
+                    mergeLocation(other.getLocation());
+                }
+                if (other.hasDate()) {
+                    bitField0_ |= 0x00000010;
+                    date_ = other.date_;
+                    onChanged();
+                }
+                if (other.hasDateInt()) {
+                    setDateInt(other.getDateInt());
+                }
+                if (other.hasBatteryLevel()) {
+                    setBatteryLevel(other.getBatteryLevel());
+                }
+                if (other.hasBatteryCharging()) {
+                    setBatteryCharging(other.getBatteryCharging());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (hasCadence()) {
+                    if (!getCadence().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                if (hasHeartrate()) {
+                    if (!getHeartrate().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                if (hasSpeed()) {
+                    if (!getSpeed().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                if (hasLocation()) {
+                    if (!getLocation().isInitialized()) {
+
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.LoggerProtocol.RawSessionPointPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // optional .eaglesakura_ace.RawCadence cadence = 1;
+            private com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder> cadenceBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public boolean hasCadence() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence getCadence() {
+                if (cadenceBuilder_ == null) {
+                    return cadence_;
+                } else {
+                    return cadenceBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public Builder setCadence(com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence value) {
+                if (cadenceBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    cadence_ = value;
+                    onChanged();
+                } else {
+                    cadenceBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public Builder setCadence(
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder builderForValue) {
+                if (cadenceBuilder_ == null) {
+                    cadence_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    cadenceBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public Builder mergeCadence(com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence value) {
+                if (cadenceBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) == 0x00000001) &&
+                            cadence_ != com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance()) {
+                        cadence_ =
+                                com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.newBuilder(cadence_).mergeFrom(value).buildPartial();
+                    } else {
+                        cadence_ = value;
+                    }
+                    onChanged();
+                } else {
+                    cadenceBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public Builder clearCadence() {
+                if (cadenceBuilder_ == null) {
+                    cadence_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.getDefaultInstance();
+                    onChanged();
+                } else {
+                    cadenceBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder getCadenceBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getCadenceFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder getCadenceOrBuilder() {
+                if (cadenceBuilder_ != null) {
+                    return cadenceBuilder_.getMessageOrBuilder();
+                } else {
+                    return cadence_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawCadence cadence = 1;</code>
+             *
+             * <pre>
+             * ケイデンス値
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder>
+            getCadenceFieldBuilder() {
+                if (cadenceBuilder_ == null) {
+                    cadenceBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawCadenceOrBuilder>(
+                            cadence_,
+                            getParentForChildren(),
+                            isClean());
+                    cadence_ = null;
+                }
+                return cadenceBuilder_;
+            }
+
+            // optional .eaglesakura_ace.RawHeartrate heartrate = 3;
+            private com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder> heartrateBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public boolean hasHeartrate() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate getHeartrate() {
+                if (heartrateBuilder_ == null) {
+                    return heartrate_;
+                } else {
+                    return heartrateBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public Builder setHeartrate(com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate value) {
+                if (heartrateBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    heartrate_ = value;
+                    onChanged();
+                } else {
+                    heartrateBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public Builder setHeartrate(
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder builderForValue) {
+                if (heartrateBuilder_ == null) {
+                    heartrate_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    heartrateBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public Builder mergeHeartrate(com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate value) {
+                if (heartrateBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) == 0x00000002) &&
+                            heartrate_ != com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance()) {
+                        heartrate_ =
+                                com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.newBuilder(heartrate_).mergeFrom(value).buildPartial();
+                    } else {
+                        heartrate_ = value;
+                    }
+                    onChanged();
+                } else {
+                    heartrateBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public Builder clearHeartrate() {
+                if (heartrateBuilder_ == null) {
+                    heartrate_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.getDefaultInstance();
+                    onChanged();
+                } else {
+                    heartrateBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder getHeartrateBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getHeartrateFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder getHeartrateOrBuilder() {
+                if (heartrateBuilder_ != null) {
+                    return heartrateBuilder_.getMessageOrBuilder();
+                } else {
+                    return heartrate_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawHeartrate heartrate = 3;</code>
+             *
+             * <pre>
+             * ハートレート
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder>
+            getHeartrateFieldBuilder() {
+                if (heartrateBuilder_ == null) {
+                    heartrateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrateOrBuilder>(
+                            heartrate_,
+                            getParentForChildren(),
+                            isClean());
+                    heartrate_ = null;
+                }
+                return heartrateBuilder_;
+            }
+
+            // optional .eaglesakura_ace.RawSpeed speed = 4;
+            private com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder> speedBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public boolean hasSpeed() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed getSpeed() {
+                if (speedBuilder_ == null) {
+                    return speed_;
+                } else {
+                    return speedBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public Builder setSpeed(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed value) {
+                if (speedBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    speed_ = value;
+                    onChanged();
+                } else {
+                    speedBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public Builder setSpeed(
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder builderForValue) {
+                if (speedBuilder_ == null) {
+                    speed_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    speedBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public Builder mergeSpeed(com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed value) {
+                if (speedBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) == 0x00000004) &&
+                            speed_ != com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance()) {
+                        speed_ =
+                                com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.newBuilder(speed_).mergeFrom(value).buildPartial();
+                    } else {
+                        speed_ = value;
+                    }
+                    onChanged();
+                } else {
+                    speedBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public Builder clearSpeed() {
+                if (speedBuilder_ == null) {
+                    speed_ = com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.getDefaultInstance();
+                    onChanged();
+                } else {
+                    speedBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder getSpeedBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getSpeedFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder getSpeedOrBuilder() {
+                if (speedBuilder_ != null) {
+                    return speedBuilder_.getMessageOrBuilder();
+                } else {
+                    return speed_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.RawSpeed speed = 4;</code>
+             *
+             * <pre>
+             * 速度
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder>
+            getSpeedFieldBuilder() {
+                if (speedBuilder_ == null) {
+                    speedBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed.Builder, com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeedOrBuilder>(
+                            speed_,
+                            getParentForChildren(),
+                            isClean());
+                    speed_ = null;
+                }
+                return speedBuilder_;
+            }
+
+            // optional .eaglesakura_ace.GeoPoint location = 5;
+            private com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder> locationBuilder_;
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public boolean hasLocation() {
+                return ((bitField0_ & 0x00000008) == 0x00000008);
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint getLocation() {
+                if (locationBuilder_ == null) {
+                    return location_;
+                } else {
+                    return locationBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public Builder setLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+                if (locationBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    location_ = value;
+                    onChanged();
+                } else {
+                    locationBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public Builder setLocation(
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder builderForValue) {
+                if (locationBuilder_ == null) {
+                    location_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    locationBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public Builder mergeLocation(com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint value) {
+                if (locationBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) == 0x00000008) &&
+                            location_ != com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance()) {
+                        location_ =
+                                com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.newBuilder(location_).mergeFrom(value).buildPartial();
+                    } else {
+                        location_ = value;
+                    }
+                    onChanged();
+                } else {
+                    locationBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public Builder clearLocation() {
+                if (locationBuilder_ == null) {
+                    location_ = com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.getDefaultInstance();
+                    onChanged();
+                } else {
+                    locationBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000008);
+                return this;
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder getLocationBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getLocationFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            public com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder getLocationOrBuilder() {
+                if (locationBuilder_ != null) {
+                    return locationBuilder_.getMessageOrBuilder();
+                } else {
+                    return location_;
+                }
+            }
+
+            /**
+             * <code>optional .eaglesakura_ace.GeoPoint location = 5;</code>
+             *
+             * <pre>
+             * GPS座標
+             * </pre>
+             */
+            private com.google.protobuf.SingleFieldBuilder<
+                    com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder>
+            getLocationFieldBuilder() {
+                if (locationBuilder_ == null) {
+                    locationBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                            com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPoint.Builder, com.eaglesakura.andriders.protocol.GeoProtocol.GeoPointOrBuilder>(
+                            location_,
+                            getParentForChildren(),
+                            isClean());
+                    location_ = null;
+                }
+                return locationBuilder_;
+            }
+
+            // optional string date = 100;
+            private java.lang.Object date_ = "";
+
+            /**
+             * <code>optional string date = 100;</code>
+             *
+             * <pre>
+             * ログの打刻時間
+             * </pre>
+             */
+            public boolean hasDate() {
+                return ((bitField0_ & 0x00000010) == 0x00000010);
+            }
+
+            /**
+             * <code>optional string date = 100;</code>
+             *
+             * <pre>
+             * ログの打刻時間
+             * </pre>
+             */
+            public java.lang.String getDate() {
+                java.lang.Object ref = date_;
+                if (!(ref instanceof java.lang.String)) {
+                    java.lang.String s = ((com.google.protobuf.ByteString) ref)
+                            .toStringUtf8();
+                    date_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string date = 100;</code>
+             *
+             * <pre>
+             * ログの打刻時間
+             * </pre>
+             */
+            public com.google.protobuf.ByteString
+            getDateBytes() {
+                java.lang.Object ref = date_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    date_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string date = 100;</code>
+             *
+             * <pre>
+             * ログの打刻時間
+             * </pre>
+             */
+            public Builder setDate(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                date_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string date = 100;</code>
+             *
+             * <pre>
+             * ログの打刻時間
+             * </pre>
+             */
+            public Builder clearDate() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                date_ = getDefaultInstance().getDate();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string date = 100;</code>
+             *
+             * <pre>
+             * ログの打刻時間
+             * </pre>
+             */
+            public Builder setDateBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                date_ = value;
+                onChanged();
+                return this;
+            }
+
+            // optional int64 dateInt = 103;
+            private long dateInt_;
+
+            /**
+             * <code>optional int64 dateInt = 103;</code>
+             */
+            public boolean hasDateInt() {
+                return ((bitField0_ & 0x00000020) == 0x00000020);
+            }
+
+            /**
+             * <code>optional int64 dateInt = 103;</code>
+             */
+            public long getDateInt() {
+                return dateInt_;
+            }
+
+            /**
+             * <code>optional int64 dateInt = 103;</code>
+             */
+            public Builder setDateInt(long value) {
+                bitField0_ |= 0x00000020;
+                dateInt_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int64 dateInt = 103;</code>
+             */
+            public Builder clearDateInt() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                dateInt_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            // optional int32 batteryLevel = 101;
+            private int batteryLevel_;
+
+            /**
+             * <code>optional int32 batteryLevel = 101;</code>
+             *
+             * <pre>
+             * バッテリーの残量（％）
+             * </pre>
+             */
+            public boolean hasBatteryLevel() {
+                return ((bitField0_ & 0x00000040) == 0x00000040);
+            }
+
+            /**
+             * <code>optional int32 batteryLevel = 101;</code>
+             *
+             * <pre>
+             * バッテリーの残量（％）
+             * </pre>
+             */
+            public int getBatteryLevel() {
+                return batteryLevel_;
+            }
+
+            /**
+             * <code>optional int32 batteryLevel = 101;</code>
+             *
+             * <pre>
+             * バッテリーの残量（％）
+             * </pre>
+             */
+            public Builder setBatteryLevel(int value) {
+                bitField0_ |= 0x00000040;
+                batteryLevel_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional int32 batteryLevel = 101;</code>
+             *
+             * <pre>
+             * バッテリーの残量（％）
+             * </pre>
+             */
+            public Builder clearBatteryLevel() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                batteryLevel_ = 0;
+                onChanged();
+                return this;
+            }
+
+            // optional bool batteryCharging = 102;
+            private boolean batteryCharging_;
+
+            /**
+             * <code>optional bool batteryCharging = 102;</code>
+             *
+             * <pre>
+             * 充電中の場合true
+             * </pre>
+             */
+            public boolean hasBatteryCharging() {
+                return ((bitField0_ & 0x00000080) == 0x00000080);
+            }
+
+            /**
+             * <code>optional bool batteryCharging = 102;</code>
+             *
+             * <pre>
+             * 充電中の場合true
+             * </pre>
+             */
+            public boolean getBatteryCharging() {
+                return batteryCharging_;
+            }
+
+            /**
+             * <code>optional bool batteryCharging = 102;</code>
+             *
+             * <pre>
+             * 充電中の場合true
+             * </pre>
+             */
+            public Builder setBatteryCharging(boolean value) {
+                bitField0_ |= 0x00000080;
+                batteryCharging_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional bool batteryCharging = 102;</code>
+             *
+             * <pre>
+             * 充電中の場合true
+             * </pre>
+             */
+            public Builder clearBatteryCharging() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                batteryCharging_ = false;
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.RawSessionPointPayload)
+        }
+
+        static {
+            defaultInstance = new RawSessionPointPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawSessionPointPayload)
     }
+
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable;
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
     static {
-      defaultInstance = new RawSessionPointPayload(true);
-      defaultInstance.initFields();
+        java.lang.String[] descriptorData = {
+                "\n\024LoggerProtocol.proto\022\017eaglesakura_ace\032" +
+                        "\023AcesConstants.proto\032\021GeoProtocol.proto\032" +
+                        "\024SensorProtocol.proto\"\177\n\017RawSessionExtra" +
+                        "\0225\n\020maxAltitudePoint\030\001 \001(\0132\033.eaglesakura" +
+                        "_ace.GeoPayload\0225\n\020minAltitudePoint\030\002 \001(" +
+                        "\0132\033.eaglesakura_ace.GeoPayload\"\235\002\n\026RawSe" +
+                        "ssionPointPayload\022,\n\007cadence\030\001 \001(\0132\033.eag" +
+                        "lesakura_ace.RawCadence\0220\n\theartrate\030\003 \001" +
+                        "(\0132\035.eaglesakura_ace.RawHeartrate\022(\n\005spe" +
+                        "ed\030\004 \001(\0132\031.eaglesakura_ace.RawSpeed\022+\n\010l",
+                "ocation\030\005 \001(\0132\031.eaglesakura_ace.GeoPoint" +
+                        "\022\014\n\004date\030d \001(\t\022\017\n\007dateInt\030g \001(\003\022\024\n\014batte" +
+                        "ryLevel\030e \001(\005\022\027\n\017batteryCharging\030f \001(\010B$" +
+                        "\n\"com.eaglesakura.andriders.protocol"
+        };
+        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+                new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+                    public com.google.protobuf.ExtensionRegistry assignDescriptors(
+                            com.google.protobuf.Descriptors.FileDescriptor root) {
+                        descriptor = root;
+                        internal_static_eaglesakura_ace_RawSessionExtra_descriptor =
+                                getDescriptor().getMessageTypes().get(0);
+                        internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_RawSessionExtra_descriptor,
+                                new java.lang.String[]{"MaxAltitudePoint", "MinAltitudePoint",});
+                        internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(1);
+                        internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor,
+                                new java.lang.String[]{"Cadence", "Heartrate", "Speed", "Location", "Date", "DateInt", "BatteryLevel", "BatteryCharging",});
+                        return null;
+                    }
+                };
+        com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                                com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
+                                com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
+                                com.eaglesakura.andriders.protocol.SensorProtocol.getDescriptor(),
+                        }, assigner);
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.RawSessionPointPayload)
-  }
-
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_RawSessionExtra_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\024LoggerProtocol.proto\022\017eaglesakura_ace\032" +
-      "\023AcesConstants.proto\032\021GeoProtocol.proto\032" +
-      "\024SensorProtocol.proto\"\177\n\017RawSessionExtra" +
-      "\0225\n\020maxAltitudePoint\030\001 \001(\0132\033.eaglesakura" +
-      "_ace.GeoPayload\0225\n\020minAltitudePoint\030\002 \001(" +
-      "\0132\033.eaglesakura_ace.GeoPayload\"\235\002\n\026RawSe" +
-      "ssionPointPayload\022,\n\007cadence\030\001 \001(\0132\033.eag" +
-      "lesakura_ace.RawCadence\0220\n\theartrate\030\003 \001" +
-      "(\0132\035.eaglesakura_ace.RawHeartrate\022(\n\005spe" +
-      "ed\030\004 \001(\0132\031.eaglesakura_ace.RawSpeed\022+\n\010l",
-      "ocation\030\005 \001(\0132\031.eaglesakura_ace.GeoPoint" +
-      "\022\014\n\004date\030d \001(\t\022\017\n\007dateInt\030g \001(\003\022\024\n\014batte" +
-      "ryLevel\030e \001(\005\022\027\n\017batteryCharging\030f \001(\010B$" +
-      "\n\"com.eaglesakura.andriders.protocol"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_eaglesakura_ace_RawSessionExtra_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_eaglesakura_ace_RawSessionExtra_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_RawSessionExtra_descriptor,
-              new java.lang.String[] { "MaxAltitudePoint", "MinAltitudePoint", });
-          internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_eaglesakura_ace_RawSessionPointPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_RawSessionPointPayload_descriptor,
-              new java.lang.String[] { "Cadence", "Heartrate", "Speed", "Location", "Date", "DateInt", "BatteryLevel", "BatteryCharging", });
-          return null;
-        }
-      };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
-          com.eaglesakura.andriders.protocol.GeoProtocol.getDescriptor(),
-          com.eaglesakura.andriders.protocol.SensorProtocol.getDescriptor(),
-        }, assigner);
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

@@ -1,9 +1,9 @@
 package com.eaglesakura.andriders.media;
 
-import android.content.Context;
-
 import com.eaglesakura.android.util.ContextUtil;
 import com.eaglesakura.util.StringUtil;
+
+import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,6 @@ public class SoundKey {
 
     /**
      * 表示名を取得する
-     *
-     * @param context
-     * @return
      */
     public String getText(Context context) {
         String result = ContextUtil.getStringFromIdName(context, String.format("Sound.Key.%s", getKey()));
@@ -205,8 +202,6 @@ public class SoundKey {
 
     /**
      * 一覧を取得する
-     *
-     * @return
      */
     public static List<SoundKey> list() {
         return new ArrayList<>(gSoundKeys);

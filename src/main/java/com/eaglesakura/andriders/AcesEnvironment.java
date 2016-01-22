@@ -1,10 +1,10 @@
 package com.eaglesakura.andriders;
 
-import android.content.Context;
-import android.os.Environment;
-
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.android.device.external.StorageInfo;
+
+import android.content.Context;
+import android.os.Environment;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -91,8 +91,6 @@ public class AcesEnvironment {
 
     /**
      * ACEデータ保存用ディレクトリを取得する
-     *
-     * @return
      */
     public static File getAceDirectory(Context context) {
         return getAceDirectory(context, Environment.getExternalStorageDirectory());
@@ -100,10 +98,6 @@ public class AcesEnvironment {
 
     /**
      * メディア保存用のディレクトリを取得する
-     *
-     * @param context
-     *
-     * @return
      */
     public static File getMediaDirectory(Context context) {
         File mediaStorage = null;
@@ -129,10 +123,7 @@ public class AcesEnvironment {
     /**
      * 指定した日に保存するディレクトリを取得する
      *
-     * @param context
-     * @param date    保存する日付
-     *
-     * @return
+     * @param date 保存する日付
      */
     public static File getDateMediaDirectory(Context context, Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

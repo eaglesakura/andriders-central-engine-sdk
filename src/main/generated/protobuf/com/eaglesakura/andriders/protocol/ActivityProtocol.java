@@ -4,1296 +4,1400 @@
 package com.eaglesakura.andriders.protocol;
 
 public final class ActivityProtocol {
-  private ActivityProtocol() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-  }
-  public interface FitnessPayloadOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required float weight = 1;
-    /**
-     * <code>required float weight = 1;</code>
-     *
-     * <pre>
-     * 体重
-     * </pre>
-     */
-    boolean hasWeight();
-    /**
-     * <code>required float weight = 1;</code>
-     *
-     * <pre>
-     * 体重
-     * </pre>
-     */
-    float getWeight();
-
-    // required int32 normalHeartrate = 6;
-    /**
-     * <code>required int32 normalHeartrate = 6;</code>
-     *
-     * <pre>
-     * 安静心拍数
-     * </pre>
-     */
-    boolean hasNormalHeartrate();
-    /**
-     * <code>required int32 normalHeartrate = 6;</code>
-     *
-     * <pre>
-     * 安静心拍数
-     * </pre>
-     */
-    int getNormalHeartrate();
-
-    // required int32 maxHeartrate = 5;
-    /**
-     * <code>required int32 maxHeartrate = 5;</code>
-     *
-     * <pre>
-     * 最大心拍数
-     * </pre>
-     */
-    boolean hasMaxHeartrate();
-    /**
-     * <code>required int32 maxHeartrate = 5;</code>
-     *
-     * <pre>
-     * 最大心拍数
-     * </pre>
-     */
-    int getMaxHeartrate();
-
-    // optional float mets = 4;
-    /**
-     * <code>optional float mets = 4;</code>
-     *
-     * <pre>
-     * 現在のMETs値
-     * </pre>
-     */
-    boolean hasMets();
-    /**
-     * <code>optional float mets = 4;</code>
-     *
-     * <pre>
-     * 現在のMETs値
-     * </pre>
-     */
-    float getMets();
-
-    // optional float sessionCalories = 2;
-    /**
-     * <code>optional float sessionCalories = 2;</code>
-     *
-     * <pre>
-     * セッションで消費したcalorie
-     * </pre>
-     */
-    boolean hasSessionCalories();
-    /**
-     * <code>optional float sessionCalories = 2;</code>
-     *
-     * <pre>
-     * セッションで消費したcalorie
-     * </pre>
-     */
-    float getSessionCalories();
-
-    // optional float todayCalories = 3;
-    /**
-     * <code>optional float todayCalories = 3;</code>
-     *
-     * <pre>
-     * 今日消費したカロリー
-     * </pre>
-     */
-    boolean hasTodayCalories();
-    /**
-     * <code>optional float todayCalories = 3;</code>
-     *
-     * <pre>
-     * 今日消費したカロリー
-     * </pre>
-     */
-    float getTodayCalories();
-
-    // optional float sessionExercise = 7;
-    /**
-     * <code>optional float sessionExercise = 7;</code>
-     *
-     * <pre>
-     * セッションで獲得したエクササイズ値
-     * </pre>
-     */
-    boolean hasSessionExercise();
-    /**
-     * <code>optional float sessionExercise = 7;</code>
-     *
-     * <pre>
-     * セッションで獲得したエクササイズ値
-     * </pre>
-     */
-    float getSessionExercise();
-
-    // optional float todayExercise = 8;
-    /**
-     * <code>optional float todayExercise = 8;</code>
-     *
-     * <pre>
-     * 今日獲得したエクササイズ値
-     * </pre>
-     */
-    boolean hasTodayExercise();
-    /**
-     * <code>optional float todayExercise = 8;</code>
-     *
-     * <pre>
-     * 今日獲得したエクササイズ値
-     * </pre>
-     */
-    float getTodayExercise();
-  }
-  /**
-   * Protobuf type {@code eaglesakura_ace.FitnessPayload}
-   */
-  public static final class FitnessPayload extends
-      com.google.protobuf.GeneratedMessage
-      implements FitnessPayloadOrBuilder {
-    // Use FitnessPayload.newBuilder() to construct.
-    private FitnessPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private FitnessPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final FitnessPayload defaultInstance;
-    public static FitnessPayload getDefaultInstance() {
-      return defaultInstance;
+    private ActivityProtocol() {
     }
 
-    public FitnessPayload getDefaultInstanceForType() {
-      return defaultInstance;
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private FitnessPayload(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 13: {
-              bitField0_ |= 0x00000001;
-              weight_ = input.readFloat();
-              break;
-            }
-            case 21: {
-              bitField0_ |= 0x00000010;
-              sessionCalories_ = input.readFloat();
-              break;
-            }
-            case 29: {
-              bitField0_ |= 0x00000020;
-              todayCalories_ = input.readFloat();
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              mets_ = input.readFloat();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000004;
-              maxHeartrate_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000002;
-              normalHeartrate_ = input.readInt32();
-              break;
-            }
-            case 61: {
-              bitField0_ |= 0x00000040;
-              sessionExercise_ = input.readFloat();
-              break;
-            }
-            case 69: {
-              bitField0_ |= 0x00000080;
-              todayExercise_ = input.readFloat();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+    public interface FitnessPayloadOrBuilder
+            extends com.google.protobuf.MessageOrBuilder {
+
+        // required float weight = 1;
+
+        /**
+         * <code>required float weight = 1;</code>
+         *
+         * <pre>
+         * 体重
+         * </pre>
+         */
+        boolean hasWeight();
+
+        /**
+         * <code>required float weight = 1;</code>
+         *
+         * <pre>
+         * 体重
+         * </pre>
+         */
+        float getWeight();
+
+        // required int32 normalHeartrate = 6;
+
+        /**
+         * <code>required int32 normalHeartrate = 6;</code>
+         *
+         * <pre>
+         * 安静心拍数
+         * </pre>
+         */
+        boolean hasNormalHeartrate();
+
+        /**
+         * <code>required int32 normalHeartrate = 6;</code>
+         *
+         * <pre>
+         * 安静心拍数
+         * </pre>
+         */
+        int getNormalHeartrate();
+
+        // required int32 maxHeartrate = 5;
+
+        /**
+         * <code>required int32 maxHeartrate = 5;</code>
+         *
+         * <pre>
+         * 最大心拍数
+         * </pre>
+         */
+        boolean hasMaxHeartrate();
+
+        /**
+         * <code>required int32 maxHeartrate = 5;</code>
+         *
+         * <pre>
+         * 最大心拍数
+         * </pre>
+         */
+        int getMaxHeartrate();
+
+        // optional float mets = 4;
+
+        /**
+         * <code>optional float mets = 4;</code>
+         *
+         * <pre>
+         * 現在のMETs値
+         * </pre>
+         */
+        boolean hasMets();
+
+        /**
+         * <code>optional float mets = 4;</code>
+         *
+         * <pre>
+         * 現在のMETs値
+         * </pre>
+         */
+        float getMets();
+
+        // optional float sessionCalories = 2;
+
+        /**
+         * <code>optional float sessionCalories = 2;</code>
+         *
+         * <pre>
+         * セッションで消費したcalorie
+         * </pre>
+         */
+        boolean hasSessionCalories();
+
+        /**
+         * <code>optional float sessionCalories = 2;</code>
+         *
+         * <pre>
+         * セッションで消費したcalorie
+         * </pre>
+         */
+        float getSessionCalories();
+
+        // optional float todayCalories = 3;
+
+        /**
+         * <code>optional float todayCalories = 3;</code>
+         *
+         * <pre>
+         * 今日消費したカロリー
+         * </pre>
+         */
+        boolean hasTodayCalories();
+
+        /**
+         * <code>optional float todayCalories = 3;</code>
+         *
+         * <pre>
+         * 今日消費したカロリー
+         * </pre>
+         */
+        float getTodayCalories();
+
+        // optional float sessionExercise = 7;
+
+        /**
+         * <code>optional float sessionExercise = 7;</code>
+         *
+         * <pre>
+         * セッションで獲得したエクササイズ値
+         * </pre>
+         */
+        boolean hasSessionExercise();
+
+        /**
+         * <code>optional float sessionExercise = 7;</code>
+         *
+         * <pre>
+         * セッションで獲得したエクササイズ値
+         * </pre>
+         */
+        float getSessionExercise();
+
+        // optional float todayExercise = 8;
+
+        /**
+         * <code>optional float todayExercise = 8;</code>
+         *
+         * <pre>
+         * 今日獲得したエクササイズ値
+         * </pre>
+         */
+        boolean hasTodayExercise();
+
+        /**
+         * <code>optional float todayExercise = 8;</code>
+         *
+         * <pre>
+         * 今日獲得したエクササイズ値
+         * </pre>
+         */
+        float getTodayExercise();
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<FitnessPayload> PARSER =
-        new com.google.protobuf.AbstractParser<FitnessPayload>() {
-      public FitnessPayload parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FitnessPayload(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<FitnessPayload> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required float weight = 1;
-    public static final int WEIGHT_FIELD_NUMBER = 1;
-    private float weight_;
-    /**
-     * <code>required float weight = 1;</code>
-     *
-     * <pre>
-     * 体重
-     * </pre>
-     */
-    public boolean hasWeight() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required float weight = 1;</code>
-     *
-     * <pre>
-     * 体重
-     * </pre>
-     */
-    public float getWeight() {
-      return weight_;
-    }
-
-    // required int32 normalHeartrate = 6;
-    public static final int NORMALHEARTRATE_FIELD_NUMBER = 6;
-    private int normalHeartrate_;
-    /**
-     * <code>required int32 normalHeartrate = 6;</code>
-     *
-     * <pre>
-     * 安静心拍数
-     * </pre>
-     */
-    public boolean hasNormalHeartrate() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required int32 normalHeartrate = 6;</code>
-     *
-     * <pre>
-     * 安静心拍数
-     * </pre>
-     */
-    public int getNormalHeartrate() {
-      return normalHeartrate_;
-    }
-
-    // required int32 maxHeartrate = 5;
-    public static final int MAXHEARTRATE_FIELD_NUMBER = 5;
-    private int maxHeartrate_;
-    /**
-     * <code>required int32 maxHeartrate = 5;</code>
-     *
-     * <pre>
-     * 最大心拍数
-     * </pre>
-     */
-    public boolean hasMaxHeartrate() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required int32 maxHeartrate = 5;</code>
-     *
-     * <pre>
-     * 最大心拍数
-     * </pre>
-     */
-    public int getMaxHeartrate() {
-      return maxHeartrate_;
-    }
-
-    // optional float mets = 4;
-    public static final int METS_FIELD_NUMBER = 4;
-    private float mets_;
-    /**
-     * <code>optional float mets = 4;</code>
-     *
-     * <pre>
-     * 現在のMETs値
-     * </pre>
-     */
-    public boolean hasMets() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional float mets = 4;</code>
-     *
-     * <pre>
-     * 現在のMETs値
-     * </pre>
-     */
-    public float getMets() {
-      return mets_;
-    }
-
-    // optional float sessionCalories = 2;
-    public static final int SESSIONCALORIES_FIELD_NUMBER = 2;
-    private float sessionCalories_;
-    /**
-     * <code>optional float sessionCalories = 2;</code>
-     *
-     * <pre>
-     * セッションで消費したcalorie
-     * </pre>
-     */
-    public boolean hasSessionCalories() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional float sessionCalories = 2;</code>
-     *
-     * <pre>
-     * セッションで消費したcalorie
-     * </pre>
-     */
-    public float getSessionCalories() {
-      return sessionCalories_;
-    }
-
-    // optional float todayCalories = 3;
-    public static final int TODAYCALORIES_FIELD_NUMBER = 3;
-    private float todayCalories_;
-    /**
-     * <code>optional float todayCalories = 3;</code>
-     *
-     * <pre>
-     * 今日消費したカロリー
-     * </pre>
-     */
-    public boolean hasTodayCalories() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional float todayCalories = 3;</code>
-     *
-     * <pre>
-     * 今日消費したカロリー
-     * </pre>
-     */
-    public float getTodayCalories() {
-      return todayCalories_;
-    }
-
-    // optional float sessionExercise = 7;
-    public static final int SESSIONEXERCISE_FIELD_NUMBER = 7;
-    private float sessionExercise_;
-    /**
-     * <code>optional float sessionExercise = 7;</code>
-     *
-     * <pre>
-     * セッションで獲得したエクササイズ値
-     * </pre>
-     */
-    public boolean hasSessionExercise() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional float sessionExercise = 7;</code>
-     *
-     * <pre>
-     * セッションで獲得したエクササイズ値
-     * </pre>
-     */
-    public float getSessionExercise() {
-      return sessionExercise_;
-    }
-
-    // optional float todayExercise = 8;
-    public static final int TODAYEXERCISE_FIELD_NUMBER = 8;
-    private float todayExercise_;
-    /**
-     * <code>optional float todayExercise = 8;</code>
-     *
-     * <pre>
-     * 今日獲得したエクササイズ値
-     * </pre>
-     */
-    public boolean hasTodayExercise() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional float todayExercise = 8;</code>
-     *
-     * <pre>
-     * 今日獲得したエクササイズ値
-     * </pre>
-     */
-    public float getTodayExercise() {
-      return todayExercise_;
-    }
-
-    private void initFields() {
-      weight_ = 0F;
-      normalHeartrate_ = 0;
-      maxHeartrate_ = 0;
-      mets_ = 0F;
-      sessionCalories_ = 0F;
-      todayCalories_ = 0F;
-      sessionExercise_ = 0F;
-      todayExercise_ = 0F;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasWeight()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasNormalHeartrate()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMaxHeartrate()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeFloat(1, weight_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeFloat(2, sessionCalories_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeFloat(3, todayCalories_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, mets_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(5, maxHeartrate_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(6, normalHeartrate_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeFloat(7, sessionExercise_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeFloat(8, todayExercise_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(1, weight_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, sessionCalories_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, todayCalories_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, mets_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, maxHeartrate_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, normalHeartrate_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(7, sessionExercise_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(8, todayExercise_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code eaglesakura_ace.FitnessPayload}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayloadOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
-      }
+    public static final class FitnessPayload extends
+            com.google.protobuf.GeneratedMessage
+            implements FitnessPayloadOrBuilder {
+        // Use FitnessPayload.newBuilder() to construct.
+        private FitnessPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
+        }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder.class);
-      }
+        private FitnessPayload(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+        }
 
-      // Construct using com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
+        private static final FitnessPayload defaultInstance;
 
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        public static FitnessPayload getDefaultInstance() {
+            return defaultInstance;
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        weight_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        normalHeartrate_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        maxHeartrate_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        mets_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        sessionCalories_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        todayCalories_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        sessionExercise_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        todayExercise_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        return this;
-      }
+        public FitnessPayload getDefaultInstanceForType() {
+            return defaultInstance;
+        }
 
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
-      }
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
 
-      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance();
-      }
+        private FitnessPayload(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                    extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 13: {
+                            bitField0_ |= 0x00000001;
+                            weight_ = input.readFloat();
+                            break;
+                        }
+                        case 21: {
+                            bitField0_ |= 0x00000010;
+                            sessionCalories_ = input.readFloat();
+                            break;
+                        }
+                        case 29: {
+                            bitField0_ |= 0x00000020;
+                            todayCalories_ = input.readFloat();
+                            break;
+                        }
+                        case 37: {
+                            bitField0_ |= 0x00000008;
+                            mets_ = input.readFloat();
+                            break;
+                        }
+                        case 40: {
+                            bitField0_ |= 0x00000004;
+                            maxHeartrate_ = input.readInt32();
+                            break;
+                        }
+                        case 48: {
+                            bitField0_ |= 0x00000002;
+                            normalHeartrate_ = input.readInt32();
+                            break;
+                        }
+                        case 61: {
+                            bitField0_ |= 0x00000040;
+                            sessionExercise_ = input.readFloat();
+                            break;
+                        }
+                        case 69: {
+                            bitField0_ |= 0x00000080;
+                            todayExercise_ = input.readFloat();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
 
-      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload build() {
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
         }
-        return result;
-      }
 
-      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload result = new com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder.class);
         }
-        result.weight_ = weight_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.normalHeartrate_ = normalHeartrate_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.maxHeartrate_ = maxHeartrate_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.mets_ = mets_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.sessionCalories_ = sessionCalories_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.todayCalories_ = todayCalories_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.sessionExercise_ = sessionExercise_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.todayExercise_ = todayExercise_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
+        public static com.google.protobuf.Parser<FitnessPayload> PARSER =
+                new com.google.protobuf.AbstractParser<FitnessPayload>() {
+                    public FitnessPayload parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new FitnessPayload(input, extensionRegistry);
+                    }
+                };
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance()) return this;
-        if (other.hasWeight()) {
-          setWeight(other.getWeight());
+        @java.lang.Override
+        public com.google.protobuf.Parser<FitnessPayload> getParserForType() {
+            return PARSER;
         }
-        if (other.hasNormalHeartrate()) {
-          setNormalHeartrate(other.getNormalHeartrate());
-        }
-        if (other.hasMaxHeartrate()) {
-          setMaxHeartrate(other.getMaxHeartrate());
-        }
-        if (other.hasMets()) {
-          setMets(other.getMets());
-        }
-        if (other.hasSessionCalories()) {
-          setSessionCalories(other.getSessionCalories());
-        }
-        if (other.hasTodayCalories()) {
-          setTodayCalories(other.getTodayCalories());
-        }
-        if (other.hasSessionExercise()) {
-          setSessionExercise(other.getSessionExercise());
-        }
-        if (other.hasTodayExercise()) {
-          setTodayExercise(other.getTodayExercise());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasWeight()) {
-          
-          return false;
+        private int bitField0_;
+        // required float weight = 1;
+        public static final int WEIGHT_FIELD_NUMBER = 1;
+        private float weight_;
+
+        /**
+         * <code>required float weight = 1;</code>
+         *
+         * <pre>
+         * 体重
+         * </pre>
+         */
+        public boolean hasWeight() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        if (!hasNormalHeartrate()) {
-          
-          return false;
+
+        /**
+         * <code>required float weight = 1;</code>
+         *
+         * <pre>
+         * 体重
+         * </pre>
+         */
+        public float getWeight() {
+            return weight_;
         }
-        if (!hasMaxHeartrate()) {
-          
-          return false;
+
+        // required int32 normalHeartrate = 6;
+        public static final int NORMALHEARTRATE_FIELD_NUMBER = 6;
+        private int normalHeartrate_;
+
+        /**
+         * <code>required int32 normalHeartrate = 6;</code>
+         *
+         * <pre>
+         * 安静心拍数
+         * </pre>
+         */
+        public boolean hasNormalHeartrate() {
+            return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        return true;
-      }
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        /**
+         * <code>required int32 normalHeartrate = 6;</code>
+         *
+         * <pre>
+         * 安静心拍数
+         * </pre>
+         */
+        public int getNormalHeartrate() {
+            return normalHeartrate_;
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // required float weight = 1;
-      private float weight_ ;
-      /**
-       * <code>required float weight = 1;</code>
-       *
-       * <pre>
-       * 体重
-       * </pre>
-       */
-      public boolean hasWeight() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required float weight = 1;</code>
-       *
-       * <pre>
-       * 体重
-       * </pre>
-       */
-      public float getWeight() {
-        return weight_;
-      }
-      /**
-       * <code>required float weight = 1;</code>
-       *
-       * <pre>
-       * 体重
-       * </pre>
-       */
-      public Builder setWeight(float value) {
-        bitField0_ |= 0x00000001;
-        weight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required float weight = 1;</code>
-       *
-       * <pre>
-       * 体重
-       * </pre>
-       */
-      public Builder clearWeight() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        weight_ = 0F;
-        onChanged();
-        return this;
-      }
+        // required int32 maxHeartrate = 5;
+        public static final int MAXHEARTRATE_FIELD_NUMBER = 5;
+        private int maxHeartrate_;
 
-      // required int32 normalHeartrate = 6;
-      private int normalHeartrate_ ;
-      /**
-       * <code>required int32 normalHeartrate = 6;</code>
-       *
-       * <pre>
-       * 安静心拍数
-       * </pre>
-       */
-      public boolean hasNormalHeartrate() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required int32 normalHeartrate = 6;</code>
-       *
-       * <pre>
-       * 安静心拍数
-       * </pre>
-       */
-      public int getNormalHeartrate() {
-        return normalHeartrate_;
-      }
-      /**
-       * <code>required int32 normalHeartrate = 6;</code>
-       *
-       * <pre>
-       * 安静心拍数
-       * </pre>
-       */
-      public Builder setNormalHeartrate(int value) {
-        bitField0_ |= 0x00000002;
-        normalHeartrate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 normalHeartrate = 6;</code>
-       *
-       * <pre>
-       * 安静心拍数
-       * </pre>
-       */
-      public Builder clearNormalHeartrate() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        normalHeartrate_ = 0;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>required int32 maxHeartrate = 5;</code>
+         *
+         * <pre>
+         * 最大心拍数
+         * </pre>
+         */
+        public boolean hasMaxHeartrate() {
+            return ((bitField0_ & 0x00000004) == 0x00000004);
+        }
 
-      // required int32 maxHeartrate = 5;
-      private int maxHeartrate_ ;
-      /**
-       * <code>required int32 maxHeartrate = 5;</code>
-       *
-       * <pre>
-       * 最大心拍数
-       * </pre>
-       */
-      public boolean hasMaxHeartrate() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required int32 maxHeartrate = 5;</code>
-       *
-       * <pre>
-       * 最大心拍数
-       * </pre>
-       */
-      public int getMaxHeartrate() {
-        return maxHeartrate_;
-      }
-      /**
-       * <code>required int32 maxHeartrate = 5;</code>
-       *
-       * <pre>
-       * 最大心拍数
-       * </pre>
-       */
-      public Builder setMaxHeartrate(int value) {
-        bitField0_ |= 0x00000004;
-        maxHeartrate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 maxHeartrate = 5;</code>
-       *
-       * <pre>
-       * 最大心拍数
-       * </pre>
-       */
-      public Builder clearMaxHeartrate() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        maxHeartrate_ = 0;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>required int32 maxHeartrate = 5;</code>
+         *
+         * <pre>
+         * 最大心拍数
+         * </pre>
+         */
+        public int getMaxHeartrate() {
+            return maxHeartrate_;
+        }
 
-      // optional float mets = 4;
-      private float mets_ ;
-      /**
-       * <code>optional float mets = 4;</code>
-       *
-       * <pre>
-       * 現在のMETs値
-       * </pre>
-       */
-      public boolean hasMets() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional float mets = 4;</code>
-       *
-       * <pre>
-       * 現在のMETs値
-       * </pre>
-       */
-      public float getMets() {
-        return mets_;
-      }
-      /**
-       * <code>optional float mets = 4;</code>
-       *
-       * <pre>
-       * 現在のMETs値
-       * </pre>
-       */
-      public Builder setMets(float value) {
-        bitField0_ |= 0x00000008;
-        mets_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float mets = 4;</code>
-       *
-       * <pre>
-       * 現在のMETs値
-       * </pre>
-       */
-      public Builder clearMets() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        mets_ = 0F;
-        onChanged();
-        return this;
-      }
+        // optional float mets = 4;
+        public static final int METS_FIELD_NUMBER = 4;
+        private float mets_;
 
-      // optional float sessionCalories = 2;
-      private float sessionCalories_ ;
-      /**
-       * <code>optional float sessionCalories = 2;</code>
-       *
-       * <pre>
-       * セッションで消費したcalorie
-       * </pre>
-       */
-      public boolean hasSessionCalories() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional float sessionCalories = 2;</code>
-       *
-       * <pre>
-       * セッションで消費したcalorie
-       * </pre>
-       */
-      public float getSessionCalories() {
-        return sessionCalories_;
-      }
-      /**
-       * <code>optional float sessionCalories = 2;</code>
-       *
-       * <pre>
-       * セッションで消費したcalorie
-       * </pre>
-       */
-      public Builder setSessionCalories(float value) {
-        bitField0_ |= 0x00000010;
-        sessionCalories_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float sessionCalories = 2;</code>
-       *
-       * <pre>
-       * セッションで消費したcalorie
-       * </pre>
-       */
-      public Builder clearSessionCalories() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        sessionCalories_ = 0F;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional float mets = 4;</code>
+         *
+         * <pre>
+         * 現在のMETs値
+         * </pre>
+         */
+        public boolean hasMets() {
+            return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
 
-      // optional float todayCalories = 3;
-      private float todayCalories_ ;
-      /**
-       * <code>optional float todayCalories = 3;</code>
-       *
-       * <pre>
-       * 今日消費したカロリー
-       * </pre>
-       */
-      public boolean hasTodayCalories() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional float todayCalories = 3;</code>
-       *
-       * <pre>
-       * 今日消費したカロリー
-       * </pre>
-       */
-      public float getTodayCalories() {
-        return todayCalories_;
-      }
-      /**
-       * <code>optional float todayCalories = 3;</code>
-       *
-       * <pre>
-       * 今日消費したカロリー
-       * </pre>
-       */
-      public Builder setTodayCalories(float value) {
-        bitField0_ |= 0x00000020;
-        todayCalories_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float todayCalories = 3;</code>
-       *
-       * <pre>
-       * 今日消費したカロリー
-       * </pre>
-       */
-      public Builder clearTodayCalories() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        todayCalories_ = 0F;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional float mets = 4;</code>
+         *
+         * <pre>
+         * 現在のMETs値
+         * </pre>
+         */
+        public float getMets() {
+            return mets_;
+        }
 
-      // optional float sessionExercise = 7;
-      private float sessionExercise_ ;
-      /**
-       * <code>optional float sessionExercise = 7;</code>
-       *
-       * <pre>
-       * セッションで獲得したエクササイズ値
-       * </pre>
-       */
-      public boolean hasSessionExercise() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional float sessionExercise = 7;</code>
-       *
-       * <pre>
-       * セッションで獲得したエクササイズ値
-       * </pre>
-       */
-      public float getSessionExercise() {
-        return sessionExercise_;
-      }
-      /**
-       * <code>optional float sessionExercise = 7;</code>
-       *
-       * <pre>
-       * セッションで獲得したエクササイズ値
-       * </pre>
-       */
-      public Builder setSessionExercise(float value) {
-        bitField0_ |= 0x00000040;
-        sessionExercise_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float sessionExercise = 7;</code>
-       *
-       * <pre>
-       * セッションで獲得したエクササイズ値
-       * </pre>
-       */
-      public Builder clearSessionExercise() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        sessionExercise_ = 0F;
-        onChanged();
-        return this;
-      }
+        // optional float sessionCalories = 2;
+        public static final int SESSIONCALORIES_FIELD_NUMBER = 2;
+        private float sessionCalories_;
 
-      // optional float todayExercise = 8;
-      private float todayExercise_ ;
-      /**
-       * <code>optional float todayExercise = 8;</code>
-       *
-       * <pre>
-       * 今日獲得したエクササイズ値
-       * </pre>
-       */
-      public boolean hasTodayExercise() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional float todayExercise = 8;</code>
-       *
-       * <pre>
-       * 今日獲得したエクササイズ値
-       * </pre>
-       */
-      public float getTodayExercise() {
-        return todayExercise_;
-      }
-      /**
-       * <code>optional float todayExercise = 8;</code>
-       *
-       * <pre>
-       * 今日獲得したエクササイズ値
-       * </pre>
-       */
-      public Builder setTodayExercise(float value) {
-        bitField0_ |= 0x00000080;
-        todayExercise_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float todayExercise = 8;</code>
-       *
-       * <pre>
-       * 今日獲得したエクササイズ値
-       * </pre>
-       */
-      public Builder clearTodayExercise() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        todayExercise_ = 0F;
-        onChanged();
-        return this;
-      }
+        /**
+         * <code>optional float sessionCalories = 2;</code>
+         *
+         * <pre>
+         * セッションで消費したcalorie
+         * </pre>
+         */
+        public boolean hasSessionCalories() {
+            return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.FitnessPayload)
+        /**
+         * <code>optional float sessionCalories = 2;</code>
+         *
+         * <pre>
+         * セッションで消費したcalorie
+         * </pre>
+         */
+        public float getSessionCalories() {
+            return sessionCalories_;
+        }
+
+        // optional float todayCalories = 3;
+        public static final int TODAYCALORIES_FIELD_NUMBER = 3;
+        private float todayCalories_;
+
+        /**
+         * <code>optional float todayCalories = 3;</code>
+         *
+         * <pre>
+         * 今日消費したカロリー
+         * </pre>
+         */
+        public boolean hasTodayCalories() {
+            return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
+
+        /**
+         * <code>optional float todayCalories = 3;</code>
+         *
+         * <pre>
+         * 今日消費したカロリー
+         * </pre>
+         */
+        public float getTodayCalories() {
+            return todayCalories_;
+        }
+
+        // optional float sessionExercise = 7;
+        public static final int SESSIONEXERCISE_FIELD_NUMBER = 7;
+        private float sessionExercise_;
+
+        /**
+         * <code>optional float sessionExercise = 7;</code>
+         *
+         * <pre>
+         * セッションで獲得したエクササイズ値
+         * </pre>
+         */
+        public boolean hasSessionExercise() {
+            return ((bitField0_ & 0x00000040) == 0x00000040);
+        }
+
+        /**
+         * <code>optional float sessionExercise = 7;</code>
+         *
+         * <pre>
+         * セッションで獲得したエクササイズ値
+         * </pre>
+         */
+        public float getSessionExercise() {
+            return sessionExercise_;
+        }
+
+        // optional float todayExercise = 8;
+        public static final int TODAYEXERCISE_FIELD_NUMBER = 8;
+        private float todayExercise_;
+
+        /**
+         * <code>optional float todayExercise = 8;</code>
+         *
+         * <pre>
+         * 今日獲得したエクササイズ値
+         * </pre>
+         */
+        public boolean hasTodayExercise() {
+            return ((bitField0_ & 0x00000080) == 0x00000080);
+        }
+
+        /**
+         * <code>optional float todayExercise = 8;</code>
+         *
+         * <pre>
+         * 今日獲得したエクササイズ値
+         * </pre>
+         */
+        public float getTodayExercise() {
+            return todayExercise_;
+        }
+
+        private void initFields() {
+            weight_ = 0F;
+            normalHeartrate_ = 0;
+            maxHeartrate_ = 0;
+            mets_ = 0F;
+            sessionCalories_ = 0F;
+            todayCalories_ = 0F;
+            sessionExercise_ = 0F;
+            todayExercise_ = 0F;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) return isInitialized == 1;
+
+            if (!hasWeight()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasNormalHeartrate()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasMaxHeartrate()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeFloat(1, weight_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                output.writeFloat(2, sessionCalories_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                output.writeFloat(3, todayCalories_);
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                output.writeFloat(4, mets_);
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                output.writeInt32(5, maxHeartrate_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                output.writeInt32(6, normalHeartrate_);
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                output.writeFloat(7, sessionExercise_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                output.writeFloat(8, todayExercise_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeFloatSize(1, weight_);
+            }
+            if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeFloatSize(2, sessionCalories_);
+            }
+            if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeFloatSize(3, todayCalories_);
+            }
+            if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeFloatSize(4, mets_);
+            }
+            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(5, maxHeartrate_);
+            }
+            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(6, normalHeartrate_);
+            }
+            if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeFloatSize(7, sessionExercise_);
+            }
+            if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeFloatSize(8, todayExercise_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+                throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code eaglesakura_ace.FitnessPayload}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessage.Builder<Builder>
+                implements com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayloadOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder.class);
+            }
+
+            // Construct using com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                weight_ = 0F;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                normalHeartrate_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                maxHeartrate_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                mets_ = 0F;
+                bitField0_ = (bitField0_ & ~0x00000008);
+                sessionCalories_ = 0F;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                todayCalories_ = 0F;
+                bitField0_ = (bitField0_ & ~0x00000020);
+                sessionExercise_ = 0F;
+                bitField0_ = (bitField0_ & ~0x00000040);
+                todayExercise_ = 0F;
+                bitField0_ = (bitField0_ & ~0x00000080);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+            }
+
+            public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload getDefaultInstanceForType() {
+                return com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance();
+            }
+
+            public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload build() {
+                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload buildPartial() {
+                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload result = new com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.weight_ = weight_;
+                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.normalHeartrate_ = normalHeartrate_;
+                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.maxHeartrate_ = maxHeartrate_;
+                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.mets_ = mets_;
+                if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.sessionCalories_ = sessionCalories_;
+                if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.todayCalories_ = todayCalories_;
+                if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+                    to_bitField0_ |= 0x00000040;
+                }
+                result.sessionExercise_ = sessionExercise_;
+                if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+                    to_bitField0_ |= 0x00000080;
+                }
+                result.todayExercise_ = todayExercise_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) {
+                    return mergeFrom((com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload other) {
+                if (other == com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance())
+                    return this;
+                if (other.hasWeight()) {
+                    setWeight(other.getWeight());
+                }
+                if (other.hasNormalHeartrate()) {
+                    setNormalHeartrate(other.getNormalHeartrate());
+                }
+                if (other.hasMaxHeartrate()) {
+                    setMaxHeartrate(other.getMaxHeartrate());
+                }
+                if (other.hasMets()) {
+                    setMets(other.getMets());
+                }
+                if (other.hasSessionCalories()) {
+                    setSessionCalories(other.getSessionCalories());
+                }
+                if (other.hasTodayCalories()) {
+                    setTodayCalories(other.getTodayCalories());
+                }
+                if (other.hasSessionExercise()) {
+                    setSessionExercise(other.getSessionExercise());
+                }
+                if (other.hasTodayExercise()) {
+                    setTodayExercise(other.getTodayExercise());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasWeight()) {
+
+                    return false;
+                }
+                if (!hasNormalHeartrate()) {
+
+                    return false;
+                }
+                if (!hasMaxHeartrate()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required float weight = 1;
+            private float weight_;
+
+            /**
+             * <code>required float weight = 1;</code>
+             *
+             * <pre>
+             * 体重
+             * </pre>
+             */
+            public boolean hasWeight() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required float weight = 1;</code>
+             *
+             * <pre>
+             * 体重
+             * </pre>
+             */
+            public float getWeight() {
+                return weight_;
+            }
+
+            /**
+             * <code>required float weight = 1;</code>
+             *
+             * <pre>
+             * 体重
+             * </pre>
+             */
+            public Builder setWeight(float value) {
+                bitField0_ |= 0x00000001;
+                weight_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required float weight = 1;</code>
+             *
+             * <pre>
+             * 体重
+             * </pre>
+             */
+            public Builder clearWeight() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                weight_ = 0F;
+                onChanged();
+                return this;
+            }
+
+            // required int32 normalHeartrate = 6;
+            private int normalHeartrate_;
+
+            /**
+             * <code>required int32 normalHeartrate = 6;</code>
+             *
+             * <pre>
+             * 安静心拍数
+             * </pre>
+             */
+            public boolean hasNormalHeartrate() {
+                return ((bitField0_ & 0x00000002) == 0x00000002);
+            }
+
+            /**
+             * <code>required int32 normalHeartrate = 6;</code>
+             *
+             * <pre>
+             * 安静心拍数
+             * </pre>
+             */
+            public int getNormalHeartrate() {
+                return normalHeartrate_;
+            }
+
+            /**
+             * <code>required int32 normalHeartrate = 6;</code>
+             *
+             * <pre>
+             * 安静心拍数
+             * </pre>
+             */
+            public Builder setNormalHeartrate(int value) {
+                bitField0_ |= 0x00000002;
+                normalHeartrate_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int32 normalHeartrate = 6;</code>
+             *
+             * <pre>
+             * 安静心拍数
+             * </pre>
+             */
+            public Builder clearNormalHeartrate() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                normalHeartrate_ = 0;
+                onChanged();
+                return this;
+            }
+
+            // required int32 maxHeartrate = 5;
+            private int maxHeartrate_;
+
+            /**
+             * <code>required int32 maxHeartrate = 5;</code>
+             *
+             * <pre>
+             * 最大心拍数
+             * </pre>
+             */
+            public boolean hasMaxHeartrate() {
+                return ((bitField0_ & 0x00000004) == 0x00000004);
+            }
+
+            /**
+             * <code>required int32 maxHeartrate = 5;</code>
+             *
+             * <pre>
+             * 最大心拍数
+             * </pre>
+             */
+            public int getMaxHeartrate() {
+                return maxHeartrate_;
+            }
+
+            /**
+             * <code>required int32 maxHeartrate = 5;</code>
+             *
+             * <pre>
+             * 最大心拍数
+             * </pre>
+             */
+            public Builder setMaxHeartrate(int value) {
+                bitField0_ |= 0x00000004;
+                maxHeartrate_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int32 maxHeartrate = 5;</code>
+             *
+             * <pre>
+             * 最大心拍数
+             * </pre>
+             */
+            public Builder clearMaxHeartrate() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                maxHeartrate_ = 0;
+                onChanged();
+                return this;
+            }
+
+            // optional float mets = 4;
+            private float mets_;
+
+            /**
+             * <code>optional float mets = 4;</code>
+             *
+             * <pre>
+             * 現在のMETs値
+             * </pre>
+             */
+            public boolean hasMets() {
+                return ((bitField0_ & 0x00000008) == 0x00000008);
+            }
+
+            /**
+             * <code>optional float mets = 4;</code>
+             *
+             * <pre>
+             * 現在のMETs値
+             * </pre>
+             */
+            public float getMets() {
+                return mets_;
+            }
+
+            /**
+             * <code>optional float mets = 4;</code>
+             *
+             * <pre>
+             * 現在のMETs値
+             * </pre>
+             */
+            public Builder setMets(float value) {
+                bitField0_ |= 0x00000008;
+                mets_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional float mets = 4;</code>
+             *
+             * <pre>
+             * 現在のMETs値
+             * </pre>
+             */
+            public Builder clearMets() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                mets_ = 0F;
+                onChanged();
+                return this;
+            }
+
+            // optional float sessionCalories = 2;
+            private float sessionCalories_;
+
+            /**
+             * <code>optional float sessionCalories = 2;</code>
+             *
+             * <pre>
+             * セッションで消費したcalorie
+             * </pre>
+             */
+            public boolean hasSessionCalories() {
+                return ((bitField0_ & 0x00000010) == 0x00000010);
+            }
+
+            /**
+             * <code>optional float sessionCalories = 2;</code>
+             *
+             * <pre>
+             * セッションで消費したcalorie
+             * </pre>
+             */
+            public float getSessionCalories() {
+                return sessionCalories_;
+            }
+
+            /**
+             * <code>optional float sessionCalories = 2;</code>
+             *
+             * <pre>
+             * セッションで消費したcalorie
+             * </pre>
+             */
+            public Builder setSessionCalories(float value) {
+                bitField0_ |= 0x00000010;
+                sessionCalories_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional float sessionCalories = 2;</code>
+             *
+             * <pre>
+             * セッションで消費したcalorie
+             * </pre>
+             */
+            public Builder clearSessionCalories() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                sessionCalories_ = 0F;
+                onChanged();
+                return this;
+            }
+
+            // optional float todayCalories = 3;
+            private float todayCalories_;
+
+            /**
+             * <code>optional float todayCalories = 3;</code>
+             *
+             * <pre>
+             * 今日消費したカロリー
+             * </pre>
+             */
+            public boolean hasTodayCalories() {
+                return ((bitField0_ & 0x00000020) == 0x00000020);
+            }
+
+            /**
+             * <code>optional float todayCalories = 3;</code>
+             *
+             * <pre>
+             * 今日消費したカロリー
+             * </pre>
+             */
+            public float getTodayCalories() {
+                return todayCalories_;
+            }
+
+            /**
+             * <code>optional float todayCalories = 3;</code>
+             *
+             * <pre>
+             * 今日消費したカロリー
+             * </pre>
+             */
+            public Builder setTodayCalories(float value) {
+                bitField0_ |= 0x00000020;
+                todayCalories_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional float todayCalories = 3;</code>
+             *
+             * <pre>
+             * 今日消費したカロリー
+             * </pre>
+             */
+            public Builder clearTodayCalories() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                todayCalories_ = 0F;
+                onChanged();
+                return this;
+            }
+
+            // optional float sessionExercise = 7;
+            private float sessionExercise_;
+
+            /**
+             * <code>optional float sessionExercise = 7;</code>
+             *
+             * <pre>
+             * セッションで獲得したエクササイズ値
+             * </pre>
+             */
+            public boolean hasSessionExercise() {
+                return ((bitField0_ & 0x00000040) == 0x00000040);
+            }
+
+            /**
+             * <code>optional float sessionExercise = 7;</code>
+             *
+             * <pre>
+             * セッションで獲得したエクササイズ値
+             * </pre>
+             */
+            public float getSessionExercise() {
+                return sessionExercise_;
+            }
+
+            /**
+             * <code>optional float sessionExercise = 7;</code>
+             *
+             * <pre>
+             * セッションで獲得したエクササイズ値
+             * </pre>
+             */
+            public Builder setSessionExercise(float value) {
+                bitField0_ |= 0x00000040;
+                sessionExercise_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional float sessionExercise = 7;</code>
+             *
+             * <pre>
+             * セッションで獲得したエクササイズ値
+             * </pre>
+             */
+            public Builder clearSessionExercise() {
+                bitField0_ = (bitField0_ & ~0x00000040);
+                sessionExercise_ = 0F;
+                onChanged();
+                return this;
+            }
+
+            // optional float todayExercise = 8;
+            private float todayExercise_;
+
+            /**
+             * <code>optional float todayExercise = 8;</code>
+             *
+             * <pre>
+             * 今日獲得したエクササイズ値
+             * </pre>
+             */
+            public boolean hasTodayExercise() {
+                return ((bitField0_ & 0x00000080) == 0x00000080);
+            }
+
+            /**
+             * <code>optional float todayExercise = 8;</code>
+             *
+             * <pre>
+             * 今日獲得したエクササイズ値
+             * </pre>
+             */
+            public float getTodayExercise() {
+                return todayExercise_;
+            }
+
+            /**
+             * <code>optional float todayExercise = 8;</code>
+             *
+             * <pre>
+             * 今日獲得したエクササイズ値
+             * </pre>
+             */
+            public Builder setTodayExercise(float value) {
+                bitField0_ |= 0x00000080;
+                todayExercise_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional float todayExercise = 8;</code>
+             *
+             * <pre>
+             * 今日獲得したエクササイズ値
+             * </pre>
+             */
+            public Builder clearTodayExercise() {
+                bitField0_ = (bitField0_ & ~0x00000080);
+                todayExercise_ = 0F;
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:eaglesakura_ace.FitnessPayload)
+        }
+
+        static {
+            defaultInstance = new FitnessPayload(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:eaglesakura_ace.FitnessPayload)
     }
+
+    private static com.google.protobuf.Descriptors.Descriptor
+            internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable;
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
     static {
-      defaultInstance = new FitnessPayload(true);
-      defaultInstance.initFields();
+        java.lang.String[] descriptorData = {
+                "\n\026ActivityProtocol.proto\022\017eaglesakura_ac" +
+                        "e\032\023AcesConstants.proto\"\275\001\n\016FitnessPayloa" +
+                        "d\022\016\n\006weight\030\001 \002(\002\022\027\n\017normalHeartrate\030\006 \002" +
+                        "(\005\022\024\n\014maxHeartrate\030\005 \002(\005\022\014\n\004mets\030\004 \001(\002\022\027" +
+                        "\n\017sessionCalories\030\002 \001(\002\022\025\n\rtodayCalories" +
+                        "\030\003 \001(\002\022\027\n\017sessionExercise\030\007 \001(\002\022\025\n\rtoday" +
+                        "Exercise\030\010 \001(\002B$\n\"com.eaglesakura.andrid" +
+                        "ers.protocol"
+        };
+        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+                new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+                    public com.google.protobuf.ExtensionRegistry assignDescriptors(
+                            com.google.protobuf.Descriptors.FileDescriptor root) {
+                        descriptor = root;
+                        internal_static_eaglesakura_ace_FitnessPayload_descriptor =
+                                getDescriptor().getMessageTypes().get(0);
+                        internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable = new
+                                com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                                internal_static_eaglesakura_ace_FitnessPayload_descriptor,
+                                new java.lang.String[]{"Weight", "NormalHeartrate", "MaxHeartrate", "Mets", "SessionCalories", "TodayCalories", "SessionExercise", "TodayExercise",});
+                        return null;
+                    }
+                };
+        com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                                com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
+                        }, assigner);
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.FitnessPayload)
-  }
-
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_FitnessPayload_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\026ActivityProtocol.proto\022\017eaglesakura_ac" +
-      "e\032\023AcesConstants.proto\"\275\001\n\016FitnessPayloa" +
-      "d\022\016\n\006weight\030\001 \002(\002\022\027\n\017normalHeartrate\030\006 \002" +
-      "(\005\022\024\n\014maxHeartrate\030\005 \002(\005\022\014\n\004mets\030\004 \001(\002\022\027" +
-      "\n\017sessionCalories\030\002 \001(\002\022\025\n\rtodayCalories" +
-      "\030\003 \001(\002\022\027\n\017sessionExercise\030\007 \001(\002\022\025\n\rtoday" +
-      "Exercise\030\010 \001(\002B$\n\"com.eaglesakura.andrid" +
-      "ers.protocol"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_eaglesakura_ace_FitnessPayload_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_eaglesakura_ace_FitnessPayload_descriptor,
-              new java.lang.String[] { "Weight", "NormalHeartrate", "MaxHeartrate", "Mets", "SessionCalories", "TodayCalories", "SessionExercise", "TodayExercise", });
-          return null;
-        }
-      };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
-        }, assigner);
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

@@ -133,7 +133,8 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
     def IdlCycleDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlCycleDisplayValue");
     IdlCycleDisplayValue.stringProperty "id", "" // 一意に識別するためのID
     IdlCycleDisplayValue.stringProperty "type", "" // 表示タイプ
-    IdlCycleDisplayValue.stringProperty "values", "" // 表示内容を示したJSON。表示内容は非常に小さいので、JSONレベルの大きさでも問題ないはず。
+    IdlCycleDisplayValue.stringProperty "values", ""
+    // 表示内容を示したJSON。表示内容は非常に小さいので、JSONレベルの大きさでも問題ないはず。
 }
 
 task uploadSdkArchives << {

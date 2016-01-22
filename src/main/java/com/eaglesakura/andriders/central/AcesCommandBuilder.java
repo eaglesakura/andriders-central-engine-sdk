@@ -1,8 +1,5 @@
 package com.eaglesakura.andriders.central;
 
-import android.content.Context;
-import android.content.Intent;
-
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.media.SoundKey;
@@ -15,6 +12,9 @@ import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
 import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.android.util.AndroidThreadUtil;
 import com.eaglesakura.util.StringUtil;
+
+import android.content.Context;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,7 +55,6 @@ public class AcesCommandBuilder {
      *
      * @param key         コマンドのキー
      * @param appExtraKey コマンドに付与する情報
-     *
      * @return this
      */
     public AcesCommandBuilder addCommand(CommandKey key, String appExtraKey) {
@@ -79,7 +78,6 @@ public class AcesCommandBuilder {
      * 通知データを追加する
      *
      * @param notificationData 追加する通知データ
-     *
      * @return this
      */
     public AcesCommandBuilder addNotification(NotificationData notificationData) {
@@ -96,7 +94,6 @@ public class AcesCommandBuilder {
      * 通知用のサウンドを追加
      *
      * @param soundData 追加するサウンドデータ
-     *
      * @return this
      */
     public AcesCommandBuilder addSound(SoundData soundData) {
@@ -115,7 +112,6 @@ public class AcesCommandBuilder {
      * 指定されたpackage以外ではこのBuilderで生成されたマスターデータを処理しないが、{@link AcesProtocolReceiver#setCheckSelfPackage(boolean)}にfalseを指定した場合は強制的にマスターデータを受け取れる。
      *
      * @param targetPackage 送信対象のパッケージ名
-     *
      * @return this
      */
     public AcesCommandBuilder setTargetPackage(String targetPackage) {
@@ -192,7 +188,6 @@ public class AcesCommandBuilder {
      * 通知用Builderを生成する
      *
      * @param context app context
-     *
      * @return ACEsが受診するように設定されたbuilder
      */
     public static AcesCommandBuilder newNotificationBuilder(Context context) {
@@ -207,7 +202,6 @@ public class AcesCommandBuilder {
      * @param context  app context
      * @param key      鳴らすサウンドのキー
      * @param reqQueue サウンドキューに登録する場合はtrue、すぐさま鳴らす場合はfalse
-     *
      * @return builder
      */
     public static AcesCommandBuilder newSoundBuilder(Context context, SoundKey key, boolean reqQueue) {
@@ -224,7 +218,6 @@ public class AcesCommandBuilder {
      *
      * @param context app context
      * @param key     鳴らすサウンドのキー
-     *
      * @return builder
      */
     public static AcesCommandBuilder newSoundBuilder(Context context, SoundKey key) {

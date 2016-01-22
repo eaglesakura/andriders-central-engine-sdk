@@ -47,8 +47,6 @@ public class ExtensionCategory {
 
     /**
      * カテゴリ名を取得する
-     *
-     * @return
      */
     public String getName() {
         return name;
@@ -56,9 +54,6 @@ public class ExtensionCategory {
 
     /**
      * 指定した属性情報を持っていればtrue
-     *
-     * @param flag
-     * @return
      */
     public boolean hasAttribute(int flag) {
         return (attributes & flag) != 0;
@@ -66,9 +61,6 @@ public class ExtensionCategory {
 
     /**
      * 名前からカテゴリを取得する
-     *
-     * @param name
-     * @return
      */
     public static ExtensionCategory fromName(String name) {
         return categories.get(name);

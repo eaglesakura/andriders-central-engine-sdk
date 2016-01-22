@@ -1,14 +1,14 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.util.StringUtil;
+
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.Nullable;
-
-import com.eaglesakura.andriders.protocol.CommandProtocol;
-import com.eaglesakura.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,6 @@ public class RemoteIntentBuilder {
      * 事前にbootXXXX系メソッドを呼び出さなければならない。
      *
      * @param flags intentのフラグ
-     *
      * @return this
      */
     public RemoteIntentBuilder setFlags(int flags) {
@@ -51,7 +50,6 @@ public class RemoteIntentBuilder {
      * Intent.setDataに渡すUriを指定する
      *
      * @param uri Intentに指定するURI
-     *
      * @return this
      */
     public RemoteIntentBuilder intentData(Uri uri) {
@@ -64,7 +62,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, boolean value) {
@@ -81,7 +78,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, String value) {
@@ -98,7 +94,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, int value) {
@@ -115,7 +110,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, long value) {
@@ -132,7 +126,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, float value) {
@@ -149,7 +142,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, double value) {
@@ -166,7 +158,6 @@ public class RemoteIntentBuilder {
      *
      * @param key   Extra
      * @param value value
-     *
      * @return this
      */
     public RemoteIntentBuilder putExtra(String key, byte[] value) {
@@ -188,8 +179,6 @@ public class RemoteIntentBuilder {
 
     /**
      * Byte配列へ変換する
-     *
-     * @return
      */
     public byte[] toByteArray() {
         return build().toByteArray();

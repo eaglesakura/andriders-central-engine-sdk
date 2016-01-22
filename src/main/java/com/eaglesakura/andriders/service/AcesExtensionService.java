@@ -1,10 +1,5 @@
 package com.eaglesakura.andriders.service;
 
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.os.RemoteException;
-
 import com.eaglesakura.andriders.IAcesExtensionService;
 import com.eaglesakura.andriders.IAndridersCentralEngineService;
 import com.eaglesakura.andriders.IAndridersCentralEngineTeamService;
@@ -13,6 +8,11 @@ import com.eaglesakura.andriders.central.TeamMemberReceiver;
 import com.eaglesakura.andriders.central.TeamProtocolReceiver;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
 import com.eaglesakura.andriders.protocol.ExtensionMessage;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.RemoteException;
 
 /**
  * ACEsに対して常にバインドを行わせるServiceを定義する。
@@ -127,7 +127,6 @@ public abstract class AcesExtensionService extends Service {
      *
      * @param member       メンバーID
      * @param remoteIntent 送信するIntent
-     *
      * @return 成功したらtrue
      */
     public boolean sendRemoteIntent(TeamMemberReceiver member, CommandProtocol.IntentPayload remoteIntent) {
@@ -154,8 +153,6 @@ public abstract class AcesExtensionService extends Service {
 
     /**
      * データ受信用のReceiverを取得する
-     *
-     * @return
      */
     public AcesProtocolReceiver getProtocolReceiver() {
         return protocolReceiver;
