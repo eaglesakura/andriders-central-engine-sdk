@@ -3,6 +3,8 @@ package com.eaglesakura.andriders.extension;
 import com.eaglesakura.andriders.idl.remote.IdlExtensionInfo;
 import com.eaglesakura.android.db.BaseProperties;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +21,17 @@ public class ExtensionInformation {
         this.raw = raw;
     }
 
-    public ExtensionInformation() {
+    public ExtensionInformation(Context context, String id) {
         this(null);
+        if (id.indexOf('@') >= 0) {
+            throw new IllegalArgumentException();
+        }
+
+        raw.setId(context.getPackageName() + "@" + id);
+    }
+
+    public String getId() {
+        return raw.getId();
     }
 
     public void setText(String set) {

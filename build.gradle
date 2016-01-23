@@ -114,6 +114,7 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
      * 拡張機能情報
      */
     def IdlExtensionInfo = newProps("com.eaglesakura.andriders.idl.remote.IdlExtensionInfo");
+    IdlExtensionInfo.stringProperty "id", "" // 一意に識別するためのID
     IdlExtensionInfo.stringProperty "text", "" // ヘルプテキスト
     IdlExtensionInfo.stringProperty "category", "others" // 識別用のカテゴリ。ON/OFFの排他や重複を設定する
     IdlExtensionInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue

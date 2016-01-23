@@ -1,6 +1,8 @@
 package com.eaglesakura.andriders.internal.model;
 
 public class BasicDisplayJson {
+    public static final String TYPE = "BASIC_INFORMATION";
+
     /**
      * バーの色を指定する。
      * 0の場合、バーを非表示にする。

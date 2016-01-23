@@ -2,7 +2,10 @@ package com.eaglesakura.andriders.extension;
 
 import com.eaglesakura.andriders.idl.display.IdlCycleDisplayInfo;
 import com.eaglesakura.android.db.BaseProperties;
+import com.eaglesakura.util.StringUtil;
 import com.eaglesakura.util.Util;
+
+import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +23,16 @@ public class DisplayInformation {
         this.raw = raw;
     }
 
-    public DisplayInformation() {
+    public DisplayInformation(Context context, String id) {
         this(null);
+        if (StringUtil.isEmpty(id) || id.indexOf('@') >= 0) {
+            throw new IllegalArgumentException();
+        }
+        raw.setId(id);
+    }
+
+    public String getId() {
+        return raw.getId();
     }
 
     public String getText() {
@@ -38,14 +49,6 @@ public class DisplayInformation {
 
     public void setTitle(String set) {
         raw.setTitle(set);
-    }
-
-    public String getId() {
-        return raw.getId();
-    }
-
-    public void setId(String set) {
-        raw.setId(set);
     }
 
     /**
@@ -71,6 +74,10 @@ public class DisplayInformation {
      * バッファからデシリアライズする
      */
     public static List<DisplayInformation> deserialize(byte[] buffer) {
+        if (buffer == null) {
+            return new ArrayList<>();
+        }
+
         List<IdlCycleDisplayInfo> rawList = BaseProperties.deserializeToArray(null, IdlCycleDisplayInfo.class, buffer);
         if (rawList != null) {
             List<DisplayInformation> result = new ArrayList<>();
