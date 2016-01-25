@@ -7,6 +7,7 @@ public class IdlCycleDisplayValue extends com.eaglesakura.android.db.BasePropert
     public static final String ID_ID = "IdlCycleDisplayValue.id";
     public static final String ID_TYPE = "IdlCycleDisplayValue.type";
     public static final String ID_VALUES = "IdlCycleDisplayValue.values";
+    public static final String ID_TIMEOUTMS = "IdlCycleDisplayValue.timeoutMs";
     
     public IdlCycleDisplayValue(Context context){ super(context, "props.db"); _initialize(); }
     public IdlCycleDisplayValue(Context context, String dbFileName){ super(context, dbFileName); _initialize(); }
@@ -15,6 +16,7 @@ public class IdlCycleDisplayValue extends com.eaglesakura.android.db.BasePropert
         addProperty("IdlCycleDisplayValue.id", "");
         addProperty("IdlCycleDisplayValue.type", "");
         addProperty("IdlCycleDisplayValue.values", "");
+        addProperty("IdlCycleDisplayValue.timeoutMs", "-1");
         
         load();
         
@@ -25,5 +27,7 @@ public class IdlCycleDisplayValue extends com.eaglesakura.android.db.BasePropert
     public String getType(){ return getStringProperty("IdlCycleDisplayValue.type"); }
     public void setValues(String set){ setProperty("IdlCycleDisplayValue.values", set); }
     public String getValues(){ return getStringProperty("IdlCycleDisplayValue.values"); }
+    public void setTimeoutMs(long set){ setProperty("IdlCycleDisplayValue.timeoutMs", set); }
+    public long getTimeoutMs(){ return getLongProperty("IdlCycleDisplayValue.timeoutMs"); }
     
 }

@@ -135,7 +135,28 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
     IdlCycleDisplayValue.stringProperty "id", "" // 一意に識別するためのID
     IdlCycleDisplayValue.stringProperty "type", "" // 表示タイプ
     IdlCycleDisplayValue.stringProperty "values", ""
+    // 表示を行うタイムアウト時間。これを超えた表示内容は無効(N/A)として扱われる。負の値の場合はタイムアウトなし
     // 表示内容を示したJSON。表示内容は非常に小さいので、JSONレベルの大きさでも問題ないはず。
+    IdlCycleDisplayValue.longProperty "timeoutMs", -1
+
+    /**
+     * サイコンの表示内容を伝えるIDL
+     */
+    def IdlBasicDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlBasicDisplayValue");
+    IdlBasicDisplayValue.stringProperty "mainValue", ""
+    IdlBasicDisplayValue.stringProperty "title", ""
+    IdlBasicDisplayValue.stringProperty "info", ""
+    IdlBasicDisplayValue.intProperty "barA", 0
+    IdlBasicDisplayValue.intProperty "barR", 0
+    IdlBasicDisplayValue.intProperty "barG", 0
+    IdlBasicDisplayValue.intProperty "barB", 0
+
+    /**
+     * サイコンの表示内容を伝えるIDL
+     */
+    def IdlLineDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlLineDisplayValue");
+    IdlLineDisplayValue.stringProperty "value", ""
+    IdlLineDisplayValue.stringProperty "title", ""
 }
 
 task uploadSdkArchives << {

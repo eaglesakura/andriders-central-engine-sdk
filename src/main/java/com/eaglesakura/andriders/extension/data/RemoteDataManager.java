@@ -13,6 +13,7 @@ import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
+import com.eaglesakura.android.service.data.Payload;
 import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.util.LogUtil;
 
@@ -154,19 +155,19 @@ public class RemoteDataManager {
             super(service);
         }
 
-        public byte[] postToAces(String cmd, BaseProperties prop) throws RemoteException {
+        public Payload postToAces(String cmd, BaseProperties prop) throws RemoteException {
             byte[] postData = prop != null ? prop.toByteArray() : null;
             return postToClient(IExtensionService.ACES_PACKAGE_NAME, cmd, postData);
         }
 
         public <T extends BaseProperties> T postToAces(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {
-            byte[] result = postToAces(cmd, args);
-            return BaseProperties.deserializeInstance(null, clazz, result);
+            return Payload.deserializePropOrNull(postToAces(cmd, args), clazz);
         }
 
+
         @Override
-        protected byte[] onReceivedDataFromClient(String cmd, byte[] buffer) throws RemoteException {
-            return acesCommandMap.execute(this, cmd, buffer);
+        protected Payload onReceivedDataFromClient(String cmd, String clientId, Payload payload) throws RemoteException {
+            return acesCommandMap.execute(this, cmd, payload);
         }
 
         @Override
@@ -200,10 +201,10 @@ public class RemoteDataManager {
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_getSDKVersion, new CommandMap.Action() {
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
                 IdlStringProperty prop = new IdlStringProperty(null);
                 prop.setValue(BuildConfig.ACE_SDK_VERSION);
-                return prop.toByteArray();
+                return new Payload(prop.toByteArray());
             }
         });
 
@@ -212,9 +213,9 @@ public class RemoteDataManager {
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_getInformations, new CommandMap.Action() {
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
                 ExtensionInformation information = service.getExtensionInformation();
-                return ExtensionInformation.serialize(Arrays.asList(information));
+                return new Payload(ExtensionInformation.serialize(Arrays.asList(information)));
             }
         });
 
@@ -223,9 +224,9 @@ public class RemoteDataManager {
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, new CommandMap.Action() {
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
                 List<DisplayInformation> displayInformation = service.getDisplayInformation();
-                return DisplayInformation.serialize(displayInformation);
+                return new Payload(DisplayInformation.serialize(displayInformation));
             }
         });
 
@@ -234,7 +235,7 @@ public class RemoteDataManager {
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_onExtensionEnable, new CommandMap.Action() {
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
                 UIHandler.postUI(new Runnable() {
                     @Override
                     public void run() {
@@ -249,8 +250,9 @@ public class RemoteDataManager {
          * 拡張機能が無効化された
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_onExtensionDisable, new CommandMap.Action() {
+
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
                 UIHandler.postUI(new Runnable() {
                     @Override
                     public void run() {
@@ -266,7 +268,7 @@ public class RemoteDataManager {
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_onSettingStart, new CommandMap.Action() {
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
                 UIHandler.postUI(new Runnable() {
                     @Override
                     public void run() {
@@ -282,8 +284,13 @@ public class RemoteDataManager {
          */
         acesCommandMap.addAction(CentralDataCommand.CMD_requestRebootExtention, new CommandMap.Action() {
             @Override
-            public byte[] execute(Object sender, String cmd, byte[] buffer) throws Exception {
-                android.os.Process.killProcess(android.os.Process.myPid());
+            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
+                UIHandler.postDelayedUI(new Runnable() {
+                    @Override
+                    public void run() {
+                        android.os.Process.killProcess(android.os.Process.myPid());
+                    }
+                }, 10);
                 return null;
             }
         });
