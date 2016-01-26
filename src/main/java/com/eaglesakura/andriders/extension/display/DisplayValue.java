@@ -6,6 +6,7 @@ import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.util.StringUtil;
 import com.eaglesakura.util.Util;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class DisplayValue {
         raw.setId(bind.getId());
     }
 
-    private DisplayValue(IdlCycleDisplayValue raw) {
+    protected DisplayValue(IdlCycleDisplayValue raw) {
         this.raw = raw;
 
         if (!StringUtil.isEmpty(raw.getType())) {
@@ -119,20 +120,26 @@ public class DisplayValue {
     /**
      * バッファからデシリアライズする
      */
-    public static List<DisplayValue> deserialize(byte[] buffer) {
+    public static <T extends DisplayValue> List<T> deserialize(byte[] buffer, Class<T> clazz) {
         if (buffer == null) {
             return new ArrayList<>();
         }
 
-        List<IdlCycleDisplayValue> rawList = BaseProperties.deserializeToArray(null, IdlCycleDisplayValue.class, buffer);
-        if (rawList != null) {
-            List<DisplayValue> result = new ArrayList<>();
-            for (IdlCycleDisplayValue raw : rawList) {
-                result.add(new DisplayValue(raw));
+        try {
+            Constructor<T> constructor = clazz.getConstructor(IdlCycleDisplayValue.class);
+
+            List<IdlCycleDisplayValue> rawList = BaseProperties.deserializeToArray(null, IdlCycleDisplayValue.class, buffer);
+            if (rawList != null) {
+                List<T> result = new ArrayList<>();
+                for (IdlCycleDisplayValue raw : rawList) {
+                    result.add(constructor.newInstance(raw));
+                }
+                return result;
+            } else {
+                return new ArrayList<>();
             }
-            return result;
-        } else {
-            return new ArrayList<>();
+        } catch (Exception e) {
+            throw new IllegalStateException();
         }
     }
 }
