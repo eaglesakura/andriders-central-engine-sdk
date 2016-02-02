@@ -32,15 +32,27 @@ allprojects {
 
 apply plugin: 'com.android.library'
 
+// check env
+if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
+    ext.EGLIBRARY_COMPILE_LOCAL = false // 開発用。ローカルのソースコードをビルドする
+}
+
 dependencies {
     compile "com.google.protobuf:protobuf-java:${PROTOBUF_ARTIFACT_VERSION}"
     compile 'com.android.support:support-annotations:+'
 
-//    // release only
-//    releaseCompile "com.eaglesakura:eglibrary-android-java-core:${EGLIBRARY_ARTIFACT_VERSION}"
-
-    // debug only
-    compile project(':app:eglibrary-subset')
+    if (EGLIBRARY_COMPILE_LOCAL) {
+        // 開発用:ローカルのソースコードを利用する
+        compile project(':app:eglibrary-subset')
+    } else {
+        compile 'com.eaglesakura:simple-utils:+'                /* Utils */
+        compile 'com.eaglesakura:simple-serialize:+'            /* IDLシリアライズ */
+        compile 'com.eaglesakura:geo-utils:+'                   /* GPS計算 */
+        compile 'com.eaglesakura:android-simple-utils:+'        /* Utils */
+        compile 'com.eaglesakura:android-text-kvs:+'            /* IDL管理 */
+        compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
+        compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
+    }
 }
 
 android {
