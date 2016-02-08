@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.extension.data;
+package com.eaglesakura.andriders.extension.internal;
 
 public class CentralDataCommand {
 
