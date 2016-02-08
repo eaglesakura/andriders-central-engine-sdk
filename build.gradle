@@ -52,6 +52,7 @@ dependencies {
         compile project(':eglibrary:android-command-service')
     } else {
         // mavenから必要なライブラリを取得する
+        compile 'com.eaglesakura:simple-logger:+'                   /* Log */
         compile 'com.eaglesakura:simple-utils:+'                /* Utils */
         compile 'com.eaglesakura:simple-serialize:+'            /* IDLシリアライズ */
         compile 'com.eaglesakura:geo-utils:+'                   /* GPS計算 */
@@ -60,8 +61,6 @@ dependencies {
         compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
         compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
     }
-
-    compile 'com.eaglesakura:simple-logger:+'                   /* Log */
 }
 
 android {

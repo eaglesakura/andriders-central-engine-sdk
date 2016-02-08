@@ -71,7 +71,7 @@ public class BasicValue {
     /**
      * base64にエンコードする
      */
-    public String encode() {
+    String encode() {
         return StringUtil.toString(raw.toByteArray());
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * ディスプレイ表示内容を指定する
  */
-public class DisplayValue {
+public class DisplayData {
     private IdlCycleDisplayValue raw;
 
     private BasicValue mBasicValue;
@@ -23,12 +23,12 @@ public class DisplayValue {
     /**
      * @param bind 表示対象のディスプレイ情報
      */
-    public DisplayValue(DisplayInformation bind) {
+    public DisplayData(DisplayInformation bind) {
         this.raw = new IdlCycleDisplayValue(null);
         raw.setId(bind.getId());
     }
 
-    protected DisplayValue(IdlCycleDisplayValue raw) {
+    protected DisplayData(IdlCycleDisplayValue raw) {
         this.raw = raw;
 
         if (!StringUtil.isEmpty(raw.getType())) {
@@ -105,13 +105,13 @@ public class DisplayValue {
         return mLineValue;
     }
 
-    public static byte[] serialize(List<DisplayValue> list) {
+    public static byte[] serialize(List<DisplayData> list) {
         if (Util.isEmpty(list)) {
             return null;
         }
 
         List<IdlCycleDisplayValue> rawList = new ArrayList<>();
-        for (DisplayValue item : list) {
+        for (DisplayData item : list) {
             rawList.add(item.raw);
         }
         return BaseProperties.serialize(rawList);
@@ -120,7 +120,7 @@ public class DisplayValue {
     /**
      * バッファからデシリアライズする
      */
-    public static <T extends DisplayValue> List<T> deserialize(byte[] buffer, Class<T> clazz) {
+    public static <T extends DisplayData> List<T> deserialize(byte[] buffer, Class<T> clazz) {
         if (buffer == null) {
             return new ArrayList<>();
         }

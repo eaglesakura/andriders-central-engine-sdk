@@ -65,7 +65,7 @@ public class LineValue {
     /**
      * 文字列エンコードする
      */
-    public String encode() {
+    String encode() {
         return StringUtil.toString(BaseProperties.serialize(values));
     }
 
