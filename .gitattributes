@@ -18,6 +18,7 @@
 *.bat text eol=crlf
 *.sh text eol=lf
 gradlew text=auto
+gradlew.bat text=auto
 
 # Others
 *.md text eol=lf
