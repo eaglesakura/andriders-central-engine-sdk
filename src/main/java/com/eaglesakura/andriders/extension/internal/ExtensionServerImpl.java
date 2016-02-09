@@ -4,7 +4,6 @@ import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.extension.ExtensionInformation;
 import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.IExtensionService;
-import com.eaglesakura.andriders.idl.remote.IdlStringProperty;
 import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.android.service.CommandMap;
@@ -30,7 +29,9 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
 
     final ExtensionSession mSession;
 
-    public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND_V2";
+    String mClientId;
+
+    public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND_V3";
 
     /**
      * セントラルを示すセッション
@@ -59,13 +60,34 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     }
 
 
-    public Payload postToAces(String cmd, BaseProperties prop) throws RemoteException {
-        byte[] postData = prop != null ? prop.toByteArray() : null;
-        return postToClient(IExtensionService.ACES_PACKAGE_NAME, cmd, postData);
+    public Payload postToClient(String cmd, BaseProperties args) throws RemoteException {
+        validAcesSession();
+        byte[] postData = args != null ? args.toByteArray() : null;
+        return postToClient(mClientId, cmd, postData);
     }
 
-    public <T extends BaseProperties> T postToAces(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {
-        return Payload.deserializePropOrNull(postToAces(cmd, args), clazz);
+    public <T extends BaseProperties> T postToClient(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {
+        return Payload.deserializePropOrNull(postToClient(cmd, args), clazz);
+    }
+
+    /**
+     * データをACEに送信し、結果をStringで受け取る
+     */
+    public String postToClientAsString(String cmd, String arg) throws RemoteException {
+        Payload payload = postToClient(mClientId, cmd, new Payload(arg));
+        return Payload.deserializeStringOrNull(payload);
+    }
+
+    /**
+     * データをACEに送信し、結果をStringで受け取る
+     */
+    public String postToClientAsString(String cmd, BaseProperties args) throws RemoteException {
+        Payload payload = postToClient(mClientId, args);
+        if (payload != null) {
+            return null;
+        } else {
+            return new String(payload.getBuffer());
+        }
     }
 
 
@@ -76,6 +98,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
 
     @Override
     protected void onRegisterClient(String id, ICommandClientCallback callback) {
+        mClientId = id;
         if (mSession.isAcesSession()) {
             UIHandler.postUI(new Runnable() {
                 @Override
@@ -127,9 +150,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_getSDKVersion, new CommandMap.Action() {
             @Override
             public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                IdlStringProperty prop = new IdlStringProperty(null);
-                prop.setValue(BuildConfig.ACE_SDK_VERSION);
-                return new Payload(prop.toByteArray());
+                return new Payload(BuildConfig.ACE_SDK_VERSION.getBytes());
             }
         });
 

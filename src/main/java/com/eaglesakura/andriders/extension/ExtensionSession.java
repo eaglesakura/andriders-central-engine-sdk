@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.extension;
 
+import com.eaglesakura.andriders.extension.data.CentralDataExtension;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
 import com.eaglesakura.io.Disposable;
 import com.eaglesakura.util.IOUtil;
@@ -7,6 +8,7 @@ import com.eaglesakura.util.StringUtil;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.IBinder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +25,8 @@ public class ExtensionSession implements Disposable {
 
     final ExtensionServerImpl mServerImpl;
 
+    final CentralDataExtension mCentralDataExtension;
+
     ExtensionSession(Service service, Intent intent) {
         mService = service;
         mExtensionService = (IExtensionService) service;
@@ -34,6 +38,16 @@ public class ExtensionSession implements Disposable {
 
         // サーバーを構築する
         mServerImpl = new ExtensionServerImpl(this, mService, mExtensionService);
+
+
+        mCentralDataExtension = new CentralDataExtension(this, mServerImpl);
+    }
+
+    /**
+     * IOインターフェースを取得する
+     */
+    public IBinder getBinder() {
+        return mServerImpl.getBinder();
     }
 
     /**
@@ -41,6 +55,10 @@ public class ExtensionSession implements Disposable {
      */
     public String getSessionId() {
         return mSessionId;
+    }
+
+    public CentralDataExtension getCentralDataExtension() {
+        return mCentralDataExtension;
     }
 
     /**

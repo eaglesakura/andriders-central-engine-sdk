@@ -46,13 +46,13 @@ dependencies {
         compile project(':eglibrary:simple-utils')
         compile project(':eglibrary:simple-serialize')
         compile project(':eglibrary:geo-utils')
-        compile project(':eglibrary:android-simple-utils')
         compile project(':eglibrary:android-text-kvs')
+        compile project(':eglibrary:android-simple-utils')
         compile project(':eglibrary:android-canvas-graphics')
         compile project(':eglibrary:android-command-service')
     } else {
         // mavenから必要なライブラリを取得する
-        compile 'com.eaglesakura:simple-logger:+'                   /* Log */
+        compile 'com.eaglesakura:simple-logger:+'               /* Log */
         compile 'com.eaglesakura:simple-utils:+'                /* Utils */
         compile 'com.eaglesakura:simple-serialize:+'            /* IDLシリアライズ */
         compile 'com.eaglesakura:geo-utils:+'                   /* GPS計算 */
@@ -122,12 +122,6 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
     IdlSpeedAndCadence.intProperty "crankRevolution", -1
     IdlSpeedAndCadence.floatProperty "wheelRpm", -1
     IdlSpeedAndCadence.intProperty "wheelRevolution", -1
-
-    /**
-     * 文字列のプロパティ
-     */
-    def IdlStringProperty = newProps("com.eaglesakura.andriders.idl.remote.IdlStringProperty");
-    IdlStringProperty.stringProperty "value", ""
 
     /**
      * 拡張機能情報

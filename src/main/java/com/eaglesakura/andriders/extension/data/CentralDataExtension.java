@@ -1,11 +1,11 @@
 package com.eaglesakura.andriders.extension.data;
 
+import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.internal.CentralDataCommand;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
 import com.eaglesakura.andriders.idl.remote.IdlHeartrate;
 import com.eaglesakura.andriders.idl.remote.IdlLocation;
 import com.eaglesakura.andriders.idl.remote.IdlSpeedAndCadence;
-import com.eaglesakura.andriders.idl.remote.IdlStringProperty;
 import com.eaglesakura.andriders.protocol.SensorProtocol;
 import com.eaglesakura.util.LogUtil;
 
@@ -15,7 +15,10 @@ public class CentralDataExtension {
 
     final ExtensionServerImpl mServerImpl;
 
-    public CentralDataExtension(ExtensionServerImpl serverImpl) {
+    final ExtensionSession mSession;
+
+    public CentralDataExtension(ExtensionSession session, ExtensionServerImpl serverImpl) {
+        mSession = session;
         mServerImpl = serverImpl;
     }
 
@@ -26,13 +29,8 @@ public class CentralDataExtension {
      */
     public String getGadgetAddress(SensorProtocol.SensorType type) {
         mServerImpl.validAcesSession();
-
-        IdlStringProperty idl = new IdlStringProperty(null);
-        idl.setValue(type.toString());
-
         try {
-            IdlStringProperty addr = mServerImpl.postToAces(IdlStringProperty.class, CentralDataCommand.CMD_setBleGadgetAddress, idl);
-            return addr.getValue();
+            return mServerImpl.postToClientAsString(CentralDataCommand.CMD_setBleGadgetAddress, type.toString());
         } catch (Exception e) {
             LogUtil.log(e);
         }
@@ -53,7 +51,7 @@ public class CentralDataExtension {
         idl.setAccuracyMeter(loc.getAccuracy());
 
         try {
-            mServerImpl.postToAces(CentralDataCommand.CMD_setLocation, idl);
+            mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, idl);
         } catch (Exception e) {
 
         }
@@ -69,7 +67,7 @@ public class CentralDataExtension {
         idl.setBpm(bpm);
 
         try {
-            mServerImpl.postToAces(CentralDataCommand.CMD_setHeartrate, idl);
+            mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, idl);
         } catch (Exception e) {
             LogUtil.log(e);
         }
@@ -88,7 +86,7 @@ public class CentralDataExtension {
         idl.setWheelRevolution(wheelRevolution);
 
         try {
-            mServerImpl.postToAces(CentralDataCommand.CMD_setSpeedAndCadence, idl);
+            mServerImpl.postToClient(CentralDataCommand.CMD_setSpeedAndCadence, idl);
         } catch (Exception e) {
             LogUtil.log(e);
         }
