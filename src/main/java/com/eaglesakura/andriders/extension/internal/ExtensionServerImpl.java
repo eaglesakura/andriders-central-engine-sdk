@@ -45,6 +45,11 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     public static final String EXTRA_SESSION_ID = "ace.EXTRA_SESSION_ID";
 
     /**
+     * ACE本体サービスに接続するComponentName
+     */
+    public static final String EXTRA_ACE_COMPONENT = "ace.EXTRA_ACE_COMPONENT";
+
+    /**
      * ACEsのコールバックが登録されていたらtrue
      */
     private boolean mRegisteredAces = false;
