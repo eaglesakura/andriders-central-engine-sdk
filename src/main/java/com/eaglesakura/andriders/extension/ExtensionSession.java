@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.extension;
 
 import com.eaglesakura.andriders.extension.data.CentralDataExtension;
+import com.eaglesakura.andriders.extension.display.DisplayExtension;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
 import com.eaglesakura.io.Disposable;
 import com.eaglesakura.util.IOUtil;
@@ -27,6 +28,8 @@ public class ExtensionSession implements Disposable {
 
     final CentralDataExtension mCentralDataExtension;
 
+    final DisplayExtension mDisplayExtension;
+
     ExtensionSession(Service service, Intent intent) {
         mService = service;
         mExtensionService = (IExtensionService) service;
@@ -41,6 +44,7 @@ public class ExtensionSession implements Disposable {
 
 
         mCentralDataExtension = new CentralDataExtension(this, mServerImpl);
+        mDisplayExtension = new DisplayExtension(this, mServerImpl);
     }
 
     /**
@@ -57,8 +61,18 @@ public class ExtensionSession implements Disposable {
         return mSessionId;
     }
 
+    /**
+     * データ拡張インターフェースを取得する
+     */
     public CentralDataExtension getCentralDataExtension() {
         return mCentralDataExtension;
+    }
+
+    /**
+     * 表示拡張インターフェースを取得する
+     */
+    public DisplayExtension getDisplayExtension() {
+        return mDisplayExtension;
     }
 
     /**

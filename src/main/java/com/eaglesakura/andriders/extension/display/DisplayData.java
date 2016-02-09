@@ -6,6 +6,8 @@ import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.util.StringUtil;
 import com.eaglesakura.util.Util;
 
+import android.content.Context;
+
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,14 @@ public class DisplayData {
     public DisplayData(DisplayInformation bind) {
         this.raw = new IdlCycleDisplayValue(null);
         raw.setId(bind.getId());
+    }
+
+    /**
+     * ディスプレイ
+     */
+    public DisplayData(Context context, String id) {
+        this.raw = new IdlCycleDisplayValue(null);
+        raw.setId(new DisplayInformation(context, id).getId());
     }
 
     protected DisplayData(IdlCycleDisplayValue raw) {

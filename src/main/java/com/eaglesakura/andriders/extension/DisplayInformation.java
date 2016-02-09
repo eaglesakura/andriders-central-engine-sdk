@@ -28,7 +28,7 @@ public class DisplayInformation {
         if (StringUtil.isEmpty(id) || id.indexOf('@') >= 0) {
             throw new IllegalArgumentException();
         }
-        raw.setId(id);
+        raw.setId(context.getPackageName() + "@" + id);
     }
 
     public String getId() {

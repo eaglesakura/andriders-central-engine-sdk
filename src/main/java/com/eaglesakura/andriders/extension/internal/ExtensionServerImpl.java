@@ -61,9 +61,12 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
 
 
     public Payload postToClient(String cmd, BaseProperties args) throws RemoteException {
-        validAcesSession();
         byte[] postData = args != null ? args.toByteArray() : null;
         return postToClient(mClientId, cmd, postData);
+    }
+
+    public Payload postToClient(String cmd, Payload payload) {
+        return postToClient(mClientId, payload);
     }
 
     public <T extends BaseProperties> T postToClient(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {

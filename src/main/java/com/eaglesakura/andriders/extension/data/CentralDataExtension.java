@@ -11,6 +11,9 @@ import com.eaglesakura.util.LogUtil;
 
 import android.location.Location;
 
+/**
+ * サイコンのコアデータ生成を拡張する
+ */
 public class CentralDataExtension {
 
     final ExtensionServerImpl mServerImpl;
