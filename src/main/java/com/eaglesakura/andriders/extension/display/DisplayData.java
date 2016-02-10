@@ -86,7 +86,6 @@ public class DisplayData {
      */
     public void setValue(BasicValue newValue) {
         resetValue();
-        raw.setValues(newValue.encode());
         raw.setType(BasicValue.TYPE);
         mBasicValue = newValue;
     }
@@ -96,7 +95,6 @@ public class DisplayData {
      */
     public void setValue(LineValue newValue) {
         resetValue();
-        raw.setValues(newValue.encode());
         raw.setType(LineValue.TYPE);
         mLineValue = newValue;
     }
@@ -115,6 +113,16 @@ public class DisplayData {
         return mLineValue;
     }
 
+    private void encodeValue() {
+        if (mBasicValue != null) {
+            raw.setValues(mBasicValue.encode());
+        } else if (mLineValue != null) {
+            raw.setValues(mLineValue.encode());
+        } else {
+            resetValue();
+        }
+    }
+
     public static byte[] serialize(List<DisplayData> list) {
         if (Util.isEmpty(list)) {
             return null;
@@ -122,6 +130,7 @@ public class DisplayData {
 
         List<IdlCycleDisplayValue> rawList = new ArrayList<>();
         for (DisplayData item : list) {
+            item.encodeValue();
             rawList.add(item.raw);
         }
         return BaseProperties.serialize(rawList);

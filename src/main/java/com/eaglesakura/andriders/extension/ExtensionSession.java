@@ -5,9 +5,11 @@ import com.eaglesakura.andriders.extension.display.DisplayExtension;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
 import com.eaglesakura.io.Disposable;
 import com.eaglesakura.util.IOUtil;
+import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.IBinder;
 
@@ -30,19 +32,39 @@ public class ExtensionSession implements Disposable {
 
     final DisplayExtension mDisplayExtension;
 
+    final ComponentName mAcesComponent;
+
+    /**
+     * デバッグモードの場合true
+     */
+    final boolean mDebugable;
+
+    /**
+     * SDKバージョン
+     */
+    final String mAcesSdkVersion;
+
     ExtensionSession(Service service, Intent intent) {
         mService = service;
         mExtensionService = (IExtensionService) service;
-
         mSessionId = intent.getStringExtra(ExtensionServerImpl.EXTRA_SESSION_ID);
+        mAcesComponent = intent.getParcelableExtra(ExtensionServerImpl.EXTRA_ACE_COMPONENT);
+        mDebugable = intent.getBooleanExtra(ExtensionServerImpl.EXTRA_DEBUGABLE, false);
+        mAcesSdkVersion = intent.getStringExtra(ExtensionServerImpl.EXTRA_ACE_IMPL_SDK_VERSION);
+
+
         if (StringUtil.isEmpty(mSessionId)) {
             throw new IllegalArgumentException("SessionId is empty");
+        }
+        if (StringUtil.isEmpty(mAcesSdkVersion)) {
+            throw new IllegalArgumentException("SdkVersion is empty");
         }
 
         // サーバーを構築する
         mServerImpl = new ExtensionServerImpl(this, mService, mExtensionService);
 
 
+        // アクセス用インターフェースを生成する
         mCentralDataExtension = new CentralDataExtension(this, mServerImpl);
         mDisplayExtension = new DisplayExtension(this, mServerImpl);
     }
@@ -81,7 +103,21 @@ public class ExtensionSession implements Disposable {
      * 設定画面から接続されている、もしくは接続されていない場合はfalseを返却する
      */
     public boolean isAcesSession() {
-        return mSessionId.equals(ExtensionServerImpl.SESSION_ID_CENTRALSERVICE);
+        return mAcesComponent != null;
+    }
+
+    /**
+     * ACEsが組み込んでいるSDKバージョンを取得する
+     */
+    public String getAcesSdkVersion() {
+        return mAcesSdkVersion;
+    }
+
+    /**
+     * デバッグが有効化されている場合true
+     */
+    public boolean isDebugable() {
+        return mDebugable;
     }
 
     /**
@@ -108,14 +144,20 @@ public class ExtensionSession implements Disposable {
             throw new IllegalArgumentException();
         }
 
-        if (!ExtensionServerImpl.ACTION_ACE_EXTENSION_BIND.equals(intent.getAction())) {
+        final String action = intent.getAction();
+        if (StringUtil.isEmpty(action)) {
+            return null;
+        }
+
+        if (!action.startsWith(ExtensionServerImpl.ACTION_ACE_EXTENSION_BIND)) {
             return null;
         }
 
         final ExtensionSession result = new ExtensionSession(service, intent);
         synchronized (gSessions) {
+            LogUtil.log("add session :: " + result.getSessionId() + " class :: " + service.getClass());
             if (gSessions.containsKey(result.getSessionId())) {
-                throw new IllegalStateException("session conflict :: " + result.getSessionId());
+                throw new IllegalStateException("session conflict :: " + result.getSessionId() + " :: sessions -> " + gSessions.size());
             } else {
                 gSessions.put(result.getSessionId(), result);
             }

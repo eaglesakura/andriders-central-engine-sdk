@@ -34,11 +34,6 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND_V3";
 
     /**
-     * セントラルを示すセッション
-     */
-    public static final String SESSION_ID_CENTRALSERVICE = "session.service.central";
-
-    /**
      * セッション管理ID
      * 必ず付与される。付与されないIntentは例外として扱われる。
      */
@@ -48,6 +43,16 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
      * ACE本体サービスに接続するComponentName
      */
     public static final String EXTRA_ACE_COMPONENT = "ace.EXTRA_ACE_COMPONENT";
+
+    /**
+     * ACEに搭載されたSDKのバージョン
+     */
+    public static final String EXTRA_ACE_IMPL_SDK_VERSION = "ace.EXTRA_ACE_IMPL_SDK_VERSION";
+
+    /**
+     * デバッグ機能がONである場合true
+     */
+    public static final String EXTRA_DEBUGABLE = "ace.EXTRA_DEBUGABLE";
 
     /**
      * ACEsのコールバックが登録されていたらtrue
@@ -70,8 +75,8 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         return postToClient(mClientId, cmd, postData);
     }
 
-    public Payload postToClient(String cmd, Payload payload) {
-        return postToClient(mClientId, payload);
+    public Payload postToClient(String cmd, Payload payload) throws RemoteException {
+        return postToClient(mClientId, cmd, payload);
     }
 
     public <T extends BaseProperties> T postToClient(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {

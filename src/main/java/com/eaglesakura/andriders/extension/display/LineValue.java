@@ -4,6 +4,8 @@ import com.eaglesakura.andriders.idl.display.IdlLineDisplayValue;
 import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.util.StringUtil;
 
+import android.util.Base64;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +73,8 @@ public class LineValue {
 
     public static LineValue decode(String encoded) {
         try {
-            List<IdlLineDisplayValue> values = BaseProperties.deserializeToArray(null, IdlLineDisplayValue.class, StringUtil.toByteArray(encoded));
+            byte[] decoded = StringUtil.toByteArray(encoded);
+            List<IdlLineDisplayValue> values = BaseProperties.deserializeToArray(null, IdlLineDisplayValue.class, decoded);
             // 最大行数を超えていたら、末尾を切り落とす
             while (values.size() > MAX_LINES) {
                 values.remove(values.size() - 1);
