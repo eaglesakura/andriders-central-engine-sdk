@@ -1,0 +1,101 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "http://eaglesakura.github.io/maven/"
+        }
+    }
+    dependencies {
+        classpath("com.eaglesakura:eglibrary-gradle-plugin:0.2.7")
+    }
+}
+
+apply plugin: 'com.eaglesakura.android-support'
+
+/**
+ * Protocol Buffersファイルをビルドする
+ */
+task compileProtobuf(type: com.eaglesakura.gradle.tasks.ProtobufCompileTask) {
+    src = file("src/main/protobuf")
+    javaOutput = file("src/main/generated/protobuf")
+}
+
+/**
+ * ACEと拡張アプリが内部で通信する内容を管理する
+ */
+task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
+    outDirectory file('src/main/generated/idl')
+    superClass = "com.eaglesakura.android.db.BaseProperties";
+
+    /**
+     * GPS情報
+     */
+    def IdlLocation = newProps("com.eaglesakura.andriders.idl.remote.IdlLocation");
+    IdlLocation.doubleProperty "latitude", 0
+    IdlLocation.doubleProperty "longitude", 0
+    IdlLocation.doubleProperty "altitude", 0 // 高度
+    IdlLocation.doubleProperty "accuracyMeter", 50 // 精度（メートル単位）
+
+    /**
+     * 心拍情報
+     */
+    def IdlHeartrate = newProps("com.eaglesakura.andriders.idl.remote.IdlHeartrate");
+    IdlHeartrate.intProperty "bpm", 0
+
+    /**
+     * S&Cセンサー
+     */
+    def IdlSpeedAndCadence = newProps("com.eaglesakura.andriders.idl.remote.IdlSpeedAndCadence");
+    IdlSpeedAndCadence.floatProperty "crankRpm", -1
+    IdlSpeedAndCadence.intProperty "crankRevolution", -1
+    IdlSpeedAndCadence.floatProperty "wheelRpm", -1
+    IdlSpeedAndCadence.intProperty "wheelRevolution", -1
+
+    /**
+     * 拡張機能情報
+     */
+    def IdlExtensionInfo = newProps("com.eaglesakura.andriders.idl.remote.IdlExtensionInfo");
+    IdlExtensionInfo.stringProperty "id", "" // 一意に識別するためのID
+    IdlExtensionInfo.stringProperty "text", "" // ヘルプテキスト
+    IdlExtensionInfo.stringProperty "category", "others" // 識別用のカテゴリ。ON/OFFの排他や重複を設定する
+    IdlExtensionInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue
+
+    /**
+     * サイコンのディスプレイ情報を設定する
+     */
+    def IdlCycleDisplayInfo = newProps("com.eaglesakura.andriders.idl.display.IdlCycleDisplayInfo");
+    IdlCycleDisplayInfo.stringProperty "id", "" // 一意に識別するためのID
+    IdlCycleDisplayInfo.stringProperty "title", ""
+    IdlCycleDisplayInfo.stringProperty "text", ""
+    IdlCycleDisplayInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue
+
+    /**
+     * サイコンに表示するディスプレイ情報を通知する
+     */
+    def IdlCycleDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlCycleDisplayValue");
+    IdlCycleDisplayValue.stringProperty "id", "" // 一意に識別するためのID
+    IdlCycleDisplayValue.stringProperty "type", "" // 表示タイプ
+    IdlCycleDisplayValue.stringProperty "values", ""
+    // 表示を行うタイムアウト時間。これを超えた表示内容は無効(N/A)として扱われる。負の値の場合はタイムアウトなし
+    // 表示内容を示したJSON。表示内容は非常に小さいので、JSONレベルの大きさでも問題ないはず。
+    IdlCycleDisplayValue.longProperty "timeoutMs", -1
+
+    /**
+     * サイコンの表示内容を伝えるIDL
+     */
+    def IdlBasicDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlBasicDisplayValue");
+    IdlBasicDisplayValue.stringProperty "mainValue", ""
+    IdlBasicDisplayValue.stringProperty "title", ""
+    IdlBasicDisplayValue.stringProperty "info", ""
+    IdlBasicDisplayValue.intProperty "barA", 0
+    IdlBasicDisplayValue.intProperty "barR", 0
+    IdlBasicDisplayValue.intProperty "barG", 0
+    IdlBasicDisplayValue.intProperty "barB", 0
+
+    /**
+     * サイコンの表示内容を伝えるIDL
+     */
+    def IdlLineDisplayValue = newProps("com.eaglesakura.andriders.idl.display.IdlLineDisplayValue");
+    IdlLineDisplayValue.stringProperty "value", ""
+    IdlLineDisplayValue.stringProperty "title", ""
+}
