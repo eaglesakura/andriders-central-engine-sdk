@@ -1,8 +1,15 @@
 # Andriders Central Engine SDK
 
+* develop
+  * [![Circle CI](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/develop.svg?style=svg)](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/develop)
+* v3.0.x
+  * [![Circle CI](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/v3.0.x.svg?style=svg)](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/v3.0.x)
+
 [@eaglesakura](https://twitter.com/eaglesakura)が開発しているサイクルコンピューターアプリ・[Andriders Central Engine(ACE)](https://play.google.com/store/apps/details?id=com.eaglesakura.andriders)と連携するためのSDKです。
 
 このSDKを利用することで、ACEと下記の連携を行うことができます。
+
+バージョン0.x系列とバージョン3.x系列はアプリのリニューアルに伴い、一部のAPIで互換性が失われています。
 
 * ACEからユーザー本人、もしくはチームメンバーのサイクルコンピューター情報を取得する
 	* 心拍
@@ -18,6 +25,10 @@
 	* タイマーコマンド（一定時間間隔で実行する）
 	* 距離コマンド（一定距離間隔で実行する）
 	* 速度コマンド（ある速度条件を満たしたら実行する）
+* v3.0.x以降で利用可能
+ * 任意の内容を表示
+* 詳細ドキュメント
+ * [JavaDoc](http://eaglesakura.github.io/maven/doc/andriders-central-engine-sdk/javadoc/)
 
 ## build.gradle
 
@@ -37,20 +48,10 @@ dependencies {
 }
 </pre>
 
-## 依存ライブラリ
-
-* 下記の外部ライブラリに依存します
-	 * com.google.protobuf:protobuf-java:2.6.0
-	 * com.android.support:support-annotations:+
-	 * com.eaglesakura:eglibrary-java-geo:0.2.+
-	 * com.eaglesakura:eglibrary-android-java-core:0.2.+
-
 ## ライセンス
 
 [MIT ライセンス](LICENSE-MIT.txt)	として公開します。ソースコードは自由に使ってもらって構いませんが、どんな不具合があっても責任は持ちません。
 
 ## ドキュメント
-
-[JavaDoc](http://eaglesakura.github.io/maven/doc/andriders-central-engine-sdk/javadoc/)
 
 [Andriders Central Engineサイト](https://sites.google.com/site/andriderscentralengine/home)の「拡張機能開発」の手順に従ってください。
