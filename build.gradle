@@ -7,6 +7,7 @@
 def ACES_SDK_VERSION        = "3.0";
 def EGLIBRARY_ARTIFACT_VERSION = "0.2.9";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.+";
+def ARTIFACT_NAME = file(".").absoluteFile.name
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
 buildscript {
@@ -101,7 +102,7 @@ android.libraryVariants.all { variant ->
     }
 
     task("javadoc", type: Javadoc) {
-        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}"
+        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}.${getArtifactVersionSuffix()}"
         description "Generates Android Javadoc for $variant.name."
         source = variant.javaCompile.source
         ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
@@ -133,7 +134,7 @@ uploadArchives {
             repository(url: uri(ARTIFACT_INSTALL_TARGET))
             pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix()
             pom.groupId = "com.eaglesakura"
-            pom.artifactId = "andriders-central-engine-sdk"
+            pom.artifactId = ARTIFACT_NAME
         }
     }
 }
