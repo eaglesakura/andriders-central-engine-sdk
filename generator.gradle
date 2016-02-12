@@ -13,14 +13,6 @@ buildscript {
 apply plugin: 'com.eaglesakura.android-support'
 
 /**
- * Protocol Buffersファイルをビルドする
- */
-task compileProtobuf(type: com.eaglesakura.gradle.tasks.ProtobufCompileTask) {
-    src = file("src/main/protobuf")
-    javaOutput = file("src/main/generated/protobuf")
-}
-
-/**
  * ACEと拡張アプリが内部で通信する内容を管理する
  */
 task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
@@ -67,7 +59,6 @@ task generateIdl(type: com.eaglesakura.gradle.tasks.AndroidPropsGenTask) {
     IdlCycleDisplayInfo.stringProperty "id", "" // 一意に識別するためのID
     IdlCycleDisplayInfo.stringProperty "title", ""
     IdlCycleDisplayInfo.stringProperty "text", ""
-    IdlCycleDisplayInfo.booleanProperty "hasSetting", false // 設定画面を持つならばtrue
 
     /**
      * サイコンに表示するディスプレイ情報を通知する

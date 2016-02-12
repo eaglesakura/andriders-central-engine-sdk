@@ -1,0 +1,63 @@
+package eaglesakura_ace_internal;
+option java_package = "com.eaglesakura.andriders.protocol.internal";
+
+// GPS座標情報
+message IdlLocation {
+    required double latitude        = 1;    // 緯度
+    required double longitude       = 2;    // 経度
+    required double altitude        = 3;    // 高度
+    required double accuracyMeter   = 4;    // 精度（メートル）
+}
+
+// 心拍データ送信
+message IdlHeartrate {
+    required int32 bpm = 1; // 心拍数RAW
+}
+
+// スピード＆ケイデンスセンサー送信
+message IdlSpeedAndCadence {
+    optional float crankRpm         = 10;   // クランク回転数 / 分
+    optional int32 crankRevolution  = 11;   // クランク合計回転数
+    optional float wheelRpm         = 20;   // ホイール回転数 / 分
+    optional int32 wheelRevolution  = 21;   // ホイール合計回転数
+}
+
+// 拡張機能自体の情報
+message IdlExtensionInfo {
+    required string id          = 1;    // 一意に識別するためのID
+    optional string summary     = 2;    // 説明テキスト
+    required string category    = 3;    // カテゴリ情報, default=other
+    required bool hasSetting    = 4;    // 設定画面を持つならばtrue
+    required bool activated     = 5;    // 使用可能な状態である場合はtrue, falseの場合、拡張を有効化できなくする
+}
+
+// サイコンのディスプレイ情報
+message IdlCycleDisplayInfo {
+    required string id          = 1;    // 一意に識別するためのID
+    required string title       = 2;    // 表示タイトル
+}
+
+// サイコンのディスプレイに表示する値
+message IdlCycleDisplayValue {
+    required string id          = 1;    // 一意に識別するためのID, IdlCycleDisplayInfoのidと一致させる
+
+    // 標準的な表示値
+    message BasicValue {
+        required string main        = 1;    // メイン表示テキスト（心拍等）
+        optional string title       = 2;    // 表示タイトル（メインテキストの下に差し込まれる）
+        optional string barInfo     = 3;    // バーの内側に表示される
+        required int32  barColorA   = 4;    // バーの色（A)
+        required int32  barColorR   = 5;    // バーの色（R)
+        required int32  barColorG   = 6;    // バーの色（G)
+        required int32  barColorB   = 7;    // バーの色（B)
+    }
+    optional BasicValue basicValue = 10;
+
+    // タイトルと値のペアを表示する
+    // 最大表示数は現在のところ3
+    message KeyValue {
+        optional string title       = 1;    // 表示されるタイトル
+        optional string value       = 2;    // 表示される値
+    }
+    repeated KeyValue   keyValues = 11;
+}
