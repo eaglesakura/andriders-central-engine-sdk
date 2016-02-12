@@ -34,7 +34,7 @@ deployment:
       - ./script/deploy.sh
       - ./script/circle-maven-commit.sh
   feature:
-    branch: /^feature\/id\/*/
+    branch: /^feature\/id\/.*$/
     commands:
       - rm -rf "/home/ubuntu/.m2"
       - rm -rf "/home/ubuntu/.ivy2"
