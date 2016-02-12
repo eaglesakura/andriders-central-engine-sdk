@@ -73,7 +73,7 @@ android {
         targetSdkVersion 23
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
     }
 
     sourceSets {
@@ -102,7 +102,7 @@ android.libraryVariants.all { variant ->
     }
 
     task("javadoc", type: Javadoc) {
-        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}.${getArtifactVersionSuffix()}"
+        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}${getArtifactVersionSuffix()}"
         description "Generates Android Javadoc for $variant.name."
         source = variant.javaCompile.source
         ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
