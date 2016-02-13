@@ -1,15 +1,12 @@
 # Andriders Central Engine SDK
-
-* develop
-  * [![Circle CI](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/develop.svg?style=svg)](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/develop)
-* v3.0.x
-  * [![Circle CI](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/v3.0.x.svg?style=svg)](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/v3.0.x)
+| ブランチ | 内容 | ビルドステータス |
+|---|---|---|
+| develop | 最新開発ブランチ(Nightly Build対象) | [![Circle CI](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/develop.svg?style=svg)](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/develop) |
+| v3.0.x | ACE ver 3系列用SDK(予定) | [![Circle CI](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/v3.0.x.svg?style=svg)](https://circleci.com/gh/eaglesakura/andriders-central-engine-sdk/tree/v3.0.x) |
 
 [@eaglesakura](https://twitter.com/eaglesakura)が開発しているサイクルコンピューターアプリ・[Andriders Central Engine(ACE)](https://play.google.com/store/apps/details?id=com.eaglesakura.andriders)と連携するためのSDKです。
 
 このSDKを利用することで、ACEと下記の連携を行うことができます。
-
-バージョン0.x系列とバージョン3.x系列はアプリのリニューアルに伴い、一部のAPIで互換性が失われています。
 
 * ACEからユーザー本人、もしくはチームメンバーのサイクルコンピューター情報を取得する
 	* 心拍

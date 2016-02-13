@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders;
 
-import com.eaglesakura.android.cmdservice.BuildConfig;
+import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.util.LogUtil;
 
 import org.junit.Before;
