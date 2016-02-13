@@ -5,8 +5,7 @@
 // 0.4.6 : EGLIB module update
 // 3.0.x : ACE v3系列対応 / Circle CI対応
 def ACES_SDK_VERSION        = "3.0";
-def EGLIBRARY_ARTIFACT_VERSION = "0.2.9";
-def PROTOBUF_ARTIFACT_VERSION = "2.6.+";
+def PROTOBUF_ARTIFACT_VERSION = "2.6.1";
 def ARTIFACT_NAME = file(".").absoluteFile.name
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
@@ -62,6 +61,12 @@ dependencies {
         compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
         compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
     }
+
+    /**
+     * Unit Testing
+     */
+    testCompile 'junit:junit:4.12'
+    testCompile "org.robolectric:robolectric:3.0"
 }
 
 android {

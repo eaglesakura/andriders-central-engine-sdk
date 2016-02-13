@@ -3,10 +3,8 @@ package com.eaglesakura.andriders.extension.data;
 import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.internal.CentralDataCommand;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
-import com.eaglesakura.andriders.idl.remote.IdlHeartrate;
-import com.eaglesakura.andriders.idl.remote.IdlLocation;
-import com.eaglesakura.andriders.idl.remote.IdlSpeedAndCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol;
+import com.eaglesakura.andriders.protocol.internal.InternalData;
 import com.eaglesakura.util.LogUtil;
 
 import android.location.Location;
@@ -47,7 +45,7 @@ public class CentralDataExtension {
     public void setLocation(Location loc) {
         mServerImpl.validAcesSession();
 
-        IdlLocation idl = new IdlLocation(null);
+        InternalData.IdlLocation.Builder idl = InternalData.IdlLocation.newBuilder();
         idl.setLatitude(loc.getLatitude());
         idl.setLongitude(loc.getLongitude());
         idl.setAltitude(loc.getAltitude());
@@ -66,7 +64,7 @@ public class CentralDataExtension {
     public void setHeartrate(int bpm) {
         mServerImpl.validAcesSession();
 
-        IdlHeartrate idl = new IdlHeartrate(null);
+        InternalData.IdlHeartrate.Builder idl = InternalData.IdlHeartrate.newBuilder();
         idl.setBpm(bpm);
 
         try {
@@ -82,7 +80,7 @@ public class CentralDataExtension {
     public void setSpeedAndCadence(float crankRpm, int crankRevolution, float wheelRpm, int wheelRevolution) {
         mServerImpl.validAcesSession();
 
-        IdlSpeedAndCadence idl = new IdlSpeedAndCadence(null);
+        InternalData.IdlSpeedAndCadence.Builder idl = InternalData.IdlSpeedAndCadence.newBuilder();
         idl.setCrankRpm(crankRpm);
         idl.setCrankRevolution(crankRevolution);
         idl.setWheelRpm(wheelRpm);

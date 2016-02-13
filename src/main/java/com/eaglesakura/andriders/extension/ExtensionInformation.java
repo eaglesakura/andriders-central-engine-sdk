@@ -1,7 +1,9 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.idl.remote.IdlExtensionInfo;
-import com.eaglesakura.android.db.BaseProperties;
+import com.eaglesakura.andriders.protocol.internal.InternalData;
+import com.eaglesakura.android.service.data.Payload;
+import com.eaglesakura.util.SerializeUtil;
+import com.eaglesakura.util.Util;
 
 import android.content.Context;
 
@@ -12,13 +14,14 @@ import java.util.List;
  * 拡張情報
  */
 public class ExtensionInformation {
-    IdlExtensionInfo raw;
+    InternalData.IdlExtensionInfo.Builder raw;
 
-    private ExtensionInformation(IdlExtensionInfo raw) {
+    private ExtensionInformation(InternalData.IdlExtensionInfo.Builder raw) {
         if (raw == null) {
-            raw = new IdlExtensionInfo(null);
+            raw = InternalData.IdlExtensionInfo.newBuilder();
         }
         this.raw = raw;
+        makeDefault();
     }
 
     public ExtensionInformation(Context context, String id) {
@@ -28,26 +31,56 @@ public class ExtensionInformation {
         }
 
         raw.setId(context.getPackageName() + "@" + id);
+        makeDefault();
+    }
+
+    private void makeDefault() {
+        if (!raw.hasCategory()) {
+            setCategory(ExtensionCategory.CATEGORY_OTHERS);
+        }
+        if (!raw.hasHasSetting()) {
+            setHasSetting(false);
+        }
+        if (!raw.hasActivated()) {
+            setActivated(true);
+        }
     }
 
     public String getId() {
         return raw.getId();
     }
 
-    public void setText(String set) {
-        raw.setText(set);
+    public void setSummary(String set) {
+        raw.setSummary(set);
     }
 
-    public String getText() {
-        return raw.getText();
+    public String getSummary() {
+        return raw.getSummary();
     }
 
     public boolean hasSetting() {
         return raw.getHasSetting();
     }
 
+    /**
+     * 拡張機能が設定画面を持っていたらtrue
+     */
     public void setHasSetting(boolean set) {
         raw.setHasSetting(set);
+    }
+
+    /**
+     * 拡張機能の使用準備ができていたらtrue
+     */
+    public void setActivated(boolean value) {
+        raw.setActivated(value);
+    }
+
+    /**
+     * 拡張機能の使用準備ができていたらtrue
+     */
+    public boolean isActivated() {
+        return raw.getActivated();
     }
 
     public ExtensionCategory getCategory() {
@@ -62,26 +95,26 @@ public class ExtensionInformation {
      * データをシリアライズする
      */
     public byte[] serialize() {
-        return raw.toByteArray();
+        return raw.build().toByteArray();
     }
 
     public static byte[] serialize(List<ExtensionInformation> list) {
-        List<IdlExtensionInfo> rawList = new ArrayList<>();
+        List<byte[]> rawList = new ArrayList<>();
         for (ExtensionInformation item : list) {
-            rawList.add(item.raw);
+            rawList.add(item.serialize());
         }
-        return BaseProperties.serialize(rawList);
+        return SerializeUtil.toByteArray(rawList);
     }
 
     /**
      * バッファからデシリアライズする
      */
     public static List<ExtensionInformation> deserialize(byte[] buffer) {
-        List<IdlExtensionInfo> rawList = BaseProperties.deserializeToArray(null, IdlExtensionInfo.class, buffer);
-        if (rawList != null) {
+        List<byte[]> serializedBuffers = SerializeUtil.toByteArrayList(buffer);
+        if (!Util.isEmpty(serializedBuffers)) {
             List<ExtensionInformation> result = new ArrayList<>();
-            for (IdlExtensionInfo raw : rawList) {
-                result.add(new ExtensionInformation(raw));
+            for (byte[] serialized : serializedBuffers) {
+                result.add(new ExtensionInformation(Payload.deserializeMessageOrNull(InternalData.IdlExtensionInfo.class, serialized).toBuilder()));
             }
             return result;
         } else {

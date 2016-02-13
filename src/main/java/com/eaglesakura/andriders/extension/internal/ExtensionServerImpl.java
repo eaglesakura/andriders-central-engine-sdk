@@ -1,5 +1,7 @@
 package com.eaglesakura.andriders.extension.internal;
 
+import com.google.protobuf.GeneratedMessage;
+
 import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.extension.ExtensionInformation;
 import com.eaglesakura.andriders.extension.ExtensionSession;
@@ -77,6 +79,14 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
 
     public Payload postToClient(String cmd, Payload payload) throws RemoteException {
         return postToClient(mClientId, cmd, payload);
+    }
+
+    public Payload postToClient(String cmd, GeneratedMessage msg) throws RemoteException {
+        return postToClient(cmd, new Payload(msg.toByteArray()));
+    }
+
+    public Payload postToClient(String cmd, GeneratedMessage.Builder msg) throws RemoteException {
+        return postToClient(cmd, new Payload(msg.build().toByteArray()));
     }
 
     public <T extends BaseProperties> T postToClient(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {
