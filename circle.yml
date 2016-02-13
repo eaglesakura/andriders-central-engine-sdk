@@ -32,8 +32,8 @@ deployment:
       - rm -rf "/home/ubuntu/.ivy2"
       - rm -rf "/home/ubuntu/.gradle"
       - git clone git@github.com:eaglesakura/maven.git
-      - ./script/test.sh
       - ./script/deploy.sh
+      - ./script/test.sh
       - ./script/circle-maven-commit.sh
   feature:
     branch: /^feature\/id\/.*$/
@@ -41,13 +41,13 @@ deployment:
       - rm -rf "/home/ubuntu/.m2"
       - rm -rf "/home/ubuntu/.ivy2"
       - rm -rf "/home/ubuntu/.gradle"
-      - ./script/test.sh
       - ./script/assemble.sh
+      - ./script/test.sh
   develop:
     branch: develop
     commands:
       - rm -rf "/home/ubuntu/.m2"
       - rm -rf "/home/ubuntu/.ivy2"
       - rm -rf "/home/ubuntu/.gradle"
-      - ./script/test.sh
       - ./script/deploy.sh
+      - ./script/test.sh
