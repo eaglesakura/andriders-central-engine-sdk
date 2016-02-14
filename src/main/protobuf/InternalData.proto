@@ -40,6 +40,7 @@ message IdlCycleDisplayInfo {
 // サイコンのディスプレイに表示する値
 message IdlCycleDisplayValue {
     required string id          = 1;    // 一意に識別するためのID, IdlCycleDisplayInfoのidと一致させる
+    required int32  timeoutMs   = 2;    // 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
 
     // 標準的な表示値
     message BasicValue {

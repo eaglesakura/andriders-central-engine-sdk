@@ -1,10 +1,7 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.idl.display.IdlLineDisplayValue;
-import com.eaglesakura.android.db.BaseProperties;
+import com.eaglesakura.andriders.protocol.internal.InternalData;
 import com.eaglesakura.util.StringUtil;
-
-import android.util.Base64;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +15,7 @@ public class LineValue {
     public static final String TYPE = "LINE_INFORMATION";
     public static final int MAX_LINES = 3;
 
-    private List<IdlLineDisplayValue> values = new ArrayList<>();
+    List<InternalData.IdlCycleDisplayValue.KeyValue.Builder> values = new ArrayList<>();
 
     public LineValue(int lines) {
         if (lines > MAX_LINES) {
@@ -26,11 +23,11 @@ public class LineValue {
         }
 
         for (int i = 0; i < lines; ++i) {
-            values.add(new IdlLineDisplayValue(null));
+            values.add(InternalData.IdlCycleDisplayValue.KeyValue.newBuilder());
         }
     }
 
-    private LineValue(List<IdlLineDisplayValue> values) {
+    LineValue(List<InternalData.IdlCycleDisplayValue.KeyValue.Builder> values) {
         this.values = values;
     }
 
@@ -38,7 +35,7 @@ public class LineValue {
      * 指定したラインが有効であればtrue
      */
     public boolean valid(int line) {
-        IdlLineDisplayValue v = values.get(line);
+        InternalData.IdlCycleDisplayValue.KeyValue.Builder v = values.get(line);
         return !StringUtil.isEmpty(v.getValue()) || !StringUtil.isEmpty(v.getTitle());
     }
 
@@ -47,7 +44,7 @@ public class LineValue {
      */
     public boolean valid() {
         for (int i = 0; i < values.size(); ++i) {
-            if (valid()) {
+            if (valid(i)) {
                 return true;
             }
         }
@@ -58,31 +55,9 @@ public class LineValue {
      * 表示する値を指定する
      */
     public void setLine(int index, String title, String value) {
-        IdlLineDisplayValue v = values.get(index);
+        InternalData.IdlCycleDisplayValue.KeyValue.Builder v = values.get(index);
 
         v.setTitle(title != null ? title : "");
         v.setValue(value != null ? value : "");
-    }
-
-    /**
-     * 文字列エンコードする
-     */
-    String encode() {
-        return StringUtil.toString(BaseProperties.serialize(values));
-    }
-
-    public static LineValue decode(String encoded) {
-        try {
-            byte[] decoded = StringUtil.toByteArray(encoded);
-            List<IdlLineDisplayValue> values = BaseProperties.deserializeToArray(null, IdlLineDisplayValue.class, decoded);
-            // 最大行数を超えていたら、末尾を切り落とす
-            while (values.size() > MAX_LINES) {
-                values.remove(values.size() - 1);
-            }
-
-            return new LineValue(values);
-        } catch (Exception e) {
-            return null;
-        }
     }
 }

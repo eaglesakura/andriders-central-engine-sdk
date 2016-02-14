@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.idl.display.IdlBasicDisplayValue;
+import com.eaglesakura.andriders.protocol.internal.InternalData;
 import com.eaglesakura.util.StringUtil;
 
 import android.graphics.Color;
@@ -16,48 +16,62 @@ import android.graphics.Color;
  */
 public class BasicValue {
     public static final String TYPE = "BASIC_INFORMATION";
-    IdlBasicDisplayValue raw;
+    InternalData.IdlCycleDisplayValue.BasicValue.Builder raw;
 
     public BasicValue() {
-        this.raw = new IdlBasicDisplayValue(null);
+        this.raw = InternalData.IdlCycleDisplayValue.BasicValue.newBuilder();
+        makeDefault();
     }
 
-    private BasicValue(IdlBasicDisplayValue raw) {
+    BasicValue(InternalData.IdlCycleDisplayValue.BasicValue.Builder raw) {
         this.raw = raw;
+        makeDefault();
+    }
+
+    private void makeDefault() {
+        if (!raw.hasBarColorA()) {
+            raw.setBarColorA(255);
+            raw.setBarColorR(128);
+            raw.setBarColorG(128);
+            raw.setBarColorB(128);
+        }
     }
 
     public int getBarColorARGB() {
-        return Color.argb(raw.getBarA(), raw.getBarR(), raw.getBarG(), raw.getBarB());
+        return Color.argb(raw.getBarColorA(), raw.getBarColorR(), raw.getBarColorG(), raw.getBarColorB());
     }
 
     public void setBarColorARGB(int barColorARGB) {
-        raw.setBarA(Color.alpha(barColorARGB));
-        raw.setBarR(Color.red(barColorARGB));
-        raw.setBarG(Color.green(barColorARGB));
-        raw.setBarB(Color.blue(barColorARGB));
+        raw.setBarColorA(Color.alpha(barColorARGB));
+        raw.setBarColorR(Color.red(barColorARGB));
+        raw.setBarColorG(Color.green(barColorARGB));
+        raw.setBarColorB(Color.blue(barColorARGB));
     }
 
     /**
      * 表示可能である場合true
      */
     public boolean valid() {
-        return !StringUtil.isEmpty(raw.getMainValue());
+        return !StringUtil.isEmpty(raw.getMain());
     }
 
+    /**
+     * メインの表示内容を取得する
+     */
     public String getValue() {
-        return raw.getMainValue();
+        return raw.getMain();
     }
 
     public void setValue(String mainValue) {
-        raw.setMainValue(mainValue);
+        raw.setMain(mainValue);
     }
 
     public String getInformation() {
-        return raw.getInfo();
+        return raw.getBarInfo();
     }
 
     public void setInformation(String infoText) {
-        raw.setInfo(infoText);
+        raw.setBarInfo(infoText);
     }
 
     public String getTitle() {
@@ -68,20 +82,4 @@ public class BasicValue {
         raw.setTitle(titleText);
     }
 
-    /**
-     * base64にエンコードする
-     */
-    String encode() {
-        return StringUtil.toString(raw.toByteArray());
-    }
-
-    public static BasicValue decode(String encoded) {
-        try {
-            IdlBasicDisplayValue newValue = new IdlBasicDisplayValue(null);
-            newValue.fromByteArray(StringUtil.toByteArray(encoded));
-            return new BasicValue(newValue);
-        } catch (Exception e) {
-            return null;
-        }
-    }
 }

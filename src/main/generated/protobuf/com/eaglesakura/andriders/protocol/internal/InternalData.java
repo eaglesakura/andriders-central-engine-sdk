@@ -3997,6 +3997,23 @@ public final class InternalData {
         getIdBytes();
 
     /**
+     * <code>required int32 timeoutMs = 2;</code>
+     *
+     * <pre>
+     * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+     * </pre>
+     */
+    boolean hasTimeoutMs();
+    /**
+     * <code>required int32 timeoutMs = 2;</code>
+     *
+     * <pre>
+     * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+     * </pre>
+     */
+    int getTimeoutMs();
+
+    /**
      * <code>optional .eaglesakura_ace_internal.IdlCycleDisplayValue.BasicValue basicValue = 10;</code>
      */
     boolean hasBasicValue();
@@ -4095,9 +4112,14 @@ public final class InternalData {
               id_ = bs;
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              timeoutMs_ = input.readInt32();
+              break;
+            }
             case 82: {
               com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = basicValue_.toBuilder();
               }
               basicValue_ = input.readMessage(com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.PARSER, extensionRegistry);
@@ -4105,13 +4127,13 @@ public final class InternalData {
                 subBuilder.mergeFrom(basicValue_);
                 basicValue_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               break;
             }
             case 90: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 keyValues_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValue>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000008;
               }
               keyValues_.add(input.readMessage(com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValue.PARSER, extensionRegistry));
               break;
@@ -4124,7 +4146,7 @@ public final class InternalData {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           keyValues_ = java.util.Collections.unmodifiableList(keyValues_);
         }
         this.unknownFields = unknownFields.build();
@@ -6374,13 +6396,36 @@ public final class InternalData {
       }
     }
 
+    public static final int TIMEOUTMS_FIELD_NUMBER = 2;
+    private int timeoutMs_;
+    /**
+     * <code>required int32 timeoutMs = 2;</code>
+     *
+     * <pre>
+     * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+     * </pre>
+     */
+    public boolean hasTimeoutMs() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 timeoutMs = 2;</code>
+     *
+     * <pre>
+     * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+     * </pre>
+     */
+    public int getTimeoutMs() {
+      return timeoutMs_;
+    }
+
     public static final int BASICVALUE_FIELD_NUMBER = 10;
     private com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue basicValue_;
     /**
      * <code>optional .eaglesakura_ace_internal.IdlCycleDisplayValue.BasicValue basicValue = 10;</code>
      */
     public boolean hasBasicValue() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .eaglesakura_ace_internal.IdlCycleDisplayValue.BasicValue basicValue = 10;</code>
@@ -6432,6 +6477,7 @@ public final class InternalData {
 
     private void initFields() {
       id_ = "";
+      timeoutMs_ = 0;
       basicValue_ = com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.getDefaultInstance();
       keyValues_ = java.util.Collections.emptyList();
     }
@@ -6442,6 +6488,10 @@ public final class InternalData {
       if (isInitialized == 0) return false;
 
       if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTimeoutMs()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -6462,6 +6512,9 @@ public final class InternalData {
         output.writeBytes(1, getIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, timeoutMs_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(10, basicValue_);
       }
       for (int i = 0; i < keyValues_.size(); i++) {
@@ -6481,6 +6534,10 @@ public final class InternalData {
           .computeBytesSize(1, getIdBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, timeoutMs_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, basicValue_);
       }
@@ -6613,15 +6670,17 @@ public final class InternalData {
         super.clear();
         id_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        timeoutMs_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (basicValueBuilder_ == null) {
           basicValue_ = com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.getDefaultInstance();
         } else {
           basicValueBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (keyValuesBuilder_ == null) {
           keyValues_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           keyValuesBuilder_.clear();
         }
@@ -6660,15 +6719,19 @@ public final class InternalData {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
+        result.timeoutMs_ = timeoutMs_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         if (basicValueBuilder_ == null) {
           result.basicValue_ = basicValue_;
         } else {
           result.basicValue_ = basicValueBuilder_.build();
         }
         if (keyValuesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             keyValues_ = java.util.Collections.unmodifiableList(keyValues_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.keyValues_ = keyValues_;
         } else {
@@ -6695,6 +6758,9 @@ public final class InternalData {
           id_ = other.id_;
           onChanged();
         }
+        if (other.hasTimeoutMs()) {
+          setTimeoutMs(other.getTimeoutMs());
+        }
         if (other.hasBasicValue()) {
           mergeBasicValue(other.getBasicValue());
         }
@@ -6702,7 +6768,7 @@ public final class InternalData {
           if (!other.keyValues_.isEmpty()) {
             if (keyValues_.isEmpty()) {
               keyValues_ = other.keyValues_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureKeyValuesIsMutable();
               keyValues_.addAll(other.keyValues_);
@@ -6715,7 +6781,7 @@ public final class InternalData {
               keyValuesBuilder_.dispose();
               keyValuesBuilder_ = null;
               keyValues_ = other.keyValues_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000008);
               keyValuesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getKeyValuesFieldBuilder() : null;
@@ -6730,6 +6796,10 @@ public final class InternalData {
 
       public final boolean isInitialized() {
         if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasTimeoutMs()) {
           
           return false;
         }
@@ -6861,6 +6931,54 @@ public final class InternalData {
         return this;
       }
 
+      private int timeoutMs_ ;
+      /**
+       * <code>required int32 timeoutMs = 2;</code>
+       *
+       * <pre>
+       * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+       * </pre>
+       */
+      public boolean hasTimeoutMs() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 timeoutMs = 2;</code>
+       *
+       * <pre>
+       * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+       * </pre>
+       */
+      public int getTimeoutMs() {
+        return timeoutMs_;
+      }
+      /**
+       * <code>required int32 timeoutMs = 2;</code>
+       *
+       * <pre>
+       * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+       * </pre>
+       */
+      public Builder setTimeoutMs(int value) {
+        bitField0_ |= 0x00000002;
+        timeoutMs_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 timeoutMs = 2;</code>
+       *
+       * <pre>
+       * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
+       * </pre>
+       */
+      public Builder clearTimeoutMs() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        timeoutMs_ = 0;
+        onChanged();
+        return this;
+      }
+
       private com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue basicValue_ = com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue, com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.Builder, com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValueOrBuilder> basicValueBuilder_;
@@ -6868,7 +6986,7 @@ public final class InternalData {
        * <code>optional .eaglesakura_ace_internal.IdlCycleDisplayValue.BasicValue basicValue = 10;</code>
        */
       public boolean hasBasicValue() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .eaglesakura_ace_internal.IdlCycleDisplayValue.BasicValue basicValue = 10;</code>
@@ -6893,7 +7011,7 @@ public final class InternalData {
         } else {
           basicValueBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -6907,7 +7025,7 @@ public final class InternalData {
         } else {
           basicValueBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -6915,7 +7033,7 @@ public final class InternalData {
        */
       public Builder mergeBasicValue(com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue value) {
         if (basicValueBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
               basicValue_ != com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.getDefaultInstance()) {
             basicValue_ =
               com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.newBuilder(basicValue_).mergeFrom(value).buildPartial();
@@ -6926,7 +7044,7 @@ public final class InternalData {
         } else {
           basicValueBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
@@ -6939,14 +7057,14 @@ public final class InternalData {
         } else {
           basicValueBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .eaglesakura_ace_internal.IdlCycleDisplayValue.BasicValue basicValue = 10;</code>
        */
       public com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.BasicValue.Builder getBasicValueBuilder() {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return getBasicValueFieldBuilder().getBuilder();
       }
@@ -6980,9 +7098,9 @@ public final class InternalData {
       private java.util.List<com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValue> keyValues_ =
         java.util.Collections.emptyList();
       private void ensureKeyValuesIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           keyValues_ = new java.util.ArrayList<com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValue>(keyValues_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -7132,7 +7250,7 @@ public final class InternalData {
       public Builder clearKeyValues() {
         if (keyValuesBuilder_ == null) {
           keyValues_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           keyValuesBuilder_.clear();
@@ -7209,7 +7327,7 @@ public final class InternalData {
           keyValuesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValue, com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValue.Builder, com.eaglesakura.andriders.protocol.internal.InternalData.IdlCycleDisplayValue.KeyValueOrBuilder>(
                   keyValues_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           keyValues_ = null;
@@ -7287,18 +7405,18 @@ public final class InternalData {
       "IdlExtensionInfo\022\n\n\002id\030\001 \002(\t\022\017\n\007summary\030" +
       "\002 \001(\t\022\020\n\010category\030\003 \002(\t\022\022\n\nhasSetting\030\004 " +
       "\002(\010\022\021\n\tactivated\030\005 \002(\010\"0\n\023IdlCycleDispla",
-      "yInfo\022\n\n\002id\030\001 \002(\t\022\r\n\005title\030\002 \002(\t\"\360\002\n\024Idl" +
-      "CycleDisplayValue\022\n\n\002id\030\001 \002(\t\022M\n\nbasicVa" +
-      "lue\030\n \001(\01329.eaglesakura_ace_internal.Idl" +
-      "CycleDisplayValue.BasicValue\022J\n\tkeyValue" +
-      "s\030\013 \003(\01327.eaglesakura_ace_internal.IdlCy" +
-      "cleDisplayValue.KeyValue\032\206\001\n\nBasicValue\022" +
-      "\014\n\004main\030\001 \002(\t\022\r\n\005title\030\002 \001(\t\022\017\n\007barInfo\030" +
-      "\003 \001(\t\022\021\n\tbarColorA\030\004 \002(\005\022\021\n\tbarColorR\030\005 " +
-      "\002(\005\022\021\n\tbarColorG\030\006 \002(\005\022\021\n\tbarColorB\030\007 \002(" +
-      "\005\032(\n\010KeyValue\022\r\n\005title\030\001 \001(\t\022\r\n\005value\030\002 ",
-      "\001(\tB-\n+com.eaglesakura.andriders.protoco" +
-      "l.internal"
+      "yInfo\022\n\n\002id\030\001 \002(\t\022\r\n\005title\030\002 \002(\t\"\203\003\n\024Idl" +
+      "CycleDisplayValue\022\n\n\002id\030\001 \002(\t\022\021\n\ttimeout" +
+      "Ms\030\002 \002(\005\022M\n\nbasicValue\030\n \001(\01329.eaglesaku" +
+      "ra_ace_internal.IdlCycleDisplayValue.Bas" +
+      "icValue\022J\n\tkeyValues\030\013 \003(\01327.eaglesakura" +
+      "_ace_internal.IdlCycleDisplayValue.KeyVa" +
+      "lue\032\206\001\n\nBasicValue\022\014\n\004main\030\001 \002(\t\022\r\n\005titl" +
+      "e\030\002 \001(\t\022\017\n\007barInfo\030\003 \001(\t\022\021\n\tbarColorA\030\004 " +
+      "\002(\005\022\021\n\tbarColorR\030\005 \002(\005\022\021\n\tbarColorG\030\006 \002(" +
+      "\005\022\021\n\tbarColorB\030\007 \002(\005\032(\n\010KeyValue\022\r\n\005titl",
+      "e\030\001 \001(\t\022\r\n\005value\030\002 \001(\tB-\n+com.eaglesakur" +
+      "a.andriders.protocol.internal"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -7347,7 +7465,7 @@ public final class InternalData {
     internal_static_eaglesakura_ace_internal_IdlCycleDisplayValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_eaglesakura_ace_internal_IdlCycleDisplayValue_descriptor,
-        new java.lang.String[] { "Id", "BasicValue", "KeyValues", });
+        new java.lang.String[] { "Id", "TimeoutMs", "BasicValue", "KeyValues", });
     internal_static_eaglesakura_ace_internal_IdlCycleDisplayValue_BasicValue_descriptor =
       internal_static_eaglesakura_ace_internal_IdlCycleDisplayValue_descriptor.getNestedTypes().get(0);
     internal_static_eaglesakura_ace_internal_IdlCycleDisplayValue_BasicValue_fieldAccessorTable = new

@@ -1,9 +1,8 @@
 package com.eaglesakura.andriders.extension.display;
 
 import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.idl.display.IdlCycleDisplayValue;
-import com.eaglesakura.android.db.BaseProperties;
-import com.eaglesakura.util.StringUtil;
+import com.eaglesakura.andriders.protocol.internal.InternalData;
+import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.Util;
 
 import android.content.Context;
@@ -16,7 +15,7 @@ import java.util.List;
  * ディスプレイ表示内容を指定する
  */
 public class DisplayData {
-    private IdlCycleDisplayValue raw;
+    private InternalData.IdlCycleDisplayValue.Builder raw;
 
     private BasicValue mBasicValue;
 
@@ -26,27 +25,37 @@ public class DisplayData {
      * @param bind 表示対象のディスプレイ情報
      */
     public DisplayData(DisplayInformation bind) {
-        this.raw = new IdlCycleDisplayValue(null);
+        this.raw = InternalData.IdlCycleDisplayValue.newBuilder();
         raw.setId(bind.getId());
+        makeDefault();
     }
 
     /**
      * ディスプレイ
      */
     public DisplayData(Context context, String id) {
-        this.raw = new IdlCycleDisplayValue(null);
+        this.raw = InternalData.IdlCycleDisplayValue.newBuilder();
         raw.setId(new DisplayInformation(context, id).getId());
+        makeDefault();
     }
 
-    protected DisplayData(IdlCycleDisplayValue raw) {
+
+    protected DisplayData(InternalData.IdlCycleDisplayValue.Builder raw) {
         this.raw = raw;
 
-        if (!StringUtil.isEmpty(raw.getType())) {
-            if (raw.getType().equals(BasicValue.TYPE)) {
-                mBasicValue = BasicValue.decode(raw.getValues());
-            } else if (raw.getType().equals(LineValue.TYPE)) {
-                mLineValue = LineValue.decode(raw.getValues());
-            }
+        if (raw.hasBasicValue()) {
+            mBasicValue = new BasicValue(raw.getBasicValueBuilder());
+        } else if (raw.getKeyValuesCount() > 0 && raw.getKeyValuesCount() <= LineValue.MAX_LINES) {
+            mLineValue = new LineValue(raw.getKeyValuesBuilderList());
+        }
+
+        makeDefault();
+    }
+
+    private void makeDefault() {
+        if (!raw.hasTimeoutMs()) {
+            // デフォルトはタイムアウト無し
+            raw.setTimeoutMs(-1);
         }
     }
 
@@ -54,31 +63,55 @@ public class DisplayData {
      * 表示が有効であればtrue
      */
     public boolean valid() {
-        return !StringUtil.isEmpty(raw.getType());
+        return mBasicValue != null || mLineValue != null;
     }
 
     public String getId() {
         return raw.getId();
     }
 
+    /**
+     * 表示タイプを取得する
+     *
+     * @see BasicValue#TYPE
+     * @see LineValue#TYPE
+     */
     public String getType() {
-        return raw.getType();
+        if (mBasicValue != null) {
+            return BasicValue.TYPE;
+        } else if (mLineValue != null) {
+            return LineValue.TYPE;
+        } else {
+            return null;
+        }
     }
 
-    public void setTimeoutMs(long set) {
+    /**
+     * 値が有効である期限を指定する
+     *
+     * この期間を過ぎると、値がN/A扱いとなる。
+     * 負の値の場合、永続化する。
+     */
+    public void setTimeoutMs(int set) {
         raw.setTimeoutMs(set);
     }
 
-    public long getTimeoutMs() {
+    /**
+     * タイムアウト時間が設定されている場合はtrue
+     */
+    public boolean hasTimeout() {
+        return raw.getTimeoutMs() > 0;
+    }
+
+    public int getTimeoutMs() {
         return raw.getTimeoutMs();
     }
 
     private void resetValue() {
-        raw.setValues("");
-        raw.setType("");
-
         mBasicValue = null;
         mLineValue = null;
+        raw.clearBasicValue();
+        raw.clearKeyValues();
     }
 
     /**
@@ -86,7 +119,6 @@ public class DisplayData {
      */
     public void setValue(BasicValue newValue) {
         resetValue();
-        raw.setType(BasicValue.TYPE);
         mBasicValue = newValue;
     }
 
@@ -95,7 +127,6 @@ public class DisplayData {
      */
     public void setValue(LineValue newValue) {
         resetValue();
-        raw.setType(LineValue.TYPE);
         mLineValue = newValue;
     }
 
@@ -113,14 +144,17 @@ public class DisplayData {
         return mLineValue;
     }
 
-    private void encodeValue() {
+    private byte[] serialize() {
         if (mBasicValue != null) {
-            raw.setValues(mBasicValue.encode());
+            raw.setBasicValue(mBasicValue.raw);
         } else if (mLineValue != null) {
-            raw.setValues(mLineValue.encode());
-        } else {
-            resetValue();
+            raw.clearKeyValues();
+            for (InternalData.IdlCycleDisplayValue.KeyValue.Builder value : mLineValue.values) {
+                raw.addKeyValues(value);
+            }
         }
+
+        return raw.build().toByteArray();
     }
 
     public static byte[] serialize(List<DisplayData> list) {
@@ -128,12 +162,11 @@ public class DisplayData {
             return null;
         }
 
-        List<IdlCycleDisplayValue> rawList = new ArrayList<>();
+        List<byte[]> serializeList = new ArrayList<>();
         for (DisplayData item : list) {
-            item.encodeValue();
-            rawList.add(item.raw);
+            serializeList.add(item.serialize());
         }
-        return BaseProperties.serialize(rawList);
+        return SerializeUtil.toByteArray(serializeList);
     }
 
     /**
@@ -145,13 +178,13 @@ public class DisplayData {
         }
 
         try {
-            Constructor<T> constructor = clazz.getConstructor(IdlCycleDisplayValue.class);
+            Constructor<T> constructor = clazz.getConstructor(InternalData.IdlCycleDisplayValue.Builder.class);
 
-            List<IdlCycleDisplayValue> rawList = BaseProperties.deserializeToArray(null, IdlCycleDisplayValue.class, buffer);
-            if (rawList != null) {
+            List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
+            if (!Util.isEmpty(serializeList)) {
                 List<T> result = new ArrayList<>();
-                for (IdlCycleDisplayValue raw : rawList) {
-                    result.add(constructor.newInstance(raw));
+                for (byte[] serialized : serializeList) {
+                    result.add(constructor.newInstance(InternalData.IdlCycleDisplayValue.parseFrom(serialized).toBuilder()));
                 }
                 return result;
             } else {

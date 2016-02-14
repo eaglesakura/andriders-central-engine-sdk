@@ -1,7 +1,8 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.idl.display.IdlCycleDisplayInfo;
-import com.eaglesakura.android.db.BaseProperties;
+import com.eaglesakura.andriders.protocol.internal.InternalData;
+import com.eaglesakura.android.service.data.Payload;
+import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 import com.eaglesakura.util.Util;
 
@@ -14,13 +15,14 @@ import java.util.List;
  * サイコンの表示情報を管理する
  */
 public class DisplayInformation {
-    IdlCycleDisplayInfo raw;
+    InternalData.IdlCycleDisplayInfo.Builder raw;
 
-    private DisplayInformation(IdlCycleDisplayInfo raw) {
+    private DisplayInformation(InternalData.IdlCycleDisplayInfo.Builder raw) {
         if (raw == null) {
-            raw = new IdlCycleDisplayInfo(null);
+            raw = InternalData.IdlCycleDisplayInfo.newBuilder();
         }
         this.raw = raw;
+        makeDefault();
     }
 
     public DisplayInformation(Context context, String id) {
@@ -29,18 +31,15 @@ public class DisplayInformation {
             throw new IllegalArgumentException();
         }
         raw.setId(context.getPackageName() + "@" + id);
+        makeDefault();
+    }
+
+    private void makeDefault() {
+        raw.setTitle("Unknown");
     }
 
     public String getId() {
         return raw.getId();
-    }
-
-    public String getText() {
-        return raw.getText();
-    }
-
-    public void setText(String set) {
-        raw.setText(set);
     }
 
     public String getTitle() {
@@ -54,8 +53,8 @@ public class DisplayInformation {
     /**
      * データをシリアライズする
      */
-    public byte[] serialize() {
-        return raw.toByteArray();
+    private byte[] serialize() {
+        return raw.build().toByteArray();
     }
 
     public static byte[] serialize(List<DisplayInformation> list) {
@@ -63,11 +62,11 @@ public class DisplayInformation {
             return null;
         }
 
-        List<IdlCycleDisplayInfo> rawList = new ArrayList<>();
+        List<byte[]> serializeList = new ArrayList<>();
         for (DisplayInformation item : list) {
-            rawList.add(item.raw);
+            serializeList.add(item.serialize());
         }
-        return BaseProperties.serialize(rawList);
+        return SerializeUtil.toByteArray(serializeList);
     }
 
     /**
@@ -78,11 +77,11 @@ public class DisplayInformation {
             return new ArrayList<>();
         }
 
-        List<IdlCycleDisplayInfo> rawList = BaseProperties.deserializeToArray(null, IdlCycleDisplayInfo.class, buffer);
-        if (rawList != null) {
+        List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
+        if (!Util.isEmpty(serializeList)) {
             List<DisplayInformation> result = new ArrayList<>();
-            for (IdlCycleDisplayInfo raw : rawList) {
-                result.add(new DisplayInformation(raw));
+            for (byte[] serialized : serializeList) {
+                result.add(new DisplayInformation(Payload.deserializeMessageOrNull(InternalData.IdlCycleDisplayInfo.class, serialized).toBuilder()));
             }
             return result;
         } else {

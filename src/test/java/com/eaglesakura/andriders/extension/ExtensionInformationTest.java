@@ -13,6 +13,17 @@ import java.util.List;
 public class ExtensionInformationTest extends CiJUnitTester {
 
     @Test
+    public void infoInitialize() {
+        ExtensionInformation info = new ExtensionInformation(getContext(), "junit");
+        Assert.assertTrue(info.getId().startsWith(getContext().getPackageName() + "@"));
+        Assert.assertTrue(info.getId().endsWith("@junit"));
+
+        Assert.assertEquals(info.getCategory(), ExtensionCategory.CATEGORY_OTHERS);
+        Assert.assertFalse(info.hasSetting());
+        Assert.assertTrue(info.isActivated());
+    }
+
+    @Test
     public void serializeTest() {
         ExtensionInformation info = new ExtensionInformation(getContext(), "junit");
         info.setCategory(ExtensionCategory.CATEGORY_OTHERS);
