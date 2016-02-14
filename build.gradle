@@ -46,7 +46,6 @@ dependencies {
         compile project(':eglibrary:simple-utils')
         compile project(':eglibrary:simple-serialize')
         compile project(':eglibrary:geo-utils')
-        compile project(':eglibrary:android-text-kvs')
         compile project(':eglibrary:android-simple-utils')
         compile project(':eglibrary:android-canvas-graphics')
         compile project(':eglibrary:android-command-service')
@@ -57,7 +56,6 @@ dependencies {
         compile 'com.eaglesakura:simple-serialize:+'            /* IDLシリアライズ */
         compile 'com.eaglesakura:geo-utils:+'                   /* GPS計算 */
         compile 'com.eaglesakura:android-simple-utils:+'        /* Utils */
-        compile 'com.eaglesakura:android-text-kvs:+'            /* IDL管理 */
         compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
         compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
     }
@@ -250,5 +248,3 @@ def getArtifactInstallTarget() {
         return file("ci-release");
     }
 }
-
-apply from: "generator.gradle"
