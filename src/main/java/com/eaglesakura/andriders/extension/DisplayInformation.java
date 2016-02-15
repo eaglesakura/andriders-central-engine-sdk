@@ -35,7 +35,9 @@ public class DisplayInformation {
     }
 
     private void makeDefault() {
-        raw.setTitle("Unknown");
+        if (!raw.hasTitle()) {
+            raw.setTitle("Unknown");
+        }
     }
 
     public String getId() {
