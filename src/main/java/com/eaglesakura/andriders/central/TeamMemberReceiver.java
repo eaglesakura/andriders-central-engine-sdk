@@ -13,6 +13,7 @@ import java.util.Set;
  * <br>
  * このレシーバはSDK利用者がnewすることはなく、SDK内部で生成される。
  */
+@Deprecated
 public class TeamMemberReceiver extends AcesProtocolReceiver {
     /**
      * チームメンバーの情報

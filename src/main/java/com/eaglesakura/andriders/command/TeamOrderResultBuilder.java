@@ -10,6 +10,7 @@ import android.content.Intent;
  * <br>
  * オーダーは相手端末にRemoteIntentとして送信され、Intent処理される。
  */
+@Deprecated
 public class TeamOrderResultBuilder {
     /**
      * 起動対象Intent

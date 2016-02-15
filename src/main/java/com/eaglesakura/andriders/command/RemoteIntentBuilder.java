@@ -13,9 +13,7 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- */
+@Deprecated
 public class RemoteIntentBuilder {
 
     List<CommandProtocol.IntentExtra> extras = new ArrayList<>();

@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * サウンド情報
  */
+@Deprecated
 public class SoundInformation {
     /**
      * 一意に識別するためのID

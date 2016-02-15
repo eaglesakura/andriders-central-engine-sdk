@@ -45,6 +45,7 @@ public abstract class CommandEventHandler {
      * @param notificationData 通知データ
      * @param payload          全ペイロード
      */
+    @Deprecated
     public void onNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
     }
 
@@ -56,6 +57,7 @@ public abstract class CommandEventHandler {
      * @param soundData サウンドデータ
      * @param payload   全ペイロード
      */
+    @Deprecated
     public void onSoundNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, SoundData soundData, CommandProtocol.SoundNotificationPayload payload) {
     }
 

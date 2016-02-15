@@ -10,6 +10,7 @@ import java.io.File;
 /**
  * 通知を行うためのサウンドデータ
  */
+@Deprecated
 public class SoundData {
     String soundKey;
 

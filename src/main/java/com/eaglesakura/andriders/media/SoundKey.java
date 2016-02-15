@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * サウンド
  */
+@Deprecated
 public class SoundKey {
 
     String key;

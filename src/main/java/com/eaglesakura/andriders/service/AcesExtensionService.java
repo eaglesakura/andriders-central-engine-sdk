@@ -19,6 +19,7 @@ import android.os.RemoteException;
  * <br>
  * ACEs/Team-ACEsのどちらか一方、もしくは両方がバインドされる。
  */
+@Deprecated
 public abstract class AcesExtensionService extends Service {
 
     /**

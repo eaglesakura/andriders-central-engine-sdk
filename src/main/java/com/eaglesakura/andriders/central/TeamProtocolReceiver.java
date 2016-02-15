@@ -21,6 +21,7 @@ import java.util.Set;
 /**
  * Team Andriders Central Engine Service(TACEs)のデータを受信・ハンドリングする。
  */
+@Deprecated
 public class TeamProtocolReceiver {
     /**
      * 送受信用Action

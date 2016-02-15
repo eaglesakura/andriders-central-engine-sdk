@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
+@Deprecated
 public class TweetSettingUtil {
 
     /**

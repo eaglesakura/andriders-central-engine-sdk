@@ -19,6 +19,7 @@ import java.util.Date;
 /**
  * 画像書き込みを行う
  */
+@Deprecated
 public class MediaFileManager {
 
     /**
