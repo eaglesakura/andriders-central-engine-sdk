@@ -48,7 +48,7 @@ public class AcesProtocolReceiver {
     /**
      * 送受信用Action
      */
-    static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_CENTRAL_DATA";
+    static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_CENTRAL_DATA_v2";
 
     /**
      * 送受信用カテゴリ
