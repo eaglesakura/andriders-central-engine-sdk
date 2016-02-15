@@ -52,6 +52,31 @@ public class LineValue {
     }
 
     /**
+     * 表示する行数を取得する
+     */
+    public int getLineNum() {
+        return values.size();
+    }
+
+    public String getTitle(int index) {
+        InternalData.IdlCycleDisplayValue.KeyValue.Builder builder = values.get(index);
+        if (builder.hasTitle()) {
+            return builder.getTitle();
+        } else {
+            return null;
+        }
+    }
+
+    public String getValue(int index) {
+        InternalData.IdlCycleDisplayValue.KeyValue.Builder builder = values.get(index);
+        if (builder.hasValue()) {
+            return builder.getValue();
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * 表示する値を指定する
      */
     public void setLine(int index, String title, String value) {
