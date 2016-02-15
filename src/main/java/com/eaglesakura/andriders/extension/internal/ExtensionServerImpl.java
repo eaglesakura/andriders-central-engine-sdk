@@ -183,7 +183,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_getInformations, new CommandMap.Action() {
             @Override
             public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                ExtensionInformation information = mExtensionService.getExtensionInformation();
+                ExtensionInformation information = mExtensionService.getExtensionInformation(mSession);
                 return new Payload(ExtensionInformation.serialize(Arrays.asList(information)));
             }
         });
@@ -194,7 +194,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, new CommandMap.Action() {
             @Override
             public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                List<DisplayInformation> displayInformation = mExtensionService.getDisplayInformation();
+                List<DisplayInformation> displayInformation = mExtensionService.getDisplayInformation(mSession);
                 return new Payload(DisplayInformation.serialize(displayInformation));
             }
         });

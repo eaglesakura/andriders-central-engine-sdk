@@ -66,18 +66,30 @@ public class BasicValue {
         raw.setMain(mainValue);
     }
 
-    public String getInformation() {
+    /**
+     * ゾーンテキスト（危険域、等）を取得する
+     */
+    public String getZoneText() {
         return raw.getBarInfo();
     }
 
-    public void setInformation(String infoText) {
+    /**
+     * ゾーンテキスト（心拍ゾーン等）を設定する
+     */
+    public void setZoneText(String infoText) {
         raw.setBarInfo(infoText);
     }
 
+    /**
+     * タイトル（心拍、ケイデンス等）を取得する
+     */
     public String getTitle() {
         return raw.getTitle();
     }
 
+    /**
+     * タイトルを設定する
+     */
     public void setTitle(String titleText) {
         raw.setTitle(titleText);
     }

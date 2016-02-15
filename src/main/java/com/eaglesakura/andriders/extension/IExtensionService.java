@@ -17,12 +17,12 @@ public interface IExtensionService {
     /**
      * 拡張機能情報を取得する
      */
-    ExtensionInformation getExtensionInformation();
+    ExtensionInformation getExtensionInformation(ExtensionSession session);
 
     /**
      * ディスプレイの表示情報を取得する
      */
-    List<DisplayInformation> getDisplayInformation();
+    List<DisplayInformation> getDisplayInformation(ExtensionSession session);
 
     /**
      * ACEに接続され、サイコンの使用準備ができた
