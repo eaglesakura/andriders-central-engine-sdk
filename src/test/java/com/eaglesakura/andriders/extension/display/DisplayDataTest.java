@@ -20,7 +20,7 @@ public class DisplayDataTest extends CiJUnitTester {
     }
 
     @Test
-    public void initTest() {
+    public void initTest() throws Exception {
         DisplayData data = new DisplayData(getContext(), "junit");
         DisplayInformation info = new DisplayInformation(getContext(), "junit");
         Assert.assertEquals(data.getId(), info.getId());
@@ -28,7 +28,36 @@ public class DisplayDataTest extends CiJUnitTester {
     }
 
     @Test
-    public void basicValueTest() {
+    public void lineValueTest() throws Exception {
+        DisplayData data = new DisplayData(getContext(), "junit");
+        LineValue value = new LineValue(2);
+        value.setLine(0, "test.title.0", "test.value.0");
+        value.setLine(1, "test.title.1", "test.value.1");
+        data.setValue(value);
+
+        byte[] serialize = DisplayData.serialize(Arrays.asList(data));
+        Assert.assertNotNull(serialize);
+        Assert.assertTrue(serialize.length > 0);
+
+        List<TestDisplayDataImpl> datas = DisplayData.deserialize(serialize, TestDisplayDataImpl.class);
+        Assert.assertNotNull(data);
+        Assert.assertEquals(datas.size(), 1);
+
+        DisplayData deserializedData = datas.get(0);
+        Assert.assertEquals(deserializedData.getId(), data.getId());
+        Assert.assertNull(deserializedData.getBasicValue());
+        Assert.assertNotNull(deserializedData.getLineValue());
+
+        LineValue deserializedLineValue = deserializedData.getLineValue();
+        Assert.assertEquals(value.getLineNum(), deserializedLineValue.getLineNum());
+        for (int i = 0; i < 2; ++i) {
+            Assert.assertEquals(value.getTitle(i), deserializedLineValue.getTitle(i));
+            Assert.assertEquals(value.getValue(i), deserializedLineValue.getValue(i));
+        }
+    }
+
+    @Test
+    public void basicValueTest() throws Exception {
         DisplayData data = new DisplayData(getContext(), "junit");
         BasicValue value = new BasicValue();
         value.setValue("1.23");
