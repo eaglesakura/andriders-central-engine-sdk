@@ -41,6 +41,10 @@ public class BasicValue {
         return Color.argb(raw.getBarColorA(), raw.getBarColorR(), raw.getBarColorG(), raw.getBarColorB());
     }
 
+    public boolean hasZoneBar() {
+        return raw.getBarColorA() > 0;
+    }
+
     public void setBarColorARGB(int barColorARGB) {
         raw.setBarColorA(Color.alpha(barColorARGB));
         raw.setBarColorR(Color.red(barColorARGB));
