@@ -31,12 +31,12 @@ public class TeamProtocolReceiver {
     /**
      *
      */
-    static final String INTENT_CATEGORY = AcesProtocolReceiver.INTENT_CATEGORY;
+    static final String INTENT_CATEGORY = CentralDataReceiver.INTENT_CATEGORY;
 
     /**
      * Intent経由で送られる場合のデータマスター
      */
-    static final String INTENT_EXTRA_MASTER = AcesProtocolReceiver.INTENT_EXTRA_MASTER;
+    static final String INTENT_EXTRA_MASTER = CentralDataReceiver.INTENT_EXTRA_MASTER;
 
     /**
      * 他のアプリへデータを投げる

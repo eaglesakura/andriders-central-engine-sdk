@@ -30,7 +30,7 @@ public final class CommandProtocol {
      * <code>AcesNotification = 2;</code>
      *
      * <pre>
-     * ACEsに通知を行わせる
+     * [削除] ACEsに通知を行わせる
      * </pre>
      */
     AcesNotification(1, 2),
@@ -38,7 +38,7 @@ public final class CommandProtocol {
      * <code>SoundNotification = 3;</code>
      *
      * <pre>
-     * サウンドを鳴らす
+     * [削除] サウンドを鳴らす
      * </pre>
      */
     SoundNotification(2, 3),
@@ -57,7 +57,7 @@ public final class CommandProtocol {
      * <code>AcesNotification = 2;</code>
      *
      * <pre>
-     * ACEsに通知を行わせる
+     * [削除] ACEsに通知を行わせる
      * </pre>
      */
     public static final int AcesNotification_VALUE = 2;
@@ -65,7 +65,7 @@ public final class CommandProtocol {
      * <code>SoundNotification = 3;</code>
      *
      * <pre>
-     * サウンドを鳴らす
+     * [削除] サウンドを鳴らす
      * </pre>
      */
     public static final int SoundNotification_VALUE = 3;
@@ -133,7 +133,7 @@ public final class CommandProtocol {
    * Protobuf enum {@code eaglesakura_ace.NotificationLength}
    *
    * <pre>
-   * Notifiationの長さを指定する
+   * [削除] Notifiationの長さを指定する
    * </pre>
    */
   public enum NotificationLength
@@ -344,7 +344,7 @@ public final class CommandProtocol {
    * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
    *
    * <pre>
-   * 音声による通知を行う
+   * [削除] 音声による通知を行う
    * </pre>
    */
   public static final class SoundNotificationPayload extends
@@ -718,7 +718,7 @@ public final class CommandProtocol {
      * Protobuf type {@code eaglesakura_ace.SoundNotificationPayload}
      *
      * <pre>
-     * 音声による通知を行う
+     * [削除] 音声による通知を行う
      * </pre>
      */
     public static final class Builder extends
@@ -1308,7 +1308,7 @@ public final class CommandProtocol {
    * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
    *
    * <pre>
-   * 通知を表示させる
+   * [削除] 通知を表示させる
    * 基本的にはACEs-UIに対して表示する
    * 対応している場合はWear等へのブロードキャストを行う
    * </pre>
@@ -1968,7 +1968,7 @@ public final class CommandProtocol {
      * Protobuf type {@code eaglesakura_ace.NotificationRequestPayload}
      *
      * <pre>
-     * 通知を表示させる
+     * [削除] 通知を表示させる
      * 基本的にはACEs-UIに対して表示する
      * 対応している場合はWear等へのブロードキャストを行う
      * </pre>
@@ -3012,7 +3012,7 @@ public final class CommandProtocol {
    * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
    *
    * <pre>
-   * ツイートしたい内容を格納する
+   * [削除] ツイートしたい内容を格納する
    * </pre>
    */
   public static final class TweetRequestPayload extends
@@ -3430,7 +3430,7 @@ public final class CommandProtocol {
      * Protobuf type {@code eaglesakura_ace.TweetRequestPayload}
      *
      * <pre>
-     * ツイートしたい内容を格納する
+     * [削除] ツイートしたい内容を格納する
      * </pre>
      */
     public static final class Builder extends
@@ -5085,6 +5085,10 @@ public final class CommandProtocol {
   }
   /**
    * Protobuf type {@code eaglesakura_ace.IntentPayload}
+   *
+   * <pre>
+   * Intentデータを保存する
+   * </pre>
    */
   public static final class IntentPayload extends
       com.google.protobuf.GeneratedMessage implements
@@ -5705,6 +5709,10 @@ public final class CommandProtocol {
     }
     /**
      * Protobuf type {@code eaglesakura_ace.IntentPayload}
+     *
+     * <pre>
+     * Intentデータを保存する
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements

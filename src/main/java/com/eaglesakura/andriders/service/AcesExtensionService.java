@@ -3,7 +3,7 @@ package com.eaglesakura.andriders.service;
 import com.eaglesakura.andriders.IAcesExtensionService;
 import com.eaglesakura.andriders.IAndridersCentralEngineService;
 import com.eaglesakura.andriders.IAndridersCentralEngineTeamService;
-import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.central.TeamMemberReceiver;
 import com.eaglesakura.andriders.central.TeamProtocolReceiver;
 import com.eaglesakura.andriders.protocol.CommandProtocol;
@@ -51,7 +51,7 @@ public abstract class AcesExtensionService extends Service {
      */
     private IAndridersCentralEngineTeamService teamService;
 
-    private AcesProtocolReceiver protocolReceiver;
+    private CentralDataReceiver protocolReceiver;
 
     private TeamProtocolReceiver teamProtocolReceiver;
 
@@ -93,7 +93,7 @@ public abstract class AcesExtensionService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        protocolReceiver = new AcesProtocolReceiver(this);
+        protocolReceiver = new CentralDataReceiver(this);
         protocolReceiver.connect();
 
         teamProtocolReceiver = new TeamProtocolReceiver(this);
@@ -155,7 +155,7 @@ public abstract class AcesExtensionService extends Service {
     /**
      * データ受信用のReceiverを取得する
      */
-    public AcesProtocolReceiver getProtocolReceiver() {
+    public CentralDataReceiver getProtocolReceiver() {
         return protocolReceiver;
     }
 

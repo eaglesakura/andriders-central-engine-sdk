@@ -32,11 +32,10 @@ message RawSessionPointPayload {
     optional GeoPoint location = 5;
 
     // ログの打刻時間
-    optional string date = 100;
-    optional int64 dateInt = 103;
+    required int64 dateInt = 103;
 
     // バッテリーの残量（％）
-    optional int32 batteryLevel = 101;
+    required int32 batteryLevel = 101;
 
     // 充電中の場合true
     optional bool batteryCharging = 102;

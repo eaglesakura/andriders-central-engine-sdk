@@ -14,7 +14,7 @@ import java.util.Set;
  * このレシーバはSDK利用者がnewすることはなく、SDK内部で生成される。
  */
 @Deprecated
-public class TeamMemberReceiver extends AcesProtocolReceiver {
+public class TeamMemberReceiver extends CentralDataReceiver {
     /**
      * チームメンバーの情報
      */

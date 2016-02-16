@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.central.event;
 
-import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.GeoProtocol;
 
@@ -14,7 +14,7 @@ public abstract class CentralDataHandler {
      * @param buffer 受け取ったデータ
      * @param master すべてのデータを含んだペイロード
      */
-    public void onMasterPayloadReceived(AcesProtocolReceiver receiver, byte[] buffer, MasterPayload master) {
+    public void onMasterPayloadReceived(CentralDataReceiver receiver, byte[] buffer, MasterPayload master) {
     }
 
     /**
@@ -22,7 +22,7 @@ public abstract class CentralDataHandler {
      *
      * @param receiver 受信したレシーバ
      */
-    public void onMasterPayloadParseFiled(AcesProtocolReceiver receiver, byte[] buffer) {
+    public void onMasterPayloadParseFiled(CentralDataReceiver receiver, byte[] buffer) {
     }
 
     /**
@@ -32,7 +32,7 @@ public abstract class CentralDataHandler {
      * @param master   マスターデータ
      * @param geo      位置情報
      */
-    public void onGeoStatusReceived(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload geo) {
+    public void onGeoStatusReceived(CentralDataReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload geo) {
     }
 
     /**
@@ -43,7 +43,7 @@ public abstract class CentralDataHandler {
      * @param oldStatus 古い位置情報
      * @param newStatus 新しい位置情報
      */
-    public void onGeohashUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload oldStatus, GeoProtocol.GeoPayload newStatus) {
+    public void onGeohashUpdated(CentralDataReceiver receiver, MasterPayload master, GeoProtocol.GeoPayload oldStatus, GeoProtocol.GeoPayload newStatus) {
     }
 
     /**
@@ -53,7 +53,7 @@ public abstract class CentralDataHandler {
      * @param master    マスターデータ
      * @param geography 周辺データ
      */
-    public void onGeographyReceived(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload geography) {
+    public void onGeographyReceived(CentralDataReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload geography) {
     }
 
     /**
@@ -64,7 +64,7 @@ public abstract class CentralDataHandler {
      * @param oldGeography 古い周辺データ
      * @param newGeography 新しい周辺データ
      */
-    public void onGeographyUpdated(AcesProtocolReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload oldGeography, GeoProtocol.GeographyPayload newGeography) {
+    public void onGeographyUpdated(CentralDataReceiver receiver, MasterPayload master, GeoProtocol.GeographyPayload oldGeography, GeoProtocol.GeographyPayload newGeography) {
     }
 
 }

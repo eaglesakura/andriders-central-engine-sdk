@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.central.event;
 
-import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.notification.SoundData;
@@ -34,7 +34,7 @@ public abstract class CommandEventHandler {
      * @param data     CommandSetupResultBuilder.putExtraで保存した値
      * @see com.eaglesakura.andriders.command.CommandSetupResultBuilder
      */
-    public void onTriggerReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger, Intent data) {
+    public void onTriggerReceived(CentralDataReceiver receiver, MasterPayload master, CommandKey key, TriggerPayload trigger, Intent data) {
     }
 
     /**
@@ -46,7 +46,7 @@ public abstract class CommandEventHandler {
      * @param payload          全ペイロード
      */
     @Deprecated
-    public void onNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
+    public void onNotificationReceived(CentralDataReceiver receiver, MasterPayload master, NotificationData notificationData, CommandProtocol.NotificationRequestPayload payload) {
     }
 
     /**
@@ -58,7 +58,7 @@ public abstract class CommandEventHandler {
      * @param payload   全ペイロード
      */
     @Deprecated
-    public void onSoundNotificationReceived(AcesProtocolReceiver receiver, MasterPayload master, SoundData soundData, CommandProtocol.SoundNotificationPayload payload) {
+    public void onSoundNotificationReceived(CentralDataReceiver receiver, MasterPayload master, SoundData soundData, CommandProtocol.SoundNotificationPayload payload) {
     }
 
     /**
@@ -68,6 +68,6 @@ public abstract class CommandEventHandler {
      * @param master   マスターデータ
      * @param command  不明なコマンド
      */
-    public void onUnknownCommandReceived(AcesProtocolReceiver receiver, MasterPayload master, CommandPayload command) {
+    public void onUnknownCommandReceived(CentralDataReceiver receiver, MasterPayload master, CommandPayload command) {
     }
 }

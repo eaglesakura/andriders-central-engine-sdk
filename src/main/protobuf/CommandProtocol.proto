@@ -12,14 +12,14 @@ enum CommandType {
     // トリガーは近接、Activity、時限、GEO等色々ある
     ExtensionTrigger = 1;
 
-    // ACEsに通知を行わせる
+    // [削除] ACEsに通知を行わせる
     AcesNotification = 2;
 
-    // サウンドを鳴らす
+    // [削除] サウンドを鳴らす
     SoundNotification = 3;
 }
 
-// 音声による通知を行う
+// [削除] 音声による通知を行う
 message SoundNotificationPayload {
     // サウンドをキューに貯める場合はtrue、すぐに鳴らす場合はfalse
     required bool queue = 1;
@@ -31,8 +31,7 @@ message SoundNotificationPayload {
     optional string soundKey = 3;
 }
 
-
-// Notifiationの長さを指定する
+// [削除] Notifiationの長さを指定する
 enum NotificationLength {
     // 短い時間だけ通知を表示する
     Short = 1;
@@ -48,7 +47,7 @@ enum NotificationLength {
     Never = 100;
 }
 
-// 通知を表示させる
+// [削除] 通知を表示させる
 // 基本的にはACEs-UIに対して表示する
 // 対応している場合はWear等へのブロードキャストを行う
 message NotificationRequestPayload {
@@ -79,7 +78,7 @@ message NotificationRequestPayload {
     optional SoundNotificationPayload sound = 8;
 }
 
-// ツイートしたい内容を格納する
+// [削除] ツイートしたい内容を格納する
 message TweetRequestPayload {
     // ツイートする内容
     required string tweetMessage = 1;
@@ -119,6 +118,7 @@ message IntentExtra {
     required string value = 3;
 }
 
+// Intentデータを保存する
 message IntentPayload {
     // 起動方法
     enum BootType {

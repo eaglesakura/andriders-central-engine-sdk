@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.central.event;
 
-import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.ActivityProtocol;
 
@@ -16,6 +16,6 @@ public abstract class ActivityEventHandler {
      * @param master   マスターデータ
      * @param fitness  フィットネスデータ
      */
-    public void onFitnessDataReceived(AcesProtocolReceiver receiver, AcesProtocol.MasterPayload master, ActivityProtocol.FitnessPayload fitness) {
+    public void onFitnessDataReceived(CentralDataReceiver receiver, AcesProtocol.MasterPayload master, ActivityProtocol.FitnessStatus fitness) {
     }
 }

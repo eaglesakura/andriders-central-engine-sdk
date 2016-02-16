@@ -25,9 +25,8 @@ import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.SensorType;
 import com.eaglesakura.geo.Geohash;
 import com.eaglesakura.geo.GeohashGroup;
-import com.eaglesakura.util.IOUtil;
+import com.eaglesakura.util.EncodeUtil;
 import com.eaglesakura.util.LogUtil;
-import com.eaglesakura.util.StringUtil;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -39,7 +38,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class AcesProtocolReceiver {
+public class CentralDataReceiver {
     /**
      * Intent経由で送られる場合のデータマスター
      */
@@ -56,6 +55,11 @@ public class AcesProtocolReceiver {
     static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
 
     /**
+     * 最後に受け取ったセントラル情報
+     */
+    private AcesProtocol.CentralSpec mLastRedeivedCentralSpec;
+
+    /**
      * 他のアプリへデータを投げる
      */
     static Intent newBroadcastIntent() {
@@ -64,85 +68,68 @@ public class AcesProtocolReceiver {
         return intent;
     }
 
-    private final Context context;
-
-    /**
-     * 自分自身のpackage名
-     */
-    private String selfPackageName;
-
-    /**
-     * 自分自身のパッケージが送ったメッセージをハンドリングする
-     */
-    private boolean checkSelfPackage = true;
-
-    /**
-     * 対象パッケージを無視してハンドリングする
-     */
-    private boolean checkTargetPackage = true;
+    private final Context mContext;
 
     /**
      * broadcastに接続済みであればtrue
      */
-    private boolean connected = false;
+    private boolean mConnected = false;
 
     /**
      * 最後に受信したハートレート
      */
-    private RawHeartrate lastReceivedHeartrate;
+    private RawHeartrate mLastReceivedHeartrate;
 
     /**
      * 最後に受信したケイデンス
      */
-    private RawCadence lastReceivedCadence;
+    private RawCadence mLastReceivedCadence;
 
     /**
      * 最後に受信したスピード
      */
-    private RawSpeed lastReceivedSpeed;
+    private RawSpeed mLastReceivedSpeed;
 
     /**
      * ジオハッシュ管理
      */
-    private GeohashGroup geoGroup = new GeohashGroup();
+    private GeohashGroup mGeoGroup = new GeohashGroup();
 
     /**
      * 最後に受け取った位置情報
      */
-    private GeoProtocol.GeoPayload lastReceivedGeo;
+    private GeoProtocol.GeoPayload mLastReceivedGeo;
 
     /**
      * ジオハッシュの更新回数
      */
-    private int geohashUpdatedCount;
+    private int mGeohashUpdatedCount;
 
     /**
      * 古いジオハッシュで最後に受け取った位置情報
      */
-    private GeoProtocol.GeoPayload beforeHashGeo;
+    private GeoProtocol.GeoPayload mBeforeHashGeo;
 
     /**
      * 周辺情報
      */
-    private GeoProtocol.GeographyPayload lastReceivedGeography;
+    private GeoProtocol.GeographyPayload mLastReceivedGeography;
 
     /**
      * ACEsの現在のステータス
      */
-    private AcesProtocol.CentralStatus lastReceivedCentralStatus;
+    private AcesProtocol.CentralStatus mLastReceivedCentralStatus;
 
-    private AcesProtocol.RemoteCentralStatus lastReceivedRemoteCentralStatus;
+    private ActivityProtocol.SessionStatus mLastReceivedSessionStatus;
 
-    private AcesProtocol.SessionStatus lastReceivedSessionStatus;
+    private ActivityProtocol.UserRecord mLastReceivedUserRecord;
 
-    private AcesProtocol.UserRecord lastReceivedUserRecord;
-
-    private ActivityProtocol.FitnessPayload lastReceivedFitness;
+    private ActivityProtocol.FitnessStatus mLastReceivedFitness;
 
     /**
      * 最後にセンサー情報を受け取ったマスター情報
      */
-    private MasterPayload lastReceivedCentralMaster;
+    private MasterPayload mLastReceivedCentralMaster;
 
     /**
      * ロックオブジェクト
@@ -152,18 +139,21 @@ public class AcesProtocolReceiver {
     /**
      * データ取得クラスを構築する
      */
-    public AcesProtocolReceiver(Context context) {
-        this.context = context.getApplicationContext();
-        this.selfPackageName = context.getPackageName();
+    public CentralDataReceiver(Context context) {
+        this.mContext = context.getApplicationContext();
     }
 
     /**
-     * 自分自身のpackage名を指定する。
-     * <br>
-     * 他のアプリに送信された情報をハンドリングしたい場合に使用するが、動作内容が想定と変わるため、注意すること。
+     * ACEがデバッグ状態である場合true
+     *
+     * まだMasterPayloadを受け取っていない場合はfalseを返却する
      */
-    public void setSelfPackageName(String selfPackageName) {
-        this.selfPackageName = selfPackageName;
+    public boolean isCentralDebugable() {
+        if (mLastReceivedCentralStatus != null) {
+            return mLastReceivedCentralStatus.getDebug();
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -172,58 +162,28 @@ public class AcesProtocolReceiver {
      * 文字数は長いほど狭い範囲でしか扱えない。
      */
     public void setGeohashLength(int len) {
-        geoGroup.setGeohashLength(len);
-    }
-
-    /**
-     * 送信元のpackageチェックを行う。
-     * <br>
-     * 自分自身が送ったブロードキャストで自分自身でハンドリングしたい場合はfalseを指定する
-     * <br>
-     * default = true
-     *
-     * @param checkSelfPackage packageチェックを行わない場合はfalse
-     */
-    public void setCheckSelfPackage(boolean checkSelfPackage) {
-        this.checkSelfPackage = checkSelfPackage;
-    }
-
-    /**
-     * 送信対象のpackageチェックを行う。
-     * <br>
-     * 自分以外のpackageに送られたブロードキャストに反応したい場合はfalseを指定する。
-     * <br>
-     * default = true
-     *
-     * @param checkTargetPackage packageチェックを行わない場合はfalse
-     */
-    public void setCheckTargetPackage(boolean checkTargetPackage) {
-        this.checkTargetPackage = checkTargetPackage;
+        mGeoGroup.setGeohashLength(len);
     }
 
     /**
      * 最後に受信したACEsステータスを取得する。
      */
     public AcesProtocol.CentralStatus getLastReceivedCentralStatus() {
-        return lastReceivedCentralStatus;
-    }
-
-    public AcesProtocol.RemoteCentralStatus getLastReceivedRemoteCentralStatus() {
-        return lastReceivedRemoteCentralStatus;
+        return mLastReceivedCentralStatus;
     }
 
     /**
      * 最後に受信したセッション情報を取得する。
      */
-    public AcesProtocol.SessionStatus getLastReceivedSessionStatus() {
-        return lastReceivedSessionStatus;
+    public ActivityProtocol.SessionStatus getLastReceivedSessionStatus() {
+        return mLastReceivedSessionStatus;
     }
 
     /**
      * 最後に受信したユーザーの自己記録を取得する。
      */
-    public AcesProtocol.UserRecord getLastReceivedUserRecord() {
-        return lastReceivedUserRecord;
+    public ActivityProtocol.UserRecord getLastReceivedUserRecord() {
+        return mLastReceivedUserRecord;
     }
 
 
@@ -231,24 +191,24 @@ public class AcesProtocolReceiver {
      * 最後に受信したMasterPayloadを取得する。
      */
     public MasterPayload getLastReceivedCentralMaster() {
-        return lastReceivedCentralMaster;
+        return mLastReceivedCentralMaster;
     }
 
     /**
      * 最後に受信したフィットネス情報を取得する。
      */
-    public ActivityProtocol.FitnessPayload getLastReceivedFitness() {
-        return lastReceivedFitness;
+    public ActivityProtocol.FitnessStatus getLastReceivedFitness() {
+        return mLastReceivedFitness;
     }
 
     /**
      * 最後に受け取ったMasterPayloadの打刻時刻を取得する。
      */
     public Date getLastReceivedCentralMasterTime() {
-        if (lastReceivedCentralMaster == null) {
+        if (mLastReceivedCentralMaster == null) {
             return null;
         } else {
-            return StringUtil.toDate(lastReceivedCentralMaster.getCreatedDate());
+            return new Date(mLastReceivedCentralMaster.getCreatedDateInt());
         }
     }
 
@@ -285,35 +245,35 @@ public class AcesProtocolReceiver {
      * 最後に受信したケイデンスを取得する。
      */
     public RawCadence getLastReceivedCadence() {
-        return lastReceivedCadence;
+        return mLastReceivedCadence;
     }
 
     /**
      * 最後に受信した心拍を取得する。
      */
     public RawHeartrate getLastReceivedHeartrate() {
-        return lastReceivedHeartrate;
+        return mLastReceivedHeartrate;
     }
 
     /**
      * 最後に受信したスピードを取得する。
      */
     public RawSpeed getLastReceivedSpeed() {
-        return lastReceivedSpeed;
+        return mLastReceivedSpeed;
     }
 
     /**
      * 最後に受信したGPS座標を取得する。
      */
     public GeoProtocol.GeoPayload getLastReceivedGeo() {
-        return lastReceivedGeo;
+        return mLastReceivedGeo;
     }
 
     /**
      * 最後に受信した周辺情報を取得する。
      */
     public GeoProtocol.GeographyPayload getLastReceivedGeography() {
-        return lastReceivedGeography;
+        return mLastReceivedGeography;
     }
 
     /**
@@ -321,8 +281,8 @@ public class AcesProtocolReceiver {
      */
     public String getCurrentGeohash() {
         synchronized (lock) {
-            if (lastReceivedGeo != null) {
-                return geoGroup.getCenterGeohash();
+            if (mLastReceivedGeo != null) {
+                return mGeoGroup.getCenterGeohash();
             } else {
                 return null;
             }
@@ -333,7 +293,7 @@ public class AcesProtocolReceiver {
      * ジオハッシュ更新回数を取得する。
      */
     public int getGeohashUpdatedCount() {
-        return geohashUpdatedCount;
+        return mGeohashUpdatedCount;
     }
 
     /**
@@ -343,12 +303,12 @@ public class AcesProtocolReceiver {
      */
     public String getBeforeGeohash() {
         synchronized (lock) {
-            if (beforeHashGeo == null) {
+            if (mBeforeHashGeo == null) {
                 return null;
             }
 
-            GeoProtocol.GeoPoint location = beforeHashGeo.getLocation();
-            return Geohash.encode(location.getLatitude(), location.getLongitude()).substring(0, geoGroup.getGeohashLength());
+            GeoProtocol.GeoPoint location = mBeforeHashGeo.getLocation();
+            return Geohash.encode(location.getLatitude(), location.getLongitude()).substring(0, mGeoGroup.getGeohashLength());
         }
     }
 
@@ -356,11 +316,11 @@ public class AcesProtocolReceiver {
      * ACEsへ接続する。
      */
     public void connect() {
-        if (!connected) {
+        if (!mConnected) {
             IntentFilter filter = new IntentFilter(INTENT_ACTION);
             filter.addCategory(INTENT_CATEGORY);
-            context.registerReceiver(receiver, filter);
-            connected = true;
+            mContext.registerReceiver(mReceiver, filter);
+            mConnected = true;
         }
     }
 
@@ -368,9 +328,9 @@ public class AcesProtocolReceiver {
      * ACEsから切断する。
      */
     public void disconnect() {
-        if (connected) {
-            context.unregisterReceiver(receiver);
-            connected = false;
+        if (mConnected) {
+            mContext.unregisterReceiver(mReceiver);
+            mConnected = false;
         }
     }
 
@@ -378,7 +338,7 @@ public class AcesProtocolReceiver {
      * ACEsへ接続済みの場合trueを返却する。
      */
     public boolean isConnected() {
-        return connected;
+        return mConnected;
     }
 
     /**
@@ -406,7 +366,7 @@ public class AcesProtocolReceiver {
      */
     private void onHeartrateReceived(MasterPayload master, ByteString payload) throws Exception {
         RawHeartrate heartrate = RawHeartrate.parseFrom(payload);
-        this.lastReceivedHeartrate = heartrate;
+        this.mLastReceivedHeartrate = heartrate;
 
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {
@@ -419,7 +379,7 @@ public class AcesProtocolReceiver {
      */
     private void onCadenceReceived(MasterPayload master, ByteString payload) throws Exception {
         RawCadence cadence = RawCadence.parseFrom(payload);
-        this.lastReceivedCadence = cadence;
+        this.mLastReceivedCadence = cadence;
 
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {
@@ -432,7 +392,7 @@ public class AcesProtocolReceiver {
      */
     private void onSpeedReceived(MasterPayload master, ByteString payload) throws Exception {
         RawSpeed speed = RawSpeed.parseFrom(payload);
-        this.lastReceivedSpeed = speed;
+        this.mLastReceivedSpeed = speed;
 
         // ハンドラに通知
         for (SensorEventHandler handler : sensorHandlers) {
@@ -573,9 +533,9 @@ public class AcesProtocolReceiver {
 
         // フィットネスデータを取得した
         if (master.hasFitness()) {
-            lastReceivedFitness = master.getFitness();
+            mLastReceivedFitness = master.getFitness();
             for (ActivityEventHandler handler : activityHandlers) {
-                handler.onFitnessDataReceived(this, master, lastReceivedFitness);
+                handler.onFitnessDataReceived(this, master, mLastReceivedFitness);
             }
         }
     }
@@ -590,46 +550,46 @@ public class AcesProtocolReceiver {
         final String oldGeohash;
         final boolean updatedGeohash;
         final boolean updatedGeography;
-        final GeoProtocol.GeographyPayload oldGeography = lastReceivedGeography;
+        final GeoProtocol.GeographyPayload oldGeography = mLastReceivedGeography;
 
         // ジオハッシュ処理はロック処理を行う
         synchronized (lock) {
-            oldGeoStatus = lastReceivedGeo;
+            oldGeoStatus = mLastReceivedGeo;
             newGeoStatus = master.getGeoStatus();
 
             // 座標を上書き
-            lastReceivedGeo = newGeoStatus;
+            mLastReceivedGeo = newGeoStatus;
 
             // ジオハッシュを更新
             newLocation = newGeoStatus.getLocation();
-            oldGeohash = geoGroup.getCenterGeohash();
-            updatedGeohash = geoGroup.updateLocation(newLocation.getLatitude(), newLocation.getLongitude());
+            oldGeohash = mGeoGroup.getCenterGeohash();
+            updatedGeohash = mGeoGroup.updateLocation(newLocation.getLatitude(), newLocation.getLongitude());
 
             if (updatedGeohash) {
                 // ジオハッシュ更新処理
-                LogUtil.log("geohash moved old(%s) -> new(%s)", oldGeohash, geoGroup.getCenterGeohash());
+                LogUtil.log("geohash moved old(%s) -> new(%s)", oldGeohash, mGeoGroup.getCenterGeohash());
                 // ジオハッシュが更新されたら、前回の座標を保存する
-                beforeHashGeo = oldGeoStatus;
+                mBeforeHashGeo = oldGeoStatus;
 
-                ++geohashUpdatedCount;
+                ++mGeohashUpdatedCount;
             }
 
             // 周辺情報を持っている
             if (master.hasGeography()) {
                 GeoProtocol.GeographyPayload newGeography = master.getGeography();
-                if (lastReceivedGeography == null) {
+                if (mLastReceivedGeography == null) {
                     // 新しい地理情報
                     updatedGeography = true;
-                    lastReceivedGeography = newGeography;
+                    mLastReceivedGeography = newGeography;
                 } else {
-                    String lastDate = lastReceivedGeography.getDate();
+                    String lastDate = mLastReceivedGeography.getDate();
                     if (lastDate.equals(newGeography.getDate())) {
                         // 同一時刻である場合は更新がない
                         updatedGeography = false;
                     } else {
                         // 新しい地理情報
                         updatedGeography = true;
-                        lastReceivedGeography = newGeography;
+                        mLastReceivedGeography = newGeography;
                     }
                 }
             } else {
@@ -659,9 +619,24 @@ public class AcesProtocolReceiver {
         if (updatedGeography) {
             // ジオハッシュ通知
             for (CentralDataHandler handler : centralHandlers) {
-                handler.onGeographyUpdated(this, master, oldGeography, lastReceivedGeography);
+                handler.onGeographyUpdated(this, master, oldGeography, mLastReceivedGeography);
             }
         }
+    }
+
+    public synchronized void onReceivedIntent(Intent intent) {
+        if (!INTENT_ACTION.equals(intent.getAction())) {
+            // Actionが一致しない
+            return;
+        }
+        //            BleLog.d("received :: " + intent.getExtras());
+        try {
+            byte[] master = intent.getByteArrayExtra(INTENT_EXTRA_MASTER);
+            onReceivedMasterPayload(master);
+        } catch (Exception e) {
+            LogUtil.d(e);
+        }
+
     }
 
     /**
@@ -684,45 +659,19 @@ public class AcesProtocolReceiver {
             return;
         }
 
-        final String targetPackage = master.hasTargetPackage() ? master.getTargetPackage() : null;
 
-        // senderが自分であれば反応しない
-        if (checkSelfPackage) {
-            if (selfPackageName.equals(master.getSenderPackage())) {
-                //            Log.i("ACES", "error sender :: " + master.getSenderPackage());
-                //            Log.i("ACES", "error target :: " + targetPackage);
-                return;
-            }
-        }
+        mLastReceivedCentralMaster = master;
+        mLastRedeivedCentralSpec = master.getCentralSpec();
+        mLastReceivedCentralStatus = master.getCentralStatus();
 
-        // target check
-        if (checkTargetPackage) {
-            if (targetPackage != null) {
-                // 自分自身が対象でないなら
-                if (!targetPackage.equals(selfPackageName)) {
-                    // payloadの送信対象じゃないから、何もしない
-                    //                    Log.i("ACES", "target error sender :: " + master.getSenderPackage());
-                    //                    Log.i("ACES", "target error target :: " + targetPackage);
-                    return;
-                }
-            }
-        }
-
-        // centralのステータスを書き換える
-        if (master.hasCentralStatus()) {
-            this.lastReceivedCentralMaster = master;
-            lastReceivedCentralStatus = master.getCentralStatus();
-        }
-        if (master.hasRemoteCentralStatus()) {
-            this.lastReceivedRemoteCentralStatus = master.getRemoteCentralStatus();
-        }
-
+        // セッション情報
         if (master.hasSessionStatus()) {
-            this.lastReceivedSessionStatus = master.getSessionStatus();
+            this.mLastReceivedSessionStatus = master.getSessionStatus();
         }
 
+        // ユーザー記録
         if (master.hasUserRecord()) {
-            lastReceivedUserRecord = master.getUserRecord();
+            mLastReceivedUserRecord = master.getUserRecord();
         }
 
         // 位置情報を受け取った
@@ -748,16 +697,10 @@ public class AcesProtocolReceiver {
         handleCommandEvents(master);
     }
 
-    private final BroadcastReceiver receiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            //            BleLog.d("received :: " + intent.getExtras());
-            try {
-                byte[] masterbuffer = intent.getByteArrayExtra(INTENT_EXTRA_MASTER);
-                onReceivedMasterPayload(masterbuffer);
-            } catch (Exception e) {
-                LogUtil.d(e);
-            }
+            onReceivedIntent(intent);
         }
     };
 
@@ -842,22 +785,7 @@ public class AcesProtocolReceiver {
      * @return 容量を小さくしたバッファ
      */
     public static byte[] compressMasterPayload(byte[] buffer) {
-        if (buffer.length > 1024) {
-            // ある程度データが大きくないと非効率的である
-            byte[] resultBuffer = IOUtil.compressGzip(buffer);
-            // データを比較し、もし圧縮率が高いようだったら圧縮した方を送信する
-            if (resultBuffer.length < buffer.length) {
-                LogUtil.log("compress raw(%d bytes) -> gzip(%d bytes) %.2f compress", buffer.length, resultBuffer.length, (float) resultBuffer.length / (float) buffer.length);
-                return resultBuffer;
-            } else {
-                LogUtil.log("no-compress raw(%d bytes) -> gzip(%d bytes) %.2f compress", buffer.length, resultBuffer.length, (float) resultBuffer.length / (float) buffer.length);
-                return buffer;
-            }
-        } else {
-            return buffer;
-        }
-
-//        return IOUtil.compressGzip(buffer);
+        return EncodeUtil.compressOrRaw(buffer);
     }
 
     /**
@@ -871,16 +799,6 @@ public class AcesProtocolReceiver {
      * @return 解凍されたバッファ
      */
     public static byte[] decompressMasterPayload(byte[] buffer) {
-        if (IOUtil.isGzip(buffer)) {
-            byte[] resultBuffer = IOUtil.decompressGzipOrNull(buffer);
-            if (resultBuffer == null) {
-                return buffer;
-            }
-
-            LogUtil.log("decompress gzip(%d bytes) -> raw(%d bytes) %.2f compress", buffer.length, resultBuffer.length, (float) buffer.length / (float) resultBuffer.length);
-            return resultBuffer;
-        } else {
-            return buffer;
-        }
+        return EncodeUtil.decompressOrRaw(buffer);
     }
 }

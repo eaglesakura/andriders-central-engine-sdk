@@ -13,36 +13,18 @@ import "GeoProtocol.proto";
 option java_package = "com.eaglesakura.andriders.protocol";
 
 // セントラルサービスのバージョン
-message VersionInfo {
+message CentralSpec {
     // データフォーマットバージョン
     // 互換性の無いバージョンになったらCentralを更新する必要がある
-    required int64 protocolVersion = 1;
+    required int64 protocolVersion = 10;
 
     // 実行しているCentralのアプリバージョン名
-    required string appVersionName = 2;
+    required string versionName = 11;
+
+    // 実行しているCentralのパッケージ名
+    required string packageName = 12;
 }
 
-// ユーザーの各種記録を参照する
-message UserRecord {
-    // 今日走った距離(km)
-    optional float distanceTodayKm = 1;
-
-    // このセッションで走った距離(km)
-    optional float distanceSessionKm = 2;
-
-    // 今までの最高速度
-    optional float maxSpeedKmPerHour = 10;
-
-    // 今日の最高速度
-    optional float maxSpeedTodayKmPerHour = 11;
-
-    // セッションの獲得標高
-    optional float sumAltitudeSession = 20;
-    // 今日の獲得標高
-    optional float sumAltitudeToday = 21;
-    // セッションの最大標高差
-    //    optional float diffAltitudeSession = 22;
-}
 
 // セントラルの情報を載せる
 // Serviceを起動している限り、常に付与して送付される
@@ -60,52 +42,11 @@ message CentralStatus {
     // 基本的にはS&Cセンサーを使用するが、GPS由来をオプションに追加するかもしれない
     required bool connectedSpeed = 3;
 
-    // ツイッター接続済みの場合true
-    required bool connectedTwitter = 4;
-
     // GPSがONになっていたらtrue
     required bool connectedGps = 6;
 
-    // RemoteCentralに接続されていればtrue
-    optional bool connectedRemoteCentral = 10;
-}
-
-// 走行セッションに関する情報を付与する
-message SessionStatus {
-    // セッションの開始時刻 : Unix Time
-    required int64 sessionStartTime = 1;
-
-    // 今日はじめてセッションを開始した時刻 : Unix Time
-    required int64 todayStartTime = 2;
-
-    // セッション中、自走している時間
-    required int32 sessionActiveTimeMs = 3;
-
-    // 今日自走した時間
-    required int32 todayActiveTimeMs = 4;
-
-    // セッション中、自走した距離(Km)
-    // not impl
-    required float sessionActiveDistanceKm = 5;
-
-    // 今日自走した距離
-    // not impl
-    required float todayActiveDistanceKm = 6;
-}
-
-// リモートセントラルのステータス
-message RemoteCentralStatus {
-    // アプリバージョン名
-    required string appVersionName = 1;
-
-    // ステータスチェック時刻(Unix Time)
-    required int64 date = 2;
-
-    // バッテリー残量
-    required float batteryLevel = 3;
-
-    // 書き込み先ストレージの残量
-    required int64 storageBytes = 4;
+    // デバッグ機能がONの場合、trueが指定される
+    required bool   debug = 7;
 }
 
 
@@ -118,36 +59,24 @@ message Meta {
 
 // データ経路を限定することがないように、すべてのペイロードを一本化する
 message MasterPayload {
-    // バージョン情報
-    optional VersionInfo version = 11;
-
-    // ペイロードごとに一意に確定するID
-    // UUIDを使用して、お互いのIDを一意に識別出来るようにする
-    required string uniqueId = 4;
-
-    // ペイロード作成日時
-    // "yyyyMMDD-hh:mm:ss.SS"で記述される
-    optional string createdDate = 3;
-
-    // ペイロード作成日時 : Unix Time
-    optional int64 createdDateInt = 15;
-
-    // 送信者のpackage
-    // 必ず付与すべきだが、完全な信頼性はない
-    required string senderPackage = 7;
-
-    // 送信対象のpackage
-    // 暗号化有無に関わらず基本的に従うべきだが、義務ではない。
-    optional string targetPackage = 6;
+    // セントラルの情報
+    required CentralSpec   centralSpec = 20;
 
     // セントラルアプリのステータス
-    optional CentralStatus centralStatus = 1;
+    required CentralStatus centralStatus = 1;
 
-    // リモートセントラルの状態
-    optional RemoteCentralStatus remoteCentralStatus = 20;
+    // ペイロードごとに一意に確定するID
+    // 送出ごとに異なる値が設定されるため、重複チェックに使用できる
+    required string uniqueId = 4;
 
-    // セッション情報
+    // ペイロード作成日時 : Unix Time
+    required int64 createdDateInt = 15;
+
+    // 走行距離等の客観的な実働データ
     optional SessionStatus sessionStatus = 16;
+
+    // ユーザーのフィットネスデータ
+    optional FitnessStatus fitness = 14;
 
     // ユーザーの各種記録
     optional UserRecord userRecord = 10;
@@ -163,9 +92,6 @@ message MasterPayload {
 
     // 制御コマンド
     repeated CommandPayload commandPayloads = 5;
-
-    // ユーザーの活動情報
-    optional FitnessPayload fitness = 14;
 
     // メタデータ
     repeated Meta metadatas = 13;

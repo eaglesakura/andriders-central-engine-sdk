@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.central.event;
 
-import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
 import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
@@ -25,7 +25,7 @@ public abstract class SensorEventHandler {
      * @param master   マスターデータ
      * @param speed    速度情報
      */
-    public void onSpeedReceived(AcesProtocolReceiver receiver, MasterPayload master, RawSpeed speed) {
+    public void onSpeedReceived(CentralDataReceiver receiver, MasterPayload master, RawSpeed speed) {
     }
 
     /**
@@ -35,7 +35,7 @@ public abstract class SensorEventHandler {
      * @param master   マスターデータ
      * @param cadence  ケイデンス情報
      */
-    public void onCadenceReceived(AcesProtocolReceiver receiver, MasterPayload master, RawCadence cadence) {
+    public void onCadenceReceived(CentralDataReceiver receiver, MasterPayload master, RawCadence cadence) {
 
     }
 
@@ -46,7 +46,7 @@ public abstract class SensorEventHandler {
      * @param master    マスターデータ
      * @param heartrate 心拍情報
      */
-    public void onHeartrateReceived(AcesProtocolReceiver receiver, MasterPayload master, RawHeartrate heartrate) {
+    public void onHeartrateReceived(CentralDataReceiver receiver, MasterPayload master, RawHeartrate heartrate) {
 
     }
 
@@ -57,7 +57,7 @@ public abstract class SensorEventHandler {
      * @param master   マスターデータ
      * @param payload  センサー情報
      */
-    public void onUnknownSensorReceived(AcesProtocolReceiver receiver, MasterPayload master, SensorPayload payload) {
+    public void onUnknownSensorReceived(CentralDataReceiver receiver, MasterPayload master, SensorPayload payload) {
 
     }
 }

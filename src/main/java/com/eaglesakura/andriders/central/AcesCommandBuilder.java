@@ -109,7 +109,7 @@ public class AcesCommandBuilder {
     /**
      * 送信対象のPackage名を指定する。
      * <br>
-     * 指定されたpackage以外ではこのBuilderで生成されたマスターデータを処理しないが、{@link AcesProtocolReceiver#setCheckSelfPackage(boolean)}にfalseを指定した場合は強制的にマスターデータを受け取れる。
+     * 指定されたpackage以外ではこのBuilderで生成されたマスターデータを処理しないが、{@link CentralDataReceiver#setCheckSelfPackage(boolean)}にfalseを指定した場合は強制的にマスターデータを受け取れる。
      *
      * @param targetPackage 送信対象のパッケージ名
      * @return this
@@ -142,7 +142,7 @@ public class AcesCommandBuilder {
         masterPayload = masterBuilder.build().toByteArray();
 
         // compress
-        masterPayload = AcesProtocolReceiver.compressMasterPayload(masterPayload);
+        masterPayload = CentralDataReceiver.compressMasterPayload(masterPayload);
 
         return this;
     }
@@ -161,7 +161,7 @@ public class AcesCommandBuilder {
     /**
      * 端末内にMasterPayloadをbroadcastする。
      * <br>
-     * 送信されたデータは{@link AcesProtocolReceiver}で受信できる。
+     * 送信されたデータは{@link CentralDataReceiver}で受信できる。
      */
     public void send() {
         if (!AndroidThreadUtil.isUIThread()) {
@@ -174,13 +174,13 @@ public class AcesCommandBuilder {
             return;
         }
 
-        Intent intent = AcesProtocolReceiver.newBroadcastIntent();
+        Intent intent = CentralDataReceiver.newBroadcastIntent();
         if (masterPayload == null) {
             build();
         }
 
         // ステータスを付与する
-        intent.putExtra(AcesProtocolReceiver.INTENT_EXTRA_MASTER, masterPayload);
+        intent.putExtra(CentralDataReceiver.INTENT_EXTRA_MASTER, masterPayload);
         context.sendBroadcast(intent);
     }
 

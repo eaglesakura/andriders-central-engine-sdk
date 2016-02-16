@@ -3,6 +3,7 @@
 COMPILE_DIR="./src/main/protobuf"
 TARGET_FILES="${COMPILE_DIR}/*.proto"
 JAVAOUT_DIR="./src/main/generated/protobuf/"
+mkdir ${JAVAOUT_DIR}
 
 for filepath in ${TARGET_FILES}; do
   echo "compile -> $filepath"

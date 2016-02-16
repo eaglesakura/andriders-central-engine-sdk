@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.media;
 
 import com.eaglesakura.andriders.AcesEnvironment;
-import com.eaglesakura.andriders.central.AcesProtocolReceiver;
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.andriders.protocol.GeoProtocol;
 import com.eaglesakura.andriders.protocol.MediaMetaProtocol;
@@ -98,7 +98,7 @@ public class MediaFileManager {
     /**
      * メタ情報を書き出す
      */
-    public void writeMediaMeta(AcesProtocolReceiver receiver) throws IOException {
+    public void writeMediaMeta(CentralDataReceiver receiver) throws IOException {
 
         final GeoProtocol.GeoPayload geo = receiver.getLastReceivedGeo();
         final SensorProtocol.RawHeartrate heartrate = receiver.getLastReceivedHeartrate();

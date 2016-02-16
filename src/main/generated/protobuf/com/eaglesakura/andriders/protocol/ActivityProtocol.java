@@ -8,8 +8,815 @@ public final class ActivityProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface FitnessPayloadOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:eaglesakura_ace.FitnessPayload)
+  public interface SessionStatusOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:eaglesakura_ace.SessionStatus)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 sessionStartTime = 1;</code>
+     *
+     * <pre>
+     * セッションの開始時刻 : Unix Time
+     * </pre>
+     */
+    boolean hasSessionStartTime();
+    /**
+     * <code>required int64 sessionStartTime = 1;</code>
+     *
+     * <pre>
+     * セッションの開始時刻 : Unix Time
+     * </pre>
+     */
+    long getSessionStartTime();
+
+    /**
+     * <code>required float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    boolean hasDistanceSessionKm();
+    /**
+     * <code>required float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    float getDistanceSessionKm();
+
+    /**
+     * <code>required int32 sessionActiveTimeMs = 3;</code>
+     *
+     * <pre>
+     * セッション中、自走している時間
+     * </pre>
+     */
+    boolean hasSessionActiveTimeMs();
+    /**
+     * <code>required int32 sessionActiveTimeMs = 3;</code>
+     *
+     * <pre>
+     * セッション中、自走している時間
+     * </pre>
+     */
+    int getSessionActiveTimeMs();
+
+    /**
+     * <code>required float sessionActiveDistanceKm = 5;</code>
+     *
+     * <pre>
+     * セッション中、自走した距離(Km)
+     * </pre>
+     */
+    boolean hasSessionActiveDistanceKm();
+    /**
+     * <code>required float sessionActiveDistanceKm = 5;</code>
+     *
+     * <pre>
+     * セッション中、自走した距離(Km)
+     * </pre>
+     */
+    float getSessionActiveDistanceKm();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.SessionStatus}
+   *
+   * <pre>
+   * 走行セッションに関する情報を付与する
+   * </pre>
+   */
+  public static final class SessionStatus extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:eaglesakura_ace.SessionStatus)
+      SessionStatusOrBuilder {
+    // Use SessionStatus.newBuilder() to construct.
+    private SessionStatus(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SessionStatus(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SessionStatus defaultInstance;
+    public static SessionStatus getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SessionStatus getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SessionStatus(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              sessionStartTime_ = input.readInt64();
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              distanceSessionKm_ = input.readFloat();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              sessionActiveTimeMs_ = input.readInt32();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000008;
+              sessionActiveDistanceKm_ = input.readFloat();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_SessionStatus_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_SessionStatus_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.class, com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SessionStatus> PARSER =
+        new com.google.protobuf.AbstractParser<SessionStatus>() {
+      public SessionStatus parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SessionStatus(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SessionStatus> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int SESSIONSTARTTIME_FIELD_NUMBER = 1;
+    private long sessionStartTime_;
+    /**
+     * <code>required int64 sessionStartTime = 1;</code>
+     *
+     * <pre>
+     * セッションの開始時刻 : Unix Time
+     * </pre>
+     */
+    public boolean hasSessionStartTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 sessionStartTime = 1;</code>
+     *
+     * <pre>
+     * セッションの開始時刻 : Unix Time
+     * </pre>
+     */
+    public long getSessionStartTime() {
+      return sessionStartTime_;
+    }
+
+    public static final int DISTANCESESSIONKM_FIELD_NUMBER = 2;
+    private float distanceSessionKm_;
+    /**
+     * <code>required float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    public boolean hasDistanceSessionKm() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required float distanceSessionKm = 2;</code>
+     *
+     * <pre>
+     * このセッションで走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    public float getDistanceSessionKm() {
+      return distanceSessionKm_;
+    }
+
+    public static final int SESSIONACTIVETIMEMS_FIELD_NUMBER = 3;
+    private int sessionActiveTimeMs_;
+    /**
+     * <code>required int32 sessionActiveTimeMs = 3;</code>
+     *
+     * <pre>
+     * セッション中、自走している時間
+     * </pre>
+     */
+    public boolean hasSessionActiveTimeMs() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 sessionActiveTimeMs = 3;</code>
+     *
+     * <pre>
+     * セッション中、自走している時間
+     * </pre>
+     */
+    public int getSessionActiveTimeMs() {
+      return sessionActiveTimeMs_;
+    }
+
+    public static final int SESSIONACTIVEDISTANCEKM_FIELD_NUMBER = 5;
+    private float sessionActiveDistanceKm_;
+    /**
+     * <code>required float sessionActiveDistanceKm = 5;</code>
+     *
+     * <pre>
+     * セッション中、自走した距離(Km)
+     * </pre>
+     */
+    public boolean hasSessionActiveDistanceKm() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required float sessionActiveDistanceKm = 5;</code>
+     *
+     * <pre>
+     * セッション中、自走した距離(Km)
+     * </pre>
+     */
+    public float getSessionActiveDistanceKm() {
+      return sessionActiveDistanceKm_;
+    }
+
+    private void initFields() {
+      sessionStartTime_ = 0L;
+      distanceSessionKm_ = 0F;
+      sessionActiveTimeMs_ = 0;
+      sessionActiveDistanceKm_ = 0F;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSessionStartTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDistanceSessionKm()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionActiveTimeMs()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionActiveDistanceKm()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, sessionStartTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, distanceSessionKm_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, sessionActiveTimeMs_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(5, sessionActiveDistanceKm_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, sessionStartTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, distanceSessionKm_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, sessionActiveTimeMs_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, sessionActiveDistanceKm_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.SessionStatus}
+     *
+     * <pre>
+     * 走行セッションに関する情報を付与する
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:eaglesakura_ace.SessionStatus)
+        com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatusOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_SessionStatus_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_SessionStatus_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.class, com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        sessionStartTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        distanceSessionKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sessionActiveTimeMs_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sessionActiveDistanceKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_SessionStatus_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus build() {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus buildPartial() {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus result = new com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.sessionStartTime_ = sessionStartTime_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.distanceSessionKm_ = distanceSessionKm_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.sessionActiveTimeMs_ = sessionActiveTimeMs_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.sessionActiveDistanceKm_ = sessionActiveDistanceKm_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus other) {
+        if (other == com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus.getDefaultInstance()) return this;
+        if (other.hasSessionStartTime()) {
+          setSessionStartTime(other.getSessionStartTime());
+        }
+        if (other.hasDistanceSessionKm()) {
+          setDistanceSessionKm(other.getDistanceSessionKm());
+        }
+        if (other.hasSessionActiveTimeMs()) {
+          setSessionActiveTimeMs(other.getSessionActiveTimeMs());
+        }
+        if (other.hasSessionActiveDistanceKm()) {
+          setSessionActiveDistanceKm(other.getSessionActiveDistanceKm());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSessionStartTime()) {
+          
+          return false;
+        }
+        if (!hasDistanceSessionKm()) {
+          
+          return false;
+        }
+        if (!hasSessionActiveTimeMs()) {
+          
+          return false;
+        }
+        if (!hasSessionActiveDistanceKm()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.ActivityProtocol.SessionStatus) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long sessionStartTime_ ;
+      /**
+       * <code>required int64 sessionStartTime = 1;</code>
+       *
+       * <pre>
+       * セッションの開始時刻 : Unix Time
+       * </pre>
+       */
+      public boolean hasSessionStartTime() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 sessionStartTime = 1;</code>
+       *
+       * <pre>
+       * セッションの開始時刻 : Unix Time
+       * </pre>
+       */
+      public long getSessionStartTime() {
+        return sessionStartTime_;
+      }
+      /**
+       * <code>required int64 sessionStartTime = 1;</code>
+       *
+       * <pre>
+       * セッションの開始時刻 : Unix Time
+       * </pre>
+       */
+      public Builder setSessionStartTime(long value) {
+        bitField0_ |= 0x00000001;
+        sessionStartTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 sessionStartTime = 1;</code>
+       *
+       * <pre>
+       * セッションの開始時刻 : Unix Time
+       * </pre>
+       */
+      public Builder clearSessionStartTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        sessionStartTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private float distanceSessionKm_ ;
+      /**
+       * <code>required float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public boolean hasDistanceSessionKm() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public float getDistanceSessionKm() {
+        return distanceSessionKm_;
+      }
+      /**
+       * <code>required float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public Builder setDistanceSessionKm(float value) {
+        bitField0_ |= 0x00000002;
+        distanceSessionKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float distanceSessionKm = 2;</code>
+       *
+       * <pre>
+       * このセッションで走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public Builder clearDistanceSessionKm() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        distanceSessionKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private int sessionActiveTimeMs_ ;
+      /**
+       * <code>required int32 sessionActiveTimeMs = 3;</code>
+       *
+       * <pre>
+       * セッション中、自走している時間
+       * </pre>
+       */
+      public boolean hasSessionActiveTimeMs() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 sessionActiveTimeMs = 3;</code>
+       *
+       * <pre>
+       * セッション中、自走している時間
+       * </pre>
+       */
+      public int getSessionActiveTimeMs() {
+        return sessionActiveTimeMs_;
+      }
+      /**
+       * <code>required int32 sessionActiveTimeMs = 3;</code>
+       *
+       * <pre>
+       * セッション中、自走している時間
+       * </pre>
+       */
+      public Builder setSessionActiveTimeMs(int value) {
+        bitField0_ |= 0x00000004;
+        sessionActiveTimeMs_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 sessionActiveTimeMs = 3;</code>
+       *
+       * <pre>
+       * セッション中、自走している時間
+       * </pre>
+       */
+      public Builder clearSessionActiveTimeMs() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sessionActiveTimeMs_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float sessionActiveDistanceKm_ ;
+      /**
+       * <code>required float sessionActiveDistanceKm = 5;</code>
+       *
+       * <pre>
+       * セッション中、自走した距離(Km)
+       * </pre>
+       */
+      public boolean hasSessionActiveDistanceKm() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required float sessionActiveDistanceKm = 5;</code>
+       *
+       * <pre>
+       * セッション中、自走した距離(Km)
+       * </pre>
+       */
+      public float getSessionActiveDistanceKm() {
+        return sessionActiveDistanceKm_;
+      }
+      /**
+       * <code>required float sessionActiveDistanceKm = 5;</code>
+       *
+       * <pre>
+       * セッション中、自走した距離(Km)
+       * </pre>
+       */
+      public Builder setSessionActiveDistanceKm(float value) {
+        bitField0_ |= 0x00000008;
+        sessionActiveDistanceKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float sessionActiveDistanceKm = 5;</code>
+       *
+       * <pre>
+       * セッション中、自走した距離(Km)
+       * </pre>
+       */
+      public Builder clearSessionActiveDistanceKm() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        sessionActiveDistanceKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.SessionStatus)
+    }
+
+    static {
+      defaultInstance = new SessionStatus(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.SessionStatus)
+  }
+
+  public interface FitnessStatusOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:eaglesakura_ace.FitnessStatus)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -64,7 +871,7 @@ public final class ActivityProtocol {
     int getMaxHeartrate();
 
     /**
-     * <code>optional float mets = 4;</code>
+     * <code>required float mets = 4;</code>
      *
      * <pre>
      * 現在のMETs値
@@ -72,7 +879,7 @@ public final class ActivityProtocol {
      */
     boolean hasMets();
     /**
-     * <code>optional float mets = 4;</code>
+     * <code>required float mets = 4;</code>
      *
      * <pre>
      * 現在のMETs値
@@ -81,7 +888,7 @@ public final class ActivityProtocol {
     float getMets();
 
     /**
-     * <code>optional float sessionCalories = 2;</code>
+     * <code>required float sessionCalories = 2;</code>
      *
      * <pre>
      * セッションで消費したcalorie
@@ -89,7 +896,7 @@ public final class ActivityProtocol {
      */
     boolean hasSessionCalories();
     /**
-     * <code>optional float sessionCalories = 2;</code>
+     * <code>required float sessionCalories = 2;</code>
      *
      * <pre>
      * セッションで消費したcalorie
@@ -98,7 +905,7 @@ public final class ActivityProtocol {
     float getSessionCalories();
 
     /**
-     * <code>optional float todayCalories = 3;</code>
+     * <code>required float todayCalories = 3;</code>
      *
      * <pre>
      * 今日消費したカロリー
@@ -106,7 +913,7 @@ public final class ActivityProtocol {
      */
     boolean hasTodayCalories();
     /**
-     * <code>optional float todayCalories = 3;</code>
+     * <code>required float todayCalories = 3;</code>
      *
      * <pre>
      * 今日消費したカロリー
@@ -115,7 +922,7 @@ public final class ActivityProtocol {
     float getTodayCalories();
 
     /**
-     * <code>optional float sessionExercise = 7;</code>
+     * <code>required float sessionExercise = 7;</code>
      *
      * <pre>
      * セッションで獲得したエクササイズ値
@@ -123,7 +930,7 @@ public final class ActivityProtocol {
      */
     boolean hasSessionExercise();
     /**
-     * <code>optional float sessionExercise = 7;</code>
+     * <code>required float sessionExercise = 7;</code>
      *
      * <pre>
      * セッションで獲得したエクササイズ値
@@ -132,7 +939,7 @@ public final class ActivityProtocol {
     float getSessionExercise();
 
     /**
-     * <code>optional float todayExercise = 8;</code>
+     * <code>required float todayExercise = 8;</code>
      *
      * <pre>
      * 今日獲得したエクササイズ値
@@ -140,7 +947,7 @@ public final class ActivityProtocol {
      */
     boolean hasTodayExercise();
     /**
-     * <code>optional float todayExercise = 8;</code>
+     * <code>required float todayExercise = 8;</code>
      *
      * <pre>
      * 今日獲得したエクササイズ値
@@ -149,25 +956,29 @@ public final class ActivityProtocol {
     float getTodayExercise();
   }
   /**
-   * Protobuf type {@code eaglesakura_ace.FitnessPayload}
+   * Protobuf type {@code eaglesakura_ace.FitnessStatus}
+   *
+   * <pre>
+   * フィットネス情報
+   * </pre>
    */
-  public static final class FitnessPayload extends
+  public static final class FitnessStatus extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:eaglesakura_ace.FitnessPayload)
-      FitnessPayloadOrBuilder {
-    // Use FitnessPayload.newBuilder() to construct.
-    private FitnessPayload(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:eaglesakura_ace.FitnessStatus)
+      FitnessStatusOrBuilder {
+    // Use FitnessStatus.newBuilder() to construct.
+    private FitnessStatus(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private FitnessPayload(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private FitnessStatus(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final FitnessPayload defaultInstance;
-    public static FitnessPayload getDefaultInstance() {
+    private static final FitnessStatus defaultInstance;
+    public static FitnessStatus getDefaultInstance() {
       return defaultInstance;
     }
 
-    public FitnessPayload getDefaultInstanceForType() {
+    public FitnessStatus getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -177,7 +988,7 @@ public final class ActivityProtocol {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private FitnessPayload(
+    private FitnessStatus(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -254,28 +1065,28 @@ public final class ActivityProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessStatus_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable
+      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessStatus_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder.class);
+              com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<FitnessPayload> PARSER =
-        new com.google.protobuf.AbstractParser<FitnessPayload>() {
-      public FitnessPayload parsePartialFrom(
+    public static com.google.protobuf.Parser<FitnessStatus> PARSER =
+        new com.google.protobuf.AbstractParser<FitnessStatus>() {
+      public FitnessStatus parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new FitnessPayload(input, extensionRegistry);
+        return new FitnessStatus(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<FitnessPayload> getParserForType() {
+    public com.google.protobuf.Parser<FitnessStatus> getParserForType() {
       return PARSER;
     }
 
@@ -352,7 +1163,7 @@ public final class ActivityProtocol {
     public static final int METS_FIELD_NUMBER = 4;
     private float mets_;
     /**
-     * <code>optional float mets = 4;</code>
+     * <code>required float mets = 4;</code>
      *
      * <pre>
      * 現在のMETs値
@@ -362,7 +1173,7 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional float mets = 4;</code>
+     * <code>required float mets = 4;</code>
      *
      * <pre>
      * 現在のMETs値
@@ -375,7 +1186,7 @@ public final class ActivityProtocol {
     public static final int SESSIONCALORIES_FIELD_NUMBER = 2;
     private float sessionCalories_;
     /**
-     * <code>optional float sessionCalories = 2;</code>
+     * <code>required float sessionCalories = 2;</code>
      *
      * <pre>
      * セッションで消費したcalorie
@@ -385,7 +1196,7 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional float sessionCalories = 2;</code>
+     * <code>required float sessionCalories = 2;</code>
      *
      * <pre>
      * セッションで消費したcalorie
@@ -398,7 +1209,7 @@ public final class ActivityProtocol {
     public static final int TODAYCALORIES_FIELD_NUMBER = 3;
     private float todayCalories_;
     /**
-     * <code>optional float todayCalories = 3;</code>
+     * <code>required float todayCalories = 3;</code>
      *
      * <pre>
      * 今日消費したカロリー
@@ -408,7 +1219,7 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional float todayCalories = 3;</code>
+     * <code>required float todayCalories = 3;</code>
      *
      * <pre>
      * 今日消費したカロリー
@@ -421,7 +1232,7 @@ public final class ActivityProtocol {
     public static final int SESSIONEXERCISE_FIELD_NUMBER = 7;
     private float sessionExercise_;
     /**
-     * <code>optional float sessionExercise = 7;</code>
+     * <code>required float sessionExercise = 7;</code>
      *
      * <pre>
      * セッションで獲得したエクササイズ値
@@ -431,7 +1242,7 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional float sessionExercise = 7;</code>
+     * <code>required float sessionExercise = 7;</code>
      *
      * <pre>
      * セッションで獲得したエクササイズ値
@@ -444,7 +1255,7 @@ public final class ActivityProtocol {
     public static final int TODAYEXERCISE_FIELD_NUMBER = 8;
     private float todayExercise_;
     /**
-     * <code>optional float todayExercise = 8;</code>
+     * <code>required float todayExercise = 8;</code>
      *
      * <pre>
      * 今日獲得したエクササイズ値
@@ -454,7 +1265,7 @@ public final class ActivityProtocol {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional float todayExercise = 8;</code>
+     * <code>required float todayExercise = 8;</code>
      *
      * <pre>
      * 今日獲得したエクササイズ値
@@ -489,6 +1300,26 @@ public final class ActivityProtocol {
         return false;
       }
       if (!hasMaxHeartrate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMets()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionCalories()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTodayCalories()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionExercise()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTodayExercise()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -576,53 +1407,53 @@ public final class ActivityProtocol {
       return super.writeReplace();
     }
 
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(byte[] data)
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseDelimitedFrom(java.io.InputStream input)
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseDelimitedFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parseFrom(
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -631,7 +1462,7 @@ public final class ActivityProtocol {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload prototype) {
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -643,25 +1474,29 @@ public final class ActivityProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code eaglesakura_ace.FitnessPayload}
+     * Protobuf type {@code eaglesakura_ace.FitnessStatus}
+     *
+     * <pre>
+     * フィットネス情報
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:eaglesakura_ace.FitnessPayload)
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayloadOrBuilder {
+        // @@protoc_insertion_point(builder_implements:eaglesakura_ace.FitnessStatus)
+        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatusOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessStatus_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessStatus_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.Builder.class);
+                com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.class, com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.Builder.class);
       }
 
-      // Construct using com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.newBuilder()
+      // Construct using com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -706,23 +1541,23 @@ public final class ActivityProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_FitnessStatus_descriptor;
       }
 
-      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload getDefaultInstanceForType() {
-        return com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance();
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.getDefaultInstance();
       }
 
-      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload build() {
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload result = buildPartial();
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus build() {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload buildPartial() {
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload result = new com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload(this);
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus buildPartial() {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus result = new com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -763,16 +1598,16 @@ public final class ActivityProtocol {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) {
-          return mergeFrom((com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload)other);
+        if (other instanceof com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload other) {
-        if (other == com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus other) {
+        if (other == com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus.getDefaultInstance()) return this;
         if (other.hasWeight()) {
           setWeight(other.getWeight());
         }
@@ -814,6 +1649,26 @@ public final class ActivityProtocol {
           
           return false;
         }
+        if (!hasMets()) {
+          
+          return false;
+        }
+        if (!hasSessionCalories()) {
+          
+          return false;
+        }
+        if (!hasTodayCalories()) {
+          
+          return false;
+        }
+        if (!hasSessionExercise()) {
+          
+          return false;
+        }
+        if (!hasTodayExercise()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -821,11 +1676,11 @@ public final class ActivityProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload parsedMessage = null;
+        com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessPayload) e.getUnfinishedMessage();
+          parsedMessage = (com.eaglesakura.andriders.protocol.ActivityProtocol.FitnessStatus) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -982,7 +1837,7 @@ public final class ActivityProtocol {
 
       private float mets_ ;
       /**
-       * <code>optional float mets = 4;</code>
+       * <code>required float mets = 4;</code>
        *
        * <pre>
        * 現在のMETs値
@@ -992,7 +1847,7 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional float mets = 4;</code>
+       * <code>required float mets = 4;</code>
        *
        * <pre>
        * 現在のMETs値
@@ -1002,7 +1857,7 @@ public final class ActivityProtocol {
         return mets_;
       }
       /**
-       * <code>optional float mets = 4;</code>
+       * <code>required float mets = 4;</code>
        *
        * <pre>
        * 現在のMETs値
@@ -1015,7 +1870,7 @@ public final class ActivityProtocol {
         return this;
       }
       /**
-       * <code>optional float mets = 4;</code>
+       * <code>required float mets = 4;</code>
        *
        * <pre>
        * 現在のMETs値
@@ -1030,7 +1885,7 @@ public final class ActivityProtocol {
 
       private float sessionCalories_ ;
       /**
-       * <code>optional float sessionCalories = 2;</code>
+       * <code>required float sessionCalories = 2;</code>
        *
        * <pre>
        * セッションで消費したcalorie
@@ -1040,7 +1895,7 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional float sessionCalories = 2;</code>
+       * <code>required float sessionCalories = 2;</code>
        *
        * <pre>
        * セッションで消費したcalorie
@@ -1050,7 +1905,7 @@ public final class ActivityProtocol {
         return sessionCalories_;
       }
       /**
-       * <code>optional float sessionCalories = 2;</code>
+       * <code>required float sessionCalories = 2;</code>
        *
        * <pre>
        * セッションで消費したcalorie
@@ -1063,7 +1918,7 @@ public final class ActivityProtocol {
         return this;
       }
       /**
-       * <code>optional float sessionCalories = 2;</code>
+       * <code>required float sessionCalories = 2;</code>
        *
        * <pre>
        * セッションで消費したcalorie
@@ -1078,7 +1933,7 @@ public final class ActivityProtocol {
 
       private float todayCalories_ ;
       /**
-       * <code>optional float todayCalories = 3;</code>
+       * <code>required float todayCalories = 3;</code>
        *
        * <pre>
        * 今日消費したカロリー
@@ -1088,7 +1943,7 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional float todayCalories = 3;</code>
+       * <code>required float todayCalories = 3;</code>
        *
        * <pre>
        * 今日消費したカロリー
@@ -1098,7 +1953,7 @@ public final class ActivityProtocol {
         return todayCalories_;
       }
       /**
-       * <code>optional float todayCalories = 3;</code>
+       * <code>required float todayCalories = 3;</code>
        *
        * <pre>
        * 今日消費したカロリー
@@ -1111,7 +1966,7 @@ public final class ActivityProtocol {
         return this;
       }
       /**
-       * <code>optional float todayCalories = 3;</code>
+       * <code>required float todayCalories = 3;</code>
        *
        * <pre>
        * 今日消費したカロリー
@@ -1126,7 +1981,7 @@ public final class ActivityProtocol {
 
       private float sessionExercise_ ;
       /**
-       * <code>optional float sessionExercise = 7;</code>
+       * <code>required float sessionExercise = 7;</code>
        *
        * <pre>
        * セッションで獲得したエクササイズ値
@@ -1136,7 +1991,7 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional float sessionExercise = 7;</code>
+       * <code>required float sessionExercise = 7;</code>
        *
        * <pre>
        * セッションで獲得したエクササイズ値
@@ -1146,7 +2001,7 @@ public final class ActivityProtocol {
         return sessionExercise_;
       }
       /**
-       * <code>optional float sessionExercise = 7;</code>
+       * <code>required float sessionExercise = 7;</code>
        *
        * <pre>
        * セッションで獲得したエクササイズ値
@@ -1159,7 +2014,7 @@ public final class ActivityProtocol {
         return this;
       }
       /**
-       * <code>optional float sessionExercise = 7;</code>
+       * <code>required float sessionExercise = 7;</code>
        *
        * <pre>
        * セッションで獲得したエクササイズ値
@@ -1174,7 +2029,7 @@ public final class ActivityProtocol {
 
       private float todayExercise_ ;
       /**
-       * <code>optional float todayExercise = 8;</code>
+       * <code>required float todayExercise = 8;</code>
        *
        * <pre>
        * 今日獲得したエクササイズ値
@@ -1184,7 +2039,7 @@ public final class ActivityProtocol {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional float todayExercise = 8;</code>
+       * <code>required float todayExercise = 8;</code>
        *
        * <pre>
        * 今日獲得したエクササイズ値
@@ -1194,7 +2049,7 @@ public final class ActivityProtocol {
         return todayExercise_;
       }
       /**
-       * <code>optional float todayExercise = 8;</code>
+       * <code>required float todayExercise = 8;</code>
        *
        * <pre>
        * 今日獲得したエクササイズ値
@@ -1207,7 +2062,7 @@ public final class ActivityProtocol {
         return this;
       }
       /**
-       * <code>optional float todayExercise = 8;</code>
+       * <code>required float todayExercise = 8;</code>
        *
        * <pre>
        * 今日獲得したエクササイズ値
@@ -1220,22 +2075,1359 @@ public final class ActivityProtocol {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.FitnessPayload)
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.FitnessStatus)
     }
 
     static {
-      defaultInstance = new FitnessPayload(true);
+      defaultInstance = new FitnessStatus(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:eaglesakura_ace.FitnessPayload)
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.FitnessStatus)
+  }
+
+  public interface UserRecordOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:eaglesakura_ace.UserRecord)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 todayStartTime = 2;</code>
+     *
+     * <pre>
+     * 今日はじめてセッションを開始した時刻 : Unix Time
+     * </pre>
+     */
+    boolean hasTodayStartTime();
+    /**
+     * <code>required int64 todayStartTime = 2;</code>
+     *
+     * <pre>
+     * 今日はじめてセッションを開始した時刻 : Unix Time
+     * </pre>
+     */
+    long getTodayStartTime();
+
+    /**
+     * <code>required int32 todayActiveTimeMs = 4;</code>
+     *
+     * <pre>
+     * 今日自走した時間
+     * 検出不可能な場合は0となる
+     * </pre>
+     */
+    boolean hasTodayActiveTimeMs();
+    /**
+     * <code>required int32 todayActiveTimeMs = 4;</code>
+     *
+     * <pre>
+     * 今日自走した時間
+     * 検出不可能な場合は0となる
+     * </pre>
+     */
+    int getTodayActiveTimeMs();
+
+    /**
+     * <code>required float todayActiveDistanceKm = 6;</code>
+     *
+     * <pre>
+     * 今日自走した距離
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    boolean hasTodayActiveDistanceKm();
+    /**
+     * <code>required float todayActiveDistanceKm = 6;</code>
+     *
+     * <pre>
+     * 今日自走した距離
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    float getTodayActiveDistanceKm();
+
+    /**
+     * <code>required float todayDistanceKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    boolean hasTodayDistanceKm();
+    /**
+     * <code>required float todayDistanceKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    float getTodayDistanceKm();
+
+    /**
+     * <code>required float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    boolean hasMaxSpeedKmPerHour();
+    /**
+     * <code>required float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    float getMaxSpeedKmPerHour();
+
+    /**
+     * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    boolean hasMaxSpeedTodayKmPerHour();
+    /**
+     * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    float getMaxSpeedTodayKmPerHour();
+
+    /**
+     * <code>required float sessionSumAltitude = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    boolean hasSessionSumAltitude();
+    /**
+     * <code>required float sessionSumAltitude = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    float getSessionSumAltitude();
+
+    /**
+     * <code>required float todaySumAltitude = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    boolean hasTodaySumAltitude();
+    /**
+     * <code>required float todaySumAltitude = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    float getTodaySumAltitude();
+  }
+  /**
+   * Protobuf type {@code eaglesakura_ace.UserRecord}
+   *
+   * <pre>
+   * ユーザーの各種記録を参照する
+   * </pre>
+   */
+  public static final class UserRecord extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:eaglesakura_ace.UserRecord)
+      UserRecordOrBuilder {
+    // Use UserRecord.newBuilder() to construct.
+    private UserRecord(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private UserRecord(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final UserRecord defaultInstance;
+    public static UserRecord getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public UserRecord getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserRecord(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 13: {
+              bitField0_ |= 0x00000008;
+              todayDistanceKm_ = input.readFloat();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              todayStartTime_ = input.readInt64();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000002;
+              todayActiveTimeMs_ = input.readInt32();
+              break;
+            }
+            case 53: {
+              bitField0_ |= 0x00000004;
+              todayActiveDistanceKm_ = input.readFloat();
+              break;
+            }
+            case 85: {
+              bitField0_ |= 0x00000010;
+              maxSpeedKmPerHour_ = input.readFloat();
+              break;
+            }
+            case 93: {
+              bitField0_ |= 0x00000020;
+              maxSpeedTodayKmPerHour_ = input.readFloat();
+              break;
+            }
+            case 165: {
+              bitField0_ |= 0x00000040;
+              sessionSumAltitude_ = input.readFloat();
+              break;
+            }
+            case 173: {
+              bitField0_ |= 0x00000080;
+              todaySumAltitude_ = input.readFloat();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_UserRecord_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.class, com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<UserRecord> PARSER =
+        new com.google.protobuf.AbstractParser<UserRecord>() {
+      public UserRecord parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserRecord(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserRecord> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int TODAYSTARTTIME_FIELD_NUMBER = 2;
+    private long todayStartTime_;
+    /**
+     * <code>required int64 todayStartTime = 2;</code>
+     *
+     * <pre>
+     * 今日はじめてセッションを開始した時刻 : Unix Time
+     * </pre>
+     */
+    public boolean hasTodayStartTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 todayStartTime = 2;</code>
+     *
+     * <pre>
+     * 今日はじめてセッションを開始した時刻 : Unix Time
+     * </pre>
+     */
+    public long getTodayStartTime() {
+      return todayStartTime_;
+    }
+
+    public static final int TODAYACTIVETIMEMS_FIELD_NUMBER = 4;
+    private int todayActiveTimeMs_;
+    /**
+     * <code>required int32 todayActiveTimeMs = 4;</code>
+     *
+     * <pre>
+     * 今日自走した時間
+     * 検出不可能な場合は0となる
+     * </pre>
+     */
+    public boolean hasTodayActiveTimeMs() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 todayActiveTimeMs = 4;</code>
+     *
+     * <pre>
+     * 今日自走した時間
+     * 検出不可能な場合は0となる
+     * </pre>
+     */
+    public int getTodayActiveTimeMs() {
+      return todayActiveTimeMs_;
+    }
+
+    public static final int TODAYACTIVEDISTANCEKM_FIELD_NUMBER = 6;
+    private float todayActiveDistanceKm_;
+    /**
+     * <code>required float todayActiveDistanceKm = 6;</code>
+     *
+     * <pre>
+     * 今日自走した距離
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    public boolean hasTodayActiveDistanceKm() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required float todayActiveDistanceKm = 6;</code>
+     *
+     * <pre>
+     * 今日自走した距離
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    public float getTodayActiveDistanceKm() {
+      return todayActiveDistanceKm_;
+    }
+
+    public static final int TODAYDISTANCEKM_FIELD_NUMBER = 1;
+    private float todayDistanceKm_;
+    /**
+     * <code>required float todayDistanceKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    public boolean hasTodayDistanceKm() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required float todayDistanceKm = 1;</code>
+     *
+     * <pre>
+     * 今日走った距離(km)
+     * 検出不可能な場合は0kmとなる
+     * </pre>
+     */
+    public float getTodayDistanceKm() {
+      return todayDistanceKm_;
+    }
+
+    public static final int MAXSPEEDKMPERHOUR_FIELD_NUMBER = 10;
+    private float maxSpeedKmPerHour_;
+    /**
+     * <code>required float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    public boolean hasMaxSpeedKmPerHour() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required float maxSpeedKmPerHour = 10;</code>
+     *
+     * <pre>
+     * 今までの最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    public float getMaxSpeedKmPerHour() {
+      return maxSpeedKmPerHour_;
+    }
+
+    public static final int MAXSPEEDTODAYKMPERHOUR_FIELD_NUMBER = 11;
+    private float maxSpeedTodayKmPerHour_;
+    /**
+     * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    public boolean hasMaxSpeedTodayKmPerHour() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+     *
+     * <pre>
+     * 今日の最高速度
+     * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+     * </pre>
+     */
+    public float getMaxSpeedTodayKmPerHour() {
+      return maxSpeedTodayKmPerHour_;
+    }
+
+    public static final int SESSIONSUMALTITUDE_FIELD_NUMBER = 20;
+    private float sessionSumAltitude_;
+    /**
+     * <code>required float sessionSumAltitude = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    public boolean hasSessionSumAltitude() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required float sessionSumAltitude = 20;</code>
+     *
+     * <pre>
+     * セッションの獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    public float getSessionSumAltitude() {
+      return sessionSumAltitude_;
+    }
+
+    public static final int TODAYSUMALTITUDE_FIELD_NUMBER = 21;
+    private float todaySumAltitude_;
+    /**
+     * <code>required float todaySumAltitude = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    public boolean hasTodaySumAltitude() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required float todaySumAltitude = 21;</code>
+     *
+     * <pre>
+     * 今日の獲得標高
+     * 検出不可能な場合は0mとなる
+     * </pre>
+     */
+    public float getTodaySumAltitude() {
+      return todaySumAltitude_;
+    }
+
+    private void initFields() {
+      todayStartTime_ = 0L;
+      todayActiveTimeMs_ = 0;
+      todayActiveDistanceKm_ = 0F;
+      todayDistanceKm_ = 0F;
+      maxSpeedKmPerHour_ = 0F;
+      maxSpeedTodayKmPerHour_ = 0F;
+      sessionSumAltitude_ = 0F;
+      todaySumAltitude_ = 0F;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTodayStartTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTodayActiveTimeMs()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTodayActiveDistanceKm()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTodayDistanceKm()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxSpeedKmPerHour()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxSpeedTodayKmPerHour()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionSumAltitude()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTodaySumAltitude()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(1, todayDistanceKm_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(2, todayStartTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(4, todayActiveTimeMs_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeFloat(6, todayActiveDistanceKm_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(10, maxSpeedKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeFloat(11, maxSpeedTodayKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeFloat(20, sessionSumAltitude_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeFloat(21, todaySumAltitude_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(1, todayDistanceKm_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, todayStartTime_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, todayActiveTimeMs_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(6, todayActiveDistanceKm_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(10, maxSpeedKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(11, maxSpeedTodayKmPerHour_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(20, sessionSumAltitude_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(21, todaySumAltitude_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code eaglesakura_ace.UserRecord}
+     *
+     * <pre>
+     * ユーザーの各種記録を参照する
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:eaglesakura_ace.UserRecord)
+        com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecordOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_UserRecord_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.class, com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.Builder.class);
+      }
+
+      // Construct using com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        todayStartTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        todayActiveTimeMs_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        todayActiveDistanceKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        todayDistanceKm_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxSpeedKmPerHour_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        maxSpeedTodayKmPerHour_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sessionSumAltitude_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        todaySumAltitude_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.internal_static_eaglesakura_ace_UserRecord_descriptor;
+      }
+
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord getDefaultInstanceForType() {
+        return com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.getDefaultInstance();
+      }
+
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord build() {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord buildPartial() {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord result = new com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.todayStartTime_ = todayStartTime_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.todayActiveTimeMs_ = todayActiveTimeMs_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.todayActiveDistanceKm_ = todayActiveDistanceKm_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.todayDistanceKm_ = todayDistanceKm_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.maxSpeedKmPerHour_ = maxSpeedKmPerHour_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.maxSpeedTodayKmPerHour_ = maxSpeedTodayKmPerHour_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.sessionSumAltitude_ = sessionSumAltitude_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.todaySumAltitude_ = todaySumAltitude_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord) {
+          return mergeFrom((com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord other) {
+        if (other == com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord.getDefaultInstance()) return this;
+        if (other.hasTodayStartTime()) {
+          setTodayStartTime(other.getTodayStartTime());
+        }
+        if (other.hasTodayActiveTimeMs()) {
+          setTodayActiveTimeMs(other.getTodayActiveTimeMs());
+        }
+        if (other.hasTodayActiveDistanceKm()) {
+          setTodayActiveDistanceKm(other.getTodayActiveDistanceKm());
+        }
+        if (other.hasTodayDistanceKm()) {
+          setTodayDistanceKm(other.getTodayDistanceKm());
+        }
+        if (other.hasMaxSpeedKmPerHour()) {
+          setMaxSpeedKmPerHour(other.getMaxSpeedKmPerHour());
+        }
+        if (other.hasMaxSpeedTodayKmPerHour()) {
+          setMaxSpeedTodayKmPerHour(other.getMaxSpeedTodayKmPerHour());
+        }
+        if (other.hasSessionSumAltitude()) {
+          setSessionSumAltitude(other.getSessionSumAltitude());
+        }
+        if (other.hasTodaySumAltitude()) {
+          setTodaySumAltitude(other.getTodaySumAltitude());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasTodayStartTime()) {
+          
+          return false;
+        }
+        if (!hasTodayActiveTimeMs()) {
+          
+          return false;
+        }
+        if (!hasTodayActiveDistanceKm()) {
+          
+          return false;
+        }
+        if (!hasTodayDistanceKm()) {
+          
+          return false;
+        }
+        if (!hasMaxSpeedKmPerHour()) {
+          
+          return false;
+        }
+        if (!hasMaxSpeedTodayKmPerHour()) {
+          
+          return false;
+        }
+        if (!hasSessionSumAltitude()) {
+          
+          return false;
+        }
+        if (!hasTodaySumAltitude()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.eaglesakura.andriders.protocol.ActivityProtocol.UserRecord) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long todayStartTime_ ;
+      /**
+       * <code>required int64 todayStartTime = 2;</code>
+       *
+       * <pre>
+       * 今日はじめてセッションを開始した時刻 : Unix Time
+       * </pre>
+       */
+      public boolean hasTodayStartTime() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 todayStartTime = 2;</code>
+       *
+       * <pre>
+       * 今日はじめてセッションを開始した時刻 : Unix Time
+       * </pre>
+       */
+      public long getTodayStartTime() {
+        return todayStartTime_;
+      }
+      /**
+       * <code>required int64 todayStartTime = 2;</code>
+       *
+       * <pre>
+       * 今日はじめてセッションを開始した時刻 : Unix Time
+       * </pre>
+       */
+      public Builder setTodayStartTime(long value) {
+        bitField0_ |= 0x00000001;
+        todayStartTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 todayStartTime = 2;</code>
+       *
+       * <pre>
+       * 今日はじめてセッションを開始した時刻 : Unix Time
+       * </pre>
+       */
+      public Builder clearTodayStartTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        todayStartTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int todayActiveTimeMs_ ;
+      /**
+       * <code>required int32 todayActiveTimeMs = 4;</code>
+       *
+       * <pre>
+       * 今日自走した時間
+       * 検出不可能な場合は0となる
+       * </pre>
+       */
+      public boolean hasTodayActiveTimeMs() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 todayActiveTimeMs = 4;</code>
+       *
+       * <pre>
+       * 今日自走した時間
+       * 検出不可能な場合は0となる
+       * </pre>
+       */
+      public int getTodayActiveTimeMs() {
+        return todayActiveTimeMs_;
+      }
+      /**
+       * <code>required int32 todayActiveTimeMs = 4;</code>
+       *
+       * <pre>
+       * 今日自走した時間
+       * 検出不可能な場合は0となる
+       * </pre>
+       */
+      public Builder setTodayActiveTimeMs(int value) {
+        bitField0_ |= 0x00000002;
+        todayActiveTimeMs_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 todayActiveTimeMs = 4;</code>
+       *
+       * <pre>
+       * 今日自走した時間
+       * 検出不可能な場合は0となる
+       * </pre>
+       */
+      public Builder clearTodayActiveTimeMs() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        todayActiveTimeMs_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float todayActiveDistanceKm_ ;
+      /**
+       * <code>required float todayActiveDistanceKm = 6;</code>
+       *
+       * <pre>
+       * 今日自走した距離
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public boolean hasTodayActiveDistanceKm() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required float todayActiveDistanceKm = 6;</code>
+       *
+       * <pre>
+       * 今日自走した距離
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public float getTodayActiveDistanceKm() {
+        return todayActiveDistanceKm_;
+      }
+      /**
+       * <code>required float todayActiveDistanceKm = 6;</code>
+       *
+       * <pre>
+       * 今日自走した距離
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public Builder setTodayActiveDistanceKm(float value) {
+        bitField0_ |= 0x00000004;
+        todayActiveDistanceKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float todayActiveDistanceKm = 6;</code>
+       *
+       * <pre>
+       * 今日自走した距離
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public Builder clearTodayActiveDistanceKm() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        todayActiveDistanceKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float todayDistanceKm_ ;
+      /**
+       * <code>required float todayDistanceKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public boolean hasTodayDistanceKm() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required float todayDistanceKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public float getTodayDistanceKm() {
+        return todayDistanceKm_;
+      }
+      /**
+       * <code>required float todayDistanceKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public Builder setTodayDistanceKm(float value) {
+        bitField0_ |= 0x00000008;
+        todayDistanceKm_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float todayDistanceKm = 1;</code>
+       *
+       * <pre>
+       * 今日走った距離(km)
+       * 検出不可能な場合は0kmとなる
+       * </pre>
+       */
+      public Builder clearTodayDistanceKm() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        todayDistanceKm_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float maxSpeedKmPerHour_ ;
+      /**
+       * <code>required float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public boolean hasMaxSpeedKmPerHour() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public float getMaxSpeedKmPerHour() {
+        return maxSpeedKmPerHour_;
+      }
+      /**
+       * <code>required float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public Builder setMaxSpeedKmPerHour(float value) {
+        bitField0_ |= 0x00000010;
+        maxSpeedKmPerHour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float maxSpeedKmPerHour = 10;</code>
+       *
+       * <pre>
+       * 今までの最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public Builder clearMaxSpeedKmPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        maxSpeedKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float maxSpeedTodayKmPerHour_ ;
+      /**
+       * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public boolean hasMaxSpeedTodayKmPerHour() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public float getMaxSpeedTodayKmPerHour() {
+        return maxSpeedTodayKmPerHour_;
+      }
+      /**
+       * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public Builder setMaxSpeedTodayKmPerHour(float value) {
+        bitField0_ |= 0x00000020;
+        maxSpeedTodayKmPerHour_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float maxSpeedTodayKmPerHour = 11;</code>
+       *
+       * <pre>
+       * 今日の最高速度
+       * 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+       * </pre>
+       */
+      public Builder clearMaxSpeedTodayKmPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        maxSpeedTodayKmPerHour_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float sessionSumAltitude_ ;
+      /**
+       * <code>required float sessionSumAltitude = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public boolean hasSessionSumAltitude() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required float sessionSumAltitude = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public float getSessionSumAltitude() {
+        return sessionSumAltitude_;
+      }
+      /**
+       * <code>required float sessionSumAltitude = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public Builder setSessionSumAltitude(float value) {
+        bitField0_ |= 0x00000040;
+        sessionSumAltitude_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float sessionSumAltitude = 20;</code>
+       *
+       * <pre>
+       * セッションの獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public Builder clearSessionSumAltitude() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        sessionSumAltitude_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private float todaySumAltitude_ ;
+      /**
+       * <code>required float todaySumAltitude = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public boolean hasTodaySumAltitude() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required float todaySumAltitude = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public float getTodaySumAltitude() {
+        return todaySumAltitude_;
+      }
+      /**
+       * <code>required float todaySumAltitude = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public Builder setTodaySumAltitude(float value) {
+        bitField0_ |= 0x00000080;
+        todaySumAltitude_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float todaySumAltitude = 21;</code>
+       *
+       * <pre>
+       * 今日の獲得標高
+       * 検出不可能な場合は0mとなる
+       * </pre>
+       */
+      public Builder clearTodaySumAltitude() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        todaySumAltitude_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:eaglesakura_ace.UserRecord)
+    }
+
+    static {
+      defaultInstance = new UserRecord(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:eaglesakura_ace.UserRecord)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_eaglesakura_ace_FitnessPayload_descriptor;
+    internal_static_eaglesakura_ace_SessionStatus_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable;
+      internal_static_eaglesakura_ace_SessionStatus_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_FitnessStatus_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_FitnessStatus_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_eaglesakura_ace_UserRecord_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1246,13 +3438,22 @@ public final class ActivityProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\026ActivityProtocol.proto\022\017eaglesakura_ac" +
-      "e\032\023AcesConstants.proto\"\275\001\n\016FitnessPayloa" +
-      "d\022\016\n\006weight\030\001 \002(\002\022\027\n\017normalHeartrate\030\006 \002" +
-      "(\005\022\024\n\014maxHeartrate\030\005 \002(\005\022\014\n\004mets\030\004 \001(\002\022\027" +
-      "\n\017sessionCalories\030\002 \001(\002\022\025\n\rtodayCalories" +
-      "\030\003 \001(\002\022\027\n\017sessionExercise\030\007 \001(\002\022\025\n\rtoday" +
-      "Exercise\030\010 \001(\002B$\n\"com.eaglesakura.andrid" +
-      "ers.protocol"
+      "e\032\023AcesConstants.proto\"\202\001\n\rSessionStatus" +
+      "\022\030\n\020sessionStartTime\030\001 \002(\003\022\031\n\021distanceSe" +
+      "ssionKm\030\002 \002(\002\022\033\n\023sessionActiveTimeMs\030\003 \002" +
+      "(\005\022\037\n\027sessionActiveDistanceKm\030\005 \002(\002\"\274\001\n\r" +
+      "FitnessStatus\022\016\n\006weight\030\001 \002(\002\022\027\n\017normalH" +
+      "eartrate\030\006 \002(\005\022\024\n\014maxHeartrate\030\005 \002(\005\022\014\n\004" +
+      "mets\030\004 \002(\002\022\027\n\017sessionCalories\030\002 \002(\002\022\025\n\rt" +
+      "odayCalories\030\003 \002(\002\022\027\n\017sessionExercise\030\007 " +
+      "\002(\002\022\025\n\rtodayExercise\030\010 \002(\002\"\350\001\n\nUserRecor",
+      "d\022\026\n\016todayStartTime\030\002 \002(\003\022\031\n\021todayActive" +
+      "TimeMs\030\004 \002(\005\022\035\n\025todayActiveDistanceKm\030\006 " +
+      "\002(\002\022\027\n\017todayDistanceKm\030\001 \002(\002\022\031\n\021maxSpeed" +
+      "KmPerHour\030\n \002(\002\022\036\n\026maxSpeedTodayKmPerHou" +
+      "r\030\013 \002(\002\022\032\n\022sessionSumAltitude\030\024 \002(\002\022\030\n\020t" +
+      "odaySumAltitude\030\025 \002(\002B$\n\"com.eaglesakura" +
+      ".andriders.protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1267,12 +3468,24 @@ public final class ActivityProtocol {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor(),
         }, assigner);
-    internal_static_eaglesakura_ace_FitnessPayload_descriptor =
+    internal_static_eaglesakura_ace_SessionStatus_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_eaglesakura_ace_FitnessPayload_fieldAccessorTable = new
+    internal_static_eaglesakura_ace_SessionStatus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_eaglesakura_ace_FitnessPayload_descriptor,
+        internal_static_eaglesakura_ace_SessionStatus_descriptor,
+        new java.lang.String[] { "SessionStartTime", "DistanceSessionKm", "SessionActiveTimeMs", "SessionActiveDistanceKm", });
+    internal_static_eaglesakura_ace_FitnessStatus_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_eaglesakura_ace_FitnessStatus_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_eaglesakura_ace_FitnessStatus_descriptor,
         new java.lang.String[] { "Weight", "NormalHeartrate", "MaxHeartrate", "Mets", "SessionCalories", "TodayCalories", "SessionExercise", "TodayExercise", });
+    internal_static_eaglesakura_ace_UserRecord_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_eaglesakura_ace_UserRecord_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_eaglesakura_ace_UserRecord_descriptor,
+        new java.lang.String[] { "TodayStartTime", "TodayActiveTimeMs", "TodayActiveDistanceKm", "TodayDistanceKm", "MaxSpeedKmPerHour", "MaxSpeedTodayKmPerHour", "SessionSumAltitude", "TodaySumAltitude", });
     com.eaglesakura.andriders.protocol.AcesConstants.getDescriptor();
   }
 
