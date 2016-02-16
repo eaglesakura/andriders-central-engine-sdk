@@ -37,13 +37,6 @@ public class AcesEnvironment {
 
     private static String APPLICATION_PACKAGE_NAME = BASIC_PACKAGE_NAME;
 
-    static {
-        {
-            AcesProtocol.VersionInfo.Builder builder = AcesProtocol.VersionInfo.newBuilder();
-            builder.setProtocolVersion(0);
-        }
-    }
-
 
     /**
      * 実行しているACE package nameを変更する。

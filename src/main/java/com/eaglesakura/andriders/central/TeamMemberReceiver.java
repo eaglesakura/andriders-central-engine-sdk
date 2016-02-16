@@ -26,7 +26,6 @@ public class TeamMemberReceiver extends CentralDataReceiver {
 
     TeamMemberReceiver(Context context) {
         super(context);
-        setCheckSelfPackage(false);
     }
 
     /**
@@ -86,7 +85,7 @@ public class TeamMemberReceiver extends CentralDataReceiver {
          * このメンバーのセントラルデータも更新する
          */
         if (lastReceivedMemberData.hasMasterPayload()) {
-            super.onReceivedMasterPayload(lastReceivedMemberData.getMasterPayload().toByteArray());
+            super.onReceivedPayload(lastReceivedMemberData.getMasterPayload().toByteArray());
         }
     }
 }

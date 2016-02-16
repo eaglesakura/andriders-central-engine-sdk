@@ -45,6 +45,11 @@ public class CentralDataReceiver {
     static final String INTENT_EXTRA_MASTER = "INTENT_EXTRA_MASTER";
 
     /**
+     * ACEsの特殊イベント（Service起動、シャットダウン等）を受信する
+     */
+    static final String INTENT_EXTRA_EVENT = "INTENT_EXTRA_EVENT";
+
+    /**
      * 送受信用Action
      */
     static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_CENTRAL_DATA_v2";
@@ -52,7 +57,7 @@ public class CentralDataReceiver {
     /**
      * 送受信用カテゴリ
      */
-    static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
+    static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_ACE_DATA";
 
     /**
      * 最後に受け取ったセントラル情報
@@ -632,7 +637,7 @@ public class CentralDataReceiver {
         //            BleLog.d("received :: " + intent.getExtras());
         try {
             byte[] master = intent.getByteArrayExtra(INTENT_EXTRA_MASTER);
-            onReceivedMasterPayload(master);
+            onReceivedPayload(master);
         } catch (Exception e) {
             LogUtil.d(e);
         }
@@ -644,7 +649,7 @@ public class CentralDataReceiver {
      *
      * @param masterbuffer 受信したバッファ
      */
-    public synchronized void onReceivedMasterPayload(byte[] masterbuffer) throws Exception {
+    public synchronized void onReceivedPayload(byte[] masterbuffer) throws Exception {
         // バッファをデコードする
         masterbuffer = decompressMasterPayload(masterbuffer);
         AcesProtocol.MasterPayload master;
