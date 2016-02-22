@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.protocol.internal.InternalData;
+import com.eaglesakura.andriders.internal.protocol.IdlExtension;
 import com.eaglesakura.util.StringUtil;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class LineValue {
     public static final String TYPE = "LINE_INFORMATION";
     public static final int MAX_LINES = 3;
 
-    List<InternalData.IdlCycleDisplayValue.KeyValue.Builder> values = new ArrayList<>();
+    List<IdlExtension.CycleDisplayValue.KeyValue> values = new ArrayList<>();
 
     public LineValue(int lines) {
         if (lines > MAX_LINES) {
@@ -23,11 +23,11 @@ public class LineValue {
         }
 
         for (int i = 0; i < lines; ++i) {
-            values.add(InternalData.IdlCycleDisplayValue.KeyValue.newBuilder());
+            values.add(new IdlExtension.CycleDisplayValue.KeyValue());
         }
     }
 
-    LineValue(List<InternalData.IdlCycleDisplayValue.KeyValue.Builder> values) {
+    LineValue(List<IdlExtension.CycleDisplayValue.KeyValue> values) {
         this.values = values;
     }
 
@@ -35,8 +35,8 @@ public class LineValue {
      * 指定したラインが有効であればtrue
      */
     public boolean valid(int line) {
-        InternalData.IdlCycleDisplayValue.KeyValue.Builder v = values.get(line);
-        return !StringUtil.isEmpty(v.getValue()) || !StringUtil.isEmpty(v.getTitle());
+        IdlExtension.CycleDisplayValue.KeyValue value = values.get(line);
+        return !StringUtil.isEmpty(value.value) || !StringUtil.isEmpty(value.title);
     }
 
     /**
@@ -59,18 +59,18 @@ public class LineValue {
     }
 
     public String getTitle(int index) {
-        InternalData.IdlCycleDisplayValue.KeyValue.Builder builder = values.get(index);
-        if (builder.hasTitle()) {
-            return builder.getTitle();
+        IdlExtension.CycleDisplayValue.KeyValue value = values.get(index);
+        if (!StringUtil.isEmpty(value.title)) {
+            return value.title;
         } else {
             return null;
         }
     }
 
     public String getValue(int index) {
-        InternalData.IdlCycleDisplayValue.KeyValue.Builder builder = values.get(index);
-        if (builder.hasValue()) {
-            return builder.getValue();
+        IdlExtension.CycleDisplayValue.KeyValue value = values.get(index);
+        if (!StringUtil.isEmpty(value.value)) {
+            return value.value;
         } else {
             return null;
         }
@@ -80,9 +80,9 @@ public class LineValue {
      * 表示する値を指定する
      */
     public void setLine(int index, String title, String value) {
-        InternalData.IdlCycleDisplayValue.KeyValue.Builder v = values.get(index);
+        IdlExtension.CycleDisplayValue.KeyValue v = values.get(index);
 
-        v.setTitle(title != null ? title : "");
-        v.setValue(value != null ? value : "");
+        v.title = (title != null ? title : "");
+        v.value = (value != null ? value : "");
     }
 }

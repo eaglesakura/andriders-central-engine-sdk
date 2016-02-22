@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders;
 
-import com.eaglesakura.andriders.protocol.AcesProtocol;
 import com.eaglesakura.android.device.external.StorageInfo;
 
 import android.content.Context;

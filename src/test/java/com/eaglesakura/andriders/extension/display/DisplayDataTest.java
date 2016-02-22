@@ -2,19 +2,19 @@ package com.eaglesakura.andriders.extension.display;
 
 import com.eaglesakura.andriders.CiJUnitTester;
 import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.protocol.internal.InternalData;
-
-import junit.framework.Assert;
+import com.eaglesakura.andriders.internal.protocol.IdlExtension;
 
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+import junit.framework.Assert;
+
 public class DisplayDataTest extends CiJUnitTester {
 
     public static class TestDisplayDataImpl extends DisplayData {
-        public TestDisplayDataImpl(InternalData.IdlCycleDisplayValue.Builder raw) {
+        public TestDisplayDataImpl(IdlExtension.CycleDisplayValue raw) {
             super(raw);
         }
     }

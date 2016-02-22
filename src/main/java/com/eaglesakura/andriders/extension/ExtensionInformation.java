@@ -1,8 +1,11 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.protocol.internal.InternalData;
-import com.eaglesakura.android.service.data.Payload;
+import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.serialize.PublicFieldSerializer;
+import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
+import com.eaglesakura.util.StringUtil;
 import com.eaglesakura.util.Util;
 
 import android.content.Context;
@@ -14,11 +17,11 @@ import java.util.List;
  * 拡張情報
  */
 public class ExtensionInformation {
-    InternalData.IdlExtensionInfo.Builder raw;
+    IdlExtension.ExtensionInfo raw;
 
-    private ExtensionInformation(InternalData.IdlExtensionInfo.Builder raw) {
+    private ExtensionInformation(IdlExtension.ExtensionInfo raw) {
         if (raw == null) {
-            raw = InternalData.IdlExtensionInfo.newBuilder();
+            raw = new IdlExtension.ExtensionInfo();
         }
         this.raw = raw;
         makeDefault();
@@ -30,72 +33,71 @@ public class ExtensionInformation {
             throw new IllegalArgumentException();
         }
 
-        raw.setId(context.getPackageName() + "@" + id);
+        raw.id = (context.getPackageName() + "@" + id);
         makeDefault();
     }
 
     private void makeDefault() {
-        if (!raw.hasCategory()) {
+        if (StringUtil.isEmpty(raw.category)) {
             setCategory(ExtensionCategory.CATEGORY_OTHERS);
-        }
-        if (!raw.hasHasSetting()) {
-            setHasSetting(false);
-        }
-        if (!raw.hasActivated()) {
-            setActivated(true);
         }
     }
 
     public String getId() {
-        return raw.getId();
+        return raw.id;
     }
 
     public void setSummary(String set) {
-        raw.setSummary(set);
+        raw.summary = set;
     }
 
     public String getSummary() {
-        return raw.getSummary();
+        return raw.summary;
     }
 
     public boolean hasSetting() {
-        return raw.getHasSetting();
+        return raw.hasSetting;
     }
 
     /**
      * 拡張機能が設定画面を持っていたらtrue
      */
     public void setHasSetting(boolean set) {
-        raw.setHasSetting(set);
+        raw.hasSetting = true;
     }
 
     /**
      * 拡張機能の使用準備ができていたらtrue
      */
     public void setActivated(boolean value) {
-        raw.setActivated(value);
+        raw.activated = value;
     }
 
     /**
      * 拡張機能の使用準備ができていたらtrue
      */
     public boolean isActivated() {
-        return raw.getActivated();
+        return raw.activated;
     }
 
     public ExtensionCategory getCategory() {
-        return ExtensionCategory.fromName(raw.getCategory());
+        return ExtensionCategory.fromName(raw.category);
     }
 
     public void setCategory(ExtensionCategory category) {
-        raw.setCategory(category.getName());
+        raw.category = category.getName();
     }
 
     /**
      * データをシリアライズする
      */
     public byte[] serialize() {
-        return raw.build().toByteArray();
+        try {
+            return new PublicFieldSerializer().serialize(raw);
+        } catch (Exception e) {
+            LogUtil.log(e);
+            throw new IllegalStateException();
+        }
     }
 
     public static byte[] serialize(List<ExtensionInformation> list) {
@@ -110,15 +112,18 @@ public class ExtensionInformation {
      * バッファからデシリアライズする
      */
     public static List<ExtensionInformation> deserialize(byte[] buffer) {
-        List<byte[]> serializedBuffers = SerializeUtil.toByteArrayList(buffer);
-        if (!Util.isEmpty(serializedBuffers)) {
-            List<ExtensionInformation> result = new ArrayList<>();
-            for (byte[] serialized : serializedBuffers) {
-                result.add(new ExtensionInformation(Payload.deserializeMessageOrNull(InternalData.IdlExtensionInfo.class, serialized).toBuilder()));
+        try {
+            List<byte[]> serializedBuffers = SerializeUtil.toByteArrayList(buffer);
+            if (!Util.isEmpty(serializedBuffers)) {
+                List<ExtensionInformation> result = new ArrayList<>();
+                for (byte[] serialized : serializedBuffers) {
+                    result.add(new ExtensionInformation(SerializeUtil.deserializePublicFieldObject(IdlExtension.ExtensionInfo.class, serialized)));
+                }
+                return result;
             }
-            return result;
-        } else {
-            throw new IllegalArgumentException("deserialize failed");
+        } catch (SerializeException e) {
+            LogUtil.log(e);
         }
+        throw new IllegalArgumentException("deserialize failed");
     }
 }

@@ -1,13 +1,10 @@
 package com.eaglesakura.andriders.extension.internal;
 
-import com.google.protobuf.GeneratedMessage;
-
 import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.extension.ExtensionInformation;
 import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.IExtensionService;
 import com.eaglesakura.andriders.sdk.BuildConfig;
-import com.eaglesakura.android.db.BaseProperties;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
@@ -71,26 +68,8 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         buildDisplayCommands();
     }
 
-
-    public Payload postToClient(String cmd, BaseProperties args) throws RemoteException {
-        byte[] postData = args != null ? args.toByteArray() : null;
-        return postToClient(mClientId, cmd, postData);
-    }
-
     public Payload postToClient(String cmd, Payload payload) throws RemoteException {
         return postToClient(mClientId, cmd, payload);
-    }
-
-    public Payload postToClient(String cmd, GeneratedMessage msg) throws RemoteException {
-        return postToClient(cmd, new Payload(msg.toByteArray()));
-    }
-
-    public Payload postToClient(String cmd, GeneratedMessage.Builder msg) throws RemoteException {
-        return postToClient(cmd, new Payload(msg.build().toByteArray()));
-    }
-
-    public <T extends BaseProperties> T postToClient(Class<T> clazz, String cmd, BaseProperties args) throws RemoteException {
-        return Payload.deserializePropOrNull(postToClient(cmd, args), clazz);
     }
 
     /**
@@ -100,19 +79,6 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         Payload payload = postToClient(mClientId, cmd, new Payload(arg));
         return Payload.deserializeStringOrNull(payload);
     }
-
-    /**
-     * データをACEに送信し、結果をStringで受け取る
-     */
-    public String postToClientAsString(String cmd, BaseProperties args) throws RemoteException {
-        Payload payload = postToClient(mClientId, args);
-        if (payload != null) {
-            return null;
-        } else {
-            return new String(payload.getBuffer());
-        }
-    }
-
 
     @Override
     protected Payload onReceivedDataFromClient(String cmd, String clientId, Payload payload) throws RemoteException {

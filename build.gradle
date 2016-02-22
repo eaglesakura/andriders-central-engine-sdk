@@ -4,7 +4,7 @@
 // 0.4.5 : RemoteCentralに対応 / センサーの受信時刻に対応 / 位置情報の信頼性についての情報を追加（トンネル対策）
 // 0.4.6 : EGLIB module update
 // 3.0.x : ACE v3系列対応 / Circle CI対応
-def ACES_SDK_VERSION        = "3.0";
+def ACES_SDK_VERSION = "3.0";
 def PROTOBUF_ARTIFACT_VERSION = "2.6.1";
 def ARTIFACT_NAME = file(".").absoluteFile.name
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
@@ -77,14 +77,6 @@ android {
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
-    }
-
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/generated/protobuf',
-                            'src/main/generated/idl',
-                            'src/main/java']
-        }
     }
 }
 

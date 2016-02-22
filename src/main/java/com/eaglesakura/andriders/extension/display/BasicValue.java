@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.protocol.internal.InternalData;
+import com.eaglesakura.andriders.internal.protocol.IdlExtension;
 import com.eaglesakura.util.StringUtil;
 
 import android.graphics.Color;
@@ -16,86 +16,80 @@ import android.graphics.Color;
  */
 public class BasicValue {
     public static final String TYPE = "BASIC_INFORMATION";
-    InternalData.IdlCycleDisplayValue.BasicValue.Builder raw;
+    IdlExtension.CycleDisplayValue.BasicValue raw;
 
     public BasicValue() {
-        this.raw = InternalData.IdlCycleDisplayValue.BasicValue.newBuilder();
+        this.raw = new IdlExtension.CycleDisplayValue.BasicValue();
         makeDefault();
     }
 
-    BasicValue(InternalData.IdlCycleDisplayValue.BasicValue.Builder raw) {
+    BasicValue(IdlExtension.CycleDisplayValue.BasicValue raw) {
         this.raw = raw;
         makeDefault();
     }
 
     private void makeDefault() {
-        if (!raw.hasBarColorA()) {
-            raw.setBarColorA(255);
-            raw.setBarColorR(128);
-            raw.setBarColorG(128);
-            raw.setBarColorB(128);
-        }
     }
 
     public int getBarColorARGB() {
-        return Color.argb(raw.getBarColorA(), raw.getBarColorR(), raw.getBarColorG(), raw.getBarColorB());
+        return Color.argb(raw.barColorA & 0xFF, raw.barColorR & 0xFF, raw.barColorG & 0xFF, raw.barColorB & 0xFF);
     }
 
     public boolean hasZoneBar() {
-        return raw.getBarColorA() > 0;
+        return raw.barColorA > 0;
     }
 
     public void setBarColorARGB(int barColorARGB) {
-        raw.setBarColorA(Color.alpha(barColorARGB));
-        raw.setBarColorR(Color.red(barColorARGB));
-        raw.setBarColorG(Color.green(barColorARGB));
-        raw.setBarColorB(Color.blue(barColorARGB));
+        raw.barColorA = (short) (Color.alpha(barColorARGB));
+        raw.barColorR = (short) (Color.red(barColorARGB));
+        raw.barColorG = (short) (Color.green(barColorARGB));
+        raw.barColorB = (short) (Color.blue(barColorARGB));
     }
 
     /**
      * 表示可能である場合true
      */
     public boolean valid() {
-        return !StringUtil.isEmpty(raw.getMain());
+        return !StringUtil.isEmpty(raw.main);
     }
 
     /**
      * メインの表示内容を取得する
      */
     public String getValue() {
-        return raw.getMain();
+        return raw.main;
     }
 
     public void setValue(String mainValue) {
-        raw.setMain(mainValue);
+        raw.main = mainValue;
     }
 
     /**
      * ゾーンテキスト（危険域、等）を取得する
      */
     public String getZoneText() {
-        return raw.getBarInfo();
+        return raw.zoneText;
     }
 
     /**
      * ゾーンテキスト（心拍ゾーン等）を設定する
      */
     public void setZoneText(String infoText) {
-        raw.setBarInfo(infoText);
+        raw.zoneText = infoText;
     }
 
     /**
      * タイトル（心拍、ケイデンス等）を取得する
      */
     public String getTitle() {
-        return raw.getTitle();
+        return raw.title;
     }
 
     /**
      * タイトルを設定する
      */
     public void setTitle(String titleText) {
-        raw.setTitle(titleText);
+        raw.title = titleText;
     }
 
 }

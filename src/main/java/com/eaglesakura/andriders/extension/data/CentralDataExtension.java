@@ -3,8 +3,9 @@ package com.eaglesakura.andriders.extension.data;
 import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.internal.CentralDataCommand;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
-import com.eaglesakura.andriders.protocol.SensorProtocol;
-import com.eaglesakura.andriders.protocol.internal.InternalData;
+import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.sensor.SensorType;
+import com.eaglesakura.android.service.data.Payload;
 import com.eaglesakura.util.LogUtil;
 
 import android.location.Location;
@@ -28,7 +29,7 @@ public class CentralDataExtension {
      * <p/>
      * このアドレスにしたがってデータを得る
      */
-    public String getGadgetAddress(SensorProtocol.SensorType type) {
+    public String getGadgetAddress(SensorType type) {
         mServerImpl.validAcesSession();
         try {
             return mServerImpl.postToClientAsString(CentralDataCommand.CMD_setBleGadgetAddress, type.toString());
@@ -45,16 +46,10 @@ public class CentralDataExtension {
     public void setLocation(Location loc) {
         mServerImpl.validAcesSession();
 
-        InternalData.IdlLocation.Builder idl = InternalData.IdlLocation.newBuilder();
-        idl.setLatitude(loc.getLatitude());
-        idl.setLongitude(loc.getLongitude());
-        idl.setAltitude(loc.getAltitude());
-        idl.setAccuracyMeter(loc.getAccuracy());
-
         try {
-            mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, idl);
+            IdlExtension.Location idl = new IdlExtension.Location(loc);
+            mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, Payload.fromPublicField(idl));
         } catch (Exception e) {
-
         }
     }
 
@@ -64,11 +59,9 @@ public class CentralDataExtension {
     public void setHeartrate(int bpm) {
         mServerImpl.validAcesSession();
 
-        InternalData.IdlHeartrate.Builder idl = InternalData.IdlHeartrate.newBuilder();
-        idl.setBpm(bpm);
-
         try {
-            mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, idl);
+            IdlExtension.Heartrate idl = new IdlExtension.Heartrate((short) bpm);
+            mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, Payload.fromPublicField(idl));
         } catch (Exception e) {
             LogUtil.log(e);
         }
@@ -80,14 +73,13 @@ public class CentralDataExtension {
     public void setSpeedAndCadence(float crankRpm, int crankRevolution, float wheelRpm, int wheelRevolution) {
         mServerImpl.validAcesSession();
 
-        InternalData.IdlSpeedAndCadence.Builder idl = InternalData.IdlSpeedAndCadence.newBuilder();
-        idl.setCrankRpm(crankRpm);
-        idl.setCrankRevolution(crankRevolution);
-        idl.setWheelRpm(wheelRpm);
-        idl.setWheelRevolution(wheelRevolution);
-
         try {
-            mServerImpl.postToClient(CentralDataCommand.CMD_setSpeedAndCadence, idl);
+            IdlExtension.SpeedAndCadence idl = new IdlExtension.SpeedAndCadence();
+            idl.crankRpm = crankRpm;
+            idl.crankRevolution = crankRevolution;
+            idl.wheelRpm = wheelRpm;
+            idl.wheelRevolution = wheelRevolution;
+            mServerImpl.postToClient(CentralDataCommand.CMD_setSpeedAndCadence, Payload.fromPublicField(idl));
         } catch (Exception e) {
             LogUtil.log(e);
         }
