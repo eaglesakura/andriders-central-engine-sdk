@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.internal.protocol;
 
 import com.eaglesakura.andriders.sensor.HeartrateZone;
+import com.eaglesakura.andriders.sensor.SpeedZone;
 import com.eaglesakura.serialize.Serialize;
 
 public class SensorProtocol {
@@ -38,46 +39,17 @@ public class SensorProtocol {
         /**
          * 心拍ゾーン
          */
-        @Deprecated
         @Serialize(id = 2)
-        public byte _zone;
+        public HeartrateZone zone;
 
         /**
          * センサー日時
          */
         @Serialize(id = 3)
         public long date;
-
-        public void setZone(HeartrateZone set) {
-            _zone = (byte) set.ordinal();
-        }
-
-        public HeartrateZone getZone() {
-            return HeartrateZone.values()[_zone];
-        }
     }
 
     public static class RawSpeed {
-        /**
-         * 停止
-         */
-        public static final byte ZONE_STOP = 0;
-
-        /**
-         * 低速
-         */
-        public static final byte ZONE_SLOW = 1;
-
-        /**
-         * 巡航
-         */
-        public static final byte ZONE_CRUISE = 2;
-
-        /**
-         * スプリント
-         */
-        public static final byte ZONE_SPRINT = 3;
-
         /**
          * スピード km/h
          */
@@ -98,7 +70,7 @@ public class SensorProtocol {
         public float wheelRevolution = -1;
 
         @Serialize(id = 4)
-        public byte zone = ZONE_STOP;
+        public SpeedZone zone;
 
         @Serialize(id = 5)
         public long date;

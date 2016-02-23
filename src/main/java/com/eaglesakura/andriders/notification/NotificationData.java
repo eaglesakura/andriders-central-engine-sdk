@@ -208,7 +208,7 @@ public class NotificationData {
         }
         raw.message = message;
         raw.date = date.getTime();
-        raw.setLength(notificationLength);
+        raw.length = notificationLength;
         raw.backgroundXRGB = backgroundColor;
         try {
             return SerializeUtil.serializePublicFieldObject(raw);

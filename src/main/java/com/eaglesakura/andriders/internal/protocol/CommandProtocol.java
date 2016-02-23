@@ -35,9 +35,8 @@ public class CommandProtocol {
          *
          * シリアライズ用のため、直接使用することは推奨しない
          */
-        @Deprecated
         @Serialize(id = 4)
-        public byte _length;
+        public NotificationLength length;
 
         /**
          * 一意に識別するID
@@ -57,13 +56,5 @@ public class CommandProtocol {
          */
         @Serialize(id = 7)
         public int backgroundXRGB = Color.WHITE;
-
-        public NotificationLength getLength() {
-            return NotificationLength.values()[_length];
-        }
-
-        public void setLength(NotificationLength len) {
-            _length = (byte) len.ordinal();
-        }
     }
 }
