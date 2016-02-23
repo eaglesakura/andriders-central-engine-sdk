@@ -1,12 +1,13 @@
 package com.eaglesakura.andriders.notification;
 
-import com.google.protobuf.ByteString;
-
-import com.eaglesakura.andriders.media.SoundKey;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.internal.protocol.CommandProtocol;
 import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
+import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.LogUtil;
+import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
+import com.eaglesakura.util.Util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -94,29 +95,29 @@ public class NotificationData {
     /**
      * 通知の長さ
      */
-    CommandProtocol.NotificationLength notificationLength = CommandProtocol.NotificationLength.Normal;
+    NotificationLength notificationLength = NotificationLength.Normal;
 
-    /**
-     * 通知サウンド
-     */
-    SoundData sound;
-
-    public NotificationData(CommandProtocol.NotificationRequestPayload requestPayload) {
-        if (requestPayload.hasIconPath()) {
-            icon = ImageUtil.decode(requestPayload.getIconPath());
-        } else if (requestPayload.hasIconFile()) {
-            icon = ImageUtil.decode(requestPayload.getIconFile().toByteArray());
-        }
-        if (requestPayload.hasBackgroundXRGB()) {
-            backgroundColor = requestPayload.getBackgroundXRGB();
+    public NotificationData(Context context, byte[] buffer) {
+        CommandProtocol.NotificationRequestPayload raw = null;
+        try {
+            raw = SerializeUtil.deserializePublicFieldObject(CommandProtocol.NotificationRequestPayload.class, buffer);
+        } catch (SerializeException e) {
+            LogUtil.log(e);
+            throw new IllegalStateException(e);
         }
 
-        message = requestPayload.getMessage();
-        uniqueId = requestPayload.getUniqueId();
-        date = StringUtil.toDate(requestPayload.getDate());
+        if (Color.alpha(raw.backgroundXRGB) != 0) {
+            backgroundColor = raw.backgroundXRGB;
+        }
 
-        if (requestPayload.hasSound()) {
-            sound = new SoundData(requestPayload.getSound());
+        message = raw.message;
+        uniqueId = raw.uniqueId;
+        date = new Date(raw.date);
+        if (!Util.isEmpty(raw.iconFile)) {
+            // アイコン指定でのデコード
+            setIcon(ImageUtil.decode(raw.iconFile));
+        } else if (!StringUtil.isEmpty(raw.iconUri)) {
+            // TODO URI指定でのデコード
         }
     }
 
@@ -147,26 +148,12 @@ public class NotificationData {
         this.uniqueId = uniqueId;
     }
 
-    public void setNotificationLength(CommandProtocol.NotificationLength notificationLength) {
+    public void setNotificationLength(NotificationLength notificationLength) {
         this.notificationLength = notificationLength;
     }
 
-    public CommandProtocol.NotificationLength getNotificationLength() {
+    public NotificationLength getNotificationLength() {
         return notificationLength;
-    }
-
-    public SoundData getSound() {
-        return sound;
-    }
-
-    public void setSound(SoundData sound) {
-        this.sound = sound;
-    }
-
-    public void setSound(SoundKey key) {
-        this.sound = new SoundData();
-        sound.setSoundKey(key.getKey());
-        sound.setQueue(true);
     }
 
     /**
@@ -211,22 +198,23 @@ public class NotificationData {
     }
 
     /**
-     * payloadを構築する
+     * 値をシリアライズする
      */
-    public CommandProtocol.NotificationRequestPayload buildPayload() {
-        CommandProtocol.NotificationRequestPayload.Builder builder = CommandProtocol.NotificationRequestPayload.newBuilder();
-        builder.setUniqueId(uniqueId);
+    public byte[] serialize() {
+        CommandProtocol.NotificationRequestPayload raw = new CommandProtocol.NotificationRequestPayload();
+        raw.uniqueId = uniqueId;
         if (icon != null) {
-            builder.setIconFile(ByteString.copyFrom(iconCompressLevel.compress(icon)));
+            raw.iconFile = iconCompressLevel.compress(icon);
         }
-        builder.setMessage(message);
-        builder.setDate(StringUtil.toString(date));
-        builder.setLength(notificationLength);
-        builder.setBackgroundXRGB(backgroundColor);
-        if (sound != null) {
-            builder.setSound(sound.buildPayload());
+        raw.message = message;
+        raw.date = date.getTime();
+        raw.setLength(notificationLength);
+        raw.backgroundXRGB = backgroundColor;
+        try {
+            return SerializeUtil.serializePublicFieldObject(raw);
+        } catch (SerializeException e) {
+            LogUtil.log(e);
+            throw new IllegalStateException();
         }
-
-        return builder.build();
     }
 }

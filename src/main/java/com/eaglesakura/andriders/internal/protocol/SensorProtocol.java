@@ -1,25 +1,10 @@
 package com.eaglesakura.andriders.internal.protocol;
 
+import com.eaglesakura.andriders.sensor.HeartrateZone;
 import com.eaglesakura.serialize.Serialize;
 
 public class SensorProtocol {
     public static class RawCadence {
-
-        /**
-         * 低ケイデンス
-         */
-        public static final byte ZONE_SLOW = 0;
-
-        /**
-         * 理想値
-         */
-        public static final byte ZONE_IDEAL = 1;
-
-        /**
-         * 高ケイデンス
-         */
-        public static final byte ZONE_HIGH = 2;
-
         /**
          * 回転数
          */
@@ -30,7 +15,7 @@ public class SensorProtocol {
          * ゾーン
          */
         @Serialize(id = 2)
-        public byte cadenceZone = ZONE_SLOW;
+        public byte cadenceZone;
 
         /**
          * センサーへ接続してからの合計回転数（クランク）
@@ -46,35 +31,6 @@ public class SensorProtocol {
     }
 
     public static class RawHeartrate {
-        /**
-         * 安静
-         */
-        public static final byte ZONE_REPOSE = 0;
-
-        /**
-         * 軽度
-         */
-        public static final byte ZONE_EASY = 1;
-
-        /**
-         * 脂肪燃焼
-         */
-        public static final byte ZONE_FAT_COMBUSTION = 2;
-
-        /**
-         * 有酸素運動
-         */
-        public static final byte ZONE_POSSENSION_OXYGEN = 3;
-
-        /**
-         * 無酸素運動
-         */
-        public static final byte ZONE_NON_OXYGENATED = 4;
-
-        /**
-         * オーバーワーク
-         */
-        public static final byte ZONE_OVERWORK = 5;
 
         @Serialize(id = 1)
         public short bpm;
@@ -82,14 +38,23 @@ public class SensorProtocol {
         /**
          * 心拍ゾーン
          */
+        @Deprecated
         @Serialize(id = 2)
-        public byte zone = ZONE_REPOSE;
+        public byte _zone;
 
         /**
          * センサー日時
          */
         @Serialize(id = 3)
         public long date;
+
+        public void setZone(HeartrateZone set) {
+            _zone = (byte) set.ordinal();
+        }
+
+        public HeartrateZone getZone() {
+            return HeartrateZone.values()[_zone];
+        }
     }
 
     public static class RawSpeed {

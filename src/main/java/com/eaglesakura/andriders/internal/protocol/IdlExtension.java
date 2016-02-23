@@ -301,16 +301,16 @@ public class IdlExtension {
             public String title;
 
             /**
-             * バーの内側に表示されるゾーン情報
-             */
-            @Serialize(id = 3)
-            public String zoneText;
-
-            /**
              * バーの色（A)
              */
             @Serialize(id = 4)
             public short barColorA = 255;
+
+            /**
+             * バーの内側に表示されるゾーン情報
+             */
+            @Serialize(id = 3)
+            public String zoneText;
 
             /**
              * バーの色（R)

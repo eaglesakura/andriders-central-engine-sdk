@@ -76,7 +76,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
      * データをACEに送信し、結果をStringで受け取る
      */
     public String postToClientAsString(String cmd, String arg) throws RemoteException {
-        Payload payload = postToClient(mClientId, cmd, new Payload(arg));
+        Payload payload = postToClient(mClientId, cmd, Payload.fromString(arg));
         return Payload.deserializeStringOrNull(payload);
     }
 

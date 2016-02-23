@@ -5,7 +5,6 @@
 // 0.4.6 : EGLIB module update
 // 3.0.x : ACE v3系列対応 / Circle CI対応
 def ACES_SDK_VERSION = "3.0";
-def PROTOBUF_ARTIFACT_VERSION = "2.6.1";
 def ARTIFACT_NAME = file(".").absoluteFile.name
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
@@ -38,7 +37,6 @@ if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
 }
 
 dependencies {
-    compile "com.google.protobuf:protobuf-java:${PROTOBUF_ARTIFACT_VERSION}"
     compile 'com.android.support:support-annotations:+'
 
     if (EGLIBRARY_COMPILE_LOCAL) {
