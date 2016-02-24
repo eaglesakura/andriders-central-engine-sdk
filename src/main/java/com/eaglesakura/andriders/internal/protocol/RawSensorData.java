@@ -9,6 +9,30 @@ import java.util.Random;
 
 public class RawSensorData {
 
+    /**
+     * 現在の心拍
+     */
+    @Serialize(id = 1)
+    public RawHeartrate heartrate;
+
+    /**
+     * 現在のケイデンス
+     */
+    @Serialize(id = 2)
+    public RawCadence cadence;
+
+    /**
+     * 現在の速度
+     */
+    @Serialize(id = 3)
+    public RawSpeed speed;
+
+    /**
+     * 位置情報
+     */
+    @Serialize(id = 4)
+    public RawLocation location;
+
     public static class RawCadence {
         /**
          * 回転数
@@ -120,6 +144,16 @@ public class RawSensorData {
 
     public static class RawSpeed {
         /**
+         * GPS由来の速度情報
+         */
+        public static final int SPEEDSENSOR_TYPE_GPS = 0x1 << 0;
+
+        /**
+         * 何かしらのセンサー由来の速度情報
+         */
+        public static final int SPEEDSENSOR_TYPE_SENSOR = 0x1 << 1;
+
+        /**
          * スピード km/h
          */
         @Serialize(id = 1)
@@ -144,6 +178,9 @@ public class RawSensorData {
         @Serialize(id = 5)
         public long date;
 
+        @Serialize(id = 6)
+        public int flags;
+
         public RawSpeed() {
         }
 
@@ -154,6 +191,7 @@ public class RawSensorData {
             wheelRevolution = InternalSdkUtil.randInteger();
             zone = InternalSdkUtil.randEnum(SpeedZone.class);
             date = InternalSdkUtil.randInteger();
+            flags = InternalSdkUtil.randInteger();
         }
 
         public boolean hasWheelRpm() {
@@ -175,6 +213,7 @@ public class RawSensorData {
             if (Float.compare(rawSpeed.wheelRpm, wheelRpm) != 0) return false;
             if (Float.compare(rawSpeed.wheelRevolution, wheelRevolution) != 0) return false;
             if (date != rawSpeed.date) return false;
+            if (flags != rawSpeed.flags) return false;
             return zone == rawSpeed.zone;
 
         }
@@ -186,6 +225,7 @@ public class RawSensorData {
             result = 31 * result + (wheelRevolution != +0.0f ? Float.floatToIntBits(wheelRevolution) : 0);
             result = 31 * result + (zone != null ? zone.hashCode() : 0);
             result = 31 * result + (int) (date ^ (date >>> 32));
+            result = 31 * result + flags;
             return result;
         }
     }

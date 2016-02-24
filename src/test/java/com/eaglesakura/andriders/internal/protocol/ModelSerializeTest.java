@@ -40,8 +40,8 @@ public class ModelSerializeTest extends CiJUnitTester {
         assertSerialize(new ExtensionProtocol.RawCycleDisplayValue(Random.class));
 
         // 位置情報
-        assertSerialize(new GeoProtocol.GeoPoint(Random.class));
-        assertSerialize(new GeoProtocol.GeoPayload(Random.class));
+        assertSerialize(new RawGeoPoint(Random.class));
+        assertSerialize(new RawLocation(Random.class));
 
         // センサー
         assertSerialize(new RawSensorData.RawCadence(Random.class));

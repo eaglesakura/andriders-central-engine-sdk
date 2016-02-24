@@ -12,5 +12,10 @@ public class RawCentralData {
     @Serialize(id = 2)
     public ApplicationProtocol.RawCentralStatus centralStatus;
 
+    /**
+     * センサー情報
+     */
+    @Serialize(id = 3)
+    public RawSensorData sensor;
 
 }

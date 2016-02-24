@@ -61,9 +61,14 @@ public class ApplicationProtocol {
         public static final int CONNECTED_FLAG_SPEED_SENSOR = 0x1 << 1;
 
         /**
+         * ケイデンスセンサーに接続されている
+         */
+        public static final int CONNECTED_FLAG_CADENCE_SENSOR = 0x1 << 2;
+
+        /**
          *
          */
-        public static final int CONNECTED_FLAG_GPS = 0x1 << 2;
+        public static final int CONNECTED_FLAG_GPS = 0x1 << 3;
 
         /**
          * セッションID
