@@ -26,7 +26,7 @@ public abstract class CiJUnitTester {
             public void i(String msg) {
                 try {
                     StackTraceElement[] trace = new Exception().getStackTrace();
-                    StackTraceElement elem = trace[Math.min(trace.length - 1, 2)];
+                    StackTraceElement elem = trace[Math.min(trace.length - 1, 3)];
                     System.out.println("I " + String.format("%s[%d] : %s", elem.getFileName(), elem.getLineNumber(), msg));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -37,7 +37,7 @@ public abstract class CiJUnitTester {
             public void d(String msg) {
                 try {
                     StackTraceElement[] trace = new Exception().getStackTrace();
-                    StackTraceElement elem = trace[Math.min(trace.length - 1, 2)];
+                    StackTraceElement elem = trace[Math.min(trace.length - 1, 3)];
                     System.out.println("D " + String.format("%s[%d] : %s", elem.getFileName(), elem.getLineNumber(), msg));
                 } catch (Exception e) {
                     e.printStackTrace();

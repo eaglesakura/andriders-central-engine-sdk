@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.extension.display;
 
 import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
@@ -17,7 +17,7 @@ import java.util.List;
  * ディスプレイ表示内容を指定する
  */
 public class DisplayData {
-    private IdlExtension.CycleDisplayValue raw;
+    private ExtensionProtocol.RawCycleDisplayValue raw;
 
     private BasicValue mBasicValue;
 
@@ -27,7 +27,7 @@ public class DisplayData {
      * @param bind 表示対象のディスプレイ情報
      */
     public DisplayData(DisplayInformation bind) {
-        this.raw = new IdlExtension.CycleDisplayValue();
+        this.raw = new ExtensionProtocol.RawCycleDisplayValue();
         raw.id = bind.getId();
         makeDefault();
     }
@@ -36,13 +36,13 @@ public class DisplayData {
      * ディスプレイ
      */
     public DisplayData(Context context, String id) {
-        this.raw = new IdlExtension.CycleDisplayValue();
+        this.raw = new ExtensionProtocol.RawCycleDisplayValue();
         raw.id = (new DisplayInformation(context, id).getId());
         makeDefault();
     }
 
 
-    protected DisplayData(IdlExtension.CycleDisplayValue raw) {
+    protected DisplayData(ExtensionProtocol.RawCycleDisplayValue raw) {
         this.raw = raw;
 
         if (raw.basicValue != null) {
@@ -178,13 +178,13 @@ public class DisplayData {
         }
 
         try {
-            Constructor<T> constructor = clazz.getConstructor(IdlExtension.CycleDisplayValue.class);
+            Constructor<T> constructor = clazz.getConstructor(ExtensionProtocol.RawCycleDisplayValue.class);
 
             List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
             if (!Util.isEmpty(serializeList)) {
                 List<T> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    IdlExtension.CycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(IdlExtension.CycleDisplayValue.class, serialized);
+                    ExtensionProtocol.RawCycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawCycleDisplayValue.class, serialized);
                     result.add(constructor.newInstance(v));
                 }
                 return result;

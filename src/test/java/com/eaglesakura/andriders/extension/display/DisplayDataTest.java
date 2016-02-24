@@ -2,7 +2,7 @@ package com.eaglesakura.andriders.extension.display;
 
 import com.eaglesakura.andriders.CiJUnitTester;
 import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ import junit.framework.Assert;
 public class DisplayDataTest extends CiJUnitTester {
 
     public static class TestDisplayDataImpl extends DisplayData {
-        public TestDisplayDataImpl(IdlExtension.CycleDisplayValue raw) {
+        public TestDisplayDataImpl(ExtensionProtocol.RawCycleDisplayValue raw) {
             super(raw);
         }
     }

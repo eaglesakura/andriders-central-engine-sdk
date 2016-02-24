@@ -201,12 +201,6 @@ task uploadJavadoc << {
                 version = "1.+"
                 scope = 'compile'
             }
-            dependency {
-                groupId = 'com.google.protobuf'
-                artifactId = 'protobuf-java'
-                version = PROTOBUF_ARTIFACT_VERSION
-                scope = 'compile'
-            }
         }
     }
 }

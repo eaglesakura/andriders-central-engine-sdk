@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import android.graphics.Color;
@@ -16,14 +16,14 @@ import android.graphics.Color;
  */
 public class BasicValue {
     public static final String TYPE = "BASIC_INFORMATION";
-    IdlExtension.CycleDisplayValue.BasicValue raw;
+    ExtensionProtocol.RawCycleDisplayValue.BasicValue raw;
 
     public BasicValue() {
-        this.raw = new IdlExtension.CycleDisplayValue.BasicValue();
+        this.raw = new ExtensionProtocol.RawCycleDisplayValue.BasicValue();
         makeDefault();
     }
 
-    BasicValue(IdlExtension.CycleDisplayValue.BasicValue raw) {
+    BasicValue(ExtensionProtocol.RawCycleDisplayValue.BasicValue raw) {
         this.raw = raw;
         makeDefault();
     }

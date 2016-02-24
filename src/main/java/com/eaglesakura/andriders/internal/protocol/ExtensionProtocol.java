@@ -1,12 +1,15 @@
 package com.eaglesakura.andriders.internal.protocol;
 
+import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
-public class IdlExtension {
+public class ExtensionProtocol {
 
-    public static class Location {
+    public static class SrcLocation {
         /**
          * 緯度
          */
@@ -31,10 +34,17 @@ public class IdlExtension {
         @Serialize(id = 4)
         public double accuracyMeter;
 
-        public Location() {
+        public SrcLocation() {
         }
 
-        public Location(android.location.Location raw) {
+        @Deprecated
+        public SrcLocation(Class<Random> dummy) {
+            latitude = InternalSdkUtil.randFloat();
+            longitude = InternalSdkUtil.randFloat();
+            altitude = InternalSdkUtil.randFloat();
+        }
+
+        public SrcLocation(android.location.Location raw) {
             this.latitude = raw.getLatitude();
             this.longitude = raw.getLongitude();
             this.altitude = raw.getAltitude();
@@ -46,7 +56,7 @@ public class IdlExtension {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Location location = (Location) o;
+            SrcLocation location = (SrcLocation) o;
 
             if (Double.compare(location.latitude, latitude) != 0) return false;
             if (Double.compare(location.longitude, longitude) != 0) return false;
@@ -71,26 +81,33 @@ public class IdlExtension {
         }
     }
 
-    public static class Heartrate {
+    public static class SrcHeartrate {
         /**
          * 心拍値
          */
         @Serialize(id = 1)
         public short bpm;
 
-        public Heartrate() {
+        @Deprecated
+        public SrcHeartrate() {
         }
 
-        public Heartrate(short bpm) {
+        @Deprecated
+        public SrcHeartrate(Class<Random> dummy) {
+            bpm = InternalSdkUtil.randInteger();
+        }
+
+        public SrcHeartrate(short bpm) {
             this.bpm = bpm;
         }
+
 
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Heartrate heartrate = (Heartrate) o;
+            SrcHeartrate heartrate = (SrcHeartrate) o;
 
             return bpm == heartrate.bpm;
 
@@ -102,7 +119,7 @@ public class IdlExtension {
         }
     }
 
-    public static class SpeedAndCadence {
+    public static class SrcSpeedAndCadence {
         /**
          * クランク回転数 / 分
          */
@@ -127,12 +144,23 @@ public class IdlExtension {
         @Serialize(id = 21)
         public int wheelRevolution;
 
+        public SrcSpeedAndCadence() {
+        }
+
+        @Deprecated
+        public SrcSpeedAndCadence(Class<Random> dummy) {
+            crankRpm = InternalSdkUtil.randFloat();
+            crankRevolution = InternalSdkUtil.randInteger();
+            wheelRpm = InternalSdkUtil.randFloat();
+            wheelRevolution = InternalSdkUtil.randInteger();
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            SpeedAndCadence that = (SpeedAndCadence) o;
+            SrcSpeedAndCadence that = (SrcSpeedAndCadence) o;
 
             if (Float.compare(that.crankRpm, crankRpm) != 0) return false;
             if (crankRevolution != that.crankRevolution) return false;
@@ -154,7 +182,7 @@ public class IdlExtension {
     /**
      * 拡張機能自体の情報
      */
-    public static class ExtensionInfo {
+    public static class RawExtensionInfo {
         /**
          * 一意に識別するためのID
          */
@@ -185,12 +213,24 @@ public class IdlExtension {
         @Serialize(id = 5)
         public boolean activated = true;
 
+        public RawExtensionInfo() {
+        }
+
+        @Deprecated
+        public RawExtensionInfo(Class<Random> dummy) {
+            id = InternalSdkUtil.randString();
+            summary = InternalSdkUtil.randString();
+            category = InternalSdkUtil.randString();
+            hasSetting = InternalSdkUtil.randBool();
+            activated = InternalSdkUtil.randBool();
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            ExtensionInfo that = (ExtensionInfo) o;
+            RawExtensionInfo that = (RawExtensionInfo) o;
 
             if (hasSetting != that.hasSetting) return false;
             if (activated != that.activated) return false;
@@ -212,7 +252,7 @@ public class IdlExtension {
         }
     }
 
-    public static class CycleDisplayInfo {
+    public static class RawCycleDisplayInfo {
         /**
          * 一意に識別するためのID
          */
@@ -225,12 +265,21 @@ public class IdlExtension {
         @Serialize(id = 2)
         public String title;
 
+        public RawCycleDisplayInfo() {
+        }
+
+        @Deprecated
+        public RawCycleDisplayInfo(Class<Random> dummy) {
+            id = InternalSdkUtil.randString();
+            title = InternalSdkUtil.randLargeString();
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            CycleDisplayInfo that = (CycleDisplayInfo) o;
+            RawCycleDisplayInfo that = (RawCycleDisplayInfo) o;
 
             if (id != null ? !id.equals(that.id) : that.id != null) return false;
             return !(title != null ? !title.equals(that.title) : that.title != null);
@@ -245,7 +294,7 @@ public class IdlExtension {
         }
     }
 
-    public static class CycleDisplayValue {
+    public static class RawCycleDisplayValue {
         /**
          * 一意に識別するためのID
          */
@@ -264,12 +313,25 @@ public class IdlExtension {
         @Serialize(id = 11)
         public List<KeyValue> keyValues;
 
+        public RawCycleDisplayValue() {
+        }
+
+        @Deprecated
+        public RawCycleDisplayValue(Class<Random> dummy) {
+            id = InternalSdkUtil.randString();
+            timeoutMs = InternalSdkUtil.randInteger();
+            basicValue = new BasicValue(dummy);
+            keyValues = Arrays.asList(
+                    new KeyValue(dummy), new KeyValue(dummy), new KeyValue(dummy)
+            );
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            CycleDisplayValue that = (CycleDisplayValue) o;
+            RawCycleDisplayValue that = (RawCycleDisplayValue) o;
 
             if (timeoutMs != that.timeoutMs) return false;
             if (id != null ? !id.equals(that.id) : that.id != null) return false;
@@ -329,6 +391,48 @@ public class IdlExtension {
              */
             @Serialize(id = 7)
             public short barColorB = 128;
+
+            public BasicValue() {
+            }
+
+            @Deprecated
+            public BasicValue(Class<Random> dummy) {
+                main = InternalSdkUtil.randString();
+                title = InternalSdkUtil.randString();
+                barColorA = InternalSdkUtil.randInteger();
+                barColorR = InternalSdkUtil.randInteger();
+                barColorG = InternalSdkUtil.randInteger();
+                barColorB = InternalSdkUtil.randInteger();
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+
+                BasicValue that = (BasicValue) o;
+
+                if (barColorA != that.barColorA) return false;
+                if (barColorR != that.barColorR) return false;
+                if (barColorG != that.barColorG) return false;
+                if (barColorB != that.barColorB) return false;
+                if (main != null ? !main.equals(that.main) : that.main != null) return false;
+                if (title != null ? !title.equals(that.title) : that.title != null) return false;
+                return !(zoneText != null ? !zoneText.equals(that.zoneText) : that.zoneText != null);
+
+            }
+
+            @Override
+            public int hashCode() {
+                int result = main != null ? main.hashCode() : 0;
+                result = 31 * result + (title != null ? title.hashCode() : 0);
+                result = 31 * result + (int) barColorA;
+                result = 31 * result + (zoneText != null ? zoneText.hashCode() : 0);
+                result = 31 * result + (int) barColorR;
+                result = 31 * result + (int) barColorG;
+                result = 31 * result + (int) barColorB;
+                return result;
+            }
         }
 
         public static class KeyValue {
@@ -337,6 +441,34 @@ public class IdlExtension {
 
             @Serialize(id = 2)
             public String value;
+
+            public KeyValue() {
+            }
+
+            public KeyValue(Class<Random> dummy) {
+                title = InternalSdkUtil.randString();
+                value = InternalSdkUtil.randString();
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+
+                KeyValue keyValue = (KeyValue) o;
+
+                if (title != null ? !title.equals(keyValue.title) : keyValue.title != null)
+                    return false;
+                return !(value != null ? !value.equals(keyValue.value) : keyValue.value != null);
+
+            }
+
+            @Override
+            public int hashCode() {
+                int result = title != null ? title.hashCode() : 0;
+                result = 31 * result + (value != null ? value.hashCode() : 0);
+                return result;
+            }
         }
     }
 }

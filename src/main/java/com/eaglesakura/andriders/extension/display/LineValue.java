@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class LineValue {
     public static final String TYPE = "LINE_INFORMATION";
     public static final int MAX_LINES = 3;
 
-    List<IdlExtension.CycleDisplayValue.KeyValue> values = new ArrayList<>();
+    List<ExtensionProtocol.RawCycleDisplayValue.KeyValue> values = new ArrayList<>();
 
     public LineValue(int lines) {
         if (lines > MAX_LINES) {
@@ -23,11 +23,11 @@ public class LineValue {
         }
 
         for (int i = 0; i < lines; ++i) {
-            values.add(new IdlExtension.CycleDisplayValue.KeyValue());
+            values.add(new ExtensionProtocol.RawCycleDisplayValue.KeyValue());
         }
     }
 
-    LineValue(List<IdlExtension.CycleDisplayValue.KeyValue> values) {
+    LineValue(List<ExtensionProtocol.RawCycleDisplayValue.KeyValue> values) {
         this.values = values;
     }
 
@@ -35,7 +35,7 @@ public class LineValue {
      * 指定したラインが有効であればtrue
      */
     public boolean valid(int line) {
-        IdlExtension.CycleDisplayValue.KeyValue value = values.get(line);
+        ExtensionProtocol.RawCycleDisplayValue.KeyValue value = values.get(line);
         return !StringUtil.isEmpty(value.value) || !StringUtil.isEmpty(value.title);
     }
 
@@ -59,7 +59,7 @@ public class LineValue {
     }
 
     public String getTitle(int index) {
-        IdlExtension.CycleDisplayValue.KeyValue value = values.get(index);
+        ExtensionProtocol.RawCycleDisplayValue.KeyValue value = values.get(index);
         if (!StringUtil.isEmpty(value.title)) {
             return value.title;
         } else {
@@ -68,7 +68,7 @@ public class LineValue {
     }
 
     public String getValue(int index) {
-        IdlExtension.CycleDisplayValue.KeyValue value = values.get(index);
+        ExtensionProtocol.RawCycleDisplayValue.KeyValue value = values.get(index);
         if (!StringUtil.isEmpty(value.value)) {
             return value.value;
         } else {
@@ -80,7 +80,7 @@ public class LineValue {
      * 表示する値を指定する
      */
     public void setLine(int index, String title, String value) {
-        IdlExtension.CycleDisplayValue.KeyValue v = values.get(index);
+        ExtensionProtocol.RawCycleDisplayValue.KeyValue v = values.get(index);
 
         v.title = (title != null ? title : "");
         v.value = (value != null ? value : "");

@@ -3,7 +3,7 @@ package com.eaglesakura.andriders.extension.data;
 import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.internal.CentralDataCommand;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.andriders.sensor.SensorType;
 import com.eaglesakura.android.service.data.Payload;
 import com.eaglesakura.util.LogUtil;
@@ -47,7 +47,7 @@ public class CentralDataExtension {
         mServerImpl.validAcesSession();
 
         try {
-            IdlExtension.Location idl = new IdlExtension.Location(loc);
+            ExtensionProtocol.SrcLocation idl = new ExtensionProtocol.SrcLocation(loc);
             mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, Payload.fromPublicField(idl));
         } catch (Exception e) {
         }
@@ -60,7 +60,7 @@ public class CentralDataExtension {
         mServerImpl.validAcesSession();
 
         try {
-            IdlExtension.Heartrate idl = new IdlExtension.Heartrate((short) bpm);
+            ExtensionProtocol.SrcHeartrate idl = new ExtensionProtocol.SrcHeartrate((short) bpm);
             mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, Payload.fromPublicField(idl));
         } catch (Exception e) {
             LogUtil.log(e);
@@ -74,7 +74,7 @@ public class CentralDataExtension {
         mServerImpl.validAcesSession();
 
         try {
-            IdlExtension.SpeedAndCadence idl = new IdlExtension.SpeedAndCadence();
+            ExtensionProtocol.SrcSpeedAndCadence idl = new ExtensionProtocol.SrcSpeedAndCadence();
             idl.crankRpm = crankRpm;
             idl.crankRevolution = crankRevolution;
             idl.wheelRpm = wheelRpm;

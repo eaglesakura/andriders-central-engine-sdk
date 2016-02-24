@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
@@ -16,11 +16,11 @@ import java.util.List;
  * サイコンの表示情報を管理する
  */
 public class DisplayInformation {
-    IdlExtension.CycleDisplayInfo raw;
+    ExtensionProtocol.RawCycleDisplayInfo raw;
 
-    private DisplayInformation(IdlExtension.CycleDisplayInfo raw) {
+    private DisplayInformation(ExtensionProtocol.RawCycleDisplayInfo raw) {
         if (raw == null) {
-            raw = new IdlExtension.CycleDisplayInfo();
+            raw = new ExtensionProtocol.RawCycleDisplayInfo();
         }
         this.raw = raw;
         makeDefault();
@@ -91,7 +91,7 @@ public class DisplayInformation {
             if (!Util.isEmpty(serializeList)) {
                 List<DisplayInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    result.add(new DisplayInformation(SerializeUtil.deserializePublicFieldObject(IdlExtension.CycleDisplayInfo.class, serialized)));
+                    result.add(new DisplayInformation(SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawCycleDisplayInfo.class, serialized)));
                 }
                 return result;
             }

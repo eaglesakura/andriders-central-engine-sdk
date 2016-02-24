@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.notification;
 
-import com.eaglesakura.andriders.internal.protocol.CommandProtocol;
+import com.eaglesakura.andriders.internal.protocol.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.serialize.error.SerializeException;
@@ -98,9 +98,9 @@ public class NotificationData {
     NotificationLength notificationLength = NotificationLength.Normal;
 
     public NotificationData(Context context, byte[] buffer) {
-        CommandProtocol.NotificationRequestPayload raw = null;
+        NotificationProtocol.RawNotification raw = null;
         try {
-            raw = SerializeUtil.deserializePublicFieldObject(CommandProtocol.NotificationRequestPayload.class, buffer);
+            raw = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
         } catch (SerializeException e) {
             LogUtil.log(e);
             throw new IllegalStateException(e);
@@ -201,7 +201,7 @@ public class NotificationData {
      * 値をシリアライズする
      */
     public byte[] serialize() {
-        CommandProtocol.NotificationRequestPayload raw = new CommandProtocol.NotificationRequestPayload();
+        NotificationProtocol.RawNotification raw = new NotificationProtocol.RawNotification();
         raw.uniqueId = uniqueId;
         if (icon != null) {
             raw.iconFile = iconCompressLevel.compress(icon);

@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.internal.protocol.IdlExtension;
+import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.LogUtil;
@@ -17,11 +17,11 @@ import java.util.List;
  * 拡張情報
  */
 public class ExtensionInformation {
-    IdlExtension.ExtensionInfo raw;
+    ExtensionProtocol.RawExtensionInfo raw;
 
-    private ExtensionInformation(IdlExtension.ExtensionInfo raw) {
+    private ExtensionInformation(ExtensionProtocol.RawExtensionInfo raw) {
         if (raw == null) {
-            raw = new IdlExtension.ExtensionInfo();
+            raw = new ExtensionProtocol.RawExtensionInfo();
         }
         this.raw = raw;
         makeDefault();
@@ -117,7 +117,7 @@ public class ExtensionInformation {
             if (!Util.isEmpty(serializedBuffers)) {
                 List<ExtensionInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializedBuffers) {
-                    result.add(new ExtensionInformation(SerializeUtil.deserializePublicFieldObject(IdlExtension.ExtensionInfo.class, serialized)));
+                    result.add(new ExtensionInformation(SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawExtensionInfo.class, serialized)));
                 }
                 return result;
             }

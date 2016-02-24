@@ -1,6 +1,10 @@
 package com.eaglesakura.andriders.internal.protocol;
 
+import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
+import com.eaglesakura.andriders.sensor.InclinationType;
 import com.eaglesakura.serialize.Serialize;
+
+import java.util.Random;
 
 public class GeoProtocol {
 
@@ -25,25 +29,42 @@ public class GeoProtocol {
             this.longitude = longitude;
             this.altitude = altitude;
         }
+
+        @Deprecated
+        public GeoPoint(Class<Random> dummy) {
+            latitude = InternalSdkUtil.randFloat();
+            longitude = InternalSdkUtil.randFloat();
+            altitude = InternalSdkUtil.randFloat();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            GeoPoint geoPoint = (GeoPoint) o;
+
+            if (Double.compare(geoPoint.latitude, latitude) != 0) return false;
+            if (Double.compare(geoPoint.longitude, longitude) != 0) return false;
+            return Double.compare(geoPoint.altitude, altitude) == 0;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result;
+            long temp;
+            temp = Double.doubleToLongBits(latitude);
+            result = (int) (temp ^ (temp >>> 32));
+            temp = Double.doubleToLongBits(longitude);
+            result = 31 * result + (int) (temp ^ (temp >>> 32));
+            temp = Double.doubleToLongBits(altitude);
+            result = 31 * result + (int) (temp ^ (temp >>> 32));
+            return result;
+        }
     }
 
     public static class GeoPayload {
-
-        /**
-         * 平地
-         */
-        public static final int INCLINATION_NONE = 0;
-
-        /**
-         * 坂道
-         */
-        public static final int INCLINATION_HILL = 1;
-
-        /**
-         * 激坂
-         */
-        public static final int INCLINATION_INTENSE_HILL = 2;
-
         // 現在のGPS座標
         @Serialize(id = 1)
         public GeoPoint location;
@@ -66,6 +87,47 @@ public class GeoProtocol {
 
         // 勾配の種類
         @Serialize(id = 6)
-        public int inclinationType = INCLINATION_NONE;
+        public InclinationType inclinationType;
+
+        public GeoPayload() {
+        }
+
+        @Deprecated
+        public GeoPayload(Class<Random> dummy) {
+            location = new GeoPoint(dummy);
+            locationAccuracy = InternalSdkUtil.randFloat();
+            locationReliance = InternalSdkUtil.randBool();
+            date = InternalSdkUtil.randInteger();
+            inclinationPercent = InternalSdkUtil.randFloat();
+            inclinationType = InternalSdkUtil.randEnum(InclinationType.class);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            GeoPayload that = (GeoPayload) o;
+
+            if (Float.compare(that.locationAccuracy, locationAccuracy) != 0) return false;
+            if (locationReliance != that.locationReliance) return false;
+            if (date != that.date) return false;
+            if (Float.compare(that.inclinationPercent, inclinationPercent) != 0) return false;
+            if (location != null ? !location.equals(that.location) : that.location != null)
+                return false;
+            return inclinationType == that.inclinationType;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = location != null ? location.hashCode() : 0;
+            result = 31 * result + (locationAccuracy != +0.0f ? Float.floatToIntBits(locationAccuracy) : 0);
+            result = 31 * result + (locationReliance ? 1 : 0);
+            result = 31 * result + (int) (date ^ (date >>> 32));
+            result = 31 * result + (inclinationPercent != +0.0f ? Float.floatToIntBits(inclinationPercent) : 0);
+            result = 31 * result + (inclinationType != null ? inclinationType.hashCode() : 0);
+            return result;
+        }
     }
 }
