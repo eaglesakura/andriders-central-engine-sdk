@@ -44,9 +44,12 @@ public class ModelSerializeTest extends CiJUnitTester {
         assertSerialize(new GeoProtocol.GeoPayload(Random.class));
 
         // センサー
-        assertSerialize(new SensorProtocol.RawCadence(Random.class));
-        assertSerialize(new SensorProtocol.RawSpeed(Random.class));
-        assertSerialize(new SensorProtocol.RawHeartrate(Random.class));
+        assertSerialize(new RawSensorData.RawCadence(Random.class));
+        assertSerialize(new RawSensorData.RawSpeed(Random.class));
+        assertSerialize(new RawSensorData.RawHeartrate(Random.class));
 
+        // Central
+        assertSerialize(new ApplicationProtocol.RawCentralSpec(Random.class));
+        assertSerialize(new ApplicationProtocol.RawCentralStatus(Random.class));
     }
 }

@@ -75,6 +75,7 @@ android {
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
+        buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
     }
 }
 

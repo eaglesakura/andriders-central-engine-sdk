@@ -7,7 +7,8 @@ import com.eaglesakura.serialize.Serialize;
 
 import java.util.Random;
 
-public class SensorProtocol {
+public class RawSensorData {
+
     public static class RawCadence {
         /**
          * 回転数
