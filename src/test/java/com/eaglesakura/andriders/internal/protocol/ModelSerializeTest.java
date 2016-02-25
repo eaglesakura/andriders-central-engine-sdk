@@ -49,7 +49,9 @@ public class ModelSerializeTest extends CiJUnitTester {
         assertSerialize(new RawSensorData.RawHeartrate(Random.class));
 
         // Central
-        assertSerialize(new ApplicationProtocol.RawCentralSpec(Random.class));
-        assertSerialize(new ApplicationProtocol.RawCentralStatus(Random.class));
+        assertSerialize(new RawSpecs.RawAppSpec(Random.class));
+        assertSerialize(new RawCentralData.RawCentralStatus(Random.class));
+        assertSerialize(new RawCentralData(Random.class));
+        assertSerialize(new RawSessionData(Random.class));
     }
 }

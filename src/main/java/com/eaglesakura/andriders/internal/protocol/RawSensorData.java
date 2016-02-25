@@ -33,6 +33,41 @@ public class RawSensorData {
     @Serialize(id = 4)
     public RawLocation location;
 
+    public RawSensorData() {
+    }
+
+    @Deprecated
+    public RawSensorData(Class<Random> dummy) {
+        heartrate = new RawHeartrate(dummy);
+        cadence = new RawCadence(dummy);
+        speed = new RawSpeed(dummy);
+        location = new RawLocation(dummy);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RawSensorData that = (RawSensorData) o;
+
+        if (heartrate != null ? !heartrate.equals(that.heartrate) : that.heartrate != null)
+            return false;
+        if (cadence != null ? !cadence.equals(that.cadence) : that.cadence != null) return false;
+        if (speed != null ? !speed.equals(that.speed) : that.speed != null) return false;
+        return !(location != null ? !location.equals(that.location) : that.location != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = heartrate != null ? heartrate.hashCode() : 0;
+        result = 31 * result + (cadence != null ? cadence.hashCode() : 0);
+        result = 31 * result + (speed != null ? speed.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        return result;
+    }
+
     public static class RawCadence {
         /**
          * 回転数
