@@ -93,12 +93,6 @@ public class RawCentralData {
         public static final int CONNECTED_FLAG_GPS = 0x1 << 3;
 
         /**
-         * セッションID
-         */
-        @Serialize(id = 1)
-        public String sessionId;
-
-        /**
          * 接続状態フラグ
          */
         @Serialize(id = 2)
@@ -115,7 +109,6 @@ public class RawCentralData {
 
         @Deprecated
         public RawCentralStatus(Class<Random> dummy) {
-            sessionId = InternalSdkUtil.randString();
             connectedFlags = InternalSdkUtil.randInteger();
             debug = InternalSdkUtil.randBool();
         }
@@ -128,15 +121,13 @@ public class RawCentralData {
             RawCentralStatus that = (RawCentralStatus) o;
 
             if (connectedFlags != that.connectedFlags) return false;
-            if (debug != that.debug) return false;
-            return !(sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null);
+            return debug == that.debug;
 
         }
 
         @Override
         public int hashCode() {
-            int result = sessionId != null ? sessionId.hashCode() : 0;
-            result = 31 * result + connectedFlags;
+            int result = connectedFlags;
             result = 31 * result + (debug ? 1 : 0);
             return result;
         }

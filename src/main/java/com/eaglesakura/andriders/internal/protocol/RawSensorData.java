@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.internal.protocol;
 
 import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
+import com.eaglesakura.andriders.sensor.CadenceZone;
 import com.eaglesakura.andriders.sensor.HeartrateZone;
 import com.eaglesakura.andriders.sensor.SpeedZone;
 import com.eaglesakura.serialize.Serialize;
@@ -79,7 +80,7 @@ public class RawSensorData {
          * ゾーン
          */
         @Serialize(id = 2)
-        public byte cadenceZone;
+        public CadenceZone zone;
 
         /**
          * センサーへ接続してからの合計回転数（クランク）
@@ -99,7 +100,7 @@ public class RawSensorData {
         @Deprecated
         public RawCadence(Class<Random> dummy) {
             rpm = InternalSdkUtil.randInteger();
-            cadenceZone = InternalSdkUtil.randInteger();
+            zone = InternalSdkUtil.randEnum(CadenceZone.class);
             crankRevolution = InternalSdkUtil.randInteger();
             date = InternalSdkUtil.randInteger();
         }
@@ -112,16 +113,16 @@ public class RawSensorData {
             RawCadence that = (RawCadence) o;
 
             if (rpm != that.rpm) return false;
-            if (cadenceZone != that.cadenceZone) return false;
             if (crankRevolution != that.crankRevolution) return false;
-            return date == that.date;
+            if (date != that.date) return false;
+            return zone == that.zone;
 
         }
 
         @Override
         public int hashCode() {
             int result = (int) rpm;
-            result = 31 * result + (int) cadenceZone;
+            result = 31 * result + (zone != null ? zone.hashCode() : 0);
             result = 31 * result + crankRevolution;
             result = 31 * result + (int) (date ^ (date >>> 32));
             return result;
