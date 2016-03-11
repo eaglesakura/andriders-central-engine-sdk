@@ -73,32 +73,6 @@ public class RawCentralData {
 
     public static class RawCentralStatus {
         /**
-         * 心拍計に接続されている
-         */
-        public static final int CONNECTED_FLAG_HEARTRATE_SENSOR = 0x1 << 0;
-
-        /**
-         * スピードセンサーに接続されている
-         */
-        public static final int CONNECTED_FLAG_SPEED_SENSOR = 0x1 << 1;
-
-        /**
-         * ケイデンスセンサーに接続されている
-         */
-        public static final int CONNECTED_FLAG_CADENCE_SENSOR = 0x1 << 2;
-
-        /**
-         *
-         */
-        public static final int CONNECTED_FLAG_GPS = 0x1 << 3;
-
-        /**
-         * 接続状態フラグ
-         */
-        @Serialize(id = 2)
-        public int connectedFlags;
-
-        /**
          * デバッグ状態である場合はtrue
          */
         @Serialize(id = 3)
@@ -109,7 +83,6 @@ public class RawCentralData {
 
         @Deprecated
         public RawCentralStatus(Class<Random> dummy) {
-            connectedFlags = InternalSdkUtil.randInteger();
             debug = InternalSdkUtil.randBool();
         }
 
@@ -120,16 +93,13 @@ public class RawCentralData {
 
             RawCentralStatus that = (RawCentralStatus) o;
 
-            if (connectedFlags != that.connectedFlags) return false;
             return debug == that.debug;
 
         }
 
         @Override
         public int hashCode() {
-            int result = connectedFlags;
-            result = 31 * result + (debug ? 1 : 0);
-            return result;
+            return (debug ? 1 : 0);
         }
     }
 }
