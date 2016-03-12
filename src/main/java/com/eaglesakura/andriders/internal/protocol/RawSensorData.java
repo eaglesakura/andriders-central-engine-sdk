@@ -1,10 +1,10 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.andriders.sensor.CadenceZone;
 import com.eaglesakura.andriders.sensor.HeartrateZone;
 import com.eaglesakura.andriders.sensor.SpeedZone;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
 
@@ -99,10 +99,10 @@ public class RawSensorData {
 
         @Deprecated
         public RawCadence(Class<Random> dummy) {
-            rpm = InternalSdkUtil.randInteger();
-            zone = InternalSdkUtil.randEnum(CadenceZone.class);
-            crankRevolution = InternalSdkUtil.randInteger();
-            date = InternalSdkUtil.randInteger();
+            rpm = RandomUtil.randUInt8();
+            zone = RandomUtil.randEnumWithNull(CadenceZone.class);
+            crankRevolution = RandomUtil.randUInt32();
+            date = RandomUtil.randUInt64();
         }
 
         @Override
@@ -151,9 +151,9 @@ public class RawSensorData {
 
         @Deprecated
         public RawHeartrate(Class<Random> dummy) {
-            bpm = InternalSdkUtil.randInteger();
-            zone = InternalSdkUtil.randEnum(HeartrateZone.class);
-            date = InternalSdkUtil.randInteger();
+            bpm = RandomUtil.randUInt8();
+            zone = RandomUtil.randEnumWithNull(HeartrateZone.class);
+            date = RandomUtil.randInt64();
         }
 
         @Override
@@ -222,12 +222,12 @@ public class RawSensorData {
 
         @Deprecated
         public RawSpeed(Class<Random> dummy) {
-            speedKmPerHour = InternalSdkUtil.randFloat();
-            wheelRpm = InternalSdkUtil.randFloat();
-            wheelRevolution = InternalSdkUtil.randInteger();
-            zone = InternalSdkUtil.randEnum(SpeedZone.class);
-            date = InternalSdkUtil.randInteger();
-            flags = InternalSdkUtil.randInteger();
+            speedKmPerHour = RandomUtil.randFloat();
+            wheelRpm = RandomUtil.randFloat();
+            wheelRevolution = RandomUtil.randUInt32();
+            zone = RandomUtil.randEnumWithNull(SpeedZone.class);
+            date = RandomUtil.randUInt64();
+            flags = RandomUtil.randInt32();
         }
 
         public boolean hasWheelRpm() {

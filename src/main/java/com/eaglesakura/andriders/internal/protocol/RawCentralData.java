@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
@@ -90,7 +89,7 @@ public class RawCentralData {
 
         @Deprecated
         public RawCentralStatus(Class<Random> dummy) {
-            debug = InternalSdkUtil.randBool();
+            debug = RandomUtil.randBool();
             date = RandomUtil.randInt64();
         }
 

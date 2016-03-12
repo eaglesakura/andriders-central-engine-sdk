@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
 
@@ -73,14 +73,14 @@ public class RawSessionData {
 
     @Deprecated
     public RawSessionData(Class<Random> dummy) {
-        sessionId = InternalSdkUtil.randString();
+        sessionId = RandomUtil.randString();
         fitness = new RawFitnessStatus(dummy);
-        startTime = InternalSdkUtil.randInteger();
-        durationTimeMs = InternalSdkUtil.randInteger();
-        distanceKm = InternalSdkUtil.randFloat();
-        activeTimeMs = InternalSdkUtil.randInteger();
-        activeDistanceKm = InternalSdkUtil.randFloat();
-        flags = InternalSdkUtil.randInteger();
+        startTime = RandomUtil.randUInt64();
+        durationTimeMs = RandomUtil.randUInt32();
+        distanceKm = RandomUtil.randFloat();
+        activeTimeMs = RandomUtil.randUInt32();
+        activeDistanceKm = RandomUtil.randFloat();
+        flags = RandomUtil.randInt32();
     }
 
     public boolean isActiveMoving() {
@@ -145,9 +145,9 @@ public class RawSessionData {
         }
 
         public RawFitnessStatus(Class<Random> dummy) {
-            mets = InternalSdkUtil.randFloat();
-            calorie = InternalSdkUtil.randFloat();
-            exercise = InternalSdkUtil.randFloat();
+            mets = RandomUtil.randFloat();
+            calorie = RandomUtil.randFloat();
+            exercise = RandomUtil.randFloat();
         }
 
         @Override

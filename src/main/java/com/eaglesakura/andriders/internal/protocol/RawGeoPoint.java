@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
 
@@ -29,9 +29,9 @@ public class RawGeoPoint {
 
     @Deprecated
     public RawGeoPoint(Class<Random> dummy) {
-        latitude = InternalSdkUtil.randFloat();
-        longitude = InternalSdkUtil.randFloat();
-        altitude = InternalSdkUtil.randFloat();
+        latitude = RandomUtil.randFloat();
+        longitude = RandomUtil.randFloat();
+        altitude = RandomUtil.randFloat();
     }
 
     @Override

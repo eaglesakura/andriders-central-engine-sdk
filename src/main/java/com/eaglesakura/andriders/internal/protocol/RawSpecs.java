@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
 
@@ -63,9 +63,9 @@ public class RawSpecs {
 
         @Deprecated
         public RawAppSpec(Class<Random> dummy) {
-            protocolVersion = InternalSdkUtil.randInteger();
-            appVersionName = InternalSdkUtil.randString();
-            appPackageName = InternalSdkUtil.randString();
+            protocolVersion = RandomUtil.randUInt8();
+            appVersionName = RandomUtil.randString();
+            appPackageName = RandomUtil.randString();
         }
 
         @Override
@@ -118,9 +118,9 @@ public class RawSpecs {
 
         @Deprecated
         public RawFitnessSpec(Class<Random> dummy) {
-            weight = InternalSdkUtil.randFloat();
-            heartrateNormal = InternalSdkUtil.randInteger();
-            heartrateMax = InternalSdkUtil.randInteger();
+            weight = RandomUtil.randFloat();
+            heartrateNormal = RandomUtil.randInt8();
+            heartrateMax = RandomUtil.randInt8();
         }
 
         @Override

@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.andriders.sensor.InclinationType;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
 
@@ -49,11 +49,11 @@ public class RawLocation extends RawGeoPoint {
     @Deprecated
     public RawLocation(Class<Random> dummy) {
         super(dummy);
-        locationAccuracy = InternalSdkUtil.randFloat();
-        locationReliance = InternalSdkUtil.randBool();
-        date = InternalSdkUtil.randInteger();
-        inclinationPercent = InternalSdkUtil.randFloat();
-        inclinationType = InternalSdkUtil.randEnum(InclinationType.class);
+        locationAccuracy = RandomUtil.randFloat();
+        locationReliance = RandomUtil.randBool();
+        date = RandomUtil.randUInt64();
+        inclinationPercent = RandomUtil.randFloat();
+        inclinationType = RandomUtil.randEnumWithNull(InclinationType.class);
     }
 
 

@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.andriders.notification.NotificationLength;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import android.graphics.Color;
 
@@ -66,13 +66,13 @@ public class NotificationProtocol {
 
         @Deprecated
         public RawNotification(Class<Random> dummy) {
-            message = InternalSdkUtil.randString();
-            iconFile = InternalSdkUtil.randBytes();
-            iconUri = InternalSdkUtil.randLargeString();
-            length = InternalSdkUtil.randEnum(NotificationLength.class);
-            uniqueId = InternalSdkUtil.randLargeString();
-            date = InternalSdkUtil.randInteger();
-            backgroundXRGB = InternalSdkUtil.randInteger();
+            message = RandomUtil.randString();
+            iconFile = RandomUtil.randBytes();
+            iconUri = RandomUtil.randLargeString();
+            length = RandomUtil.randEnumWithNull(NotificationLength.class);
+            uniqueId = RandomUtil.randLargeString();
+            date = RandomUtil.randInt64();
+            backgroundXRGB = RandomUtil.randInt32();
         }
 
         @Override

@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.internal.protocol;
 
-import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,9 +39,9 @@ public class ExtensionProtocol {
 
         @Deprecated
         public SrcLocation(Class<Random> dummy) {
-            latitude = InternalSdkUtil.randFloat();
-            longitude = InternalSdkUtil.randFloat();
-            altitude = InternalSdkUtil.randFloat();
+            latitude = RandomUtil.randFloat();
+            longitude = RandomUtil.randFloat();
+            altitude = RandomUtil.randFloat();
         }
 
         public SrcLocation(android.location.Location raw) {
@@ -94,7 +94,7 @@ public class ExtensionProtocol {
 
         @Deprecated
         public SrcHeartrate(Class<Random> dummy) {
-            bpm = InternalSdkUtil.randInteger();
+            bpm = RandomUtil.randUInt16();
         }
 
         public SrcHeartrate(short bpm) {
@@ -149,10 +149,10 @@ public class ExtensionProtocol {
 
         @Deprecated
         public SrcSpeedAndCadence(Class<Random> dummy) {
-            crankRpm = InternalSdkUtil.randFloat();
-            crankRevolution = InternalSdkUtil.randInteger();
-            wheelRpm = InternalSdkUtil.randFloat();
-            wheelRevolution = InternalSdkUtil.randInteger();
+            crankRpm = RandomUtil.randFloat();
+            crankRevolution = RandomUtil.randUInt32();
+            wheelRpm = RandomUtil.randFloat();
+            wheelRevolution = RandomUtil.randUInt32();
         }
 
         @Override
@@ -218,11 +218,11 @@ public class ExtensionProtocol {
 
         @Deprecated
         public RawExtensionInfo(Class<Random> dummy) {
-            id = InternalSdkUtil.randString();
-            summary = InternalSdkUtil.randString();
-            category = InternalSdkUtil.randString();
-            hasSetting = InternalSdkUtil.randBool();
-            activated = InternalSdkUtil.randBool();
+            id = RandomUtil.randString();
+            summary = RandomUtil.randString();
+            category = RandomUtil.randString();
+            hasSetting = RandomUtil.randBool();
+            activated = RandomUtil.randBool();
         }
 
         @Override
@@ -270,8 +270,8 @@ public class ExtensionProtocol {
 
         @Deprecated
         public RawCycleDisplayInfo(Class<Random> dummy) {
-            id = InternalSdkUtil.randString();
-            title = InternalSdkUtil.randLargeString();
+            id = RandomUtil.randString();
+            title = RandomUtil.randLargeString();
         }
 
         @Override
@@ -318,8 +318,8 @@ public class ExtensionProtocol {
 
         @Deprecated
         public RawCycleDisplayValue(Class<Random> dummy) {
-            id = InternalSdkUtil.randString();
-            timeoutMs = InternalSdkUtil.randInteger();
+            id = RandomUtil.randString();
+            timeoutMs = RandomUtil.randInt32();
             basicValue = new BasicValue(dummy);
             keyValues = Arrays.asList(
                     new KeyValue(dummy), new KeyValue(dummy), new KeyValue(dummy)
@@ -397,12 +397,12 @@ public class ExtensionProtocol {
 
             @Deprecated
             public BasicValue(Class<Random> dummy) {
-                main = InternalSdkUtil.randString();
-                title = InternalSdkUtil.randString();
-                barColorA = InternalSdkUtil.randInteger();
-                barColorR = InternalSdkUtil.randInteger();
-                barColorG = InternalSdkUtil.randInteger();
-                barColorB = InternalSdkUtil.randInteger();
+                main = RandomUtil.randString();
+                title = RandomUtil.randString();
+                barColorA = RandomUtil.randInt8();
+                barColorR = RandomUtil.randInt8();
+                barColorG = RandomUtil.randInt8();
+                barColorB = RandomUtil.randInt8();
             }
 
             @Override
@@ -446,8 +446,8 @@ public class ExtensionProtocol {
             }
 
             public KeyValue(Class<Random> dummy) {
-                title = InternalSdkUtil.randString();
-                value = InternalSdkUtil.randString();
+                title = RandomUtil.randString();
+                value = RandomUtil.randString();
             }
 
             @Override
