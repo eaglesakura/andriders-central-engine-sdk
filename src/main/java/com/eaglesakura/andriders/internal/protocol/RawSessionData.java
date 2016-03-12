@@ -34,7 +34,7 @@ public class RawSessionData {
 
     /**
      * 走行距離(km)
-     *
+     * <p>
      * 検出不可能な場合は0kmとなる
      */
     @Serialize(id = 5)
@@ -58,6 +58,12 @@ public class RawSessionData {
     @Serialize(id = 8)
     public int flags;
 
+    /**
+     * セッションの継続時間（ミリ秒）
+     */
+    @Serialize(id = 9 )
+    public int durationTimeMs;
+
     public RawSessionData() {
     }
 
@@ -70,6 +76,7 @@ public class RawSessionData {
         sessionId = InternalSdkUtil.randString();
         fitness = new RawFitnessStatus(dummy);
         startTime = InternalSdkUtil.randInteger();
+        durationTimeMs = InternalSdkUtil.randInteger();
         distanceKm = InternalSdkUtil.randFloat();
         activeTimeMs = InternalSdkUtil.randInteger();
         activeDistanceKm = InternalSdkUtil.randFloat();
@@ -88,9 +95,9 @@ public class RawSessionData {
         if (activeTimeMs != that.activeTimeMs) return false;
         if (Float.compare(that.activeDistanceKm, activeDistanceKm) != 0) return false;
         if (flags != that.flags) return false;
-        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null)
-            return false;
-        return !(fitness != null ? !fitness.equals(that.fitness) : that.fitness != null);
+        if (durationTimeMs != that.durationTimeMs) return false;
+        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
+        return fitness != null ? fitness.equals(that.fitness) : that.fitness == null;
 
     }
 
@@ -103,6 +110,7 @@ public class RawSessionData {
         result = 31 * result + activeTimeMs;
         result = 31 * result + (activeDistanceKm != +0.0f ? Float.floatToIntBits(activeDistanceKm) : 0);
         result = 31 * result + flags;
+        result = 31 * result + durationTimeMs;
         return result;
     }
 
