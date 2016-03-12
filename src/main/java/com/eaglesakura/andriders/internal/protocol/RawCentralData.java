@@ -2,6 +2,7 @@ package com.eaglesakura.andriders.internal.protocol;
 
 import com.eaglesakura.andriders.internal.util.InternalSdkUtil;
 import com.eaglesakura.serialize.Serialize;
+import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
 
@@ -78,13 +79,21 @@ public class RawCentralData {
         @Serialize(id = 3)
         public boolean debug;
 
+        /**
+         * 現在時刻
+         */
+        @Serialize(id = 4)
+        public long date;
+
         public RawCentralStatus() {
         }
 
         @Deprecated
         public RawCentralStatus(Class<Random> dummy) {
             debug = InternalSdkUtil.randBool();
+            date = RandomUtil.randInt64();
         }
+
 
         @Override
         public boolean equals(Object o) {
@@ -93,13 +102,16 @@ public class RawCentralData {
 
             RawCentralStatus that = (RawCentralStatus) o;
 
-            return debug == that.debug;
+            if (debug != that.debug) return false;
+            return date == that.date;
 
         }
 
         @Override
         public int hashCode() {
-            return (debug ? 1 : 0);
+            int result = (debug ? 1 : 0);
+            result = 31 * result + (int) (date ^ (date >>> 32));
+            return result;
         }
     }
 }

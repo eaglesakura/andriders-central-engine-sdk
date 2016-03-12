@@ -61,7 +61,7 @@ public class RawSessionData {
     /**
      * セッションの継続時間（ミリ秒）
      */
-    @Serialize(id = 9 )
+    @Serialize(id = 9)
     public int durationTimeMs;
 
     public RawSessionData() {
@@ -83,6 +83,10 @@ public class RawSessionData {
         flags = InternalSdkUtil.randInteger();
     }
 
+    public boolean isActiveMoving() {
+        return (flags & FLAG_ACTIVE) != 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -96,7 +100,8 @@ public class RawSessionData {
         if (Float.compare(that.activeDistanceKm, activeDistanceKm) != 0) return false;
         if (flags != that.flags) return false;
         if (durationTimeMs != that.durationTimeMs) return false;
-        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
+        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null)
+            return false;
         return fitness != null ? fitness.equals(that.fitness) : that.fitness == null;
 
     }
