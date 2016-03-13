@@ -56,4 +56,9 @@ public class CentralDataCommand {
      * SDKバージョンを取得する
      */
     public static final String CMD_getSDKVersion = "CTL_getSDKVersion";
+
+    /**
+     * セントラル情報が更新された
+     */
+    public static final String CMD_onUpdatedCentralData = "CTL_onUpdatedCentralData" ;
 }
