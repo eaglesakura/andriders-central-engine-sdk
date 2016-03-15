@@ -53,42 +53,59 @@ public class SensorDataReceiver<T> {
         mHandlers.remove(handler);
     }
 
+    static final int RECEIVE_HANDLE_ABORT = 0x01 << 0;
+    static final int RECEIVE_HANDLE_CONNECTED = 0x01 << 1;
+    static final int RECEIVE_HANDLE_DISCONNECTED = 0x01 << 2;
+    static final int RECEIVE_HANDLE_RECEIVED = 0x01 << 3;
+    static final int RECEIVE_HANDLE_UPDATED = 0x01 << 4;
+
     /**
      * @param master   rootデータ
      * @param value    更新された値
      * @param dataHash データの更新状態をチェックするためのハッシュ値
+     * @return ハンドリングを行った処理内容
      */
-    void onReceivedValue(@NonNull RawCentralData master, @Nullable T value, int dataHash) {
+    int onReceivedValue(@NonNull RawCentralData master, @Nullable T value, int dataHash) {
+        dataHash = (value != null ? dataHash : 0x00);
+
         final T oldValue = mLastReceivedValue;
         final int oldHash = mLastReceivedHash;
 
         mLastReceivedValue = value;
-        mLastReceivedHash = value != null ? dataHash : 0;
+        mLastReceivedHash = dataHash;
 
 
         if (mHandlers == null || mHandlers.isEmpty()) {
             // 受け取るべきハンドラが存在しない
-            return;
+            return RECEIVE_HANDLE_ABORT;
         }
+
+        int result = 0;
 
         for (SensorDataHandler<T> handler : mHandlers) {
             if (oldValue == null && value != null) {
                 // センサーに接続された
                 handler.onConnectedSensor(master, value);
+                result |= RECEIVE_HANDLE_CONNECTED;
             } else if (oldValue != null && value == null) {
                 // センサーから切断された
                 handler.onDisconnectedSensor(master);
+                result |= RECEIVE_HANDLE_DISCONNECTED;
             }
 
             if (value != null) {
                 // 値が取得できたらコールバック
                 handler.onReceived(master, value);
+                result |= RECEIVE_HANDLE_RECEIVED;
                 if (oldHash != dataHash) {
                     // データが更新されたらコールバック
                     handler.onUpdated(master, oldValue, value);
+                    result |= RECEIVE_HANDLE_UPDATED;
                 }
             }
         }
+
+        return result;
     }
 
     public static abstract class HeartrateHandler extends SensorDataHandler<RawSensorData.RawHeartrate> {

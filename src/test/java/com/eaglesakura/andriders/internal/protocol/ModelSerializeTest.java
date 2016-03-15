@@ -85,4 +85,60 @@ public class ModelSerializeTest extends UnitTestCase {
         assertSerialize(RawCentralData.class);
         assertSerialize(RawSessionData.class);
     }
+
+    @Test
+    public void 差分チェック用のハッシュが重複しないことを確認する() {
+        {
+            int initHash = RawSensorData.getHash(new RawSensorData.RawHeartrate(Random.class));
+            boolean succes = false;
+            for (int i = 0; i < 128; ++i) {
+                int hash = RawSensorData.getHash(new RawSensorData.RawHeartrate(Random.class));
+                if (initHash != hash) {
+                    succes = true;
+                }
+            }
+
+            // 全部同じ数が出たら検証にならない　
+            assertTrue(succes);
+        }
+        {
+            int initHash = RawSensorData.getHash(new RawSensorData.RawSpeed(Random.class));
+            boolean succes = false;
+            for (int i = 0; i < 128; ++i) {
+                int hash = RawSensorData.getHash(new RawSensorData.RawSpeed(Random.class));
+                if (initHash != hash) {
+                    succes = true;
+                }
+            }
+
+            // 全部同じ数が出たら検証にならない　
+            assertTrue(succes);
+        }
+        {
+            int initHash = RawSensorData.getHash(new RawSensorData.RawCadence(Random.class));
+            boolean succes = false;
+            for (int i = 0; i < 128; ++i) {
+                int hash = RawSensorData.getHash(new RawSensorData.RawCadence(Random.class));
+                if (initHash != hash) {
+                    succes = true;
+                }
+            }
+
+            // 全部同じ数が出たら検証にならない　
+            assertTrue(succes);
+        }
+        {
+            int initHash = RawSensorData.getHash(new RawLocation(Random.class));
+            boolean succes = false;
+            for (int i = 0; i < 128; ++i) {
+                int hash = RawSensorData.getHash(new RawLocation(Random.class));
+                if (initHash != hash) {
+                    succes = true;
+                }
+            }
+
+            // 全部同じ数が出たら検証にならない　
+            assertTrue(succes);
+        }
+    }
 }

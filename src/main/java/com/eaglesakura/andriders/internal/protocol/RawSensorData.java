@@ -206,7 +206,7 @@ public class RawSensorData {
          * センサーへ接続してからの合計回転数（ホイール）
          */
         @Serialize(id = 3)
-        public float wheelRevolution = -1;
+        public int wheelRevolution = -1;
 
         @Serialize(id = 4)
         public SpeedZone zone;
@@ -264,5 +264,24 @@ public class RawSensorData {
             result = 31 * result + flags;
             return result;
         }
+    }
+
+    public static int getHash(RawHeartrate data) {
+        return data.bpm;
+    }
+
+    public static int getHash(RawCadence data) {
+        return data.crankRevolution ^ (int) data.rpm;
+    }
+
+    public static int getHash(RawSpeed data) {
+        return Float.floatToIntBits(data.speedKmPerHour) ^ data.flags ^ data.wheelRevolution;
+    }
+
+    public static int getHash(RawLocation data) {
+        return Float.floatToIntBits((float) data.latitude)
+                ^ Float.floatToIntBits((float) data.latitude)
+                ^ Float.floatToIntBits((float) data.latitude)
+                ^ Float.floatToIntBits(data.locationAccuracy);
     }
 }
