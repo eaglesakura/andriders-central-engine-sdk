@@ -2,6 +2,7 @@ package com.eaglesakura.andriders.internal.protocol;
 
 import com.eaglesakura.andriders.UnitTestCase;
 import com.eaglesakura.io.data.DataPackage;
+import com.eaglesakura.io.data.DataVerifier;
 import com.eaglesakura.refrection.NullableConstructor;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
@@ -24,21 +25,34 @@ public class ModelSerializeTest extends UnitTestCase {
     <T> void assertSerialize(Class<T> clazz) throws Exception {
         LogUtil.log("Serialize :: " + clazz.getName());
         for (int i = 0; i < TRY_SERIALIZE_COUNT; ++i) {
+            DataVerifier verifier = new DataVerifier();
             T obj = NullableConstructor.get(clazz, Random.class.getClass()).newInstance(Random.class);
             assertNotNull(obj);
 
             byte[] buffer = SerializeUtil.serializePublicFieldObject(obj, true);
             assertNotNull(buffer);
             assertNotEquals(buffer.length, 0);
-//            LogUtil.log("Serialized :: %s(%d bytes)", obj.getClass().getSimpleName(), buffer.length);
+
+            // ベリファイコードを与える
+            byte[] packed = verifier.pack(buffer);
+            assertNotNull(packed);
+            assertTrue(packed.length > buffer.length);
+            // ベリファイコードの後ろ4桁が0x00でないことを検証する
+            assertNotEquals(packed[(packed.length - 4)], 0x00);
+            assertNotEquals(packed[(packed.length - 3)], 0x00);
+            assertNotEquals(packed[(packed.length - 2)], 0x00);
+            assertNotEquals(packed[(packed.length - 1)], 0x00);
+//            LogUtil.log("   num[%04d] hash(%s) verify(%s)", i, EncodeUtil.genMD5(buffer), StringUtil.toHexString(new byte[]{packed[(packed.length - 4)], packed[(packed.length - 3)], packed[(packed.length - 2)], packed[(packed.length - 1)]}));
+
+            // ベリファイコードを剥がす
+            byte[] unpacked = verifier.unpack(packed);
+            assertNotNull(unpacked);
+            assertEquals(unpacked.length, buffer.length);
+            assertTrue(Arrays.equals(buffer, unpacked));
 
             Object deserialized = SerializeUtil.deserializePublicFieldObject(obj.getClass(), buffer);
             assertNotNull(deserialized);
             assertEquals(obj, deserialized);
-
-            DataPackage packed = DataPackage.pack(DataPackage.class, buffer);
-            byte[] unpacked = DataPackage.unpack(DataPackage.class, packed.getPackedBuffer());
-            assertTrue(Arrays.equals(buffer, unpacked));
         }
         LogUtil.log("  Finished");
     }
