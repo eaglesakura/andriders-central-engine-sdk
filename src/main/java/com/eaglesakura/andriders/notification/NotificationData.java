@@ -4,6 +4,7 @@ import com.eaglesakura.andriders.internal.protocol.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
@@ -113,7 +114,7 @@ public class NotificationData {
         message = raw.message;
         uniqueId = raw.uniqueId;
         date = new Date(raw.date);
-        if (!Util.isEmpty(raw.iconFile)) {
+        if (!CollectionUtil.isEmpty(raw.iconFile)) {
             // アイコン指定でのデコード
             setIcon(ImageUtil.decode(raw.iconFile));
         } else if (!StringUtil.isEmpty(raw.iconUri)) {

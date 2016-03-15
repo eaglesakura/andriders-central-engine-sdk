@@ -47,6 +47,8 @@ dependencies {
         compile project(':eglibrary:android-simple-utils')
         compile project(':eglibrary:android-canvas-graphics')
         compile project(':eglibrary:android-command-service')
+
+        testCompile project(":eglibrary:android-unittest-support")
     } else {
         // mavenから必要なライブラリを取得する
         compile 'com.eaglesakura:simple-logger:+'               /* Log */
@@ -56,13 +58,9 @@ dependencies {
         compile 'com.eaglesakura:android-simple-utils:+'        /* Utils */
         compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
         compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
-    }
 
-    /**
-     * Unit Testing
-     */
-    testCompile 'junit:junit:4.12'
-    testCompile "org.robolectric:robolectric:3.0"
+        testCompile 'com.eaglesakura:android-unittest-support:1.+'
+    }
 }
 
 android {

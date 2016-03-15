@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.CiJUnitTester;
+import com.eaglesakura.andriders.UnitTestCase;
 
 import junit.framework.Assert;
 
@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class DisplayInformationTest extends CiJUnitTester {
+public class DisplayInformationTest extends UnitTestCase {
 
     @Test
     public void serializeTest() {

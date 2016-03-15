@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.CiJUnitTester;
-import com.eaglesakura.util.Util;
+import com.eaglesakura.andriders.UnitTestCase;
+import com.eaglesakura.util.CollectionUtil;
 
 import junit.framework.Assert;
 
@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class ExtensionInformationTest extends CiJUnitTester {
+public class ExtensionInformationTest extends UnitTestCase {
 
     @Test
     public void infoInitialize() {
@@ -37,7 +37,7 @@ public class ExtensionInformationTest extends CiJUnitTester {
         info.setCategory(ExtensionCategory.CATEGORY_OTHERS);
 
         byte[] serialize = ExtensionInformation.serialize(Arrays.asList(info));
-        Assert.assertFalse(Util.isEmpty(serialize));
+        Assert.assertFalse(CollectionUtil.isEmpty(serialize));
 
         List<ExtensionInformation> deserialize = ExtensionInformation.deserialize(serialize);
         Assert.assertEquals(deserialize.size(), 1);

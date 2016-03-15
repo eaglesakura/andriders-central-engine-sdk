@@ -3,6 +3,7 @@ package com.eaglesakura.andriders.extension;
 import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
@@ -114,7 +115,7 @@ public class ExtensionInformation {
     public static List<ExtensionInformation> deserialize(byte[] buffer) {
         try {
             List<byte[]> serializedBuffers = SerializeUtil.toByteArrayList(buffer);
-            if (!Util.isEmpty(serializedBuffers)) {
+            if (!CollectionUtil.isEmpty(serializedBuffers)) {
                 List<ExtensionInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializedBuffers) {
                     result.add(new ExtensionInformation(SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawExtensionInfo.class, serialized)));

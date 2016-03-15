@@ -2,6 +2,7 @@ package com.eaglesakura.andriders.extension;
 
 import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
@@ -67,7 +68,7 @@ public class DisplayInformation {
     }
 
     public static byte[] serialize(List<DisplayInformation> list) {
-        if (Util.isEmpty(list)) {
+        if (CollectionUtil.isEmpty(list)) {
             return null;
         }
 
@@ -88,7 +89,7 @@ public class DisplayInformation {
 
         try {
             List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
-            if (!Util.isEmpty(serializeList)) {
+            if (!CollectionUtil.isEmpty(serializeList)) {
                 List<DisplayInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
                     result.add(new DisplayInformation(SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawCycleDisplayInfo.class, serialized)));

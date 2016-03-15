@@ -3,6 +3,7 @@ package com.eaglesakura.andriders.extension.display;
 import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.Util;
@@ -47,7 +48,7 @@ public class DisplayData {
 
         if (raw.basicValue != null) {
             mBasicValue = new BasicValue(raw.basicValue);
-        } else if (!Util.isEmpty(raw.keyValues) && raw.keyValues.size() <= LineValue.MAX_LINES) {
+        } else if (!CollectionUtil.isEmpty(raw.keyValues) && raw.keyValues.size() <= LineValue.MAX_LINES) {
             mLineValue = new LineValue(raw.keyValues);
         }
 
@@ -158,7 +159,7 @@ public class DisplayData {
     }
 
     public static byte[] serialize(List<DisplayData> list) {
-        if (Util.isEmpty(list)) {
+        if (CollectionUtil.isEmpty(list)) {
             return null;
         }
 
@@ -181,7 +182,7 @@ public class DisplayData {
             Constructor<T> constructor = clazz.getConstructor(ExtensionProtocol.RawCycleDisplayValue.class);
 
             List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
-            if (!Util.isEmpty(serializeList)) {
+            if (!CollectionUtil.isEmpty(serializeList)) {
                 List<T> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
                     ExtensionProtocol.RawCycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawCycleDisplayValue.class, serialized);

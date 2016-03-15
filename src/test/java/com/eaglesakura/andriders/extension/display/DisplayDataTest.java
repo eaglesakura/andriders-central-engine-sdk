@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.extension.display;
 
-import com.eaglesakura.andriders.CiJUnitTester;
+import com.eaglesakura.andriders.UnitTestCase;
 import com.eaglesakura.andriders.extension.DisplayInformation;
 import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-public class DisplayDataTest extends CiJUnitTester {
+public class DisplayDataTest extends UnitTestCase {
 
     public static class TestDisplayDataImpl extends DisplayData {
         public TestDisplayDataImpl(ExtensionProtocol.RawCycleDisplayValue raw) {
