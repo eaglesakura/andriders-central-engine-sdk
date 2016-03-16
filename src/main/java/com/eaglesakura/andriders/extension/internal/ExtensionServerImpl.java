@@ -139,7 +139,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_getSDKVersion, new CommandMap.Action() {
             @Override
             public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                return new Payload(BuildConfig.ACE_SDK_VERSION.getBytes());
+                return Payload.fromString(BuildConfig.ACE_SDK_VERSION);
             }
         });
 

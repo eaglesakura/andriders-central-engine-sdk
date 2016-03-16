@@ -267,18 +267,30 @@ public class RawSensorData {
     }
 
     public static int getHash(RawHeartrate data) {
+        if (data == null) {
+            return 0;
+        }
         return data.bpm;
     }
 
     public static int getHash(RawCadence data) {
+        if (data == null) {
+            return 0;
+        }
         return data.crankRevolution ^ (int) data.rpm;
     }
 
     public static int getHash(RawSpeed data) {
+        if (data == null) {
+            return 0;
+        }
         return Float.floatToIntBits(data.speedKmPerHour) ^ data.flags ^ data.wheelRevolution;
     }
 
     public static int getHash(RawLocation data) {
+        if (data == null) {
+            return 0;
+        }
         return Float.floatToIntBits((float) data.latitude)
                 ^ Float.floatToIntBits((float) data.latitude)
                 ^ Float.floatToIntBits((float) data.latitude)

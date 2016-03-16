@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.central;
 
+import com.eaglesakura.andriders.internal.protocol.RawCentralData;
 import com.eaglesakura.andriders.internal.protocol.RawLocation;
 import com.eaglesakura.andriders.internal.protocol.RawSensorData;
 
@@ -26,17 +27,22 @@ public class CentralDataReceiver {
     /**
      * 送受信用Action
      */
-    static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_CENTRAL_DATA_v2";
+    static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
 
     /**
      * 送受信用カテゴリ
      */
-    static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_ACE_DATA";
+    static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
 
     @NonNull
     final Context mContext;
 
-    final Object lock = new Object();
+    private final Object lock = new Object();
+
+    /**
+     * 接続済であればtrue
+     */
+    boolean mConnected;
 
     final Set<CentralDataHandler> mCentralDataHandlers = new HashSet<>();
 
@@ -50,6 +56,12 @@ public class CentralDataReceiver {
 
     public CentralDataReceiver(@NonNull Context context) {
         mContext = context.getApplicationContext();
+    }
+
+    public void addHandler(@NonNull CentralDataHandler handler) {
+        synchronized (lock) {
+            mCentralDataHandlers.add(handler);
+        }
     }
 
     public void addHandler(@NonNull SensorDataReceiver.HeartrateHandler handler) {
@@ -76,8 +88,44 @@ public class CentralDataReceiver {
         }
     }
 
+    public boolean isConnected() {
+        return mConnected;
+    }
 
     public void connect() {
+        if (isConnected()) {
+            throw new IllegalStateException();
+        }
 
+        // TODO 接続処理を実装する
+
+
+        mConnected = true;
+    }
+
+    public void disconnect() {
+        if (!isConnected()) {
+            throw new IllegalStateException();
+        }
+
+        // TODO 切断処理を実装する
+
+        mConnected = false;
+    }
+
+    /**
+     * セントラル情報をハンドリングする
+     */
+    public void onReceived(RawCentralData central) {
+        synchronized (lock) {
+            for (CentralDataHandler handler : mCentralDataHandlers) {
+                handler.onReceived(central);
+            }
+
+            mLocationReceiver.onReceivedValue(central, central.sensor.location, RawSensorData.getHash(central.sensor.location));
+            mSpeedReceiver.onReceivedValue(central, central.sensor.speed, RawSensorData.getHash(central.sensor.speed));
+            mHeartrateReceiver.onReceivedValue(central, central.sensor.heartrate, RawSensorData.getHash(central.sensor.heartrate));
+            mCadenceReceiver.onReceivedValue(central, central.sensor.cadence, RawSensorData.getHash(central.sensor.cadence));
+        }
     }
 }

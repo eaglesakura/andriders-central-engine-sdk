@@ -18,6 +18,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.+'
         classpath "com.eaglesakura:eglibrary-gradle-plugin:0.2.8"
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5' // support Lambda
     }
 }
 
@@ -30,6 +31,7 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda' /* Android Lambda Support */
 
 // check env
 if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
@@ -68,7 +70,7 @@ android {
     buildToolsVersion '23.0.2'
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_7
     }
     
@@ -82,8 +84,20 @@ android {
     }
 }
 
-task uploadSdkArchives << {
-    tasks.uploadArchives.execute();
+/**
+ * UnitTest & retro lambda
+ */
+tasks.withType(Test) {
+    project.tasks
+            .findAll {
+        task -> (task.name ==~ /compile.*?TestJava.*?/)
+    }
+    .each { task ->
+        task.doFirst {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
 }
 
 apply plugin: 'maven'
