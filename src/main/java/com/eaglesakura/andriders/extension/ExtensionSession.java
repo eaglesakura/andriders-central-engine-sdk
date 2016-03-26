@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.extension;
 
+import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.extension.data.CentralDataExtension;
 import com.eaglesakura.andriders.extension.display.DisplayExtension;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
@@ -12,6 +13,8 @@ import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,18 +23,25 @@ import java.util.Map;
  * 拡張機能のセッション管理を行う
  */
 public class ExtensionSession implements Disposable {
+    @NonNull
     final Service mService;
 
+    @NonNull
     final IExtensionService mExtensionService;
 
+    @NonNull
     final String mSessionId;
 
+    @NonNull
     final ExtensionServerImpl mServerImpl;
 
+    @NonNull
     final CentralDataExtension mCentralDataExtension;
 
+    @NonNull
     final DisplayExtension mDisplayExtension;
 
+    @Nullable
     final ComponentName mAcesComponent;
 
     /**
@@ -43,6 +53,9 @@ public class ExtensionSession implements Disposable {
      * SDKバージョン
      */
     final String mAcesSdkVersion;
+
+    @Nullable
+    final CentralDataReceiver mCentralDataReceiver;
 
     ExtensionSession(Service service, Intent intent) {
         mService = service;
@@ -67,6 +80,13 @@ public class ExtensionSession implements Disposable {
         // アクセス用インターフェースを生成する
         mCentralDataExtension = new CentralDataExtension(this, mServerImpl);
         mDisplayExtension = new DisplayExtension(this, mServerImpl);
+
+        if (isAcesSession()) {
+            mCentralDataReceiver = new CentralDataReceiver(mService.getApplicationContext());
+            mCentralDataReceiver.connect();
+        } else {
+            mCentralDataReceiver = null;
+        }
     }
 
     /**
@@ -95,6 +115,21 @@ public class ExtensionSession implements Disposable {
      */
     public DisplayExtension getDisplayExtension() {
         return mDisplayExtension;
+    }
+
+    /**
+     * CentralData更新通知クラスを取得する
+     *
+     * このクラスは自動的にconnect/disconnectされる。
+     *
+     * Sessionごとに生成される。
+     *
+     * Aceセッションでのみ取得可能。
+     */
+    @Nullable
+    public CentralDataReceiver getCentralDataReceiver() {
+        mServerImpl.validAcesSession();
+        return mCentralDataReceiver;
     }
 
     /**
@@ -127,6 +162,7 @@ public class ExtensionSession implements Disposable {
     @Override
     public void dispose() {
         IOUtil.close(mServerImpl);
+        mCentralDataReceiver.disconnect();
     }
 
     /**
