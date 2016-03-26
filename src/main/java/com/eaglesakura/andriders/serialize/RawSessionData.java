@@ -3,6 +3,8 @@ package com.eaglesakura.andriders.serialize;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
+import android.support.annotation.NonNull;
+
 import java.util.Random;
 
 /**
@@ -17,12 +19,14 @@ public class RawSessionData {
     /**
      * セッションを一意に識別するID
      */
+    @NonNull
     @Serialize(id = 1)
     public String sessionId;
 
     /**
      * このセッションでのフィットネス情報
      */
+    @NonNull
     @Serialize(id = 3)
     public RawFitnessStatus fitness;
 
@@ -64,6 +68,12 @@ public class RawSessionData {
     @Serialize(id = 9)
     public int durationTimeMs;
 
+    /**
+     * 合計高度
+     */
+    @Serialize(id = 10)
+    public float sumAltitudeMeter;
+
     public RawSessionData() {
     }
 
@@ -81,6 +91,7 @@ public class RawSessionData {
         activeTimeMs = RandomUtil.randUInt32();
         activeDistanceKm = RandomUtil.randFloat();
         flags = RandomUtil.randInt32();
+        sumAltitudeMeter = RandomUtil.randFloat();
     }
 
     public boolean isActiveMoving() {

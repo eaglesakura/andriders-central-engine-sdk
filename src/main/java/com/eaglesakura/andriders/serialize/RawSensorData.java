@@ -6,6 +6,8 @@ import com.eaglesakura.andriders.sensor.SpeedZone;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
+import android.support.annotation.Nullable;
+
 import java.util.Random;
 
 public class RawSensorData {
@@ -13,24 +15,28 @@ public class RawSensorData {
     /**
      * 現在の心拍
      */
+    @Nullable
     @Serialize(id = 1)
     public RawHeartrate heartrate;
 
     /**
      * 現在のケイデンス
      */
+    @Nullable
     @Serialize(id = 2)
     public RawCadence cadence;
 
     /**
      * 現在の速度
      */
+    @Nullable
     @Serialize(id = 3)
     public RawSpeed speed;
 
     /**
      * 位置情報
      */
+    @Nullable
     @Serialize(id = 4)
     public RawLocation location;
 
