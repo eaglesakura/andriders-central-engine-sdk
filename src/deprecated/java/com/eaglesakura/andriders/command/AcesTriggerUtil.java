@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.command;
 
-import com.eaglesakura.andriders.protocol.AcesProtocol;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.serialize.AcesProtocol;
+import com.eaglesakura.andriders.serialize.CommandProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.ComponentName;
@@ -96,7 +96,7 @@ public class AcesTriggerUtil {
     }
 
     /**
-     * {@link com.eaglesakura.andriders.protocol.CommandProtocol.IntentPayload}からIntentを生成する。
+     * {@link com.eaglesakura.andriders.serialize.CommandProtocol.IntentPayload}からIntentを生成する。
      *
      * @param payload 生成元payload
      * @return 生成されたIntent

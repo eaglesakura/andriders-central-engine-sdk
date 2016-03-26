@@ -2,10 +2,10 @@ package com.eaglesakura.andriders.media;
 
 import com.eaglesakura.andriders.AcesEnvironment;
 import com.eaglesakura.andriders.central.CentralDataReceiver;
-import com.eaglesakura.andriders.protocol.AcesProtocol;
-import com.eaglesakura.andriders.protocol.GeoProtocol;
-import com.eaglesakura.andriders.protocol.MediaMetaProtocol;
-import com.eaglesakura.andriders.protocol.SensorProtocol;
+import com.eaglesakura.andriders.serialize.AcesProtocol;
+import com.eaglesakura.andriders.serialize.GeoProtocol;
+import com.eaglesakura.andriders.serialize.MediaMetaProtocol;
+import com.eaglesakura.andriders.serialize.SensorProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;

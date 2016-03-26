@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.central;
 
 import com.eaglesakura.andriders.central.event.TeamDataHandler;
-import com.eaglesakura.andriders.protocol.TeamProtocol;
+import com.eaglesakura.andriders.serialize.TeamProtocol;
 import com.eaglesakura.util.LogUtil;
 
 import android.content.BroadcastReceiver;
@@ -139,7 +139,7 @@ public class TeamProtocolReceiver {
      * <br>
      * 自動的に処理が行われるため、基本的にこのメソッドを明示的に呼び出す必要はない。
      *
-     * @param master 受信した{@link com.eaglesakura.andriders.protocol.TeamProtocol.TeamPayload}の情報
+     * @param master 受信した{@link com.eaglesakura.andriders.serialize.TeamProtocol.TeamPayload}の情報
      */
     public void onReceivedMasterPayload(byte[] master) throws Exception {
         synchronized (lock) {

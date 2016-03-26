@@ -1,12 +1,11 @@
 package com.eaglesakura.andriders.extension.display;
 
 import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.ExtensionProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
-import com.eaglesakura.util.Util;
 
 import android.content.Context;
 

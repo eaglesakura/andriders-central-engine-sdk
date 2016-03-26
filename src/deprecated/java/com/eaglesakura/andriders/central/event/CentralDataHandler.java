@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.CentralDataReceiver;
-import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
-import com.eaglesakura.andriders.protocol.GeoProtocol;
+import com.eaglesakura.andriders.serialize.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.serialize.GeoProtocol;
 
 /**
  * ACEsの情報ハンドリングを行う

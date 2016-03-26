@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.central;
 
 import com.eaglesakura.andriders.central.event.TeamMemberDataHandler;
-import com.eaglesakura.andriders.protocol.TeamProtocol;
+import com.eaglesakura.andriders.serialize.TeamProtocol;
 
 import android.content.Context;
 

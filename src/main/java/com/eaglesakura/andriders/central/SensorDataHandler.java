@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.central;
 
 
-import com.eaglesakura.andriders.internal.protocol.RawCentralData;
+import com.eaglesakura.andriders.serialize.RawCentralData;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

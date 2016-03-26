@@ -1,13 +1,12 @@
 package com.eaglesakura.andriders.extension;
 
-import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.ExtensionProtocol;
 import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
-import com.eaglesakura.util.Util;
 
 import android.content.Context;
 

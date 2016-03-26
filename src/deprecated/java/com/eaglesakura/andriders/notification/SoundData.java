@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.notification;
 
-import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.serialize.CommandProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import android.net.Uri;

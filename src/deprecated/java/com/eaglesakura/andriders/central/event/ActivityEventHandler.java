@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.CentralDataReceiver;
-import com.eaglesakura.andriders.protocol.AcesProtocol;
-import com.eaglesakura.andriders.protocol.ActivityProtocol;
+import com.eaglesakura.andriders.serialize.AcesProtocol;
+import com.eaglesakura.andriders.serialize.ActivityProtocol;
 
 /**
  * ユーザーの活動によって処理を行う

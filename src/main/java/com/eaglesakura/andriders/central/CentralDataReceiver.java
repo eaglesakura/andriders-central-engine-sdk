@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.central;
 
-import com.eaglesakura.andriders.internal.protocol.RawCentralData;
-import com.eaglesakura.andriders.internal.protocol.RawLocation;
-import com.eaglesakura.andriders.internal.protocol.RawSensorData;
+import com.eaglesakura.andriders.serialize.RawCentralData;
+import com.eaglesakura.andriders.serialize.RawLocation;
+import com.eaglesakura.andriders.serialize.RawSensorData;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.SerializeUtil;
 
@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 
 /**
  * ACEからの情報をハンドリングする

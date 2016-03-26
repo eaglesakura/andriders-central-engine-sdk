@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.internal.protocol;
+package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;

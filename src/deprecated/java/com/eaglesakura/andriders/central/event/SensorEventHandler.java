@@ -1,11 +1,11 @@
 package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.CentralDataReceiver;
-import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
-import com.eaglesakura.andriders.protocol.SensorProtocol.RawCadence;
-import com.eaglesakura.andriders.protocol.SensorProtocol.RawHeartrate;
-import com.eaglesakura.andriders.protocol.SensorProtocol.RawSpeed;
-import com.eaglesakura.andriders.protocol.SensorProtocol.SensorPayload;
+import com.eaglesakura.andriders.serialize.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.serialize.SensorProtocol.RawCadence;
+import com.eaglesakura.andriders.serialize.SensorProtocol.RawHeartrate;
+import com.eaglesakura.andriders.serialize.SensorProtocol.RawSpeed;
+import com.eaglesakura.andriders.serialize.SensorProtocol.SensorPayload;
 
 /**
  * センサーイベントに対するハンドリングを行う。

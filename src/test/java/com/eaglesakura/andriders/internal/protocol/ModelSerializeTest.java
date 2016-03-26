@@ -1,7 +1,14 @@
 package com.eaglesakura.andriders.internal.protocol;
 
 import com.eaglesakura.andriders.UnitTestCase;
-import com.eaglesakura.io.data.DataPackage;
+import com.eaglesakura.andriders.serialize.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.NotificationProtocol;
+import com.eaglesakura.andriders.serialize.RawCentralData;
+import com.eaglesakura.andriders.serialize.RawGeoPoint;
+import com.eaglesakura.andriders.serialize.RawLocation;
+import com.eaglesakura.andriders.serialize.RawSensorData;
+import com.eaglesakura.andriders.serialize.RawSessionData;
+import com.eaglesakura.andriders.serialize.RawSpecs;
 import com.eaglesakura.io.data.DataVerifier;
 import com.eaglesakura.refrection.NullableConstructor;
 import com.eaglesakura.util.LogUtil;

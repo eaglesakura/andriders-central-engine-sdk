@@ -4,10 +4,10 @@ import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.notification.SoundData;
-import com.eaglesakura.andriders.protocol.AcesProtocol.MasterPayload;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
-import com.eaglesakura.andriders.protocol.CommandProtocol.CommandPayload;
-import com.eaglesakura.andriders.protocol.CommandProtocol.TriggerPayload;
+import com.eaglesakura.andriders.serialize.AcesProtocol.MasterPayload;
+import com.eaglesakura.andriders.serialize.CommandProtocol;
+import com.eaglesakura.andriders.serialize.CommandProtocol.CommandPayload;
+import com.eaglesakura.andriders.serialize.CommandProtocol.TriggerPayload;
 
 import android.content.Intent;
 

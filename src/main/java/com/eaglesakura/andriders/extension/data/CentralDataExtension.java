@@ -3,7 +3,7 @@ package com.eaglesakura.andriders.extension.data;
 import com.eaglesakura.andriders.extension.ExtensionSession;
 import com.eaglesakura.andriders.extension.internal.CentralDataCommand;
 import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
-import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.ExtensionProtocol;
 import com.eaglesakura.andriders.sensor.SensorType;
 import com.eaglesakura.android.service.data.Payload;
 import com.eaglesakura.util.LogUtil;

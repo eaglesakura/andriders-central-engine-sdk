@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.notification;
 
-import com.eaglesakura.andriders.internal.protocol.NotificationProtocol;
+import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.serialize.error.SerializeException;
@@ -8,7 +8,6 @@ import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
-import com.eaglesakura.util.Util;
 
 import android.content.Context;
 import android.graphics.Bitmap;

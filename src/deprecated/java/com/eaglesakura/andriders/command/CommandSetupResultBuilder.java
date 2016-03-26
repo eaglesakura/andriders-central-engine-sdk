@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.command;
 
 import com.eaglesakura.andriders.AcesEnvironment;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.serialize.CommandProtocol;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.util.StringUtil;
 

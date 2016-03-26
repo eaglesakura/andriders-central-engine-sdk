@@ -6,8 +6,8 @@ import com.eaglesakura.andriders.IAndridersCentralEngineTeamService;
 import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.central.TeamMemberReceiver;
 import com.eaglesakura.andriders.central.TeamProtocolReceiver;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
-import com.eaglesakura.andriders.protocol.ExtensionMessage;
+import com.eaglesakura.andriders.serialize.CommandProtocol;
+import com.eaglesakura.andriders.serialize.ExtensionMessage;
 
 import android.app.Service;
 import android.content.Intent;

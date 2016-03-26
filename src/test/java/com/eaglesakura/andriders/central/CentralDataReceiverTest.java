@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.central;
 
 import com.eaglesakura.andriders.UnitTestCase;
-import com.eaglesakura.andriders.internal.protocol.RawCentralData;
-import com.eaglesakura.andriders.internal.protocol.RawSensorData;
+import com.eaglesakura.andriders.serialize.RawCentralData;
+import com.eaglesakura.andriders.serialize.RawSensorData;
 
 import org.junit.Test;
 

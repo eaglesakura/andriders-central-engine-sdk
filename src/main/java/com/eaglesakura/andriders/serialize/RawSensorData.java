@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.internal.protocol;
+package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.andriders.sensor.CadenceZone;
 import com.eaglesakura.andriders.sensor.HeartrateZone;

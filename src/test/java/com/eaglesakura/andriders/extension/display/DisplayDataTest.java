@@ -2,7 +2,7 @@ package com.eaglesakura.andriders.extension.display;
 
 import com.eaglesakura.andriders.UnitTestCase;
 import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.internal.protocol.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.ExtensionProtocol;
 
 import org.junit.Test;
 

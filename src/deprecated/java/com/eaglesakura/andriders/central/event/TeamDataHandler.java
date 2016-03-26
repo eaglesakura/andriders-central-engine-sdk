@@ -2,7 +2,7 @@ package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.TeamMemberReceiver;
 import com.eaglesakura.andriders.central.TeamProtocolReceiver;
-import com.eaglesakura.andriders.protocol.TeamProtocol;
+import com.eaglesakura.andriders.serialize.TeamProtocol;
 
 /**
  * ACEsの情報ハンドリングを行う

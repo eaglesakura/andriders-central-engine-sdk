@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.central.event;
 
 import com.eaglesakura.andriders.central.TeamMemberReceiver;
-import com.eaglesakura.andriders.protocol.TeamProtocol;
+import com.eaglesakura.andriders.serialize.TeamProtocol;
 
 /**
  * チームメンバーの情報を受け取った際のハンドリング

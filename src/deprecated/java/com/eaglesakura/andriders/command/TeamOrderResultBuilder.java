@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.command;
 
-import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.serialize.CommandProtocol;
 
 import android.app.Activity;
 import android.content.Intent;

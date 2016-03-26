@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.ui;
 
 import com.eaglesakura.andriders.AcesEnvironment;
-import com.eaglesakura.andriders.protocol.CommandProtocol.TweetRequestPayload;
+import com.eaglesakura.andriders.serialize.CommandProtocol.TweetRequestPayload;
 import com.eaglesakura.util.LogUtil;
 
 import android.content.ComponentName;
