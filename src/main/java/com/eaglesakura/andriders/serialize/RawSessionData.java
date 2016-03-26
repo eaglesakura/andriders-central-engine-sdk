@@ -4,6 +4,7 @@ import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.Random;
 
@@ -18,8 +19,10 @@ public class RawSessionData {
 
     /**
      * セッションを一意に識別するID
+     *
+     * 一日のトータル情報の場合はnullが指定される
      */
-    @NonNull
+    @Nullable
     @Serialize(id = 1)
     public String sessionId;
 
@@ -136,6 +139,8 @@ public class RawSessionData {
     public static class RawFitnessStatus {
         /**
          * 現在のMETs値
+         *
+         * 一日トータルでは0.0が指定される
          */
         @Serialize(id = 1)
         public float mets;
