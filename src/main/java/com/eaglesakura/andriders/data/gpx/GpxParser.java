@@ -67,12 +67,27 @@ public class GpxParser {
     @NonNull
     DateFormat mDateFormat = sGpxDateFormat;
 
+    /**
+     * 最低限持たなければならないポイント数
+     * これ以下のポイントしか持たないセグメントは取り除く
+     */
+    int mMinPoints = 50;
+
     public void setDateFormat(@NonNull DateFormat dateFormat) {
         mDateFormat = dateFormat;
     }
 
     public void setDateOption(@NonNull DateOption dateOption) {
         mDateOption = dateOption;
+    }
+
+    /**
+     * 最低限のポイント数を指定する
+     *
+     * @param minPoints これ以下のポイント数の場合、セグメントを取り除く
+     */
+    public void setMinPoints(int minPoints) {
+        mMinPoints = minPoints;
     }
 
     private GpxPointElement newPoint(XmlElement trkpt) {
@@ -113,8 +128,8 @@ public class GpxParser {
             segment.mPoints.add(pt);
         });
 
-        if (segment.mPoints.isEmpty()) {
-            // 位置が一つも見つからなかった
+        if (segment.mPoints.size() <= mMinPoints) {
+            // 位置が規定数に達しなかった
             return;
         }
 
@@ -136,9 +151,6 @@ public class GpxParser {
             addTrack(gpx, trkseg);
         });
 
-        if (gpx.mTrackSegments.isEmpty()) {
-            throw new IllegalStateException("track not found");
-        }
         return gpx;
     }
 }

@@ -50,10 +50,13 @@ public class GpxParserTest extends UnitTestCase {
         assertNotNull(gpx);
         assertNotNull(gpx.getTrackSegments());
         assertNotEquals(gpx.getTrackSegments().size(), 0);
+
         for (GpxSegment segment : gpx.getTrackSegments()) {
+            LogUtil.log("Track index[%d] points[%d]", gpx.getTrackSegments().indexOf(segment), segment.getPoints().size());
             assertNotNull(segment.getPoints());
             assertNotEquals(segment.getPoints().size(), 0);
         }
+
 
         // 開始時刻が正しくAACRの朝である
         {
