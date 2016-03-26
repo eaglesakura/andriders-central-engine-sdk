@@ -162,7 +162,9 @@ public class ExtensionSession implements Disposable {
     @Override
     public void dispose() {
         IOUtil.close(mServerImpl);
-        mCentralDataReceiver.disconnect();
+        if (mCentralDataReceiver != null) {
+            mCentralDataReceiver.disconnect();
+        }
     }
 
     /**
