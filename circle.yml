@@ -1,12 +1,8 @@
-general:
-  branches:
-    ignore:
-      - v0.4.x
 checkout:
   post:
     - chmod 755 ./gradlew
+    - chmod 755 ./script/circle-invalidate-cache.sh
     - chmod 755 ./script/deploy.sh
-    - chmod 755 ./script/assemble.sh
     - chmod 755 ./script/circle-maven-commit.sh
     - chmod 755 ./script/test.sh
 machine:
@@ -21,29 +17,22 @@ machine:
 dependencies:
   cache_directories:
     - "/home/ubuntu/android-sdk"
+    - "/home/ubuntu/build-cache"
   override:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/android-sdk-install-circle.sh)"
-    - rm -rf "/home/ubuntu/.m2"
-    - rm -rf "/home/ubuntu/.ivy2"
-    - rm -rf "/home/ubuntu/.gradle"
+    - ./script/circle-invalidate-cache.sh
+    - ./gradlew dependencies
 test:
   override:
-    - echo "Skip test task"
+    - ./script/test.sh
 deployment:
-  release:
+  canary:
     branch: /^v[0-9]\..*$/
     commands:
       - git clone git@github.com:eaglesakura/maven.git
-      - ./script/test.sh
       - ./script/deploy.sh
       - ./script/circle-maven-commit.sh
-  feature:
-    branch: /^feature\/id\/.*$/
-    commands:
-      - ./script/test.sh
-      - ./script/assemble.sh
   develop:
     branch: develop
     commands:
-      - ./script/test.sh
       - ./script/deploy.sh
