@@ -3,36 +3,37 @@ package com.eaglesakura.andriders.central;
 import com.eaglesakura.andriders.internal.protocol.RawCentralData;
 import com.eaglesakura.andriders.internal.protocol.RawLocation;
 import com.eaglesakura.andriders.internal.protocol.RawSensorData;
+import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.SerializeUtil;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 /**
  * ACEからの情報をハンドリングする
  */
 public class CentralDataReceiver {
     /**
-     * Intent経由で送られる場合のデータマスター
+     * Intent経由で送られるCentralData
      */
-    static final String INTENT_EXTRA_MASTER = "INTENT_EXTRA_CENTRAL_DATA";
-
-    /**
-     * ACEsの特殊イベント（Service起動、シャットダウン等）を受信する
-     */
-    static final String INTENT_EXTRA_EVENT = "INTENT_EXTRA_EVENT";
+    public static final String INTENT_EXTRA_CENTRAL_DATA = "INTENT_EXTRA_CENTRAL_DATA";
 
     /**
      * 送受信用Action
      */
-    static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
+    public static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
 
     /**
      * 送受信用カテゴリ
      */
-    static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
+    public static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
 
     @NonNull
     final Context mContext;
@@ -92,13 +93,35 @@ public class CentralDataReceiver {
         return mConnected;
     }
 
+    private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (!INTENT_ACTION.equals(intent.getAction())) {
+                return;
+            }
+
+            byte[] centralBuffer = intent.getByteArrayExtra(INTENT_EXTRA_CENTRAL_DATA);
+            try {
+                if (centralBuffer != null) {
+                    onReceivedCentral(centralBuffer);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
     public void connect() {
         if (isConnected()) {
             throw new IllegalStateException();
         }
 
-        // TODO 接続処理を実装する
-
+        // ブロードキャスト登録
+        {
+            IntentFilter filter = new IntentFilter(INTENT_ACTION);
+            filter.addCategory(INTENT_CATEGORY);
+            mContext.registerReceiver(mBroadcastReceiver, filter);
+        }
 
         mConnected = true;
     }
@@ -108,9 +131,20 @@ public class CentralDataReceiver {
             throw new IllegalStateException();
         }
 
-        // TODO 切断処理を実装する
+        // ブロードキャストから削除
+        mContext.unregisterReceiver(mBroadcastReceiver);
 
         mConnected = false;
+    }
+
+    /**
+     * セントラル情報をハンドリングする
+     *
+     * @param buffer シリアライズ化されたデータ
+     */
+    public void onReceivedCentral(byte[] buffer) throws SerializeException {
+        RawCentralData data = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, buffer);
+        onReceived(data);
     }
 
     /**
