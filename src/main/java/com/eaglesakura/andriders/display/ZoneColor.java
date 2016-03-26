@@ -3,6 +3,8 @@ package com.eaglesakura.andriders.display;
 import com.eaglesakura.andriders.sdk.R;
 import com.eaglesakura.andriders.sensor.CadenceZone;
 import com.eaglesakura.andriders.sensor.HeartrateZone;
+import com.eaglesakura.andriders.sensor.InclinationType;
+import com.eaglesakura.andriders.sensor.SpeedZone;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -23,15 +25,55 @@ public class ZoneColor {
         int index = 0;
         Resources resources = context.getResources();
         try {
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv0, null);
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv1, null);
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv2, null);
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv3, null);
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv4, null);
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv5, null);
-            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv6, null);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv0);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv1);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv2);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv3);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv4);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv5);
+            colors[index++] = resources.getColor(R.color.AceUI_Zonebar_Lv6);
         } catch (Exception e) {
             throw new IllegalStateException(e);
+        }
+    }
+
+    @ColorInt
+    public int getColor(InclinationType type) {
+        switch (type) {
+            case Hill:
+                return colors[2];
+            case IntenseHill:
+                return colors[4];
+            default:
+                return colors[0];
+        }
+    }
+
+    @ColorInt
+    public int getColor(SpeedZone zone) {
+        switch (zone) {
+            case Slow:
+                return colors[1];
+            case Cruise:
+                return colors[4];
+            case Sprint:
+                return colors[6];
+            default:
+                return 0x00;
+        }
+    }
+
+    @ColorInt
+    public int getColor(CadenceZone zone) {
+        switch (zone) {
+            case Slow:
+                return colors[0];
+            case Ideal:
+                return colors[2];
+            case High:
+                return colors[4];
+            default:
+                return 0x00;
         }
     }
 
