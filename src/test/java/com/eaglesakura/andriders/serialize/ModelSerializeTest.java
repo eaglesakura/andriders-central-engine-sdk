@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.internal.protocol;
+package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.andriders.UnitTestCase;
 import com.eaglesakura.andriders.serialize.ExtensionProtocol;
