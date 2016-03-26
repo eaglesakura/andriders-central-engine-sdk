@@ -58,6 +58,11 @@ public class CentralDataReceiver {
         mContext = context.getApplicationContext();
     }
 
+    @NonNull
+    public Context getContext() {
+        return mContext;
+    }
+
     public void addHandler(@NonNull CentralDataHandler handler) {
         synchronized (lock) {
             mCentralDataHandlers.add(handler);

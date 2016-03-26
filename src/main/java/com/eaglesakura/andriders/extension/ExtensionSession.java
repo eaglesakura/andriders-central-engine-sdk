@@ -11,6 +11,7 @@ import com.eaglesakura.util.StringUtil;
 
 import android.app.Service;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
@@ -87,6 +88,10 @@ public class ExtensionSession implements Disposable {
         } else {
             mCentralDataReceiver = null;
         }
+    }
+
+    public Context getContext() {
+        return mService;
     }
 
     /**

@@ -4,6 +4,7 @@ import com.eaglesakura.andriders.serialize.ExtensionProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
 
 /**
  * 心拍やケイデンス等の表示に用いられる、シンプルなディスプレイ内容
@@ -39,7 +40,7 @@ public class BasicValue {
         return raw.barColorA > 0;
     }
 
-    public void setBarColorARGB(int barColorARGB) {
+    public void setBarColorARGB(@ColorInt int barColorARGB) {
         raw.barColorA = (short) (Color.alpha(barColorARGB));
         raw.barColorR = (short) (Color.red(barColorARGB));
         raw.barColorG = (short) (Color.green(barColorARGB));
