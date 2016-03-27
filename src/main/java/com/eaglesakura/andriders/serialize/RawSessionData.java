@@ -114,22 +114,24 @@ public class RawSessionData {
         if (Float.compare(that.activeDistanceKm, activeDistanceKm) != 0) return false;
         if (flags != that.flags) return false;
         if (durationTimeMs != that.durationTimeMs) return false;
+        if (Float.compare(that.sumAltitudeMeter, sumAltitudeMeter) != 0) return false;
         if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null)
             return false;
-        return fitness != null ? fitness.equals(that.fitness) : that.fitness == null;
+        return fitness.equals(that.fitness);
 
     }
 
     @Override
     public int hashCode() {
         int result = sessionId != null ? sessionId.hashCode() : 0;
-        result = 31 * result + (fitness != null ? fitness.hashCode() : 0);
+        result = 31 * result + fitness.hashCode();
         result = 31 * result + (int) (startTime ^ (startTime >>> 32));
         result = 31 * result + (distanceKm != +0.0f ? Float.floatToIntBits(distanceKm) : 0);
         result = 31 * result + activeTimeMs;
         result = 31 * result + (activeDistanceKm != +0.0f ? Float.floatToIntBits(activeDistanceKm) : 0);
         result = 31 * result + flags;
         result = 31 * result + durationTimeMs;
+        result = 31 * result + (sumAltitudeMeter != +0.0f ? Float.floatToIntBits(sumAltitudeMeter) : 0);
         return result;
     }
 
