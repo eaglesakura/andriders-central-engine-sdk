@@ -12,21 +12,21 @@ public class GpxSegment {
     /**
      * 管理下にある位置情報
      */
-    List<GpxPointElement> mPoints = new LinkedList<>();
+    List<GpxPoint> mPoints = new LinkedList<>();
 
     /**
      * 位置情報を取得する
      */
     @NonNull
-    public List<GpxPointElement> getPoints() {
+    public List<GpxPoint> getPoints() {
         return mPoints;
     }
 
-    public GpxPointElement getFirstPoint() {
+    public GpxPoint getFirstPoint() {
         return mPoints.get(0);
     }
 
-    public GpxPointElement getLastPoint() {
+    public GpxPoint getLastPoint() {
         return mPoints.get(mPoints.size() - 1);
     }
 }

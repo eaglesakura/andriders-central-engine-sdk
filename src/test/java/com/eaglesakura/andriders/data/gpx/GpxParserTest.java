@@ -60,7 +60,7 @@ public class GpxParserTest extends UnitTestCase {
 
         // 開始時刻が正しくAACRの朝である
         {
-            GpxPointElement pt = gpx.getFirstSegment().getFirstPoint();
+            GpxPoint pt = gpx.getFirstSegment().getFirstPoint();
             assertNotNull(pt.getLocation());
             assertNotNull(pt.getTime());
 
@@ -77,7 +77,7 @@ public class GpxParserTest extends UnitTestCase {
         }
         // 終了時刻が正しくAACRの夕方である
         {
-            GpxPointElement pt = gpx.getLastSegment().getLastPoint();
+            GpxPoint pt = gpx.getLastSegment().getLastPoint();
             assertNotNull(pt.getLocation());
             assertNotNull(pt.getTime());
 

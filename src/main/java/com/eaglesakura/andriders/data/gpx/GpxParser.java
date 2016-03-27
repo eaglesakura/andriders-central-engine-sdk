@@ -8,6 +8,7 @@ import com.eaglesakura.util.StringUtil;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,28 +91,32 @@ public class GpxParser {
         mMinPoints = minPoints;
     }
 
-    private GpxPointElement newPoint(XmlElement trkpt) {
-        GpxPointElement pt = new GpxPointElement();
-
-        double lat = StringUtil.toDouble(trkpt.getAttribute("lat"), 0);
-        double lng = StringUtil.toDouble(trkpt.getAttribute("lon"), 0);
-        double elevation = trkpt.childToDouble("ele", 0);
+    @Nullable
+    private GpxPoint newPoint(XmlElement trkpt) {
         String time = trkpt.childToString("time");
-
-        // GPS座標解析
-        if (lat != 0 && lng != 0) {
-            pt.mLocation = new RawGeoPoint(lat, lng, elevation);
-        }
-
-        // 時刻
+        Date ptDate;
+        // 時刻が取れなかったらポイントとして不良である
         if (!StringUtil.isEmpty(time)) {
             try {
                 long date = mDateFormat.parse(time).getTime();
                 date += mDateOption.offset();
-                pt.mTime = new Date(date);
+                ptDate = new Date(date);
             } catch (Exception e) {
                 e.printStackTrace();
+                return null;
             }
+        } else {
+            return null;
+        }
+        GpxPoint pt = new GpxPoint(ptDate);
+
+        double lat = StringUtil.toDouble(trkpt.getAttribute("lat"), 0);
+        double lng = StringUtil.toDouble(trkpt.getAttribute("lon"), 0);
+        double elevation = trkpt.childToDouble("ele", 0);
+
+        // GPS座標解析
+        if (lat != 0 && lng != 0) {
+            pt.mLocation = new RawGeoPoint(lat, lng, elevation);
         }
 
         // TODO 心拍、ケイデンス
@@ -124,8 +129,10 @@ public class GpxParser {
     private void addTrack(Gpx gpx, XmlElement trkseg) {
         GpxSegment segment = new GpxSegment();
         trkseg.listChilds("trkpt", trkpt -> {
-            GpxPointElement pt = newPoint(trkpt);
-            segment.mPoints.add(pt);
+            GpxPoint pt = newPoint(trkpt);
+            if (pt != null) {
+                segment.mPoints.add(pt);
+            }
         });
 
         if (segment.mPoints.size() <= mMinPoints) {
