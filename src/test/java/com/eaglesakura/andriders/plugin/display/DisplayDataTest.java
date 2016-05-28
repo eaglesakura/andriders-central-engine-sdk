@@ -1,8 +1,8 @@
-package com.eaglesakura.andriders.extension.display;
+package com.eaglesakura.andriders.plugin.display;
 
 import com.eaglesakura.andriders.UnitTestCase;
-import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.serialize.ExtensionProtocol;
+import com.eaglesakura.andriders.plugin.DisplayKey;
+import com.eaglesakura.andriders.serialize.PluginProtocol;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ import junit.framework.Assert;
 public class DisplayDataTest extends UnitTestCase {
 
     public static class TestDisplayDataImpl extends DisplayData {
-        public TestDisplayDataImpl(ExtensionProtocol.RawCycleDisplayValue raw) {
+        public TestDisplayDataImpl(PluginProtocol.RawCycleDisplayValue raw) {
             super(raw);
         }
     }
@@ -22,7 +22,7 @@ public class DisplayDataTest extends UnitTestCase {
     @Test
     public void initTest() throws Exception {
         DisplayData data = new DisplayData(getContext(), "junit");
-        DisplayInformation info = new DisplayInformation(getContext(), "junit");
+        DisplayKey info = new DisplayKey(getContext(), "junit");
         Assert.assertEquals(data.getId(), info.getId());
         Assert.assertFalse(data.hasTimeout());
     }

@@ -1,6 +1,6 @@
-package com.eaglesakura.andriders.extension;
+package com.eaglesakura.andriders.plugin;
 
-import com.eaglesakura.andriders.serialize.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
@@ -15,18 +15,18 @@ import java.util.List;
 /**
  * サイコンの表示情報を管理する
  */
-public class DisplayInformation {
-    ExtensionProtocol.RawCycleDisplayInfo raw;
+public class DisplayKey {
+    PluginProtocol.RawCycleDisplayInfo raw;
 
-    private DisplayInformation(ExtensionProtocol.RawCycleDisplayInfo raw) {
+    private DisplayKey(PluginProtocol.RawCycleDisplayInfo raw) {
         if (raw == null) {
-            raw = new ExtensionProtocol.RawCycleDisplayInfo();
+            raw = new PluginProtocol.RawCycleDisplayInfo();
         }
         this.raw = raw;
         makeDefault();
     }
 
-    public DisplayInformation(Context context, String id) {
+    public DisplayKey(Context context, String id) {
         this(null);
         if (StringUtil.isEmpty(id) || id.indexOf('@') >= 0) {
             throw new IllegalArgumentException();
@@ -66,13 +66,13 @@ public class DisplayInformation {
         }
     }
 
-    public static byte[] serialize(List<DisplayInformation> list) {
+    public static byte[] serialize(List<DisplayKey> list) {
         if (CollectionUtil.isEmpty(list)) {
             return null;
         }
 
         List<byte[]> serializeList = new ArrayList<>();
-        for (DisplayInformation item : list) {
+        for (DisplayKey item : list) {
             serializeList.add(item.serialize());
         }
         return SerializeUtil.toByteArray(serializeList);
@@ -81,7 +81,7 @@ public class DisplayInformation {
     /**
      * バッファからデシリアライズする
      */
-    public static List<DisplayInformation> deserialize(byte[] buffer) {
+    public static List<DisplayKey> deserialize(byte[] buffer) {
         if (buffer == null) {
             return new ArrayList<>();
         }
@@ -89,9 +89,9 @@ public class DisplayInformation {
         try {
             List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
             if (!CollectionUtil.isEmpty(serializeList)) {
-                List<DisplayInformation> result = new ArrayList<>();
+                List<DisplayKey> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    result.add(new DisplayInformation(SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawCycleDisplayInfo.class, serialized)));
+                    result.add(new DisplayKey(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawCycleDisplayInfo.class, serialized)));
                 }
                 return result;
             }

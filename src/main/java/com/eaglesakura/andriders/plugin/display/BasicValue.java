@@ -1,6 +1,6 @@
-package com.eaglesakura.andriders.extension.display;
+package com.eaglesakura.andriders.plugin.display;
 
-import com.eaglesakura.andriders.serialize.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.util.StringUtil;
 
 import android.graphics.Color;
@@ -15,16 +15,16 @@ import android.support.annotation.ColorInt;
  * * カラーバー（画面左もしくは右）
  * * バーインフォメーション（カラーバーの隣）
  */
-public class BasicValue {
+public final class BasicValue {
     public static final String TYPE = "BASIC_INFORMATION";
-    ExtensionProtocol.RawCycleDisplayValue.BasicValue raw;
+    PluginProtocol.RawCycleDisplayValue.BasicValue raw;
 
     public BasicValue() {
-        this.raw = new ExtensionProtocol.RawCycleDisplayValue.BasicValue();
+        this.raw = new PluginProtocol.RawCycleDisplayValue.BasicValue();
         makeDefault();
     }
 
-    BasicValue(ExtensionProtocol.RawCycleDisplayValue.BasicValue raw) {
+    BasicValue(PluginProtocol.RawCycleDisplayValue.BasicValue raw) {
         this.raw = raw;
         makeDefault();
     }

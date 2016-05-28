@@ -1,7 +1,7 @@
-package com.eaglesakura.andriders.extension.display;
+package com.eaglesakura.andriders.plugin.display;
 
-import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.serialize.ExtensionProtocol;
+import com.eaglesakura.andriders.plugin.DisplayKey;
+import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.LogUtil;
@@ -17,7 +17,7 @@ import java.util.List;
  * ディスプレイ表示内容を指定する
  */
 public class DisplayData {
-    private ExtensionProtocol.RawCycleDisplayValue raw;
+    private PluginProtocol.RawCycleDisplayValue raw;
 
     private BasicValue mBasicValue;
 
@@ -26,8 +26,8 @@ public class DisplayData {
     /**
      * @param bind 表示対象のディスプレイ情報
      */
-    public DisplayData(DisplayInformation bind) {
-        this.raw = new ExtensionProtocol.RawCycleDisplayValue();
+    public DisplayData(DisplayKey bind) {
+        this.raw = new PluginProtocol.RawCycleDisplayValue();
         raw.id = bind.getId();
         makeDefault();
     }
@@ -36,13 +36,13 @@ public class DisplayData {
      * ディスプレイ
      */
     public DisplayData(Context context, String id) {
-        this.raw = new ExtensionProtocol.RawCycleDisplayValue();
-        raw.id = (new DisplayInformation(context, id).getId());
+        this.raw = new PluginProtocol.RawCycleDisplayValue();
+        raw.id = (new DisplayKey(context, id).getId());
         makeDefault();
     }
 
 
-    protected DisplayData(ExtensionProtocol.RawCycleDisplayValue raw) {
+    protected DisplayData(PluginProtocol.RawCycleDisplayValue raw) {
         this.raw = raw;
 
         if (raw.basicValue != null) {
@@ -178,13 +178,13 @@ public class DisplayData {
         }
 
         try {
-            Constructor<T> constructor = clazz.getConstructor(ExtensionProtocol.RawCycleDisplayValue.class);
+            Constructor<T> constructor = clazz.getConstructor(PluginProtocol.RawCycleDisplayValue.class);
 
             List<byte[]> serializeList = SerializeUtil.toByteArrayList(buffer);
             if (!CollectionUtil.isEmpty(serializeList)) {
                 List<T> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    ExtensionProtocol.RawCycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawCycleDisplayValue.class, serialized);
+                    PluginProtocol.RawCycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawCycleDisplayValue.class, serialized);
                     result.add(constructor.newInstance(v));
                 }
                 return result;

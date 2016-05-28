@@ -1,9 +1,9 @@
-package com.eaglesakura.andriders.extension.internal;
+package com.eaglesakura.andriders.plugin.internal;
 
-import com.eaglesakura.andriders.extension.DisplayInformation;
-import com.eaglesakura.andriders.extension.ExtensionInformation;
-import com.eaglesakura.andriders.extension.ExtensionSession;
-import com.eaglesakura.andriders.extension.IExtensionService;
+import com.eaglesakura.andriders.plugin.DisplayKey;
+import com.eaglesakura.andriders.plugin.PluginInformation;
+import com.eaglesakura.andriders.plugin.CentralEngineConnection;
+import com.eaglesakura.andriders.plugin.AcePluginService;
 import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
@@ -22,11 +22,11 @@ import java.util.List;
  * ACE拡張機能の内部通信を行う
  */
 public class ExtensionServerImpl extends CommandServer implements Disposable {
-    final IExtensionService mExtensionService;
+    final AcePluginService mExtensionService;
 
     final CommandMap mCommandMap = new CommandMap();
 
-    final ExtensionSession mSession;
+    final CentralEngineConnection mSession;
 
     String mClientId;
 
@@ -58,7 +58,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
      */
     private boolean mRegisteredAces = false;
 
-    public ExtensionServerImpl(ExtensionSession session, Service service, IExtensionService extensionService) {
+    public ExtensionServerImpl(CentralEngineConnection session, Service service, AcePluginService extensionService) {
         super(service);
         mSession = session;
         mExtensionService = extensionService;
@@ -149,8 +149,8 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_getInformations, new CommandMap.Action() {
             @Override
             public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                ExtensionInformation information = mExtensionService.getExtensionInformation(mSession);
-                return new Payload(ExtensionInformation.serialize(Arrays.asList(information)));
+                PluginInformation information = mExtensionService.getExtensionInformation(mSession);
+                return new Payload(PluginInformation.serialize(Arrays.asList(information)));
             }
         });
 
@@ -160,8 +160,8 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, new CommandMap.Action() {
             @Override
             public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                List<DisplayInformation> displayInformation = mExtensionService.getDisplayInformation(mSession);
-                return new Payload(DisplayInformation.serialize(displayInformation));
+                List<DisplayKey> displayInformation = mExtensionService.getDisplayInformation(mSession);
+                return new Payload(DisplayKey.serialize(displayInformation));
             }
         });
 

@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.extension;
+package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.UnitTestCase;
 import com.eaglesakura.util.CollectionUtil;
@@ -14,32 +14,32 @@ public class ExtensionInformationTest extends UnitTestCase {
 
     @Test
     public void infoInitialize() {
-        ExtensionInformation info = new ExtensionInformation(getContext(), "junit");
+        PluginInformation info = new PluginInformation(getContext(), "junit");
         Assert.assertTrue(info.getId().startsWith(getContext().getPackageName() + "@"));
         Assert.assertTrue(info.getId().endsWith("@junit"));
 
-        Assert.assertEquals(info.getCategory(), ExtensionCategory.CATEGORY_OTHERS);
+        Assert.assertEquals(info.getCategory(), Category.CATEGORY_OTHERS);
         Assert.assertFalse(info.hasSetting());
         Assert.assertTrue(info.isActivated());
     }
 
     @Test
     public void serializeTest() {
-        ExtensionInformation info = new ExtensionInformation(getContext(), "junit");
-        info.setCategory(ExtensionCategory.CATEGORY_OTHERS);
+        PluginInformation info = new PluginInformation(getContext(), "junit");
+        info.setCategory(Category.CATEGORY_OTHERS);
         byte[] serialized = info.serialize();
         Assert.assertNotNull(serialized);
     }
 
     @Test
     public void deserializeTest() {
-        ExtensionInformation info = new ExtensionInformation(getContext(), "junit");
-        info.setCategory(ExtensionCategory.CATEGORY_OTHERS);
+        PluginInformation info = new PluginInformation(getContext(), "junit");
+        info.setCategory(Category.CATEGORY_OTHERS);
 
-        byte[] serialize = ExtensionInformation.serialize(Arrays.asList(info));
+        byte[] serialize = PluginInformation.serialize(Arrays.asList(info));
         Assert.assertFalse(CollectionUtil.isEmpty(serialize));
 
-        List<ExtensionInformation> deserialize = ExtensionInformation.deserialize(serialize);
+        List<PluginInformation> deserialize = PluginInformation.deserialize(serialize);
         Assert.assertEquals(deserialize.size(), 1);
         Assert.assertEquals(info.getId(), deserialize.get(0).getId());
     }

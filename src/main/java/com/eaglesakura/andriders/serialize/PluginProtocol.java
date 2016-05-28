@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class ExtensionProtocol {
+public class PluginProtocol {
 
     public static class SrcLocation {
         /**

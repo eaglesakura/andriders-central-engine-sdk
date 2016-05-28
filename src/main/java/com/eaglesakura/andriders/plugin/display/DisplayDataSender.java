@@ -1,8 +1,8 @@
-package com.eaglesakura.andriders.extension.display;
+package com.eaglesakura.andriders.plugin.display;
 
-import com.eaglesakura.andriders.extension.ExtensionSession;
-import com.eaglesakura.andriders.extension.internal.DisplayCommand;
-import com.eaglesakura.andriders.extension.internal.ExtensionServerImpl;
+import com.eaglesakura.andriders.plugin.CentralEngineConnection;
+import com.eaglesakura.andriders.plugin.internal.DisplayCommand;
+import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
 import com.eaglesakura.android.service.data.Payload;
 import com.eaglesakura.util.LogUtil;
 
@@ -10,14 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * サイコンの表示データを拡張する
+ * Displayの表示データを送信する。
+ *
+ * 送信可能（正確には、表示可能）なのは、自分が提供を宣言したKeyのみである。
  */
-public class DisplayExtension {
-    final ExtensionSession mSession;
+public final class DisplayDataSender {
+    final CentralEngineConnection mSession;
 
     final ExtensionServerImpl mServerImpl;
 
-    public DisplayExtension(ExtensionSession session, ExtensionServerImpl serverImpl) {
+    public DisplayDataSender(CentralEngineConnection session, ExtensionServerImpl serverImpl) {
         mServerImpl = serverImpl;
         mSession = session;
     }

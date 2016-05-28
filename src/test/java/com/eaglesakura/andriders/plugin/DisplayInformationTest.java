@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.extension;
+package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.UnitTestCase;
 
@@ -13,18 +13,18 @@ public class DisplayInformationTest extends UnitTestCase {
 
     @Test
     public void serializeTest() {
-        DisplayInformation info = new DisplayInformation(getContext(), "junit");
+        DisplayKey info = new DisplayKey(getContext(), "junit");
         info.setTitle("JUnit4");
 
         Assert.assertTrue(info.getId().startsWith(getContext().getPackageName() + "@"));
         Assert.assertTrue(info.getId().endsWith("@junit"));
         Assert.assertEquals("JUnit4", info.getTitle());
 
-        byte[] serialized = DisplayInformation.serialize(Arrays.asList(info));
+        byte[] serialized = DisplayKey.serialize(Arrays.asList(info));
         Assert.assertNotNull(serialized);
         Assert.assertFalse(serialized.length == 0);
 
-        List<DisplayInformation> deserialize = DisplayInformation.deserialize(serialized);
+        List<DisplayKey> deserialize = DisplayKey.deserialize(serialized);
         Assert.assertNotNull(deserialize);
         Assert.assertEquals(deserialize.size(), 1);
 

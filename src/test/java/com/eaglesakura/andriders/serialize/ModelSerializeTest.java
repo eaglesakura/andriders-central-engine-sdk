@@ -1,14 +1,6 @@
 package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.andriders.UnitTestCase;
-import com.eaglesakura.andriders.serialize.ExtensionProtocol;
-import com.eaglesakura.andriders.serialize.NotificationProtocol;
-import com.eaglesakura.andriders.serialize.RawCentralData;
-import com.eaglesakura.andriders.serialize.RawGeoPoint;
-import com.eaglesakura.andriders.serialize.RawLocation;
-import com.eaglesakura.andriders.serialize.RawSensorData;
-import com.eaglesakura.andriders.serialize.RawSessionData;
-import com.eaglesakura.andriders.serialize.RawSpecs;
 import com.eaglesakura.io.data.DataVerifier;
 import com.eaglesakura.refrection.NullableConstructor;
 import com.eaglesakura.util.LogUtil;
@@ -70,12 +62,12 @@ public class ModelSerializeTest extends UnitTestCase {
         assertSerialize(NotificationProtocol.RawNotification.class);
 
         // 拡張機能
-        assertSerialize(ExtensionProtocol.SrcLocation.class);
-        assertSerialize(ExtensionProtocol.SrcHeartrate.class);
-        assertSerialize(ExtensionProtocol.SrcSpeedAndCadence.class);
-        assertSerialize(ExtensionProtocol.RawExtensionInfo.class);
-        assertSerialize(ExtensionProtocol.RawCycleDisplayInfo.class);
-        assertSerialize(ExtensionProtocol.RawCycleDisplayValue.class);
+        assertSerialize(PluginProtocol.SrcLocation.class);
+        assertSerialize(PluginProtocol.SrcHeartrate.class);
+        assertSerialize(PluginProtocol.SrcSpeedAndCadence.class);
+        assertSerialize(PluginProtocol.RawExtensionInfo.class);
+        assertSerialize(PluginProtocol.RawCycleDisplayInfo.class);
+        assertSerialize(PluginProtocol.RawCycleDisplayValue.class);
 
         // 位置情報
         assertSerialize(RawGeoPoint.class);

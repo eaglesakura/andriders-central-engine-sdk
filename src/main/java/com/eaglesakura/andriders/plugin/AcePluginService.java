@@ -1,4 +1,4 @@
-package com.eaglesakura.andriders.extension;
+package com.eaglesakura.andriders.plugin;
 
 import java.util.List;
 
@@ -11,41 +11,39 @@ import java.util.List;
  * <p/>
  * ユーザーの操作によって意図的に拡張Serviceがシャットダウンされる場合がある。例えば正常にBLEガジェットが接続できない場合など。
  */
-public interface IExtensionService {
-    String ACES_PACKAGE_NAME = "com.eaglesakura.andriders.service.central.CentralService";
-
+public interface AcePluginService {
     /**
      * 拡張機能情報を取得する
      */
-    ExtensionInformation getExtensionInformation(ExtensionSession session);
+    PluginInformation getExtensionInformation(CentralEngineConnection connection);
 
     /**
      * ディスプレイの表示情報を取得する
      */
-    List<DisplayInformation> getDisplayInformation(ExtensionSession session);
+    List<DisplayKey> getDisplayInformation(CentralEngineConnection connection);
 
     /**
      * ACEに接続され、サイコンの使用準備ができた
      */
-    void onAceServiceConnected(ExtensionSession session);
+    void onAceServiceConnected(CentralEngineConnection connection);
 
     /**
-     * ACE
+     * ACEから切断された
      */
-    void onAceServiceDisconnected(ExtensionSession session);
+    void onAceServiceDisconnected(CentralEngineConnection connection);
 
     /**
      * 拡張サービスが有効化された
      */
-    void onEnable(ExtensionSession session);
+    void onEnable(CentralEngineConnection connection);
 
     /**
      * 拡張サービスが無効化された
      */
-    void onDisable(ExtensionSession session);
+    void onDisable(CentralEngineConnection connection);
 
     /**
      * 設定画面を開く
      */
-    void startSetting(ExtensionSession session);
+    void startSetting(CentralEngineConnection connection);
 }

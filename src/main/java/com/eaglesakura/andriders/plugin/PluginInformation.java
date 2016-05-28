@@ -1,6 +1,6 @@
-package com.eaglesakura.andriders.extension;
+package com.eaglesakura.andriders.plugin;
 
-import com.eaglesakura.andriders.serialize.ExtensionProtocol;
+import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
@@ -16,18 +16,18 @@ import java.util.List;
 /**
  * 拡張情報
  */
-public class ExtensionInformation {
-    ExtensionProtocol.RawExtensionInfo raw;
+public class PluginInformation {
+    PluginProtocol.RawExtensionInfo raw;
 
-    private ExtensionInformation(ExtensionProtocol.RawExtensionInfo raw) {
+    private PluginInformation(PluginProtocol.RawExtensionInfo raw) {
         if (raw == null) {
-            raw = new ExtensionProtocol.RawExtensionInfo();
+            raw = new PluginProtocol.RawExtensionInfo();
         }
         this.raw = raw;
         makeDefault();
     }
 
-    public ExtensionInformation(Context context, String id) {
+    public PluginInformation(Context context, String id) {
         this(null);
         if (id.indexOf('@') >= 0) {
             throw new IllegalArgumentException();
@@ -39,7 +39,7 @@ public class ExtensionInformation {
 
     private void makeDefault() {
         if (StringUtil.isEmpty(raw.category)) {
-            setCategory(ExtensionCategory.CATEGORY_OTHERS);
+            setCategory(Category.CATEGORY_OTHERS);
         }
     }
 
@@ -80,11 +80,11 @@ public class ExtensionInformation {
         return raw.activated;
     }
 
-    public ExtensionCategory getCategory() {
-        return ExtensionCategory.fromName(raw.category);
+    public Category getCategory() {
+        return Category.fromName(raw.category);
     }
 
-    public void setCategory(ExtensionCategory category) {
+    public void setCategory(Category category) {
         raw.category = category.getName();
     }
 
@@ -100,9 +100,9 @@ public class ExtensionInformation {
         }
     }
 
-    public static byte[] serialize(List<ExtensionInformation> list) {
+    public static byte[] serialize(List<PluginInformation> list) {
         List<byte[]> rawList = new ArrayList<>();
-        for (ExtensionInformation item : list) {
+        for (PluginInformation item : list) {
             rawList.add(item.serialize());
         }
         return SerializeUtil.toByteArray(rawList);
@@ -111,13 +111,13 @@ public class ExtensionInformation {
     /**
      * バッファからデシリアライズする
      */
-    public static List<ExtensionInformation> deserialize(byte[] buffer) {
+    public static List<PluginInformation> deserialize(byte[] buffer) {
         try {
             List<byte[]> serializedBuffers = SerializeUtil.toByteArrayList(buffer);
             if (!CollectionUtil.isEmpty(serializedBuffers)) {
-                List<ExtensionInformation> result = new ArrayList<>();
+                List<PluginInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializedBuffers) {
-                    result.add(new ExtensionInformation(SerializeUtil.deserializePublicFieldObject(ExtensionProtocol.RawExtensionInfo.class, serialized)));
+                    result.add(new PluginInformation(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawExtensionInfo.class, serialized)));
                 }
                 return result;
             }
