@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.andriders.notification.NotificationDuration;
+import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
@@ -40,7 +40,7 @@ public class NotificationProtocol {
          * シリアライズ用のため、直接使用することは推奨しない
          */
         @Serialize(id = 4)
-        public NotificationDuration length;
+        public NotificationData.Duration length;
 
         /**
          * 一意に識別するID
@@ -69,7 +69,7 @@ public class NotificationProtocol {
             message = RandomUtil.randString();
             iconFile = RandomUtil.randBytes();
             iconUri = RandomUtil.randLargeString();
-            length = RandomUtil.randEnumWithNull(NotificationDuration.class);
+            length = RandomUtil.randEnumWithNull(NotificationData.Duration.class);
             uniqueId = RandomUtil.randLargeString();
             date = RandomUtil.randInt64();
             backgroundXRGB = RandomUtil.randInt32();

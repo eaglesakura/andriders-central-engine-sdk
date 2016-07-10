@@ -12,6 +12,7 @@ import com.eaglesakura.util.StringUtil;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 
 import java.util.Date;
@@ -20,6 +21,23 @@ import java.util.Date;
  * 通知用データ
  */
 public class NotificationData {
+
+    public enum Duration {
+        /**
+         * 短い時間だけ通知を表示する
+         */
+        Short,
+
+        /**
+         * 通常の時間だけ通知を表示する
+         */
+        Normal,
+
+        /**
+         * 長めに通知を表示する
+         */
+        Long,
+    }
 
     public enum IconCompressLevel {
         /**
@@ -96,7 +114,7 @@ public class NotificationData {
     /**
      * 通知の長さ
      */
-    NotificationDuration duration = NotificationDuration.Normal;
+    Duration duration = Duration.Normal;
 
     public NotificationData(Context context, byte[] buffer) {
         NotificationProtocol.RawNotification raw;
@@ -152,12 +170,12 @@ public class NotificationData {
         return this;
     }
 
-    public NotificationData setDuration(NotificationDuration notificationLength) {
+    public NotificationData setDuration(Duration notificationLength) {
         this.duration = notificationLength;
         return this;
     }
 
-    public NotificationDuration getDuration() {
+    public Duration getDuration() {
         return duration;
     }
 
@@ -204,6 +222,63 @@ public class NotificationData {
 
     public int getBackgroundColor() {
         return backgroundColor;
+    }
+
+    public static class Builder {
+        NotificationData mRaw = new NotificationData();
+
+        Context mContext;
+
+        public Builder(Context context) {
+            mContext = context;
+        }
+
+        public Builder date(Date date) {
+            mRaw.setDate(date);
+            return this;
+        }
+
+        public Builder message(String message) {
+            mRaw.setMessage(message);
+            return this;
+        }
+
+        public Builder uniqueId(String uniqueId) {
+            mRaw.setUniqueId(uniqueId);
+            return this;
+        }
+
+        public Builder icon(Bitmap icon, IconCompressLevel level) {
+            mRaw.setIcon(icon, level);
+            return this;
+        }
+
+        public Builder backgroundColor(@ColorInt int color) {
+            mRaw.setBackgroundColor(color);
+            return this;
+        }
+
+        public Builder icon(@DrawableRes int resId) {
+            mRaw.setIcon(mContext, resId);
+            return this;
+        }
+
+        public Builder icon(Bitmap icon) {
+            mRaw.setIcon(icon);
+            return this;
+        }
+
+        public Builder duration(Duration duration) {
+            mRaw.setDuration(duration);
+            return this;
+        }
+
+        public NotificationData getNotification() {
+            if (mRaw.icon == null) {
+                icon(android.R.drawable.ic_dialog_alert);
+            }
+            return mRaw;
+        }
     }
 
     /**
