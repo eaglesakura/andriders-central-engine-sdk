@@ -14,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 
 import java.util.Date;
 
@@ -21,6 +22,31 @@ import java.util.Date;
  * 通知用データ
  */
 public class NotificationData {
+
+    /**
+     * Andriders Central Engine Serviceを起動した
+     */
+    public static final String ID_CENTRAL_SERVICE_BOOT = "basic.ID_CENTRAL_SERVICE_BOOT";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "basic.ID_GADGET_BLE_HRMONITOR_CONNECT";
+
+    /**
+     * ハートレートモニターから切断された
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "basic.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_CONNECT = "basic.ID_GADGET_BLE_SPEED_CADENCE_CONNECT";
+
+    /**
+     * ケイデンスセンサーから切断された
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT = "basic.ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT";
 
     public enum Duration {
         /**
@@ -229,8 +255,14 @@ public class NotificationData {
 
         Context mContext;
 
-        public Builder(Context context) {
+        public Builder(@NonNull Context context) {
             mContext = context;
+        }
+
+
+        public Builder(@NonNull Context context, @NonNull String uniqueId) {
+            mContext = context;
+            mRaw.uniqueId = uniqueId;
         }
 
         public Builder date(Date date) {
