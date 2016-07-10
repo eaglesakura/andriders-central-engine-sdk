@@ -12,6 +12,7 @@ import com.eaglesakura.util.StringUtil;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.annotation.DrawableRes;
 
 import java.util.Date;
 
@@ -95,7 +96,7 @@ public class NotificationData {
     /**
      * 通知の長さ
      */
-    NotificationLength notificationLength = NotificationLength.Normal;
+    NotificationDuration duration = NotificationDuration.Normal;
 
     public NotificationData(Context context, byte[] buffer) {
         NotificationProtocol.RawNotification raw;
@@ -128,32 +129,36 @@ public class NotificationData {
         return date;
     }
 
-    public void setDate(Date date) {
+    public NotificationData setDate(Date date) {
         this.date = date;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public NotificationData setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public String getUniqueId() {
         return uniqueId;
     }
 
-    public void setUniqueId(String uniqueId) {
+    public NotificationData setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
+        return this;
     }
 
-    public void setNotificationLength(NotificationLength notificationLength) {
-        this.notificationLength = notificationLength;
+    public NotificationData setDuration(NotificationDuration notificationLength) {
+        this.duration = notificationLength;
+        return this;
     }
 
-    public NotificationLength getNotificationLength() {
-        return notificationLength;
+    public NotificationDuration getDuration() {
+        return duration;
     }
 
     /**
@@ -161,8 +166,9 @@ public class NotificationData {
      * <br>
      * アイコンは自動的にサムネイルサイズに縮小される
      */
-    public void setIcon(Bitmap icon) {
+    public NotificationData setIcon(Bitmap icon) {
         this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
+        return this;
     }
 
     /**
@@ -170,16 +176,18 @@ public class NotificationData {
      * <br>
      * アイコンは自動的にサムネイルサイズに縮小される。
      */
-    public void setIcon(Bitmap icon, IconCompressLevel level) {
+    public NotificationData setIcon(Bitmap icon, IconCompressLevel level) {
         this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
         this.iconCompressLevel = level;
+        return this;
     }
 
     /**
      * アイコンを指定する
      */
-    public void setIcon(Context context, int drawableid) {
-        setIcon(ImageUtil.decode(context, drawableid));
+    public NotificationData setIcon(Context context, @DrawableRes int resId) {
+        setIcon(ImageUtil.decode(context, resId));
+        return this;
     }
 
     public Bitmap getIcon() {
@@ -189,8 +197,9 @@ public class NotificationData {
     /**
      * 背景色を指定する。ただし、アルファは削除される。
      */
-    public void setBackgroundColor(int color) {
+    public NotificationData setBackgroundColor(int color) {
         this.backgroundColor = (0xFF000000 | color);
+        return this;
     }
 
     public int getBackgroundColor() {
@@ -208,7 +217,7 @@ public class NotificationData {
         }
         raw.message = message;
         raw.date = date.getTime();
-        raw.length = notificationLength;
+        raw.length = duration;
         raw.backgroundXRGB = backgroundColor;
         try {
             return SerializeUtil.serializePublicFieldObject(raw);

@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.notification;
 
-public enum NotificationLength {
+public enum NotificationDuration {
     /**
      * 短い時間だけ通知を表示する
      */
