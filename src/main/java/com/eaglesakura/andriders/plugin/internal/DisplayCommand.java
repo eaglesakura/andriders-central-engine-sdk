@@ -13,6 +13,6 @@ public class DisplayCommand {
     /**
      * 通知を表示する
      */
-    public static final String CMD_showNotification = "DPL_showNotification";
+    public static final String CMD_queueNotification = "DPL_queueNotification";
 }
 

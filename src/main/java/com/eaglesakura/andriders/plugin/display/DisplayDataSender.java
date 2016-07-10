@@ -5,7 +5,6 @@ import com.eaglesakura.andriders.plugin.CentralEngineConnection;
 import com.eaglesakura.andriders.plugin.internal.DisplayCommand;
 import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.util.LogUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,12 +48,12 @@ public final class DisplayDataSender {
     /**
      * 通知を表示する
      */
-    public void showNotification(NotificationData notify) {
+    public void queueNotification(NotificationData notify) {
         mServerImpl.validAcesSession();
 
         try {
             Payload payload = new Payload(notify.serialize());
-            mServerImpl.postToClient(DisplayCommand.CMD_showNotification, payload);
+            mServerImpl.postToClient(DisplayCommand.CMD_queueNotification, payload);
         } catch (Exception e) {
             e.printStackTrace();
         }
