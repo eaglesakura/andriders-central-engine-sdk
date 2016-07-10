@@ -3,7 +3,7 @@ package com.eaglesakura.andriders.plugin.display;
 import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.plugin.CentralEngineConnection;
 import com.eaglesakura.andriders.plugin.internal.DisplayCommand;
-import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
+import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.android.service.data.Payload;
 
 import java.util.Arrays;
@@ -17,9 +17,9 @@ import java.util.List;
 public final class DisplayDataSender {
     final CentralEngineConnection mSession;
 
-    final ExtensionServerImpl mServerImpl;
+    final PluginServerImpl mServerImpl;
 
-    public DisplayDataSender(CentralEngineConnection session, ExtensionServerImpl serverImpl) {
+    public DisplayDataSender(CentralEngineConnection session, PluginServerImpl serverImpl) {
         mServerImpl = serverImpl;
         mSession = session;
     }

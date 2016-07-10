@@ -21,12 +21,12 @@ import java.util.List;
 /**
  * ACE拡張機能の内部通信を行う
  */
-public class ExtensionServerImpl extends CommandServer implements Disposable {
+public class PluginServerImpl extends CommandServer implements Disposable {
     final AcePluginService mExtensionService;
 
     final CommandMap mCommandMap = new CommandMap();
 
-    final CentralEngineConnection mSession;
+    final CentralEngineConnection mConnection;
 
     String mClientId;
 
@@ -58,9 +58,9 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
      */
     private boolean mRegisteredAces = false;
 
-    public ExtensionServerImpl(CentralEngineConnection session, Service service, AcePluginService extensionService) {
+    public PluginServerImpl(CentralEngineConnection session, Service service, AcePluginService extensionService) {
         super(service);
-        mSession = session;
+        mConnection = session;
         mExtensionService = extensionService;
 
         buildSystemCommands();
@@ -88,23 +88,17 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     @Override
     protected void onRegisterClient(String id, ICommandClientCallback callback) {
         mClientId = id;
-        if (mSession.isAcesSession()) {
-            UIHandler.postUI(() -> {
-                mRegisteredAces = true;
-                mExtensionService.onAceServiceConnected(mSession);
-            });
-        }
     }
 
     @Override
     protected void onUnregisterClient(String id) {
-        if (mSession.isAcesSession()) {
+        if (mConnection.isAcesSession()) {
             onUnregisterCallback();
         }
     }
 
     public void validAcesSession() {
-        if (!mSession.isAcesSession() || !mRegisteredAces) {
+        if (!mConnection.isAcesSession() || !mRegisteredAces) {
             throw new IllegalStateException("Not Connected!!");
         }
     }
@@ -113,7 +107,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         UIHandler.postUIorRun(() -> {
             if (mRegisteredAces) {
                 mRegisteredAces = false;
-                mExtensionService.onAceServiceDisconnected(mSession);
+                mExtensionService.onAceServiceDisconnected(mConnection);
             }
         });
     }
@@ -138,7 +132,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
          * 拡張機能情報を取得する
          */
         mCommandMap.addAction(CentralDataCommand.CMD_getInformations, (sender, cmd, payload) -> {
-            PluginInformation information = mExtensionService.getExtensionInformation(mSession);
+            PluginInformation information = mExtensionService.getExtensionInformation(mConnection);
             return new Payload(PluginInformation.serialize(Arrays.asList(information)));
         });
 
@@ -146,7 +140,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
          * 表示情報を取得する
          */
         mCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, (sender, cmd, payload) -> {
-            List<DisplayKey> displayInformation = mExtensionService.getDisplayInformation(mSession);
+            List<DisplayKey> displayInformation = mExtensionService.getDisplayInformation(mConnection);
             return new Payload(DisplayKey.serialize(displayInformation));
         });
 
@@ -155,7 +149,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
          */
         mCommandMap.addAction(CentralDataCommand.CMD_onExtensionEnable, (sender, cmd, payload) -> {
             UIHandler.postUI(() -> {
-                mExtensionService.onEnable(mSession);
+                mExtensionService.onEnable(mConnection);
             });
             return null;
         });
@@ -165,7 +159,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
          */
         mCommandMap.addAction(CentralDataCommand.CMD_onExtensionDisable, (Object sender, String cmd, Payload payload) -> {
             UIHandler.postUI(() -> {
-                mExtensionService.onDisable(mSession);
+                mExtensionService.onDisable(mConnection);
             });
             return null;
         });
@@ -175,7 +169,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
          */
         mCommandMap.addAction(CentralDataCommand.CMD_onSettingStart, (Object sender, String cmd, Payload payload) -> {
             UIHandler.postUI(() -> {
-                mExtensionService.startSetting(mSession);
+                mExtensionService.startSetting(mConnection);
             });
             return null;
         });
@@ -186,6 +180,17 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         mCommandMap.addAction(CentralDataCommand.CMD_requestRebootPlugin, (Object sender, String cmd, Payload payload) -> {
             UIHandler.postUI(() -> {
                 android.os.Process.killProcess(android.os.Process.myPid());
+            });
+            return null;
+        });
+
+        /**
+         * Centralの起動を完了した
+         */
+        mCommandMap.addAction(CentralDataCommand.CMD_onCentralBootCompleted, (Object sender, String cmd, Payload payload) -> {
+            UIHandler.postUI(() -> {
+                mRegisteredAces = true;
+                mExtensionService.onAceServiceConnected(mConnection);
             });
             return null;
         });

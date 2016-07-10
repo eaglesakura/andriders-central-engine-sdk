@@ -58,7 +58,7 @@ public class CentralDataCommand {
     public static final String CMD_getSDKVersion = "CTL_getSDKVersion";
 
     /**
-     * セントラル情報が更新された
+     * ACEsの起動が完了した
      */
-    public static final String CMD_onUpdatedCentralData = "CTL_onUpdatedCentralData" ;
+    public static final String CMD_onCentralBootCompleted = "CTL_onCentralBootCompleted";
 }

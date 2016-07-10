@@ -3,7 +3,7 @@ package com.eaglesakura.andriders.plugin;
 import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.plugin.data.CentralEngineData;
 import com.eaglesakura.andriders.plugin.display.DisplayDataSender;
-import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
+import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.util.IOUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
@@ -33,7 +33,7 @@ public class CentralEngineConnection {
     final String mSessionId;
 
     @NonNull
-    final ExtensionServerImpl mServerImpl;
+    final PluginServerImpl mServerImpl;
 
     @NonNull
     final CentralEngineData mCentralDataExtension;
@@ -60,10 +60,10 @@ public class CentralEngineConnection {
     CentralEngineConnection(Service service, Intent intent) {
         mService = service;
         mExtensionService = (AcePluginService) service;
-        mSessionId = intent.getStringExtra(ExtensionServerImpl.EXTRA_SESSION_ID);
-        mAcesComponent = intent.getParcelableExtra(ExtensionServerImpl.EXTRA_ACE_COMPONENT);
-        mDebuggable = intent.getBooleanExtra(ExtensionServerImpl.EXTRA_DEBUGGABLE, false);
-        mAcesSdkVersion = intent.getStringExtra(ExtensionServerImpl.EXTRA_ACE_IMPL_SDK_VERSION);
+        mSessionId = intent.getStringExtra(PluginServerImpl.EXTRA_SESSION_ID);
+        mAcesComponent = intent.getParcelableExtra(PluginServerImpl.EXTRA_ACE_COMPONENT);
+        mDebuggable = intent.getBooleanExtra(PluginServerImpl.EXTRA_DEBUGGABLE, false);
+        mAcesSdkVersion = intent.getStringExtra(PluginServerImpl.EXTRA_ACE_IMPL_SDK_VERSION);
 
 
         if (StringUtil.isEmpty(mSessionId)) {
@@ -74,7 +74,7 @@ public class CentralEngineConnection {
         }
 
         // サーバーを構築する
-        mServerImpl = new ExtensionServerImpl(this, mService, mExtensionService);
+        mServerImpl = new PluginServerImpl(this, mService, mExtensionService);
 
 
         // アクセス用インターフェースを生成する
@@ -190,7 +190,7 @@ public class CentralEngineConnection {
             return null;
         }
 
-        if (!action.startsWith(ExtensionServerImpl.ACTION_ACE_EXTENSION_BIND)) {
+        if (!action.startsWith(PluginServerImpl.ACTION_ACE_EXTENSION_BIND)) {
             return null;
         }
 
@@ -212,7 +212,7 @@ public class CentralEngineConnection {
      * 終了したセッションを返すが、管理対象でない場合は戻り値は捨てて問題ない。
      */
     public static CentralEngineConnection onUnbind(Service service, Intent intent) {
-        final String sessionId = intent.getStringExtra(ExtensionServerImpl.EXTRA_SESSION_ID);
+        final String sessionId = intent.getStringExtra(PluginServerImpl.EXTRA_SESSION_ID);
         if (StringUtil.isEmpty(sessionId)) {
             return null;
         }

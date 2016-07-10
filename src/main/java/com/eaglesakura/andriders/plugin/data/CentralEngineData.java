@@ -2,11 +2,10 @@ package com.eaglesakura.andriders.plugin.data;
 
 import com.eaglesakura.andriders.plugin.CentralEngineConnection;
 import com.eaglesakura.andriders.plugin.internal.CentralDataCommand;
-import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
+import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.andriders.sensor.SensorType;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.util.LogUtil;
 
 import android.location.Location;
 import android.support.annotation.FloatRange;
@@ -19,11 +18,11 @@ import android.support.annotation.Nullable;
  */
 public class CentralEngineData {
 
-    final ExtensionServerImpl mServerImpl;
+    final PluginServerImpl mServerImpl;
 
     final CentralEngineConnection mConnection;
 
-    public CentralEngineData(@NonNull CentralEngineConnection connection, @NonNull ExtensionServerImpl serverImpl) {
+    public CentralEngineData(@NonNull CentralEngineConnection connection, @NonNull PluginServerImpl serverImpl) {
         mConnection = connection;
         mServerImpl = serverImpl;
     }
