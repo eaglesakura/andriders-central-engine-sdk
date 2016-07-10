@@ -39,7 +39,7 @@ public class CentralEngineData {
         try {
             return mServerImpl.postToClientAsString(CentralDataCommand.CMD_setBleGadgetAddress, type.toString());
         } catch (Exception e) {
-            LogUtil.log(e);
+            e.printStackTrace();
         }
 
         return null;
@@ -55,6 +55,7 @@ public class CentralEngineData {
             PluginProtocol.SrcLocation idl = new PluginProtocol.SrcLocation(loc);
             mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, Payload.fromPublicField(idl));
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -68,7 +69,7 @@ public class CentralEngineData {
             PluginProtocol.SrcHeartrate idl = new PluginProtocol.SrcHeartrate((short) bpm);
             mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, Payload.fromPublicField(idl));
         } catch (Exception e) {
-            LogUtil.log(e);
+            e.printStackTrace();
         }
     }
 
@@ -86,7 +87,7 @@ public class CentralEngineData {
             idl.wheelRevolution = wheelRevolution;
             mServerImpl.postToClient(CentralDataCommand.CMD_setSpeedAndCadence, Payload.fromPublicField(idl));
         } catch (Exception e) {
-            LogUtil.log(e);
+            e.printStackTrace();
         }
     }
 }

@@ -4,7 +4,6 @@ import com.eaglesakura.andriders.central.CentralDataReceiver;
 import com.eaglesakura.andriders.plugin.data.CentralEngineData;
 import com.eaglesakura.andriders.plugin.display.DisplayDataSender;
 import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
-import com.eaglesakura.io.Disposable;
 import com.eaglesakura.util.IOUtil;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
@@ -48,7 +47,7 @@ public class CentralEngineConnection {
     /**
      * デバッグモードの場合true
      */
-    final boolean mDebugable;
+    final boolean mDebuggable;
 
     /**
      * SDKバージョン
@@ -63,7 +62,7 @@ public class CentralEngineConnection {
         mExtensionService = (AcePluginService) service;
         mSessionId = intent.getStringExtra(ExtensionServerImpl.EXTRA_SESSION_ID);
         mAcesComponent = intent.getParcelableExtra(ExtensionServerImpl.EXTRA_ACE_COMPONENT);
-        mDebugable = intent.getBooleanExtra(ExtensionServerImpl.EXTRA_DEBUGABLE, false);
+        mDebuggable = intent.getBooleanExtra(ExtensionServerImpl.EXTRA_DEBUGGABLE, false);
         mAcesSdkVersion = intent.getStringExtra(ExtensionServerImpl.EXTRA_ACE_IMPL_SDK_VERSION);
 
 
@@ -156,8 +155,8 @@ public class CentralEngineConnection {
     /**
      * デバッグが有効化されている場合true
      */
-    public boolean isDebugable() {
-        return mDebugable;
+    public boolean isDebuggable() {
+        return mDebuggable;
     }
 
     /**

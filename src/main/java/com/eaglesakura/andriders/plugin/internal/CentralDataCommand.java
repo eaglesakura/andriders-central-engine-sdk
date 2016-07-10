@@ -50,7 +50,7 @@ public class CentralDataCommand {
     /**
      * 自身のServiceを速やかに殺し、再起動を促す
      */
-    public static final String CMD_requestRebootExtention = "CTL_requestRebootExtention";
+    public static final String CMD_requestRebootPlugin = "CTL_requestRebootPlugin";
 
     /**
      * SDKバージョンを取得する

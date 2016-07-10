@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.plugin.display;
 
+import com.eaglesakura.andriders.notification.NotificationData;
 import com.eaglesakura.andriders.plugin.CentralEngineConnection;
 import com.eaglesakura.andriders.plugin.internal.DisplayCommand;
 import com.eaglesakura.andriders.plugin.internal.ExtensionServerImpl;
@@ -34,14 +35,28 @@ public final class DisplayDataSender {
     /**
      * 表示データを複数更新する
      */
-    public void setValue(List<DisplayData> datas) {
+    public void setValue(List<DisplayData> dataList) {
         mServerImpl.validAcesSession();
 
         try {
-            Payload payload = new Payload(DisplayData.serialize(datas));
+            Payload payload = new Payload(DisplayData.serialize(dataList));
             mServerImpl.postToClient(DisplayCommand.CMD_setDisplayValue, payload);
         } catch (Exception e) {
-            LogUtil.log(e);
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 通知を表示する
+     */
+    public void showNotification(NotificationData notify) {
+        mServerImpl.validAcesSession();
+
+        try {
+            Payload payload = new Payload(notify.serialize());
+            mServerImpl.postToClient(DisplayCommand.CMD_showNotification, payload);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -51,7 +51,7 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     /**
      * デバッグ機能がONである場合true
      */
-    public static final String EXTRA_DEBUGABLE = "ace.EXTRA_DEBUGABLE";
+    public static final String EXTRA_DEBUGGABLE = "ace.EXTRA_DEBUGGABLE";
 
     /**
      * ACEsのコールバックが登録されていたらtrue
@@ -89,12 +89,9 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     protected void onRegisterClient(String id, ICommandClientCallback callback) {
         mClientId = id;
         if (mSession.isAcesSession()) {
-            UIHandler.postUI(new Runnable() {
-                @Override
-                public void run() {
-                    mRegisteredAces = true;
-                    mExtensionService.onAceServiceConnected(mSession);
-                }
+            UIHandler.postUI(() -> {
+                mRegisteredAces = true;
+                mExtensionService.onAceServiceConnected(mSession);
             });
         }
     }
@@ -113,13 +110,10 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
     }
 
     private void onUnregisterCallback() {
-        UIHandler.postUIorRun(new Runnable() {
-            @Override
-            public void run() {
-                if (mRegisteredAces) {
-                    mRegisteredAces = false;
-                    mExtensionService.onAceServiceDisconnected(mSession);
-                }
+        UIHandler.postUIorRun(() -> {
+            if (mRegisteredAces) {
+                mRegisteredAces = false;
+                mExtensionService.onAceServiceDisconnected(mSession);
             }
         });
     }
@@ -136,98 +130,64 @@ public class ExtensionServerImpl extends CommandServer implements Disposable {
         /**
          * SDKバージョンを取得する
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_getSDKVersion, new CommandMap.Action() {
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                return Payload.fromString(BuildConfig.ACE_SDK_VERSION);
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_getSDKVersion, (sender, cmd, payload) -> {
+            return Payload.fromString(BuildConfig.ACE_SDK_VERSION);
         });
 
         /**
          * 拡張機能情報を取得する
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_getInformations, new CommandMap.Action() {
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                PluginInformation information = mExtensionService.getExtensionInformation(mSession);
-                return new Payload(PluginInformation.serialize(Arrays.asList(information)));
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_getInformations, (sender, cmd, payload) -> {
+            PluginInformation information = mExtensionService.getExtensionInformation(mSession);
+            return new Payload(PluginInformation.serialize(Arrays.asList(information)));
         });
 
         /**
          * 表示情報を取得する
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, new CommandMap.Action() {
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                List<DisplayKey> displayInformation = mExtensionService.getDisplayInformation(mSession);
-                return new Payload(DisplayKey.serialize(displayInformation));
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_getDisplayInformations, (sender, cmd, payload) -> {
+            List<DisplayKey> displayInformation = mExtensionService.getDisplayInformation(mSession);
+            return new Payload(DisplayKey.serialize(displayInformation));
         });
 
         /**
          * 拡張機能が有効化された
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_onExtensionEnable, new CommandMap.Action() {
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                UIHandler.postUI(new Runnable() {
-                    @Override
-                    public void run() {
-                        mExtensionService.onEnable(mSession);
-                    }
-                });
-                return null;
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_onExtensionEnable, (sender, cmd, payload) -> {
+            UIHandler.postUI(() -> {
+                mExtensionService.onEnable(mSession);
+            });
+            return null;
         });
 
         /**
          * 拡張機能が無効化された
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_onExtensionDisable, new CommandMap.Action() {
-
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                UIHandler.postUI(new Runnable() {
-                    @Override
-                    public void run() {
-                        mExtensionService.onDisable(mSession);
-                    }
-                });
-                return null;
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_onExtensionDisable, (Object sender, String cmd, Payload payload) -> {
+            UIHandler.postUI(() -> {
+                mExtensionService.onDisable(mSession);
+            });
+            return null;
         });
 
         /**
          * 設定ボタンが押された
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_onSettingStart, new CommandMap.Action() {
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                UIHandler.postUI(new Runnable() {
-                    @Override
-                    public void run() {
-                        mExtensionService.startSetting(mSession);
-                    }
-                });
-                return null;
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_onSettingStart, (Object sender, String cmd, Payload payload) -> {
+            UIHandler.postUI(() -> {
+                mExtensionService.startSetting(mSession);
+            });
+            return null;
         });
 
         /**
          * 強制再起動を行う
          */
-        mCommandMap.addAction(CentralDataCommand.CMD_requestRebootExtention, new CommandMap.Action() {
-            @Override
-            public Payload execute(Object sender, String cmd, Payload payload) throws Exception {
-                UIHandler.postDelayedUI(new Runnable() {
-                    @Override
-                    public void run() {
-                        android.os.Process.killProcess(android.os.Process.myPid());
-                    }
-                }, 10);
-                return null;
-            }
+        mCommandMap.addAction(CentralDataCommand.CMD_requestRebootPlugin, (Object sender, String cmd, Payload payload) -> {
+            UIHandler.postUI(() -> {
+                android.os.Process.killProcess(android.os.Process.myPid());
+            });
+            return null;
         });
     }
 

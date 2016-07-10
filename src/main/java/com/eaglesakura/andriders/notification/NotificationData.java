@@ -98,11 +98,11 @@ public class NotificationData {
     NotificationLength notificationLength = NotificationLength.Normal;
 
     public NotificationData(Context context, byte[] buffer) {
-        NotificationProtocol.RawNotification raw = null;
+        NotificationProtocol.RawNotification raw;
         try {
             raw = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
         } catch (SerializeException e) {
-            LogUtil.log(e);
+            e.printStackTrace();
             throw new IllegalStateException(e);
         }
 

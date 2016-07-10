@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.central;
 
+import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.andriders.serialize.RawCentralData;
 import com.eaglesakura.andriders.serialize.RawLocation;
 import com.eaglesakura.andriders.serialize.RawSensorData;
@@ -22,12 +23,22 @@ public class CentralDataReceiver {
     /**
      * Intent経由で送られるCentralData
      */
-    public static final String INTENT_EXTRA_CENTRAL_DATA = "INTENT_EXTRA_CENTRAL_DATA";
+    public static final String EXTRA_CENTRAL_DATA = "EXTRA_CENTRAL_DATA";
+
+    /**
+     * 通知データを乗せるExtra
+     */
+    public static final String EXTRA_NOTIFICATION_DATA = "EXTRA_NOTIFICATION_DATA";
 
     /**
      * 送受信用Action
      */
-    public static final String INTENT_ACTION = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
+    public static final String ACTION_UPDATE_CENTRAL_DATA = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
+
+    /**
+     * 通知を受信した
+     */
+    public static final String ACTION_RECEIVED_NOTIFICATION = "com.eaglesakura.andriders.ACTION_RECEIVED_NOTIFICATION";
 
     /**
      * 送受信用カテゴリ
@@ -44,6 +55,9 @@ public class CentralDataReceiver {
      */
     boolean mConnected;
 
+    /**
+     * セントラルデータハンドリング
+     */
     final Set<CentralDataHandler> mCentralDataHandlers = new HashSet<>();
 
     final SensorDataReceiver<RawSensorData.RawHeartrate> mHeartrateReceiver = new SensorDataReceiver<>(this);
@@ -54,6 +68,11 @@ public class CentralDataReceiver {
 
     final SensorDataReceiver<RawLocation> mLocationReceiver = new SensorDataReceiver<>(this);
 
+    /**
+     * 通知ハンドリング
+     */
+    final Set<CentralNotificationHandler> mNotificationHandlers = new HashSet<>();
+
     public CentralDataReceiver(@NonNull Context context) {
         mContext = context.getApplicationContext();
     }
@@ -61,6 +80,12 @@ public class CentralDataReceiver {
     @NonNull
     public Context getContext() {
         return mContext;
+    }
+
+    public void addHandler(@NonNull CentralNotificationHandler handler) {
+        synchronized (lock) {
+            mNotificationHandlers.add(handler);
+        }
     }
 
     public void addHandler(@NonNull CentralDataHandler handler) {
@@ -100,18 +125,27 @@ public class CentralDataReceiver {
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (!INTENT_ACTION.equals(intent.getAction())) {
-                return;
+            final String action = intent.getAction();
+            if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
+                byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
+                try {
+                    if (centralBuffer != null) {
+                        onReceivedCentralData(centralBuffer);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (ACTION_RECEIVED_NOTIFICATION.equals(action)) {
+                byte[] notificationBuffer = intent.getByteArrayExtra(EXTRA_NOTIFICATION_DATA);
+                try {
+                    if (notificationBuffer != null) {
+                        onReceivedNotificationData(notificationBuffer);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
-            byte[] centralBuffer = intent.getByteArrayExtra(INTENT_EXTRA_CENTRAL_DATA);
-            try {
-                if (centralBuffer != null) {
-                    onReceivedCentral(centralBuffer);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     };
 
@@ -122,7 +156,7 @@ public class CentralDataReceiver {
 
         // ブロードキャスト登録
         {
-            IntentFilter filter = new IntentFilter(INTENT_ACTION);
+            IntentFilter filter = new IntentFilter(ACTION_UPDATE_CENTRAL_DATA);
             filter.addCategory(INTENT_CATEGORY);
             mContext.registerReceiver(mBroadcastReceiver, filter);
         }
@@ -146,15 +180,36 @@ public class CentralDataReceiver {
      *
      * @param buffer シリアライズ化されたデータ
      */
-    public void onReceivedCentral(byte[] buffer) throws SerializeException {
+    public void onReceivedCentralData(byte[] buffer) throws SerializeException {
         RawCentralData data = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, buffer);
         onReceived(data);
     }
 
     /**
+     * セントラルの通知情報をハンドリングする
+     *
+     * @param buffer シリアライズ化されたデータ
+     */
+    public void onReceivedNotificationData(byte[] buffer) throws SerializeException {
+        NotificationProtocol.RawNotification data = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
+        onReceived(data);
+    }
+
+    /**
+     * 通知情報をハンドリングする
+     */
+    public void onReceived(@NonNull NotificationProtocol.RawNotification notification) {
+        synchronized (lock) {
+            for (CentralNotificationHandler handler : mNotificationHandlers) {
+                handler.onReceivedNotification(notification);
+            }
+        }
+    }
+
+    /**
      * セントラル情報をハンドリングする
      */
-    public void onReceived(RawCentralData central) {
+    public void onReceived(@NonNull RawCentralData central) {
         synchronized (lock) {
             for (CentralDataHandler handler : mCentralDataHandlers) {
                 handler.onReceived(central);
