@@ -66,8 +66,8 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion 24
+    buildToolsVersion '24'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -76,7 +76,7 @@ android {
     
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""

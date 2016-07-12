@@ -84,6 +84,9 @@ public class ModelSerializeTest extends UnitTestCase {
         assertSerialize(RawCentralData.class);
         assertSerialize(RawSessionData.class);
         assertSerialize(RawRecord.class);
+
+        // Intent
+        assertSerialize(RawIntent.class);
     }
 
     @Test
