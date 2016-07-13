@@ -2,6 +2,7 @@ package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
+import com.eaglesakura.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +11,8 @@ import java.util.Random;
 
 /**
  * シリアライズ対応のIntent情報
+ *
+ * コマンド等のデータを通信する際に用いる
  */
 public class RawIntent {
 
@@ -26,10 +29,13 @@ public class RawIntent {
     public int flags;
 
     @Serialize(id = 5)
-    public String uri;
+    public String data;
 
     @Serialize(id = 6)
     public List<Extra> extras = new ArrayList<>();
+
+    @Serialize(id = 7)
+    public List<String> categories = new ArrayList<>();
 
     public RawIntent() {
     }
@@ -40,10 +46,14 @@ public class RawIntent {
         componentName = RandomUtil.randString();
         action = RandomUtil.randString();
         flags = RandomUtil.randInt8();
-        uri = RandomUtil.randString();
+        data = RandomUtil.randString();
 
         if (RandomUtil.randBool()) {
             extras = Arrays.asList(new Extra(dummy), new Extra(dummy), new Extra(dummy));
+        }
+
+        if (RandomUtil.randBool()) {
+            categories = Arrays.asList(RandomUtil.randString(), RandomUtil.randString(), RandomUtil.randString(), RandomUtil.randString());
         }
     }
 
@@ -60,8 +70,10 @@ public class RawIntent {
             return false;
         if (action != null ? !action.equals(rawIntent.action) : rawIntent.action != null)
             return false;
-        if (uri != null ? !uri.equals(rawIntent.uri) : rawIntent.uri != null) return false;
-        return extras != null ? extras.equals(rawIntent.extras) : rawIntent.extras == null;
+        if (data != null ? !data.equals(rawIntent.data) : rawIntent.data != null) return false;
+        if (extras != null ? !extras.equals(rawIntent.extras) : rawIntent.extras != null)
+            return false;
+        return categories != null ? categories.equals(rawIntent.categories) : rawIntent.categories == null;
 
     }
 
@@ -71,8 +83,9 @@ public class RawIntent {
         result = 31 * result + (componentName != null ? componentName.hashCode() : 0);
         result = 31 * result + (action != null ? action.hashCode() : 0);
         result = 31 * result + flags;
-        result = 31 * result + (uri != null ? uri.hashCode() : 0);
+        result = 31 * result + (data != null ? data.hashCode() : 0);
         result = 31 * result + (extras != null ? extras.hashCode() : 0);
+        result = 31 * result + (categories != null ? categories.hashCode() : 0);
         return result;
     }
 
@@ -87,6 +100,48 @@ public class RawIntent {
         public ValueType type;
 
         public Extra() {
+        }
+
+        public Extra(String key, boolean value) {
+            this.key = key;
+            this.value = String.valueOf(value);
+            this.type = ValueType.Boolean;
+        }
+
+        public Extra(String key, int value) {
+            this.key = key;
+            this.value = String.valueOf(value);
+            this.type = ValueType.Integer;
+        }
+
+        public Extra(String key, long value) {
+            this.key = key;
+            this.value = String.valueOf(value);
+            this.type = ValueType.Long;
+        }
+
+        public Extra(String key, float value) {
+            this.key = key;
+            this.value = String.valueOf(value);
+            this.type = ValueType.Float;
+        }
+
+        public Extra(String key, double value) {
+            this.key = key;
+            this.value = String.valueOf(value);
+            this.type = ValueType.Double;
+        }
+
+        public Extra(String key, byte[] value) {
+            this.key = key;
+            this.value = StringUtil.toString(value);
+            this.type = ValueType.ByteArray;
+        }
+
+        public Extra(String key, String value) {
+            this.key = key;
+            this.value = value;
+            this.type = ValueType.String;
         }
 
         @Deprecated
