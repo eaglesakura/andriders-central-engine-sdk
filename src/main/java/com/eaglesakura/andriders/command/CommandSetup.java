@@ -48,15 +48,15 @@ public class CommandSetup {
         SerializableIntent mIntent;
 
         public static Builder makeActivity(@NonNull Context context, Class<? extends Activity> clazz) {
-            return new Builder(context, SerializableIntent.fromActivity(context, clazz));
+            return new Builder(context, SerializableIntent.newActivity(context, clazz));
         }
 
         public static Builder makeService(@NonNull Context context, Class<? extends Service> clazz) {
-            return new Builder(context, SerializableIntent.fromService(context, clazz));
+            return new Builder(context, SerializableIntent.newService(context, clazz));
         }
 
         public static Builder makeBroadcast(@NonNull Context context, String action) {
-            return new Builder(context, SerializableIntent.fromBroadcast(context, action));
+            return new Builder(context, SerializableIntent.newBroadcast(context, action));
         }
 
         private Builder(@NonNull Context context, @NonNull SerializableIntent intent) {

@@ -19,21 +19,21 @@ import android.support.annotation.NonNull;
 public class SerializableIntent {
     RawIntent mRawIntent = new RawIntent();
 
-    public static SerializableIntent fromActivity(@NonNull Context context, @NonNull Class<? extends Activity> clazz) {
+    public static SerializableIntent newActivity(@NonNull Context context, @NonNull Class<? extends Activity> clazz) {
         SerializableIntent result = new SerializableIntent();
         result.mRawIntent.intentType = RawIntent.IntentType.Activity;
         result.mRawIntent.componentName = StringUtil.format("%s/%s", context.getPackageName(), clazz.getName());
         return result;
     }
 
-    public static SerializableIntent fromService(@NonNull Context context, @NonNull Class<? extends Service> clazz) {
+    public static SerializableIntent newService(@NonNull Context context, @NonNull Class<? extends Service> clazz) {
         SerializableIntent result = new SerializableIntent();
         result.mRawIntent.intentType = RawIntent.IntentType.Activity;
         result.mRawIntent.componentName = StringUtil.format("%s/%s", context.getPackageName(), clazz.getName());
         return result;
     }
 
-    public static SerializableIntent fromBroadcast(@NonNull Context context, String action) {
+    public static SerializableIntent newBroadcast(@NonNull Context context, String action) {
         SerializableIntent result = new SerializableIntent();
         result.mRawIntent.intentType = RawIntent.IntentType.Broadcast;
         result.setAction(action);
