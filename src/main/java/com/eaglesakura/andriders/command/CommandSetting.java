@@ -17,7 +17,7 @@ import android.support.annotation.NonNull;
 /**
  * コマンドデータの構築を行う
  */
-public class CommandSetup {
+public class CommandSetting {
 
     /**
      * コマンドアイコン指定

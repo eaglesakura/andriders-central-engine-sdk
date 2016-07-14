@@ -2,8 +2,11 @@ package com.eaglesakura.andriders.command;
 
 import com.eaglesakura.util.StringUtil;
 
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * コマンドの発動タイミングを一意に指定するキーを取得する
@@ -98,11 +101,22 @@ public class CommandKey implements Parcelable {
     }
 
     /**
+     * IntentからKeyを取り出す
+     *
+     * @param intent ACEから渡されたIntent
+     */
+    @Nullable
+    public static CommandKey fromIntent(Intent intent) {
+        return intent.getParcelableExtra(CommandSetting.EXTRA_COMMAND_KEY);
+    }
+
+    /**
      * 近接コマンドからキーを生成する
      *
      * @param commandSec 秒数
      * @return キー
      */
+    @NonNull
     public static CommandKey fromProximity(int commandSec) {
         return new CommandKey(String.format("%s%d", COMMAND_HEADER_PROXIMITY, commandSec));
     }
@@ -113,6 +127,7 @@ public class CommandKey implements Parcelable {
      * @param key キー文字列
      * @return キー
      */
+    @NonNull
     public static CommandKey fromString(String key) {
         return new CommandKey(key);
     }
@@ -125,6 +140,7 @@ public class CommandKey implements Parcelable {
      * @param settingCurrentTime 設定するスロット番号
      * @return キー
      */
+    @NonNull
     public static CommandKey fromTimer(long settingCurrentTime) {
         return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_TIMER, settingCurrentTime));
     }
@@ -135,6 +151,7 @@ public class CommandKey implements Parcelable {
      * @param settingCurrentTime 現在の時刻
      * @return キー
      */
+    @NonNull
     public static CommandKey fromSpeed(long settingCurrentTime) {
         return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_SPEED, settingCurrentTime));
     }
@@ -145,6 +162,7 @@ public class CommandKey implements Parcelable {
      * @param settingCurrentTime 現在の時刻
      * @return キー
      */
+    @NonNull
     public static CommandKey fromDistance(long settingCurrentTime) {
         return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_DISTANCE, settingCurrentTime));
     }

@@ -120,9 +120,17 @@ public class SerializableIntent {
             String[] component = intent.componentName.split("/");
             result.setComponent(new ComponentName(component[0], component[1]));
         }
-        result.setAction(intent.action);
-        result.setData(Uri.parse(intent.data));
-        result.addFlags(intent.flags);
+        if (!StringUtil.isEmpty(intent.action)) {
+            result.setAction(intent.action);
+        }
+        if (!StringUtil.isEmpty(intent.data)) {
+            result.setData(Uri.parse(intent.data));
+        }
+
+        if (intent.flags != 0) {
+            result.addFlags(intent.flags);
+        }
+        
         for (RawIntent.Extra extra : intent.extras) {
             switch (extra.type) {
                 case Boolean:
