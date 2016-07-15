@@ -25,6 +25,12 @@ public class SerializableIntent {
         result.mRawIntent.componentName = StringUtil.format("%s/%s", context.getPackageName(), clazz.getName());
         return result;
     }
+    public static SerializableIntent newActivity(@NonNull Context context, @NonNull ComponentName componentName) {
+        SerializableIntent result = new SerializableIntent();
+        result.mRawIntent.intentType = RawIntent.IntentType.Activity;
+        result.mRawIntent.componentName = StringUtil.format("%s/%s", componentName.getPackageName(), componentName.getClassName());
+        return result;
+    }
 
     public static SerializableIntent newService(@NonNull Context context, @NonNull Class<? extends Service> clazz) {
         SerializableIntent result = new SerializableIntent();

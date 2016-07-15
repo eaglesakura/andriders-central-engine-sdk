@@ -5,6 +5,7 @@ import com.eaglesakura.serialize.error.SerializeException;
 
 import android.app.Activity;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -49,6 +50,10 @@ public class CommandSetting {
 
         public static Builder makeActivity(@NonNull Context context, Class<? extends Activity> clazz) {
             return new Builder(context, SerializableIntent.newActivity(context, clazz));
+        }
+
+        public static Builder makeActivity(@NonNull Context context, ComponentName componentName) {
+            return new Builder(context, SerializableIntent.newActivity(context, componentName));
         }
 
         public static Builder makeService(@NonNull Context context, Class<? extends Service> clazz) {
@@ -136,8 +141,10 @@ public class CommandSetting {
 
         /**
          * コマンドのセットアップを終了し、ACEの設定画面へ戻る
+         *
+         * @return 戻り値に指定したIntent
          */
-        public void finish(@NonNull Activity activity) {
+        public Intent finish(@NonNull Activity activity) {
             Intent data = new Intent();
             // 不足分を補う
             if (mIcon == null) {
@@ -158,6 +165,7 @@ public class CommandSetting {
 
             activity.setResult(Activity.RESULT_OK, data);
             activity.finish();
+            return data;
         }
     }
 }
