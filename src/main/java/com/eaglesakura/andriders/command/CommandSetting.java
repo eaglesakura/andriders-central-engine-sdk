@@ -154,7 +154,7 @@ public class CommandSetting {
 
             data.putExtra(EXTRA_ICON, ImageUtil.encodePng(mIcon));  // アイコンを指定
             data.putExtra(EXTRA_PACKAGE_NAME, activity.getPackageName());
-            data.putExtra(EXTRA_COMMAND_KEY, activity.getIntent().getStringExtra(EXTRA_COMMAND_KEY));
+            data.putExtra(EXTRA_COMMAND_KEY, (CommandKey) activity.getIntent().getParcelableExtra(EXTRA_COMMAND_KEY));
 
             // 生成されたIntentを指定
             try {
