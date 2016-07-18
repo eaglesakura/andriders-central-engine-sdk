@@ -63,7 +63,7 @@ public class PluginInformation {
      * 拡張機能が設定画面を持っていたらtrue
      */
     public void setHasSetting(boolean set) {
-        raw.hasSetting = true;
+        raw.hasSetting = set;
     }
 
     /**
