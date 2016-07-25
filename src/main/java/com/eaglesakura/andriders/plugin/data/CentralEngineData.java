@@ -3,8 +3,8 @@ package com.eaglesakura.andriders.plugin.data;
 import com.eaglesakura.andriders.plugin.CentralEngineConnection;
 import com.eaglesakura.andriders.plugin.internal.CentralDataCommand;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
-import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.andriders.sensor.SensorType;
+import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.android.service.data.Payload;
 
 import android.location.Location;
@@ -34,14 +34,26 @@ public class CentralEngineData {
      */
     @Nullable
     public String getGadgetAddress(@NonNull SensorType type) {
-        mServerImpl.validAcesSession();
         try {
             return mServerImpl.postToClientAsString(CentralDataCommand.CMD_setBleGadgetAddress, type.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
+    }
+
+    /**
+     * ホイールの外周サイズ（mm）を取得する。
+     *
+     * デフォルトは700x23cに合わせ、 2096.0 となる。
+     */
+    @FloatRange(from = 0.0)
+    public float getWheelOuterLength() {
+        try {
+            return Float.parseFloat(mServerImpl.postToClientAsString(CentralDataCommand.CMD_getWheelOuterLength, null));
+        } catch (Exception e) {
+            return 2096;
+        }
     }
 
     /**

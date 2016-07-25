@@ -18,6 +18,11 @@ public class CentralDataCommand {
     public static final String CMD_setBleGadgetAddress = "CTL_setBleGadgetAddress";
 
     /**
+     * ホイール外周サイズを取得する
+     */
+    public static final String CMD_getWheelOuterLength = "CTL_getWheelOuterLength";
+
+    /**
      * 拡張情報を取得する
      */
     public static final String CMD_getInformations = "CTL_getInformations";
