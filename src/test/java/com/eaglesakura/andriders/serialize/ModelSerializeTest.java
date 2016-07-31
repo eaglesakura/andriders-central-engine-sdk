@@ -2,9 +2,11 @@ package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.andriders.UnitTestCase;
 import com.eaglesakura.io.data.DataVerifier;
+import com.eaglesakura.json.JSON;
 import com.eaglesakura.refrection.NullableConstructor;
 import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
+import com.eaglesakura.util.StringUtil;
 
 import org.junit.Test;
 
@@ -52,6 +54,21 @@ public class ModelSerializeTest extends UnitTestCase {
             Object deserialized = SerializeUtil.deserializePublicFieldObject(obj.getClass(), buffer);
             assertNotNull(deserialized);
             assertEquals(obj, deserialized);
+
+            // JSONを経由しても同じオブジェクトが得られる
+            String jsonEncoded = JSON.encode(obj);
+            Object jsonDecoded = JSON.decode(jsonEncoded, clazz);
+            assertEquals(obj, jsonDecoded);
+
+            // サイズを比較する
+            if (i == 0) {
+                LogUtil.log("  Serialize[%d bytes] BASE64[%d bytes] JSON[%d bytes]",
+                        buffer.length,
+                        StringUtil.toString(buffer).getBytes().length,
+                        jsonEncoded.getBytes().length
+                );
+                LogUtil.log("  JSON-STRING[%s]", jsonEncoded);
+            }
         }
         LogUtil.log("  Finished");
     }

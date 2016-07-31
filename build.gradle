@@ -50,6 +50,7 @@ dependencies {
         compile project(':eglibrary:android-canvas-graphics')
         compile project(':eglibrary:android-command-service')
 
+        testCompile project(":eglibrary:json-wrapper")
         testCompile project(":eglibrary:android-unittest-support")
     } else {
         // mavenから必要なライブラリを取得する
@@ -61,6 +62,7 @@ dependencies {
         compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
         compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
 
+        testCompile 'com.eaglesakura:json-wrapper:1.+'
         testCompile 'com.eaglesakura:android-unittest-support:1.+'
     }
 }
