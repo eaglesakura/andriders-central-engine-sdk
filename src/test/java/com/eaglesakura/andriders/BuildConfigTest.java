@@ -6,9 +6,6 @@ import com.eaglesakura.thread.Holder;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 public class BuildConfigTest extends UnitTestCase {
     @Test
     public void helloContextTest() throws Exception {

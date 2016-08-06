@@ -2,12 +2,12 @@ package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.UnitTestCase;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import junit.framework.Assert;
 
 public class DisplayInformationTest extends UnitTestCase {
 
