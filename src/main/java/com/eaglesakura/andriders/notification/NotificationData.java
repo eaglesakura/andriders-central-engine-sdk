@@ -125,7 +125,7 @@ public class NotificationData {
     /**
      * 識別ID
      */
-    String uniqueId = String.format("notify(%d)", System.currentTimeMillis());
+    String uniqueId = StringUtil.format("notify(%d)", System.currentTimeMillis());
 
     /**
      * 通知日
