@@ -69,7 +69,7 @@ dependencies {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '24'
+    buildToolsVersion '24.0.1'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -84,6 +84,15 @@ android {
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
         buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
     }
+
+    lintOptions {
+        disable "DuplicateIds"
+        disable "NewApi"
+        disable "InvalidPackage"
+        disable "ResourceType"
+        disable "UnusedResources"
+    }
+
 }
 
 /**

@@ -118,7 +118,7 @@ public class CommandKey implements Parcelable {
      */
     @NonNull
     public static CommandKey fromProximity(int commandSec) {
-        return new CommandKey(String.format("%s%d", COMMAND_HEADER_PROXIMITY, commandSec));
+        return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_PROXIMITY, commandSec));
     }
 
     /**

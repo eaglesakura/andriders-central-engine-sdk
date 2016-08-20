@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders;
 
-import com.eaglesakura.andriders.serialize.RawIntent;
 import com.eaglesakura.util.IOUtil;
 
 import org.junit.runners.model.InitializationError;

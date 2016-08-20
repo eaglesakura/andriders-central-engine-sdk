@@ -9,6 +9,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 /**
@@ -119,7 +120,7 @@ public class AcesEnvironment {
      * @param date 保存する日付
      */
     public static File getDateMediaDirectory(Context context, Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return new File(getMediaDirectory(context), formatter.format(date));
     }
 }

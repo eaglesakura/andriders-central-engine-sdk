@@ -5,7 +5,6 @@ import com.eaglesakura.android.AndroidSupportTestCase;
 
 import org.junit.runner.RunWith;
 
-import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricGradleLibraryTestRunner.class)
