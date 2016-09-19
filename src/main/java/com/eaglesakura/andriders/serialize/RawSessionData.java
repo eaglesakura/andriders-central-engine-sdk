@@ -20,11 +20,11 @@ public class RawSessionData {
     /**
      * セッションを一意に識別するID
      *
-     * 一日のトータル情報の場合はnullが指定される
+     * 一日のトータル情報等、複数のSessionが含まれる場合はnullが指定される
      */
     @Nullable
     @Serialize(id = 1)
-    public String sessionId;
+    public Long sessionId;
 
     /**
      * このセッションでのフィットネス情報
@@ -80,13 +80,13 @@ public class RawSessionData {
     public RawSessionData() {
     }
 
-    public RawSessionData(String sessionId) {
+    public RawSessionData(Long sessionId) {
         this.sessionId = sessionId;
     }
 
     @Deprecated
     public RawSessionData(Class<Random> dummy) {
-        sessionId = RandomUtil.randString();
+        sessionId = RandomUtil.randInt64();
         fitness = new RawFitnessStatus(dummy);
         startTime = RandomUtil.randUInt64();
         durationTimeMs = RandomUtil.randUInt32();
