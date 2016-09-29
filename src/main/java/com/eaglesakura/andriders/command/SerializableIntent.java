@@ -114,6 +114,10 @@ public class SerializableIntent {
         return SerializeUtil.serializePublicFieldObject(mRawIntent, true);
     }
 
+    public RawIntent getRawIntent() {
+        return mRawIntent;
+    }
+
     /**
      * Intentを得る
      *

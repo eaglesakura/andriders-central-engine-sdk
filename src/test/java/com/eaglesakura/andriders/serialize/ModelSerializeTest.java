@@ -18,6 +18,9 @@ public class ModelSerializeTest extends UnitTestCase {
     final int TRY_SERIALIZE_COUNT = 1024;
 
 
+    /**
+     * 全てのSerializeモデルはシリアライズとデシリアライズが可能であり、かつJSONとしてもシリアライズ出来ることを保証する
+     */
     <T> void assertSerialize(Class<T> clazz) throws Exception {
         LogUtil.log("Serialize :: " + clazz.getName());
         for (int i = 0; i < TRY_SERIALIZE_COUNT; ++i) {
