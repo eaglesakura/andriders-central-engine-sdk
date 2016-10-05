@@ -30,7 +30,7 @@ public class CentralEngineConnection {
     final AcePluginService mExtensionService;
 
     @NonNull
-    final String mSessionId;
+    final String mConnectionId;
 
     @NonNull
     final PluginServerImpl mServerImpl;
@@ -60,13 +60,12 @@ public class CentralEngineConnection {
     CentralEngineConnection(Service service, Intent intent) {
         mService = service;
         mExtensionService = (AcePluginService) service;
-        mSessionId = intent.getStringExtra(PluginServerImpl.EXTRA_SESSION_ID);
+        mConnectionId = intent.getStringExtra(PluginServerImpl.EXTRA_CONNECTION_ID);
         mAcesComponent = intent.getParcelableExtra(PluginServerImpl.EXTRA_ACE_COMPONENT);
         mDebuggable = intent.getBooleanExtra(PluginServerImpl.EXTRA_DEBUGGABLE, false);
         mAcesSdkVersion = intent.getStringExtra(PluginServerImpl.EXTRA_ACE_IMPL_SDK_VERSION);
 
-
-        if (StringUtil.isEmpty(mSessionId)) {
+        if (StringUtil.isEmpty(mConnectionId)) {
             throw new IllegalArgumentException("SessionId is empty");
         }
         if (StringUtil.isEmpty(mAcesSdkVersion)) {
@@ -103,8 +102,8 @@ public class CentralEngineConnection {
     /**
      * セッション識別用IDを取得する
      */
-    public String getSessionId() {
-        return mSessionId;
+    public String getConnectionId() {
+        return mConnectionId;
     }
 
     /**
@@ -196,11 +195,11 @@ public class CentralEngineConnection {
 
         final CentralEngineConnection result = new CentralEngineConnection(service, intent);
         synchronized (gSessions) {
-            LogUtil.log("add session :: " + result.getSessionId() + " class :: " + service.getClass());
-            if (gSessions.containsKey(result.getSessionId())) {
-                throw new IllegalStateException("session conflict :: " + result.getSessionId() + " :: sessions -> " + gSessions.size());
+            LogUtil.log("add session :: " + result.getConnectionId() + " class :: " + service.getClass());
+            if (gSessions.containsKey(result.getConnectionId())) {
+                throw new IllegalStateException("session conflict :: " + result.getConnectionId() + " :: sessions -> " + gSessions.size());
             } else {
-                gSessions.put(result.getSessionId(), result);
+                gSessions.put(result.getConnectionId(), result);
             }
         }
         return result;
@@ -212,7 +211,7 @@ public class CentralEngineConnection {
      * 終了したセッションを返すが、管理対象でない場合は戻り値は捨てて問題ない。
      */
     public static CentralEngineConnection onUnbind(Service service, Intent intent) {
-        final String sessionId = intent.getStringExtra(PluginServerImpl.EXTRA_SESSION_ID);
+        final String sessionId = intent.getStringExtra(PluginServerImpl.EXTRA_CONNECTION_ID);
         if (StringUtil.isEmpty(sessionId)) {
             return null;
         }

@@ -33,10 +33,10 @@ public class PluginServerImpl extends CommandServer implements Disposable {
     public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND_V3";
 
     /**
-     * セッション管理ID
+     * Serviceに接続する度に付与されるコネクションID
      * 必ず付与される。付与されないIntentは例外として扱われる。
      */
-    public static final String EXTRA_SESSION_ID = "ace.EXTRA_SESSION_ID";
+    public static final String EXTRA_CONNECTION_ID = "ace.EXTRA_CONNECTION_ID";
 
     /**
      * ACE本体サービスに接続するComponentName
