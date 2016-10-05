@@ -54,6 +54,21 @@ public class DisplayKey {
         raw.title = set;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DisplayKey that = (DisplayKey) o;
+
+        return getId().equals(that.getId());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return raw != null ? raw.hashCode() : 0;
+    }
 
     /**
      * データをシリアライズする

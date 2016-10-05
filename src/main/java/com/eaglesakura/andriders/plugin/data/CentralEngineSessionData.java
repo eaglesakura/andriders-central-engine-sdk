@@ -16,13 +16,13 @@ import android.support.annotation.Nullable;
 /**
  * ACEの持つデータを送受信する。
  */
-public class CentralEngineData {
+public class CentralEngineSessionData {
 
     final PluginServerImpl mServerImpl;
 
     final CentralEngineConnection mConnection;
 
-    public CentralEngineData(@NonNull CentralEngineConnection connection, @NonNull PluginServerImpl serverImpl) {
+    public CentralEngineSessionData(@NonNull CentralEngineConnection connection, @NonNull PluginServerImpl serverImpl) {
         mConnection = connection;
         mServerImpl = serverImpl;
     }

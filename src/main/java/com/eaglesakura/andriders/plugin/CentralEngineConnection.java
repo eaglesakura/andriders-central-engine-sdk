@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.central.CentralDataReceiver;
-import com.eaglesakura.andriders.plugin.data.CentralEngineData;
+import com.eaglesakura.andriders.plugin.data.CentralEngineSessionData;
 import com.eaglesakura.andriders.plugin.display.DisplayDataSender;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.util.IOUtil;
@@ -36,7 +36,7 @@ public class CentralEngineConnection {
     final PluginServerImpl mServerImpl;
 
     @NonNull
-    final CentralEngineData mCentralDataExtension;
+    final CentralEngineSessionData mCentralDataExtension;
 
     @NonNull
     final DisplayDataSender mDisplayExtension;
@@ -78,7 +78,7 @@ public class CentralEngineConnection {
 
 
         // アクセス用インターフェースを生成する
-        mCentralDataExtension = new CentralEngineData(this, mServerImpl);
+        mCentralDataExtension = new CentralEngineSessionData(this, mServerImpl);
         mDisplayExtension = new DisplayDataSender(this, mServerImpl);
 
         if (isAcesSession()) {
@@ -110,7 +110,7 @@ public class CentralEngineConnection {
     /**
      * データ拡張インターフェースを取得する
      */
-    public CentralEngineData getCentralDataExtension() {
+    public CentralEngineSessionData getCentralDataExtension() {
         return mCentralDataExtension;
     }
 
