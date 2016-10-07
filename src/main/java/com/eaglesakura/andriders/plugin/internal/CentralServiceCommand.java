@@ -20,15 +20,19 @@ public class CentralServiceCommand {
     public static final String CMD_requestSessionStart = "CSC_requestSessionStart";
 
     /**
-     * 現在のCentral Dataを取得する
-     * ACEが起動していない場合、nullを返却する。
+     * セッションの停止をリクエストする
      */
-    public static final String CMD_getCurrentCentralData = "CSC_getCurrentCentralData";
+    public static final String CMD_requestSessionStop = "CSC_requestSessionStop";
 
     /**
      * セッションを開始させる
      */
     public static final String ACTION_SESSION_START = "com.eaglesakura.andriders.ACTION_SESSION_START";
+
+    /**
+     * セッション停止をリクエストする
+     */
+    public static final String ACTION_SESSION_STOP = "com.eaglesakura.andriders.ACTION_SESSION_STOP";
 
     /**
      * セッション制御用

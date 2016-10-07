@@ -8,7 +8,6 @@ import com.eaglesakura.andriders.serialize.RawSessionRequest;
 import com.eaglesakura.android.service.data.Payload;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 /**
@@ -47,7 +46,6 @@ public class CentralSessionController {
     /**
      * セッションの開始をリクエストする
      */
-    @NonNull
     public void requestSessionStart() throws SessionControlException {
         try {
             RawSessionRequest request = new RawSessionRequest();
@@ -57,4 +55,14 @@ public class CentralSessionController {
         }
     }
 
+    /**
+     * セッションの停止をリクエストする
+     */
+    public void requestSessionStop() throws SessionControlException {
+        try {
+            mClientImpl.requestPostToServer(CentralServiceCommand.CMD_requestSessionStop, null);
+        } catch (Exception e) {
+            throw new SessionControlException(e);
+        }
+    }
 }
