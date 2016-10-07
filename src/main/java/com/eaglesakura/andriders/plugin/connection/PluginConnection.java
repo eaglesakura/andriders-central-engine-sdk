@@ -111,14 +111,14 @@ public class PluginConnection {
     /**
      * データ拡張インターフェースを取得する
      */
-    public CentralEngineSessionData getCentralDataExtension() {
+    public CentralEngineSessionData getCentralData() {
         return mCentralDataExtension;
     }
 
     /**
      * 表示拡張インターフェースを取得する
      */
-    public DisplayDataSender getDisplayExtension() {
+    public DisplayDataSender getDisplay() {
         return mDisplayExtension;
     }
 
