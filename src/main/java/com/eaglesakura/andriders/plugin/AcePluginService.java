@@ -1,5 +1,7 @@
 package com.eaglesakura.andriders.plugin;
 
+import com.eaglesakura.andriders.plugin.connection.PluginConnection;
+
 import java.util.List;
 
 /**
@@ -15,35 +17,35 @@ public interface AcePluginService {
     /**
      * 拡張機能情報を取得する
      */
-    PluginInformation getExtensionInformation(CentralEngineConnection connection);
+    PluginInformation getExtensionInformation(PluginConnection connection);
 
     /**
      * ディスプレイの表示情報を取得する
      */
-    List<DisplayKey> getDisplayInformation(CentralEngineConnection connection);
+    List<DisplayKey> getDisplayInformation(PluginConnection connection);
 
     /**
      * ACEに接続され、サイコンの使用準備ができた
      */
-    void onAceServiceConnected(CentralEngineConnection connection);
+    void onAceServiceConnected(PluginConnection connection);
 
     /**
      * ACEから切断された
      */
-    void onAceServiceDisconnected(CentralEngineConnection connection);
+    void onAceServiceDisconnected(PluginConnection connection);
 
     /**
      * 拡張サービスが有効化された
      */
-    void onEnable(CentralEngineConnection connection);
+    void onEnable(PluginConnection connection);
 
     /**
      * 拡張サービスが無効化された
      */
-    void onDisable(CentralEngineConnection connection);
+    void onDisable(PluginConnection connection);
 
     /**
      * 設定画面を開く
      */
-    void startSetting(CentralEngineConnection connection);
+    void startSetting(PluginConnection connection);
 }

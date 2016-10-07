@@ -1,6 +1,6 @@
 package com.eaglesakura.andriders.plugin.data;
 
-import com.eaglesakura.andriders.plugin.CentralEngineConnection;
+import com.eaglesakura.andriders.plugin.connection.PluginConnection;
 import com.eaglesakura.andriders.plugin.internal.CentralDataCommand;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.andriders.sensor.SensorType;
@@ -20,9 +20,9 @@ public class CentralEngineSessionData {
 
     final PluginServerImpl mServerImpl;
 
-    final CentralEngineConnection mConnection;
+    final PluginConnection mConnection;
 
-    public CentralEngineSessionData(@NonNull CentralEngineConnection connection, @NonNull PluginServerImpl serverImpl) {
+    public CentralEngineSessionData(@NonNull PluginConnection connection, @NonNull PluginServerImpl serverImpl) {
         mConnection = connection;
         mServerImpl = serverImpl;
     }

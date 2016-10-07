@@ -1,6 +1,7 @@
-package com.eaglesakura.andriders.plugin;
+package com.eaglesakura.andriders.plugin.connection;
 
 import com.eaglesakura.andriders.central.CentralDataReceiver;
+import com.eaglesakura.andriders.plugin.AcePluginService;
 import com.eaglesakura.andriders.plugin.data.CentralEngineSessionData;
 import com.eaglesakura.andriders.plugin.display.DisplayDataSender;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
@@ -20,9 +21,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ACEと拡張サービスの接続管理を行う
+ * ACEとプラグインの連携を行うためのコネクション
+ * これはPluginServiceとの連携を前提としているため、Central Serviceに対してアクティブに接続するためには別な手段を用いる。
  */
-public class CentralEngineConnection {
+public class PluginConnection {
     @NonNull
     final Service mService;
 
@@ -57,7 +59,7 @@ public class CentralEngineConnection {
     @Nullable
     final CentralDataReceiver mCentralDataReceiver;
 
-    CentralEngineConnection(Service service, Intent intent) {
+    PluginConnection(Service service, Intent intent) {
         mService = service;
         mExtensionService = (AcePluginService) service;
         mConnectionId = intent.getStringExtra(PluginServerImpl.EXTRA_CONNECTION_ID);
@@ -172,14 +174,14 @@ public class CentralEngineConnection {
     /**
      * 生成されたセッション一覧
      */
-    static Map<String, CentralEngineConnection> gSessions = new HashMap<>();
+    static Map<String, PluginConnection> gSessions = new HashMap<>();
 
     /**
      * Service.onBindで呼び出す。
      * ACE管理用の新たなコネクションを生成する。
      * バインド可能なIntentではない場合、nullを返却する。
      */
-    public static CentralEngineConnection onBind(Service service, Intent intent) {
+    public static PluginConnection onBind(Service service, Intent intent) {
         if (!(service instanceof AcePluginService)) {
             throw new IllegalArgumentException();
         }
@@ -193,7 +195,7 @@ public class CentralEngineConnection {
             return null;
         }
 
-        final CentralEngineConnection result = new CentralEngineConnection(service, intent);
+        final PluginConnection result = new PluginConnection(service, intent);
         synchronized (gSessions) {
             LogUtil.log("add session :: " + result.getConnectionId() + " class :: " + service.getClass());
             if (gSessions.containsKey(result.getConnectionId())) {
@@ -210,13 +212,13 @@ public class CentralEngineConnection {
      * ACE管理用のセッションを終了させる。
      * 終了したセッションを返すが、管理対象でない場合は戻り値は捨てて問題ない。
      */
-    public static CentralEngineConnection onUnbind(Service service, Intent intent) {
+    public static PluginConnection onUnbind(Service service, Intent intent) {
         final String sessionId = intent.getStringExtra(PluginServerImpl.EXTRA_CONNECTION_ID);
         if (StringUtil.isEmpty(sessionId)) {
             return null;
         }
 
-        final CentralEngineConnection result;
+        final PluginConnection result;
         synchronized (gSessions) {
             result = gSessions.remove(sessionId);
         }

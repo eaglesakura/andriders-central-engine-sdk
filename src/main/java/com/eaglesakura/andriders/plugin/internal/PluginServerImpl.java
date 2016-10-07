@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.plugin.internal;
 
+import com.eaglesakura.andriders.plugin.connection.PluginConnection;
 import com.eaglesakura.andriders.plugin.DisplayKey;
 import com.eaglesakura.andriders.plugin.PluginInformation;
-import com.eaglesakura.andriders.plugin.CentralEngineConnection;
 import com.eaglesakura.andriders.plugin.AcePluginService;
 import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.android.service.CommandMap;
@@ -26,7 +26,7 @@ public class PluginServerImpl extends CommandServer implements Disposable {
 
     final CommandMap mCommandMap = new CommandMap();
 
-    final CentralEngineConnection mConnection;
+    final PluginConnection mConnection;
 
     String mClientId;
 
@@ -58,7 +58,7 @@ public class PluginServerImpl extends CommandServer implements Disposable {
      */
     private boolean mRegisteredAces = false;
 
-    public PluginServerImpl(CentralEngineConnection session, Service service, AcePluginService extensionService) {
+    public PluginServerImpl(PluginConnection session, Service service, AcePluginService extensionService) {
         super(service);
         mConnection = session;
         mExtensionService = extensionService;

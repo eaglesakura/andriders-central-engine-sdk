@@ -1,7 +1,7 @@
 package com.eaglesakura.andriders.plugin.display;
 
 import com.eaglesakura.andriders.notification.NotificationData;
-import com.eaglesakura.andriders.plugin.CentralEngineConnection;
+import com.eaglesakura.andriders.plugin.connection.PluginConnection;
 import com.eaglesakura.andriders.plugin.internal.DisplayCommand;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.android.service.data.Payload;
@@ -15,11 +15,11 @@ import java.util.List;
  * 送信可能（正確には、表示可能）なのは、自分が提供を宣言したKeyのみである。
  */
 public final class DisplayDataSender {
-    final CentralEngineConnection mSession;
+    final PluginConnection mSession;
 
     final PluginServerImpl mServerImpl;
 
-    public DisplayDataSender(CentralEngineConnection session, PluginServerImpl serverImpl) {
+    public DisplayDataSender(PluginConnection session, PluginServerImpl serverImpl) {
         mServerImpl = serverImpl;
         mSession = session;
     }
