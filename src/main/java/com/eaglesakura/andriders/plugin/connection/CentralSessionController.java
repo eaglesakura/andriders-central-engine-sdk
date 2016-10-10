@@ -1,8 +1,7 @@
-package com.eaglesakura.andriders.plugin.data;
+package com.eaglesakura.andriders.plugin.connection;
 
 import com.eaglesakura.andriders.error.SessionControlException;
 import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
-import com.eaglesakura.andriders.plugin.internal.SessionClientImpl;
 import com.eaglesakura.andriders.serialize.RawSessionInfo;
 import com.eaglesakura.andriders.serialize.RawSessionRequest;
 import com.eaglesakura.android.service.data.Payload;
@@ -18,7 +17,7 @@ public class CentralSessionController {
 
     final Context mContext;
 
-    public CentralSessionController(Context context, SessionClientImpl clientImpl) {
+    CentralSessionController(Context context, SessionClientImpl clientImpl) {
         mContext = context;
         mClientImpl = clientImpl;
     }

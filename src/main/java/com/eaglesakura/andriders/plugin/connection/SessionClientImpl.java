@@ -1,8 +1,11 @@
-package com.eaglesakura.andriders.plugin.internal;
+package com.eaglesakura.andriders.plugin.connection;
 
+import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
+import com.eaglesakura.andriders.serialize.RawSessionInfo;
 import com.eaglesakura.android.service.CommandClient;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.data.Payload;
+import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.android.util.AndroidThreadUtil;
 import com.eaglesakura.lambda.CancelCallback;
 
@@ -10,16 +13,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 import android.support.annotation.WorkerThread;
 
 /**
  * セッションサーバーへの接続を行うクライアント
  */
-public class SessionClientImpl extends CommandClient {
+class SessionClientImpl extends CommandClient {
     CommandMap mCommandMap = new CommandMap();
 
-    public SessionClientImpl(Context context) {
+    SessionClientImpl(Context context) {
         super(context);
+        buildCommands();
     }
 
     private Intent newConnectionIntent() {
@@ -54,5 +59,32 @@ public class SessionClientImpl extends CommandClient {
     @Override
     protected Payload onReceivedData(String cmd, Payload payload) throws RemoteException {
         return mCommandMap.execute(this, cmd, payload);
+    }
+
+    void buildCommands() {
+        mCommandMap.addAction(CentralServiceCommand.CMD_onSessionStarted, (sender, cmd, payload) -> {
+            RawSessionInfo sessionInfo = payload.deserializePublicField(RawSessionInfo.class);
+            UIHandler.postUI(() -> {
+                onSessionStarted(sessionInfo);
+            });
+            return null;
+        });
+        mCommandMap.addAction(CentralServiceCommand.CMD_onSessionStopped, (sender, cmd, payload) -> {
+            RawSessionInfo sessionInfo = payload.deserializePublicField(RawSessionInfo.class);
+            UIHandler.postUI(() -> {
+                onSessionStopped(sessionInfo);
+            });
+            return null;
+        });
+    }
+
+    @UiThread
+    protected void onSessionStarted(RawSessionInfo info) {
+
+    }
+
+    @UiThread
+    protected void onSessionStopped(RawSessionInfo info) {
+
     }
 }

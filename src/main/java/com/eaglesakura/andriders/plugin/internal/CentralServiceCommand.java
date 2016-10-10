@@ -1,5 +1,7 @@
 package com.eaglesakura.andriders.plugin.internal;
 
+import com.eaglesakura.andriders.sdk.BuildConfig;
+
 import android.content.ComponentName;
 
 /**
@@ -23,6 +25,16 @@ public class CentralServiceCommand {
      * セッションの停止をリクエストする
      */
     public static final String CMD_requestSessionStop = "CSC_requestSessionStop";
+
+    /**
+     * セッションが開始された
+     */
+    public static final String CMD_onSessionStarted = "CSC_onSessionStarted";
+
+    /**
+     * セッションが停止された
+     */
+    public static final String CMD_onSessionStopped = "CSC_onSessionStopped";
 
     /**
      * セッションを開始させる
@@ -49,5 +61,5 @@ public class CentralServiceCommand {
     /**
      * 接続対象のコンポーネント
      */
-    public static final ComponentName COMPONENT_SESSION_SERVICE = new ComponentName("com.eaglesakura.andriders.v3", "com.eaglesakura.andriders.service.CentralSessionService");
+    public static final ComponentName COMPONENT_SESSION_SERVICE = new ComponentName(BuildConfig.ACE_APPLICATION_ID, "com.eaglesakura.andriders.service.CentralSessionService");
 }
