@@ -16,7 +16,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath "com.eaglesakura:eglibrary-gradle-plugin:0.2.8"
         classpath 'me.tatarka:gradle-retrolambda:3.2.5' // support Lambda
     }
@@ -68,8 +68,8 @@ dependencies {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.2'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -78,7 +78,7 @@ android {
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 25
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
