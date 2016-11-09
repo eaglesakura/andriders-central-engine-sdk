@@ -45,10 +45,6 @@ public class CommandKey implements Parcelable {
         this.mKey = in.readString();
     }
 
-    public String getKey() {
-        return mKey;
-    }
-
     @Override
     public int describeContents() {
         return 0;
