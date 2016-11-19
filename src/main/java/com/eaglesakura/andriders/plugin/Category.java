@@ -45,6 +45,11 @@ public class Category {
         categories.put(name, this);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     /**
      * カテゴリ名を取得する
      */

@@ -88,6 +88,7 @@ public class PluginInformation {
         raw.category = category.getName();
     }
 
+
     /**
      * データをシリアライズする
      */
