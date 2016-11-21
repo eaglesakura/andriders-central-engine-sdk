@@ -8,6 +8,8 @@ import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +52,16 @@ public class DisplayKey {
         return raw.title;
     }
 
-    public void setTitle(String set) {
+    public void setTitle(@NonNull String set) {
         raw.title = set;
+    }
+
+    public String getSummary() {
+        return raw.summary;
+    }
+
+    public void setSummary(@Nullable String summary) {
+        raw.summary = summary;
     }
 
     @Override

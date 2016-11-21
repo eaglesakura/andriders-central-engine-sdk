@@ -3,6 +3,9 @@ package com.eaglesakura.andriders.serialize;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -256,14 +259,23 @@ public class PluginProtocol {
         /**
          * 一意に識別するためのID
          */
+        @NonNull
         @Serialize(id = 1)
         public String id;
 
         /**
          * 表示タイトル
          */
+        @NonNull
         @Serialize(id = 2)
         public String title;
+
+        /**
+         * 説明テキスト
+         */
+        @Nullable
+        @Serialize(id = 3)
+        public String summary;
 
         public RawCycleDisplayInfo() {
         }
@@ -271,7 +283,8 @@ public class PluginProtocol {
         @Deprecated
         public RawCycleDisplayInfo(Class<Random> dummy) {
             id = RandomUtil.randString();
-            title = RandomUtil.randLargeString();
+            title = RandomUtil.randShortString();
+            summary = RandomUtil.randLargeString();
         }
 
         @Override
