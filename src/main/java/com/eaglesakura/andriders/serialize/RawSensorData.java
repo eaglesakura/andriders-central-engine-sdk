@@ -199,7 +199,7 @@ public class RawSensorData {
          * スピード km/h
          */
         @Serialize(id = 1)
-        public float speedKmPerHour;
+        public float speedKmh;
 
         /**
          * ホイールの回転数
@@ -228,7 +228,7 @@ public class RawSensorData {
 
         @Deprecated
         public RawSpeed(Class<Random> dummy) {
-            speedKmPerHour = RandomUtil.randFloat();
+            speedKmh = RandomUtil.randFloat();
             wheelRpm = RandomUtil.randFloat();
             wheelRevolution = RandomUtil.randUInt32();
             zone = RandomUtil.randEnumWithNull(SpeedZone.class);
@@ -251,7 +251,7 @@ public class RawSensorData {
 
             RawSpeed rawSpeed = (RawSpeed) o;
 
-            if (Float.compare(rawSpeed.speedKmPerHour, speedKmPerHour) != 0) return false;
+            if (Float.compare(rawSpeed.speedKmh, speedKmh) != 0) return false;
             if (Float.compare(rawSpeed.wheelRpm, wheelRpm) != 0) return false;
             if (Float.compare(rawSpeed.wheelRevolution, wheelRevolution) != 0) return false;
             if (date != rawSpeed.date) return false;
@@ -262,7 +262,7 @@ public class RawSensorData {
 
         @Override
         public int hashCode() {
-            int result = (speedKmPerHour != +0.0f ? Float.floatToIntBits(speedKmPerHour) : 0);
+            int result = (speedKmh != +0.0f ? Float.floatToIntBits(speedKmh) : 0);
             result = 31 * result + (wheelRpm != +0.0f ? Float.floatToIntBits(wheelRpm) : 0);
             result = 31 * result + (wheelRevolution != +0.0f ? Float.floatToIntBits(wheelRevolution) : 0);
             result = 31 * result + (zone != null ? zone.hashCode() : 0);
@@ -290,7 +290,7 @@ public class RawSensorData {
         if (data == null) {
             return 0;
         }
-        return Float.floatToIntBits(data.speedKmPerHour) ^ data.flags ^ data.wheelRevolution;
+        return Float.floatToIntBits(data.speedKmh) ^ data.flags ^ data.wheelRevolution;
     }
 
     public static int getHash(RawLocation data) {
