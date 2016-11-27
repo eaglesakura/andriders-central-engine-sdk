@@ -26,27 +26,27 @@ public class NotificationData {
     /**
      * Andriders Central Engine Serviceを起動した
      */
-    public static final String ID_CENTRAL_SERVICE_BOOT = "basic.ID_CENTRAL_SERVICE_BOOT";
+    public static final String ID_CENTRAL_SERVICE_BOOT = "org.andriders.ace.ID_CENTRAL_SERVICE_BOOT";
 
     /**
      * ハートレートモニターに接続した
      */
-    public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "basic.ID_GADGET_BLE_HRMONITOR_CONNECT";
+    public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_CONNECT";
 
     /**
      * ハートレートモニターから切断された
      */
-    public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "basic.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
+    public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
 
     /**
      * ケイデンスセンサーに接続した
      */
-    public static final String ID_GADGET_BLE_SPEED_CADENCE_CONNECT = "basic.ID_GADGET_BLE_SPEED_CADENCE_CONNECT";
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_CONNECT = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_CONNECT";
 
     /**
      * ケイデンスセンサーから切断された
      */
-    public static final String ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT = "basic.ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT";
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT";
 
     public enum Duration {
         /**
