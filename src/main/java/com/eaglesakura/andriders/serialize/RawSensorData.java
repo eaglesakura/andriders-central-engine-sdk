@@ -6,6 +6,7 @@ import com.eaglesakura.andriders.sensor.SpeedZone;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.Random;
@@ -215,6 +216,7 @@ public class RawSensorData {
         public int wheelRevolution = -1;
 
         @Serialize(id = 4)
+        @NonNull
         public SpeedZone zone;
 
         @Serialize(id = 5)
