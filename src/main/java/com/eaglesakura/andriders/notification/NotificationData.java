@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 
 import java.util.Date;
 
@@ -273,6 +274,10 @@ public class NotificationData {
         public Builder message(String message) {
             mRaw.setMessage(message);
             return this;
+        }
+
+        public Builder message(@StringRes int resId) {
+            return message(mContext.getString(resId));
         }
 
         public Builder uniqueId(String uniqueId) {
