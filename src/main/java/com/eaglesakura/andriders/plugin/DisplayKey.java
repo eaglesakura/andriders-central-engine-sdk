@@ -16,6 +16,8 @@ import java.util.List;
 
 /**
  * サイコンの表示情報を管理する
+ *
+ * 管理IDにはアプリPackage名が含まれるため、プラグイン単位でUniqueであることを保証すれば、グローバルでもUniqueとなる。
  */
 public class DisplayKey {
     PluginProtocol.RawCycleDisplayInfo raw;

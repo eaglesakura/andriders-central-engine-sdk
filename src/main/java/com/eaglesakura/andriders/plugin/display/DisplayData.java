@@ -41,8 +41,7 @@ public class DisplayData {
         makeDefault();
     }
 
-
-    protected DisplayData(PluginProtocol.RawCycleDisplayValue raw) {
+    public DisplayData(PluginProtocol.RawCycleDisplayValue raw) {
         this.raw = raw;
 
         if (raw.basicValue != null) {
@@ -192,7 +191,7 @@ public class DisplayData {
                 return new ArrayList<>();
             }
         } catch (Exception e) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(e);
         }
     }
 }
