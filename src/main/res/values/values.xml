@@ -10,6 +10,32 @@
     <color name="AceUI.Zonebar.Lv5">#ff4500</color>
     <color name="AceUI.Zonebar.Lv6">#000000</color>
 
+    <!-- 心拍 -->
+    <string name="Ace.Word.HeartrateZone.Repose">安静</string>
+    <string name="Ace.Word.HeartrateZone.Easy">軽度</string>
+    <string name="Ace.Word.HeartrateZone.FatCombustion">燃焼</string>
+    <string name="Ace.Word.HeartrateZone.PossessionOxygenMotion">有酸素</string>
+    <string name="Ace.Word.HeartrateZone.NonOxygenatedMotion">無酸素</string>
+    <string name="Ace.Word.HeartrateZone.Overwork">危険域</string>
+
+    <!-- 近接コマンドカテゴリ -->
+    <string name="com.eaglesakura.andriders.category.TRIGGER_PROXIMITY">
+        com.eaglesakura.andriders.category.TRIGGER_PROXIMITY
+    </string>
+    <!-- ジオコマンドカテゴリ -->
+    <string name="com.eaglesakura.andriders.category.TRIGGER_GEO">
+        com.eaglesakura.andriders.category.TRIGGER_GEO
+    </string>
+    <!-- 活動コマンドカテゴリ -->
+    <string name="com.eaglesakura.andriders.category.TRIGGER_ACTIVITY">
+        com.eaglesakura.andriders.category.TRIGGER_ACTIVITY
+    </string>
+
+    <!-- SNSへの送信を許可する -->
+    <string name="com.eaglesakura.andriders.permission.POST_SNS">
+        com.eaglesakura.andriders.permission.POST_SNS
+    </string>
+
     <!--&lt;!&ndash; 表示用文字列 &ndash;&gt;-->
     <!--<string name="AceUI.Information.Cadence">ケイデンス (RPM)</string>-->
     <!--<string name="AceUI.Information.Heartrate">心拍数 (BPM)</string>-->
