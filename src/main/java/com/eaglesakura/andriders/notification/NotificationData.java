@@ -32,12 +32,32 @@ public class NotificationData {
     /**
      * ハートレートモニターに接続した
      */
+    public static final String ID_GADGET_BLE_HRMONITOR_BATTERY = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_BATTERY";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_SEARCH = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_SEARCH";
+
+    /**
+     * ハートレートモニターに接続した
+     */
     public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_CONNECT";
 
     /**
      * ハートレートモニターから切断された
      */
     public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_BATTERY = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_BATTERY";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_SEARCH = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_SEARCH";
 
     /**
      * ケイデンスセンサーに接続した
