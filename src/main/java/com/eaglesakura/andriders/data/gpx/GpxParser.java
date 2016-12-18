@@ -25,6 +25,8 @@ public class GpxParser {
 
     static final DateFormat sGpxDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
 
+    static final DateFormat sGpxDateFormat2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+
     static {
         sGpxDateFormat.setTimeZone(TimeZone.getDefault());
     }
@@ -67,7 +69,7 @@ public class GpxParser {
     DateOption mDateOption = DateOption.None;
 
     @NonNull
-    DateFormat mDateFormat = sGpxDateFormat;
+    DateFormat mDateFormat = sGpxDateFormat2;
 
     /**
      * 最低限持たなければならないポイント数
@@ -92,6 +94,15 @@ public class GpxParser {
         mMinPoints = minPoints;
     }
 
+    private Date parse(String value) throws Exception {
+        try {
+            return mDateFormat.parse(value);
+        } catch (Exception e) {
+            mDateFormat = sGpxDateFormat;
+            return sGpxDateFormat.parse(value);
+        }
+    }
+
     @Nullable
     private GpxPoint newPoint(XmlElement trkpt) {
         String time = trkpt.childToString("time");
@@ -99,7 +110,7 @@ public class GpxParser {
         // 時刻が取れなかったらポイントとして不良である
         if (!StringUtil.isEmpty(time)) {
             try {
-                long date = mDateFormat.parse(time).getTime();
+                long date = parse(time).getTime();
                 date += mDateOption.offset();
                 ptDate = new Date(date);
             } catch (Exception e) {
