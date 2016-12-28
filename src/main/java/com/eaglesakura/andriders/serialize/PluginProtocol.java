@@ -185,7 +185,7 @@ public class PluginProtocol {
     /**
      * 拡張機能自体の情報
      */
-    public static class RawExtensionInfo {
+    public static class RawPluginInfo {
         /**
          * 一意に識別するためのID
          */
@@ -216,11 +216,25 @@ public class PluginProtocol {
         @Serialize(id = 5)
         public boolean activated = true;
 
-        public RawExtensionInfo() {
+        /**
+         * ビルドされているSDKバージョン
+         * 基本的にはACE本体と同じバージョンでビルドされているのが望ましい。
+         */
+        @Serialize(id = 6)
+        public String sdkVersion;
+
+        /**
+         * プロトコルバージョン
+         * 番号が異なる場合、互換切りが発生している。
+         */
+        @Serialize(id = 7)
+        public int sdkProtocolVersion;
+
+        public RawPluginInfo() {
         }
 
         @Deprecated
-        public RawExtensionInfo(Class<Random> dummy) {
+        public RawPluginInfo(Class<Random> dummy) {
             id = RandomUtil.randString();
             summary = RandomUtil.randString();
             category = RandomUtil.randString();
@@ -233,7 +247,7 @@ public class PluginProtocol {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            RawExtensionInfo that = (RawExtensionInfo) o;
+            RawPluginInfo that = (RawPluginInfo) o;
 
             if (hasSetting != that.hasSetting) return false;
             if (activated != that.activated) return false;

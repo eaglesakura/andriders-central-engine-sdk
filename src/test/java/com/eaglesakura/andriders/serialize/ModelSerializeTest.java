@@ -80,7 +80,7 @@ public class ModelSerializeTest extends UnitTestCase {
         assertSerialize(PluginProtocol.SrcLocation.class);
         assertSerialize(PluginProtocol.SrcHeartrate.class);
         assertSerialize(PluginProtocol.SrcSpeedAndCadence.class);
-        assertSerialize(PluginProtocol.RawExtensionInfo.class);
+        assertSerialize(PluginProtocol.RawPluginInfo.class);
         assertSerialize(PluginProtocol.RawCycleDisplayInfo.class);
         assertSerialize(PluginProtocol.RawCycleDisplayValue.class);
 

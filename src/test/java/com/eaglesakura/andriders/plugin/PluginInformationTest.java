@@ -1,6 +1,7 @@
 package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.UnitTestCase;
+import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.util.CollectionUtil;
 
 import org.junit.Test;
@@ -8,19 +9,19 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Assert;
-
-public class ExtensionInformationTest extends UnitTestCase {
+public class PluginInformationTest extends UnitTestCase {
 
     @Test
     public void infoInitialize() {
         PluginInformation info = new PluginInformation(getContext(), "junit");
-        Assert.assertTrue(info.getId().startsWith(getContext().getPackageName() + "@"));
-        Assert.assertTrue(info.getId().endsWith("@junit"));
+        assertTrue(info.getId().startsWith(getContext().getPackageName() + "@"));
+        assertTrue(info.getId().endsWith("@junit"));
+        assertEquals(info.getSdkVersion(), BuildConfig.ACE_SDK_VERSION);
+        assertEquals(info.getSdkProtocolVersion(), BuildConfig.ACE_PROTOCOL_VERSION);
 
-        Assert.assertEquals(info.getCategory(), Category.CATEGORY_OTHERS);
-        Assert.assertFalse(info.hasSetting());
-        Assert.assertTrue(info.isActivated());
+        assertEquals(info.getCategory(), Category.CATEGORY_OTHERS);
+        assertFalse(info.hasSetting());
+        assertTrue(info.isActivated());
     }
 
     @Test
@@ -28,7 +29,7 @@ public class ExtensionInformationTest extends UnitTestCase {
         PluginInformation info = new PluginInformation(getContext(), "junit");
         info.setCategory(Category.CATEGORY_OTHERS);
         byte[] serialized = info.serialize();
-        Assert.assertNotNull(serialized);
+        assertNotNull(serialized);
     }
 
     @Test
@@ -37,10 +38,10 @@ public class ExtensionInformationTest extends UnitTestCase {
         info.setCategory(Category.CATEGORY_OTHERS);
 
         byte[] serialize = PluginInformation.serialize(Arrays.asList(info));
-        Assert.assertFalse(CollectionUtil.isEmpty(serialize));
+        assertFalse(CollectionUtil.isEmpty(serialize));
 
         List<PluginInformation> deserialize = PluginInformation.deserialize(serialize);
-        Assert.assertEquals(deserialize.size(), 1);
-        Assert.assertEquals(info.getId(), deserialize.get(0).getId());
+        assertEquals(deserialize.size(), 1);
+        assertEquals(info.getId(), deserialize.get(0).getId());
     }
 }
