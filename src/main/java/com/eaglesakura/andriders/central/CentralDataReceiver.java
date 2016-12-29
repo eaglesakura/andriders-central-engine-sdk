@@ -19,10 +19,11 @@ import android.support.annotation.Nullable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 
 /**
  * ACEからの情報をハンドリングする
+ *
+ * 明示的に接続する場合はconnect()/disconnect()を行う。
  */
 public class CentralDataReceiver {
     /**

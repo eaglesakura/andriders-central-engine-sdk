@@ -72,7 +72,7 @@ public class RawSessionData {
     public int durationTimeMs;
 
     /**
-     * 合計高度
+     * 合計獲得標高
      */
     @Serialize(id = 10)
     public float sumAltitudeMeter;

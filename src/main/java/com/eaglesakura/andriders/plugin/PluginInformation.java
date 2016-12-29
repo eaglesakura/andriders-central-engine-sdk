@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.plugin;
 
+import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
@@ -9,6 +10,7 @@ import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +19,13 @@ import java.util.List;
  * 拡張情報
  */
 public class PluginInformation {
-    PluginProtocol.RawExtensionInfo raw;
+    PluginProtocol.RawPluginInfo mRaw;
 
-    private PluginInformation(PluginProtocol.RawExtensionInfo raw) {
+    private PluginInformation(PluginProtocol.RawPluginInfo raw) {
         if (raw == null) {
-            raw = new PluginProtocol.RawExtensionInfo();
+            raw = new PluginProtocol.RawPluginInfo();
         }
-        this.raw = raw;
+        this.mRaw = raw;
         makeDefault();
     }
 
@@ -33,59 +35,81 @@ public class PluginInformation {
             throw new IllegalArgumentException();
         }
 
-        raw.id = (context.getPackageName() + "@" + id);
+        mRaw.id = (context.getPackageName() + "@" + id);
         makeDefault();
     }
 
     private void makeDefault() {
-        if (StringUtil.isEmpty(raw.category)) {
+        if (StringUtil.isEmpty(mRaw.category)) {
             setCategory(Category.CATEGORY_OTHERS);
+        }
+
+        // SDKのバージョンを明示する
+        if (StringUtil.isEmpty(mRaw.sdkVersion)) {
+            mRaw.sdkVersion = BuildConfig.ACE_SDK_VERSION;
+            mRaw.sdkProtocolVersion = BuildConfig.ACE_PROTOCOL_VERSION;
         }
     }
 
     public String getId() {
-        return raw.id;
+        return mRaw.id;
     }
 
     public void setSummary(String set) {
-        raw.summary = set;
+        mRaw.summary = set;
     }
 
     public String getSummary() {
-        return raw.summary;
+        return mRaw.summary;
     }
 
     public boolean hasSetting() {
-        return raw.hasSetting;
+        return mRaw.hasSetting;
     }
 
     /**
      * 拡張機能が設定画面を持っていたらtrue
      */
     public void setHasSetting(boolean set) {
-        raw.hasSetting = set;
+        mRaw.hasSetting = set;
     }
 
     /**
      * 拡張機能の使用準備ができていたらtrue
      */
     public void setActivated(boolean value) {
-        raw.activated = value;
+        mRaw.activated = value;
     }
 
     /**
      * 拡張機能の使用準備ができていたらtrue
      */
     public boolean isActivated() {
-        return raw.activated;
+        return mRaw.activated;
     }
 
     public Category getCategory() {
-        return Category.fromName(raw.category);
+        return Category.fromName(mRaw.category);
     }
 
     public void setCategory(Category category) {
-        raw.category = category.getName();
+        mRaw.category = category.getName();
+    }
+
+    /**
+     * ビルドされているSDKバージョンを取得する
+     */
+    @NonNull
+    public String getSdkVersion() {
+        return mRaw.sdkVersion;
+    }
+
+    /**
+     * 互換バージョン番号を取得する
+     */
+    @NonNull
+    public int getSdkProtocolVersion() {
+        return mRaw.sdkProtocolVersion;
     }
 
     /**
@@ -93,7 +117,7 @@ public class PluginInformation {
      */
     public byte[] serialize() {
         try {
-            return new PublicFieldSerializer().serialize(raw);
+            return new PublicFieldSerializer().serialize(mRaw);
         } catch (Exception e) {
             LogUtil.log(e);
             throw new IllegalStateException();
@@ -117,7 +141,7 @@ public class PluginInformation {
             if (!CollectionUtil.isEmpty(serializedBuffers)) {
                 List<PluginInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializedBuffers) {
-                    result.add(new PluginInformation(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawExtensionInfo.class, serialized)));
+                    result.add(new PluginInformation(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawPluginInfo.class, serialized)));
                 }
                 return result;
             }

@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 
 import java.util.Date;
 
@@ -26,27 +27,47 @@ public class NotificationData {
     /**
      * Andriders Central Engine Serviceを起動した
      */
-    public static final String ID_CENTRAL_SERVICE_BOOT = "basic.ID_CENTRAL_SERVICE_BOOT";
+    public static final String ID_CENTRAL_SERVICE_BOOT = "org.andriders.ace.ID_CENTRAL_SERVICE_BOOT";
 
     /**
      * ハートレートモニターに接続した
      */
-    public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "basic.ID_GADGET_BLE_HRMONITOR_CONNECT";
+    public static final String ID_GADGET_BLE_HRMONITOR_BATTERY = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_BATTERY";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_SEARCH = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_SEARCH";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_CONNECT";
 
     /**
      * ハートレートモニターから切断された
      */
-    public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "basic.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
+    public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
 
     /**
      * ケイデンスセンサーに接続した
      */
-    public static final String ID_GADGET_BLE_SPEED_CADENCE_CONNECT = "basic.ID_GADGET_BLE_SPEED_CADENCE_CONNECT";
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_BATTERY = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_BATTERY";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_SEARCH = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_SEARCH";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_CONNECT = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_CONNECT";
 
     /**
      * ケイデンスセンサーから切断された
      */
-    public static final String ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT = "basic.ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT";
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT";
 
     public enum Duration {
         /**
@@ -273,6 +294,10 @@ public class NotificationData {
         public Builder message(String message) {
             mRaw.setMessage(message);
             return this;
+        }
+
+        public Builder message(@StringRes int resId) {
+            return message(mContext.getString(resId));
         }
 
         public Builder uniqueId(String uniqueId) {

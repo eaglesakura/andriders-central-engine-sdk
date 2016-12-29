@@ -3,6 +3,9 @@ package com.eaglesakura.andriders.serialize;
 import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -182,7 +185,7 @@ public class PluginProtocol {
     /**
      * 拡張機能自体の情報
      */
-    public static class RawExtensionInfo {
+    public static class RawPluginInfo {
         /**
          * 一意に識別するためのID
          */
@@ -213,11 +216,25 @@ public class PluginProtocol {
         @Serialize(id = 5)
         public boolean activated = true;
 
-        public RawExtensionInfo() {
+        /**
+         * ビルドされているSDKバージョン
+         * 基本的にはACE本体と同じバージョンでビルドされているのが望ましい。
+         */
+        @Serialize(id = 6)
+        public String sdkVersion;
+
+        /**
+         * プロトコルバージョン
+         * 番号が異なる場合、互換切りが発生している。
+         */
+        @Serialize(id = 7)
+        public int sdkProtocolVersion;
+
+        public RawPluginInfo() {
         }
 
         @Deprecated
-        public RawExtensionInfo(Class<Random> dummy) {
+        public RawPluginInfo(Class<Random> dummy) {
             id = RandomUtil.randString();
             summary = RandomUtil.randString();
             category = RandomUtil.randString();
@@ -230,7 +247,7 @@ public class PluginProtocol {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            RawExtensionInfo that = (RawExtensionInfo) o;
+            RawPluginInfo that = (RawPluginInfo) o;
 
             if (hasSetting != that.hasSetting) return false;
             if (activated != that.activated) return false;
@@ -256,14 +273,23 @@ public class PluginProtocol {
         /**
          * 一意に識別するためのID
          */
+        @NonNull
         @Serialize(id = 1)
         public String id;
 
         /**
          * 表示タイトル
          */
+        @NonNull
         @Serialize(id = 2)
         public String title;
+
+        /**
+         * 説明テキスト
+         */
+        @Nullable
+        @Serialize(id = 3)
+        public String summary;
 
         public RawCycleDisplayInfo() {
         }
@@ -271,7 +297,8 @@ public class PluginProtocol {
         @Deprecated
         public RawCycleDisplayInfo(Class<Random> dummy) {
             id = RandomUtil.randString();
-            title = RandomUtil.randLargeString();
+            title = RandomUtil.randShortString();
+            summary = RandomUtil.randLargeString();
         }
 
         @Override

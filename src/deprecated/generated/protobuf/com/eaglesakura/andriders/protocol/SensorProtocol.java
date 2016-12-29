@@ -1913,7 +1913,7 @@ public final class SensorProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required float speedKmPerHour = 1;</code>
+     * <code>required float speedKmh = 1;</code>
      *
      * <pre>
      * スピード km/h
@@ -1921,7 +1921,7 @@ public final class SensorProtocol {
      */
     boolean hasSpeedKmPerHour();
     /**
-     * <code>required float speedKmPerHour = 1;</code>
+     * <code>required float speedKmh = 1;</code>
      *
      * <pre>
      * スピード km/h
@@ -2265,7 +2265,7 @@ public final class SensorProtocol {
     public static final int SPEEDKMPERHOUR_FIELD_NUMBER = 1;
     private float speedKmPerHour_;
     /**
-     * <code>required float speedKmPerHour = 1;</code>
+     * <code>required float speedKmh = 1;</code>
      *
      * <pre>
      * スピード km/h
@@ -2275,7 +2275,7 @@ public final class SensorProtocol {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required float speedKmPerHour = 1;</code>
+     * <code>required float speedKmh = 1;</code>
      *
      * <pre>
      * スピード km/h
@@ -2698,7 +2698,7 @@ public final class SensorProtocol {
 
       private float speedKmPerHour_ ;
       /**
-       * <code>required float speedKmPerHour = 1;</code>
+       * <code>required float speedKmh = 1;</code>
        *
        * <pre>
        * スピード km/h
@@ -2708,7 +2708,7 @@ public final class SensorProtocol {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required float speedKmPerHour = 1;</code>
+       * <code>required float speedKmh = 1;</code>
        *
        * <pre>
        * スピード km/h
@@ -2718,7 +2718,7 @@ public final class SensorProtocol {
         return speedKmPerHour_;
       }
       /**
-       * <code>required float speedKmPerHour = 1;</code>
+       * <code>required float speedKmh = 1;</code>
        *
        * <pre>
        * スピード km/h
@@ -2731,7 +2731,7 @@ public final class SensorProtocol {
         return this;
       }
       /**
-       * <code>required float speedKmPerHour = 1;</code>
+       * <code>required float speedKmh = 1;</code>
        *
        * <pre>
        * スピード km/h

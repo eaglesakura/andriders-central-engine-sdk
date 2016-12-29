@@ -35,6 +35,11 @@ public class CommandKey implements Parcelable {
      */
     private static final String COMMAND_HEADER_TIMER = "timer#";
 
+    /**
+     * 近接コマンドの最大数
+     */
+    public static final int PROXIMITY_COMMAND_NUM = 4;
+
     final String mKey;
 
     private CommandKey(String key) {
@@ -43,10 +48,6 @@ public class CommandKey implements Parcelable {
 
     private CommandKey(Parcel in) {
         this.mKey = in.readString();
-    }
-
-    public String getKey() {
-        return mKey;
     }
 
     @Override

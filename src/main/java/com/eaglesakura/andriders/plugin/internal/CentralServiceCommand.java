@@ -1,5 +1,7 @@
 package com.eaglesakura.andriders.plugin.internal;
 
+import com.eaglesakura.andriders.sdk.BuildConfig;
+
 import android.content.ComponentName;
 
 /**
@@ -20,10 +22,19 @@ public class CentralServiceCommand {
     public static final String CMD_requestSessionStart = "CSC_requestSessionStart";
 
     /**
-     * 現在のCentral Dataを取得する
-     * ACEが起動していない場合、nullを返却する。
+     * セッションの停止をリクエストする
      */
-    public static final String CMD_getCurrentCentralData = "CSC_getCurrentCentralData";
+    public static final String CMD_requestSessionStop = "CSC_requestSessionStop";
+
+    /**
+     * セッションが開始された
+     */
+    public static final String CMD_onSessionStarted = "CSC_onSessionStarted";
+
+    /**
+     * セッションが停止された
+     */
+    public static final String CMD_onSessionStopped = "CSC_onSessionStopped";
 
     /**
      * セッションを開始させる
@@ -31,11 +42,14 @@ public class CentralServiceCommand {
     public static final String ACTION_SESSION_START = "com.eaglesakura.andriders.ACTION_SESSION_START";
 
     /**
+     * セッション停止をリクエストする
+     */
+    public static final String ACTION_SESSION_STOP = "com.eaglesakura.andriders.ACTION_SESSION_STOP";
+
+    /**
      * セッション制御用
      */
     public static final String ACTION_SESSION_CONTROL = "com.eaglesakura.andriders.ACTION_SESSION_CONTROL";
-
-    public static final String EXTRA_BOOT_DEBUG_MODE = "EXTRA_BOOT_DEBUG_MODE";
 
     /**
      * 接続をリクエストしているアプリID
@@ -45,5 +59,5 @@ public class CentralServiceCommand {
     /**
      * 接続対象のコンポーネント
      */
-    public static final ComponentName COMPONENT_SESSION_SERVICE = new ComponentName("com.eaglesakura.andriders.v3", "com.eaglesakura.andriders.service.CentralSessionService");
+    public static final ComponentName COMPONENT_SESSION_SERVICE = new ComponentName(BuildConfig.ACE_APPLICATION_ID, "com.eaglesakura.andriders.service.CentralSessionService");
 }
