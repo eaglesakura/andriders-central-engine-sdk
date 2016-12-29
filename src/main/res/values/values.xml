@@ -48,6 +48,15 @@
         <item>@string/Ace.Word.SpeedZone.Cruise</item>
         <item>@string/Ace.Word.SpeedZone.Sprint</item>
     </string-array>
+    <!-- 傾斜タイプ -->
+    <string name="Ace.Word.HillInclination.None">平地</string>
+    <string name="Ace.Word.HillInclination.Hill">坂道</string>
+    <string name="Ace.Word.HillInclination.IntenseHill">激坂</string>
+    <string-array name="Ace_Word_HillInclination">
+        <item>@string/Ace.Word.HillInclination.None</item>
+        <item>@string/Ace.Word.HillInclination.Hill</item>
+        <item>@string/Ace.Word.HillInclination.IntenseHill</item>
+    </string-array>
 
     <!-- 近接コマンドカテゴリ -->
     <string name="com.eaglesakura.andriders.category.TRIGGER_PROXIMITY">
