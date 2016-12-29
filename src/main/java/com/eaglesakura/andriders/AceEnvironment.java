@@ -46,7 +46,7 @@ public class AceEnvironment {
      */
     public static int isInstalledACE(Context context) {
         try {
-            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(ANDRIDERS_CENTRAL_ENGINE_PACKAGE_NAME, PackageInfo.INSTALL_LOCATION_AUTO);
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(ANDRIDERS_CENTRAL_ENGINE_PACKAGE_NAME, 0x00);
             // 初回リリースなのでバージョンは関係なくインストールされていればよい。
             return (packageInfo != null ? INSTALL_ACE_OK : INSTALL_ACE_NOT_INSTALLED);
         } catch (Exception e) {
