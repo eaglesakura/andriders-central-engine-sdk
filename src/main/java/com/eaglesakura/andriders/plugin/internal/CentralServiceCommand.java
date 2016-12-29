@@ -51,8 +51,6 @@ public class CentralServiceCommand {
      */
     public static final String ACTION_SESSION_CONTROL = "com.eaglesakura.andriders.ACTION_SESSION_CONTROL";
 
-    public static final String EXTRA_BOOT_DEBUG_MODE = "EXTRA_BOOT_DEBUG_MODE";
-
     /**
      * 接続をリクエストしているアプリID
      */
