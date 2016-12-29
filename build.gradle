@@ -1,8 +1,3 @@
-// 0.4.2 : 獲得標高と傾斜に対応
-// 0.4.3 : javadoc整理
-// 0.4.4 : 常駐Serviceに対応
-// 0.4.5 : RemoteCentralに対応 / センサーの受信時刻に対応 / 位置情報の信頼性についての情報を追加（トンネル対策）
-// 0.4.6 : EGLIB module update
 // 3.0.x : ACE v3系列対応 / Circle CI対応
 def ACES_SDK_VERSION = "3.0";
 def ARTIFACT_NAME = file(".").absoluteFile.name
@@ -17,7 +12,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath "com.eaglesakura:eglibrary-gradle-plugin:0.2.8"
+        classpath "com.eaglesakura:plugin-ci-support:1.0.47"
         classpath 'me.tatarka:gradle-retrolambda:3.2.5' // support Lambda
     }
 }
@@ -32,6 +27,7 @@ allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda' /* Android Lambda Support */
+apply plugin: 'com.eaglesakura.ci-support'
 
 // check env
 if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
