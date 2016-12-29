@@ -14,9 +14,6 @@
 	* GPS座標
 	* 速度
 		* GPS由来、ケイデンスセンサー由来
-	* 周辺情報
-		* コンビニ等
-	* ACEのチーム連携を行っている場合、リアルタイムでチームメンバーのサイクルコンピューター情報も取得可能
 * ユーザーのコマンド入力に対するハンドリングを行う
 	* 近接コマンド(スマホに手をかざす）
 	* タイマーコマンド（一定時間間隔で実行する）
@@ -41,7 +38,9 @@ allprojects {
 <pre>
 dependencies {
     // add library
-    compile "com.eaglesakura:andriders-central-engine-sdk:0.4.+"
+		// バージョンは基本的にAndriders Central Engineのバージョンに対応します
+		// ACEバージョンが3.1の場合は3.1.+を指定するのが望ましいです。
+    compile "com.eaglesakura:andriders-central-engine-sdk:3.0.+"
 }
 </pre>
 
