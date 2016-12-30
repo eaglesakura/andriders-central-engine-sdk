@@ -1,0 +1,81 @@
+package eaglesakura_ace;
+
+import "AcesConstants.proto";
+option java_package = "com.eaglesakura.andriders.protocol";
+
+// 走行セッションに関する情報を付与する
+message SessionStatus {
+    // セッションの開始時刻 : Unix Time
+    required int64 sessionStartTime = 1;
+
+    // このセッションで走った距離(km)
+    // 検出不可能な場合は0kmとなる
+    required float distanceSessionKm = 2;
+
+    // セッション中、自走している時間
+    required int32 sessionActiveTimeMs = 3;
+
+    // セッション中、自走した距離(Km)
+    required float sessionActiveDistanceKm = 5;
+}
+
+// フィットネス情報
+message FitnessStatus {
+	// 体重
+	required float weight = 1;
+
+	// 安静心拍数
+	required int32 normalHeartrate = 6;
+
+	// 最大心拍数
+	required int32 maxHeartrate = 5;
+
+	// 現在のMETs値
+	required float mets = 4;
+
+	// セッションで消費したcalorie
+	required float sessionCalories = 2;
+
+	// 今日消費したカロリー
+	required float todayCalories = 3;
+
+	// セッションで獲得したエクササイズ値
+	required float sessionExercise = 7;
+
+	// 今日獲得したエクササイズ値
+	required float todayExercise = 8;
+}
+
+// ユーザーの各種記録を参照する
+message UserRecord {
+    // 今日はじめてセッションを開始した時刻 : Unix Time
+    required int64 todayStartTime = 2;
+
+    // 今日自走した時間
+    // 検出不可能な場合は0となる
+    required int32 todayActiveTimeMs = 4;
+
+    // 今日自走した距離
+    // 検出不可能な場合は0kmとなる
+    required float todayActiveDistanceKm = 6;
+
+    // 今日走った距離(km)
+    // 検出不可能な場合は0kmとなる
+    required float todayDistanceKm = 1;
+
+    // 今までの最高速度
+    // 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+    required float maxSpeedKmPerHour = 10;
+
+    // 今日の最高速度
+    // 検出不可能、もしくは一定のしきい値を下回る場合は0km/hとなる
+    required float maxSpeedTodayKmPerHour = 11;
+
+    // セッションの獲得標高
+    // 検出不可能な場合は0mとなる
+    required float sessionSumAltitude = 20;
+
+    // 今日の獲得標高
+    // 検出不可能な場合は0mとなる
+    required float todaySumAltitude = 21;
+}

@@ -1,16 +1,21 @@
 package com.eaglesakura.andriders.notification;
 
-import com.google.protobuf.ByteString;
-
-import com.eaglesakura.andriders.media.SoundKey;
-import com.eaglesakura.andriders.protocol.CommandProtocol;
+import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
 import com.eaglesakura.android.util.ImageUtil;
+import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.CollectionUtil;
+import com.eaglesakura.util.LogUtil;
+import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 
 import java.util.Date;
 
@@ -18,6 +23,68 @@ import java.util.Date;
  * 通知用データ
  */
 public class NotificationData {
+
+    /**
+     * Andriders Central Engine Serviceを起動した
+     */
+    public static final String ID_CENTRAL_SERVICE_BOOT = "org.andriders.ace.ID_CENTRAL_SERVICE_BOOT";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_BATTERY = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_BATTERY";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_SEARCH = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_SEARCH";
+
+    /**
+     * ハートレートモニターに接続した
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_CONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_CONNECT";
+
+    /**
+     * ハートレートモニターから切断された
+     */
+    public static final String ID_GADGET_BLE_HRMONITOR_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_HRMONITOR_DISCONNECT";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_BATTERY = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_BATTERY";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_SEARCH = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_SEARCH";
+
+    /**
+     * ケイデンスセンサーに接続した
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_CONNECT = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_CONNECT";
+
+    /**
+     * ケイデンスセンサーから切断された
+     */
+    public static final String ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT = "org.andriders.ace.ID_GADGET_BLE_SPEED_CADENCE_DISCONNECT";
+
+    public enum Duration {
+        /**
+         * 短い時間だけ通知を表示する
+         */
+        Short,
+
+        /**
+         * 通常の時間だけ通知を表示する
+         */
+        Normal,
+
+        /**
+         * 長めに通知を表示する
+         */
+        Long,
+    }
 
     public enum IconCompressLevel {
         /**
@@ -79,7 +146,7 @@ public class NotificationData {
     /**
      * 識別ID
      */
-    String uniqueId = String.format("notify(%d)", System.currentTimeMillis());
+    String uniqueId = StringUtil.format("notify(%d)", System.currentTimeMillis());
 
     /**
      * 通知日
@@ -94,29 +161,29 @@ public class NotificationData {
     /**
      * 通知の長さ
      */
-    CommandProtocol.NotificationLength notificationLength = CommandProtocol.NotificationLength.Normal;
+    Duration duration = Duration.Normal;
 
-    /**
-     * 通知サウンド
-     */
-    SoundData sound;
-
-    public NotificationData(CommandProtocol.NotificationRequestPayload requestPayload) {
-        if (requestPayload.hasIconPath()) {
-            icon = ImageUtil.decode(requestPayload.getIconPath());
-        } else if (requestPayload.hasIconFile()) {
-            icon = ImageUtil.decode(requestPayload.getIconFile().toByteArray());
-        }
-        if (requestPayload.hasBackgroundXRGB()) {
-            backgroundColor = requestPayload.getBackgroundXRGB();
+    public NotificationData(Context context, byte[] buffer) {
+        NotificationProtocol.RawNotification raw;
+        try {
+            raw = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
+        } catch (SerializeException e) {
+            e.printStackTrace();
+            throw new IllegalStateException(e);
         }
 
-        message = requestPayload.getMessage();
-        uniqueId = requestPayload.getUniqueId();
-        date = StringUtil.toDate(requestPayload.getDate());
+        if (Color.alpha(raw.backgroundXRGB) != 0) {
+            backgroundColor = raw.backgroundXRGB;
+        }
 
-        if (requestPayload.hasSound()) {
-            sound = new SoundData(requestPayload.getSound());
+        message = raw.message;
+        uniqueId = raw.uniqueId;
+        date = new Date(raw.date);
+        if (!CollectionUtil.isEmpty(raw.iconFile)) {
+            // アイコン指定でのデコード
+            setIcon(ImageUtil.decode(raw.iconFile));
+        } else if (!StringUtil.isEmpty(raw.iconUri)) {
+            // TODO URI指定でのデコード
         }
     }
 
@@ -127,46 +194,36 @@ public class NotificationData {
         return date;
     }
 
-    public void setDate(Date date) {
+    public NotificationData setDate(Date date) {
         this.date = date;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public NotificationData setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public String getUniqueId() {
         return uniqueId;
     }
 
-    public void setUniqueId(String uniqueId) {
+    public NotificationData setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
+        return this;
     }
 
-    public void setNotificationLength(CommandProtocol.NotificationLength notificationLength) {
-        this.notificationLength = notificationLength;
+    public NotificationData setDuration(Duration notificationLength) {
+        this.duration = notificationLength;
+        return this;
     }
 
-    public CommandProtocol.NotificationLength getNotificationLength() {
-        return notificationLength;
-    }
-
-    public SoundData getSound() {
-        return sound;
-    }
-
-    public void setSound(SoundData sound) {
-        this.sound = sound;
-    }
-
-    public void setSound(SoundKey key) {
-        this.sound = new SoundData();
-        sound.setSoundKey(key.getKey());
-        sound.setQueue(true);
+    public Duration getDuration() {
+        return duration;
     }
 
     /**
@@ -174,8 +231,9 @@ public class NotificationData {
      * <br>
      * アイコンは自動的にサムネイルサイズに縮小される
      */
-    public void setIcon(Bitmap icon) {
+    public NotificationData setIcon(Bitmap icon) {
         this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
+        return this;
     }
 
     /**
@@ -183,16 +241,18 @@ public class NotificationData {
      * <br>
      * アイコンは自動的にサムネイルサイズに縮小される。
      */
-    public void setIcon(Bitmap icon, IconCompressLevel level) {
+    public NotificationData setIcon(Bitmap icon, IconCompressLevel level) {
         this.icon = Graphics.toSquareImage(icon, NOTIFICATION_ICON_SIZE);
         this.iconCompressLevel = level;
+        return this;
     }
 
     /**
      * アイコンを指定する
      */
-    public void setIcon(Context context, int drawableid) {
-        setIcon(ImageUtil.decode(context, drawableid));
+    public NotificationData setIcon(Context context, @DrawableRes int resId) {
+        setIcon(ImageUtil.decode(context, resId));
+        return this;
     }
 
     public Bitmap getIcon() {
@@ -202,31 +262,100 @@ public class NotificationData {
     /**
      * 背景色を指定する。ただし、アルファは削除される。
      */
-    public void setBackgroundColor(int color) {
+    public NotificationData setBackgroundColor(int color) {
         this.backgroundColor = (0xFF000000 | color);
+        return this;
     }
 
     public int getBackgroundColor() {
         return backgroundColor;
     }
 
-    /**
-     * payloadを構築する
-     */
-    public CommandProtocol.NotificationRequestPayload buildPayload() {
-        CommandProtocol.NotificationRequestPayload.Builder builder = CommandProtocol.NotificationRequestPayload.newBuilder();
-        builder.setUniqueId(uniqueId);
-        if (icon != null) {
-            builder.setIconFile(ByteString.copyFrom(iconCompressLevel.compress(icon)));
-        }
-        builder.setMessage(message);
-        builder.setDate(StringUtil.toString(date));
-        builder.setLength(notificationLength);
-        builder.setBackgroundXRGB(backgroundColor);
-        if (sound != null) {
-            builder.setSound(sound.buildPayload());
+    public static class Builder {
+        NotificationData mRaw = new NotificationData();
+
+        Context mContext;
+
+        public Builder(@NonNull Context context) {
+            mContext = context;
         }
 
-        return builder.build();
+
+        public Builder(@NonNull Context context, @NonNull String uniqueId) {
+            mContext = context;
+            mRaw.uniqueId = uniqueId;
+        }
+
+        public Builder date(Date date) {
+            mRaw.setDate(date);
+            return this;
+        }
+
+        public Builder message(String message) {
+            mRaw.setMessage(message);
+            return this;
+        }
+
+        public Builder message(@StringRes int resId) {
+            return message(mContext.getString(resId));
+        }
+
+        public Builder uniqueId(String uniqueId) {
+            mRaw.setUniqueId(uniqueId);
+            return this;
+        }
+
+        public Builder icon(Bitmap icon, IconCompressLevel level) {
+            mRaw.setIcon(icon, level);
+            return this;
+        }
+
+        public Builder backgroundColor(@ColorInt int color) {
+            mRaw.setBackgroundColor(color);
+            return this;
+        }
+
+        public Builder icon(@DrawableRes int resId) {
+            mRaw.setIcon(mContext, resId);
+            return this;
+        }
+
+        public Builder icon(Bitmap icon) {
+            mRaw.setIcon(icon);
+            return this;
+        }
+
+        public Builder duration(Duration duration) {
+            mRaw.setDuration(duration);
+            return this;
+        }
+
+        public NotificationData getNotification() {
+            if (mRaw.icon == null) {
+                icon(android.R.drawable.ic_dialog_alert);
+            }
+            return mRaw;
+        }
+    }
+
+    /**
+     * 値をシリアライズする
+     */
+    public byte[] serialize() {
+        NotificationProtocol.RawNotification raw = new NotificationProtocol.RawNotification();
+        raw.uniqueId = uniqueId;
+        if (icon != null) {
+            raw.iconFile = iconCompressLevel.compress(icon);
+        }
+        raw.message = message;
+        raw.date = date.getTime();
+        raw.length = duration;
+        raw.backgroundXRGB = backgroundColor;
+        try {
+            return SerializeUtil.serializePublicFieldObject(raw);
+        } catch (SerializeException e) {
+            LogUtil.log(e);
+            throw new IllegalStateException();
+        }
     }
 }

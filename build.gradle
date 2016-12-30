@@ -1,56 +1,55 @@
-// 0.4.2 : 獲得標高と傾斜に対応
-// 0.4.3 : javadoc整理
-// 0.4.4 : 常駐Serviceに対応
-// 0.4.5 : RemoteCentralに対応 / センサーの受信時刻に対応 / 位置情報の信頼性についての情報を追加（トンネル対策）
-// 0.4.6 : EGLIB module update
 // 3.0.x : ACE v3系列対応 / Circle CI対応
-def ACES_SDK_VERSION        = "3.0";
-def EGLIBRARY_ARTIFACT_VERSION = "0.2.9";
-def PROTOBUF_ARTIFACT_VERSION = "2.6.+";
+def ACES_SDK_VERSION = "3.0";
 def ARTIFACT_NAME = file(".").absoluteFile.name
+def ARTIFACT_TYPE = "beta";   // アーティファクトの切り分けを明示的に行なう
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
 buildscript {
     repositories {
         maven { url "http://eaglesakura.github.io/maven/" }
+        jcenter()
         mavenCentral()
-//        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.+'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-        classpath "com.eaglesakura:eglibrary-gradle-plugin:0.2.8"
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "com.eaglesakura:plugin-ci-support:1.0.47"
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5' // support Lambda
     }
 }
 
 allprojects {
     repositories {
         maven { url "http://eaglesakura.github.io/maven/" }
+        jcenter()
         mavenCentral()
     }
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda' /* Android Lambda Support */
+apply plugin: 'com.eaglesakura.ci-support'
 
 // check env
 if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
     ext.EGLIBRARY_COMPILE_LOCAL = false // 開発用。ローカルのソースコードをビルドする
 }
+if (!hasProperty("ANDROID_SUPPORT_LIB_VERSION")) {
+    ext.ANDROID_SUPPORT_LIB_VERSION = "25.+"
+}
 
 dependencies {
-    compile "com.google.protobuf:protobuf-java:${PROTOBUF_ARTIFACT_VERSION}"
-    compile 'com.android.support:support-annotations:+'
-
     if (EGLIBRARY_COMPILE_LOCAL) {
         // 開発用:ローカルのソースコードを利用する
         compile project(':eglibrary:simple-utils')
         compile project(':eglibrary:simple-serialize')
         compile project(':eglibrary:geo-utils')
-        compile project(':eglibrary:android-text-kvs')
         compile project(':eglibrary:android-simple-utils')
         compile project(':eglibrary:android-canvas-graphics')
         compile project(':eglibrary:android-command-service')
+
+        testCompile project(":eglibrary:json-wrapper")
+        testCompile project(":eglibrary:android-unittest-support")
     } else {
         // mavenから必要なライブラリを取得する
         compile 'com.eaglesakura:simple-logger:+'               /* Log */
@@ -58,35 +57,59 @@ dependencies {
         compile 'com.eaglesakura:simple-serialize:+'            /* IDLシリアライズ */
         compile 'com.eaglesakura:geo-utils:+'                   /* GPS計算 */
         compile 'com.eaglesakura:android-simple-utils:+'        /* Utils */
-        compile 'com.eaglesakura:android-text-kvs:+'            /* IDL管理 */
         compile 'com.eaglesakura:android-canvas-graphics:+'     /* アイコン圧縮 */
         compile 'com.eaglesakura:android-command-service:+'     /* ACE本体とのデータ通信 */
+
+        testCompile 'com.eaglesakura:json-wrapper:1.+'
+        testCompile 'com.eaglesakura:android-unittest-support:1.+'
     }
+    compile "com.android.support:support-annotations:${ANDROID_SUPPORT_LIB_VERSION}"
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 23
+        minSdkVersion 15
+        targetSdkVersion 25
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}\""
+        buildConfigField "String", "ACE_APPLICATION_ID", "\"org.andriders.ace\""
+        buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
+        buildConfigField "int", "ACE_SDK_BUILD_NUMBER", "${eglibrary.ci.buildVersionCode}"
     }
 
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/generated/protobuf',
-                            'src/main/generated/idl',
-                            'src/main/java']
-        }
+    lintOptions {
+        disable "DuplicateIds"
+        disable "NewApi"
+        disable "InvalidPackage"
+        disable "ResourceType"
+        disable "UnusedResources"
     }
+
 }
 
-task uploadSdkArchives << {
-    tasks.uploadArchives.execute();
+/**
+ * UnitTest & retro lambda
+ */
+tasks.withType(Test) {
+    project.tasks
+            .findAll {
+        task -> (task.name ==~ /compile.*?TestJava.*?/)
+    }
+    .each { task ->
+        task.doFirst {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
 }
 
 apply plugin: 'maven'
@@ -102,7 +125,7 @@ android.libraryVariants.all { variant ->
     }
 
     task("javadoc", type: Javadoc) {
-        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}.${getArtifactVersionSuffix()}"
+        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"
         description "Generates Android Javadoc for $variant.name."
         source = variant.javaCompile.source
         ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
@@ -114,6 +137,13 @@ android.libraryVariants.all { variant ->
         exclude '**/DaoMaster.java' /* ignore greenDAO */
         exclude '**/DaoSession.java' /* ignore greenDAO */
         exclude '**/R.java' /* ignore greenDAO */
+
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.encoding = "UTF-8"
+        project.configure(options) {
+            memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
+            charSet = "UTF-8"
+        }
     }
 
 
@@ -132,7 +162,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: uri(ARTIFACT_INSTALL_TARGET))
-            pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix()
+            pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix(ARTIFACT_TYPE)
             pom.groupId = "com.eaglesakura"
             pom.artifactId = ARTIFACT_NAME
         }
@@ -146,6 +176,37 @@ task uploadJavadoc << {
     dst.mkdirs();
 
     ["/usr/bin/rsync", "-a", src.absolutePath, dst.absolutePath].execute().text;
+}
+
+/**
+ * 依存している固定ライブラリバージョンを取得する
+ */
+String dependenciesVersion(String libName, String defVersion) {
+    def lines = [];
+    def target = file("dependencies.txt");
+    if (!target.file) {
+        return defVersion;
+    }
+
+    target.text.eachLine {
+        if (!it.contains(libName) || it.contains("(")) {
+            return;
+        }
+
+        def tokens = it.split(" ");
+        if (tokens == null || tokens.length == 0) {
+            return;
+        }
+
+        lines += tokens[tokens.length - 1];
+    }
+    if (lines.empty) {
+        println("${libName} -> ${defVersion}")
+        return defVersion;
+    } else {
+        println("${libName} -> ${lines[0]}")
+        return lines[0];
+    }
 }
 
 [uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
@@ -163,55 +224,43 @@ task uploadJavadoc << {
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'simple-logger'
-                version = "1.+"
+                version = dependenciesVersion("com.eaglesakura:simple-logger", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'simple-utils'
-                version = "1.+"
+                version = dependenciesVersion("com.eaglesakura:simple-utils", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'simple-serialize'
-                version = "1.+"
+                version = dependenciesVersion("com.eaglesakura:simple-serialize", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'geo-utils'
-                version = "1.+"
+                version = dependenciesVersion("com.eaglesakura:geo-utils", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'android-simple-utils'
-                version = "1.+"
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'android-text-kvs'
-                version = "1.+"
+                version = dependenciesVersion("com.eaglesakura:android-simple-utils", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'android-canvas-graphics'
-                version = "1.+"
+                version = dependenciesVersion("com.eaglesakura:android-canvas-graphics", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'android-command-service'
-                version = "1.+"
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.google.protobuf'
-                artifactId = 'protobuf-java'
-                version = PROTOBUF_ARTIFACT_VERSION
+                version = dependenciesVersion("com.eaglesakura:android-command-service", "1.+")
                 scope = 'compile'
             }
         }
@@ -222,12 +271,17 @@ task uploadJavadoc << {
  * バージョンを取得する
  * CircleCIの場合、バージョン末尾にビルド番号を付与する
  */
-def getArtifactVersionSuffix() {
+def getArtifactVersionSuffix(String artifactType) {
+    def prefix = ".";
+    if ("" != artifactType) {
+        // 明示的に`beta`等のタイプが指定されているなら、それを付与する
+        prefix = ".${artifactType}-"
+    }
     if (System.env.CIRCLE_BUILD_NUM != null) {
         // CircleCIのバージョンが指定されているので、そちらを利用する
-        return ".${System.env.CIRCLE_BUILD_NUM}"
+        return "${prefix}${System.env.CIRCLE_BUILD_NUM}"
     } else {
-        return ".local"
+        return "${prefix}local"
     }
 }
 
@@ -245,5 +299,3 @@ def getArtifactInstallTarget() {
         return file("ci-release");
     }
 }
-
-apply from: "generator.gradle"

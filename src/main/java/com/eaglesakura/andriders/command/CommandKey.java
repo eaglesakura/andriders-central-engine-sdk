@@ -1,7 +1,12 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.util.StringUtil;
+
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * コマンドの発動タイミングを一意に指定するキーを取得する
@@ -28,25 +33,21 @@ public class CommandKey implements Parcelable {
     /**
      * タイマーコマンド
      */
-    private static final String COMMAND_HEADER_TIMER = "timercmd#";
+    private static final String COMMAND_HEADER_TIMER = "timer#";
 
     /**
-     * チームメイトにオーダーを出す
+     * 近接コマンドの最大数
      */
-    private static final String COMMAND_HEADER_TEAM_ORDER = "team.order#";
+    public static final int PROXIMITY_COMMAND_NUM = 4;
 
-    final String key;
+    final String mKey;
 
     private CommandKey(String key) {
-        this.key = key;
+        this.mKey = key;
     }
 
     private CommandKey(Parcel in) {
-        this.key = in.readString();
-    }
-
-    public String getKey() {
-        return key;
+        this.mKey = in.readString();
     }
 
     @Override
@@ -56,11 +57,11 @@ public class CommandKey implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(key);
+        dest.writeString(mKey);
     }
 
-    public static final Parcelable.Creator<CommandKey> CREATOR
-            = new Parcelable.Creator<CommandKey>() {
+    public static final Creator<CommandKey> CREATOR
+            = new Creator<CommandKey>() {
         public CommandKey createFromParcel(Parcel in) {
             return new CommandKey(in);
         }
@@ -80,12 +81,12 @@ public class CommandKey implements Parcelable {
      */
     @Override
     public String toString() {
-        return key;
+        return mKey;
     }
 
     @Override
     public int hashCode() {
-        return key.hashCode();
+        return mKey.hashCode();
     }
 
     @Override
@@ -95,9 +96,19 @@ public class CommandKey implements Parcelable {
 
         CommandKey that = (CommandKey) o;
 
-        if (key != null ? !key.equals(that.key) : that.key != null) return false;
+        if (mKey != null ? !mKey.equals(that.mKey) : that.mKey != null) return false;
 
         return true;
+    }
+
+    /**
+     * IntentからKeyを取り出す
+     *
+     * @param intent ACEから渡されたIntent
+     */
+    @Nullable
+    public static CommandKey fromIntent(Intent intent) {
+        return intent.getParcelableExtra(CommandSetting.EXTRA_COMMAND_KEY);
     }
 
     /**
@@ -106,8 +117,9 @@ public class CommandKey implements Parcelable {
      * @param commandSec 秒数
      * @return キー
      */
+    @NonNull
     public static CommandKey fromProximity(int commandSec) {
-        return new CommandKey(String.format("%s%d", COMMAND_HEADER_PROXIMITY, commandSec));
+        return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_PROXIMITY, commandSec));
     }
 
     /**
@@ -116,6 +128,7 @@ public class CommandKey implements Parcelable {
      * @param key キー文字列
      * @return キー
      */
+    @NonNull
     public static CommandKey fromString(String key) {
         return new CommandKey(key);
     }
@@ -128,8 +141,9 @@ public class CommandKey implements Parcelable {
      * @param settingCurrentTime 設定するスロット番号
      * @return キー
      */
+    @NonNull
     public static CommandKey fromTimer(long settingCurrentTime) {
-        return new CommandKey(String.format("%stime%d", COMMAND_HEADER_TIMER, settingCurrentTime));
+        return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_TIMER, settingCurrentTime));
     }
 
     /**
@@ -138,8 +152,9 @@ public class CommandKey implements Parcelable {
      * @param settingCurrentTime 現在の時刻
      * @return キー
      */
+    @NonNull
     public static CommandKey fromSpeed(long settingCurrentTime) {
-        return new CommandKey(String.format("%stime%d", COMMAND_HEADER_SPEED, settingCurrentTime));
+        return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_SPEED, settingCurrentTime));
     }
 
     /**
@@ -148,17 +163,9 @@ public class CommandKey implements Parcelable {
      * @param settingCurrentTime 現在の時刻
      * @return キー
      */
+    @NonNull
     public static CommandKey fromDistance(long settingCurrentTime) {
-        return new CommandKey(String.format("%stime%d", COMMAND_HEADER_DISTANCE, settingCurrentTime));
-    }
-
-    /**
-     * チームメイトにオーダーを出す
-     *
-     * @param userId 対象ユーザーID
-     */
-    public static CommandKey fromTeamOrder(String userId) {
-        return new CommandKey(String.format("%s%s", COMMAND_HEADER_TEAM_ORDER, userId));
+        return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_DISTANCE, settingCurrentTime));
     }
 
 }

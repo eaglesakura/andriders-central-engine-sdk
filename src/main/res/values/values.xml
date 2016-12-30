@@ -2,7 +2,6 @@
 <resources>
 
     <!-- ゾーン用色見本 -->
-    <color name="AceUI.Zonebar.None">#00000000</color>
     <color name="AceUI.Zonebar.Lv0">#87cefa</color>
     <color name="AceUI.Zonebar.Lv1">#7cfc00</color>
     <color name="AceUI.Zonebar.Lv2">#228b22</color>
@@ -11,55 +10,70 @@
     <color name="AceUI.Zonebar.Lv5">#ff4500</color>
     <color name="AceUI.Zonebar.Lv6">#000000</color>
 
-    <!-- 表示用文字列 -->
-    <string name="AceUI.Information.Cadence">ケイデンス (RPM)</string>
-    <string name="AceUI.Information.Heartrate">心拍数 (BPM)</string>
-    <string name="AceUI.Information.Speed">スピード (km/h)</string>
-    <string name="AceUI.Information.Speed.Max">最速 (km/h)</string>
-    <string name="AceUI.Information.Speed.TodayMax">今日最速 (km/h)</string>
-    <string name="AceUI.Information.Distance.Session">走行距離 (km)</string>
-    <string name="AceUI.Information.Distance.Today">今日走行距離 (km)</string>
-    <string name="AceUI.Information.Altitude.Inclination">傾斜</string>
-    <string name="AceUI.Information.Altitude">標高(m)</string>
-    <string name="AceUI.Information.NotConnected">N/A</string>
+    <!-- 心拍 -->
+    <string name="Ace.Word.HeartrateZone.Repose">安静</string>
+    <string name="Ace.Word.HeartrateZone.Easy">軽度</string>
+    <string name="Ace.Word.HeartrateZone.FatCombustion">燃焼</string>
+    <string name="Ace.Word.HeartrateZone.PossessionOxygenMotion">有酸素</string>
+    <string name="Ace.Word.HeartrateZone.NonOxygenatedMotion">無酸素</string>
+    <string name="Ace.Word.HeartrateZone.Overwork">危険域</string>
+    <string-array name="Ace_Word_HeartrateZone">
+        <item>@string/Ace.Word.HeartrateZone.Repose</item>
+        <item>@string/Ace.Word.HeartrateZone.Easy</item>
+        <item>@string/Ace.Word.HeartrateZone.FatCombustion</item>
+        <item>@string/Ace.Word.HeartrateZone.PossessionOxygenMotion</item>
+        <item>@string/Ace.Word.HeartrateZone.NonOxygenatedMotion</item>
+        <item>@string/Ace.Word.HeartrateZone.Overwork</item>
+    </string-array>
 
-    <!-- 心拍ゾーン名 -->
-    <string name="AceUI.Zone.Heartrate.Repose">安静</string>
-    <string name="AceUI.Zone.Heartrate.Easy">軽度</string>
-    <string name="AceUI.Zone.Heartrate.FatCombustion">燃焼</string>
-    <string name="AceUI.Zone.Heartrate.PossessionOxygenMotion">有酸素</string>
-    <string name="AceUI.Zone.Heartrate.NonOxygenatedMotion">無酸素</string>
-    <string name="AceUI.Zone.Heartrate.Overwork">危険域</string>
+    <!-- ケイデンス -->
+    <string name="Ace.Word.CadenceZone.Stop">停止</string>
+    <string name="Ace.Word.CadenceZone.Slow">低回転</string>
+    <string name="Ace.Word.CadenceZone.Ideal">標準</string>
+    <string name="Ace.Word.CadenceZone.High">高回転</string>
+    <string-array name="Ace_Word_CadenceZone">
+        <item>@string/Ace.Word.CadenceZone.Stop</item>
+        <item>@string/Ace.Word.CadenceZone.Slow</item>
+        <item>@string/Ace.Word.CadenceZone.Ideal</item>
+        <item>@string/Ace.Word.CadenceZone.High</item>
+    </string-array>
+    <!-- 速度 -->
+    <string name="Ace.Word.SpeedZone.Stop">停止</string>
+    <string name="Ace.Word.SpeedZone.Slow">低速</string>
+    <string name="Ace.Word.SpeedZone.Cruise">巡航</string>
+    <string name="Ace.Word.SpeedZone.Sprint">高速</string>
+    <string-array name="Ace_Word_SpeedZone">
+        <item>@string/Ace.Word.SpeedZone.Stop</item>
+        <item>@string/Ace.Word.SpeedZone.Slow</item>
+        <item>@string/Ace.Word.SpeedZone.Cruise</item>
+        <item>@string/Ace.Word.SpeedZone.Sprint</item>
+    </string-array>
+    <!-- 傾斜タイプ -->
+    <string name="Ace.Word.HillInclination.None">平地</string>
+    <string name="Ace.Word.HillInclination.Hill">坂道</string>
+    <string name="Ace.Word.HillInclination.IntenseHill">激坂</string>
+    <string-array name="Ace_Word_HillInclination">
+        <item>@string/Ace.Word.HillInclination.None</item>
+        <item>@string/Ace.Word.HillInclination.Hill</item>
+        <item>@string/Ace.Word.HillInclination.IntenseHill</item>
+    </string-array>
 
-    <!-- 時間名 -->
-    <string name="AceUI.Time.Active.Stop">停止</string>
-    <string name="AceUI.Time.Active.Active">アクティブ</string>
-    <string name="AceUI.Time.Session">走行時間（セッション）</string>
-    <string name="AceUI.Time.Date">走行時間（今日）</string>
-    <string name="AceUI.Time.Current">現在時刻</string>
+    <!-- 近接コマンドカテゴリ -->
+    <string name="com.eaglesakura.andriders.category.TRIGGER_PROXIMITY">
+        com.eaglesakura.andriders.category.TRIGGER_PROXIMITY
+    </string>
+    <!-- ジオコマンドカテゴリ -->
+    <string name="com.eaglesakura.andriders.category.TRIGGER_GEO">
+        com.eaglesakura.andriders.category.TRIGGER_GEO
+    </string>
+    <!-- 活動コマンドカテゴリ -->
+    <string name="com.eaglesakura.andriders.category.TRIGGER_ACTIVITY">
+        com.eaglesakura.andriders.category.TRIGGER_ACTIVITY
+    </string>
 
-    <!-- ケイデンスゾーン名 -->
-    <string name="AceUI.Zone.Cadence.Slow">低回転</string>
-    <string name="AceUI.Zone.Cadence.Ideal">標準</string>
-    <string name="AceUI.Zone.Cadence.High">高回転</string>
-
-    <!-- スピードゾーン名 -->
-    <string name="AceUI.Zone.Speed.Stop">停止</string>
-    <string name="AceUI.Zone.Speed.Slow">低速</string>
-    <string name="AceUI.Zone.Speed.Cruise">巡航</string>
-    <string name="AceUI.Zone.Speed.Sprint">高速</string>
-
-    <!-- 傾斜ゾーン名 -->
-    <string name="AceUI.Zone.Altitude.None">平地</string>
-    <string name="AceUI.Zone.Altitude.Hill">坂道</string>
-    <string name="AceUI.Zone.Altitude.IntenseHill">激坂</string>
-
-    <!-- id定義 -->
-    <!-- ゾーンタイトル（軽度、安静等） -->
-    <item name="AceUI.BasicUI.ZoneTitle" type="id"></item>
-    <!-- ゾーンバー（色表示） -->
-    <item name="AceUI.BasicUI.ZoneColor" type="id"></item>
-    <!-- 表示用値 -->
-    <item name="AceUI.BasicUI.Value" type="id"></item>
+    <!-- SNSへの送信を許可する -->
+    <string name="com.eaglesakura.andriders.permission.POST_SNS">
+        com.eaglesakura.andriders.permission.POST_SNS
+    </string>
 
 </resources>
