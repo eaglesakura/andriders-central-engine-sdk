@@ -34,10 +34,11 @@ apply plugin: 'com.eaglesakura.ci-support'
 if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
     ext.EGLIBRARY_COMPILE_LOCAL = false // 開発用。ローカルのソースコードをビルドする
 }
+if (!hasProperty("ANDROID_SUPPORT_LIB_VERSION")) {
+    ext.ANDROID_SUPPORT_LIB_VERSION = "25.+"
+}
 
 dependencies {
-    compile 'com.android.support:support-annotations:+'
-
     if (EGLIBRARY_COMPILE_LOCAL) {
         // 開発用:ローカルのソースコードを利用する
         compile project(':eglibrary:simple-utils')
@@ -62,6 +63,7 @@ dependencies {
         testCompile 'com.eaglesakura:json-wrapper:1.+'
         testCompile 'com.eaglesakura:android-unittest-support:1.+'
     }
+    compile "com.android.support:support-annotations:${ANDROID_SUPPORT_LIB_VERSION}"
 }
 
 android {
