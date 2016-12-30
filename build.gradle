@@ -1,6 +1,7 @@
 // 3.0.x : ACE v3系列対応 / Circle CI対応
 def ACES_SDK_VERSION = "3.0";
 def ARTIFACT_NAME = file(".").absoluteFile.name
+def ARTIFACT_TYPE = "beta";   // アーティファクトの切り分けを明示的に行なう
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
 buildscript {
@@ -77,7 +78,7 @@ android {
         targetSdkVersion 25
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}\""
         buildConfigField "String", "ACE_APPLICATION_ID", "\"org.andriders.ace\""
         buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
         buildConfigField "int", "ACE_SDK_BUILD_NUMBER", "${eglibrary.ci.buildVersionCode}"
@@ -122,7 +123,7 @@ android.libraryVariants.all { variant ->
     }
 
     task("javadoc", type: Javadoc) {
-        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}${getArtifactVersionSuffix()}"
+        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"
         description "Generates Android Javadoc for $variant.name."
         source = variant.javaCompile.source
         ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
@@ -159,7 +160,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: uri(ARTIFACT_INSTALL_TARGET))
-            pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix()
+            pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix(ARTIFACT_TYPE)
             pom.groupId = "com.eaglesakura"
             pom.artifactId = ARTIFACT_NAME
         }
@@ -173,6 +174,37 @@ task uploadJavadoc << {
     dst.mkdirs();
 
     ["/usr/bin/rsync", "-a", src.absolutePath, dst.absolutePath].execute().text;
+}
+
+/**
+ * 依存している固定ライブラリバージョンを取得する
+ */
+String dependenciesVersion(String libName, String defVersion) {
+    def lines = [];
+    def target = file("dependencies.txt");
+    if (!target.file) {
+        return defVersion;
+    }
+
+    target.text.eachLine {
+        if (!it.contains(libName) || it.contains("(")) {
+            return;
+        }
+
+        def tokens = it.split(" ");
+        if (tokens == null || tokens.length == 0) {
+            return;
+        }
+
+        lines += tokens[tokens.length - 1];
+    }
+    if (lines.empty) {
+        println("${libName} -> ${defVersion}")
+        return defVersion;
+    } else {
+        println("${libName} -> ${lines[0]}")
+        return lines[0];
+    }
 }
 
 [uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
@@ -190,49 +222,43 @@ task uploadJavadoc << {
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'simple-logger'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:simple-logger", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'simple-utils'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:simple-utils", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'simple-serialize'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:simple-serialize", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'geo-utils'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:geo-utils", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'android-simple-utils'
-                version = "1.+"
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'android-text-kvs'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:android-simple-utils", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'android-canvas-graphics'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:android-canvas-graphics", "1.+")
                 scope = 'compile'
             }
             dependency {
                 groupId = 'com.eaglesakura'
                 artifactId = 'android-command-service'
-                version = "1.+"
+                version = dependenceisVersion("com.eaglesakura:android-command-service", "1.+")
                 scope = 'compile'
             }
         }
@@ -243,12 +269,17 @@ task uploadJavadoc << {
  * バージョンを取得する
  * CircleCIの場合、バージョン末尾にビルド番号を付与する
  */
-def getArtifactVersionSuffix() {
+def getArtifactVersionSuffix(String artifactType) {
+    def prefix = ".";
+    if ("" != artifactType) {
+        // 明示的に`beta`等のタイプが指定されているなら、それを付与する
+        prefix = ".${artifactType}-"
+    }
     if (System.env.CIRCLE_BUILD_NUM != null) {
         // CircleCIのバージョンが指定されているので、そちらを利用する
-        return ".${System.env.CIRCLE_BUILD_NUM}"
+        return "${prefix}${System.env.CIRCLE_BUILD_NUM}"
     } else {
-        return ".local"
+        return "${prefix}local"
     }
 }
 
