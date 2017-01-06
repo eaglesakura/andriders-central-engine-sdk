@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -23,12 +22,13 @@ import java.util.TimeZone;
  */
 public class GpxParser {
 
-    static final DateFormat sGpxDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault());
+    static final DateFormat sGpxDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
-    static final DateFormat sGpxDateFormat2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+    static final DateFormat sGpxDateFormat2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     static {
-        sGpxDateFormat.setTimeZone(TimeZone.getDefault());
+        sGpxDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        sGpxDateFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     public enum DateOption {

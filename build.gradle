@@ -87,11 +87,16 @@ android {
     }
 
     lintOptions {
-        disable "DuplicateIds"
-        disable "NewApi"
-        disable "InvalidPackage"
-        disable "ResourceType"
-        disable "UnusedResources"
+        disable "DuplicateIds"  // LayoutXmlのID重複は許容する
+
+        // 全てのロケールに対する翻訳は非現実的なので無視する
+        disable "MissingTranslation"
+        disable "DefaultLocale"
+
+//        disable "NewApi"
+//        disable "InvalidPackage"
+//        disable "ResourceType"
+//        disable "UnusedResources"
     }
 
 }
