@@ -40,29 +40,24 @@ public class CentralDataReceiver {
     public static final String EXTRA_COMMAND_KEY = "EXTRA_COMMAND_KEY";
 
     /**
-     * RawIntent情報
-     */
-    public static final String EXTRA_COMMAND_INTERNAL_EXTRAS = "EXTRA_COMMAND_INTERNAL_EXTRAS";
-
-    /**
      * 送受信用Action
      */
-    public static final String ACTION_UPDATE_CENTRAL_DATA = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
+    public static final String ACTION_UPDATE_CENTRAL_DATA = "org.andriders.ace.ACTION_UPDATE_CENTRAL_DATA_v2";
 
     /**
      * 通知を受信した
      */
-    public static final String ACTION_RECEIVED_NOTIFICATION = "com.eaglesakura.andriders.ACTION_RECEIVED_NOTIFICATION";
+    public static final String ACTION_RECEIVED_NOTIFICATION = "org.andriders.ace.ACTION_RECEIVED_NOTIFICATION";
 
     /**
      * コマンドの起動が行われた
      */
-    public static final String ACTION_COMMAND_BOOTED = "com.eaglesakura.andriders.ACTION_COMMAND_BOOTED";
+    public static final String ACTION_COMMAND_BOOTED = "org.andriders.ace.ACTION_COMMAND_BOOTED";
 
     /**
      * 送受信用カテゴリ
      */
-    public static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
+    public static final String INTENT_CATEGORY = "org.andriders.ace.CATEGORY_CENTRAL_DATA";
 
     @NonNull
     final Context mContext;
