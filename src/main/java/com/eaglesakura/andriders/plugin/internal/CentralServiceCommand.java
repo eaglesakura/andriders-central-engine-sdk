@@ -39,17 +39,17 @@ public class CentralServiceCommand {
     /**
      * セッションを開始させる
      */
-    public static final String ACTION_SESSION_START = "com.eaglesakura.andriders.ACTION_SESSION_START";
+    public static final String ACTION_SESSION_START = "org.andriders.ace.internal.ACTION_SESSION_START";
 
     /**
      * セッション停止をリクエストする
      */
-    public static final String ACTION_SESSION_STOP = "com.eaglesakura.andriders.ACTION_SESSION_STOP";
+    public static final String ACTION_SESSION_STOP = "org.andriders.ace.internal.ACTION_SESSION_STOP";
 
     /**
      * セッション制御用
      */
-    public static final String ACTION_SESSION_CONTROL = "com.eaglesakura.andriders.ACTION_SESSION_CONTROL";
+    public static final String ACTION_SESSION_CONTROL = "org.andriders.ace.internal.ACTION_SESSION_CONTROL";
 
     /**
      * 接続をリクエストしているアプリID
@@ -60,4 +60,15 @@ public class CentralServiceCommand {
      * 接続対象のコンポーネント
      */
     public static final ComponentName COMPONENT_SESSION_SERVICE = new ComponentName(BuildConfig.ACE_APPLICATION_ID, "com.eaglesakura.andriders.service.CentralSessionService");
+
+
+    /**
+     * セッションの通知をリクエストする
+     */
+    public static final String ACTION_NOTIFICATION_REQUEST = "org.andriders.ace.internal.ACTION_NOTIFICATION_REQUEST";
+
+    /**
+     * 通知データを付与する
+     */
+    public static final String EXTRA_NOTIFICATION_DATA = "EXTRA_NOTIFICATION_DATA";
 }

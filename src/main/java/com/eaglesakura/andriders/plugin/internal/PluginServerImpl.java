@@ -30,7 +30,7 @@ public class PluginServerImpl extends CommandServer implements Disposable {
 
     String mClientId;
 
-    public static final String ACTION_ACE_EXTENSION_BIND = "com.eaglesakura.andriders.ACTION_ACE_EXTENSION_BIND_V3";
+    public static final String ACTION_ACE_EXTENSION_BIND = "org.andriders.ace.ACTION_ACE_EXTENSION_BIND";
 
     /**
      * Serviceに接続する度に付与されるコネクションID

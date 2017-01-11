@@ -1,7 +1,10 @@
 package com.eaglesakura.andriders.notification;
 
+import com.eaglesakura.andriders.AceEnvironment;
+import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
 import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
+import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
@@ -10,6 +13,7 @@ import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
@@ -269,6 +273,21 @@ public class NotificationData {
 
     public int getBackgroundColor() {
         return backgroundColor;
+    }
+
+    /**
+     * Broadcastを通じて通知をリクエストする
+     *
+     * これにより、Plugin Serviceを使用しなくても通知を表示できる。
+     * 例えば、SNSへの投稿を完了した、などのメッセージで使用する。
+     */
+    public void showRequest(@NonNull Context context) {
+        UIHandler.postUIorRun(() -> {
+            Intent intent = new Intent(CentralServiceCommand.ACTION_NOTIFICATION_REQUEST);
+            intent.putExtra(CentralServiceCommand.EXTRA_NOTIFICATION_DATA, serialize());
+            intent.setPackage(AceEnvironment.ANDRIDERS_CENTRAL_ENGINE_PACKAGE_NAME);
+            context.sendBroadcast(intent);
+        });
     }
 
     public static class Builder {

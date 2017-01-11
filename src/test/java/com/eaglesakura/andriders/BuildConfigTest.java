@@ -9,7 +9,7 @@ import org.junit.Test;
 public class BuildConfigTest extends UnitTestCase {
     @Test
     public void helloContextTest() throws Exception {
-        assertNotNull(getContext().getString(R.string.com_eaglesakura_andriders_category_TRIGGER_GEO));
+        assertNotNull(getContext().getString(R.string.Ace_Word_HeartrateZone_NonOxygenatedMotion));
         assertNotNull(BuildConfig.ACE_SDK_VERSION);
     }
 

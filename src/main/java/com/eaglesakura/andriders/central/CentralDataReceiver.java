@@ -3,7 +3,6 @@ package com.eaglesakura.andriders.central;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.andriders.serialize.RawCentralData;
-import com.eaglesakura.andriders.serialize.RawIntent;
 import com.eaglesakura.andriders.serialize.RawLocation;
 import com.eaglesakura.andriders.serialize.RawSensorData;
 import com.eaglesakura.serialize.error.SerializeException;
@@ -17,7 +16,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -42,29 +40,24 @@ public class CentralDataReceiver {
     public static final String EXTRA_COMMAND_KEY = "EXTRA_COMMAND_KEY";
 
     /**
-     * RawIntent情報
-     */
-    public static final String EXTRA_COMMAND_INTERNAL_EXTRAS = "EXTRA_COMMAND_INTERNAL_EXTRAS";
-
-    /**
      * 送受信用Action
      */
-    public static final String ACTION_UPDATE_CENTRAL_DATA = "com.eaglesakura.andriders.ACTION_UPDATE_CENTRAL_DATA_v2";
+    public static final String ACTION_UPDATE_CENTRAL_DATA = "org.andriders.ace.ACTION_UPDATE_CENTRAL_DATA_v2";
 
     /**
      * 通知を受信した
      */
-    public static final String ACTION_RECEIVED_NOTIFICATION = "com.eaglesakura.andriders.ACTION_RECEIVED_NOTIFICATION";
+    public static final String ACTION_RECEIVED_NOTIFICATION = "org.andriders.ace.ACTION_RECEIVED_NOTIFICATION";
 
     /**
      * コマンドの起動が行われた
      */
-    public static final String ACTION_COMMAND_BOOTED = "com.eaglesakura.andriders.ACTION_COMMAND_BOOTED";
+    public static final String ACTION_COMMAND_BOOTED = "org.andriders.ace.ACTION_COMMAND_BOOTED";
 
     /**
      * 送受信用カテゴリ
      */
-    public static final String INTENT_CATEGORY = "com.eaglesakura.andriders.CATEGORY_CENTRAL_DATA";
+    public static final String INTENT_CATEGORY = "org.andriders.ace.CATEGORY_CENTRAL_DATA";
 
     @NonNull
     final Context mContext;
@@ -143,41 +136,46 @@ public class CentralDataReceiver {
         return mConnected;
     }
 
+    /**
+     * 受け取ったIntentから自動でハンドリングする
+     */
+    public void onReceived(@NonNull Intent intent) {
+        final String action = intent.getAction();
+        RawCentralData centralData;
+        try {
+            byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
+            centralData = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, centralBuffer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            centralData = null;
+        }
+        if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
+            onReceived(centralData);
+        } else if (ACTION_RECEIVED_NOTIFICATION.equals(action)) {
+            byte[] notificationBuffer = intent.getByteArrayExtra(EXTRA_NOTIFICATION_DATA);
+            try {
+                if (notificationBuffer != null) {
+                    onReceivedNotificationData(notificationBuffer, centralData);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (ACTION_COMMAND_BOOTED.equals(action)) {
+            try {
+                CommandKey key = intent.getParcelableExtra(EXTRA_COMMAND_KEY);
+                if (key != null) {
+                    onReceived(key, centralData);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-            if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
-                byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
-                try {
-                    if (centralBuffer != null) {
-                        onReceivedCentralData(centralBuffer);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (ACTION_RECEIVED_NOTIFICATION.equals(action)) {
-                byte[] notificationBuffer = intent.getByteArrayExtra(EXTRA_NOTIFICATION_DATA);
-                try {
-                    if (notificationBuffer != null) {
-                        onReceivedNotificationData(notificationBuffer);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (ACTION_COMMAND_BOOTED.equals(action)) {
-                try {
-                    CommandKey key = intent.getParcelableExtra(EXTRA_COMMAND_KEY);
-                    byte[] extra = intent.getByteArrayExtra(EXTRA_COMMAND_INTERNAL_EXTRAS);
-                    RawIntent rawIntent = extra != null ? SerializeUtil.deserializePublicFieldObject(RawIntent.class, extra) : null;
-                    if (key != null) {
-                        onReceived(key, rawIntent != null ? rawIntent.extras : null);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
+            onReceived(intent);
         }
     };
 
@@ -225,18 +223,18 @@ public class CentralDataReceiver {
      *
      * @param buffer シリアライズ化されたデータ
      */
-    public void onReceivedNotificationData(byte[] buffer) throws SerializeException {
+    public void onReceivedNotificationData(byte[] buffer, RawCentralData centralData) throws SerializeException {
         NotificationProtocol.RawNotification data = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
-        onReceived(data);
+        onReceived(data, centralData);
     }
 
     /**
      * コマンドの情報をハンドリングする
      */
-    public void onReceived(@NonNull CommandKey key, @Nullable List<RawIntent.Extra> aceInternalExtra) {
+    public void onReceived(@NonNull CommandKey key, @Nullable RawCentralData centralData) {
         synchronized (lock) {
             for (CentralNotificationHandler handler : mNotificationHandlers) {
-                handler.onReceivedCommandBoot(key, aceInternalExtra);
+                handler.onReceivedCommandBoot(key, centralData);
             }
         }
     }
@@ -244,10 +242,10 @@ public class CentralDataReceiver {
     /**
      * 通知情報をハンドリングする
      */
-    public void onReceived(@NonNull NotificationProtocol.RawNotification notification) {
+    public void onReceived(@NonNull NotificationProtocol.RawNotification notification, @Nullable RawCentralData centralData) {
         synchronized (lock) {
             for (CentralNotificationHandler handler : mNotificationHandlers) {
-                handler.onReceivedNotification(notification);
+                handler.onReceivedNotification(notification, centralData);
             }
         }
     }
