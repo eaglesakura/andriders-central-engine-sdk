@@ -3,7 +3,6 @@ package com.eaglesakura.andriders.central;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.andriders.serialize.RawCentralData;
-import com.eaglesakura.andriders.serialize.RawIntent;
 import com.eaglesakura.andriders.serialize.RawLocation;
 import com.eaglesakura.andriders.serialize.RawSensorData;
 import com.eaglesakura.serialize.error.SerializeException;
@@ -17,7 +16,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -148,20 +146,21 @@ public class CentralDataReceiver {
      */
     public void onReceived(@NonNull Intent intent) {
         final String action = intent.getAction();
-        if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
+        RawCentralData centralData;
+        try {
             byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
-            try {
-                if (centralBuffer != null) {
-                    onReceivedCentralData(centralBuffer);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            centralData = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, centralBuffer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            centralData = null;
+        }
+        if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
+            onReceived(centralData);
         } else if (ACTION_RECEIVED_NOTIFICATION.equals(action)) {
             byte[] notificationBuffer = intent.getByteArrayExtra(EXTRA_NOTIFICATION_DATA);
             try {
                 if (notificationBuffer != null) {
-                    onReceivedNotificationData(notificationBuffer);
+                    onReceivedNotificationData(notificationBuffer, centralData);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -169,10 +168,8 @@ public class CentralDataReceiver {
         } else if (ACTION_COMMAND_BOOTED.equals(action)) {
             try {
                 CommandKey key = intent.getParcelableExtra(EXTRA_COMMAND_KEY);
-                byte[] extra = intent.getByteArrayExtra(EXTRA_COMMAND_INTERNAL_EXTRAS);
-                RawIntent rawIntent = extra != null ? SerializeUtil.deserializePublicFieldObject(RawIntent.class, extra) : null;
                 if (key != null) {
-                    onReceived(key, rawIntent != null ? rawIntent.extras : null);
+                    onReceived(key, centralData);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -231,18 +228,18 @@ public class CentralDataReceiver {
      *
      * @param buffer シリアライズ化されたデータ
      */
-    public void onReceivedNotificationData(byte[] buffer) throws SerializeException {
+    public void onReceivedNotificationData(byte[] buffer, RawCentralData centralData) throws SerializeException {
         NotificationProtocol.RawNotification data = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
-        onReceived(data);
+        onReceived(data, centralData);
     }
 
     /**
      * コマンドの情報をハンドリングする
      */
-    public void onReceived(@NonNull CommandKey key, @Nullable List<RawIntent.Extra> aceInternalExtra) {
+    public void onReceived(@NonNull CommandKey key, @Nullable RawCentralData centralData) {
         synchronized (lock) {
             for (CentralNotificationHandler handler : mNotificationHandlers) {
-                handler.onReceivedCommandBoot(key, aceInternalExtra);
+                handler.onReceivedCommandBoot(key, centralData);
             }
         }
     }
@@ -250,10 +247,10 @@ public class CentralDataReceiver {
     /**
      * 通知情報をハンドリングする
      */
-    public void onReceived(@NonNull NotificationProtocol.RawNotification notification) {
+    public void onReceived(@NonNull NotificationProtocol.RawNotification notification, @Nullable RawCentralData centralData) {
         synchronized (lock) {
             for (CentralNotificationHandler handler : mNotificationHandlers) {
-                handler.onReceivedNotification(notification);
+                handler.onReceivedNotification(notification, centralData);
             }
         }
     }
