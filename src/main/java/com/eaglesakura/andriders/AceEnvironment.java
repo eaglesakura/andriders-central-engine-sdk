@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 /**
  * 環境を指定する
@@ -58,7 +59,7 @@ public class AceEnvironment {
      * Andriders Central Engineインストール用のIntentを生成する
      * Google Playへのリンクとなる
      */
-    public static Intent getAceInstallIntent(Context context) {
+    public static Intent getAceInstallIntent(@NonNull Context context) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + BuildConfig.ACE_APPLICATION_ID));
         return intent;
     }

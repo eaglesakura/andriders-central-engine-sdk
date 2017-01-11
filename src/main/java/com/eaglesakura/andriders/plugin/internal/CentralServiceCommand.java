@@ -60,4 +60,15 @@ public class CentralServiceCommand {
      * 接続対象のコンポーネント
      */
     public static final ComponentName COMPONENT_SESSION_SERVICE = new ComponentName(BuildConfig.ACE_APPLICATION_ID, "com.eaglesakura.andriders.service.CentralSessionService");
+
+
+    /**
+     * セッションの通知をリクエストする
+     */
+    public static final String ACTION_NOTIFICATION_REQUEST = "org.andriders.ace.ACTION_NOTIFICATION_REQUEST";
+
+    /**
+     * 通知データを付与する
+     */
+    public static final String EXTRA_NOTIFICATION_DATA = "EXTRA_NOTIFICATION_DATA";
 }

@@ -1,7 +1,9 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.andriders.serialize.RawCentralData;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.util.SerializeUtil;
 
 import android.app.Activity;
 import android.app.Service;
@@ -14,6 +16,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 /**
  * コマンドデータの構築を行う
@@ -39,6 +42,11 @@ public class CommandSetting {
      * コマンドのUniqueKey
      */
     public static final String EXTRA_COMMAND_KEY = "EXTRA_COMMAND_KEY";
+
+    /**
+     * 現在のCentral情報を付与する
+     */
+    public static final String EXTRA_COMMAND_CENTRAL_DATA = "EXTRA_COMMAND_CENTRAL_DATA";
 
 
     public static class Builder {
@@ -166,6 +174,24 @@ public class CommandSetting {
             activity.setResult(Activity.RESULT_OK, data);
             activity.finish();
             return data;
+        }
+    }
+
+
+    /**
+     * ACEからコマンドトリガーが発火されたIntentから、現在のACEs情報を取得する
+     */
+    @Nullable
+    public static RawCentralData getLatestCentralData(@NonNull Intent commandIntent) {
+        try {
+            byte[] byteArrayExtra = commandIntent.getByteArrayExtra(CommandSetting.EXTRA_COMMAND_CENTRAL_DATA);
+            if (byteArrayExtra == null) {
+                return null;
+            }
+            return SerializeUtil.deserializePublicFieldObject(RawCentralData.class, byteArrayExtra);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
