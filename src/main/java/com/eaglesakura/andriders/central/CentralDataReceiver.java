@@ -143,41 +143,47 @@ public class CentralDataReceiver {
         return mConnected;
     }
 
+    /**
+     * 受け取ったIntentから自動でハンドリングする
+     */
+    public void onReceived(@NonNull Intent intent) {
+        final String action = intent.getAction();
+        if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
+            byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
+            try {
+                if (centralBuffer != null) {
+                    onReceivedCentralData(centralBuffer);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (ACTION_RECEIVED_NOTIFICATION.equals(action)) {
+            byte[] notificationBuffer = intent.getByteArrayExtra(EXTRA_NOTIFICATION_DATA);
+            try {
+                if (notificationBuffer != null) {
+                    onReceivedNotificationData(notificationBuffer);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (ACTION_COMMAND_BOOTED.equals(action)) {
+            try {
+                CommandKey key = intent.getParcelableExtra(EXTRA_COMMAND_KEY);
+                byte[] extra = intent.getByteArrayExtra(EXTRA_COMMAND_INTERNAL_EXTRAS);
+                RawIntent rawIntent = extra != null ? SerializeUtil.deserializePublicFieldObject(RawIntent.class, extra) : null;
+                if (key != null) {
+                    onReceived(key, rawIntent != null ? rawIntent.extras : null);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-            if (ACTION_UPDATE_CENTRAL_DATA.equals(action)) {
-                byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
-                try {
-                    if (centralBuffer != null) {
-                        onReceivedCentralData(centralBuffer);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (ACTION_RECEIVED_NOTIFICATION.equals(action)) {
-                byte[] notificationBuffer = intent.getByteArrayExtra(EXTRA_NOTIFICATION_DATA);
-                try {
-                    if (notificationBuffer != null) {
-                        onReceivedNotificationData(notificationBuffer);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else if (ACTION_COMMAND_BOOTED.equals(action)) {
-                try {
-                    CommandKey key = intent.getParcelableExtra(EXTRA_COMMAND_KEY);
-                    byte[] extra = intent.getByteArrayExtra(EXTRA_COMMAND_INTERNAL_EXTRAS);
-                    RawIntent rawIntent = extra != null ? SerializeUtil.deserializePublicFieldObject(RawIntent.class, extra) : null;
-                    if (key != null) {
-                        onReceived(key, rawIntent != null ? rawIntent.extras : null);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
+            onReceived(intent);
         }
     };
 
