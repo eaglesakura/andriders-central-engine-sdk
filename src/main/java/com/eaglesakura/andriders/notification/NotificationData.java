@@ -16,6 +16,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -259,6 +261,14 @@ public class NotificationData {
         return this;
     }
 
+    /**
+     * Drawableからアイコンを設定する
+     */
+    public NotificationData setIcon(Context context, @NonNull Drawable drawable) {
+        setIcon(ImageUtil.toBitmap(drawable, NOTIFICATION_ICON_SIZE));
+        return this;
+    }
+
     public Bitmap getIcon() {
         return icon;
     }
@@ -329,6 +339,15 @@ public class NotificationData {
             return this;
         }
 
+        public Builder icon(@NonNull Drawable icon, IconCompressLevel level) {
+            if (icon instanceof BitmapDrawable) {
+                return icon(((BitmapDrawable) icon).getBitmap(), level);
+            } else {
+                mRaw.setIcon(ImageUtil.toBitmap(icon, Math.max(icon.getMinimumWidth(), icon.getMinimumHeight())), level);
+                return this;
+            }
+        }
+
         public Builder backgroundColor(@ColorInt int color) {
             mRaw.setBackgroundColor(color);
             return this;
@@ -342,6 +361,15 @@ public class NotificationData {
         public Builder icon(Bitmap icon) {
             mRaw.setIcon(icon);
             return this;
+        }
+
+        public Builder icon(@NonNull Drawable icon) {
+            if (icon instanceof BitmapDrawable) {
+                return icon(((BitmapDrawable) icon).getBitmap());
+            } else {
+                mRaw.setIcon(ImageUtil.toBitmap(icon, NOTIFICATION_ICON_SIZE));
+                return this;
+            }
         }
 
         public Builder duration(Duration duration) {
