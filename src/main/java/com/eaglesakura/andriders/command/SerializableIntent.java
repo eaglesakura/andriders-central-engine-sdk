@@ -34,7 +34,7 @@ public class SerializableIntent {
 
     public static SerializableIntent newService(@NonNull Context context, @NonNull Class<? extends Service> clazz) {
         SerializableIntent result = new SerializableIntent();
-        result.mRawIntent.intentType = RawIntent.IntentType.Activity;
+        result.mRawIntent.intentType = RawIntent.IntentType.Service;
         result.mRawIntent.componentName = StringUtil.format("%s/%s", context.getPackageName(), clazz.getName());
         return result;
     }
