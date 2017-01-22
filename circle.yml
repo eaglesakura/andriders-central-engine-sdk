@@ -20,8 +20,12 @@ test:
   override:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/circleci/build-test.sh)"
 deployment:
-  canary:
+  release:
     branch: /^v[0-9]\..*$/
+    commands:
+    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/circleci/build-deploy-maven.sh)"
+  beta:
+    branch: /^beta\/id\/.*$/
     commands:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/circleci/build-deploy-maven.sh)"
   develop:
