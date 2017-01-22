@@ -84,6 +84,8 @@ android {
         buildConfigField "String", "ACE_APPLICATION_ID", "\"org.andriders.ace\""
         buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
         buildConfigField "int", "ACE_SDK_BUILD_NUMBER", "${eglibrary.ci.buildVersionCode}"
+
+        manifestPlaceholders = [ace_sdk_version: "${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"]
     }
 
     lintOptions {

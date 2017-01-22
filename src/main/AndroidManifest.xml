@@ -1,3 +1,7 @@
-<manifest
-        package="com.eaglesakura.andriders.sdk">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.eaglesakura.andriders.sdk">
+
+    <application>
+        <meta-data android:name="org.andriders.ace.SDK_VERSION" android:value="${ace_sdk_version}"/>
+    </application>
 </manifest>
