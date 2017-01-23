@@ -1,7 +1,7 @@
 // 3.0.x : ACE v3系列対応 / Circle CI対応
 def ACES_SDK_VERSION = "3.0";
 def ARTIFACT_NAME = file(".").absoluteFile.name
-def ARTIFACT_TYPE = "beta";   // アーティファクトの切り分けを明示的に行なう, ""空文字, "beta"等
+def ARTIFACT_TYPE = "";   // アーティファクトの切り分けを明示的に行なう, ""空文字, "beta"等
 def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
 buildscript {
