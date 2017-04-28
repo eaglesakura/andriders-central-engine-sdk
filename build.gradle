@@ -6,23 +6,23 @@ def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
 
 buildscript {
     repositories {
-        maven { url "http://eaglesakura.github.io/maven/" }
         jcenter()
         mavenCentral()
+        maven { url "https://dl.bintray.com/eaglesakura/maven/" }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0'
-        classpath "com.eaglesakura:plugin-ci-support:1.0.47"
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath "com.eaglesakura:plugin-ci-support:1.2.200"
         classpath 'me.tatarka:gradle-retrolambda:3.2.5' // support Lambda
     }
 }
 
 allprojects {
     repositories {
-        maven { url "http://eaglesakura.github.io/maven/" }
         jcenter()
         mavenCentral()
+        maven { url "https://dl.bintray.com/eaglesakura/maven/" }
     }
 }
 
@@ -34,18 +34,13 @@ apply plugin: 'com.eaglesakura.ci-support'
 if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
     ext.EGLIBRARY_COMPILE_LOCAL = false // 開発用。ローカルのソースコードをビルドする
 }
-if (!hasProperty("ANDROID_SUPPORT_LIB_VERSION")) {
-    ext.ANDROID_SUPPORT_LIB_VERSION = "25.+"
-}
-
 dependencies {
     if (EGLIBRARY_COMPILE_LOCAL) {
         // 開発用:ローカルのソースコードを利用する
-        compile project(':eglibrary:simple-utils')
-        compile project(':eglibrary:simple-serialize')
+        compile project(':eglibrary:java-commons')
+        compile project(':eglibrary:publd-serializer')
         compile project(':eglibrary:geo-utils')
-        compile project(':eglibrary:android-simple-utils')
-        compile project(':eglibrary:android-canvas-graphics')
+        compile project(':eglibrary:android-commons')
         compile project(':eglibrary:android-command-service')
 
         testCompile project(":eglibrary:json-wrapper")
@@ -63,7 +58,7 @@ dependencies {
         testCompile 'com.eaglesakura:json-wrapper:1.+'
         testCompile 'com.eaglesakura:android-unittest-support:1.+'
     }
-    compile "com.android.support:support-annotations:${ANDROID_SUPPORT_LIB_VERSION}"
+    compile "com.android.support:support-annotations:25.3.1"
 }
 
 android {
