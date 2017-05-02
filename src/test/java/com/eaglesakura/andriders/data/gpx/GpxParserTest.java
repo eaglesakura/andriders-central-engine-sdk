@@ -1,8 +1,8 @@
 package com.eaglesakura.andriders.data.gpx;
 
 import com.eaglesakura.andriders.UnitTestCase;
+import com.eaglesakura.log.Logger;
 import com.eaglesakura.util.DateUtil;
-import com.eaglesakura.util.LogUtil;
 
 import org.junit.Test;
 
@@ -23,7 +23,7 @@ public class GpxParserTest extends UnitTestCase {
         Date date = GpxParser.sGpxDateFormat.parse(time);
 
         // AACR2015の朝である
-        LogUtil.log("Date[%s]", date.toString());
+        Logger.out(Logger.LEVEL_DEBUG, TAG, "Date[%s]", date.toString());
         assertEquals(DateUtil.getYear(date, TimeZone.getDefault()), 2015);
         assertEquals(DateUtil.getMonth(date, TimeZone.getDefault()), 5);
         assertEquals(DateUtil.getDay(date, TimeZone.getDefault()), 24);
@@ -36,7 +36,7 @@ public class GpxParserTest extends UnitTestCase {
         Date date = GpxParser.sGpxDateFormat2.parse(time);
 
         // AACR2016の朝である
-        LogUtil.log("Date[%s]", date.toString());
+        Logger.out(Logger.LEVEL_DEBUG, TAG, "Date[%s]", date.toString());
         assertEquals(DateUtil.getYear(date, TimeZone.getDefault()), 2016);
         assertEquals(DateUtil.getMonth(date, TimeZone.getDefault()), 5);
         assertEquals(DateUtil.getDay(date, TimeZone.getDefault()), 22);
@@ -57,7 +57,7 @@ public class GpxParserTest extends UnitTestCase {
         assertNotEquals(gpx.getTrackSegments().size(), 0);
 
         for (GpxSegment segment : gpx.getTrackSegments()) {
-            LogUtil.log("Track index[%d] points[%d]", gpx.getTrackSegments().indexOf(segment), segment.getPoints().size());
+            Logger.out(Logger.LEVEL_DEBUG, TAG, "Track index[%d] points[%d]", gpx.getTrackSegments().indexOf(segment), segment.getPoints().size());
             assertNotNull(segment.getPoints());
             assertNotEquals(segment.getPoints().size(), 0);
         }
@@ -71,7 +71,7 @@ public class GpxParserTest extends UnitTestCase {
 
             Date date = pt.getTime();
 
-            LogUtil.log("Start Date[%s]", date.toString());
+            Logger.out(Logger.LEVEL_DEBUG, TAG, "Start Date[%s]", date.toString());
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeZone(TimeZone.getDefault());
             calendar.setTime(date);
@@ -88,7 +88,7 @@ public class GpxParserTest extends UnitTestCase {
 
             Date date = pt.getTime();
 
-            LogUtil.log("End Date[%s]", date.toString());
+            Logger.out(Logger.LEVEL_DEBUG, TAG, "End Date[%s]", date.toString());
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeZone(TimeZone.getDefault());
             calendar.setTime(date);

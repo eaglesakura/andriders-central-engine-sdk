@@ -4,12 +4,12 @@ import com.eaglesakura.andriders.AceEnvironment;
 import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
 import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
-import com.eaglesakura.android.thread.ui.UIHandler;
+import com.eaglesakura.android.thread.UIHandler;
 import com.eaglesakura.android.util.ImageUtil;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
+import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
-import com.eaglesakura.util.LogUtil;
-import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;
@@ -172,7 +172,7 @@ public class NotificationData {
     public NotificationData(Context context, byte[] buffer) {
         NotificationProtocol.RawNotification raw;
         try {
-            raw = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
+            raw = PublicFieldDeserializer.deserializeFrom(NotificationProtocol.RawNotification.class, buffer);
         } catch (SerializeException e) {
             e.printStackTrace();
             throw new IllegalStateException(e);
@@ -399,9 +399,9 @@ public class NotificationData {
         raw.length = duration;
         raw.backgroundXRGB = backgroundColor;
         try {
-            return SerializeUtil.serializePublicFieldObject(raw);
+            return PublicFieldSerializer.serializeFrom(raw, true);
         } catch (SerializeException e) {
-            LogUtil.log(e);
+            e.printStackTrace();
             throw new IllegalStateException();
         }
     }

@@ -37,6 +37,7 @@ if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
 dependencies {
     if (EGLIBRARY_COMPILE_LOCAL) {
         // 開発用:ローカルのソースコードを利用する
+        compile project(':eglibrary:simple-logger')
         compile project(':eglibrary:java-commons')
         compile project(':eglibrary:publd-serializer')
         compile project(':eglibrary:geo-utils')

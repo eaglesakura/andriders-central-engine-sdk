@@ -2,8 +2,8 @@ package com.eaglesakura.andriders.command;
 
 import com.eaglesakura.andriders.serialize.RawCentralData;
 import com.eaglesakura.android.util.ImageUtil;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
 import com.eaglesakura.serialize.error.SerializeException;
-import com.eaglesakura.util.SerializeUtil;
 
 import android.app.Activity;
 import android.app.Service;
@@ -188,7 +188,7 @@ public class CommandSetting {
             if (byteArrayExtra == null) {
                 return null;
             }
-            return SerializeUtil.deserializePublicFieldObject(RawCentralData.class, byteArrayExtra);
+            return PublicFieldDeserializer.deserializeFrom(RawCentralData.class, byteArrayExtra);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
