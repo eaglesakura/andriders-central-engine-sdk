@@ -8,9 +8,9 @@ import org.junit.Test;
 
 public class BuildConfigTest extends UnitTestCase {
     @Test
-    public void helloContextTest() throws Exception {
-        assertNotNull(getContext().getString(R.string.Ace_Word_HeartrateZone_NonOxygenatedMotion));
-        assertNotNull(BuildConfig.ACE_SDK_VERSION);
+    public void BuildConfig出力が行えている() throws Exception {
+        assertNotEmpty(getContext().getString(R.string.Ace_Word_HeartrateZone_NonOxygenatedMotion));
+        assertNotEmpty(BuildConfig.ACE_SDK_VERSION);
     }
 
     @Test
