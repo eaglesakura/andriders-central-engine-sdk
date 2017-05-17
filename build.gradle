@@ -1,8 +1,11 @@
 // 3.0.x : ACE v3系列対応 / Circle CI対応
 def ACES_SDK_VERSION = "3.0";
-def ARTIFACT_NAME = file(".").absoluteFile.name
-def ARTIFACT_TYPE = "";   // アーティファクトの切り分けを明示的に行なう, ""空文字, "beta"等
-def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
+def ARTIFACT_TYPE = "beta";   // アーティファクトの切り分けを明示的に行なう, ""空文字, "beta"等
+def REPOSITORY_NAME = "maven"
+def BINTRAY_LICENSES = ["MIT"]
+def BINTRAY_LABELS = ["android"]
+def BINTRAY_API_KEY = System.env.BINTRAY_API_KEY
+def BINTRAY_GPG_PASS = System.env.BINTRAY_GPG_PASS
 
 buildscript {
     repositories {
@@ -13,8 +16,9 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'
-        classpath "com.eaglesakura:plugin-ci-support:1.2.200"
         classpath 'me.tatarka:gradle-retrolambda:3.5.0' // support Lambda
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -28,7 +32,8 @@ allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda' /* Android Lambda Support */
-apply plugin: 'com.eaglesakura.ci-support'
+group = "com.eaglesakura"
+version = "${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"
 
 // check env
 if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
@@ -92,11 +97,6 @@ android {
         // 全てのロケールに対する翻訳は非現実的なので無視する
         disable "MissingTranslation"
         disable "DefaultLocale"
-
-//        disable "NewApi"
-//        disable "InvalidPackage"
-//        disable "ResourceType"
-//        disable "UnusedResources"
     }
 
 }
@@ -116,8 +116,6 @@ tasks.withType(Test) {
         }
     }
 }
-
-apply plugin: 'maven'
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -163,115 +161,6 @@ android.libraryVariants.all { variant ->
     }
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri(ARTIFACT_INSTALL_TARGET))
-            pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix(ARTIFACT_TYPE)
-            pom.groupId = "com.eaglesakura"
-            pom.artifactId = ARTIFACT_NAME
-        }
-    }
-}
-
-task uploadJavadoc << {
-    def src = file("build/docs/javadoc/");
-    def dst = new File("${ARTIFACT_INSTALL_TARGET.absolutePath}/doc/${ARTIFACT_NAME}/");
-    dst.deleteDir();
-    dst.mkdirs();
-
-    ["/usr/bin/rsync", "-a", src.absolutePath, dst.absolutePath].execute().text;
-}
-
-/**
- * 依存している固定ライブラリバージョンを取得する
- */
-String dependenciesVersion(String libName, String defVersion) {
-    def lines = [];
-    def target = file("dependencies.txt");
-    if (!target.file) {
-        return defVersion;
-    }
-
-    target.text.eachLine {
-        if (!it.contains(libName) || it.contains("(")) {
-            return;
-        }
-
-        def tokens = it.split(" ");
-        if (tokens == null || tokens.length == 0) {
-            return;
-        }
-
-        lines += tokens[tokens.length - 1];
-    }
-    if (lines.empty) {
-        println("${libName} -> ${defVersion}")
-        return defVersion;
-    } else {
-        println("${libName} -> ${lines[0]}")
-        return lines[0];
-    }
-}
-
-[uploadArchives.repositories.mavenDeployer]*.pom*.whenConfigured { pom ->
-    pom.project {
-        inceptionYear '2015'
-        packaging 'aar'
-        licenses {
-            license {
-                name 'NYSL'
-                url 'https://raw.github.com/eaglesakura/eglibrary/master/LICENSE'
-            }
-        }
-
-        dependencies {
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'simple-logger'
-                version = dependenciesVersion("com.eaglesakura:simple-logger", "1.+")
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'simple-utils'
-                version = dependenciesVersion("com.eaglesakura:simple-utils", "1.+")
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'simple-serialize'
-                version = dependenciesVersion("com.eaglesakura:simple-serialize", "1.+")
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'geo-utils'
-                version = dependenciesVersion("com.eaglesakura:geo-utils", "1.+")
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'android-simple-utils'
-                version = dependenciesVersion("com.eaglesakura:android-simple-utils", "1.+")
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'android-canvas-graphics'
-                version = dependenciesVersion("com.eaglesakura:android-canvas-graphics", "1.+")
-                scope = 'compile'
-            }
-            dependency {
-                groupId = 'com.eaglesakura'
-                artifactId = 'android-command-service'
-                version = dependenciesVersion("com.eaglesakura:android-command-service", "1.+")
-                scope = 'compile'
-            }
-        }
-    }
-}
-
 /**
  * バージョンを取得する
  * CircleCIの場合、バージョン末尾にビルド番号を付与する
@@ -286,21 +175,31 @@ def getArtifactVersionSuffix(String artifactType) {
         // CircleCIのバージョンが指定されているので、そちらを利用する
         return "${prefix}${System.env.CIRCLE_BUILD_NUM}"
     } else {
-        return "${prefix}local"
+        return "${prefix}snapshot"
     }
 }
 
-/**
- * Mavenの格納先を確定する
- */
-def getArtifactInstallTarget() {
-    if (file("maven").directory) {
-        return file("maven");
-    } else if (System.env.CIRCLE_ARTIFACTS != null) {
-        return file(System.env.CIRCLE_ARTIFACTS);
-    } else if (System.env.MAVEN_LOCAL_REPO != null) {
-        return file(System.env.MAVEN_LOCAL_REPO);
-    } else {
-        return file("ci-release");
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+bintray {
+    user = 'eaglesakura'
+    key = BINTRAY_API_KEY
+    pkg {
+        repo = REPOSITORY_NAME
+        name = file(".").absoluteFile.name
+        licenses = BINTRAY_LICENSES
+        labels = BINTRAY_LABELS
+        issueTrackerUrl = "https://github.com/eaglesakura/${file(".").absoluteFile.name}/issues"
+        vcsUrl = "https://github.com/eaglesakura/${file(".").absoluteFile.name}"
+        version {
+            name = project.version
+            released = new Date()
+            gpg {
+                sign = true
+                passphrase = BINTRAY_GPG_PASS
+            }
+        }
     }
+    configurations = ['archives']
 }
