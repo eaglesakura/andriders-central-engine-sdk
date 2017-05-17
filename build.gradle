@@ -17,6 +17,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'
         classpath 'me.tatarka:gradle-retrolambda:3.5.0' // support Lambda
+        classpath "com.eaglesakura:plugin-ci-support:1.2.200"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
@@ -31,6 +32,7 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.eaglesakura.ci-support'
 apply plugin: 'me.tatarka.retrolambda' /* Android Lambda Support */
 group = "com.eaglesakura"
 version = "${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"
