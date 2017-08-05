@@ -53,12 +53,12 @@ version = ACE_SDK_VERSION_IMPL
 
 dependencies {
     // mavenから必要なライブラリを取得する
-    implementation 'com.eaglesakura:simple-logger:2.1.0'               /* Log */
-    implementation 'com.eaglesakura:java-commons:2.2.0'                /* Utils */
-    implementation 'com.eaglesakura:publd-serializer:2.1.0'            /* IDLシリアライズ */
-    implementation 'com.eaglesakura:geo-utils:1.2.0'                   /* GPS計算 */
-    implementation 'com.eaglesakura:android-commons:2.3.3'             /* Utils */
-    implementation 'com.eaglesakura:android-command-service:1.5.0'     /* ACE本体とのデータ通信 */
+    compile 'com.eaglesakura:simple-logger:2.1.0'               /* Log */
+    compile 'com.eaglesakura:java-commons:2.2.0'                /* Utils */
+    compile 'com.eaglesakura:publd-serializer:2.1.0'            /* IDLシリアライズ */
+    compile 'com.eaglesakura:geo-utils:1.2.0'                   /* GPS計算 */
+    compile 'com.eaglesakura:android-commons:2.3.3'             /* Utils */
+    compile 'com.eaglesakura:android-command-service:1.5.0'     /* ACE本体とのデータ通信 */
     testImplementation('com.eaglesakura:json-wrapper:1.2.0')
     testImplementation('com.eaglesakura:android-unittest-support:1.6.0') {
         exclude(group: "com.android.support")
