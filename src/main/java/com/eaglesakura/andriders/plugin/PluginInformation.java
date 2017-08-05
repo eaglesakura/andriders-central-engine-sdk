@@ -2,6 +2,7 @@ package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
 import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
@@ -119,7 +120,7 @@ public class PluginInformation {
         try {
             return new PublicFieldSerializer().serialize(mRaw);
         } catch (Exception e) {
-            LogUtil.log(e);
+            e.printStackTrace();
             throw new IllegalStateException();
         }
     }
@@ -141,12 +142,13 @@ public class PluginInformation {
             if (!CollectionUtil.isEmpty(serializedBuffers)) {
                 List<PluginInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializedBuffers) {
-                    result.add(new PluginInformation(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawPluginInfo.class, serialized)));
+                    PluginProtocol.RawPluginInfo pluginInfo = PublicFieldDeserializer.deserializeFrom(PluginProtocol.RawPluginInfo.class, serialized);
+                    result.add(new PluginInformation(pluginInfo));
                 }
                 return result;
             }
         } catch (SerializeException e) {
-            LogUtil.log(e);
+            e.printStackTrace();
         }
         throw new IllegalArgumentException("deserialize failed");
     }

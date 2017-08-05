@@ -5,8 +5,8 @@ import com.eaglesakura.andriders.plugin.AcePluginService;
 import com.eaglesakura.andriders.plugin.data.CentralEngineSessionData;
 import com.eaglesakura.andriders.plugin.display.DisplayDataSender;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
+import com.eaglesakura.log.Logger;
 import com.eaglesakura.util.IOUtil;
-import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.app.Service;
@@ -197,7 +197,7 @@ public class PluginConnection {
 
         final PluginConnection result = new PluginConnection(service, intent);
         synchronized (gSessions) {
-            LogUtil.log("add session :: " + result.getConnectionId() + " class :: " + service.getClass());
+            Logger.out(Logger.LEVEL_DEBUG, "Plugin", "add session :: " + result.getConnectionId() + " class :: " + service.getClass());
             if (gSessions.containsKey(result.getConnectionId())) {
                 throw new IllegalStateException("session conflict :: " + result.getConnectionId() + " :: sessions -> " + gSessions.size());
             } else {

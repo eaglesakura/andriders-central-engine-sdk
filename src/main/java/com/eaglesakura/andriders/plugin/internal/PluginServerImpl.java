@@ -1,27 +1,27 @@
 package com.eaglesakura.andriders.plugin.internal;
 
-import com.eaglesakura.andriders.plugin.connection.PluginConnection;
+import com.eaglesakura.andriders.plugin.AcePluginService;
 import com.eaglesakura.andriders.plugin.DisplayKey;
 import com.eaglesakura.andriders.plugin.PluginInformation;
-import com.eaglesakura.andriders.plugin.AcePluginService;
+import com.eaglesakura.andriders.plugin.connection.PluginConnection;
 import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.android.thread.ui.UIHandler;
-import com.eaglesakura.io.Disposable;
+import com.eaglesakura.android.thread.UIHandler;
 
 import android.app.Service;
 import android.os.RemoteException;
 
+import java.io.Closeable;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * ACE拡張機能の内部通信を行う
  */
-public class PluginServerImpl extends CommandServer implements Disposable {
+public class PluginServerImpl extends CommandServer implements Closeable {
     final AcePluginService mExtensionService;
 
     final CommandMap mCommandMap = new CommandMap();
@@ -113,7 +113,7 @@ public class PluginServerImpl extends CommandServer implements Disposable {
     }
 
     @Override
-    public void dispose() {
+    public void close() {
         onUnregisterCallback();
     }
 

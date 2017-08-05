@@ -5,12 +5,12 @@ import com.eaglesakura.andriders.sdk.R;
 import com.eaglesakura.thread.Holder;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 public class BuildConfigTest extends UnitTestCase {
     @Test
-    public void helloContextTest() throws Exception {
-        assertNotNull(getContext().getString(R.string.Ace_Word_HeartrateZone_NonOxygenatedMotion));
-        assertNotNull(BuildConfig.ACE_SDK_VERSION);
+    public void BuildConfig出力が行えている() throws Exception {
+        assertNotEmpty(BuildConfig.ACE_SDK_VERSION);
     }
 
     @Test
@@ -18,9 +18,7 @@ public class BuildConfigTest extends UnitTestCase {
         Holder<Boolean> holder = new Holder<>();
         holder.set(Boolean.FALSE);
 
-        Runnable call = () -> {
-            holder.set(Boolean.TRUE);
-        };
+        Runnable call = () -> holder.set(Boolean.TRUE);
 
         call.run();
 

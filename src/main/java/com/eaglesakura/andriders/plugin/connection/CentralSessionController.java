@@ -5,6 +5,8 @@ import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
 import com.eaglesakura.andriders.serialize.RawSessionInfo;
 import com.eaglesakura.andriders.serialize.RawSessionRequest;
 import com.eaglesakura.android.service.data.Payload;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
+import com.eaglesakura.serialize.PublicFieldSerializer;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -36,7 +38,7 @@ public class CentralSessionController {
     public RawSessionInfo getSessionInfo() {
         try {
             Payload payload = mClientImpl.requestPostToServer(CentralServiceCommand.CMD_getSessionInfo, null);
-            return payload.deserializePublicField(RawSessionInfo.class);
+            return PublicFieldDeserializer.deserializeFrom(RawSessionInfo.class, payload.getBuffer());
         } catch (Exception e) {
             return null;
         }
@@ -48,7 +50,9 @@ public class CentralSessionController {
     public void requestSessionStart() throws SessionControlException {
         try {
             RawSessionRequest request = new RawSessionRequest();
-            mClientImpl.requestPostToServer(CentralServiceCommand.CMD_requestSessionStart, Payload.fromPublicField(request));
+
+            Payload payload = new Payload(PublicFieldSerializer.serializeFrom(request, true));
+            mClientImpl.requestPostToServer(CentralServiceCommand.CMD_requestSessionStart, payload);
         } catch (Exception e) {
             throw new SessionControlException(e);
         }

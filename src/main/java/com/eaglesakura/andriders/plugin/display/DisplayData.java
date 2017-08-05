@@ -2,9 +2,10 @@ package com.eaglesakura.andriders.plugin.display;
 
 import com.eaglesakura.andriders.plugin.DisplayKey;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
+import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
-import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 
 import android.content.Context;
@@ -149,10 +150,9 @@ public class DisplayData {
         }
 
         try {
-            return SerializeUtil.serializePublicFieldObject(raw);
+            return PublicFieldSerializer.serializeFrom(raw, true);
         } catch (SerializeException e) {
-            LogUtil.log(e);
-            throw new IllegalStateException();
+            throw new IllegalStateException(e);
         }
     }
 
@@ -183,7 +183,7 @@ public class DisplayData {
             if (!CollectionUtil.isEmpty(serializeList)) {
                 List<T> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    PluginProtocol.RawCycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawCycleDisplayValue.class, serialized);
+                    PluginProtocol.RawCycleDisplayValue v = PublicFieldDeserializer.deserializeFrom(PluginProtocol.RawCycleDisplayValue.class, serialized);
                     result.add(constructor.newInstance(v));
                 }
                 return result;

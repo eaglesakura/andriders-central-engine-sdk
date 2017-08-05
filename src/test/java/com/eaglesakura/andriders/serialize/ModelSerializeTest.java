@@ -1,16 +1,15 @@
 package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.andriders.UnitTestCase;
-import com.eaglesakura.io.data.DataVerifier;
 import com.eaglesakura.json.JSON;
+import com.eaglesakura.log.Logger;
 import com.eaglesakura.refrection.NullableConstructor;
-import com.eaglesakura.util.LogUtil;
-import com.eaglesakura.util.SerializeUtil;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
+import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.util.StringUtil;
 
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class ModelSerializeTest extends UnitTestCase {
@@ -22,34 +21,17 @@ public class ModelSerializeTest extends UnitTestCase {
      * 全てのSerializeモデルはシリアライズとデシリアライズが可能であり、かつJSONとしてもシリアライズ出来ることを保証する
      */
     <T> void assertSerialize(Class<T> clazz) throws Exception {
-        LogUtil.log("Serialize :: " + clazz.getName());
+        Logger.out(Logger.LEVEL_DEBUG, TAG, "Serialize :: " + clazz.getName());
         for (int i = 0; i < TRY_SERIALIZE_COUNT; ++i) {
-            DataVerifier verifier = new DataVerifier();
             T obj = NullableConstructor.get(clazz, Random.class.getClass()).newInstance(Random.class);
             assertNotNull(obj);
 
-            byte[] buffer = SerializeUtil.serializePublicFieldObject(obj, true);
+            byte[] buffer = PublicFieldSerializer.serializeFrom(obj, true);
             assertNotNull(buffer);
             assertNotEquals(buffer.length, 0);
 
             // ベリファイコードを与える
-            byte[] packed = verifier.pack(buffer);
-            assertNotNull(packed);
-            assertTrue(packed.length > buffer.length);
-            // ベリファイコードの後ろ4桁が0x00でないことを検証する
-            assertNotEquals(packed[(packed.length - 4)], 0x00);
-            assertNotEquals(packed[(packed.length - 3)], 0x00);
-            assertNotEquals(packed[(packed.length - 2)], 0x00);
-            assertNotEquals(packed[(packed.length - 1)], 0x00);
-//            LogUtil.log("   num[%04d] hash(%s) verify(%s)", i, EncodeUtil.genMD5(buffer), StringUtil.toHexString(new byte[]{packed[(packed.length - 4)], packed[(packed.length - 3)], packed[(packed.length - 2)], packed[(packed.length - 1)]}));
-
-            // ベリファイコードを剥がす
-            byte[] unpacked = verifier.unpack(packed);
-            assertNotNull(unpacked);
-            assertEquals(unpacked.length, buffer.length);
-            assertTrue(Arrays.equals(buffer, unpacked));
-
-            Object deserialized = SerializeUtil.deserializePublicFieldObject(obj.getClass(), buffer);
+            Object deserialized = PublicFieldDeserializer.deserializeFrom(obj.getClass(), buffer);
             assertNotNull(deserialized);
             assertEquals(obj, deserialized);
 
@@ -60,15 +42,15 @@ public class ModelSerializeTest extends UnitTestCase {
 
             // サイズを比較する
             if (i == 0) {
-                LogUtil.log("  Serialize[%d bytes] BASE64[%d bytes] JSON[%d bytes]",
+                Logger.out(Logger.LEVEL_DEBUG, TAG, "  Serialize[%d bytes] BASE64[%d bytes] JSON[%d bytes]",
                         buffer.length,
                         StringUtil.toString(buffer).getBytes().length,
                         jsonEncoded.getBytes().length
                 );
-                LogUtil.log("  JSON-STRING[%s]", jsonEncoded);
+                Logger.out(Logger.LEVEL_DEBUG, TAG, "  JSON-STRING[%s]", jsonEncoded);
             }
         }
-        LogUtil.log("  Finished");
+        Logger.out(Logger.LEVEL_DEBUG, TAG, "  Finished");
     }
 
     @Test

@@ -5,9 +5,10 @@ import com.eaglesakura.andriders.serialize.RawSessionInfo;
 import com.eaglesakura.android.service.CommandClient;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.android.thread.ui.UIHandler;
+import com.eaglesakura.android.thread.UIHandler;
 import com.eaglesakura.android.util.AndroidThreadUtil;
 import com.eaglesakura.lambda.CancelCallback;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -63,14 +64,14 @@ class SessionClientImpl extends CommandClient {
 
     void buildCommands() {
         mCommandMap.addAction(CentralServiceCommand.CMD_onSessionStarted, (sender, cmd, payload) -> {
-            RawSessionInfo sessionInfo = payload.deserializePublicField(RawSessionInfo.class);
+            RawSessionInfo sessionInfo = PublicFieldDeserializer.deserializeFrom(RawSessionInfo.class, payload.getBuffer());
             UIHandler.postUI(() -> {
                 onSessionStarted(sessionInfo);
             });
             return null;
         });
         mCommandMap.addAction(CentralServiceCommand.CMD_onSessionStopped, (sender, cmd, payload) -> {
-            RawSessionInfo sessionInfo = payload.deserializePublicField(RawSessionInfo.class);
+            RawSessionInfo sessionInfo = PublicFieldDeserializer.deserializeFrom(RawSessionInfo.class, payload.getBuffer());
             UIHandler.postUI(() -> {
                 onSessionStopped(sessionInfo);
             });

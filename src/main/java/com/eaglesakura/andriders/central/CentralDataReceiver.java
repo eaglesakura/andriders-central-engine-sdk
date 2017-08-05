@@ -5,8 +5,8 @@ import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.andriders.serialize.RawCentralData;
 import com.eaglesakura.andriders.serialize.RawLocation;
 import com.eaglesakura.andriders.serialize.RawSensorData;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
 import com.eaglesakura.serialize.error.SerializeException;
-import com.eaglesakura.util.SerializeUtil;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -144,7 +144,7 @@ public class CentralDataReceiver {
         RawCentralData centralData;
         try {
             byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
-            centralData = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, centralBuffer);
+            centralData = PublicFieldDeserializer.deserializeFrom(RawCentralData.class, centralBuffer);
         } catch (Exception e) {
             e.printStackTrace();
             centralData = null;
@@ -214,7 +214,7 @@ public class CentralDataReceiver {
      * @param buffer シリアライズ化されたデータ
      */
     public void onReceivedCentralData(byte[] buffer) throws SerializeException {
-        RawCentralData data = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, buffer);
+        RawCentralData data = PublicFieldDeserializer.deserializeFrom(RawCentralData.class, buffer);
         onReceived(data);
     }
 
@@ -224,7 +224,7 @@ public class CentralDataReceiver {
      * @param buffer シリアライズ化されたデータ
      */
     public void onReceivedNotificationData(byte[] buffer, RawCentralData centralData) throws SerializeException {
-        NotificationProtocol.RawNotification data = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
+        NotificationProtocol.RawNotification data = PublicFieldDeserializer.deserializeFrom(NotificationProtocol.RawNotification.class, buffer);
         onReceived(data, centralData);
     }
 

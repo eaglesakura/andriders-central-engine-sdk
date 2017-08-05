@@ -1,9 +1,10 @@
 package com.eaglesakura.andriders.plugin;
 
 import com.eaglesakura.andriders.serialize.PluginProtocol;
+import com.eaglesakura.serialize.PublicFieldDeserializer;
+import com.eaglesakura.serialize.PublicFieldSerializer;
 import com.eaglesakura.serialize.error.SerializeException;
 import com.eaglesakura.util.CollectionUtil;
-import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
@@ -87,7 +88,7 @@ public class DisplayKey {
      */
     private byte[] serialize() {
         try {
-            return SerializeUtil.serializePublicFieldObject(raw);
+            return PublicFieldSerializer.serializeFrom(raw, true);
         } catch (Exception e) {
             throw new IllegalStateException();
         }
@@ -118,12 +119,13 @@ public class DisplayKey {
             if (!CollectionUtil.isEmpty(serializeList)) {
                 List<DisplayKey> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    result.add(new DisplayKey(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawCycleDisplayInfo.class, serialized)));
+                    PluginProtocol.RawCycleDisplayInfo displayInfo = PublicFieldDeserializer.deserializeFrom(PluginProtocol.RawCycleDisplayInfo.class, serialized);
+                    result.add(new DisplayKey(displayInfo));
                 }
                 return result;
             }
         } catch (SerializeException e) {
-            LogUtil.log(e);
+            e.printStackTrace();
         }
         return new ArrayList<>();
     }
