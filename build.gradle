@@ -19,6 +19,7 @@ buildscript {
         classpath "com.eaglesakura:plugin-ci-support:1.2.200"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
     }
 }
 
@@ -32,6 +33,7 @@ allprojects {
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.eaglesakura.ci-support'
+apply plugin: 'com.github.ben-manes.versions'
 
 /**
  * Android Studioでのビルドとそれ以外を切り分ける
