@@ -15,7 +15,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "com.eaglesakura:plugin-ci-support:1.2.200"
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
@@ -54,21 +54,21 @@ version = ACE_SDK_VERSION_IMPL
 dependencies {
     // mavenから必要なライブラリを取得する
     compile 'com.eaglesakura:simple-logger:2.1.0'               /* Log */
-    compile 'com.eaglesakura:java-commons:2.2.0'                /* Utils */
+    compile 'com.eaglesakura:java-commons:2.2.1'                /* Utils */
     compile 'com.eaglesakura:publd-serializer:2.1.0'            /* IDLシリアライズ */
     compile 'com.eaglesakura:geo-utils:1.2.0'                   /* GPS計算 */
-    compile 'com.eaglesakura:android-commons:2.3.3'             /* Utils */
+    compile 'com.eaglesakura:android-commons:2.3.5'             /* Utils */
     compile 'com.eaglesakura:android-command-service:1.5.0'     /* ACE本体とのデータ通信 */
     testImplementation('com.eaglesakura:json-wrapper:1.2.0')
     testImplementation('com.eaglesakura:android-unittest-support:1.6.0') {
         exclude(group: "com.android.support")
     }
-    implementation "com.android.support:support-annotations:26.0.0"
+    implementation "com.android.support:support-annotations:27.0.2"
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
 
     if (ANDROID_STUDIO) {
         aaptOptions.cruncherEnabled = false
@@ -81,7 +81,7 @@ android {
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 27
 
         // SDK VERSION
         buildConfigField "String", "ACE_SDK_VERSION", "\"${ACE_SDK_VERSION_IMPL}\""
