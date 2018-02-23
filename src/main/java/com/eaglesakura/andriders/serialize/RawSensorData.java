@@ -3,7 +3,6 @@ package com.eaglesakura.andriders.serialize;
 import com.eaglesakura.andriders.sensor.CadenceZone;
 import com.eaglesakura.andriders.sensor.HeartrateZone;
 import com.eaglesakura.andriders.sensor.SpeedZone;
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import android.support.annotation.NonNull;
@@ -17,28 +16,24 @@ public class RawSensorData {
      * 現在の心拍
      */
     @Nullable
-    @Serialize(id = 1)
     public RawHeartrate heartrate;
 
     /**
      * 現在のケイデンス
      */
     @Nullable
-    @Serialize(id = 2)
     public RawCadence cadence;
 
     /**
      * 現在の速度
      */
     @Nullable
-    @Serialize(id = 3)
     public RawSpeed speed;
 
     /**
      * 位置情報
      */
     @Nullable
-    @Serialize(id = 4)
     public RawLocation location;
 
     public RawSensorData() {
@@ -80,25 +75,25 @@ public class RawSensorData {
         /**
          * 回転数
          */
-        @Serialize(id = 1)
+
         public short rpm;
 
         /**
          * ゾーン
          */
-        @Serialize(id = 2)
+
         public CadenceZone zone;
 
         /**
          * センサーへ接続してからの合計回転数（クランク）
          */
-        @Serialize(id = 3)
+
         public int crankRevolution;
 
         /**
          * センサー日時
          */
-        @Serialize(id = 4)
+
         public long date;
 
         public RawCadence() {
@@ -138,19 +133,19 @@ public class RawSensorData {
 
     public static class RawHeartrate {
 
-        @Serialize(id = 1)
+
         public short bpm;
 
         /**
          * 心拍ゾーン
          */
-        @Serialize(id = 2)
+
         public HeartrateZone zone;
 
         /**
          * センサー日時
          */
-        @Serialize(id = 3)
+
         public long date;
 
         public RawHeartrate() {
@@ -199,30 +194,30 @@ public class RawSensorData {
         /**
          * スピード km/h
          */
-        @Serialize(id = 1)
+
         public float speedKmh;
 
         /**
          * ホイールの回転数
          * S&Cセンサーを使用した場合は取得できるが、GPS由来は取得できないためoptional
          */
-        @Serialize(id = 2)
+
         public float wheelRpm = -1;
 
         /**
          * センサーへ接続してからの合計回転数（ホイール）
          */
-        @Serialize(id = 3)
+
         public int wheelRevolution = -1;
 
-        @Serialize(id = 4)
+
         @NonNull
         public SpeedZone zone;
 
-        @Serialize(id = 5)
+
         public long date;
 
-        @Serialize(id = 6)
+
         public int flags;
 
         public RawSpeed() {

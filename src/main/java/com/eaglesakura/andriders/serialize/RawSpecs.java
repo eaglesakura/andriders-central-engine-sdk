@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
@@ -10,13 +9,11 @@ public class RawSpecs {
     /**
      * アプリ情報
      */
-    @Serialize(id = 1)
     public RawAppSpec application;
 
     /**
      * 身体情報
      */
-    @Serialize(id = 2)
     public RawFitnessSpec fitness;
 
     public RawSpecs() {
@@ -49,13 +46,13 @@ public class RawSpecs {
     }
 
     public static class RawAppSpec {
-        @Serialize(id = 1)
+
         public int protocolVersion;
 
-        @Serialize(id = 2)
+
         public String appVersionName;
 
-        @Serialize(id = 3)
+
         public String appPackageName;
 
         public RawAppSpec() {
@@ -98,19 +95,19 @@ public class RawSpecs {
         /**
          * 体重
          */
-        @Serialize(id = 1)
+
         public float weight;
 
         /**
          * 通常心拍
          */
-        @Serialize(id = 2)
+
         public short heartrateNormal;
 
         /**
          * 最大心拍
          */
-        @Serialize(id = 3)
+
         public short heartrateMax;
 
         public RawFitnessSpec() {

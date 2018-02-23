@@ -1,11 +1,14 @@
 package com.eaglesakura.andriders.plugin.data;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.plugin.connection.PluginConnection;
 import com.eaglesakura.andriders.plugin.internal.CentralDataCommand;
 import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.andriders.sensor.SensorType;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.android.service.data.Payload;
+import com.eaglesakura.json.JSON;
+import com.eaglesakura.serialize.PublicFieldSerializer;
 
 import android.location.Location;
 import android.support.annotation.FloatRange;
@@ -64,7 +67,8 @@ public class CentralEngineSessionData {
 
         try {
             PluginProtocol.SrcLocation idl = new PluginProtocol.SrcLocation(loc);
-            mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, Payload.fromPublicField(idl));
+            Payload payload = new Payload(AceSdkUtil.serializeToByteArray(idl));
+            mServerImpl.postToClient(CentralDataCommand.CMD_setLocation, payload);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -78,7 +82,8 @@ public class CentralEngineSessionData {
 
         try {
             PluginProtocol.SrcHeartrate idl = new PluginProtocol.SrcHeartrate((short) bpm);
-            mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, Payload.fromPublicField(idl));
+            Payload payload = new Payload(AceSdkUtil.serializeToByteArray(idl));
+            mServerImpl.postToClient(CentralDataCommand.CMD_setHeartrate, payload);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -96,7 +101,9 @@ public class CentralEngineSessionData {
             idl.crankRevolution = crankRevolution;
             idl.wheelRpm = wheelRpm;
             idl.wheelRevolution = wheelRevolution;
-            mServerImpl.postToClient(CentralDataCommand.CMD_setSpeedAndCadence, Payload.fromPublicField(idl));
+
+            Payload payload = new Payload(AceSdkUtil.serializeToByteArray(idl));
+            mServerImpl.postToClient(CentralDataCommand.CMD_setSpeedAndCadence, payload);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,6 +4,8 @@ import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 import com.eaglesakura.util.StringUtil;
 
+import android.support.annotation.Keep;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,27 +16,21 @@ import java.util.Random;
  *
  * コマンド等のデータを通信する際に用いる
  */
+@Keep
 public class RawIntent {
 
-    @Serialize(id = 1)
     public IntentType intentType;
 
-    @Serialize(id = 2)
     public String componentName;
 
-    @Serialize(id = 3)
     public String action;
 
-    @Serialize(id = 4)
     public int flags;
 
-    @Serialize(id = 5)
     public String data;
 
-    @Serialize(id = 6)
     public List<Extra> extras = new ArrayList<>();
 
-    @Serialize(id = 7)
     public List<String> categories = new ArrayList<>();
 
     public RawIntent() {
@@ -90,13 +86,13 @@ public class RawIntent {
     }
 
     public static class Extra {
-        @Serialize(id = 1)
+
         public String key;
 
-        @Serialize(id = 2)
+
         public String value;
 
-        @Serialize(id = 3)
+
         public ValueType type;
 
         public Extra() {

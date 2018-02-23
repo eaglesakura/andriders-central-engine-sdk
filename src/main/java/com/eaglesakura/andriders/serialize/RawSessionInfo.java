@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
@@ -15,7 +14,6 @@ public class RawSessionInfo {
      *
      * 開始時刻として扱うことができる
      */
-    @Serialize(id = 1)
     public long sessionId;
 
     public RawSessionInfo(long sessionId) {

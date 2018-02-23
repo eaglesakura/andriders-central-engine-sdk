@@ -1,5 +1,6 @@
 package com.eaglesakura.andriders.plugin.connection;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.error.SessionControlException;
 import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
 import com.eaglesakura.andriders.serialize.RawSessionInfo;
@@ -36,7 +37,7 @@ public class CentralSessionController {
     public RawSessionInfo getSessionInfo() {
         try {
             Payload payload = mClientImpl.requestPostToServer(CentralServiceCommand.CMD_getSessionInfo, null);
-            return payload.deserializePublicField(RawSessionInfo.class);
+            return AceSdkUtil.deserializeFromByteArray(RawSessionInfo.class, payload.getBuffer());
         } catch (Exception e) {
             return null;
         }
@@ -48,7 +49,9 @@ public class CentralSessionController {
     public void requestSessionStart() throws SessionControlException {
         try {
             RawSessionRequest request = new RawSessionRequest();
-            mClientImpl.requestPostToServer(CentralServiceCommand.CMD_requestSessionStart, Payload.fromPublicField(request));
+
+            Payload payload = new Payload(AceSdkUtil.serializeToByteArray(request));
+            mClientImpl.requestPostToServer(CentralServiceCommand.CMD_requestSessionStart, payload);
         } catch (Exception e) {
             throw new SessionControlException(e);
         }

@@ -1,7 +1,6 @@
 package com.eaglesakura.andriders.serialize;
 
 import com.eaglesakura.andriders.sensor.InclinationType;
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
@@ -14,19 +13,19 @@ public class RawLocation extends RawGeoPoint {
     /**
      * 位置精度（メートル単位）
      */
-    @Serialize(id = 11)
+
     public float locationAccuracy;
 
     /**
      * ユーザーがこの精度を信頼すると認めている
      */
-    @Serialize(id = 12)
+
     public boolean locationReliance;
 
     /**
      * 打刻した時刻
      */
-    @Serialize(id = 13)
+
     public long date;
 
     /**
@@ -34,13 +33,13 @@ public class RawLocation extends RawGeoPoint {
      *
      * 不明の場合は0となる
      */
-    @Serialize(id = 14)
+
     public float inclinationPercent;
 
     /**
      * 勾配の種類
      */
-    @Serialize(id = 15)
+
     public InclinationType inclinationType;
 
     public RawLocation() {

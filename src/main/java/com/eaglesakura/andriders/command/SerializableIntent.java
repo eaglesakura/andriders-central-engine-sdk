@@ -1,8 +1,7 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.serialize.RawIntent;
-import com.eaglesakura.serialize.error.SerializeException;
-import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.app.Activity;
@@ -12,6 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+
+import java.io.IOException;
 
 /**
  * デバイス間通信可能なIntent情報を構築する
@@ -25,6 +26,7 @@ public class SerializableIntent {
         result.mRawIntent.componentName = StringUtil.format("%s/%s", context.getPackageName(), clazz.getName());
         return result;
     }
+
     public static SerializableIntent newActivity(@NonNull Context context, @NonNull ComponentName componentName) {
         SerializableIntent result = new SerializableIntent();
         result.mRawIntent.intentType = RawIntent.IntentType.Activity;
@@ -110,8 +112,8 @@ public class SerializableIntent {
     /**
      * データをシリアライズする
      */
-    public byte[] serialize() throws SerializeException {
-        return SerializeUtil.serializePublicFieldObject(mRawIntent, true);
+    public byte[] serialize() throws IOException {
+        return AceSdkUtil.serializeToByteArray(mRawIntent);
     }
 
     public RawIntent getRawIntent() {
@@ -140,7 +142,7 @@ public class SerializableIntent {
         if (intent.flags != 0) {
             result.addFlags(intent.flags);
         }
-        
+
         for (RawIntent.Extra extra : intent.extras) {
             switch (extra.type) {
                 case Boolean:

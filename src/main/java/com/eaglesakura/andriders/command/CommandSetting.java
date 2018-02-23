@@ -1,9 +1,8 @@
 package com.eaglesakura.andriders.command;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.serialize.RawCentralData;
 import com.eaglesakura.android.util.ImageUtil;
-import com.eaglesakura.serialize.error.SerializeException;
-import com.eaglesakura.util.SerializeUtil;
 
 import android.app.Activity;
 import android.app.Service;
@@ -17,6 +16,8 @@ import android.net.Uri;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import java.io.IOException;
 
 /**
  * コマンドデータの構築を行う
@@ -162,12 +163,17 @@ public class CommandSetting {
 
             data.putExtra(EXTRA_ICON, ImageUtil.encodePng(mIcon));  // アイコンを指定
             data.putExtra(EXTRA_PACKAGE_NAME, activity.getPackageName());
-            data.putExtra(EXTRA_COMMAND_KEY, (CommandKey) activity.getIntent().getParcelableExtra(EXTRA_COMMAND_KEY));
+
+            // CommandKeyをコピーする
+            {
+                CommandKey commandKey = CommandKey.getExtra(activity.getIntent(), EXTRA_COMMAND_KEY);
+                CommandKey.putExtra(data, EXTRA_COMMAND_KEY, commandKey);
+            }
 
             // 生成されたIntentを指定
             try {
                 data.putExtra(EXTRA_SERIALIZED_INTENT, mIntent.serialize());
-            } catch (SerializeException e) {
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
@@ -188,7 +194,7 @@ public class CommandSetting {
             if (byteArrayExtra == null) {
                 return null;
             }
-            return SerializeUtil.deserializePublicFieldObject(RawCentralData.class, byteArrayExtra);
+            return AceSdkUtil.deserializeFromByteArray(RawCentralData.class, byteArrayExtra);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

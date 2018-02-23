@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import java.util.Random;
@@ -13,31 +12,31 @@ public class RawRecord {
     /**
      * 自己最高速度
      */
-    @Serialize(id = 1)
+
     public float maxSpeedKmh;
 
     /**
      * 今日の最高速度
      */
-    @Serialize(id = 2)
+
     public float maxSpeedKmhToday;
 
     /**
      * このセッションでの最高速度
      */
-    @Serialize(id = 3)
+
     public float maxSpeedKmhSession;
 
     /**
      * 今日の最高心拍
      */
-    @Serialize(id = 4)
+
     public short maxHeartrateToday;
 
     /**
      * このセッションでの最高心拍
      */
-    @Serialize(id = 5)
+
     public short maxHeartrateSession;
 
     public RawRecord() {

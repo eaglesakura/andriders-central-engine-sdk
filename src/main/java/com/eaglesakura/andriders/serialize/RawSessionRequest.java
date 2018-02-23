@@ -1,7 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
-
 /**
  * セッションの開始情報
  *
@@ -9,7 +7,7 @@ import com.eaglesakura.serialize.Serialize;
  */
 public class RawSessionRequest {
 
-    @Serialize(id = 1234)
+
     public long __dummy_data;
 
     public RawSessionRequest() {

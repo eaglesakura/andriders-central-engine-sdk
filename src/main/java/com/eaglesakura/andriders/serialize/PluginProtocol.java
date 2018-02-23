@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import android.support.annotation.NonNull;
@@ -16,25 +15,21 @@ public class PluginProtocol {
         /**
          * 緯度
          */
-        @Serialize(id = 1)
         public double latitude;
 
         /**
          * 経度
          */
-        @Serialize(id = 2)
         public double longitude;
 
         /**
          * 高度
          */
-        @Serialize(id = 3)
         public double altitude;
 
         /**
          * 精度（メートル）
          */
-        @Serialize(id = 4)
         public double accuracyMeter;
 
         public SrcLocation() {
@@ -88,7 +83,7 @@ public class PluginProtocol {
         /**
          * 心拍値
          */
-        @Serialize(id = 1)
+
         public short bpm;
 
         @Deprecated
@@ -126,25 +121,25 @@ public class PluginProtocol {
         /**
          * クランク回転数 / 分
          */
-        @Serialize(id = 10)
+
         public float crankRpm;
 
         /**
          * クランク合計回転数
          */
-        @Serialize(id = 11)
+
         public int crankRevolution;
 
         /**
          * ホイール回転数 / 分
          */
-        @Serialize(id = 20)
+
         public float wheelRpm;
 
         /**
          * ホイール合計回転数
          */
-        @Serialize(id = 21)
+
         public int wheelRevolution;
 
         public SrcSpeedAndCadence() {
@@ -189,45 +184,45 @@ public class PluginProtocol {
         /**
          * 一意に識別するためのID
          */
-        @Serialize(id = 1)
+
         public String id;
 
         /**
          * 説明テキスト
          */
-        @Serialize(id = 2)
+
         public String summary;
 
         /**
          * カテゴリ情報, default=other
          */
-        @Serialize(id = 3)
+
         public String category;
 
         /**
          * 設定画面を持つならばtrue
          */
-        @Serialize(id = 4)
+
         public boolean hasSetting;
 
         /**
          * 使用可能な状態である場合はtrue, falseの場合、拡張を有効化できなくする
          */
-        @Serialize(id = 5)
+
         public boolean activated = true;
 
         /**
          * ビルドされているSDKバージョン
          * 基本的にはACE本体と同じバージョンでビルドされているのが望ましい。
          */
-        @Serialize(id = 6)
+
         public String sdkVersion;
 
         /**
          * プロトコルバージョン
          * 番号が異なる場合、互換切りが発生している。
          */
-        @Serialize(id = 7)
+
         public int sdkProtocolVersion;
 
         public RawPluginInfo() {
@@ -274,21 +269,21 @@ public class PluginProtocol {
          * 一意に識別するためのID
          */
         @NonNull
-        @Serialize(id = 1)
+
         public String id;
 
         /**
          * 表示タイトル
          */
         @NonNull
-        @Serialize(id = 2)
+
         public String title;
 
         /**
          * 説明テキスト
          */
         @Nullable
-        @Serialize(id = 3)
+
         public String summary;
 
         public RawCycleDisplayInfo() {
@@ -325,19 +320,19 @@ public class PluginProtocol {
         /**
          * 一意に識別するためのID
          */
-        @Serialize(id = 1)
+
         public String id;
 
         /**
          * 値が有効であることを保証できる期間, それを過ぎるとN/A扱いとなる
          */
-        @Serialize(id = 2)
+
         public int timeoutMs;
 
-        @Serialize(id = 10)
+
         public BasicValue basicValue;
 
-        @Serialize(id = 11)
+
         public List<KeyValue> keyValues;
 
         public RawCycleDisplayValue() {
@@ -381,42 +376,42 @@ public class PluginProtocol {
             /**
              * メイン表示テキスト（心拍等）
              */
-            @Serialize(id = 1)
+
             public String main;
             /**
              * 表示タイトル（メインテキストの下に差し込まれる）
              */
-            @Serialize(id = 2)
+
             public String title;
 
             /**
              * バーの色（A)
              */
-            @Serialize(id = 4)
+
             public short barColorA = 255;
 
             /**
              * バーの内側に表示されるゾーン情報
              */
-            @Serialize(id = 3)
+
             public String zoneText;
 
             /**
              * バーの色（R)
              */
-            @Serialize(id = 5)
+
             public short barColorR = 128;
 
             /**
              * バーの色（G)
              */
-            @Serialize(id = 6)
+
             public short barColorG = 128;
 
             /**
              * バーの色（B)
              */
-            @Serialize(id = 7)
+
             public short barColorB = 128;
 
             public BasicValue() {
@@ -463,10 +458,10 @@ public class PluginProtocol {
         }
 
         public static class KeyValue {
-            @Serialize(id = 1)
+
             public String title;
 
-            @Serialize(id = 2)
+
             public String value;
 
             public KeyValue() {

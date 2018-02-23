@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import android.support.annotation.NonNull;
@@ -23,20 +22,17 @@ public class RawSessionData {
      * 一日のトータル情報等、複数のSessionが含まれる場合はnullが指定される
      */
     @Nullable
-    @Serialize(id = 1)
     public Long sessionId;
 
     /**
      * このセッションでのフィットネス情報
      */
     @NonNull
-    @Serialize(id = 3)
     public RawFitnessStatus fitness;
 
     /**
      * 開始時刻
      */
-    @Serialize(id = 4)
     public long startTime;
 
     /**
@@ -44,37 +40,31 @@ public class RawSessionData {
      * <p>
      * 検出不可能な場合は0kmとなる
      */
-    @Serialize(id = 5)
     public float distanceKm;
 
     /**
      * セッション中に自走した時間
      */
-    @Serialize(id = 6)
     public int activeTimeMs;
 
     /**
      * セッション中に自走した時間
      */
-    @Serialize(id = 7)
     public float activeDistanceKm;
 
     /**
      * 状態フラグ
      */
-    @Serialize(id = 8)
     public int flags;
 
     /**
      * セッションの継続時間（ミリ秒）
      */
-    @Serialize(id = 9)
     public int durationTimeMs;
 
     /**
      * 合計獲得標高
      */
-    @Serialize(id = 10)
     public float sumAltitudeMeter;
 
     public RawSessionData() {
@@ -144,19 +134,19 @@ public class RawSessionData {
          *
          * 一日トータルでは0.0が指定される
          */
-        @Serialize(id = 1)
+
         public float mets;
 
         /**
          * 消費カロリー
          */
-        @Serialize(id = 2)
+
         public float calorie;
 
         /**
          * エクササイズ値
          */
-        @Serialize(id = 3)
+
         public float exercise;
 
         public RawFitnessStatus() {

@@ -1,14 +1,15 @@
 package com.eaglesakura.andriders.plugin.display;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.plugin.DisplayKey;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
-import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.json.JSON;
 import com.eaglesakura.util.CollectionUtil;
-import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 
 import android.content.Context;
 
+import java.io.ByteArrayInputStream;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -148,12 +149,7 @@ public class DisplayData {
             raw.keyValues = mLineValue.values;
         }
 
-        try {
-            return SerializeUtil.serializePublicFieldObject(raw);
-        } catch (SerializeException e) {
-            LogUtil.log(e);
-            throw new IllegalStateException();
-        }
+        return AceSdkUtil.serializeToByteArray(raw);
     }
 
     public static byte[] serialize(List<DisplayData> list) {
@@ -183,7 +179,7 @@ public class DisplayData {
             if (!CollectionUtil.isEmpty(serializeList)) {
                 List<T> result = new ArrayList<>();
                 for (byte[] serialized : serializeList) {
-                    PluginProtocol.RawCycleDisplayValue v = SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawCycleDisplayValue.class, serialized);
+                    PluginProtocol.RawCycleDisplayValue v = AceSdkUtil.deserializeFromByteArray(PluginProtocol.RawCycleDisplayValue.class, serialized);
                     result.add(constructor.newInstance(v));
                 }
                 return result;

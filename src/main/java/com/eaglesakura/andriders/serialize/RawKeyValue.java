@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import android.support.annotation.NonNull;
@@ -11,11 +10,11 @@ import java.util.Random;
  * シンプルなKey-Value
  */
 public class RawKeyValue {
-    @Serialize(id = 1)
+
     @NonNull
     public String key;
 
-    @Serialize(id = 2)
+
     @NonNull
     public String value;
 

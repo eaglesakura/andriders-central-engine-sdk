@@ -1,6 +1,5 @@
 package com.eaglesakura.andriders.serialize;
 
-import com.eaglesakura.serialize.Serialize;
 import com.eaglesakura.util.RandomUtil;
 
 import android.support.annotation.NonNull;
@@ -12,39 +11,33 @@ import java.util.Random;
  */
 public class RawCentralData {
     @NonNull
-    @Serialize(id = 1)
     public RawSpecs specs;
 
     @NonNull
-    @Serialize(id = 2)
     public RawCentralStatus centralStatus;
 
     /**
      * センサー情報
      */
     @NonNull
-    @Serialize(id = 3)
     public RawSensorData sensor;
 
     /**
      * セッション統計情報
      */
     @NonNull
-    @Serialize(id = 4)
     public RawSessionData session;
 
     /**
      * 今日の統計情報
      */
     @NonNull
-    @Serialize(id = 5)
     public RawSessionData today;
 
     /**
      * ユーザーレコード値
      */
     @NonNull
-    @Serialize(id = 6)
     public RawRecord record;
 
     public RawCentralData() {
@@ -90,13 +83,13 @@ public class RawCentralData {
         /**
          * デバッグ状態である場合はtrue
          */
-        @Serialize(id = 3)
+
         public boolean debug;
 
         /**
          * 現在時刻
          */
-        @Serialize(id = 4)
+
         public long date;
 
         public RawCentralStatus() {

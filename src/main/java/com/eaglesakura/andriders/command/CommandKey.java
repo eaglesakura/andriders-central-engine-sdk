@@ -3,7 +3,6 @@ package com.eaglesakura.andriders.command;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Intent;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,7 +12,7 @@ import android.support.annotation.Nullable;
  * <br>
  * ユーザーの特定動作ごとに一意のCommandKeyが生成され、それに見合った動作を行う。
  */
-public class CommandKey implements Parcelable {
+public class CommandKey {
 
     /**
      * 近接コマンドのヘッダ文字列
@@ -45,31 +44,6 @@ public class CommandKey implements Parcelable {
     private CommandKey(String key) {
         this.mKey = key;
     }
-
-    private CommandKey(Parcel in) {
-        this.mKey = in.readString();
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mKey);
-    }
-
-    public static final Creator<CommandKey> CREATOR
-            = new Creator<CommandKey>() {
-        public CommandKey createFromParcel(Parcel in) {
-            return new CommandKey(in);
-        }
-
-        public CommandKey[] newArray(int size) {
-            return new CommandKey[size];
-        }
-    };
 
 
     /**
@@ -168,4 +142,38 @@ public class CommandKey implements Parcelable {
         return new CommandKey(StringUtil.format("%s%d", COMMAND_HEADER_DISTANCE, settingCurrentTime));
     }
 
+    /**
+     * IntentにCommandKeyを保存する。
+     *
+     * Android 8.0以降、独自 {@link Parcelable} をputExtraすると例外が発生するためのワークアラウンド
+     *
+     * @param intent 格納対象のIntent
+     * @param name   key
+     * @param value  value
+     * @return intent
+     */
+    @NonNull
+    public static Intent putExtra(@NonNull Intent intent, @NonNull String name, @NonNull CommandKey value) {
+        intent.putExtra(name, value.toString());
+        return intent;
+    }
+
+    /**
+     * IntentからCommandKeyを取得する
+     *
+     * Android 8.0以降、独自 {@link Parcelable} をputExtraすると例外が発生するためのワークアラウンド
+     *
+     * @param intent 取得対象Intent
+     * @param name   key
+     * @return CommandKey
+     */
+    @Nullable
+    public static CommandKey getExtra(@NonNull Intent intent, @NonNull String name) {
+        String stringExtra = intent.getStringExtra(name);
+        if (StringUtil.isEmpty(stringExtra)) {
+            return null;
+        } else {
+            return CommandKey.fromString(stringExtra);
+        }
+    }
 }

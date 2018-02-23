@@ -9,13 +9,13 @@ import java.util.Random;
  * 位置情報のみを構築したクラス
  */
 public class RawGeoPoint {
-    @Serialize(id = 1)
+
     public double latitude;
 
-    @Serialize(id = 2)
+
     public double longitude;
 
-    @Serialize(id = 3)
+
     public double altitude;
 
     public RawGeoPoint() {

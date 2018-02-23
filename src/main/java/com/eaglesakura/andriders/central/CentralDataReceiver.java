@@ -1,12 +1,11 @@
 package com.eaglesakura.andriders.central;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.command.CommandKey;
 import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.andriders.serialize.RawCentralData;
 import com.eaglesakura.andriders.serialize.RawLocation;
 import com.eaglesakura.andriders.serialize.RawSensorData;
-import com.eaglesakura.serialize.error.SerializeException;
-import com.eaglesakura.util.SerializeUtil;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +14,7 @@ import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -144,7 +144,7 @@ public class CentralDataReceiver {
         RawCentralData centralData;
         try {
             byte[] centralBuffer = intent.getByteArrayExtra(EXTRA_CENTRAL_DATA);
-            centralData = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, centralBuffer);
+            centralData = AceSdkUtil.deserializeFromByteArray(RawCentralData.class, centralBuffer);
         } catch (Exception e) {
             e.printStackTrace();
             centralData = null;
@@ -213,8 +213,8 @@ public class CentralDataReceiver {
      *
      * @param buffer シリアライズ化されたデータ
      */
-    public void onReceivedCentralData(byte[] buffer) throws SerializeException {
-        RawCentralData data = SerializeUtil.deserializePublicFieldObject(RawCentralData.class, buffer);
+    public void onReceivedCentralData(byte[] buffer) throws IOException {
+        RawCentralData data = AceSdkUtil.deserializeFromByteArray(RawCentralData.class, buffer);
         onReceived(data);
     }
 
@@ -223,8 +223,8 @@ public class CentralDataReceiver {
      *
      * @param buffer シリアライズ化されたデータ
      */
-    public void onReceivedNotificationData(byte[] buffer, RawCentralData centralData) throws SerializeException {
-        NotificationProtocol.RawNotification data = SerializeUtil.deserializePublicFieldObject(NotificationProtocol.RawNotification.class, buffer);
+    public void onReceivedNotificationData(byte[] buffer, RawCentralData centralData) throws IOException {
+        NotificationProtocol.RawNotification data = AceSdkUtil.deserializeFromByteArray(NotificationProtocol.RawNotification.class, buffer);
         onReceived(data, centralData);
     }
 

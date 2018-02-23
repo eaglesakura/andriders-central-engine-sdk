@@ -1,17 +1,18 @@
 package com.eaglesakura.andriders.plugin;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.sdk.BuildConfig;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
-import com.eaglesakura.serialize.PublicFieldSerializer;
-import com.eaglesakura.serialize.error.SerializeException;
+import com.eaglesakura.json.JSON;
 import com.eaglesakura.util.CollectionUtil;
-import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.SerializeUtil;
 import com.eaglesakura.util.StringUtil;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,12 +117,7 @@ public class PluginInformation {
      * データをシリアライズする
      */
     public byte[] serialize() {
-        try {
-            return new PublicFieldSerializer().serialize(mRaw);
-        } catch (Exception e) {
-            LogUtil.log(e);
-            throw new IllegalStateException();
-        }
+        return AceSdkUtil.serializeToByteArray(mRaw);
     }
 
     public static byte[] serialize(List<PluginInformation> list) {
@@ -141,12 +137,13 @@ public class PluginInformation {
             if (!CollectionUtil.isEmpty(serializedBuffers)) {
                 List<PluginInformation> result = new ArrayList<>();
                 for (byte[] serialized : serializedBuffers) {
-                    result.add(new PluginInformation(SerializeUtil.deserializePublicFieldObject(PluginProtocol.RawPluginInfo.class, serialized)));
+                    PluginProtocol.RawPluginInfo pluginInfo = AceSdkUtil.deserializeFromByteArray(PluginProtocol.RawPluginInfo.class, serialized);
+                    result.add(new PluginInformation(pluginInfo));
                 }
                 return result;
             }
-        } catch (SerializeException e) {
-            LogUtil.log(e);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
         throw new IllegalArgumentException("deserialize failed");
     }

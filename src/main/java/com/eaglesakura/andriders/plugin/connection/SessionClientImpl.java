@@ -1,12 +1,14 @@
 package com.eaglesakura.andriders.plugin.connection;
 
+import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
 import com.eaglesakura.andriders.serialize.RawSessionInfo;
 import com.eaglesakura.android.service.CommandClient;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.android.thread.ui.UIHandler;
+import com.eaglesakura.android.thread.UIHandler;
 import com.eaglesakura.android.util.AndroidThreadUtil;
+import com.eaglesakura.json.JSON;
 import com.eaglesakura.lambda.CancelCallback;
 
 import android.content.Context;
@@ -15,6 +17,8 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.annotation.WorkerThread;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * セッションサーバーへの接続を行うクライアント
@@ -63,17 +67,13 @@ class SessionClientImpl extends CommandClient {
 
     void buildCommands() {
         mCommandMap.addAction(CentralServiceCommand.CMD_onSessionStarted, (sender, cmd, payload) -> {
-            RawSessionInfo sessionInfo = payload.deserializePublicField(RawSessionInfo.class);
-            UIHandler.postUI(() -> {
-                onSessionStarted(sessionInfo);
-            });
+            RawSessionInfo sessionInfo = AceSdkUtil.deserializeFromByteArray(RawSessionInfo.class, payload.getBuffer());
+            UIHandler.postUI(() -> onSessionStarted(sessionInfo));
             return null;
         });
         mCommandMap.addAction(CentralServiceCommand.CMD_onSessionStopped, (sender, cmd, payload) -> {
-            RawSessionInfo sessionInfo = payload.deserializePublicField(RawSessionInfo.class);
-            UIHandler.postUI(() -> {
-                onSessionStopped(sessionInfo);
-            });
+            RawSessionInfo sessionInfo = AceSdkUtil.deserializeFromByteArray(RawSessionInfo.class, payload.getBuffer());
+            UIHandler.postUI(() -> onSessionStopped(sessionInfo));
             return null;
         });
     }
