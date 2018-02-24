@@ -9,7 +9,7 @@ import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.CommandServer;
 import com.eaglesakura.android.service.aidl.ICommandClientCallback;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.android.thread.UIHandler;
+import com.eaglesakura.android.thread.ui.UIHandler;
 
 import android.app.Service;
 import android.os.RemoteException;

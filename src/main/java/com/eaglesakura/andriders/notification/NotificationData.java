@@ -5,7 +5,7 @@ import com.eaglesakura.andriders.AceSdkUtil;
 import com.eaglesakura.andriders.plugin.internal.CentralServiceCommand;
 import com.eaglesakura.andriders.serialize.NotificationProtocol;
 import com.eaglesakura.android.graphics.Graphics;
-import com.eaglesakura.android.thread.UIHandler;
+import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.android.util.ImageUtil;
 import com.eaglesakura.util.CollectionUtil;
 import com.eaglesakura.util.StringUtil;

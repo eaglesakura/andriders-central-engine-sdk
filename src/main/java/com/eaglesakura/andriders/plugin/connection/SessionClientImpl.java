@@ -6,9 +6,8 @@ import com.eaglesakura.andriders.serialize.RawSessionInfo;
 import com.eaglesakura.android.service.CommandClient;
 import com.eaglesakura.android.service.CommandMap;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.android.thread.UIHandler;
+import com.eaglesakura.android.thread.ui.UIHandler;
 import com.eaglesakura.android.util.AndroidThreadUtil;
-import com.eaglesakura.json.JSON;
 import com.eaglesakura.lambda.CancelCallback;
 
 import android.content.Context;
@@ -17,8 +16,6 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.annotation.UiThread;
 import android.support.annotation.WorkerThread;
-
-import java.io.ByteArrayInputStream;
 
 /**
  * セッションサーバーへの接続を行うクライアント

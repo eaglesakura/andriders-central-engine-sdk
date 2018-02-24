@@ -7,8 +7,6 @@ import com.eaglesakura.andriders.plugin.internal.PluginServerImpl;
 import com.eaglesakura.andriders.sensor.SensorType;
 import com.eaglesakura.andriders.serialize.PluginProtocol;
 import com.eaglesakura.android.service.data.Payload;
-import com.eaglesakura.json.JSON;
-import com.eaglesakura.serialize.PublicFieldSerializer;
 
 import android.location.Location;
 import android.support.annotation.FloatRange;
