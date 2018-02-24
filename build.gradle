@@ -40,6 +40,13 @@ if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
     ext.EGLIBRARY_COMPILE_LOCAL = false // 開発用。ローカルのソースコードをビルドする
 }
 
+
+ext.ACE_SDK_VERSION_IMPL = "${ACES_SDK_VERSION}${getArtifactVersionSuffix()}"
+ext.ACE_SDK_BUILD_NUMBER = "${eglibrary.ci.buildVersionCode}"
+
+group = "com.eaglesakura"
+version = ACE_SDK_VERSION_IMPL
+
 dependencies {
     compile "com.google.code.gson:gson:2.6.2"   // json encoder
     if (EGLIBRARY_COMPILE_LOCAL) {
@@ -82,12 +89,12 @@ android {
         targetSdkVersion 27
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACE_SDK_VERSION_IMPL}\""
         buildConfigField "String", "ACE_APPLICATION_ID", "\"org.andriders.ace\""
         buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
-        buildConfigField "int", "ACE_SDK_BUILD_NUMBER", "${eglibrary.ci.buildVersionCode}"
+        buildConfigField "int", "ACE_SDK_BUILD_NUMBER", "${ACE_SDK_BUILD_NUMBER}"
 
-        manifestPlaceholders = [ace_sdk_version: "${ACES_SDK_VERSION}${getArtifactVersionSuffix()}"]
+        manifestPlaceholders = [ace_sdk_version: "${ACE_SDK_VERSION_IMPL}"]
     }
 
     lintOptions {
