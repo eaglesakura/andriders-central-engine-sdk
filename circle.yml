@@ -16,6 +16,8 @@ dependencies:
   override:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/circleci/install-android-sdk-auto.sh)"
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/circleci/install-android-extra-repo.sh)"
+    - yes | sdkmanager "build-tools;27.0.3"
+    - yes | sdkmanager "platforms;android-27"
 test:
   override:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/eaglesakura/build-dependencies/master/circleci/build-test.sh)"
