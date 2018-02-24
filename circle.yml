@@ -10,6 +10,7 @@ machine:
     ANDROID_HOME: /home/ubuntu/android-sdk
     GRADLE_OPTS: -Xmx2G -Dorg.gradle.daemon=true
     JAVA_OPTS: -Dfile.encoding=UTF-8 -Xms1024m -Xmx2048m -XX:MaxPermSize=2048m
+    PATH: /home/ubuntu/android-sdk:/home/ubuntu/android-sdk/tools:/home/ubuntu/android-sdk/tools/bin:/home/ubuntu/android-sdk/platform-tool:$PATH
 dependencies:
   cache_directories:
     - "/home/ubuntu/android-sdk"
