@@ -1,8 +1,11 @@
 // 3.0.x : ACE v3系列対応 / Circle CI対応
-def ACES_SDK_VERSION = "3.0";
-def ARTIFACT_NAME = file(".").absoluteFile.name
-def ARTIFACT_TYPE = "";   // アーティファクトの切り分けを明示的に行なう, ""空文字, "beta"等
-def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
+def ACES_SDK_VERSION = System.env.CIRCLE_TAG == null ?
+        "3.0" : System.env.CIRCLE_TAG.substring(System.env.CIRCLE_TAG.indexOf('v') + 1)
+def REPOSITORY_NAME = "maven"
+def BINTRAY_LICENSES = ["MIT"]
+def BINTRAY_LABELS = ["android"]
+def BINTRAY_API_KEY = System.env.BINTRAY_API_KEY
+def BINTRAY_GPG_PASS = System.env.BINTRAY_GPG_PASS
 
 buildscript {
     repositories {
@@ -15,6 +18,8 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath "com.eaglesakura:plugin-ci-support:1.0.47"
         classpath 'me.tatarka:gradle-retrolambda:3.5.0' // support Lambda
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -77,12 +82,12 @@ android {
         targetSdkVersion 27
 
         // SDK VERSION
-        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}\""
+        buildConfigField "String", "ACE_SDK_VERSION", "\"${ACES_SDK_VERSION}${getArtifactVersionSuffix()}\""
         buildConfigField "String", "ACE_APPLICATION_ID", "\"org.andriders.ace\""
         buildConfigField "int", "ACE_PROTOCOL_VERSION", "2"
         buildConfigField "int", "ACE_SDK_BUILD_NUMBER", "${eglibrary.ci.buildVersionCode}"
 
-        manifestPlaceholders = [ace_sdk_version: "${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"]
+        manifestPlaceholders = [ace_sdk_version: "${ACES_SDK_VERSION}${getArtifactVersionSuffix()}"]
     }
 
     lintOptions {
@@ -111,8 +116,6 @@ tasks.withType(Test) {
     }
 }
 
-apply plugin: 'maven'
-
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
@@ -124,7 +127,7 @@ android.libraryVariants.all { variant ->
     }
 
     task("javadoc", type: Javadoc) {
-        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}${getArtifactVersionSuffix(ARTIFACT_TYPE)}"
+        title = "Andriders Central Engine SDK / ver ${ACES_SDK_VERSION}${getArtifactVersionSuffix()}"
         description "Generates Android Javadoc for $variant.name."
         source = variant.javaCompile.source
         ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
@@ -157,55 +160,47 @@ android.libraryVariants.all { variant ->
     }
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: uri(ARTIFACT_INSTALL_TARGET))
-            pom.version = ACES_SDK_VERSION + getArtifactVersionSuffix(ARTIFACT_TYPE)
-            pom.groupId = "com.eaglesakura"
-            pom.artifactId = ARTIFACT_NAME
-        }
-    }
-}
-
-task uploadJavadoc << {
-    def src = file("build/docs/javadoc/");
-    def dst = new File("${ARTIFACT_INSTALL_TARGET.absolutePath}/doc/${ARTIFACT_NAME}/");
-    dst.deleteDir();
-    dst.mkdirs();
-
-    ["/usr/bin/rsync", "-a", src.absolutePath, dst.absolutePath].execute().text;
-}
-
 /**
  * バージョンを取得する
  * CircleCIの場合、バージョン末尾にビルド番号を付与する
  */
-def getArtifactVersionSuffix(String artifactType) {
-    def prefix = ".";
-    if ("" != artifactType) {
-        // 明示的に`beta`等のタイプが指定されているなら、それを付与する
-        prefix = ".${artifactType}-"
+def getArtifactVersionSuffix() {
+    String CIRCLE_TAG = System.env.CIRCLE_TAG
+
+    if (CIRCLE_TAG != null) {
+        // TAGがある場合それを直接利用する
+        return ""
     }
+
     if (System.env.CIRCLE_BUILD_NUM != null) {
         // CircleCIのバージョンが指定されているので、そちらを利用する
-        return "${prefix}${System.env.CIRCLE_BUILD_NUM}"
+        return ".build-${System.env.CIRCLE_BUILD_NUM}"
     } else {
-        return "${prefix}local"
+        return ".snapshot"
     }
 }
 
-/**
- * Mavenの格納先を確定する
- */
-def getArtifactInstallTarget() {
-    if (file("maven").directory) {
-        return file("maven");
-    } else if (System.env.CIRCLE_ARTIFACTS != null) {
-        return file(System.env.CIRCLE_ARTIFACTS);
-    } else if (System.env.MAVEN_LOCAL_REPO != null) {
-        return file(System.env.MAVEN_LOCAL_REPO);
-    } else {
-        return file("ci-release");
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+bintray {
+    user = 'eaglesakura'
+    key = BINTRAY_API_KEY
+    pkg {
+        repo = REPOSITORY_NAME
+        name = file(".").absoluteFile.name
+        licenses = BINTRAY_LICENSES
+        labels = BINTRAY_LABELS
+        issueTrackerUrl = "https://github.com/eaglesakura/${file(".").absoluteFile.name}/issues"
+        vcsUrl = "https://github.com/eaglesakura/${file(".").absoluteFile.name}"
+        version {
+            name = project.version
+            released = new Date()
+            gpg {
+                sign = true
+                passphrase = BINTRAY_GPG_PASS
+            }
+        }
     }
+    configurations = ['archives']
 }
