@@ -49,10 +49,6 @@ public class ModelSerializeTest extends UnitTestCase {
             assertEquals(unpacked.length, buffer.length);
             assertTrue(Arrays.equals(buffer, unpacked));
 
-            Object deserialized = SerializeUtil.deserializePublicFieldObject(obj.getClass(), buffer);
-            assertNotNull(deserialized);
-            assertEquals(obj, deserialized);
-
             // JSONを経由しても同じオブジェクトが得られる
             String jsonEncoded = JSON.encode(obj);
             Object jsonDecoded = JSON.decode(jsonEncoded, clazz);
